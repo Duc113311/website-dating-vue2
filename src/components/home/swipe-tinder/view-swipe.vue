@@ -43,7 +43,7 @@
               <div class="flex items-center font-title">
                 <div
                   :title="scope.data.fullname"
-                  class="text-ellipsis w-64 whitespace-nowrap overflow-hidden"
+                  class="text-ellipsis whitespace-nowrap overflow-hidden"
                 >
                   {{ scope.data.fullname }},
                 </div>
@@ -174,9 +174,9 @@ export default {
     bindingDistance(val) {
       const latAdmin = localStorage.latitude;
       const longAdmin = localStorage.longitude;
-      const latUser = val.lat;
+      const latUser = val?.lat ? val?.lat : "21.0012507";
 
-      const longUser = val.long;
+      const longUser = val?.long ? val.long : "105.7938183";
 
       const dataDistance = functionValidate.convertDistance(
         latAdmin,

@@ -3,7 +3,7 @@
     <div class="w-full h-full p-5">
       <div class="header-bg w-full flex items-center">
         <div class="">
-          <BhBack></BhBack>
+          <BhBack @onBackComponent="onBackBlindDate()"></BhBack>
         </div>
         <div class="w-5/6 flex justify-center">Blind Date</div>
       </div>
@@ -97,7 +97,11 @@ export default {
     };
   },
 
-  methods: {},
+  methods: {
+    onBackBlindDate() {
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
 

@@ -2,7 +2,7 @@
   <div class="bg-image w-full h-full">
     <div class="w-full h-full p-5">
       <div class="header-bg w-full flex items-center">
-        <BhBack></BhBack>
+        <BhBack @onBackComponent="onBackBlindDate()"></BhBack>
       </div>
       <div class="content-bg justify-center flex items-center">
         <div class="w-full text-center">
@@ -63,7 +63,11 @@ export default {
     return {};
   },
 
-  methods: {},
+  methods: {
+    onBackBlindDate() {
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
 
