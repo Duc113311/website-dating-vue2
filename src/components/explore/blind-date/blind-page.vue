@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class="footer-bg w-full">
-        <div><BhJoin></BhJoin></div>
+        <div><BhJoin @onNextBlindOption="onNextBlindOption"></BhJoin></div>
         <div><BhNothank></BhNothank></div>
       </div>
     </div>
@@ -66,6 +66,11 @@ export default {
   methods: {
     onBackBlindDate() {
       this.$router.go(-1);
+    },
+
+    onNextBlindOption(val) {
+      debugger;
+      this.$emit("onNextBlindOption", val);
     },
   },
 };

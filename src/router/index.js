@@ -95,6 +95,26 @@ const routes = [
           import(
             /* webpackChunkName: "verified-page" */ "../views/explore-page/verified/verified-page.vue"
           ),
+
+        children: [
+          {
+            path: "/",
+            name: "not-verified-page",
+            component: () =>
+              import(
+                /* webpackChunkName: "not-verified-page" */ "../views/explore-page/verified/verified-page.vue"
+              ),
+          },
+
+          {
+            path: "/verified",
+            name: "verified-filter-page",
+            component: () =>
+              import(
+                /* webpackChunkName: "verified-filter-page" */ "../views/explore-page/verified/verified-page.vue"
+              ),
+          },
+        ],
       },
 
       // Blind date

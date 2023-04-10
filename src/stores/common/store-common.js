@@ -8,6 +8,8 @@ const state = {
 
   listLifeStyle: {},
   statusImageVerify: false,
+
+  isVerified: false,
 };
 
 const getters = {};

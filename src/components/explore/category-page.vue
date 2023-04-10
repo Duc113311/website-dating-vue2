@@ -3,7 +3,11 @@
     <!-- Verified -->
     <div class="w-full h-verified relative cursor-pointer">
       <div class="title-verified text-2xl absolute p-12">Verified photo</div>
-      <img src="@/assets/image-dating/explore_verified_photo (1).png" alt="" />
+      <img
+        @click="onClickVerified()"
+        src="@/assets/image-dating/explore_verified_photo (1).png"
+        alt=""
+      />
     </div>
     <div class="w-full text-description-no-padding pt-2 pb-4">
       Let's find people same with your vibe...
@@ -84,6 +88,13 @@ export default {
       this.$router.push({
         path: "/blind-date",
       });
+    },
+
+    /**
+     * Verified image
+     */
+    onClickVerified() {
+      debugger;
     },
   },
 };

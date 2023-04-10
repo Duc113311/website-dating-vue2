@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-center w-full pl-10 pr-10 items-center">
     <button
-      @click="onClickContinues"
+      @click="onClickJoinNow"
       class="btContinueCode cursor-pointer w-full padding-button active-button overflow-hidden"
       ref="joinNow"
     >
@@ -18,7 +18,10 @@ export default {
   },
 
   methods: {
-    onClickJoinNow() {},
+    onClickJoinNow() {
+      debugger;
+      this.$emit("onNextBlindOption", true);
+    },
   },
 };
 </script>

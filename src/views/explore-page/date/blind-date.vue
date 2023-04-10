@@ -1,6 +1,9 @@
 <template>
   <div class="w-full h-full">
-    <BlindPage v-if="!isShowBlind"></BlindPage>
+    <BlindPage
+      v-if="!isShowBlind"
+      @onNextBlindOption="onNextBlindOption"
+    ></BlindPage>
     <BlindOption v-if="isShowBlind"></BlindOption>
   </div>
 </template>
@@ -18,10 +21,15 @@ export default {
 
   data() {
     return {
-      isShowBlind: true,
+      isShowBlind: false,
     };
   },
 
-  methods: {},
+  methods: {
+    onNextBlindOption(val) {
+      debugger;
+      this.isShowBlind = val;
+    },
+  },
 };
 </script>
