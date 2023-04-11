@@ -114,8 +114,24 @@ export default {
   );
   opacity: 1;
 }
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
 
+body {
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 1.5px;
+
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
 #app {
   font-family: "Roboto", sans-serif;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 </style>

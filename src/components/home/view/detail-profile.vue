@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full relative">
+  <div class="w-full h-full relative bg-color-detail">
     <div class="detail-page w-full h-full relative">
       <div class="bg-image-detail h-2/4">
         <div class="avatar w-full h-full relative">
@@ -25,16 +25,16 @@
             <div class="w-2/4 bg-slate-500" @click="nextImageLeft()"></div>
             <div class="w-2/4 bg-orange-200" @click="nextImageRight()"></div>
           </div>
-        </div>
-        <div
-          class="icon-close-infor cursor-pointer absolute right-4"
-          @click="onClickHideProfile()"
-        >
-          <img src="@/assets/icon/bt_close_infor.svg" class="w-16" />
+          <div
+            class="icon-close-infor cursor-pointer absolute right-4"
+            @click="onClickHideProfile()"
+          >
+            <img src="@/assets/icon/bt_close_infor.svg" class="w-16" />
+          </div>
         </div>
       </div>
-      <div class="h-2/4 w-full">
-        <div class="w-full p-2">
+      <div class="h-2/4 w-full p-5">
+        <div class="w-full">
           <div class="flex bh-margin-title">
             <div class="title-user">
               {{ this.userParam.fullname
@@ -52,7 +52,7 @@
         </div>
         <BhHorizontalLine></BhHorizontalLine>
         <!-- About me -->
-        <div class="p-2">
+        <div class="">
           <div class="title title-description">About me</div>
           <div class="text-description">
             {{ this.userParam.about }}
@@ -61,7 +61,9 @@
           <div class="w-full bh-margin-description">
             <div
               class="item-option cursor-pointer"
-              v-for="item in this.userParam.profiles.orientationSexuals"
+              v-for="item in this.userParam?.profiles?.orientationSexuals
+                ? this.userParam?.profiles?.orientationSexuals
+                : this.sexuals"
               :key="item"
             >
               {{ item }}
@@ -71,13 +73,15 @@
         <!-- Interests -->
         <BhHorizontalLine></BhHorizontalLine>
 
-        <div class="p-2">
+        <div class="">
           <div class="title title-description">Interests</div>
 
           <div class="w-full bh-margin-description">
             <div
               class="item-option"
-              v-for="item in this.userParam.profiles.interests"
+              v-for="item in this.userParam?.profiles?.interests
+                ? this.userParam?.profiles?.interests
+                : this.interests"
               :key="item"
             >
               {{ item }}
@@ -86,7 +90,7 @@
         </div>
         <BhHorizontalLine></BhHorizontalLine>
 
-        <!-- <div class="w-full p-2">
+        <!-- <div class="w-full ">
           <div class="title title-description">My Anthem</div>
           <div class="flex w-full">
             <div class="w-2/3 bh-margin-description">
@@ -193,6 +197,9 @@ export default {
           urlName: "ssd",
         },
       ],
+
+      sexuals: ["Gay", "Lesbian", "Demisexual", "Pansexual"],
+      interests: ["runningMan", "instagram", "reggaeton"],
     };
   },
 
@@ -201,7 +208,8 @@ export default {
       debugger;
       const urlImage =
         this.$store.state.userModule.userProfileDetail?.profiles?.avatars[0];
-      return urlImage;
+      console.log(urlImage);
+      return "https://firebasestorage.googleapis.com/v0/b/heartlink-dating-project.appspot.com/o/dating%2F03194035-2-anh-gai-xinh-goi-cam.png?alt=media&token=a24e43ba-3c80-4485-855b-5ce2e5403805";
     },
     userParam() {
       debugger;
@@ -218,9 +226,9 @@ export default {
     bindingDistance(val) {
       const latAdmin = localStorage.latitude;
       const longAdmin = localStorage.longitude;
-      const latUser = val.lat;
+      const latUser = val?.lat ? val?.lat : "21.0012507";
 
-      const longUser = val.long;
+      const longUser = val?.long ? val?.long : "105.7938183";
 
       const dataDistance = functionValidate.convertDistance(
         latAdmin,
@@ -292,6 +300,11 @@ export default {
 </script>
 
 <style lang="css">
+.bg-color-detail {
+  background-color: #382e41;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
 .detail-page {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
@@ -330,5 +343,9 @@ export default {
 
 .no-active {
   background-color: #ffffff8f;
+}
+
+.icon-close-infor {
+  bottom: -26px;
 }
 </style>

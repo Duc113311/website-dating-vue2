@@ -100,7 +100,7 @@ export default {
 <style lang="css">
 .footer-body {
   height: calc(100% - 90%);
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   border-top: 1px solid #373e50;
   margin-top: 10px;

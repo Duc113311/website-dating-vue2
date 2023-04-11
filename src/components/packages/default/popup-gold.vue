@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-full show-popups z-10">
     <div class="v-modal-bg" @click="onHidePopupPackage()"></div>
-    <div class="w-full absolute top-0 left-0 flex justify-center p-5">
+    <div class="w-full absolute top-20 flex justify-center p-5">
       <div
         class="popup_report"
         :style="`background:${bindingData.colorButtonAction.colorBackground}`"

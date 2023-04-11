@@ -9,7 +9,7 @@ const state = {
   listLifeStyle: {},
   statusImageVerify: false,
 
-  isVerified: false,
+  isVerified: true,
 };
 
 const getters = {};

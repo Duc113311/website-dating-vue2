@@ -93,7 +93,7 @@ const routes = [
         name: "verified-page",
         component: () =>
           import(
-            /* webpackChunkName: "verified-page" */ "../views/explore-page/verified/verified-page.vue"
+            /* webpackChunkName: "verified-page" */ "../views/explore-page/verified/index.vue"
           ),
 
         children: [
@@ -102,16 +102,25 @@ const routes = [
             name: "not-verified-page",
             component: () =>
               import(
-                /* webpackChunkName: "not-verified-page" */ "../views/explore-page/verified/verified-page.vue"
+                /* webpackChunkName: "not-verified-page" */ "../views/explore-page/verified/not-verified/not-verified-page.vue"
               ),
           },
 
           {
-            path: "/verified",
+            path: "/photo-verified",
             name: "verified-filter-page",
             component: () =>
               import(
-                /* webpackChunkName: "verified-filter-page" */ "../views/explore-page/verified/verified-page.vue"
+                /* webpackChunkName: "verified-filter-page" */ "../views/explore-page/verified/filter-page/verified-filter-page.vue"
+              ),
+          },
+
+          {
+            path: "/user-verified",
+            name: "verified-user-page",
+            component: () =>
+              import(
+                /* webpackChunkName: "verified-user-page" */ "../views/explore-page/verified/user-page/user-verified.vue"
               ),
           },
         ],

@@ -32,11 +32,26 @@
   font-size: 20px;
 }
 
-.title-option {
+.title-print {
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 24px;
+  letter-spacing: 0px;
+  padding: 10px;
+  text-transform: none;
+  line-height: 1;
+}
+
+.title-verified {
   font-weight: 800;
   color: #ffffff;
-  font-size: 25px;
+  font-size: 29px;
+  letter-spacing: 0px;
+  padding: 10px;
+  text-transform: none;
+  line-height: 1;
 }
+
 .text-describe {
   font-weight: 500;
   color: #ffffff;
@@ -254,7 +269,10 @@
 .size-icon-default {
   font-size: 24px;
 }
-
+/* Default body */
+.body-page-default {
+  height: 80%;
+}
 .height-scroll::-webkit-scrollbar {
   display: none;
 }

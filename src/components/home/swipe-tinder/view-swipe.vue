@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full">
+  <div class="w-full h-full relative">
     <Tinder
       class="uis"
       ref="tinder"
@@ -109,13 +109,23 @@
       </div>
     </div>
 
-    <div>
+    <div class="absolute w-full bottom-0 left-0">
       <div class="btns">
-        <img src="@/assets/icon/bt_back.svg" @click="decide('rewind')" />
-        <img src="@/assets/icon/bt_nope.svg" @click="decide('nope')" />
-        <img src="@/assets/icon/bt_super_like.svg" @click="decide('super')" />
-        <img src="@/assets/icon/bt_like.svg" @click="decide('like')" />
-        <img src="@/assets/icon/bt_boost.svg" @click="decide('help')" />
+        <div class="bh-odd justify-center flex items-center">
+          <img src="@/assets/icon/bt_back.svg" @click="decide('rewind')" />
+        </div>
+        <div class="bh-even justify-center flex items-center">
+          <img src="@/assets/icon/bt_nope.svg" @click="decide('nope')" />
+        </div>
+        <div class="bh-odd justify-center flex items-center">
+          <img src="@/assets/icon/bt_super_like.svg" @click="decide('super')" />
+        </div>
+        <div class="bh-even justify-center flex items-center">
+          <img src="@/assets/icon/bt_like.svg" @click="decide('like')" />
+        </div>
+        <div class="bh-odd justify-center flex items-center">
+          <img src="@/assets/icon/bt_boost.svg" @click="decide('help')" />
+        </div>
       </div>
     </div>
   </div>
@@ -450,12 +460,14 @@ export default {
   right: 0;
   bottom: 0;
   margin: auto;
-  height: 110px;
+  min-height: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
-  max-width: 355px;
+  justify-content: space-around;
+  max-width: 100%;
+  padding-left: 20px;
   z-index: 9;
+  padding-right: 20px;
 }
 
 .btns img {
@@ -464,10 +476,6 @@ export default {
   border-radius: 50%;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-}
-
-.btns img:nth-last-child(1) {
-  margin-right: 0;
 }
 
 .active-image {

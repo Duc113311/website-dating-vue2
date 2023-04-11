@@ -1,0 +1,73 @@
+<template>
+  <div class="w-full h-full p-2 bg-color-verified">
+    <div class="w-full header-detail flex justify-center items-center">
+      <div class="w-full flex justify-center items-center">
+        <div class="">
+          <BhBack @onBackComponent="onBackVerified()"></BhBack>
+        </div>
+        <div class="ml-28 w-3/4 title-print flex items-center">
+          <img
+            width="40"
+            src="@/assets/icon/ic_verified_enable.svg"
+            alt=""
+            srcset=""
+          />
+          <div>Photo verified</div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full flex justify-center body-scream-tow items-center">
+      <div v-if="isShowLoadDing">
+        <LoadDefault :codeColor="color" :urlImage="url"></LoadDefault>
+      </div>
+      <div class="w-full h-full" v-if="!isShowLoadDing">
+        <ViewSwipe></ViewSwipe>
+      </div>
+      <div class="w-full h-full" v-if="isShowDetail">
+        <DetailProfile></DetailProfile>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import LoadDefault from "../../layout/loading/load-default";
+import BhBack from "../../bh-element-ui/button/bh-back";
+import ViewSwipe from "../../home/swipe-tinder/view-swipe";
+import DetailProfile from "../../home/view/detail-profile";
+export default {
+  components: {
+    LoadDefault,
+    BhBack,
+    DetailProfile,
+    ViewSwipe,
+  },
+  name: "user-verified",
+  data() {
+    return {
+      color: "#988bf9",
+      url: "http://localhost:6060/img/round_blind_date%20(1).c789ef73.png",
+      isShowLoadDing: true,
+      isShowDetail: false,
+    };
+  },
+
+  methods: {},
+
+  mounted() {
+    setTimeout(() => {
+      this.isShowLoadDing = false;
+    }, 4000);
+  },
+};
+</script>
+
+<style lang="css">
+.bg-color-verified {
+  background: linear-gradient(#962bed, #0d7dfd);
+}
+
+.body-scream-tow {
+  height: calc(100% - 10%);
+}
+</style>
