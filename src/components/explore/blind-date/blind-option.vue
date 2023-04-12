@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-full bg-filter">
     <div class="w-full h-full p-5">
-      <div class="header-bg w-full flex items-center">
+      <div class="header-bg w-full flex items-center p-4">
         <div class="">
           <BhBack @onBackComponent="onBackBlindDate()"></BhBack>
         </div>
@@ -17,10 +17,12 @@
           v-if="show === 'so2'"
           @update="show = $event"
         ></OptionPage2>
-        <OptionPage3
+        <LoadDefault
           v-if="show === 'so3'"
           @update="show = $event"
-        ></OptionPage3>
+          :urlImage="urlImage"
+          :codeColor="codeColor"
+        ></LoadDefault>
       </div>
 
       <div class="footer-bg">
@@ -77,13 +79,13 @@
 </template>
 
 <script>
-import OptionPage3 from "./fliter-option/option-page3";
+import LoadDefault from "../../layout/loading/load-default";
 import OptionPage1 from "./fliter-option/option-page1";
 import OptionPage2 from "./fliter-option/option-page2";
 import BhBack from "../../bh-element-ui/button/bh-back";
 export default {
   components: {
-    OptionPage3,
+    LoadDefault,
     OptionPage1,
     OptionPage2,
     BhBack,
@@ -94,12 +96,15 @@ export default {
   data() {
     return {
       show: "so1",
+      urlImage: "http://localhost:6060/img/round_blind_date%20(1).c789ef73.png",
+      codeColor: "#B44453",
     };
   },
 
   methods: {
     onBackBlindDate() {
       debugger;
+      this.$router.go(-1);
     },
   },
 };
@@ -110,7 +115,7 @@ export default {
   background: linear-gradient(to bottom, #81207f, #f06f21);
 }
 .header-bg {
-  height: 15%;
+  height: 10%;
 }
 
 .content-bg {
@@ -118,7 +123,7 @@ export default {
 }
 
 .footer-bg {
-  height: calc(100% - 90%);
+  height: calc(100% - 85%);
 }
 /* CSS cho phần cuối */
 .footer {
@@ -190,5 +195,28 @@ export default {
 }
 .active {
   color: white;
+}
+
+.bg-option {
+  background-color: #3b2c41;
+  padding-bottom: 32px;
+}
+.h-border-item {
+  height: 54px;
+  padding: 38px;
+}
+
+.bor-item {
+  padding: 18px;
+  border-radius: 15px;
+  border: 1.4px solid #ffffff;
+}
+
+.bg-option input[type="radio"] {
+  display: none;
+}
+.bg-option input[type="radio"]:checked + .label-radio {
+  border-color: #fd5d65;
+  color: #fd5d65;
 }
 </style>

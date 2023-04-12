@@ -1,9 +1,13 @@
 <template>
-  <div class="w-full h-full relative">
+  <div
+    class="w-full h-full relative"
+    @mousedown="onMouseDow"
+    @mouseup="onMouseUp"
+  >
     <Tinder
       class="uis"
       ref="tinder"
-      key-name="oAuth2Id"
+      key-name="_id"
       :queue.sync="listDataUser"
       :offset-y="10"
       @submit="onSubmit"
@@ -63,8 +67,8 @@
                 <div class="mr-2">
                   <i class="fa-solid fa-location-dot"></i>
                 </div>
-                <span class="font-describe">
-                  {{ bindingDistance(scope.data?.location) }} km away</span
+                <span class="font-describe"
+                  >{{ bindingDistance(scope.data.distanceKm) }} km away</span
                 >
               </div>
             </div>
@@ -81,15 +85,11 @@
         <div class="w-full flex absolute top-0 opacity-0 h-4/6 nextBg">
           <div
             class="w-2/4 bg-slate-500"
-            @click="
-              nextImageLeft(scope.data.profiles.avatars, scope.data.oAuth2Id)
-            "
+            @click="nextImageLeft(scope.data.profiles.avatars)"
           ></div>
           <div
             class="w-2/4 bg-orange-200"
-            @click="
-              nextImageRight(scope.data.profiles.avatars, scope.data.oAuth2Id)
-            "
+            @click="nextImageRight(scope.data.profiles.avatars)"
           ></div>
         </div>
       </template>
@@ -98,7 +98,6 @@
       <div class="nope-pointer icon-tinder" slot="nope">NOPE</div>
       <div class="super-pointers icon-tinder" slot="super">SUPER</div>
     </Tinder>
-
     <div
       v-show="listDataUser.length === 0"
       class="w-full h-full flex justify-center items-center"
@@ -109,7 +108,10 @@
       </div>
     </div>
 
-    <div class="absolute w-full bottom-0 left-0">
+    <div
+      class="absolute w-full bottom-0 left-0"
+      v-bind:class="{ 'pointer-event': isPointer }"
+    >
       <div class="btns">
         <div class="bh-odd justify-center flex items-center">
           <img src="@/assets/icon/bt_back.svg" @click="decide('rewind')" />
@@ -147,11 +149,15 @@ export default {
       isShowDetail: false,
       isActiveImag: true,
       nameTinder: "",
+      idImage: "",
+      isPointer: true,
+      imageActive: 0,
     };
   },
 
   computed: {
     listDataUser() {
+      debugger;
       return this.$store.state.mongoModule.listDataCard
         ? this.$store.state.mongoModule.listDataCard
         : [];
@@ -159,10 +165,6 @@ export default {
 
     isShowUrl(val) {
       return val;
-    },
-
-    idImage() {
-      return this.$store.state.userModule.urlAvatarUser.urlName;
     },
   },
 
@@ -176,95 +178,77 @@ export default {
 
     ...mapActions(["patchNopeUserId", "patchComeBackUserId", "postLikeUserId"]),
 
+    onMouseDow(event) {
+      debugger;
+      if (event.target.tagName === "IMG") {
+        debugger;
+        return;
+      }
+      this.isPointer = true;
+    },
+    onMouseUp() {
+      debugger;
+      this.isPointer = false;
+    },
     bindingAge(val) {
       const dataAge = functionValidate.calculatAge(val);
       return dataAge;
     },
 
     bindingDistance(val) {
-      const latAdmin = localStorage.latitude;
-      const longAdmin = localStorage.longitude;
-      const latUser = val?.lat ? val?.lat : "21.0012507";
-
-      const longUser = val?.long ? val.long : "105.7938183";
-
-      const dataDistance = functionValidate.convertDistance(
-        latAdmin,
-        longAdmin,
-        latUser,
-        longUser,
-        "K"
-      );
-      if (parseInt(dataDistance.toFixed(0)) === 0) {
+      if (parseInt(val.toFixed(0)) === 0) {
         return 1;
       } else {
-        return parseInt(dataDistance.toFixed(0));
+        return parseInt(val.toFixed(0));
       }
     },
 
     onClickNopeDetail(value) {
       this.isShowDetail = value;
     },
-    nextImageLeft(value, oAuth2Id) {
+    nextImageLeft(value) {
       console.log(value);
 
-      const idImage = this.$store.state.userModule.urlAvatarUser;
-      if (idImage.idUrl !== 0) {
-        document
-          .getElementById(`avatar_` + idImage.idUrl)
-          .classList.remove("active-image");
-        document
-          .getElementById(`avatar_` + parseInt(idImage.idUrl - 1))
-          .classList.add("active-image");
-        this.isActiveImag = false;
+      debugger;
+      if (this.imageActive !== 0) {
+        this.imageActive = this.imageActive - 1;
 
-        this.setLeftRightAvatar({
-          listImages: value,
-          idImage: idImage.urlName,
-          statusNext: false,
-          userId: oAuth2Id,
-        });
+        if (this.imageActive < value.length) {
+          document
+            .getElementById(`avatar_` + parseInt(this.imageActive + 1))
+            .classList.remove("active-image");
+          this.idImage = value[this.imageActive];
+          document
+            .getElementById(`avatar_` + parseInt(this.imageActive))
+            .classList.add("active-image");
+        }
+
+        this.isActiveImag = false;
       }
     },
 
-    nextImageRight(value, oAuth2Id) {
-      console.log(value);
-      this.isActiveImag = false;
+    nextImageRight(value) {
+      debugger;
 
-      const idImage = this.$store.state.userModule.urlAvatarUser;
+      this.imageActive = this.imageActive + 1;
 
-      if (!idImage) {
-        document.getElementById(`avatar_0`).classList.remove("active-image");
-        document.getElementById(`avatar_1`).classList.add("active-image");
-        this.setLeftRightAvatar({
-          listImages: value,
-          idImage: value[0],
-          statusNext: true,
-          userId: oAuth2Id,
-        });
+      if (this.imageActive < value.length) {
+        document
+          .getElementById(`avatar_` + parseInt(this.imageActive - 1))
+          .classList.remove("active-image");
+        this.idImage = value[this.imageActive];
+        document
+          .getElementById(`avatar_` + parseInt(this.imageActive))
+          .classList.add("active-image");
       } else {
-        if (
-          document.getElementById(`avatar_` + parseInt(idImage.idUrl + 1)) !==
-          null
-        ) {
-          document
-            .getElementById(`avatar_` + idImage.idUrl)
-            .classList.remove("active-image");
-
-          document
-            .getElementById(`avatar_` + parseInt(idImage.idUrl + 1))
-            .classList.add("active-image");
-          this.setLeftRightAvatar({
-            listImages: value,
-            idImage: idImage.urlName,
-            statusNext: true,
-            userId: oAuth2Id,
-          });
-        }
+        this.imageActive = this.imageActive - 1;
       }
+
+      this.isActiveImag = false;
     },
 
     onNopeUser(val) {
+      debugger;
       console.log(val);
     },
 
@@ -275,6 +259,7 @@ export default {
       this.$emit("onShowDetailUser", true);
     },
     async onSubmit({ item }) {
+      debugger;
       this.setUrlNameAvatarUser("");
       this.isActiveImag = true;
       debugger;
@@ -302,15 +287,17 @@ export default {
         await this.postLikeUserId(data);
       }
       this.history.push(item);
+      this.imageActive = 0;
     },
     async decide(choice) {
+      debugger;
       console.log(choice);
       if (choice === "rewind") {
         if (this.history.length) {
           this.$refs.tinder.rewind([this.history.pop()]);
         }
       } else if (choice === "help") {
-        console.log("tính năng đang phát triển");
+        this.$emit("onShowPackage", true);
       } else {
         this.nameTinder = choice;
 
@@ -492,5 +479,9 @@ export default {
   bottom: 0px;
   padding: 21px;
   font-size: 26px;
+}
+
+.pointer-event {
+  pointer-events: none;
 }
 </style>

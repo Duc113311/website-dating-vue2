@@ -25,11 +25,17 @@
           <LoadDefault :codeColor="color" :urlImage="url"></LoadDefault>
         </div>
         <div class="w-full h-full" v-if="!isShowLoadDing">
-          <ViewSwipe @onShowDetailUser="onShowDetailUser"></ViewSwipe>
+          <ViewSwipe
+            ref="myViewSwipe"
+            @onShowDetailUser="onShowDetailUser"
+          ></ViewSwipe>
         </div>
       </div>
       <div class="w-full h-full" v-if="isShowDetail">
-        <DetailProfile @onHideProfile="onHideProfile"></DetailProfile>
+        <DetailProfile
+          @onHideProfile="onHideProfile"
+          @onActionDecide="onActionDecide"
+        ></DetailProfile>
       </div>
     </div>
   </div>
@@ -63,8 +69,22 @@ export default {
       this.isShowDetail = val;
     },
 
+    onBackVerified() {
+      this.$router.go(-1);
+    },
+
     onHideProfile(val) {
       this.isShowDetail = val;
+    },
+
+    onActionDecide(val) {
+      this.isShowDetail = false;
+      debugger;
+      this.$nextTick(() => {
+        if (this.$refs.myViewSwipe) {
+          this.$refs.myViewSwipe.decide(val);
+        }
+      });
     },
   },
 

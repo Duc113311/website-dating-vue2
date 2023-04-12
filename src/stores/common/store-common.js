@@ -10,6 +10,8 @@ const state = {
   statusImageVerify: false,
 
   isVerified: true,
+  valueNotDating: "", // Value not dating people
+  valueDinnerGreat: "", // Value dinner great
 };
 
 const getters = {};
@@ -52,6 +54,24 @@ const mutations = {
     debugger;
     console.log(value);
     state.statusImageVerify = false;
+  },
+
+  /**
+   * Xét giá trị tôi không thể hẹn hò
+   * @param {*} state
+   * @param {*} value
+   */
+  setValueNotDating(state, value) {
+    state.valueNotDating = value;
+  },
+
+  /**
+   * Xét giá trị bữa tối tuyệt vời
+   * @param {*} state
+   * @param {*} value
+   */
+  setValueDinnerGreat(state, value) {
+    state.valueDinnerGreat = value;
   },
 };
 

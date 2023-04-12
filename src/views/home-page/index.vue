@@ -7,10 +7,10 @@
         <div class="w-full h-full" v-if="!isShowDetail">
           <div class="body-home w-full relative">
             <!-- Body home -->
-
             <ViewSwipe
               ref="myViewSwipe"
               @onShowDetailUser="onShowDetailUser"
+              @onShowPackage="onShowPackage"
             ></ViewSwipe>
 
             <!-- <ActionDating @onClickDecide="decide"></ActionDating> -->
@@ -24,7 +24,7 @@
         <!-- Detail user -->
         <div v-if="isShowDetail" class="w-full body-detail h-full">
           <DetailProfile
-            @onClickNopeDetail="onClickNopeDetail"
+            @onActionDecide="onActionDecide"
             @onHideProfile="onHideProfile"
           ></DetailProfile>
         </div>
@@ -47,10 +47,18 @@
         @onHidePopupSendSuperLike="onHidePopupSendSuperLike"
       ></FormSendSupperLike>
     </div>
+
+    <div class="w-full h-full" v-if="isShowPackage">
+      <PopupGold
+        ref="packageDefault"
+        @onClickHidePackage="onClickHidePackage"
+      ></PopupGold>
+    </div>
   </div>
 </template>
 
 <script>
+import PopupGold from "../../components/packages/default/popup-gold";
 import FormSendSupperLike from "../../components/home/send-supper-like/form-send-supper-like";
 import FormLikeToo from "../../components/home/match-like/form-like-too";
 import DetailProfile from "../../components/home/view/detail-profile";
@@ -62,6 +70,7 @@ import Header from "../../components/layout/header-home/header";
 import { mapActions, mapMutations } from "vuex";
 export default {
   components: {
+    PopupGold,
     FormSendSupperLike,
     FormLikeToo,
     DetailProfile,
@@ -83,6 +92,7 @@ export default {
       loading: true,
       isSendSuccess: false,
       isMatch: false,
+      isShowPackage: false,
     };
   },
 
@@ -106,14 +116,29 @@ export default {
       this.setStatusLikeUser(val);
       this.isSendSuccess = true;
     },
-
+    onShowDetail() {
+      debugger;
+    },
     onHideProfile(val) {
       this.isShowDetail = val;
     },
 
-    onClickNopeDetail() {
+    onActionDecide(val) {
       this.isShowDetail = false;
-      this.$refs.myViewSwipe.decide("nope");
+      debugger;
+      this.$nextTick(() => {
+        if (this.$refs.myViewSwipe) {
+          this.$refs.myViewSwipe.decide(val);
+        }
+      });
+    },
+
+    onShowPackage(val) {
+      this.isShowPackage = val;
+    },
+
+    onClickHidePackage(val) {
+      this.isShowPackage = val;
     },
 
     nextImageLeft() {},

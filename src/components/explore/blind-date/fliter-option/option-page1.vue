@@ -1,100 +1,81 @@
 <template>
-  <div class="w-full content1">
-    <h4>Tôi không thể hẹn hò với người:</h4>
-    <input
-      id="01"
-      type="radio"
-      name="dating"
-      value="smoker"
-      v-model="value_input"
-    />
-    <label @click="getvalue()" for="01" class="label-radio">
-      Người hút thuốc
-    </label>
-    <input
-      id="02"
-      type="radio"
-      name="dating"
-      value="not-lover"
-      v-model="value_input"
-    />
-    <label @click="getvalue()" for="02" class="label-radio">
-      Không phải người yêu
-    </label>
-    <input
-      id="03"
-      type="radio"
-      name="dating"
-      value="not-romantic"
-      v-model="value_input"
-    />
-    <label @click="getvalue()" for="03" class="label-radio">
-      Không có tính lãng mạn
-    </label>
-    <input
-      id="04"
-      type="radio"
-      name="dating"
-      value="love-novel"
-      v-model="value_input"
-    />
-    <label @click="getvalue()" for="04" class="label-radio">
-      Yêu thích tiểu thuyết
-    </label>
+  <div class="w-full bg-option text-center">
+    <div class="padding-describe mt-5 mb-5">
+      Tôi không thể hẹn hò với người:
+    </div>
+
+    <div
+      class="w-full mb-1 flex justify-center items-center h-border-item cursor-pointer"
+      v-for="(item, index) in listNotDating"
+      :key="index"
+    >
+      <div class="w-full">
+        <input
+          :id="item.code"
+          type="radio"
+          name="dating"
+          :value="item.code"
+          v-model="valueNotDatingBinding"
+        />
+        <div
+          @click="onClickChose(item.code)"
+          :for="index"
+          class="label-radio bor-item w-full"
+        >
+          {{ item.value }}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   name: "option-page",
 
   data() {
     return {
-      value_input: "",
+      listNotDating: [
+        {
+          code: "smoker",
+          value: "Người hút thuốc",
+        },
+        {
+          code: "notLove",
+          value: "Không phải người yêu",
+        },
+        {
+          code: "noRomance",
+          value: "Không có tính lãng mạn",
+        },
+        {
+          code: "loveNovel",
+          value: "Yêu thích tiểu thuyết",
+        },
+      ],
     };
   },
 
+  computed: {
+    valueNotDatingBinding() {
+      return this.$store.state.commonModule.valueNotDating;
+    },
+  },
+
   methods: {
-    getvalue() {
+    ...mapMutations(["setValueNotDating"]),
+    onClickChose(val) {
+      debugger;
+      console.log(val);
+      this.setValueNotDating(val);
+      debugger;
       setTimeout(() => this.$emit("update", "so2"), 500);
     },
   },
+
+  mounted() {},
 };
 </script>
 
-<style lang="css">
-.content1 {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  width: 90%;
-  background-color: #3e2b3e;
-  padding-bottom: 30px;
-  border-radius: 10px;
-  color: #e4dee8;
-  margin-top: 30px;
-}
-.content1 h4 {
-  margin-bottom: 50px;
-  margin-top: 40px;
-}
-.content1 label {
-  color: #e4dee8;
-  border-radius: 15px;
-  /* bo góc 10px */
-  padding: 20px;
-  /* thêm padding để tăng kích thước nút */
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-bottom: 15px;
-  background-color: #3e2b3e;
-  border: 1px solid white;
-}
-.content1 input[type="radio"] {
-  display: none;
-}
-.content1 input[type="radio"]:checked + .label-radio {
-  border-color: #fd5d65;
-  color: #fd5d65;
-}
-</style>
+<style lang="css"></style>

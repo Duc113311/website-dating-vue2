@@ -132,8 +132,35 @@ const routes = [
         name: "blind-date",
         component: () =>
           import(
-            /* webpackChunkName: "blind-date" */ "../views/explore-page/date/blind-date.vue"
+            /* webpackChunkName: "blind-date" */ "../views/explore-page/date/index.vue"
           ),
+
+        children: [
+          {
+            path: "/",
+            name: "default-date",
+            component: () =>
+              import(
+                /* webpackChunkName: "default-date" */ "../views/explore-page/date/default/index.vue"
+              ),
+          },
+          {
+            path: "/filter-date",
+            name: "date-filter-user",
+            component: () =>
+              import(
+                /* webpackChunkName: "date-filter-user" */ "../views/explore-page/date/filter-user/index.vue"
+              ),
+          },
+          {
+            path: "/message-date",
+            name: "message-time-page",
+            component: () =>
+              import(
+                /* webpackChunkName: "message-time-page" */ "../views/explore-page/date/message-time/message-time-page.vue"
+              ),
+          },
+        ],
       },
     ],
   },

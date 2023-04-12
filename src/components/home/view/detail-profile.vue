@@ -4,9 +4,18 @@
       <div class="bg-image-detail h-2/4">
         <div class="avatar w-full h-full relative">
           <div
+            v-show="isActiveImag"
             class="avatar-url z-8"
             :style="{
-              'background-image': `url(${idImage})`,
+              'background-image': `url(${this.userParam?.profiles?.avatars[0]})`,
+            }"
+          />
+          <div
+            v-show="!isActiveImag"
+            class="pic z-8 ss"
+            :style="{
+              'background-image': `url(${idImage}
+            )`,
             }"
           />
           <div
@@ -15,7 +24,7 @@
             <button
               v-for="(data, index) in this.userParam?.profiles?.avatars"
               :key="data"
-              :id="`detail_${index}`"
+              :id="`avatar_${index}`"
               :class="index === 0 ? 'active-image' : 'no-active'"
               class="bt-img imageAvatar p-0.5 rounded-lg mr-0.5 no-active"
               @click="onClickNextImage(data)"
@@ -133,19 +142,26 @@
     <div
       class="w-full h-24 flex justify-center items-center absolute bottom-16 cursor-pointer"
     >
-      <div @click="onClickNope()">
-        <img src="@/assets/icon/bt_nope.svg" class="w-20" alt="" srcset="" />
+      <div>
+        <img
+          src="@/assets/icon/bt_nope.svg"
+          class="w-20"
+          @click="onActionDecide('nope')"
+        />
       </div>
-      <div @click="onClickSupperLike()">
+      <div>
         <img
           src="@/assets/icon/bt_super_like.svg"
           class="w-20"
-          alt=""
-          srcset=""
+          @click="onActionDecide('super')"
         />
       </div>
-      <div @click="onClickLike()">
-        <img src="@/assets/icon/bt_like.svg" alt="" class="w-20" srcset="" />
+      <div>
+        <img
+          src="@/assets/icon/bt_like.svg"
+          class="w-20"
+          @click="onActionDecide('like')"
+        />
       </div>
     </div>
   </div>
@@ -199,20 +215,21 @@ export default {
           urlName: "ssd",
         },
       ],
+      isActiveImag: true,
 
       sexuals: ["Gay", "Lesbian", "Demisexual", "Pansexual"],
       interests: ["runningMan", "instagram", "reggaeton"],
+
+      idImage: "",
+      imageActive: 0,
     };
   },
 
   computed: {
-    idImage() {
-      debugger;
-      const urlImage =
-        this.$store.state.userModule.userProfileDetail?.profiles?.avatars[0];
-      console.log(urlImage);
-      return "https://firebasestorage.googleapis.com/v0/b/heartlink-dating-project.appspot.com/o/dating%2F03194035-2-anh-gai-xinh-goi-cam.png?alt=media&token=a24e43ba-3c80-4485-855b-5ce2e5403805";
-    },
+    // idImage() {
+    //   debugger;
+    //   return this.$store.state.userModule.urlAvatarUser.urlName;
+    // },
     userParam() {
       debugger;
       return this.$store.state.userModule.userProfileDetail;
@@ -220,9 +237,9 @@ export default {
   },
 
   methods: {
-    ...mapMutations(["setUrlNameAvatarUser", "setLeftRighAvatar"]),
-    onClickNope() {
-      this.$emit("onClickNopeDetail", false);
+    ...mapMutations(["setUrlNameAvatarUser", "setLeftRightAvatar"]),
+    onActionDecide(val) {
+      this.$emit("onActionDecide", val);
     },
 
     bindingDistance(val) {
@@ -252,37 +269,45 @@ export default {
     },
 
     nextImageLeft() {
-      const idImage = this.$store.state.userModule.urlAvatarUser.id;
+      const valueImg = this.userParam.profiles.avatars;
+      debugger;
+      if (this.imageActive !== 0) {
+        this.imageActive = this.imageActive - 1;
 
-      console.log(idImage);
-      if (
-        document.getElementById("detail" + `${parseInt(idImage) - 1}`) !== null
-      ) {
-        document
-          .getElementById("detail" + `${parseInt(idImage)}`)
-          .classList.remove("active-image");
-        document
-          .getElementById("detail" + `${parseInt(idImage) - 1}`)
-          .classList.add("active-image");
-        this.setLeftRighAvatar(false);
+        if (this.imageActive < valueImg.length) {
+          document
+            .getElementById(`avatar_` + parseInt(this.imageActive + 1))
+            .classList.remove("active-image");
+          this.idImage = valueImg[this.imageActive];
+          document
+            .getElementById(`avatar_` + parseInt(this.imageActive))
+            .classList.add("active-image");
+        }
+
+        this.isActiveImag = false;
       }
     },
 
     nextImageRight() {
-      const idImage = this.$store.state.userModule.urlAvatarUser.id;
+      debugger;
+      const valueImg = this.userParam.profiles.avatars;
+      debugger;
 
-      console.log(idImage);
-      if (
-        document.getElementById("detail" + `${parseInt(idImage) + 1}`) !== null
-      ) {
+      this.imageActive = this.imageActive + 1;
+
+      if (this.imageActive < valueImg.length) {
         document
-          .getElementById("detail" + `${parseInt(idImage)}`)
+          .getElementById(`avatar_` + parseInt(this.imageActive - 1))
           .classList.remove("active-image");
+        this.idImage = valueImg[this.imageActive];
         document
-          .getElementById("detail" + `${parseInt(idImage) + 1}`)
+          .getElementById(`avatar_` + parseInt(this.imageActive))
           .classList.add("active-image");
-        this.setLeftRighAvatar(true);
+      } else {
+        this.imageActive = this.imageActive - 1;
       }
+
+      this.isActiveImag = false;
     },
 
     onClickSupperLike() {},
