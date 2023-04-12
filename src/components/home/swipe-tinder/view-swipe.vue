@@ -271,6 +271,7 @@ export default {
     onClickShowDetailUser(value) {
       console.log(value);
       this.setDetailUserProfile(value);
+      debugger;
       this.$emit("onShowDetailUser", true);
     },
     async onSubmit({ item }) {

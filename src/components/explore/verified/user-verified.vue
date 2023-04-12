@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full p-2 bg-color-verified">
-    <div class="w-full header-detail flex justify-center items-center">
+    <div class="w-full header-detail flex justify-center items-center p-3">
       <div class="w-full flex justify-center items-center">
         <div class="">
           <BhBack @onBackComponent="onBackVerified()"></BhBack>
@@ -17,14 +17,19 @@
       </div>
     </div>
     <div class="w-full flex justify-center body-scream-tow items-center">
-      <div v-if="isShowLoadDing">
-        <LoadDefault :codeColor="color" :urlImage="url"></LoadDefault>
-      </div>
-      <div class="w-full h-full" v-if="!isShowLoadDing">
-        <ViewSwipe></ViewSwipe>
+      <div class="w-full h-full" v-if="!isShowDetail">
+        <div
+          class="w-full h-full flex justify-center items-center"
+          v-if="isShowLoadDing"
+        >
+          <LoadDefault :codeColor="color" :urlImage="url"></LoadDefault>
+        </div>
+        <div class="w-full h-full" v-if="!isShowLoadDing">
+          <ViewSwipe @onShowDetailUser="onShowDetailUser"></ViewSwipe>
+        </div>
       </div>
       <div class="w-full h-full" v-if="isShowDetail">
-        <DetailProfile></DetailProfile>
+        <DetailProfile @onHideProfile="onHideProfile"></DetailProfile>
       </div>
     </div>
   </div>
@@ -52,7 +57,16 @@ export default {
     };
   },
 
-  methods: {},
+  methods: {
+    onShowDetailUser(val) {
+      debugger;
+      this.isShowDetail = val;
+    },
+
+    onHideProfile(val) {
+      this.isShowDetail = val;
+    },
+  },
 
   mounted() {
     setTimeout(() => {
