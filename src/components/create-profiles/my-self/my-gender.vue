@@ -50,7 +50,7 @@ export default {
           value: "Other",
         },
       ];
-      return this.$store.state.commonModule.listLifeStyle?.genders
+      return this.$store.state.commonModule.listLifeStyle?.genders.length !== 0
         ? this.$store.state.commonModule.listLifeStyle?.genders
         : gender;
     },
