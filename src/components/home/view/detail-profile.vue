@@ -103,17 +103,19 @@
           <div class="flex justify-center items-center">
             <i class="fa-regular fa-share-from-square"></i>
             <div class="text-description-no-padding ml-2">
-              SHARE NGOC TRINH'S PROFILE
+              Share {{ this.userParam.fullname }} profile
             </div>
           </div>
           <div class="flex justify-center mt-2 title-description-no-padding">
-            SEE WHAT A FRIEND THINKS
+            See what a friend thinks
           </div>
         </div>
         <BhHorizontalLine></BhHorizontalLine>
         <!-- Report -->
         <div class="flex h-12 w-full justify-center items-center">
-          <div class="text-description-no-padding">REPORT NGOC TRINH</div>
+          <div class="text-description-no-padding">
+            Report {{ this.userParam.fullname }}
+          </div>
         </div>
         <BhHorizontalLine></BhHorizontalLine>
         <div class="h-2/4"></div>

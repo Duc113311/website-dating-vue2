@@ -36,7 +36,23 @@ export default {
      * Lấy gender từ state để show datad
      */
     gendersData() {
-      return this.$store.state.commonModule.listLifeStyle?.genders;
+      const gender = [
+        {
+          code: "women",
+          value: "Women",
+        },
+        {
+          code: "man",
+          value: "Man",
+        },
+        {
+          code: "other",
+          value: "Other",
+        },
+      ];
+      return this.$store.state.commonModule.listLifeStyle?.genders
+        ? this.$store.state.commonModule.listLifeStyle?.genders
+        : gender;
     },
     isDarkTheme() {
       const theme = localStorage.getItem("user-theme");

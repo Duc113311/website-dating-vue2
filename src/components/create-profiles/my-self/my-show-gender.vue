@@ -36,7 +36,23 @@ export default {
   },
   computed: {
     showGendersData() {
-      return this.$store.state.commonModule.listLifeStyle?.showMeGenders;
+      const showGender = [
+        {
+          code: "women",
+          value: "Women",
+        },
+        {
+          code: "man",
+          value: "Man",
+        },
+        {
+          code: "everyone",
+          value: "everyone",
+        },
+      ];
+      return this.$store.state.commonModule.listLifeStyle?.showMeGenders
+        ? this.$store.state.commonModule.listLifeStyle?.showMeGenders
+        : showGender;
     },
     isDarkTheme() {
       const theme = localStorage.getItem("user-theme");
