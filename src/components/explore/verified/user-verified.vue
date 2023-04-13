@@ -57,7 +57,7 @@ export default {
   data() {
     return {
       color: "#988bf9",
-      url: "http://localhost:6060/img/round_blind_date%20(1).c789ef73.png",
+      url: "http://localhost:6060/img/round_verified_photo.711890bf.png",
       isShowLoadDing: true,
       isShowDetail: false,
     };

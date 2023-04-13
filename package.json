@@ -17,6 +17,7 @@
     "intl-tel-input": "^17.0.19",
     "jquery": "^3.6.3",
     "vue": "^2.6.14",
+    "vue-cropperjs": "^4.2.0",
     "vue-carousel": "^0.18.0",
     "vue-router": "^3.5.1",
     "vue-tailwind": "^2.5.1",

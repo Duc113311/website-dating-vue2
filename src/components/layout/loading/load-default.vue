@@ -66,13 +66,13 @@ export default {
 }
 
 .img-filter {
-  background-image: url("@/assets/image-dating/round_blind_date\ \(1\).png");
   width: 229px;
   height: 230px;
-  background-position: center;
+  background-position: revert;
   background-size: cover;
   position: absolute;
   z-index: 9;
+  border-radius: 120px;
 }
 
 @keyframes pulseAnimate {

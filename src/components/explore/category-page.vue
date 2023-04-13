@@ -16,125 +16,21 @@
     <div class="w-full option-find">
       <div class="w-full grid gap-4 grid-explore mb-2">
         <div
+          v-for="(item, index) in listCategoryExplore"
+          :key="index"
           class="relative cursor-pointer rounded-xl overflow-hidden"
-          @click="onClickBlindDate()"
+          @click="onClickChoseCategory(item.code)"
         >
           <div class="w-full absolute top-dash-explore text-center bottom-0">
             <div class="countdown"></div>
-            <div class="title-date title-print">Blind Date</div>
+            <div class="title-date title-print">{{ item.title }}</div>
             <div class="text-describe">
-              Open hour 6pm - 12 pm <br />
-              (Local time)
+              {{ item.describe }}
             </div>
           </div>
           <img
             class="image-explore w-full h-full"
-            src="@/assets/image-dating/explore_blind_date.png"
-            alt=""
-            srcset=""
-          />
-        </div>
-        <div class="relative cursor-pointer rounded-xl overflow-hidden">
-          <div class="w-full absolute top-dash-explore text-center bottom-0">
-            <div class="countdown"></div>
-            <div class="title-date title-print">Let's be Friend</div>
-            <div class="text-describe">Find your best friend here</div>
-          </div>
-          <img
-            class="image-explore w-full h-full"
-            src="@/assets/image-dating/explore_let_be_friend (1).png"
-            alt=""
-            srcset=""
-          />
-        </div>
-        <div class="relative cursor-pointer rounded-xl overflow-hidden">
-          <div class="w-full absolute top-dash-explore text-center bottom-0">
-            <div class="countdown"></div>
-            <div class="title-date title-print">Looking for love</div>
-            <div class="text-describe">Find your love here</div>
-          </div>
-          <img
-            class="image-explore w-full h-full"
-            src="@/assets/image-dating/explore_looking_for_love (1).png"
-            alt=""
-            srcset=""
-          />
-        </div>
-        <div class="relative cursor-pointer rounded-xl overflow-hidden">
-          <div class="w-full absolute top-dash-explore text-center bottom-0">
-            <div class="countdown"></div>
-            <div class="title-date title-print">Coffee Date</div>
-            <div class="text-describe">Find your coffee here</div>
-          </div>
-          <img
-            class="image-explore w-full h-full"
-            src="@/assets/image-dating/explore_coffee_date (1).png"
-            alt=""
-            srcset=""
-          />
-        </div>
-        <div class="relative cursor-pointer rounded-xl overflow-hidden">
-          <div class="w-full absolute top-dash-explore text-center bottom-0">
-            <div class="countdown"></div>
-            <div class="title-date title-print">Love Beautiful Makeup</div>
-            <div class="text-describe">Find your beautiful makeup here</div>
-          </div>
-          <img
-            class="image-explore w-full h-full"
-            src="@/assets/image-dating/thich_lam_dep.webp"
-            alt=""
-            srcset=""
-          />
-        </div>
-
-        <div class="relative cursor-pointer rounded-xl overflow-hidden">
-          <div class="w-full absolute top-dash-explore text-center bottom-0">
-            <div class="countdown"></div>
-            <div class="title-date title-print">Like Traveling</div>
-            <div class="text-describe">Find your love traveling here</div>
-          </div>
-          <img
-            class="image-explore w-full h-full"
-            src="@/assets/image-dating/thich_du_lich.webp"
-            alt=""
-            srcset=""
-          />
-        </div>
-        <div class="relative cursor-pointer rounded-xl overflow-hidden">
-          <div class="w-full absolute top-dash-explore text-center bottom-0">
-            <div class="countdown"></div>
-            <div class="title-date title-print">Love Music</div>
-            <div class="text-describe">Find your love music here</div>
-          </div>
-          <img
-            class="image-explore w-full h-full"
-            src="@/assets/image-dating/thich_nghe_nhac.webp"
-            alt=""
-            srcset=""
-          />
-        </div>
-        <div class="relative cursor-pointer rounded-xl overflow-hidden">
-          <div class="w-full absolute top-dash-explore text-center bottom-0">
-            <div class="countdown"></div>
-            <div class="title-date title-print">Love Sports</div>
-            <div class="text-describe">Find your love sports here</div>
-          </div>
-          <img
-            class="image-explore w-full h-full"
-            src="@/assets/image-dating/thich_the_thao.webp"
-            alt=""
-            srcset=""
-          />
-        </div>
-        <div class="relative cursor-pointer rounded-xl overflow-hidden">
-          <div class="w-full absolute top-dash-explore text-center bottom-0">
-            <div class="countdown"></div>
-            <div class="title-date title-print">Like To Drink</div>
-            <div class="text-describe">Find your to drink here</div>
-          </div>
-          <img
-            class="image-explore w-full h-full"
-            src="@/assets/image-dating/thich_di_nhau.webp"
+            :src="item.urlImage"
             alt=""
             srcset=""
           />
@@ -149,15 +45,91 @@ export default {
   name: "category-page",
 
   data() {
-    return {};
+    return {
+      listCategoryExplore: [
+        {
+          code: "blindDate",
+          title: "Blind Date",
+          describe: "Open hour 6pm - 12pm (Local time)",
+          urlImage: "http://localhost:6060/img/explore_blind_date.f5639207.png",
+        },
+        {
+          code: "letBeFriend",
+          title: "Let's be Friend",
+          describe: "Find your best friend here",
+          urlImage:
+            "http://localhost:6060/img/explore_let_be_friend%20(1).5f18ce2f.png",
+        },
+        {
+          code: "lookingLove",
+          title: "Looking for love",
+          describe: "Find your love here",
+          urlImage:
+            "http://localhost:6060/img/explore_looking_for_love%20(1).23531356.png",
+        },
+        {
+          code: "loveMakeUp",
+          title: "Love beautiful makeup",
+          describe: "Find your love makeup here",
+          urlImage: "http://localhost:6060/img/thich_lam_dep.fb0ea8ca.webp",
+        },
+        {
+          code: "coffeeDate",
+          title: "Coffee Date",
+          describe: "Find your coffee here",
+          urlImage:
+            "http://localhost:6060/img/explore_coffee_date%20(1).19e8f9d0.png",
+        },
+        {
+          code: "traveling",
+          title: "Like traveling",
+          describe: "Find your love traveling here",
+          urlImage: "http://localhost:6060/img/thich_du_lich.aeabdc3b.webp",
+        },
+        {
+          code: "music",
+          title: "Love music",
+          describe: "Find your love music here",
+          urlImage: "http://localhost:6060/img/thich_nghe_nhac.dfbfa4d5.webp",
+        },
+        {
+          code: "sport",
+          title: "Love sports",
+          describe: "Find your love sports here",
+          urlImage: "http://localhost:6060/img/thich_the_thao.92c99a75.webp",
+        },
+        {
+          code: "drink",
+          title: "Like to drink",
+          describe: "Find your like drink here",
+          urlImage: "http://localhost:6060/img/thich_di_nhau.164f7530.webp",
+        },
+      ],
+    };
   },
 
   methods: {
-    onClickBlindDate() {
-      this.$router.push({
-        path: "/blind-date",
-      });
+    onClickChoseCategory(val) {
+      debugger;
+      console.log(val);
+      switch (val) {
+        case "blindDate":
+          this.$router.push({
+            path: "/blind-date",
+            query: {
+              name: val,
+            },
+          });
+          break;
+
+        default:
+          this.$router.push({
+            path: `/common-explore/${val}`,
+          });
+          break;
+      }
     },
+    onClickBlindDate() {},
 
     /**
      * Verified image

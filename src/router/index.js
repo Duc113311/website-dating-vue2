@@ -162,6 +162,66 @@ const routes = [
           },
         ],
       },
+
+      // Let-be-friends
+      {
+        path: "/let-be-friend",
+        name: "let-be-friend-page",
+        component: () =>
+          import(
+            /* webpackChunkName: "let-be-friend-page" */ "../views/explore-page/verified/index.vue"
+          ),
+
+        children: [
+          {
+            path: "/",
+            name: "photo-friend-page",
+            component: () =>
+              import(
+                /* webpackChunkName: "photo-friend-page" */ "../views/explore-page/let-be-friend/photo-friend/index.vue"
+              ),
+          },
+
+          {
+            path: "/user-friend",
+            name: "user-friend-page",
+            component: () =>
+              import(
+                /* webpackChunkName: "user-friend-page" */ "../views/explore-page/let-be-friend/user-friend/index.vue"
+              ),
+          },
+        ],
+      },
+
+      // common page
+      {
+        path: "/common-explore/:screamName",
+        name: "common-explore-page",
+        component: () =>
+          import(
+            /* webpackChunkName: "common-explore-page" */ "../views/explore-page/common/index.vue"
+          ),
+
+        children: [
+          {
+            path: "/",
+            name: "photo-explore-page",
+            component: () =>
+              import(
+                /* webpackChunkName: "photo-friend-page" */ "../views/explore-page/common/photo-common/index.vue"
+              ),
+          },
+
+          {
+            path: "/common-friend/:screamName",
+            name: "users-explore-page",
+            component: () =>
+              import(
+                /* webpackChunkName: "users-explore-page" */ "../views/explore-page/common/users-common/index.vue"
+              ),
+          },
+        ],
+      },
     ],
   },
 
@@ -242,6 +302,24 @@ const routes = [
           import(
             /* webpackChunkName: "edit-profile" */ "../views/profile-page/edit-profile/index.vue"
           ),
+        children: [
+          {
+            path: "/",
+            name: "default-user",
+            component: () =>
+              import(
+                /* webpackChunkName: "default-user" */ "../views/profile-page/edit-profile/default/index"
+              ),
+          },
+          {
+            path: "/media",
+            name: "media-user-crop",
+            component: () =>
+              import(
+                /* webpackChunkName: "media-user-crop" */ "../views/profile-page/edit-profile/media/index"
+              ),
+          },
+        ],
       },
       // Setting profile
       {

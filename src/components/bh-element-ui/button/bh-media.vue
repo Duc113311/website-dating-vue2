@@ -32,7 +32,8 @@ export default {
      * Sự kiện click để tiếp tục
      */
     onClickAddMedia() {
-      this.$emit("onChangeMedia", true);
+      // this.$emit("onChangeMedia", true);
+      this.$router.push({ path: "/media" });
     },
   },
 };

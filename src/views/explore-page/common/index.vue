@@ -6,8 +6,13 @@
 
 <script>
 export default {
-  name: "edit-profile",
+  name: "common-explore-page",
+
+  data() {
+    return {};
+  },
+
+  methods: {},
 };
 </script>
-
-<style></style>
+<style lang="css"></style>
