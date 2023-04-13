@@ -320,6 +320,9 @@ const actions = {
 };
 
 const mutations = {
+  setImageCrop(state, value) {
+    state.detailProfile.profiles.avatars.push(value);
+  },
   /**
    * Xét giá trị cho user_profile khi gọi API detail
    * @param {*} state

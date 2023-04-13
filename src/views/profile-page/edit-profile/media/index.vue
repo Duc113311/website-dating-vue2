@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-full relative p-5">
     <!--  -->
-    <div class="w-full h-full">
+    <div class="w-full h-full" v-if="isShowCrop">
       <div class="w-full header-edit flex justify-center items-center">
         <div class="w-full flex justify-center items-center">
           <div class="w-1/4">
@@ -12,11 +12,27 @@
       </div>
 
       <div class="w-full body-crop-tow">
-        <ChoseImage
-          @onChangeImageCrop="onChangeImageCrop"
-          v-if="isShowCrop"
-        ></ChoseImage>
-        <CropImage :selectedFile="selectedFile" v-if="!isShowCrop"></CropImage>
+        <ChoseImage @onChangeImageCrop="onChangeImageCrop"></ChoseImage>
+      </div>
+    </div>
+
+    <div class="w-full h-full" v-if="!isShowCrop">
+      <div class="w-full header-edit flex justify-center items-center">
+        <div class="w-full flex justify-center items-center">
+          <div class="w-1/4">
+            <BhBack></BhBack>
+          </div>
+          <div class="text-center w-3/4 title-detail-explore">Photo</div>
+          <div
+            class="w-1/4 text-right title-click cursor-pointer"
+            @click="onClickSaveImageCrop"
+          >
+            Done
+          </div>
+        </div>
+      </div>
+      <div class="w-full body-crop-tow">
+        <CropImage ref="cropImages" :selectedFile="selectedFile"></CropImage>
       </div>
     </div>
   </div>
@@ -43,6 +59,18 @@ export default {
   },
 
   methods: {
+    /**
+     * Save image crop
+     */
+    onClickSaveImageCrop() {
+      debugger;
+      this.$refs.cropImages.getCropData();
+    },
+
+    /**
+     *
+     * @param {*} val
+     */
     onChangeImageCrop(val) {
       const file = val.target.files[0];
       //kiểm tra có phải file ảnh hay không

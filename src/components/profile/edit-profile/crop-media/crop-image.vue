@@ -28,7 +28,9 @@
 <script>
 import VueCropper from "vue-cropperjs";
 import "cropperjs/dist/cropper.css";
-
+import { mapMutations, mapActions } from "vuex";
+import { getStorages } from "@/configs/firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 export default {
   name: "crop-image",
 
@@ -45,15 +47,13 @@ export default {
         height: "400px",
         width: "100%",
       },
-
-      cropImg: "",
-      data: null,
-      url: "",
       croppedImage: null,
     };
   },
 
   methods: {
+    ...mapMutations(["setImageCrop"]),
+    ...mapActions(["verifyImageRegister"]),
     async getCropData() {
       debugger;
       // const cropper = this.$refs.cropper.getCropper();
@@ -75,8 +75,35 @@ export default {
           0.95
         );
       });
-      console.log(this.croppedImage);
       debugger;
+
+      if (this.croppedImage) {
+        const storage = getStorages();
+        const storageRef = ref(storage, "dating/" + this.croppedImage?.name);
+        await uploadBytes(storageRef, this.croppedImage).then((snapshot) => {
+          console.log("Uploaded a blob or file!");
+          console.log(snapshot);
+        });
+        const formData = new FormData();
+        await getDownloadURL(storageRef, this.croppedImage)
+          .then(async (url) => {
+            this.dialogImageUrl = url;
+
+            formData.append("imagebase64", this.dialogImageUrl);
+            await this.verifyImageRegister(formData);
+            debugger;
+            const statusImageVerify =
+              this.$store.state.commonModule.statusImageVerify;
+            debugger;
+            if (statusImageVerify) {
+              this.setImageCrop(url);
+              this.$router.push({ path: "/edit-profile" });
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     },
   },
 };

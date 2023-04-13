@@ -263,6 +263,7 @@ export default {
     },
   },
   mounted() {
+    debugger;
     if (this.$route.name !== "edit-profile") {
       const image = this.$store.state.userModule.avatarChecked;
       this.$emit("onShowSkips", false);

@@ -67,7 +67,12 @@
 .title-detail-explore {
   font-weight: 500;
   color: #ffffff;
-  font-size: 27px;
+  font-size: 24px;
+}
+.title-click {
+  font-weight: 500;
+  color: #cc727a;
+  font-size: 24px;
 }
 
 .text-option {
