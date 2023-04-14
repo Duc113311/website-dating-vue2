@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full relative p-5">
+  <div class="w-full h-full relative p-5" v-loading="loading">
     <!--  -->
     <div class="w-full h-full" v-if="isShowCrop">
       <div class="w-full header-edit flex justify-center items-center">
@@ -55,6 +55,7 @@ export default {
       isShowCrop: true,
       show_loop: false,
       selectedFile: [],
+      loading: false,
     };
   },
 
@@ -62,9 +63,20 @@ export default {
     /**
      * Save image crop
      */
-    onClickSaveImageCrop() {
+    async onClickSaveImageCrop() {
       debugger;
-      this.$refs.cropImages.getCropData();
+      this.loading = true;
+
+      await this.$refs.cropImages.getCropData();
+      await setTimeout(() => {
+        this.loading = false;
+        this.$router.push({
+          path: "/edit-profile",
+          query: {
+            scream: "edit-profile",
+          },
+        });
+      }, 2000);
     },
 
     /**

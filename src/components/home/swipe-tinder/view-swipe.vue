@@ -5,6 +5,7 @@
     @mouseup="onMouseUp"
   >
     <Tinder
+      v-if="!isLoadData"
       class="uis"
       ref="tinder"
       key-name="_id"
@@ -99,13 +100,10 @@
       <div class="super-pointers icon-tinder" slot="super">SUPER</div>
     </Tinder>
     <div
-      v-show="listDataUser.length === 0"
+      v-if="isLoadData"
       class="w-full h-full flex justify-center items-center"
     >
-      <div class="text-center">
-        <img src="@/assets/icon/art_meet_people.svg" width="150" />
-        <div class="padding-describe">No one user</div>
-      </div>
+      <LoadApp :urlImage="icUrlApp" :codeColor="colorApp"></LoadApp>
     </div>
 
     <div
@@ -134,13 +132,17 @@
 </template>
 
 <script>
+import LoadApp from "../../layout/loading/load-app";
 import Tinder from "vue-tinder";
 import functionValidate from "../../../middleware/validate.js";
 import { mapActions, mapMutations } from "vuex";
 
 export default {
   name: "view-swipe",
-  components: { Tinder },
+  components: {
+    LoadApp,
+    Tinder,
+  },
   data() {
     return {
       queue: [],
@@ -152,6 +154,11 @@ export default {
       idImage: "",
       isPointer: true,
       imageActive: 0,
+      isLoadData: true,
+
+      icUrlApp: require("@/assets/icon/ic_icon_app.svg"),
+      colorApp: "#FF828A",
+      bgColorApp: "linear-gradient(#FE4E58,#FD757F)",
     };
   },
 
@@ -304,6 +311,12 @@ export default {
         this.$refs.tinder.decide(choice);
       }
     },
+  },
+
+  mounted() {
+    setTimeout(() => {
+      this.isLoadData = false;
+    }, 2000);
   },
 };
 </script>

@@ -264,7 +264,8 @@ export default {
   },
   mounted() {
     debugger;
-    if (this.$route.name !== "edit-profile") {
+    if (this.$route.query.scream !== "edit-profile") {
+      this.loading = true;
       const image = this.$store.state.userModule.avatarChecked;
       this.$emit("onShowSkips", false);
       for (let index = 0; index < image.length; index++) {
@@ -290,6 +291,8 @@ export default {
       }
     } else {
       debugger;
+      this.loading = true;
+
       const image =
         this.$store.state.userModule.detailProfile?.profiles?.avatars;
       for (let index = 0; index < image.length; index++) {

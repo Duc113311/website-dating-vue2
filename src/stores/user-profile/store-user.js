@@ -84,6 +84,26 @@ const state = {
     pet: "",
     smoking: "",
   },
+
+  basicInformation: {
+    zodiac: "",
+    futureFamily: "",
+    education: "",
+    personality: "",
+    vaccine: "",
+    communication: "",
+    loveLanguage: "",
+  },
+
+  styleOfLife: {
+    pet: "",
+    drinkBeer: "",
+    smoking: "",
+    practice: "",
+    diet: "",
+    socialMedia: "",
+    sleep: "",
+  },
 };
 
 const getters = {

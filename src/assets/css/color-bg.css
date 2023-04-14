@@ -16,3 +16,16 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+/* loading */
+
+.el-loading-spinner {
+  height: 100% !important;
+}
+.el-loading-spinner .path {
+  stroke-width: 4px !important;
+  stroke: #fd5d65 !important;
+}
+.el-loading-mask {
+  background-color: rgb(255 255 255 / 69%) !important;
+}

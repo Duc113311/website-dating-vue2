@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full relative bg-theme p-5">
+  <div class="w-full h-full relative bg-theme p-5" v-loading="loading">
     <div class="w-full h-full">
       <!-- Back -->
       <div class="w-full header-edit flex justify-center items-center">
@@ -17,7 +17,7 @@
         </div>
 
         <div
-          class="flex justify-center text-center w-full mt-3 mb-3 description-no-padding"
+          class="flex justify-center text-center w-full mt-4 mb-4 description-no-padding"
         >
           Add video, pic or logo toget 4% closer to completing your profile and
           you may even get more likes
@@ -484,7 +484,7 @@ export default {
       namePreferences: "Trống",
       genderSetting: 0,
 
-      loading: true,
+      loading: false,
 
       isShowInterest: false,
       valShowAge: false,

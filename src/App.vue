@@ -11,13 +11,13 @@
           v-show="isShowIconApp"
           class="absolute z-40 img-app items-center flex w-full h-full justify-center"
         >
-          <div class="ic_apps">
-            <span style="--i: 0"></span>
-            <span style="--i: 1"></span>
-            <span style="--i: 2"></span>
-            <span style="--i: 3"></span>
-          </div>
+          <LoadApp
+            :urlImage="icUrlApp"
+            :codeColor="colorApp"
+            :bgColor="bgColorApp"
+          ></LoadApp>
         </div>
+
         <router-view />
       </div>
     </div>
@@ -25,13 +25,21 @@
 </template>
 
 <script>
+import LoadApp from "./components/layout/loading/load-app";
 import { mapActions, mapMutations } from "vuex";
 export default {
+  components: {
+    LoadApp,
+  },
   name: "app-view",
 
   data() {
     return {
       isShowIconApp: true, // icon Loading
+
+      icUrlApp: require("@/assets/icon/ic_icon_app.svg"),
+      colorApp: "#FF828A",
+      bgColorApp: "linear-gradient(#FE4E58,#FD757F)",
     };
   },
 
@@ -106,12 +114,6 @@ export default {
 
 @import "@/assets/css/bh-animations.css";
 .img-app {
-  background: linear-gradient(
-    4deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(167, 96, 20, 1) 100%,
-    rgba(255, 255, 255, 0.7050578952173336) 100%
-  );
   opacity: 1;
 }
 @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");

@@ -51,58 +51,55 @@ export default {
           code: "blindDate",
           title: "Blind Date",
           describe: "Open hour 6pm - 12pm (Local time)",
-          urlImage: "http://localhost:6060/img/explore_blind_date.f5639207.png",
+          urlImage: require("@/assets/image-dating/explore_blind_date.png"),
         },
         {
           code: "letBeFriend",
           title: "Let's be Friend",
           describe: "Find your best friend here",
-          urlImage:
-            "http://localhost:6060/img/explore_let_be_friend%20(1).5f18ce2f.png",
+          urlImage: require("@/assets/image-dating/explore_let_be_friend (1).png"),
         },
         {
           code: "lookingLove",
           title: "Looking for love",
           describe: "Find your love here",
-          urlImage:
-            "http://localhost:6060/img/explore_looking_for_love%20(1).23531356.png",
+          urlImage: require("@/assets/image-dating/explore_looking_for_love (1).png"),
         },
         {
           code: "loveMakeUp",
           title: "Love beautiful makeup",
           describe: "Find your love makeup here",
-          urlImage: "http://localhost:6060/img/thich_lam_dep.fb0ea8ca.webp",
+          urlImage: require("@/assets/image-dating/thich_lam_dep.webp"),
         },
         {
           code: "coffeeDate",
           title: "Coffee Date",
           describe: "Find your coffee here",
-          urlImage:
-            "http://localhost:6060/img/explore_coffee_date%20(1).19e8f9d0.png",
+          urlImage: require("@/assets/image-dating/explore_coffee_date (1).png"),
         },
         {
           code: "traveling",
           title: "Like traveling",
           describe: "Find your love traveling here",
-          urlImage: "http://localhost:6060/img/thich_du_lich.aeabdc3b.webp",
+          urlImage: require("@/assets/image-dating/thich_du_lich.webp"),
         },
         {
           code: "music",
           title: "Love music",
           describe: "Find your love music here",
-          urlImage: "http://localhost:6060/img/thich_nghe_nhac.dfbfa4d5.webp",
+          urlImage: require("@/assets/image-dating/thich_nghe_nhac.webp"),
         },
         {
           code: "sport",
           title: "Love sports",
           describe: "Find your love sports here",
-          urlImage: "http://localhost:6060/img/thich_the_thao.92c99a75.webp",
+          urlImage: require("@/assets/image-dating/thich_the_thao.webp"),
         },
         {
           code: "drink",
           title: "Like to drink",
           describe: "Find your like drink here",
-          urlImage: "http://localhost:6060/img/thich_di_nhau.164f7530.webp",
+          urlImage: require("@/assets/image-dating/thich_di_nhau.webp"),
         },
       ],
     };

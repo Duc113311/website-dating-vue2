@@ -51,49 +51,49 @@ export default {
           return {
             title: "Let's be friend",
             describe: "Find someone that wants to be friends",
-            url: "http://localhost:6060/img/bg_let_be_friend.c2e165c1.png",
+            url: require("@/assets/image-dating/bg_let_be_friend.png"),
           };
         case "coffeeDate":
           return {
             title: "Coffee Date",
             describe: "Find someone to get coffee with",
-            url: "http://localhost:6060/img/bg_coffe_date.7ae3e2ed.png",
+            url: require("@/assets/image-dating/bg_coffe_date.png"),
           };
         case "lookingLove":
           return {
             title: "Looking for love",
             describe: "Find someone that also looking for love as you",
-            url: "http://localhost:6060/img/bg_looking_for_love.0d344d24.png",
+            url: require("@/assets/image-dating/bg_looking_for_love.png"),
           };
         case "traveling":
           return {
             title: "Like traveling",
             describe: "Find someone who is also looking to travel like you",
-            url: "http://localhost:6060/img/thich_du_lich.aeabdc3b.webp",
+            url: require("@/assets/image-dating/thich_du_lich.webp"),
           };
         case "loveMakeUp":
           return {
             title: "Love beautiful makeup",
             describe: "Find someone who is also looking to makeup like you",
-            url: "http://localhost:6060/img/thich_lam_dep.fb0ea8ca.webp",
+            url: require("@/assets/image-dating/thich_lam_dep.webp"),
           };
         case "music":
           return {
             title: "Love music",
             describe: "Find someone who is also looking for music like you",
-            url: "http://localhost:6060/img/thich_nghe_nhac.dfbfa4d5.webp",
+            url: require("@/assets/image-dating/thich_nghe_nhac.webp"),
           };
         case "sport":
           return {
             title: "Love sports",
             describe: "Find someone who is also looking for sports like you",
-            url: "http://localhost:6060/img/thich_the_thao.92c99a75.webp",
+            url: require("@/assets/image-dating/thich_the_thao.webp"),
           };
         case "drink":
           return {
             title: "Like to drink",
             describe: "Find someone who is also looking for a drink like you",
-            url: "http://localhost:6060/img/thich_di_nhau.164f7530.webp",
+            url: require("@/assets/image-dating/thich_di_nhau.webp"),
           };
         default:
           return "";

@@ -2,15 +2,14 @@
   <div class="w-full flex items-center">
     <div class="w-full">
       <div class="w-full flex justify-between bh-title p-3">
-        <div>JOB TITLE</div>
-        <div v-if="nameJobTitle.length === 0">+3%</div>
+        <div>COMPANY</div>
+        <div v-if="nameCompany.length === 0">+3%</div>
       </div>
       <div class="w-full">
         <el-input
           placeholder="Add job title"
-          v-model="nameJobTitle"
-          @input="onInputJobTitle()"
-          @change="onChangeJobTitle"
+          v-model="nameCompany"
+          @change="onChangeCompany"
         ></el-input>
       </div>
     </div>
@@ -20,38 +19,37 @@
 <script>
 import { mapMutations } from "vuex";
 export default {
-  name: "job-title-page",
+  name: "company-page",
 
   data() {
     return {
-      nameJobTitle:
-        this.$store.state.userModule.user_profile?.profiles?.jobTitle,
+      nameCompany: this.$store.state.userModule.user_profile?.profiles?.company,
     };
   },
 
   computed: {
-    valueJobTitle: {
+    valueCompany: {
       get() {
-        const about =
-          this.$store.state.userModule.user_profile?.profiles?.jobTitle;
+        const company =
+          this.$store.state.userModule.user_profile?.profiles?.company;
         debugger;
-        return about ? about : this.nameJobTitle;
+        return company ? company : this.nameCompany;
       },
       // setter
       set(newValue) {
         // Note: we are using destructuring assignment syntax here.
-        this.nameJobTitle = newValue;
+        this.nameCompany = newValue;
       },
     },
   },
 
   methods: {
-    ...mapMutations(["setJobTitle"]),
+    ...mapMutations(["setCompany"]),
     /**
      * Bắt sự kiện khi đã nhập xong
      */
-    onChangeJobTitle() {
-      this.setJobTitle(this.valueJobTitle);
+    onChangeCompany() {
+      this.setCompany(this.valueCompany);
     },
   },
 };

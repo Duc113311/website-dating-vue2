@@ -14,13 +14,18 @@ export default {
   },
 
   methods: {
-    ...mapActions(["getDetailProfileByAuthorization", "getListLifeStyle"]),
+    ...mapActions([
+      "getListLifeStyleCommons",
+      "getListInformationBasic",
+      "getListLifeStyleStatic",
+    ]),
   },
 
   async created() {
-    await this.getListLifeStyle();
+    await this.getListLifeStyleCommons();
+    await this.getListInformationBasic();
+    await this.getListLifeStyleStatic();
     debugger;
-    await this.getDetailProfileByAuthorization();
   },
 };
 </script>

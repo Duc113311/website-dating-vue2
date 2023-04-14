@@ -18,9 +18,6 @@
         :zoomOnWheel="true"
         :zoomOnTouch="true"
       ></vue-cropper>
-      <button class="mt-4 bg-red-700 p-3 rounded-lg" @click="getCropData">
-        Crop
-      </button>
     </div>
   </div>
 </template>
@@ -97,7 +94,6 @@ export default {
             debugger;
             if (statusImageVerify) {
               this.setImageCrop(url);
-              this.$router.push({ path: "/edit-profile" });
             }
           })
           .catch((error) => {

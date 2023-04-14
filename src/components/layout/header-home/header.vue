@@ -24,5 +24,6 @@ export default {
 <style lang="css">
 .header-page {
   height: 12%;
+  box-shadow: 0px 10px 10px -15px #111;
 }
 </style>

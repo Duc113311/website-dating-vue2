@@ -6,12 +6,15 @@ const state = {
   isNotShowProfie: true,
   listScreamShowMes: [],
 
-  listLifeStyle: {},
   statusImageVerify: false,
 
   isVerified: true,
   valueNotDating: "", // Value not dating people
   valueDinnerGreat: "", // Value dinner great
+
+  listLifeStyleSingle: {}, // Lấy danh sách chung đơn lẻ
+  listInformationBasic: {}, // Lấy danh sách các thông tin cơ bản
+  listLifeStyleStatic: {}, // Lấy danh sách phong cách sống
 };
 
 const getters = {};
@@ -42,18 +45,36 @@ const mutations = {
   },
 
   /**
-   * Xét giá trị cho life style khi đăng ký
+   * Xét giá trị danh sách riêng lẻ
    * @param {*} state
    * @param {*} data
    */
-  setListLifeStyle(state, data) {
-    state.listLifeStyle = data;
+  setListLifeStyleSingle(state, data) {
+    state.listLifeStyleSingle = data;
+  },
+
+  /**
+   * Xét giá trị danh sách thông tin cơ bản
+   * @param {*} state
+   * @param {*} data
+   */
+  setListInformationBasic(state, data) {
+    state.listInformationBasic = data;
+  },
+
+  /**
+   * Xét giá trị danh sách phong cách sống
+   * @param {*} state
+   * @param {*} data
+   */
+  setListLifeStyleStatic(state, data) {
+    state.listLifeStyleStatic = data;
   },
 
   setVerifyImageRegister(state, value) {
     debugger;
     console.log(value);
-    state.statusImageVerify = false;
+    state.statusImageVerify = value;
   },
 
   /**
@@ -100,6 +121,51 @@ const actions = {
       .get(`api/v1/statics`)
       .then((response) => {
         commit("setListLifeStyle", response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+
+  /**
+   * Lấy danh sách các danh mục setting đơn lẻ: ngôn ngữ, interest,...
+   * @param {*} param0
+   */
+  async getListLifeStyleCommons({ commit }) {
+    await http_mongo
+      .get(`api/v1/statics/commons`)
+      .then((response) => {
+        commit("setListLifeStyleSingle", response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+
+  /**
+   * Lấy danh sách các danh mục update profile:thông tin cơ bản
+   * @param {*} param0
+   */
+  async getListInformationBasic({ commit }) {
+    await http_mongo
+      .get(`api/v1/statics/basics`)
+      .then((response) => {
+        commit("setListInformationBasic", response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+
+  /**
+   * Lấy danh sách các danh mục update profile: phong cách sống
+   * @param {*} param0
+   */
+  async getListLifeStyleStatic({ commit }) {
+    await http_mongo
+      .get(`api/v1/statics/life-styles`)
+      .then((response) => {
+        commit("setListLifeStyleStatic", response.data.data);
       })
       .catch((error) => {
         console.log(error);

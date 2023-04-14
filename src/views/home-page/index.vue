@@ -93,10 +93,16 @@ export default {
       isSendSuccess: false,
       isMatch: false,
       isShowPackage: false,
+
+      icUrlApp: require("@/assets/icon/ic_icon_app.svg"),
+      colorApp: "#FF828A",
     };
   },
 
   computed: {
+    isLoadData() {
+      return [];
+    },
     isShowMatchs() {
       return this.$store.state.homeModule.statusMatch;
     },
@@ -104,12 +110,13 @@ export default {
 
   async created() {
     await this.getListCardForUser();
+    await this.getDetailProfileByAuthorization();
     setTimeout(() => {
       this.loading = false;
     }, 1000);
   },
   methods: {
-    ...mapActions(["getListCardForUser", "getDetailInforUser"]),
+    ...mapActions(["getListCardForUser", "getDetailProfileByAuthorization"]),
 
     ...mapMutations(["setStatusLikeUser"]),
     onHideLikeYou(val) {
