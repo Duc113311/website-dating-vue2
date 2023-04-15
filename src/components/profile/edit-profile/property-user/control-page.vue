@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
+
 export default {
   name: "control-page",
 
@@ -50,7 +52,58 @@ export default {
     return {};
   },
 
-  methods: {},
+  computed: {
+    ...mapGetters({
+      nameShowAge: "showAge",
+      nameShowDistance: "showDistance",
+    }),
+    showValueAge: {
+      get() {
+        const age = this.nameShowAge;
+
+        return age;
+      },
+      set(newName) {
+        return newName;
+      },
+    },
+
+    // Show Distance
+    showDistance: {
+      get() {
+        const age = this.nameShowDistance;
+
+        return age;
+      },
+      set(newName) {
+        return newName;
+      },
+    },
+  },
+
+  methods: {
+    ...mapMutations(["setShowDistance", "setShowAge"]),
+    onChangeValueDistance() {
+      debugger;
+      const distance =
+        this.$store.state.userModule.user_profile.profiles.showDistance;
+      if (distance) {
+        this.setShowDistance(false);
+      } else {
+        this.setShowDistance(true);
+      }
+    },
+
+    onChangeValueAge() {
+      debugger;
+      const age = this.$store.state.userModule.user_profile.profiles.showAge;
+      if (age) {
+        this.setShowAge(false);
+      } else {
+        this.setShowAge(true);
+      }
+    },
+  },
 };
 </script>
 <style lang="css"></style>

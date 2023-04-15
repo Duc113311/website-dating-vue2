@@ -168,6 +168,13 @@ export default {
       return dietData ? dietData : this.nameDefault;
     },
 
+    practiceParam() {
+      debugger;
+      const practiceData = this.$store.state.userModule.styleOfLife.practice;
+
+      return practiceData ? practiceData : this.nameDefault;
+    },
+
     socialMediaParam() {
       const socialMediaData =
         this.$store.state.userModule.styleOfLife.socialMedia;

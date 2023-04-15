@@ -5,21 +5,19 @@
       <div v-if="completePurposes">+22%</div>
     </div>
 
-    <div class="w-full bg-life">
+    <div class="w-full bg-life flex justify-between items-center">
       <div class="w-6/12 bh-item-title flex items-center">
         <i class="fa-solid fa-eye"></i>
-        <div>I'm looking for</div>
+        <div class="ml-2">I'm looking for</div>
       </div>
       <div class="flex w-6/12 justify-end">
-        <div class="flex">
-          <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
-            {{ purposesParam }}
-          </div>
-          <div class="cursor-pointer" @click="onShowPurposes()">
-            <i
-              class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
-            ></i>
-          </div>
+        <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
+          {{ purposesParam }}
+        </div>
+        <div class="cursor-pointer" @click="onShowPurposes()">
+          <i
+            class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
+          ></i>
         </div>
       </div>
     </div>

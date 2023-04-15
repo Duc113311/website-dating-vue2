@@ -319,6 +319,14 @@ const routes = [
                 /* webpackChunkName: "media-user-crop" */ "../views/profile-page/edit-profile/media/index"
               ),
           },
+          {
+            path: "/test-edit",
+            name: "test-edit-page",
+            component: () =>
+              import(
+                /* webpackChunkName: "test-edit-page" */ "../views/profile-page/edit-profile/test-edit-page/index.vue"
+              ),
+          },
         ],
       },
       // Setting profile

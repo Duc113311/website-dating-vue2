@@ -5,14 +5,16 @@
         <div>I know language</div>
         <div v-if="completeLanguage">+3%</div>
       </div>
-      <div class="w-full flex style-form">
-        <div>
+      <div class="w-full bg-life flex justify-between items-center">
+        <div class="w-6/12 bh-item-title flex items-center">
           <i class="fa-solid fa-language"></i>
+          <div class="ml-2">{{ nameLanguage }}</div>
         </div>
-        <div class="flex justify-between w-full p-5">
-          <div class="bh-item-title">{{ nameLanguage }}</div>
-          <div @click="onShowPopupLanguage()">
-            <i class="fa-solid fa-chevron-right bh-chevron-right"></i>
+        <div class="flex w-6/12 justify-end">
+          <div class="cursor-pointer" @click="onShowPurposes()">
+            <i
+              class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
+            ></i>
           </div>
         </div>
       </div>
@@ -25,7 +27,7 @@ export default {
   name: "language-page",
   data() {
     return {
-      nameDefault: "Thêm ngon ngữ",
+      nameDefault: "Thêm ngôn ngữ",
     };
   },
 
@@ -34,8 +36,9 @@ export default {
      * Binding ngôn ngữ
      */
     nameLanguage() {
+      debugger;
       const languagesData =
-        this.$store.state.userModule.user_profile?.profiles?.languages;
+        this.$store.state.userModule.user_profile?.profiles?.language;
 
       return languagesData ? languagesData : this.nameDefault;
     },
@@ -44,7 +47,7 @@ export default {
      * Ẩn hiện complete
      */
     completeLanguage() {
-      if (this.nameLanguage !== this.nameDefault) {
+      if (this.nameLanguage !== "Thêm ngôn ngữ") {
         return false;
       }
       return true;
