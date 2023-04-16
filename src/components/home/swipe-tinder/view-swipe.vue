@@ -105,7 +105,6 @@
     >
       <LoadApp :urlImage="icUrlApp" :codeColor="colorApp"></LoadApp>
     </div>
-
     <div
       class="absolute w-full bottom-0 left-0"
       v-bind:class="{ 'pointer-event': isPointer }"

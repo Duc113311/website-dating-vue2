@@ -86,7 +86,7 @@ export default {
 .bg-life {
   background-color: #495063;
   border-radius: 10px;
-  padding: 24px;
+  padding: 14px;
 }
 
 .item-life {

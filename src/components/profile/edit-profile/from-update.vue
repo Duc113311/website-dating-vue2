@@ -20,7 +20,9 @@
     <SmartPhoto></SmartPhoto>
     <!-- About -->
     <about-page></about-page>
-    <!-- Mục đích hẹn hò -->
+    <!-- interest -->
+    <interest-page></interest-page>
+    <!--  -->
     <dating-purposes-page></dating-purposes-page>
     <!-- Ngôn ngữ tôi biết -->
     <language-page></language-page>
@@ -70,6 +72,7 @@ import SchoolPage from "./property-user/school-page.vue";
 import LivingPage from "./property-user/living-page.vue";
 import SexualsPage from "./property-user/sexuals-page.vue";
 import ControlPage from "./property-user/control-page.vue";
+import InterestPage from "./property-user/interest-page.vue";
 export default {
   components: {
     GenderPage,
@@ -90,6 +93,7 @@ export default {
     LivingPage,
     SexualsPage,
     ControlPage,
+    InterestPage,
   },
   name: "from-update",
 

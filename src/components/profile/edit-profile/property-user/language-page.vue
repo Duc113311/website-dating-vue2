@@ -8,7 +8,7 @@
       <div class="w-full bg-life flex justify-between items-center">
         <div class="w-6/12 bh-item-title flex items-center">
           <i class="fa-solid fa-language"></i>
-          <div class="ml-2">{{ nameLanguage }}</div>
+          <div class="ml-2">{{ nameLanguageParam }}</div>
         </div>
         <div class="flex w-6/12 justify-end">
           <div class="cursor-pointer" @click="onShowPurposes()">
@@ -35,12 +35,19 @@ export default {
     /**
      * Binding ngôn ngữ
      */
-    nameLanguage() {
-      debugger;
-      const languagesData =
-        this.$store.state.userModule.user_profile?.profiles?.language;
 
-      return languagesData ? languagesData : this.nameDefault;
+    nameLanguageParam: {
+      get() {
+        const schoolData =
+          this.$store.state.userModule.user_profile?.profiles?.school;
+        debugger;
+        return schoolData ? schoolData : this.nameDefault;
+      },
+      // setter
+      set(newValue) {
+        // Note: we are using destructuring assignment syntax here.
+        this.nameSchool = newValue;
+      },
     },
 
     /**

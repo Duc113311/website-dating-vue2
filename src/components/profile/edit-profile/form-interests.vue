@@ -100,7 +100,7 @@ export default {
     },
     listDataInterests() {
       debugger;
-      return this.$store.state.commonModule.listLifeStyle.interests;
+      return this.$store.state.commonModule.listLifeStyleSingle.interests;
     },
   },
   methods: {
