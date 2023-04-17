@@ -23,11 +23,15 @@
     <!-- interest -->
     <interest-page @onShowPopupInterest="onShowPopupInterest"></interest-page>
     <!--  -->
-    <dating-purposes-page></dating-purposes-page>
+    <dating-purposes-page
+      @onShowFormPurposes="onShowFormPurposes"
+    ></dating-purposes-page>
     <!-- Ngôn ngữ tôi biết -->
-    <language-page></language-page>
+    <language-page @onShowPopupLanguage="onShowPopupLanguage"></language-page>
     <!-- Thông tin cơ bản -->
-    <basic-information-page></basic-information-page>
+    <basic-information-page
+      @onShowFormBasicInformation="onShowFormBasicInformation"
+    ></basic-information-page>
     <!-- Phong cách sống -->
     <style-of-life></style-of-life>
     <!-- Chức danh -->
@@ -51,16 +55,41 @@
     <!-- Control -->
     <control-page></control-page>
 
+    <!--  -->
     <div
       v-show="isShowInterest"
       class="w-full h-full absolute top-0 left-0 z-30"
     >
-      <form-interests></form-interests>
+      <form-interests
+        @onClickSaveInterest="onClickSaveInterest"
+        @onClickHideInterest="onClickHideInterest"
+      ></form-interests>
+    </div>
+    <!--  -->
+    <div class="w-full h-full absolute top-0 left-0 z-30" v-if="isShowPurposes">
+      <FormPurposes
+        @onHidePurposes="onHidePurposes"
+        @onSavePurposes="onSavePurposes"
+      ></FormPurposes>
+    </div>
+
+    <div class="w-full h-full absolute top-0 left-0 z-30" v-if="isShowLanguage">
+      <FormLanguages @onHideLanguages="onHideLanguages"></FormLanguages>
+    </div>
+
+    <div
+      class="w-full h-full absolute top-0 left-0 z-30"
+      v-if="isShowBasicInformation"
+    >
+      <FormInformation @onClickSaveLife="onClickSaveLife"></FormInformation>
     </div>
   </div>
 </template>
 
 <script>
+import FormInformation from "./dialog/form-information";
+import FormLanguages from "./dialog/form-languages";
+import FormPurposes from "./dialog/form-purposes";
 import GenderPage from "./property-user/gender-page";
 import SpotifyPage from "./property-user/spotify-page";
 import MyAnthemPage from "./property-user/my-anthem-page";
@@ -83,6 +112,9 @@ import InterestPage from "./property-user/interest-page.vue";
 import FormInterests from "./form-interests.vue";
 export default {
   components: {
+    FormInformation,
+    FormLanguages,
+    FormPurposes,
     GenderPage,
     SpotifyPage,
     MyAnthemPage,
@@ -109,6 +141,9 @@ export default {
   data() {
     return {
       isShowInterest: false,
+      isShowPurposes: false,
+      isShowLanguage: false,
+      isShowBasicInformation: false,
     };
   },
 
@@ -119,6 +154,52 @@ export default {
      */
     onShowPopupInterest(val) {
       this.isShowInterest = val;
+    },
+    /**
+     *Hiển thị from purposes
+     * @param {*} val
+     */
+    onShowFormPurposes(val) {
+      this.isShowPurposes = val;
+    },
+    /**
+     * Hiển thị form languages
+     * @param {*} val
+     */
+    onShowPopupLanguage(val) {
+      this.isShowLanguage = val;
+    },
+
+    onShowFormBasicInformation(val) {
+      this.isShowBasicInformation = val;
+    },
+    /**
+     * Save interest
+     * @param {*} val
+     */
+    onClickSaveInterest(val) {
+      this.isShowInterest = val;
+    },
+    /**
+     * Ẩn form interests
+     * @param {*} val
+     */
+    onClickHideInterest(val) {
+      this.isShowInterest = val;
+    },
+    /**
+     * Ẩn form purposes
+     * @param {*} val
+     */
+    onHidePurposes(val) {
+      this.isShowPurposes = val;
+    },
+    /**
+     * Ẩn form languages
+     * @param {*} val
+     */
+    onHideLanguages(val) {
+      this.isShowLanguage = val;
     },
   },
 };

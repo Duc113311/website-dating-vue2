@@ -10,7 +10,7 @@
           <div class="ml-2">{{ nameLanguageParam }}</div>
         </div>
         <div class="flex w-6/12 justify-end">
-          <div class="cursor-pointer" @click="onShowPurposes()">
+          <div class="cursor-pointer" @click="onShowLanguage()">
             <i
               class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
             ></i>
@@ -26,7 +26,7 @@ export default {
   name: "language-page",
   data() {
     return {
-      nameDefault: "Thêm ngôn ngữ",
+      nameDefault: "Add language",
     };
   },
 
@@ -64,8 +64,9 @@ export default {
     /**
      * Xử lý sự kiện show language
      */
-    onShowPopupLanguage() {
+    onShowLanguage() {
       //
+      this.$emit("onShowPopupLanguage", true);
     },
   },
 };

@@ -14,7 +14,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ zodiacParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowBasicInformation">
+              <div class="cursor-pointer" @click="onShowBasicInformation()">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -29,7 +29,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ familyParam }}
               </div>
-              <div class="cursor-pointer">
+              <div class="cursor-pointer" @click="onShowBasicInformation()">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -44,7 +44,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ educationParam }}
               </div>
-              <div class="cursor-pointer">
+              <div class="cursor-pointer" @click="onShowBasicInformation()">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -59,7 +59,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ vaccineParam }}
               </div>
-              <div class="cursor-pointer">
+              <div class="cursor-pointer" @click="onShowBasicInformation()">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -74,7 +74,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ personalityParam }}
               </div>
-              <div class="cursor-pointer">
+              <div class="cursor-pointer" @click="onShowBasicInformation()">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -89,7 +89,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ communicationParam }}
               </div>
-              <div class="cursor-pointer">
+              <div class="cursor-pointer" @click="onShowBasicInformation()">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -105,7 +105,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ loveLanguageParam }}
               </div>
-              <div class="cursor-pointer">
+              <div class="cursor-pointer" @click="onShowBasicInformation()">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -197,6 +197,7 @@ export default {
      */
     onShowBasicInformation() {
       //
+      this.$emit("onShowFormBasicInformation", true);
     },
   },
 };

@@ -60,6 +60,7 @@ export default {
      */
     onShowPurposes() {
       // Xử lý sự kiện
+      this.$emit("onShowFormPurposes", true);
     },
   },
 };

@@ -1,10 +1,12 @@
 <template>
   <div class="w-full h-full">
-    <div class="v-modal-bg w-full h-full"></div>
+    <div class="v-modal-bg w-full h-full" @click="onChangeCancel()"></div>
     <div
       class="w-full h-full flex justify-center items-center absolute top-0 left-0"
     >
-      <div class="rounded-lg items-center w-form-life relative p-5">
+      <div
+        class="rounded-lg items-center w-form-life relative p-5 cursor-pointer"
+      >
         <div class="w-full justify-between flex items-center h-title-close">
           <div @click="onChangeCancel()">
             <i class="fa-solid fa-xmark size-icon-default"></i>
@@ -18,7 +20,9 @@
           <div class="w-full items-center h-full">
             <div class="flex w-full justify-between items-center h-12 mb-2">
               <div class="padding-title">Interest</div>
-              <div class="padding-describe-item">5 out of 5</div>
+              <div class="padding-describe-item">
+                {{ listChecked.length }} out of 5
+              </div>
             </div>
             <!-- Những thứ đã chọn -->
 

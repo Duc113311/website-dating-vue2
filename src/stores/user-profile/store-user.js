@@ -842,8 +842,27 @@ const mutations = {
    * @param {*} value
    */
   setPersonality(state, value) {
-    state.profileLife.personality = value.value;
-    state.user_profile.profiles.personality = value.code;
+    state.profileLife.personalities = value.value;
+    state.user_profile.profiles.personalities = value.code;
+  },
+
+  setCovidVaccines(state, value) {
+    state.profileLife.covidVaccines = value.value;
+    state.user_profile.profiles.covidVaccines = value.code;
+  },
+
+  setFamilyPlan(state, value) {
+    state.profileLife.familyPlans = value.value;
+    state.user_profile.profiles.familyPlans = value.code;
+  },
+
+  setCommunication(state, value) {
+    state.profileLife.communicationStyles = value.value;
+    state.user_profile.profiles.communicationStyles = value.code;
+  },
+  setLoveStyles(state, value) {
+    state.profileLife.loveStyles = value.value;
+    state.user_profile.profiles.loveStyles = value.code;
   },
 
   /**
