@@ -180,6 +180,11 @@ export default {
     onClickSaveInterest(val) {
       this.isShowInterest = val;
     },
+
+    onClickSaveLife(val) {
+      this.isShowBasicInformation = val;
+    },
+
     /**
      * Ẩn form interests
      * @param {*} val
