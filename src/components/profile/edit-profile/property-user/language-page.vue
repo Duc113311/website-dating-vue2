@@ -2,12 +2,11 @@
   <div class="w-full flex items-center">
     <div class="w-full">
       <div class="w-full flex justify-between bh-title p-3">
-        <div>I know language</div>
+        <div>I KNOW LANGUAGES</div>
         <div v-if="completeLanguage">+3%</div>
       </div>
       <div class="w-full bg-life flex justify-between items-center">
         <div class="w-6/12 bh-item-title flex items-center">
-          <i class="fa-solid fa-language"></i>
           <div class="ml-2">{{ nameLanguageParam }}</div>
         </div>
         <div class="flex w-6/12 justify-end">

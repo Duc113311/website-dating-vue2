@@ -65,7 +65,7 @@
                 <button
                   @click="onSelectInterest(item.code)"
                   :id="`not-check_` + item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white"
+                  class="option-interests mr-3 mb-3 p-3 text-white"
                   size="large"
                 >
                   {{ item.value }}
@@ -184,6 +184,7 @@ export default {
     debugger;
     const interestsData =
       this.$store.state.userModule.user_profile.profiles.interests;
+    debugger;
     for (let index = 0; index < interestsData.length; index++) {
       const element = interestsData[index];
       document
@@ -209,5 +210,11 @@ export default {
 }
 .list-interest {
   height: calc(100% - 28%);
+}
+
+.option-interests {
+  border: 1.5px solid white;
+  border-radius: 8px;
+  cursor: pointer;
 }
 </style>

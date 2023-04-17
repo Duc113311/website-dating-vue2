@@ -5,7 +5,7 @@
       <div class="w-full header-edit flex justify-center items-center">
         <div class="w-full flex justify-center items-center">
           <div class="w-1/4">
-            <BhBack></BhBack>
+            <BhBack @onBackComponent="onBackMedia()"></BhBack>
           </div>
           <div class="ml-20 w-3/4 text-xl text-white">Create New</div>
         </div>
@@ -96,6 +96,11 @@ export default {
       this.selectedFile.push(file.name);
       this.isShowCrop = false;
       this.$refs.fileInput.value = "";
+    },
+
+    onBackMedia() {
+      debugger;
+      this.$router.go(-1);
     },
   },
 };

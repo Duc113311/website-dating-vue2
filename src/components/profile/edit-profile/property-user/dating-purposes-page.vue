@@ -7,7 +7,6 @@
 
     <div class="w-full bg-life flex justify-between items-center">
       <div class="w-6/12 bh-item-title flex items-center">
-        <i class="fa-solid fa-eye"></i>
         <div class="ml-2">I'm looking for</div>
       </div>
       <div class="flex w-6/12 justify-end">

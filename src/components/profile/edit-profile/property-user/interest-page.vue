@@ -55,6 +55,7 @@ export default {
      */
     onShowPopupInterest() {
       // this.isShowInterest = true;
+      this.$emit("onShowPopupInterest", true);
     },
   },
 };

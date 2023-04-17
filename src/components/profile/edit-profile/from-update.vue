@@ -21,7 +21,7 @@
     <!-- About -->
     <about-page></about-page>
     <!-- interest -->
-    <interest-page></interest-page>
+    <interest-page @onShowPopupInterest="onShowPopupInterest"></interest-page>
     <!--  -->
     <dating-purposes-page></dating-purposes-page>
     <!-- Ngôn ngữ tôi biết -->
@@ -50,6 +50,13 @@
     <sexuals-page></sexuals-page>
     <!-- Control -->
     <control-page></control-page>
+
+    <div
+      v-show="isShowInterest"
+      class="w-full h-full absolute top-0 left-0 z-30"
+    >
+      <form-interests></form-interests>
+    </div>
   </div>
 </template>
 
@@ -73,6 +80,7 @@ import LivingPage from "./property-user/living-page.vue";
 import SexualsPage from "./property-user/sexuals-page.vue";
 import ControlPage from "./property-user/control-page.vue";
 import InterestPage from "./property-user/interest-page.vue";
+import FormInterests from "./form-interests.vue";
 export default {
   components: {
     GenderPage,
@@ -94,14 +102,25 @@ export default {
     SexualsPage,
     ControlPage,
     InterestPage,
+    FormInterests,
   },
   name: "from-update",
 
   data() {
-    return {};
+    return {
+      isShowInterest: false,
+    };
   },
 
-  methods: {},
+  methods: {
+    /**
+     * Hiển thị form interest
+     * @param {*} val
+     */
+    onShowPopupInterest(val) {
+      this.isShowInterest = val;
+    },
+  },
 };
 </script>
 
