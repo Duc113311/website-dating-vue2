@@ -6,7 +6,7 @@
       <span>Upgrade to Gold to see people who are interested in you</span>
     </div>
 
-    <div class="w-full mt-28 flex justify-center items-center">
+    <div class="w-full mt-28 mb-28 flex justify-center items-center">
       <div class="w-full items-center text-center p-5">
         <div class="flex justify-center items-center mb-9">
           <img
@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <div class="absolute w-full bottom-0 z-10 mb-14">
+    <div class="w-full z-10">
       <BhSeeLike></BhSeeLike>
     </div>
   </div>

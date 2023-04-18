@@ -144,19 +144,21 @@ export default {
      * Binding zodiac
      */
     zodiacParam() {
-      const zodiacData = this.$store.state.userModule.profileLife.zodiac;
+      const zodiacData = this.$store.state.userModule.basicInformation.zodiac;
 
       return zodiacData ? zodiacData : this.nameDefault;
     },
 
     familyParam() {
-      const petsFreeData = this.$store.state.userModule.profileLife.pet;
-
+      const petsFreeData =
+        this.$store.state.userModule.basicInformation.futureFamily;
+      debugger;
       return petsFreeData ? petsFreeData : this.nameDefault;
     },
 
     educationParam() {
-      const educationData = this.$store.state.userModule.profileLife.education;
+      const educationData =
+        this.$store.state.userModule.basicInformation.education;
 
       return educationData ? educationData : this.nameDefault;
     },
@@ -164,27 +166,27 @@ export default {
     personalityParam() {
       debugger;
       const personalityData =
-        this.$store.state.userModule.profileLife.personality;
+        this.$store.state.userModule.basicInformation.personality;
 
       return personalityData ? personalityData : this.nameDefault;
     },
 
     vaccineParam() {
-      const vaccineData = this.$store.state.userModule.profileLife.vaccine;
+      const vaccineData = this.$store.state.userModule.basicInformation.vaccine;
 
       return vaccineData ? vaccineData : this.nameDefault;
     },
 
     communicationParam() {
       const communicationData =
-        this.$store.state.userModule.profileLife.communication;
+        this.$store.state.userModule.basicInformation.communication;
 
       return communicationData ? communicationData : this.nameDefault;
     },
 
     loveLanguageParam() {
       const loveLanguageData =
-        this.$store.state.userModule.profileLife.loveLanguage;
+        this.$store.state.userModule.basicInformation.loveLanguage;
 
       return loveLanguageData ? loveLanguageData : this.nameDefault;
     },

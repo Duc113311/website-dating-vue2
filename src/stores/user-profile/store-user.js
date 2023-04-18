@@ -822,7 +822,7 @@ const mutations = {
    */
   setZodiac(state, value) {
     debugger;
-    state.profileLife.zodiac = value.value;
+    state.basicInformation.zodiac = value.value;
     state.user_profile.profiles.zodiac = value.code;
   },
 
@@ -832,7 +832,7 @@ const mutations = {
    * @param {*} value
    */
   setEducation(state, value) {
-    state.profileLife.education = value.value;
+    state.basicInformation.education = value.value;
     state.user_profile.profiles.education = value.code;
   },
 
@@ -842,27 +842,27 @@ const mutations = {
    * @param {*} value
    */
   setPersonality(state, value) {
-    state.profileLife.personalities = value.value;
+    state.basicInformation.personality = value.value;
     state.user_profile.profiles.personalities = value.code;
   },
 
   setCovidVaccines(state, value) {
-    state.profileLife.covidVaccines = value.value;
+    state.basicInformation.vaccine = value.value;
     state.user_profile.profiles.covidVaccines = value.code;
   },
 
   setFamilyPlan(state, value) {
-    state.profileLife.familyPlans = value.value;
+    state.basicInformation.futureFamily = value.value;
     state.user_profile.profiles.familyPlans = value.code;
   },
 
   setCommunication(state, value) {
-    state.profileLife.communicationStyles = value.value;
+    state.basicInformation.communication = value.value;
     state.user_profile.profiles.communicationStyles = value.code;
   },
   setLoveStyles(state, value) {
-    state.profileLife.loveStyles = value.value;
-    state.user_profile.profiles.loveStyles = value.code;
+    state.basicInformation.loveLanguage = value.value;
+    state.user_profile.profiles.loveLanguage = value.code;
   },
 
   /**

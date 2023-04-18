@@ -1,9 +1,9 @@
 <template>
   <div class="w-full h-full relative">
     <div class="w-full p-5">Recently Active</div>
-    <!-- <div class="w-full p-3 h-likes">
-      <div class="items-center list-likes grid h-full">
-        <div class="item-user m-3 relative overflow-hidden">
+    <div class="w-full p-3 h-likes overflow-auto height-scroll">
+      <div class="items-center grid grid-cols-2 gap-3">
+        <div class="item-user relative overflow-hidden">
           <div class="image absolute bottom-0 w-full p-4 z-10 text-white">
             <div class="name">Kiều Kiều , <span>18</span></div>
             <div class="flex padding-describe">
@@ -16,7 +16,7 @@
             class="bg-background-shadow absolute bottom-0 w-full h-full"
           ></div>
         </div>
-        <div class="item-user m-3 relative overflow-hidden">
+        <div class="item-user relative overflow-hidden">
           <div class="image absolute bottom-0 w-full p-4 z-10 text-white">
             <div class="name">Thu Anh , <span>22</span></div>
             <div class="flex padding-describe">
@@ -29,7 +29,7 @@
             class="bg-background-shadow absolute bottom-0 w-full h-full"
           ></div>
         </div>
-        <div class="item-user m-3 relative overflow-hidden">
+        <div class="item-user relative overflow-hidden">
           <div class="image absolute bottom-0 w-full p-4 z-10 text-white">
             <div class="name">Trang Hà , <span>25</span></div>
             <div class="flex padding-describe">
@@ -42,7 +42,7 @@
             class="bg-background-shadow absolute bottom-0 w-full h-full"
           ></div>
         </div>
-        <div class="item-user m-3 relative overflow-hidden">
+        <div class="item-user relative overflow-hidden">
           <div class="image absolute bottom-0 w-full p-4 z-10 text-white">
             <div class="name">Trang Hà , <span>25</span></div>
             <div class="flex padding-describe">
@@ -54,8 +54,19 @@
             class="bg-background-shadow absolute bottom-0 w-full h-full"
           ></div>
         </div>
+        <div class="item-user relative overflow-hidden">
+          <div class="image absolute bottom-0 w-full p-4 z-10 text-white">
+            <div class="name">Trang Hà , <span>25</span></div>
+            <div class="flex padding-describe">
+              <BhActivateLike></BhActivateLike>Recently active
+            </div>
+          </div>
+          <div
+            class="bg-background-shadow absolute bottom-0 w-full h-full"
+          ></div>
+        </div>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -76,7 +87,6 @@ export default {
 
 <style lang="css">
 .item-user {
-  width: 90%;
   border-radius: 10px;
   background-image: url("../../../assets/image-dating/uikoria.jpg");
   background-position: center;

@@ -13,23 +13,14 @@
       <div
         v-bind:class="[isActiveLike ? 'likeForYou' : 'peopleLike']"
         class="w-2/4 cursor-pointer flex h-full justify-center items-center text-xl font-bold text-white"
-        @click="onShowForYou(false)"
+        @click="onShowLikes(false)"
       >
         For you
       </div>
     </div>
     <!-- body -->
-    <div v-show="paramLikeForYous !== 0" class="w-full body-likes">
-      <div class="w-full h-full" v-if="isShowComponent">
-        <PeopleLikes></PeopleLikes>
-      </div>
-      <div class="w-full h-full" v-if="!isShowComponent">
-        <LikeForYou></LikeForYou>
-      </div>
-    </div>
-
-    <div class="w-full h-full" v-show="paramLikeForYous === 0">
-      <NoOneLike></NoOneLike>
+    <div class="w-full relative h-topic">
+      <router-view></router-view>
     </div>
 
     <Footer></Footer>
@@ -37,16 +28,10 @@
 </template>
 
 <script>
-import NoOneLike from "../../components/like-topic/default/no-one-like";
-import LikeForYou from "../../components/like-topic/for-you/like-for-you";
-import PeopleLikes from "../../components/like-topic/99-like/people-likes";
 import Footer from "../../components/layout/footer-home/footer";
 import { mapActions } from "vuex";
 export default {
   components: {
-    NoOneLike,
-    LikeForYou,
-    PeopleLikes,
     Footer,
   },
   name: "like-topic",
@@ -58,18 +43,17 @@ export default {
     };
   },
 
-  computed: {},
-
   methods: {
     ...mapActions(["getListDataLikedForYou"]),
     onShowLikes(val) {
       this.isShowComponent = val;
       this.isActiveLike = val;
-    },
 
-    onShowForYou(val) {
-      this.isShowComponent = val;
-      this.isActiveLike = val;
+      if (this.isActiveLike) {
+        this.$router.push({ path: "/like-topic" });
+      } else {
+        this.$router.push({ path: "/for-you" });
+      }
     },
 
     paramLikeForYous() {
@@ -78,11 +62,21 @@ export default {
   },
 
   async created() {
-    const userId = localStorage.userId;
-    await this.getListDataLikedForYou(userId);
+    const dataLike = {
+      pageSize: 0,
+      currentPage: 0,
+      action: "like",
+    };
+    this.getListDataLikedForYou(dataLike);
   },
 
-  mounted() {},
+  mounted() {
+    debugger;
+    // if (this.listLikeTopicParam) {
+    //   debugger;
+    //   this.$router.push({ path: "/99-like" });
+    // }
+  },
 };
 </script>
 
@@ -90,7 +84,9 @@ export default {
 .title-none {
   height: 4%;
 }
-
+.h-topic {
+  height: calc(100% - 22%);
+}
 .like-topic {
   background-color: #382e41;
 }

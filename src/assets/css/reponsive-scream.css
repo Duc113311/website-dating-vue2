@@ -199,7 +199,7 @@
   }
 
   .h-likes {
-    height: calc(100% - 8rem);
+    height: calc(100% - 3rem);
   }
 
   .item-user {

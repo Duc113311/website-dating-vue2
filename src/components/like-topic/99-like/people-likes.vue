@@ -6,7 +6,7 @@
         slot="reference"
         @click="onShowFilterLike()"
       >
-        <img src="@/assets/image-dating/ic_filter.svg" width="40" alt="" />
+        <div class="ic_filter flex justify-center items-center"></div>
       </div>
 
       <div class="flex items-center w-80">
@@ -23,62 +23,25 @@
     >
       <span>Upgrade to Gold to see people who are interested in you</span>
     </div>
-    <!-- <div class="w-full p-3 h-likes">
-      <div class="items-center list-likes grid h-full">
-        <div class="item-user m-3 relative overflow-hidden">
-          <div class="image absolute bottom-0 w-full p-4 z-10 text-white">
-            <div class="name">Kiều Kiều , <span>18</span></div>
-            <div class="flex padding-describe">
-              <BhActivateLike></BhActivateLike>
-              Recently active
-            </div>
+    <div class="swipe-container">
+      <div class="swipe-card">{{ currentCard }}</div>
+    </div>
+    <div class="container pr-4 pl-4">
+      <div class="grid grid-cols-2 gap-3 swipe-container">
+        <div
+          v-hammer:swipeleft="onSwipeLeft"
+          v-for="(user, index) in list_users"
+          :key="index"
+          class="item swipe-card"
+          :style="{ 'background-image': 'url(' + user.img[0] + ')' }"
+        >
+          <div>
+            <p style="margin-bottom: 10px">{{ user.name }}, {{ user.age }}</p>
+            <p><span class="status">&#x1F7E2;</span>Recently Active</p>
           </div>
-          <div class="bg-shadow w-full h-full"></div>
-          <div
-            class="bg-background-shadow absolute bottom-0 w-full h-full"
-          ></div>
-        </div>
-        <div class="item-user m-3 relative overflow-hidden">
-          <div class="image absolute bottom-0 w-full p-4 z-10 text-white">
-            <div class="name">Thu Anh , <span>22</span></div>
-            <div class="flex padding-describe">
-              <BhActivateLike></BhActivateLike>
-              Recently active
-            </div>
-          </div>
-          <div class="bg-shadow w-full h-full"></div>
-          <div
-            class="bg-background-shadow absolute bottom-0 w-full h-full"
-          ></div>
-        </div>
-        <div class="item-user m-3 relative overflow-hidden">
-          <div class="image absolute bottom-0 w-full p-4 z-10 text-white">
-            <div class="name">Trang Hà , <span>25</span></div>
-            <div class="flex padding-describe">
-              <BhActivateLike></BhActivateLike>
-              Recently active
-            </div>
-          </div>
-          <div class="bg-shadow w-full h-full"></div>
-          <div
-            class="bg-background-shadow absolute bottom-0 w-full h-full"
-          ></div>
-        </div>
-        <div class="item-user m-3 relative overflow-hidden">
-          <div class="image absolute bottom-0 w-full p-4 z-10 text-white">
-            <div class="name">Trang Hà , <span>25</span></div>
-            <div class="flex padding-describe">
-              <BhActivateLike></BhActivateLike>
-              Recently active
-            </div>
-          </div>
-          <div class="bg-shadow w-full h-full"></div>
-          <div
-            class="bg-background-shadow absolute bottom-0 w-full h-full"
-          ></div>
         </div>
       </div>
-    </div> -->
+    </div>
     <div class="absolute w-full bottom-0 z-10 mb-14">
       <BhSeeLike></BhSeeLike>
     </div>
@@ -93,6 +56,8 @@
 </template>
 
 <script>
+import { VueHammer } from "vue2-hammer";
+
 import FilterOption from "../filter/filter-option";
 // import BhActivateLike from "../../bh-element-ui/button/bh-activateLike";
 import BhSeeLike from "../../bh-element-ui/button/bh-seeLike";
@@ -103,7 +68,9 @@ export default {
     BhSeeLike,
   },
   name: "people-likes",
-
+  directives: {
+    Hammer: VueHammer.directive,
+  },
   data() {
     return {
       listIntersts: ["Reading", "Car", "Dog", "Reading"],
@@ -112,7 +79,7 @@ export default {
       valueAge: [25, 45],
       valuePhoto: 10,
       isShowFilter: false,
-
+      currentCard: 1,
       isShowMy: true,
       isNotShowMy: true,
 
@@ -129,12 +96,85 @@ export default {
           name: "Profile has Bio",
         },
       ],
+
+      list_users: [
+        {
+          name: "lan",
+          age: 23,
+          img: [
+            "https://images-ssl.gotinder.com/6200b29e6b308601002bac1f/original_5e0a81a4-3530-4e5f-8d39-d8bbe5462014.jpeg",
+            "https://images-ssl.gotinder.com/6200b29e6b308601002bac1f/original_a02a799f-47df-4e88-a6f5-de237ecf2c43.jpeg",
+            "https://images-ssl.gotinder.com/6200b29e6b308601002bac1f/original_d271d0c5-2978-4856-ae86-d3f02a106e7a.jpeg",
+          ],
+          distance: 20,
+          Interests: ["Reading"],
+        },
+        {
+          name: "ngọc",
+          age: 27,
+          img: [
+            "https://images-ssl.gotinder.com/627aafb74b13430100f6c8a0/original_3dc60206-8bcd-43fc-85c0-ec938baf61c4.jpeg",
+            "https://images-ssl.gotinder.com/627aafb74b13430100f6c8a0/original_c1f2aad4-71d9-47e2-9329-b8585ce70dc1.jpeg",
+            "https://images-ssl.gotinder.com/627aafb74b13430100f6c8a0/original_d7f35e17-e34f-4ee0-88dd-79a59e829c0f.jpeg",
+          ],
+          distance: 30,
+          Interests: ["Reading", "Car", "Dog"],
+        },
+        {
+          name: "vân anh",
+          age: 25,
+          img: [
+            "https://images-ssl.gotinder.com/63821b9eb9f85c0100a68921/original_6dc1f94b-564e-49cc-a65c-1c165eddd457.jpeg",
+            "https://images-ssl.gotinder.com/63821b9eb9f85c0100a68921/original_8f740e67-2a52-43ff-86e1-e320a0535c3f.jpeg",
+            "https://images-ssl.gotinder.com/63821b9eb9f85c0100a68921/original_2198e746-d646-444f-96a3-768ec46fb1c9.jpeg",
+            "https://images-ssl.gotinder.com/63821b9eb9f85c0100a68921/original_ad2aca03-1983-4ea1-ba4c-d11267aa78e5.jpeg",
+            "https://images-ssl.gotinder.com/63821b9eb9f85c0100a68921/original_6dc1f94b-564e-49cc-a65c-1c165eddd457.jpeg",
+            "https://images-ssl.gotinder.com/63821b9eb9f85c0100a68921/original_98b6a683-ffca-4071-9518-6e238d8d6966.jpeg",
+          ],
+          distance: 10,
+          Interests: ["Reading", "Dog"],
+        },
+        {
+          name: "thu huyền",
+          age: 22,
+          img: [
+            "https://images-ssl.gotinder.com/62e628d91fb44801001bf878/original_a1e4aeed-2a3f-491d-8e62-37e868c17dea.jpeg",
+            "https://images-ssl.gotinder.com/62e628d91fb44801001bf878/original_e44393cd-1365-40ba-98fb-d81ab8737a54.jpeg",
+            "https://images-ssl.gotinder.com/62e628d91fb44801001bf878/original_44e08ca1-7ade-4be7-9de7-fd2106b71bf1.jpeg",
+            "https://images-ssl.gotinder.com/62e628d91fb44801001bf878/original_3b3504d3-967d-440e-9b04-3c2660bc7ac9.jpeg",
+            "https://images-ssl.gotinder.com/62e628d91fb44801001bf878/original_82559a52-9a2f-4c3b-a21b-180f9d8efa69.jpeg",
+            "https://images-ssl.gotinder.com/62e628d91fb44801001bf878/original_6fb8cc45-d6a1-4c09-87fd-c5f9a97076f7.jpeg",
+            "https://images-ssl.gotinder.com/62e628d91fb44801001bf878/original_016c52e6-e9c8-4e86-a053-e945f3a7b929.jpeg",
+            "https://images-ssl.gotinder.com/62e628d91fb44801001bf878/original_34ead704-eb94-4d21-b228-600fd63e267c.jpeg",
+            "https://images-ssl.gotinder.com/62e628d91fb44801001bf878/original_b81679d5-e021-43b7-af3b-27f934d75f68.jpeg",
+          ],
+          distance: 60,
+          Interests: ["Dog", "Reading"],
+        },
+        {
+          name: "điệp",
+          age: 19,
+          img: [
+            "https://images-ssl.gotinder.com/64110da9d1ac12010080e73e/original_3ea5b5e0-89c3-4b4b-a6e5-04538350f48d.jpeg",
+            "https://images-ssl.gotinder.com/64110da9d1ac12010080e73e/original_51c8a930-be03-43f6-a035-697940c84a6f.jpeg",
+            "https://images-ssl.gotinder.com/64110da9d1ac12010080e73e/original_6bb9de05-5d36-448c-9fc4-d57ad738dddb.jpeg",
+            "https://images-ssl.gotinder.com/64110da9d1ac12010080e73e/original_cb0000e3-2716-4112-a8c8-5c62416ddb2e.jpeg",
+            "https://images-ssl.gotinder.com/64110da9d1ac12010080e73e/1080x1350_0a2e02f6-d491-4959-9d90-e9d26f2ae689.webp",
+          ],
+          distance: 90,
+          Interests: ["Reading", "Car"],
+        },
+      ],
     };
   },
 
   computed: {},
 
   methods: {
+    onSwipeLeft() {
+      debugger;
+      this.currentCard++;
+    },
     onShowFilterLike() {
       this.isShowFilter = true;
     },
@@ -197,7 +237,6 @@ export default {
 }
 
 .item-user {
-  width: 90%;
   border-radius: 10px;
   background-image: url("../../../assets/image-dating/uikoria.jpg");
   background-position: center;
@@ -293,5 +332,40 @@ export default {
 .oftion-interests {
   border: 1.5px solid white;
   border-radius: 8px;
+}
+
+.container {
+  overflow: auto; /* cho phép trượt khi các thẻ div vượt quá kích thước của div cha */
+  height: calc(100% - 128px);
+}
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.item {
+  height: 310px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-size: cover;
+}
+.item div {
+  font-size: 18px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+.status {
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+.ic_filter {
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  -webkit-mask: url(@/assets/image-dating/ic_filter.svg) no-repeat center;
+  mask: url(@/assets/image-dating/ic_filter.svg) no-repeat center;
 }
 </style>

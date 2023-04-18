@@ -233,6 +233,24 @@ const routes = [
       import(
         /* webpackChunkName: "like-topic-page" */ "../views/like-topic/index.vue"
       ),
+    children: [
+      {
+        path: "/",
+        name: "99-like-page",
+        component: () =>
+          import(
+            /* webpackChunkName: "99-like-page" */ "../views/like-topic/99-like/index.vue"
+          ),
+      },
+      {
+        path: "/for-you",
+        name: "for-you-page",
+        component: () =>
+          import(
+            /* webpackChunkName: "for-you-page" */ "../views/like-topic/for-you/index.vue"
+          ),
+      },
+    ],
   },
 
   // Page message
