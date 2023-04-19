@@ -661,7 +661,6 @@ export default {
       "setLifeStyleUser",
       "setJobTitle",
       "setSchool",
-      "setShowDistance",
     ]),
 
     ...mapActions(["updateProfileUser"]),

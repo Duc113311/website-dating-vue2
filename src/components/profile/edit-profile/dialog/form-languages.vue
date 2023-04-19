@@ -32,13 +32,13 @@
             <!-- Tìm kiếm -->
             <div class="w-full mb-2 mt-2">
               <div class="w-full">
-                <el-autocomplete
-                  v-model="state"
-                  class="w-full"
-                  :fetch-suggestions="querySearchAsync"
-                  placeholder="Enter search language"
-                  @select="handleSelect"
-                ></el-autocomplete>
+                <el-input
+                  type="search"
+                  @change="onChangeFilterText"
+                  v-model="valueSearch"
+                  name=""
+                  id=""
+                />
               </div>
             </div>
 
@@ -70,15 +70,16 @@ export default {
   data() {
     return {
       listChecked: [],
+      valueSearch: "",
+      listData: [],
+      listLanguages:
+        this.$store.state.commonModule.listLifeStyleSingle.languages,
+      listLanguagesOld:
+        this.$store.state.commonModule.listLifeStyleSingle.languages,
     };
   },
 
-  computed: {
-    listLanguages() {
-      debugger;
-      return this.$store.state.commonModule.listLifeStyleSingle.languages;
-    },
-  },
+  computed: {},
 
   methods: {
     onChangeCancel() {
@@ -116,6 +117,24 @@ export default {
           document.getElementsByClassName("type-language")[0].style.color =
             "blue";
         }
+      }
+    },
+
+    onChangeFilterText() {
+      debugger;
+      let dataList = [];
+      if (
+        this.listLanguages.length <=
+        this.$store.state.commonModule.listLifeStyleSingle.languages.length
+      ) {
+        dataList = this.listLanguagesOld;
+        let result = dataList.filter(
+          (city) =>
+            city.value.toLowerCase().indexOf(this.valueSearch.toLowerCase()) !==
+            -1
+        );
+        this.listLanguages = result;
+        console.log(result);
       }
     },
   },

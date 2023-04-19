@@ -12,9 +12,9 @@
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
-                {{ petFreeParam }}
+                {{ petParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowFormLife">
+              <div class="cursor-pointer" @click="onShowFormLife()">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -27,9 +27,9 @@
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
-                {{ drinkBeerParam }}
+                {{ drinkingParam }}
               </div>
-              <div class="cursor-pointer">
+              <div class="cursor-pointer" @click="onShowFormLife()">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -42,9 +42,9 @@
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
-                {{ smokerParam }}
+                {{ smokingParam }}
               </div>
-              <div class="cursor-pointer">
+              <div class="cursor-pointer" @click="onShowFormLife()">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -57,9 +57,9 @@
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
-                {{ practiceParam }}
+                {{ workoutParam }}
               </div>
-              <div class="cursor-pointer">
+              <div class="cursor-pointer" @click="onShowFormLife()">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -72,9 +72,9 @@
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
-                {{ dietParam }}
+                {{ dietaryPreferenceParam }}
               </div>
-              <div class="cursor-pointer">
+              <div class="cursor-pointer" @click="onShowFormLife()">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -89,7 +89,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ socialMediaParam }}
               </div>
-              <div class="cursor-pointer">
+              <div class="cursor-pointer" @click="onShowFormLife()">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -103,9 +103,9 @@
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
-                {{ sleepParam }}
+                {{ sleepingHabitParam }}
               </div>
-              <div class="cursor-pointer">
+              <div class="cursor-pointer" @click="onShowFormLife()">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -133,7 +133,15 @@ export default {
      * Binding complete
      */
     completeLifeStyle() {
-      if ((this.petFreeParam || this.drinkBeerParam) !== "Trống") {
+      if (
+        (this.petParam ||
+          this.sleepingHabitParam ||
+          this.socialMediaParam ||
+          this.workoutParam ||
+          this.dietaryPreferenceParam ||
+          this.smokingParam ||
+          this.drinkingParam) !== "Trống"
+      ) {
         return false;
       }
 
@@ -143,34 +151,35 @@ export default {
     /**
      * Binding zodiac
      */
-    petFreeParam() {
+    petParam() {
       const petData = this.$store.state.userModule.styleOfLife.pet;
 
       return petData ? petData : this.nameDefault;
     },
 
-    drinkBeerParam() {
-      const drinkBeerData = this.$store.state.userModule.styleOfLife.drinkBeer;
+    drinkingParam() {
+      const drinkBeerData = this.$store.state.userModule.styleOfLife.drinking;
 
       return drinkBeerData ? drinkBeerData : this.nameDefault;
     },
 
-    smokerParam() {
+    smokingParam() {
       const smokerData = this.$store.state.userModule.styleOfLife.smoking;
 
       return smokerData ? smokerData : this.nameDefault;
     },
 
-    dietParam() {
+    dietaryPreferenceParam() {
       debugger;
-      const dietData = this.$store.state.userModule.styleOfLife.diet;
+      const dietData =
+        this.$store.state.userModule.styleOfLife.dietaryPreference;
 
       return dietData ? dietData : this.nameDefault;
     },
 
-    practiceParam() {
+    workoutParam() {
       debugger;
-      const practiceData = this.$store.state.userModule.styleOfLife.practice;
+      const practiceData = this.$store.state.userModule.styleOfLife.workout;
 
       return practiceData ? practiceData : this.nameDefault;
     },
@@ -182,8 +191,8 @@ export default {
       return socialMediaData ? socialMediaData : this.nameDefault;
     },
 
-    sleepParam() {
-      const sleepData = this.$store.state.userModule.styleOfLife.sleep;
+    sleepingHabitParam() {
+      const sleepData = this.$store.state.userModule.styleOfLife.sleepingHabit;
 
       return sleepData ? sleepData : this.nameDefault;
     },
@@ -192,6 +201,7 @@ export default {
   methods: {
     onShowFormLife() {
       //
+      this.$emit("onShowFormLifeStyle", true);
     },
   },
 };

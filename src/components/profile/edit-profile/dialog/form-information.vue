@@ -36,7 +36,7 @@
                 <button
                   v-for="(item, index) in listZodiacParams"
                   :key="index"
-                  :id="item.code"
+                  :id="`zodiac_` + item.code"
                   class="oftion-interests mr-3 mb-3 p-3 text-white zodiac"
                   @click="onChoseZodiac(item)"
                 >
@@ -54,7 +54,7 @@
                 <button
                   v-for="(item, index) in listEducationParams"
                   :key="index"
-                  :id="item.code"
+                  :id="`education_` + item.code"
                   class="oftion-interests mr-3 mb-3 p-3 text-white education"
                   @click="onChoseEducation(item)"
                 >
@@ -73,8 +73,8 @@
                 <button
                   v-for="(item, index) in listFamilyPlansParams"
                   :key="index"
-                  :id="item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white family-plan"
+                  :id="`familyFlan_` + item.code"
+                  class="oftion-interests mr-3 mb-3 p-3 text-white familyFlan"
                   @click="onChoseFamilyPlan(item)"
                 >
                   {{ item.value }}
@@ -92,8 +92,8 @@
                 <button
                   v-for="(item, index) in listCovidVaccinesParam"
                   :key="index"
-                  :id="item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white vaccines"
+                  :id="`covidVaccine_` + item.code"
+                  class="oftion-interests mr-3 mb-3 p-3 text-white covidVaccine"
                   @click="onChoseCovidVaccines(item)"
                 >
                   {{ item.value }}
@@ -111,7 +111,7 @@
                 <button
                   v-for="(item, index) in listPersonalitiesParams"
                   :key="index"
-                  :id="item.code"
+                  :id="`personality_` + item.code"
                   class="oftion-interests mr-3 mb-3 p-3 text-white personality"
                   @click="onChosePersonality(item)"
                 >
@@ -130,8 +130,8 @@
                 <button
                   v-for="(item, index) in listCommunicationStylesParams"
                   :key="index"
-                  :id="item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white communication"
+                  :id="`communicationType_` + item.code"
+                  class="oftion-interests mr-3 mb-3 p-3 text-white communicationType"
                   @click="onChoseCommunication(item)"
                 >
                   {{ item.value }}
@@ -149,8 +149,8 @@
                 <button
                   v-for="(item, index) in listLoveStylesParams"
                   :key="index"
-                  :id="item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white love-styles"
+                  :id="`loveStyle_` + item.code"
+                  class="oftion-interests mr-3 mb-3 p-3 text-white loveStyle"
                   @click="onChoseLoveStyles(item)"
                 >
                   {{ item.value }}
@@ -183,6 +183,14 @@ export default {
         "reading",
         "Listing",
       ],
+
+      zodiacsValue: null,
+      educationsValue: null,
+      familyPlansValue: null,
+      covidVaccinesValue: null,
+      personalitiesValue: null,
+      communicationStylesValue: null,
+      loveStylesValue: null,
     };
   },
 
@@ -233,64 +241,60 @@ export default {
       "setLoveStyles",
     ]),
     onChoseZodiac(val) {
+      debugger;
       const documentZodiacs = document.getElementsByClassName("zodiac");
       for (let index = 0; index < documentZodiacs.length; index++) {
         const element = documentZodiacs[index];
-        if (val.code === element.id) {
-          this.setZodiac(val);
-
+        if ("zodiac_" + val.code === element.id) {
+          this.zodiacsValue = val;
           element.classList.add("bg-active");
         } else {
           element.classList.remove("bg-active");
         }
       }
     },
-
     onChoseEducation(val) {
       const documentZodiacs = document.getElementsByClassName("education");
       for (let index = 0; index < documentZodiacs.length; index++) {
         const element = documentZodiacs[index];
-        if (val.code === element.id) {
-          this.setEducation(val);
+        if ("education_" + val.code === element.id) {
+          this.educationsValue = val;
           element.classList.add("bg-active");
         } else {
           element.classList.remove("bg-active");
         }
       }
     },
-
     onChoseCovidVaccines(val) {
-      const documentZodiacs = document.getElementsByClassName("vaccines");
+      const documentZodiacs = document.getElementsByClassName("covidVaccine");
       for (let index = 0; index < documentZodiacs.length; index++) {
         const element = documentZodiacs[index];
-        if (val.code === element.id) {
-          this.setCovidVaccines(val);
+        if ("covidVaccine_" + val.code === element.id) {
+          this.covidVaccinesValue = val;
           element.classList.add("bg-active");
         } else {
           element.classList.remove("bg-active");
         }
       }
     },
-
     onChoseFamilyPlan(val) {
-      const documentZodiacs = document.getElementsByClassName("family-plan");
+      const documentZodiacs = document.getElementsByClassName("familyFlan");
       for (let index = 0; index < documentZodiacs.length; index++) {
         const element = documentZodiacs[index];
-        if (val.code === element.id) {
-          this.setFamilyPlan(val);
+        if ("familyFlan_" + val.code === element.id) {
+          this.familyPlansValue = val;
           element.classList.add("bg-active");
         } else {
           element.classList.remove("bg-active");
         }
       }
     },
-
     onChosePersonality(val) {
       const documentZodiacs = document.getElementsByClassName("personality");
       for (let index = 0; index < documentZodiacs.length; index++) {
         const element = documentZodiacs[index];
-        if (val.code === element.id) {
-          this.setPersonality(val);
+        if ("personality_" + val.code === element.id) {
+          this.personalitiesValue = val;
           element.classList.add("bg-active");
         } else {
           element.classList.remove("bg-active");
@@ -298,75 +302,147 @@ export default {
       }
     },
     onChoseCommunication(val) {
-      const documentZodiacs = document.getElementsByClassName("communication");
+      const documentZodiacs =
+        document.getElementsByClassName("communicationType");
       for (let index = 0; index < documentZodiacs.length; index++) {
         const element = documentZodiacs[index];
-        if (val.code === element.id) {
-          this.setCommunication(val);
+        if ("communicationType_" + val.code === element.id) {
+          this.communicationStylesValue = val;
           element.classList.add("bg-active");
         } else {
           element.classList.remove("bg-active");
         }
       }
     },
-
     onChoseLoveStyles(val) {
-      const documentZodiacs = document.getElementsByClassName("love-styles");
+      const documentZodiacs = document.getElementsByClassName("loveStyle");
       for (let index = 0; index < documentZodiacs.length; index++) {
         const element = documentZodiacs[index];
-        if (val.code === element.id) {
-          this.setLoveStyles(val);
+        if ("loveStyle_" + val.code === element.id) {
+          this.loveStylesValue = val;
           element.classList.add("bg-active");
         } else {
           element.classList.remove("bg-active");
         }
       }
     },
+
     onChangeCancel() {
-      const objectLifeStyle = this.$store.state.userModule.lifeStyle;
-      const documentZodiacs = document.getElementsByClassName("zodiac");
-      const documentEducation = document.getElementsByClassName("education");
-      const documentPersonality =
-        document.getElementsByClassName("personality");
-      const documentSmoke = document.getElementsByClassName("smoke");
-      const documentPets = document.getElementsByClassName("pets");
-      const documentPreferences = document.getElementsByClassName(
-        "dietary-preferences"
-      );
-      if (objectLifeStyle.keyZodiac !== undefined) {
-        documentZodiacs[objectLifeStyle.keyZodiac].classList.remove(
-          "bg-active"
-        );
-      }
+      debugger;
 
-      if (objectLifeStyle.keyEducation !== undefined) {
-        documentEducation[objectLifeStyle.keyEducation].classList.remove(
-          "bg-active"
-        );
+      if (this.zodiacsValue) {
+        document
+          .getElementById("zodiac_" + this.zodiacsValue.code)
+          .classList.remove("bg-active");
       }
-      if (objectLifeStyle.keyPersonality !== undefined) {
-        documentPersonality[objectLifeStyle.keyPersonality].classList.remove(
-          "bg-active"
-        );
+      if (this.familyPlansValue) {
+        document
+          .getElementById("familyFlan_" + this.familyPlansValue.code)
+          .classList.remove("bg-active");
       }
-      if (objectLifeStyle.keySmoke !== undefined) {
-        documentSmoke[objectLifeStyle.keySmoke].classList.remove("bg-active");
+      if (this.educationsValue) {
+        document
+          .getElementById("education_" + this.educationsValue.code)
+          .classList.remove("bg-active");
       }
-      if (objectLifeStyle.keyPets !== undefined) {
-        documentPets[objectLifeStyle.keyPets].classList.remove("bg-active");
+      if (this.personalitiesValue) {
+        document
+          .getElementById("personality_" + this.personalitiesValue.code)
+          .classList.remove("bg-active");
       }
-      if (objectLifeStyle.keyPreferences !== undefined) {
-        documentPreferences[objectLifeStyle.keyPreferences].classList.remove(
-          "bg-active"
-        );
+      if (this.covidVaccinesValue) {
+        document
+          .getElementById("covidVaccine_" + this.covidVaccinesValue.code)
+          .classList.remove("bg-active");
       }
-
-      this.$emit("onClickCancelLife", false);
+      if (this.communicationStylesValue) {
+        document
+          .getElementById(
+            "communicationType_" + this.communicationStylesValue.code
+          )
+          .classList.remove("bg-active");
+      }
+      if (this.loveStylesValue) {
+        document
+          .getElementById("loveStyle_" + this.loveStylesValue.code)
+          .classList.remove("bg-active");
+      }
+      (this.zodiacsValue = null),
+        (this.educationsValue = null),
+        (this.familyPlansValue = null),
+        (this.covidVaccinesValue = null),
+        (this.personalitiesValue = null),
+        (this.communicationStylesValue = null),
+        (this.loveStylesValue = null),
+        this.$emit("onClickCancelInformation", false);
     },
 
     onChangeSaveLife() {
-      this.$emit("onClickSaveLife", false);
+      debugger;
+      if (this.zodiacsValue !== null) {
+        this.setZodiac(this.zodiacsValue);
+      }
+      if (this.educationsValue !== null) {
+        this.setEducation(this.educationsValue);
+      }
+      if (this.covidVaccinesValue !== null) {
+        this.setCovidVaccines(this.covidVaccinesValue);
+      }
+      if (this.familyPlansValue !== null) {
+        this.setFamilyPlan(this.familyPlansValue);
+      }
+      if (this.personalitiesValue !== null) {
+        this.setPersonality(this.personalitiesValue);
+      }
+      if (this.communicationStylesValue !== null) {
+        this.setCommunication(this.communicationStylesValue);
+      }
+      if (this.loveStylesValue !== null) {
+        this.setLoveStyles(this.loveStylesValue);
+      }
+
+      this.$emit("onClickSaveInformation", false);
     },
+  },
+
+  mounted() {
+    debugger;
+    const profileBasic = this.$store.state.userModule.user_profile.profiles;
+    if (profileBasic.zodiac) {
+      document
+        .getElementById("zodiac_" + profileBasic.zodiac)
+        .classList.add("bg-active");
+    }
+    if (profileBasic.familyFlan) {
+      document
+        .getElementById("familyFlan_" + profileBasic.familyFlan)
+        .classList.add("bg-active");
+    }
+    if (profileBasic.education) {
+      document
+        .getElementById("education_" + profileBasic.education)
+        .classList.add("bg-active");
+    }
+    if (profileBasic.personality) {
+      document
+        .getElementById("personality_" + profileBasic.personality)
+        .classList.add("bg-active");
+    }
+    if (profileBasic.covidVaccine) {
+      document
+        .getElementById("covidVaccine_" + profileBasic.covidVaccine)
+        .classList.add("bg-active");
+    }
+    if (profileBasic.communicationType) {
+      document
+        .getElementById("communicationType_" + profileBasic.communicationType)
+        .classList.add("bg-active");
+    }
+    if (profileBasic.loveStyle) {
+      document
+        .getElementById("loveStyle_" + profileBasic.loveStyle)
+        .classList.add("bg-active");
+    }
   },
 };
 </script>

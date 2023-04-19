@@ -345,6 +345,23 @@ const routes = [
                 /* webpackChunkName: "test-edit-page" */ "../views/profile-page/edit-profile/test-edit-page/index.vue"
               ),
           },
+          {
+            path: "/add-school",
+            name: "add-school-page",
+            component: () =>
+              import(
+                /* webpackChunkName: "add-school-page" */ "../views/profile-page/edit-profile/school/add-school.vue"
+              ),
+          },
+
+          {
+            path: "/sexual-page",
+            name: "sexual-page",
+            component: () =>
+              import(
+                /* webpackChunkName: "sexual-page" */ "../views/profile-page/edit-profile/sexuals/sexual-page.vue"
+              ),
+          },
         ],
       },
       // Setting profile

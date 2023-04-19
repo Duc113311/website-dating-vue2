@@ -2,7 +2,7 @@
   <div class="w-full flex justify-center items-center">
     <div class="w-full relative">
       <div class="w-full flex justify-between p-3 bh-title">
-        <div class="">LIFE STYLE</div>
+        <div class="">BASIC INFORMATION</div>
         <div v-if="completeLifeStyle">+22%</div>
       </div>
 
@@ -133,7 +133,16 @@ export default {
      * Binding complete
      */
     completeLifeStyle() {
-      if ((this.zodiacParam || this.familyParam) !== "Trống") {
+      if (
+        (this.zodiacParam ||
+          this.loveLanguageParam ||
+          this.communicationParam ||
+          this.vaccineParam ||
+          this.personalityParam ||
+          this.familyParam ||
+          this.educationParam ||
+          this.educationParam) !== "Trống"
+      ) {
         return false;
       }
 
@@ -151,7 +160,7 @@ export default {
 
     familyParam() {
       const petsFreeData =
-        this.$store.state.userModule.basicInformation.futureFamily;
+        this.$store.state.userModule.basicInformation.familyFlan;
       debugger;
       return petsFreeData ? petsFreeData : this.nameDefault;
     },
@@ -172,21 +181,22 @@ export default {
     },
 
     vaccineParam() {
-      const vaccineData = this.$store.state.userModule.basicInformation.vaccine;
+      const vaccineData =
+        this.$store.state.userModule.basicInformation.covidVaccine;
 
       return vaccineData ? vaccineData : this.nameDefault;
     },
 
     communicationParam() {
       const communicationData =
-        this.$store.state.userModule.basicInformation.communication;
+        this.$store.state.userModule.basicInformation.communicationType;
 
       return communicationData ? communicationData : this.nameDefault;
     },
 
     loveLanguageParam() {
       const loveLanguageData =
-        this.$store.state.userModule.basicInformation.loveLanguage;
+        this.$store.state.userModule.basicInformation.loveStyle;
 
       return loveLanguageData ? loveLanguageData : this.nameDefault;
     },

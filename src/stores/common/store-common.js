@@ -11,7 +11,8 @@ const state = {
   isVerified: true,
   valueNotDating: "", // Value not dating people
   valueDinnerGreat: "", // Value dinner great
-
+  nameSchools: [],
+  listLifeStyleRegister: [],
   listLifeStyleSingle: {}, // Lấy danh sách chung đơn lẻ
   listInformationBasic: {}, // Lấy danh sách các thông tin cơ bản
   listLifeStyleStatic: {}, // Lấy danh sách phong cách sống
@@ -43,14 +44,25 @@ const mutations = {
       state.listScreamShowMes.push(data);
     }
   },
-
+  setListLifeStyle(state, value) {
+    state.listLifeStyleRegister = value;
+  },
   /**
    * Xét giá trị danh sách riêng lẻ
    * @param {*} state
    * @param {*} data
    */
   setListLifeStyleSingle(state, data) {
+    debugger;
+
     state.listLifeStyleSingle = data;
+    for (let index = 0; index < data.schools.length; index++) {
+      const element = data.schools[index];
+      state.nameSchools.push({
+        value: element,
+        id: element,
+      });
+    }
   },
 
   /**
@@ -135,6 +147,7 @@ const actions = {
     await http_mongo
       .get(`api/v1/statics/commons`)
       .then((response) => {
+        debugger;
         commit("setListLifeStyleSingle", response.data.data);
       })
       .catch((error) => {

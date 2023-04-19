@@ -10,6 +10,7 @@ import "@fortawesome/fontawesome-free/js/all.js";
 import VueCarousel from "vue-carousel";
 import Vue2TouchEvents from "vue2-touch-events";
 import VueCropper from "vue-cropperjs";
+
 import store from "./stores/store-data";
 
 Vue.config.productionTip = false;
@@ -17,6 +18,7 @@ Vue.use(ElementUI);
 Vue.use(VueCarousel);
 Vue.use(Vue2TouchEvents);
 Vue.use(VueCropper);
+
 new Vue({
   router,
   store,

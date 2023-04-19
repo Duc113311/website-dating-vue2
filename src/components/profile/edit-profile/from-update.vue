@@ -33,7 +33,7 @@
       @onShowFormBasicInformation="onShowFormBasicInformation"
     ></basic-information-page>
     <!-- Phong cách sống -->
-    <style-of-life></style-of-life>
+    <style-of-life @onShowFormLifeStyle="onShowFormLifeStyle"></style-of-life>
     <!-- Chức danh -->
     <job-title-page></job-title-page>
     <!-- Công ty -->
@@ -55,7 +55,7 @@
     <!-- Control -->
     <control-page></control-page>
 
-    <!--  -->
+    <!-- Sở thích -->
     <div
       v-show="isShowInterest"
       class="w-full h-full absolute top-0 left-0 z-30"
@@ -65,28 +65,42 @@
         @onClickHideInterest="onClickHideInterest"
       ></form-interests>
     </div>
-    <!--  -->
+    <!-- Dating purposes -->
     <div class="w-full h-full absolute top-0 left-0 z-30" v-if="isShowPurposes">
       <FormPurposes
         @onHidePurposes="onHidePurposes"
         @onSavePurposes="onSavePurposes"
       ></FormPurposes>
     </div>
-
+    <!-- Language -->
     <div class="w-full h-full absolute top-0 left-0 z-30" v-if="isShowLanguage">
       <FormLanguages @onHideLanguages="onHideLanguages"></FormLanguages>
     </div>
-
+    <!-- thông tin cơ bản -->
     <div
       class="w-full h-full absolute top-0 left-0 z-30"
       v-if="isShowBasicInformation"
     >
-      <FormInformation @onClickSaveLife="onClickSaveLife"></FormInformation>
+      <FormInformation
+        @onClickCancelInformation="onClickCancelInformation"
+        @onClickSaveInformation="onClickSaveInformation"
+      ></FormInformation>
+    </div>
+
+    <div
+      class="w-full h-full absolute top-0 left-0 z-30"
+      v-if="isShowLifeStyle"
+    >
+      <FormLifeStyle
+        @onClickSaveLife="onClickSaveLife"
+        @onClickCancelLife="onClickCancelLife"
+      ></FormLifeStyle>
     </div>
   </div>
 </template>
 
 <script>
+import FormLifeStyle from "./dialog/form-life-style";
 import FormInformation from "./dialog/form-information";
 import FormLanguages from "./dialog/form-languages";
 import FormPurposes from "./dialog/form-purposes";
@@ -112,6 +126,7 @@ import InterestPage from "./property-user/interest-page.vue";
 import FormInterests from "./form-interests.vue";
 export default {
   components: {
+    FormLifeStyle,
     FormInformation,
     FormLanguages,
     FormPurposes,
@@ -144,6 +159,7 @@ export default {
       isShowPurposes: false,
       isShowLanguage: false,
       isShowBasicInformation: false,
+      isShowLifeStyle: false,
     };
   },
 
@@ -169,9 +185,20 @@ export default {
     onShowPopupLanguage(val) {
       this.isShowLanguage = val;
     },
-
+    /**
+     * Hiển thị form basic information
+     * @param {*} val
+     */
     onShowFormBasicInformation(val) {
       this.isShowBasicInformation = val;
+    },
+
+    /**
+     * Hiển thị form life style
+     * @param {*} val
+     */
+    onShowFormLifeStyle(val) {
+      this.isShowLifeStyle = val;
     },
     /**
      * Save interest
@@ -180,9 +207,20 @@ export default {
     onClickSaveInterest(val) {
       this.isShowInterest = val;
     },
-
-    onClickSaveLife(val) {
+    // Action dialog basic information
+    onClickCancelInformation(val) {
       this.isShowBasicInformation = val;
+    },
+    onClickSaveInformation(val) {
+      this.isShowBasicInformation = val;
+    },
+
+    // Action dialog life of style
+    onClickCancelLife(val) {
+      this.isShowLifeStyle = val;
+    },
+    onClickSaveLife(val) {
+      this.isShowLifeStyle = val;
     },
 
     /**

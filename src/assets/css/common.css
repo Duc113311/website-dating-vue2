@@ -126,7 +126,8 @@
 .padding-button {
   padding: 8px;
   border-radius: 10px;
-  font-size: 24px;
+  font-size: 20px;
+  letter-spacing: 0.5px;
 }
 .padding-input {
   width: 100%;
@@ -289,7 +290,7 @@
 }
 
 .border-interest {
-  border-radius: 20px;
+  border-radius: 9px;
   border: 1.5px solid #ffffff;
   padding: 8px;
 }

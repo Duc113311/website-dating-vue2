@@ -24,7 +24,7 @@ export default {
     return {
       nameSchool: this.$store.state.userModule.user_profile?.profiles?.school
         ? this.$store.state.userModule.user_profile?.profiles?.school
-        : "Thêm tên trường",
+        : "Add school",
     };
   },
 
@@ -50,6 +50,7 @@ export default {
      */
     onChoseSchool() {
       //
+      this.$router.push({ path: "/add-school" });
     },
   },
 };

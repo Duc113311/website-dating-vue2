@@ -24,7 +24,7 @@
                   isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
                 ]"
               >
-                Add lifestyle information to show your best self.
+                More lifestyle information to show everyone your best photos.
               </div>
             </div>
             <!-- Cung hoàng đạo -->
@@ -34,11 +34,11 @@
               </div>
               <div class="">
                 <button
-                  v-for="(item, index) in listZodiacParams"
+                  v-for="(item, index) in listPetParams"
                   :key="index"
-                  :id="item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white zodiac"
-                  @click="onChoseZodiac(item)"
+                  :id="`pet_` + item.code"
+                  class="oftion-interests mr-3 mb-3 p-3 text-white pet"
+                  @click="onChosePet(item)"
                 >
                   {{ item.value }}
                 </button>
@@ -48,15 +48,17 @@
             <!-- Trình độ học vấn -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="padding-describe">Your education level?</div>
+                <div class="padding-describe">
+                  How often do you drink alcohol?
+                </div>
               </div>
               <div class="">
                 <button
-                  v-for="(item, index) in listEducationParams"
+                  v-for="(item, index) in listDrinkingParams"
                   :key="index"
-                  :id="item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white education"
-                  @click="onChoseEducation(item)"
+                  :id="`drinking_` + item.code"
+                  class="oftion-interests mr-3 mb-3 p-3 text-white drinking"
+                  @click="onChoseDrinking(item)"
                 >
                   {{ item.value }}
                 </button>
@@ -65,17 +67,15 @@
             <!-- Phong cách  -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="padding-describe">
-                  Do you want to have children?
-                </div>
+                <div class="padding-describe">Are you a smoker?</div>
               </div>
               <div class="">
                 <button
-                  v-for="(item, index) in listFamilyPlansParams"
+                  v-for="(item, index) in listSmokingParams"
                   :key="index"
-                  :id="item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white family-plan"
-                  @click="onChoseFamilyPlan(item)"
+                  :id="`smoking_` + item.code"
+                  class="oftion-interests mr-3 mb-3 p-3 text-white smoking"
+                  @click="onChoseSmoking(item)"
                 >
                   {{ item.value }}
                 </button>
@@ -84,17 +84,15 @@
             <!-- Trạng thái hôn nhân -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="padding-describe">
-                  Have you been vaccinated yet?
-                </div>
+                <div class="padding-describe">Do you exercise?</div>
               </div>
               <div class="">
                 <button
-                  v-for="(item, index) in listCovidVaccinesParam"
+                  v-for="(item, index) in listWorkoutParam"
                   :key="index"
-                  :id="item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white vaccines"
-                  @click="onChoseCovidVaccines(item)"
+                  :id="`workout_` + item.code"
+                  class="oftion-interests mr-3 mb-3 p-3 text-white workout"
+                  @click="onChoseWorkout(item)"
                 >
                   {{ item.value }}
                 </button>
@@ -103,17 +101,15 @@
             <!-- Tính cách -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="padding-describe">
-                  What is your personality type?
-                </div>
+                <div class="padding-describe">Do you follow any diet?</div>
               </div>
               <div class="">
                 <button
-                  v-for="(item, index) in listPersonalitiesParams"
+                  v-for="(item, index) in listDietaryPreferenceParams"
                   :key="index"
-                  :id="item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white personality"
-                  @click="onChosePersonality(item)"
+                  :id="`dietaryPreference_` + item.code"
+                  class="oftion-interests mr-3 mb-3 p-3 text-white dietaryPreference"
+                  @click="onChoseDietaryPreference(item)"
                 >
                   {{ item.value }}
                 </button>
@@ -123,16 +119,16 @@
             <div class="w-full">
               <div class="w-full flex items-center">
                 <div class="padding-describe">
-                  What is your communication style?
+                  How active you are on social media?
                 </div>
               </div>
               <div class="">
                 <button
-                  v-for="(item, index) in listCommunicationStylesParams"
+                  v-for="(item, index) in listSocialMediaParams"
                   :key="index"
-                  :id="item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white communication"
-                  @click="onChoseCommunication(item)"
+                  :id="`socialMedia_` + item.code"
+                  class="oftion-interests mr-3 mb-3 p-3 text-white socialMedia"
+                  @click="onChoseSocialMedia(item)"
                 >
                   {{ item.value }}
                 </button>
@@ -142,16 +138,16 @@
             <div class="w-full">
               <div class="w-full flex items-center">
                 <div class="padding-describe">
-                  When love, what do you like to receive?
+                  How are your sleeping habits?
                 </div>
               </div>
               <div class="">
                 <button
-                  v-for="(item, index) in listLoveStylesParams"
+                  v-for="(item, index) in listSleepingHabitParams"
                   :key="index"
-                  :id="item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white love-styles"
-                  @click="onChoseLoveStyles(item)"
+                  :id="`sleepingHabit_` + item.code"
+                  class="oftion-interests mr-3 mb-3 p-3 text-white sleepingHabit"
+                  @click="onChoseSleepingHabit(item)"
                 >
                   {{ item.value }}
                 </button>
@@ -183,6 +179,14 @@ export default {
         "reading",
         "Listing",
       ],
+
+      petValue: null,
+      drinkingValue: null,
+      smokingValue: null,
+      workoutValue: null,
+      dietaryPreferenceValue: null,
+      socialMediaValue: null,
+      sleepingHabitValue: null,
     };
   },
 
@@ -197,48 +201,45 @@ export default {
       }
     },
 
-    listZodiacParams() {
-      return this.$store.state.commonModule.listInformationBasic.zodiacs;
+    listPetParams() {
+      return this.$store.state.commonModule.listLifeStyleStatic.pets;
     },
-    listEducationParams() {
-      return this.$store.state.commonModule.listInformationBasic.educations;
+    listDrinkingParams() {
+      return this.$store.state.commonModule.listLifeStyleStatic.drinkings;
     },
-    listFamilyPlansParams() {
-      return this.$store.state.commonModule.listInformationBasic.familyPlans;
+    listSmokingParams() {
+      return this.$store.state.commonModule.listLifeStyleStatic.smokings;
     },
-    listCovidVaccinesParam() {
-      return this.$store.state.commonModule.listInformationBasic.covidVaccines;
+    listWorkoutParam() {
+      return this.$store.state.commonModule.listLifeStyleStatic.workouts;
     },
-    listPersonalitiesParams() {
-      return this.$store.state.commonModule.listInformationBasic.personalities;
+    listDietaryPreferenceParams() {
+      return this.$store.state.commonModule.listLifeStyleStatic.foodPreferences;
     },
-    listCommunicationStylesParams() {
-      return this.$store.state.commonModule.listInformationBasic
-        .communicationStyles;
+    listSocialMediaParams() {
+      return this.$store.state.commonModule.listLifeStyleStatic.socials;
     },
-    listLoveStylesParams() {
-      return this.$store.state.commonModule.listInformationBasic.loveStyles;
+    listSleepingHabitParams() {
+      return this.$store.state.commonModule.listLifeStyleStatic.sleepingStyles;
     },
   },
 
   methods: {
     ...mapMutations([
-      "setLifeStyle",
-      "setZodiac",
-      "setEducation",
-      "setCovidVaccines",
-      "setFamilyPlan",
-      "setPersonality",
-      "setCommunication",
-      "setLoveStyles",
+      "setPets",
+      "setDrinking",
+      "setWorkout",
+      "setSmoking",
+      "setDietaryPreference",
+      "setSocialMedia",
+      "setSleepingHabit",
     ]),
-    onChoseZodiac(val) {
-      const documentZodiacs = document.getElementsByClassName("zodiac");
+    onChosePet(val) {
+      const documentZodiacs = document.getElementsByClassName("pet");
       for (let index = 0; index < documentZodiacs.length; index++) {
         const element = documentZodiacs[index];
-        if (val.code === element.id) {
-          this.setZodiac(val);
-
+        if (`pet_` + val.code === element.id) {
+          this.petValue = val;
           element.classList.add("bg-active");
         } else {
           element.classList.remove("bg-active");
@@ -246,12 +247,12 @@ export default {
       }
     },
 
-    onChoseEducation(val) {
-      const documentZodiacs = document.getElementsByClassName("education");
+    onChoseDrinking(val) {
+      const documentZodiacs = document.getElementsByClassName("drinking");
       for (let index = 0; index < documentZodiacs.length; index++) {
         const element = documentZodiacs[index];
-        if (val.code === element.id) {
-          this.setEducation(val);
+        if (`drinking_` + val.code === element.id) {
+          this.drinkingValue = val;
           element.classList.add("bg-active");
         } else {
           element.classList.remove("bg-active");
@@ -259,12 +260,12 @@ export default {
       }
     },
 
-    onChoseCovidVaccines(val) {
-      const documentZodiacs = document.getElementsByClassName("vaccines");
+    onChoseWorkout(val) {
+      const documentZodiacs = document.getElementsByClassName("workout");
       for (let index = 0; index < documentZodiacs.length; index++) {
         const element = documentZodiacs[index];
-        if (val.code === element.id) {
-          this.setCovidVaccines(val);
+        if (`workout_` + val.code === element.id) {
+          this.workoutValue = val;
           element.classList.add("bg-active");
         } else {
           element.classList.remove("bg-active");
@@ -272,12 +273,12 @@ export default {
       }
     },
 
-    onChoseFamilyPlan(val) {
-      const documentZodiacs = document.getElementsByClassName("family-plan");
+    onChoseSmoking(val) {
+      const documentZodiacs = document.getElementsByClassName("smoking");
       for (let index = 0; index < documentZodiacs.length; index++) {
         const element = documentZodiacs[index];
-        if (val.code === element.id) {
-          this.setFamilyPlan(val);
+        if (`smoking_` + val.code === element.id) {
+          this.smokingValue = val;
           element.classList.add("bg-active");
         } else {
           element.classList.remove("bg-active");
@@ -285,24 +286,25 @@ export default {
       }
     },
 
-    onChosePersonality(val) {
-      const documentZodiacs = document.getElementsByClassName("personality");
+    onChoseDietaryPreference(val) {
+      const documentZodiacs =
+        document.getElementsByClassName("dietaryPreference");
       for (let index = 0; index < documentZodiacs.length; index++) {
         const element = documentZodiacs[index];
-        if (val.code === element.id) {
-          this.setPersonality(val);
+        if (`dietaryPreference_` + val.code === element.id) {
+          this.dietaryPreferenceValue = val;
           element.classList.add("bg-active");
         } else {
           element.classList.remove("bg-active");
         }
       }
     },
-    onChoseCommunication(val) {
-      const documentZodiacs = document.getElementsByClassName("communication");
+    onChoseSocialMedia(val) {
+      const documentZodiacs = document.getElementsByClassName("socialMedia");
       for (let index = 0; index < documentZodiacs.length; index++) {
         const element = documentZodiacs[index];
-        if (val.code === element.id) {
-          this.setCommunication(val);
+        if (`socialMedia_` + val.code === element.id) {
+          this.socialMediaValue = val;
           element.classList.add("bg-active");
         } else {
           element.classList.remove("bg-active");
@@ -310,12 +312,12 @@ export default {
       }
     },
 
-    onChoseLoveStyles(val) {
-      const documentZodiacs = document.getElementsByClassName("love-styles");
+    onChoseSleepingHabit(val) {
+      const documentZodiacs = document.getElementsByClassName("sleepingHabit");
       for (let index = 0; index < documentZodiacs.length; index++) {
         const element = documentZodiacs[index];
-        if (val.code === element.id) {
-          this.setLoveStyles(val);
+        if (`sleepingHabit_` + val.code === element.id) {
+          this.sleepingHabitValue = val;
           element.classList.add("bg-active");
         } else {
           element.classList.remove("bg-active");
@@ -323,50 +325,106 @@ export default {
       }
     },
     onChangeCancel() {
-      const objectLifeStyle = this.$store.state.userModule.lifeStyle;
-      const documentZodiacs = document.getElementsByClassName("zodiac");
-      const documentEducation = document.getElementsByClassName("education");
-      const documentPersonality =
-        document.getElementsByClassName("personality");
-      const documentSmoke = document.getElementsByClassName("smoke");
-      const documentPets = document.getElementsByClassName("pets");
-      const documentPreferences = document.getElementsByClassName(
-        "dietary-preferences"
-      );
-      if (objectLifeStyle.keyZodiac !== undefined) {
-        documentZodiacs[objectLifeStyle.keyZodiac].classList.remove(
-          "bg-active"
-        );
+      if (this.petValue) {
+        document
+          .getElementById("pet_" + this.petValue.code)
+          .classList.remove("bg-active");
+      }
+      if (this.drinkingValue) {
+        document
+          .getElementById("drinking_" + this.drinkingValue.code)
+          .classList.remove("bg-active");
+      }
+      if (this.smokingValue) {
+        document
+          .getElementById("smoking_" + this.smokingValue.code)
+          .classList.remove("bg-active");
+      }
+      if (this.workoutValue) {
+        document
+          .getElementById("workout_" + this.workoutValue.code)
+          .classList.remove("bg-active");
+      }
+      if (this.dietaryPreferenceValue) {
+        document
+          .getElementById(
+            "dietaryPreference_" + this.dietaryPreferenceValue.code
+          )
+          .classList.remove("bg-active");
+      }
+      if (this.socialMediaValue) {
+        document
+          .getElementById("socialMedia_" + this.socialMediaValue.code)
+          .classList.remove("bg-active");
+      }
+      if (this.sleepingHabitValue) {
+        document
+          .getElementById("sleepingHabit_" + this.sleepingHabitValue.code)
+          .classList.remove("bg-active");
       }
 
-      if (objectLifeStyle.keyEducation !== undefined) {
-        documentEducation[objectLifeStyle.keyEducation].classList.remove(
-          "bg-active"
-        );
-      }
-      if (objectLifeStyle.keyPersonality !== undefined) {
-        documentPersonality[objectLifeStyle.keyPersonality].classList.remove(
-          "bg-active"
-        );
-      }
-      if (objectLifeStyle.keySmoke !== undefined) {
-        documentSmoke[objectLifeStyle.keySmoke].classList.remove("bg-active");
-      }
-      if (objectLifeStyle.keyPets !== undefined) {
-        documentPets[objectLifeStyle.keyPets].classList.remove("bg-active");
-      }
-      if (objectLifeStyle.keyPreferences !== undefined) {
-        documentPreferences[objectLifeStyle.keyPreferences].classList.remove(
-          "bg-active"
-        );
-      }
-
-      this.$emit("onClickCancelLife", false);
+      (this.petValue = null),
+        (this.drinkingValue = null),
+        (this.smokingValue = null),
+        (this.workoutValue = null),
+        (this.dietaryPreferenceValue = null),
+        (this.socialMediaValue = null),
+        (this.sleepingHabitValue = null),
+        this.$emit("onClickCancelLife", false);
     },
 
     onChangeSaveLife() {
+      this.setPets(this.petValue);
+      this.setDrinking(this.drinkingValue);
+      this.setWorkout(this.workoutValue);
+      this.setSmoking(this.smokingValue);
+      this.setDietaryPreference(this.dietaryPreferenceValue);
+      this.setSocialMedia(this.socialMediaValue);
+      this.setSleepingHabit(this.sleepingHabitValue);
       this.$emit("onClickSaveLife", false);
     },
+  },
+
+  mounted() {
+    const profileBasic = this.$store.state.userModule.user_profile.profiles;
+
+    if (profileBasic.pet) {
+      document
+        .getElementById("pet_" + profileBasic.petValue)
+        .classList.remove("bg-active");
+    }
+    if (profileBasic.drinking) {
+      document
+        .getElementById("drinking_" + profileBasic.drinkingValue)
+        .classList.remove("bg-active");
+    }
+    if (profileBasic.smoking) {
+      document
+        .getElementById("smoking_" + profileBasic.smokingValue)
+        .classList.remove("bg-active");
+    }
+    if (profileBasic.workout) {
+      document
+        .getElementById("workout_" + profileBasic.workoutValue)
+        .classList.remove("bg-active");
+    }
+    if (profileBasic.dietaryPreference) {
+      document
+        .getElementById(
+          "dietaryPreference_" + profileBasic.dietaryPreferenceValue
+        )
+        .classList.remove("bg-active");
+    }
+    if (profileBasic.socialMedia) {
+      document
+        .getElementById("socialMedia_" + profileBasic.socialMediaValue)
+        .classList.remove("bg-active");
+    }
+    if (profileBasic.sleepingHabit) {
+      document
+        .getElementById("sleepingHabit_" + profileBasic.sleepingHabitValue)
+        .classList.remove("bg-active");
+    }
   },
 };
 </script>

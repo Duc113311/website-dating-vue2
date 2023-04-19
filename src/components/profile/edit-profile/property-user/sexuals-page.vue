@@ -3,13 +3,13 @@
     <div class="w-full">
       <div class="w-full flex justify-between bh-title p-3">
         <div>SEXUAL ORIENTATION</div>
-        <div v-if="listDataSexual.length === 0">+3%</div>
+        <div v-if="listDataSexual.length !== 0">+3%</div>
       </div>
       <div class="w-full flex style-form">
         <div class="flex justify-between w-full">
           <div class="bh-item-title style-inter-setting relative">
             <div class="w-full flex justify-center items-center">
-              <div class="w-full text-ellipsis whitespace-nowrap">
+              <div class="w-full text-ellipsis whitespace-nowrap sexual-item">
                 <span
                   :id="index"
                   class="mr-3 mb-3 text-white border-interest"
@@ -43,9 +43,22 @@ export default {
      * binding data interest
      */
     listDataSexual() {
+      const results = [];
       const sexualData =
-        this.$store.state.userModule.user_profile?.profiles.sexuals;
-      return sexualData ? sexualData : [];
+        this.$store.state.userModule.user_profile?.profiles.orientationSexuals;
+      const sexualDatas =
+        this.$store.state.commonModule.listLifeStyleSingle?.sexuals;
+      debugger;
+      for (let index = 0; index < sexualData.length; index++) {
+        const element = sexualData[index];
+
+        const findData = sexualDatas.find((x) => x.code === element);
+
+        if (findData) {
+          results.push(findData.value);
+        }
+      }
+      return results;
     },
   },
 
@@ -54,6 +67,7 @@ export default {
      * Xử lý show popup interest
      */
     onShowPopupSexuals() {
+      this.$router.push({ path: "/sexual-page" });
       // this.isShowInterest = true;
     },
   },

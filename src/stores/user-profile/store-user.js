@@ -4,22 +4,40 @@ import { http_mongo } from "../../configs/http-mongo";
 const state = {
   // Thông tin của user
   user_profile: {
+    oAuth2Id: "",
+    fullname: "",
+    username: "",
+    email: "",
+    phone: "",
+    dob: "",
     profiles: {
       avatars: [],
-      about: "",
-      zodiac: "",
-      pet: "",
-      smoking: "",
-      education: "",
-      university: "",
-      company: "",
-      jobTitle: "",
       gender: "",
+      about: "",
+      datingPurpose: "",
+      languages: [],
+      zodiac: "",
+      education: "",
+      school: "",
+      company: "",
+      familyFlan: "",
+      covidVaccine: "",
+      personality: "",
+      communicationType: "",
+      loveStyle: "",
+      pet: "",
+      drinking: "",
+      smoking: "",
+      workout: "",
+      dietaryPreference: "",
+      socialMedia: "",
+      sleepingHabit: "",
+      favoriteSongs: [],
+      jobTitle: "",
       showGender: false,
       orientationSexuals: [],
       showSexual: false,
       interests: [],
-      favoriteSongs: [],
       address: "",
       showAge: false,
       showDistance: false,
@@ -49,6 +67,7 @@ const state = {
     numberSuperLike: 0,
     numberNotiSeenMsg: 0,
   },
+
   isCheckBox: false,
   listSexuals: [],
   listInterests: [],
@@ -87,22 +106,22 @@ const state = {
 
   basicInformation: {
     zodiac: "",
-    futureFamily: "",
+    familyFlan: "",
     education: "",
     personality: "",
-    vaccine: "",
-    communication: "",
-    loveLanguage: "",
+    covidVaccine: "",
+    communicationType: "",
+    loveStyle: "",
   },
 
   styleOfLife: {
     pet: "",
-    drinkBeer: "",
+    drinking: "",
     smoking: "",
-    practice: "",
-    diet: "",
+    workout: "",
+    dietaryPreference: "",
     socialMedia: "",
-    sleep: "",
+    sleepingHabit: "",
   },
 };
 
@@ -114,6 +133,10 @@ const getters = {
   showDistance: (state) => {
     debugger;
     return state.user_profile.profiles.showDistance;
+  },
+  showSexual: (state) => {
+    debugger;
+    return state.user_profile.profiles.showSexual;
   },
 
   showGlobal: (state) => {
@@ -343,6 +366,10 @@ const mutations = {
   setImageCrop(state, value) {
     state.detailProfile.profiles.avatars.push(value);
   },
+
+  setShowSexual(state, value) {
+    state.user_profile.profiles.showSexual = value;
+  },
   /**
    * Xét giá trị cho user_profile khi gọi API detail
    * @param {*} state
@@ -382,34 +409,80 @@ const mutations = {
     };
 
     debugger;
-    const findZodiac = this.state.commonModule.listLifeStyle.zodiacs.find(
-      (x) => x.code === data.profiles.zodiac
-    );
-    const findEducation = this.state.commonModule.listLifeStyle.educations.find(
-      (x) => x.code === data.profiles.education
-    );
-    const findPersonality =
-      this.state.commonModule.listLifeStyle.personalities.find(
+    // basic information
+    const findZodiac =
+      this.state.commonModule.listInformationBasic.zodiacs.find(
+        (x) => x.code === data.profiles.zodiac
+      );
+    const findEducation =
+      this.state.commonModule.listInformationBasic.educations.find(
+        (x) => x.code === data.profiles.education
+      );
+    const findFamilyPlans =
+      this.state.commonModule.listInformationBasic.familyPlans.find(
         (x) => x.code === data.profiles.personality
       );
-    const findDietaryPreference =
-      this.state.commonModule.listLifeStyle.foodPreferences.find(
+    const findCovidVaccines =
+      this.state.commonModule.listInformationBasic.covidVaccines.find(
         (x) => x.code === data.profiles.dietaryPreference
       );
-    const findPet = this.state.commonModule.listLifeStyle.pets.find(
+    const findPersonalities =
+      this.state.commonModule.listInformationBasic.personalities.find(
+        (x) => x.code === data.profiles.pet
+      );
+    const findCommunicationStyles =
+      this.state.commonModule.listInformationBasic.communicationStyles.find(
+        (x) => x.code === data.profiles.smoking
+      );
+    const findLoveStyles =
+      this.state.commonModule.listInformationBasic.loveStyles.find(
+        (x) => x.code === data.profiles.smoking
+      );
+
+    // Life of style
+    const findPet = this.state.commonModule.listLifeStyleStatic.pets.find(
       (x) => x.code === data.profiles.pet
     );
-    const findSmoking = this.state.commonModule.listLifeStyle.smokes.find(
-      (x) => x.code === data.profiles.smoking
-    );
-
+    const findDrinking =
+      this.state.commonModule.listLifeStyleStatic.drinkings.find(
+        (x) => x.code === data.profiles.drinking
+      );
+    const findSmoking =
+      this.state.commonModule.listLifeStyleStatic.smokings.find(
+        (x) => x.code === data.profiles.smoking
+      );
+    const findWorkout =
+      this.state.commonModule.listLifeStyleStatic.workouts.find(
+        (x) => x.code === data.profiles.workout
+      );
+    const findDietaryPreference =
+      this.state.commonModule.listLifeStyleStatic.foodPreferences.find(
+        (x) => x.code === data.profiles.dietaryPreference
+      );
+    const findSocialMedia =
+      this.state.commonModule.listLifeStyleStatic.socials.find(
+        (x) => x.code === data.profiles.socialMedia
+      );
+    const findSleepingHabit =
+      this.state.commonModule.listLifeStyleStatic.sleepingStyles.find(
+        (x) => x.code === data.profiles.sleepingHabit
+      );
     console.log(findZodiac.value);
-    (state.profileLife.zodiac = findZodiac.value),
-      (state.profileLife.education = findEducation.value),
-      (state.profileLife.personality = findPersonality.value),
-      (state.profileLife.dietaryPreference = findDietaryPreference.value),
-      (state.profileLife.pet = findPet.value),
-      (state.profileLife.smoking = findSmoking.value);
+    (state.basicInformation.zodiac = findZodiac.value),
+      (state.basicInformation.education = findEducation.value),
+      (state.basicInformation.familyFlan = findFamilyPlans.value),
+      (state.basicInformation.covidVaccine = findCovidVaccines.value),
+      (state.basicInformation.personality = findPersonalities.value),
+      (state.basicInformation.communicationType =
+        findCommunicationStyles.value);
+    state.basicInformation.loveStyle = findLoveStyles.value;
+    state.styleOfLife.pet = findPet.value;
+    state.styleOfLife.drinking = findDrinking.value;
+    state.styleOfLife.smoking = findSmoking.value;
+    state.styleOfLife.workout = findWorkout.value;
+    state.styleOfLife.dietaryPreference = findDietaryPreference.value;
+    state.styleOfLife.socialMedia = findSocialMedia.value;
+    state.styleOfLife.sleepingHabit = findSleepingHabit.value;
   },
 
   /**
@@ -672,7 +745,7 @@ const mutations = {
    * @param {*} value
    */
   setSchool(state, value) {
-    state.user_profile.profiles.university = value;
+    state.user_profile.profiles.school = value;
   },
 
   /**
@@ -815,6 +888,7 @@ const mutations = {
     state.lifeStyle = { ...state.lifeStyle, ...data };
     debugger;
   },
+  // Thông tin cơ bản
   /**
    * Xét giá trị cho Zodiac
    * @param {*} state
@@ -835,7 +909,6 @@ const mutations = {
     state.basicInformation.education = value.value;
     state.user_profile.profiles.education = value.code;
   },
-
   /**
    * Xét giá trị cho Personality
    * @param {*} state
@@ -843,26 +916,53 @@ const mutations = {
    */
   setPersonality(state, value) {
     state.basicInformation.personality = value.value;
-    state.user_profile.profiles.personalities = value.code;
+    state.user_profile.profiles.personality = value.code;
   },
-
   setCovidVaccines(state, value) {
-    state.basicInformation.vaccine = value.value;
-    state.user_profile.profiles.covidVaccines = value.code;
+    state.basicInformation.covidVaccine = value.value;
+    state.user_profile.profiles.covidVaccine = value.code;
   },
-
   setFamilyPlan(state, value) {
-    state.basicInformation.futureFamily = value.value;
-    state.user_profile.profiles.familyPlans = value.code;
+    state.basicInformation.familyFlan = value.value;
+    state.user_profile.profiles.familyFlan = value.code;
   },
-
   setCommunication(state, value) {
-    state.basicInformation.communication = value.value;
-    state.user_profile.profiles.communicationStyles = value.code;
+    state.basicInformation.communicationType = value.value;
+    state.user_profile.profiles.communicationType = value.code;
   },
   setLoveStyles(state, value) {
-    state.basicInformation.loveLanguage = value.value;
-    state.user_profile.profiles.loveLanguage = value.code;
+    state.basicInformation.loveStyle = value.value;
+    state.user_profile.profiles.loveStyle = value.code;
+  },
+
+  // Phong cách sống
+  setPets(state, value) {
+    state.styleOfLife.pet = value.value;
+    state.user_profile.profiles.pet = value.code;
+  },
+  setDrinking(state, value) {
+    state.styleOfLife.drinking = value.value;
+    state.user_profile.profiles.drinking = value.code;
+  },
+  setSmoking(state, value) {
+    state.styleOfLife.smoking = value.value;
+    state.user_profile.profiles.smoking = value.code;
+  },
+  setWorkout(state, value) {
+    state.styleOfLife.workout = value.value;
+    state.user_profile.profiles.workout = value.code;
+  },
+  setDietaryPreference(state, value) {
+    state.styleOfLife.dietaryPreference = value.value;
+    state.user_profile.profiles.dietaryPreference = value.code;
+  },
+  setSocialMedia(state, value) {
+    state.styleOfLife.socialMedia = value.value;
+    state.user_profile.profiles.socialMedia = value.code;
+  },
+  setSleepingHabit(state, value) {
+    state.styleOfLife.sleepingHabit = value.value;
+    state.user_profile.profiles.sleepingHabit = value.code;
   },
 
   /**
