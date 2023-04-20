@@ -5,7 +5,7 @@
       <div class="w-full header-edit flex justify-center items-center">
         <div class="w-full flex justify-center items-center">
           <div class="w-1/4">
-            <bh-back></bh-back>
+            <bh-back @onBackComponent="onBackEditProfile"></bh-back>
             <!-- <BhBack @onBackComponent="onBackEditProfile"></BhBack> -->
           </div>
           <div class="ml-20 w-3/4 text-xl text-white">Edit Profile</div>
@@ -37,7 +37,9 @@ export default {
   },
 
   methods: {
-    onBackEditProfile() {},
+    onBackEditProfile() {
+      this.$router.go(-1);
+    },
   },
 };
 </script>
@@ -79,14 +81,14 @@ export default {
   border: 1px solid rgb(73, 80, 99) !important;
   border-radius: 10px !important;
   font-size: 17px !important;
-  padding: 12px !important;
+  padding: 10px !important;
   color: #ffffff !important;
 }
 
 .bg-life {
   background-color: #495063;
   border-radius: 10px;
-  padding: 14px;
+  padding: 10px;
 }
 
 .item-life {
@@ -107,7 +109,7 @@ export default {
   background-color: #495063 !important;
   border: 1px solid #495063 !important;
   border-radius: 10px !important;
-  padding: 13px !important;
+  padding: 10px !important;
   font-size: 15px !important;
   height: 50px !important;
   color: #ffffff !important;

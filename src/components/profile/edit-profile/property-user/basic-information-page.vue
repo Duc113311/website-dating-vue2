@@ -3,12 +3,18 @@
     <div class="w-full relative">
       <div class="w-full flex justify-between p-3 bh-title">
         <div class="">BASIC INFORMATION</div>
-        <div v-if="completeLifeStyle">+22%</div>
+        <div v-if="completeLifeStyle">+4%</div>
       </div>
 
       <div class="w-full bg-life">
         <div class="w-full item-life">
-          <div class="w-6/12 bh-item-title">Zodiac</div>
+          <div class="w-6/12 bh-item-title flex items-center">
+            <img
+              class="mr-2"
+              src="@/assets/icon/ic_tinder/astrological_sign@2x.png"
+              width="25"
+            />Zodiac
+          </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
@@ -23,7 +29,13 @@
           </div>
         </div>
         <div class="w-full item-life">
-          <div class="w-6/12 bh-item-title">Future family</div>
+          <div class="w-6/12 bh-item-title flex items-center">
+            <img
+              class="mr-2"
+              src="@/assets/icon/ic_tinder/family@1x.png"
+              width="25"
+            />Future family
+          </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
@@ -38,7 +50,13 @@
           </div>
         </div>
         <div class="w-full item-life">
-          <div class="w-6/12 bh-item-title">Education</div>
+          <div class="w-6/12 bh-item-title flex items-center">
+            <img
+              class="mr-2"
+              src="@/assets/icon/ic_tinder/education@1x.png"
+              width="25"
+            />Education
+          </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
@@ -53,7 +71,13 @@
           </div>
         </div>
         <div class="w-full item-life">
-          <div class="w-6/12 bh-item-title">Vaccine for COVID</div>
+          <div class="w-6/12 bh-item-title flex items-center">
+            <img
+              class="mr-2"
+              src="@/assets/icon/ic_tinder/covid_comfort@1x.png"
+              width="25"
+            />Vaccine for COVID
+          </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
@@ -68,7 +92,13 @@
           </div>
         </div>
         <div class="w-full item-life">
-          <div class="w-6/12 bh-item-title">Personality Type</div>
+          <div class="w-6/12 bh-item-title flex items-center">
+            <img
+              class="mr-2"
+              src="@/assets/icon/ic_tinder/kietinhcach@2x.png"
+              width="25"
+            />Personality Type
+          </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
@@ -83,7 +113,13 @@
           </div>
         </div>
         <div class="w-full item-life">
-          <div class="w-6/12 bh-item-title">Communication Style</div>
+          <div class="w-6/12 bh-item-title flex items-center">
+            <img
+              class="mr-2"
+              src="@/assets/icon/ic_tinder/communication_style@2x.png"
+              width="25"
+            />Communication Style
+          </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
@@ -99,7 +135,13 @@
         </div>
 
         <div class="w-full item-life-end">
-          <div class="w-6/12 bh-item-title">Love Languages</div>
+          <div class="w-6/12 bh-item-title flex items-center">
+            <img
+              class="mr-2"
+              src="@/assets/icon/ic_tinder/love_language@1x.png"
+              width="25"
+            />Love Languages
+          </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
@@ -214,4 +256,8 @@ export default {
 };
 </script>
 
-<style lang="css"></style>
+<style lang="css">
+.bh-item-title img {
+  filter: invert(90%) sepia(20%) saturate(200%) hue-rotate(80deg);
+}
+</style>

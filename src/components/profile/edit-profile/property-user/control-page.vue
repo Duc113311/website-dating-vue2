@@ -4,12 +4,12 @@
       <div class="w-full flex bh-title p-3 items-center">
         <div>CONTROL PROFILE</div>
         <div class="ml-3">
-          <div class="style-package">Sliver package</div>
+          <div class="style-package-update">Sliver package</div>
         </div>
       </div>
       <div class="w-full flex items-center">
         <div class="w-full style-bg-common">
-          <div class="flex justify-between w-full p-2">
+          <div class="flex justify-between w-full bd-input pt-2 pb-2">
             <div class="bh-item-title">Don't show my age</div>
             <div>
               <el-switch
@@ -21,10 +21,8 @@
               </el-switch>
             </div>
           </div>
-          <div class="flex justify-center w-full items-center">
-            <div class="br-bottom"></div>
-          </div>
-          <div class="flex justify-between w-full p-2">
+
+          <div class="flex justify-between w-full pt-2 pb-2">
             <div class="bh-item-title">Don't show my distance</div>
             <div>
               <el-switch
@@ -106,4 +104,19 @@ export default {
   },
 };
 </script>
-<style lang="css"></style>
+<style lang="css">
+.style-package-update {
+  background: linear-gradient(
+    321deg,
+    rgba(68, 114, 103, 1) 23%,
+    rgba(177, 238, 225, 1) 50%,
+    rgba(68, 114, 103, 1) 76%
+  );
+  padding: 5px;
+  width: 138px;
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+  color: #ffffff;
+}
+</style>

@@ -3,7 +3,7 @@
     <div class="w-full">
       <div class="w-full flex justify-between p-3 bh-title">
         <div>ABOUT ME</div>
-        <div v-if="nameAbout.length === 0">+22%</div>
+        <div v-if="nameAbout.length === 0">+20%</div>
       </div>
       <div>
         <el-input

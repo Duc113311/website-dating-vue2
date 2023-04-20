@@ -12,7 +12,7 @@
             <i class="fa-solid fa-xmark size-icon-default"></i>
           </div>
           <div @click="onChangeSaveInterest()">
-            <i class="fa-solid fa-check size-icon-default"></i>
+            <i class="fa-solid fa-check size-icon-default type-language"></i>
           </div>
         </div>
 
@@ -52,24 +52,32 @@
             </div>
 
             <!-- Tìm kiếm -->
-            <div class="w-full h-search mb-2">
-              <div class="w-full">
-                <el-autocomplete
-                  v-model="state"
-                  class="w-full"
-                  :fetch-suggestions="querySearchAsync"
-                  placeholder="Enter search interest"
-                  @select="handleSelect"
-                ></el-autocomplete>
+            <div class="w-full mb-2 mt-2">
+              <div class="w-full relative">
+                <el-input
+                  @input="onChangeFilterText"
+                  v-model="valueSearch"
+                  placeholder="Search interest"
+                  name=""
+                  id=""
+                >
+                  <template slot="append" v-if="valueSearch.length !== 0">
+                    <div class="ic" @click="onClickRemoveLanguage">
+                      <img
+                        src="../../../../assets/icon/icon-cancel.png"
+                        width="20"
+                      />
+                    </div>
+                  </template>
+                </el-input>
               </div>
             </div>
-
             <!-- Danh sách sở thich -->
 
             <div
-              class="w-full h-full list-interest mt-5 height-scroll overflow-scroll"
+              class="w-full h-full list-interest-form mt-5 height-scroll overflow-scroll"
             >
-              <span v-for="(item, index) in listDataInterests" :key="index">
+              <span v-for="(item, index) in listInterest" :key="index">
                 <button
                   @click="onSelectInterest(item.code)"
                   :id="`not-check_` + item.code"
@@ -99,18 +107,16 @@ export default {
       timeout: null,
       listChecked: [],
       listInterestCode: [],
+      valueSearch: "",
+
+      listInterest:
+        this.$store.state.commonModule.listLifeStyleSingle.interests,
+      listInterestOld:
+        this.$store.state.commonModule.listLifeStyleSingle.interests,
     };
   },
 
-  computed: {
-    listDataChecked() {
-      return ["Dancing", "Singing", "Ballet", "BBQ"];
-    },
-    listDataInterests() {
-      debugger;
-      return this.$store.state.commonModule.listLifeStyleSingle.interests;
-    },
-  },
+  computed: {},
   methods: {
     ...mapMutations(["setListInterests"]),
     ...mapActions(["getListDataInterests"]),
@@ -152,6 +158,8 @@ export default {
 
           this.listChecked.push(objectChecked);
         }
+        document.getElementsByClassName("type-language")[0].style.color =
+          "#f65a62";
       }
     },
     querySearchAsync(queryString, cb) {
@@ -175,6 +183,22 @@ export default {
     handleSelect(item) {
       console.log(item);
     },
+
+    onChangeFilterText() {
+      let dataList = [];
+      if (this.listInterest.length <= this.listInterestOld.length) {
+        dataList = this.listInterestOld;
+        let result = dataList.filter(
+          (item) =>
+            item.value.toLowerCase().indexOf(this.valueSearch.toLowerCase()) !==
+            -1
+        );
+        this.listInterest = result;
+        console.log(result);
+      }
+    },
+
+    onClickRemoveLanguage() {},
   },
 
   async created() {
@@ -187,20 +211,24 @@ export default {
     const interestsData =
       this.$store.state.userModule.user_profile.profiles.interests;
     debugger;
-    for (let index = 0; index < interestsData.length; index++) {
-      const element = interestsData[index];
-      document
-        .getElementById("not-check_" + element)
-        .classList.add("bg-active");
-      const nameInterest = document
-        .getElementById("not-check_" + element)
-        .innerHTML.toString();
-      const objectChecked = {
-        code: element,
-        value: nameInterest,
-      };
-      this.listInterestCode.push(element);
-      this.listChecked.push(objectChecked);
+    if (interestsData.length !== 0) {
+      document.getElementsByClassName("type-language")[0].style.color =
+        "#f65a62";
+      for (let index = 0; index < interestsData.length; index++) {
+        const element = interestsData[index];
+        document
+          .getElementById("not-check_" + element)
+          .classList.add("bg-active");
+        const nameInterest = document
+          .getElementById("not-check_" + element)
+          .innerHTML.toString();
+        const objectChecked = {
+          code: element,
+          value: nameInterest,
+        };
+        this.listInterestCode.push(element);
+        this.listChecked.push(objectChecked);
+      }
     }
   },
 };
@@ -210,7 +238,7 @@ export default {
 .h-search {
   height: 6%;
 }
-.list-interest {
+.list-interest-form {
   height: calc(100% - 35%);
 }
 

@@ -123,6 +123,13 @@ const state = {
     socialMedia: "",
     sleepingHabit: "",
   },
+
+  lifeStyleSingle: {
+    datingPurpose: {},
+    languages: [],
+    interests: [],
+    schools: [],
+  },
 };
 
 const getters = {
@@ -687,7 +694,17 @@ const mutations = {
 
   setListInterests(state, data) {
     debugger;
-    state.user_profile.profiles.interests = data;
+    let newInterestCode = [];
+    let newInterestValue = [];
+
+    for (let index = 0; index < data.length; index++) {
+      const element = data[index];
+
+      newInterestCode.push(element.code);
+      newInterestValue.push(element.value);
+    }
+    state.lifeStyleSingle.interests = newInterestValue;
+    state.user_profile.profiles.interests = newInterestCode;
   },
 
   /**
@@ -721,6 +738,25 @@ const mutations = {
 
     localStorage.setItem("latitude", location.latitude);
     localStorage.setItem("longitude", location.longitude);
+  },
+
+  setSelectLanguages(state, data) {
+    let newDataCode = [];
+    let newDataValue = [];
+
+    for (let index = 0; index < data.length; index++) {
+      const element = data[index];
+      newDataCode.push(element.code);
+      newDataValue.push(element.value);
+    }
+    debugger;
+    state.user_profile.profiles.languages = newDataCode;
+    state.lifeStyleSingle.languages = newDataValue;
+  },
+
+  setDatingPurposes(state, data) {
+    state.lifeStyleSingle.datingPurpose = data;
+    state.user_profile.profiles.datingPurpose = data.code;
   },
 
   setLifeStyleUser(state, data) {

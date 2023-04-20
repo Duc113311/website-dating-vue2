@@ -3,7 +3,6 @@
     <div class="w-full">
       <div class="w-full flex justify-between bh-title p-3">
         <div>MY ANTHEM</div>
-        <div>+3%</div>
       </div>
       <div class="w-full flex style-form">
         <div class="flex justify-between w-full">

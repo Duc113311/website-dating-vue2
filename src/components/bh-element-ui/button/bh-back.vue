@@ -2,7 +2,7 @@
   <div
     class="text-xl w-full h-10 flex items-center justify-between cursor-pointer"
   >
-    <div @click="onClickBack()">
+    <div @click="onClickBack()" class="cursor-pointer">
       <i class="fas fa-chevron-left size-icon"></i>
     </div>
     <div class="font-skip" v-show="isShowSkipParam" @click="onClickSkip()">

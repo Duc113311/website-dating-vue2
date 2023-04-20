@@ -110,17 +110,32 @@
       v-bind:class="{ 'pointer-event': isPointer }"
     >
       <div class="btns">
+        <div v-if="isAnimating">
+          <MoveSupperLike></MoveSupperLike>
+        </div>
         <div class="bh-odd justify-center flex items-center">
           <img src="@/assets/icon/bt_back.svg" @click="decide('rewind')" />
         </div>
         <div class="bh-even justify-center flex items-center">
-          <img src="@/assets/icon/bt_nope.svg" @click="decide('nope')" />
+          <img
+            src="@/assets/icon/bt_nope.svg"
+            @click="decide('nope')"
+            v-bind:class="{ 'transform-hover': isHoverNope }"
+          />
         </div>
         <div class="bh-odd justify-center flex items-center">
-          <img src="@/assets/icon/bt_super_like.svg" @click="decide('super')" />
+          <img
+            src="@/assets/icon/bt_super_like.svg"
+            @click="decide('super')"
+            v-bind:class="{ 'transform-hover': isHoverSuper }"
+          />
         </div>
         <div class="bh-even justify-center flex items-center">
-          <img src="@/assets/icon/bt_like.svg" @click="decide('like')" />
+          <img
+            src="@/assets/icon/bt_like.svg"
+            @click="decide('like')"
+            v-bind:class="{ 'transform-hover': isHoverLike }"
+          />
         </div>
         <div class="bh-odd justify-center flex items-center">
           <img src="@/assets/icon/bt_boost.svg" @click="decide('help')" />
@@ -131,6 +146,7 @@
 </template>
 
 <script>
+import MoveSupperLike from "../../bh-element-ui/animation/move-supper-like";
 import LoadApp from "../../layout/loading/load-app";
 import Tinder from "vue-tinder";
 import functionValidate from "../../../middleware/validate.js";
@@ -139,6 +155,7 @@ import { mapActions, mapMutations } from "vuex";
 export default {
   name: "view-swipe",
   components: {
+    MoveSupperLike,
     LoadApp,
     Tinder,
   },
@@ -154,7 +171,13 @@ export default {
       isPointer: true,
       imageActive: 0,
       isLoadData: true,
-
+      isAnimating: false,
+      isProgressBoost: true,
+      truc_x: 0,
+      truc_y: 0,
+      isHoverLike: false,
+      isHoverNope: false,
+      isHoverSuper: false,
       icUrlApp: require("@/assets/icon/ic_icon_app.svg"),
       colorApp: "#FF828A",
       bgColorApp: "linear-gradient(#FE4E58,#FD757F)",
@@ -186,6 +209,9 @@ export default {
 
     onMouseDow(event) {
       debugger;
+      this.truc_x = event.clientX;
+      this.truc_y = event.clientY;
+      document.addEventListener("mousemove", this.moveElement);
       if (event.target.tagName === "IMG") {
         debugger;
         return;
@@ -194,7 +220,37 @@ export default {
     },
     onMouseUp() {
       debugger;
+
+      document.removeEventListener("mousemove", this.moveElement);
+      this.isHoverLike = false;
+      this.isHoverNope = false;
+      this.isHoverSuper = false;
       this.isPointer = false;
+    },
+
+    moveElement(event) {
+      if (this.isPointer) {
+        if (event.clientX > this.truc_x + 50) {
+          this.isHoverLike = true;
+          this.isHoverNope = false;
+          this.isHoverSuper = false;
+          console.log("right");
+        } else if (event.clientX < this.truc_x - 50) {
+          this.isHoverLike = false;
+          this.isHoverNope = true;
+          this.isHoverSuper = false;
+          console.log("left");
+        } else if (event.clientY < this.truc_y - 50) {
+          this.isHoverLike = false;
+          this.isHoverNope = false;
+          this.isHoverSuper = true;
+          console.log("up");
+        } else {
+          this.isHoverLike = false;
+          this.isHoverNope = false;
+          this.isHoverSuper = false;
+        }
+      }
     },
     bindingAge(val) {
       const dataAge = functionValidate.calculatAge(val);
@@ -264,35 +320,39 @@ export default {
       debugger;
       this.$emit("onShowDetailUser", true);
     },
-    async onSubmit({ item }) {
+    async onSubmit(value) {
       debugger;
       this.setUrlNameAvatarUser("");
       this.isActiveImag = true;
       debugger;
-      if (this.nameTinder.toString() === "nope") {
+      if (value.type.toString() === "nope") {
         console.log("Nope");
         const data = {
           userId: localStorage.userId,
           objectCustomer: {
-            userIdCustomer: item.userId,
+            userIdCustomer: value.item.userId,
           },
         };
         await this.patchNopeUserId(data);
       }
-      if (this.nameTinder.toString() === "super") {
+      if (value.type.toString() === "super") {
+        this.isAnimating = true;
+        setTimeout(() => {
+          this.isAnimating = false;
+        }, 1200);
         console.log("Supper");
       }
-      if (this.nameTinder.toString() === "like") {
+      if (value.type.toString() === "like") {
         console.log("like");
         const data = {
           userId: localStorage.userId,
           objectCustomer: {
-            userIdCustomer: item.userId,
+            userIdCustomer: value.item.userId,
           },
         };
         await this.postLikeUserId(data);
       }
-      this.history.push(item);
+      this.history.push(value.item);
       this.imageActive = 0;
     },
     async decide(choice) {
@@ -305,8 +365,6 @@ export default {
       } else if (choice === "help") {
         this.$emit("onShowPackage", true);
       } else {
-        this.nameTinder = choice;
-
         this.$refs.tinder.decide(choice);
       }
     },
@@ -495,5 +553,8 @@ export default {
 
 .pointer-event {
   pointer-events: none;
+}
+.transform-hover {
+  transform: scale(1.1);
 }
 </style>

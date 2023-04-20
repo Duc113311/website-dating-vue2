@@ -23,9 +23,7 @@
     >
       <span>Upgrade to Gold to see people who are interested in you</span>
     </div>
-    <div class="swipe-container">
-      <div class="swipe-card">{{ currentCard }}</div>
-    </div>
+
     <div class="container pr-4 pl-4">
       <div class="grid grid-cols-2 gap-3 swipe-container">
         <div

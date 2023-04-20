@@ -34,7 +34,9 @@
         </div>
       </div>
       <!-- Option chose -->
-      <div class="w-full option-setting flex items-center text-white">
+      <div
+        class="w-full option-setting flex items-center text-white cursor-pointer"
+      >
         <div class="item-setting">
           <div class="flex justify-center" @click="onClickSettingDetail()">
             <img src="@/assets/icon/bt_settings.svg" width="100" alt="" />

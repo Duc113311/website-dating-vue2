@@ -10,16 +10,16 @@
             <i class="fa-solid fa-xmark size-icon-default"></i>
           </div>
           <div @click="onChangeSaveLife()">
-            <i class="fa-solid fa-check size-icon-default"></i>
+            <i class="fa-solid fa-check size-icon-default type-basic"></i>
           </div>
         </div>
         <div class="w-full flex justify-center items-center h-form-data">
           <div class="w-full items-center h-full height-scroll overflow-scroll">
             <!-- Title -->
             <div class="w-full">
-              <div class="padding-title">Basic information</div>
+              <div class="title-dialog">Basic information</div>
               <div
-                class="padding-describe"
+                class="describe-dialog"
                 v-bind:class="[
                   isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
                 ]"
@@ -30,14 +30,21 @@
             <!-- Cung hoàng đạo -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="padding-describe">What is your zodiac sign?</div>
+                <div class="name-option-dialog flex items-center">
+                  <img
+                    class="mr-2"
+                    src="@/assets/icon/ic_tinder/astrological_sign@2x.png"
+                    width="30"
+                  />
+                  What is your zodiac sign?
+                </div>
               </div>
-              <div class="">
+              <div class="bor-bottom">
                 <button
                   v-for="(item, index) in listZodiacParams"
                   :key="index"
                   :id="`zodiac_` + item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white zodiac"
+                  class="style-option-click zodiac"
                   @click="onChoseZodiac(item)"
                 >
                   {{ item.value }}
@@ -48,14 +55,20 @@
             <!-- Trình độ học vấn -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="padding-describe">Your education level?</div>
+                <div class="name-option-dialog flex items-center">
+                  <img
+                    class="mr-2"
+                    src="@/assets/icon/ic_tinder/education@1x.png"
+                    width="30"
+                  />Your education level?
+                </div>
               </div>
-              <div class="">
+              <div class="bor-bottom">
                 <button
                   v-for="(item, index) in listEducationParams"
                   :key="index"
                   :id="`education_` + item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white education"
+                  class="style-option-click education"
                   @click="onChoseEducation(item)"
                 >
                   {{ item.value }}
@@ -65,16 +78,21 @@
             <!-- Phong cách  -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="padding-describe">
+                <div class="name-option-dialog flex items-center">
+                  <img
+                    class="mr-2"
+                    src="@/assets/icon/ic_tinder/family@1x.png"
+                    width="30"
+                  />
                   Do you want to have children?
                 </div>
               </div>
-              <div class="">
+              <div class="bor-bottom">
                 <button
                   v-for="(item, index) in listFamilyPlansParams"
                   :key="index"
                   :id="`familyFlan_` + item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white familyFlan"
+                  class="style-option-click familyFlan"
                   @click="onChoseFamilyPlan(item)"
                 >
                   {{ item.value }}
@@ -84,16 +102,21 @@
             <!-- Trạng thái hôn nhân -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="padding-describe">
+                <div class="name-option-dialog flex items-center">
+                  <img
+                    class="mr-2"
+                    src="@/assets/icon/ic_tinder/covid_comfort@1x.png"
+                    width="30"
+                  />
                   Have you been vaccinated yet?
                 </div>
               </div>
-              <div class="">
+              <div class="bor-bottom">
                 <button
                   v-for="(item, index) in listCovidVaccinesParam"
                   :key="index"
                   :id="`covidVaccine_` + item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white covidVaccine"
+                  class="style-option-click covidVaccine"
                   @click="onChoseCovidVaccines(item)"
                 >
                   {{ item.value }}
@@ -103,16 +126,21 @@
             <!-- Tính cách -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="padding-describe">
+                <div class="name-option-dialog flex items-center">
+                  <img
+                    class="mr-2"
+                    src="@/assets/icon/ic_tinder/kietinhcach@2x.png"
+                    width="30"
+                  />
                   What is your personality type?
                 </div>
               </div>
-              <div class="">
+              <div class="bor-bottom">
                 <button
                   v-for="(item, index) in listPersonalitiesParams"
                   :key="index"
                   :id="`personality_` + item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white personality"
+                  class="style-option-click personality"
                   @click="onChosePersonality(item)"
                 >
                   {{ item.value }}
@@ -122,16 +150,21 @@
 
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="padding-describe">
+                <div class="name-option-dialog flex items-center">
+                  <img
+                    class="mr-2"
+                    src="@/assets/icon/ic_tinder/communication_style@2x.png"
+                    width="30"
+                  />
                   What is your communication style?
                 </div>
               </div>
-              <div class="">
+              <div class="bor-bottom">
                 <button
                   v-for="(item, index) in listCommunicationStylesParams"
                   :key="index"
                   :id="`communicationType_` + item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white communicationType"
+                  class="style-option-click communicationType"
                   @click="onChoseCommunication(item)"
                 >
                   {{ item.value }}
@@ -141,16 +174,21 @@
 
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="padding-describe">
+                <div class="name-option-dialog flex items-center">
+                  <img
+                    class="mr-2"
+                    src="@/assets/icon/ic_tinder/love_language@1x.png"
+                    width="30"
+                  />
                   When love, what do you like to receive?
                 </div>
               </div>
-              <div class="">
+              <div class="bor-bottom-not">
                 <button
                   v-for="(item, index) in listLoveStylesParams"
                   :key="index"
                   :id="`loveStyle_` + item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white loveStyle"
+                  class="style-option-click loveStyle"
                   @click="onChoseLoveStyles(item)"
                 >
                   {{ item.value }}
@@ -248,6 +286,8 @@ export default {
         if ("zodiac_" + val.code === element.id) {
           this.zodiacsValue = val;
           element.classList.add("bg-active");
+          document.getElementsByClassName("type-basic")[0].style.color =
+            "#f65a62";
         } else {
           element.classList.remove("bg-active");
         }
@@ -260,6 +300,8 @@ export default {
         if ("education_" + val.code === element.id) {
           this.educationsValue = val;
           element.classList.add("bg-active");
+          document.getElementsByClassName("type-basic")[0].style.color =
+            "#f65a62";
         } else {
           element.classList.remove("bg-active");
         }
@@ -272,6 +314,8 @@ export default {
         if ("covidVaccine_" + val.code === element.id) {
           this.covidVaccinesValue = val;
           element.classList.add("bg-active");
+          document.getElementsByClassName("type-basic")[0].style.color =
+            "#f65a62";
         } else {
           element.classList.remove("bg-active");
         }
@@ -284,6 +328,8 @@ export default {
         if ("familyFlan_" + val.code === element.id) {
           this.familyPlansValue = val;
           element.classList.add("bg-active");
+          document.getElementsByClassName("type-basic")[0].style.color =
+            "#f65a62";
         } else {
           element.classList.remove("bg-active");
         }
@@ -296,6 +342,8 @@ export default {
         if ("personality_" + val.code === element.id) {
           this.personalitiesValue = val;
           element.classList.add("bg-active");
+          document.getElementsByClassName("type-basic")[0].style.color =
+            "#f65a62";
         } else {
           element.classList.remove("bg-active");
         }
@@ -309,6 +357,8 @@ export default {
         if ("communicationType_" + val.code === element.id) {
           this.communicationStylesValue = val;
           element.classList.add("bg-active");
+          document.getElementsByClassName("type-basic")[0].style.color =
+            "#f65a62";
         } else {
           element.classList.remove("bg-active");
         }
@@ -321,6 +371,8 @@ export default {
         if ("loveStyle_" + val.code === element.id) {
           this.loveStylesValue = val;
           element.classList.add("bg-active");
+          document.getElementsByClassName("type-basic")[0].style.color =
+            "#f65a62";
         } else {
           element.classList.remove("bg-active");
         }
@@ -408,6 +460,18 @@ export default {
   mounted() {
     debugger;
     const profileBasic = this.$store.state.userModule.user_profile.profiles;
+    if (
+      (profileBasic.zodiac ||
+        profileBasic.familyFlan ||
+        profileBasic.education ||
+        profileBasic.personality ||
+        profileBasic.covidVaccine ||
+        profileBasic.communicationType ||
+        profileBasic.loveStyle) !== ""
+    ) {
+      debugger;
+      document.getElementsByClassName("type-basic")[0].style.color = "#f65a62";
+    }
     if (profileBasic.zodiac) {
       document
         .getElementById("zodiac_" + profileBasic.zodiac)
@@ -449,12 +513,11 @@ export default {
 
 <style lang="css">
 .bg-active {
-  border: 1.5px solid #f65a62 !important;
+  border: 1.4px solid #f65a62 !important;
   color: #f65a62;
 }
 
-.oftion-interests {
-  border: 1.5px solid white;
-  border-radius: 8px;
+.name-option-dialog img {
+  filter: invert(90%) sepia(20%) saturate(200%) hue-rotate(80deg);
 }
 </style>

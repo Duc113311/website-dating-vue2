@@ -10,16 +10,16 @@
             <i class="fa-solid fa-xmark size-icon-default"></i>
           </div>
           <div @click="onChangeSaveLife()">
-            <i class="fa-solid fa-check size-icon-default"></i>
+            <i class="fa-solid fa-check size-icon-default type-life"></i>
           </div>
         </div>
         <div class="w-full flex justify-center items-center h-form-data">
           <div class="w-full items-center h-full height-scroll overflow-scroll">
             <!-- Title -->
-            <div class="w-full">
-              <div class="padding-title">Style of life</div>
+            <div class="w-full" v-bind:class="{ 'scroll-header': scrolled }">
+              <div class="title-dialog">Style of life</div>
               <div
-                class="padding-describe"
+                class="describe-dialog"
                 v-bind:class="[
                   isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
                 ]"
@@ -30,14 +30,21 @@
             <!-- Cung hoàng đạo -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="padding-describe">Do you have pets</div>
+                <div class="name-option-dialog flex items-center">
+                  <img
+                    class="mr-2"
+                    src="@/assets/icon/ic_tinder/pets@1x.png"
+                    width="25"
+                  />
+                  Do you have pets
+                </div>
               </div>
-              <div class="">
+              <div class="bor-bottom">
                 <button
                   v-for="(item, index) in listPetParams"
                   :key="index"
                   :id="`pet_` + item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white pet"
+                  class="style-option-click pet"
                   @click="onChosePet(item)"
                 >
                   {{ item.value }}
@@ -48,16 +55,21 @@
             <!-- Trình độ học vấn -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="padding-describe">
+                <div class="name-option-dialog flex items-center">
+                  <img
+                    class="mr-2"
+                    src="@/assets/icon/ic_tinder/drink_of_choice@1x.png"
+                    width="25"
+                  />
                   How often do you drink alcohol?
                 </div>
               </div>
-              <div class="">
+              <div class="bor-bottom">
                 <button
                   v-for="(item, index) in listDrinkingParams"
                   :key="index"
                   :id="`drinking_` + item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white drinking"
+                  class="style-option-click drinking"
                   @click="onChoseDrinking(item)"
                 >
                   {{ item.value }}
@@ -67,14 +79,20 @@
             <!-- Phong cách  -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="padding-describe">Are you a smoker?</div>
+                <div class="name-option-dialog flex items-center">
+                  <img
+                    class="mr-2"
+                    src="@/assets/icon/ic_tinder/smoking@1x.png"
+                    width="25"
+                  />Are you a smoker?
+                </div>
               </div>
-              <div class="">
+              <div class="bor-bottombor-bottom">
                 <button
                   v-for="(item, index) in listSmokingParams"
                   :key="index"
                   :id="`smoking_` + item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white smoking"
+                  class="style-option-click smoking"
                   @click="onChoseSmoking(item)"
                 >
                   {{ item.value }}
@@ -84,14 +102,20 @@
             <!-- Trạng thái hôn nhân -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="padding-describe">Do you exercise?</div>
+                <div class="name-option-dialog flex items-center">
+                  <img
+                    class="mr-2"
+                    src="@/assets/icon/ic_tinder/workout@2x.png"
+                    width="25"
+                  />Do you exercise?
+                </div>
               </div>
-              <div class="">
+              <div class="bor-bottom">
                 <button
                   v-for="(item, index) in listWorkoutParam"
                   :key="index"
                   :id="`workout_` + item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white workout"
+                  class="style-option-click workout"
                   @click="onChoseWorkout(item)"
                 >
                   {{ item.value }}
@@ -101,14 +125,20 @@
             <!-- Tính cách -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="padding-describe">Do you follow any diet?</div>
+                <div class="name-option-dialog flex items-center">
+                  <img
+                    class="mr-2"
+                    src="@/assets/icon/ic_tinder/appetite@1x.png"
+                    width="25"
+                  />Do you follow any diet?
+                </div>
               </div>
-              <div class="">
+              <div class="bor-bottom">
                 <button
                   v-for="(item, index) in listDietaryPreferenceParams"
                   :key="index"
                   :id="`dietaryPreference_` + item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white dietaryPreference"
+                  class="style-option-click dietaryPreference"
                   @click="onChoseDietaryPreference(item)"
                 >
                   {{ item.value }}
@@ -118,16 +148,21 @@
 
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="padding-describe">
+                <div class="name-option-dialog flex items-center">
+                  <img
+                    class="mr-2"
+                    src="@/assets/icon/ic_tinder/social_media@1x.png"
+                    width="25"
+                  />
                   How active you are on social media?
                 </div>
               </div>
-              <div class="">
+              <div class="bor-bottom">
                 <button
                   v-for="(item, index) in listSocialMediaParams"
                   :key="index"
                   :id="`socialMedia_` + item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white socialMedia"
+                  class="style-option-click socialMedia"
                   @click="onChoseSocialMedia(item)"
                 >
                   {{ item.value }}
@@ -137,16 +172,21 @@
 
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="padding-describe">
+                <div class="name-option-dialog flex items-center">
+                  <img
+                    class="mr-2"
+                    src="@/assets/icon/ic_tinder/sleeping_habits@1x.png"
+                    width="25"
+                  />
                   How are your sleeping habits?
                 </div>
               </div>
-              <div class="">
+              <div class="bor-bottom-not">
                 <button
                   v-for="(item, index) in listSleepingHabitParams"
                   :key="index"
                   :id="`sleepingHabit_` + item.code"
-                  class="oftion-interests mr-3 mb-3 p-3 text-white sleepingHabit"
+                  class="style-option-click sleepingHabit"
                   @click="onChoseSleepingHabit(item)"
                 >
                   {{ item.value }}
@@ -187,6 +227,7 @@ export default {
       dietaryPreferenceValue: null,
       socialMediaValue: null,
       sleepingHabitValue: null,
+      scrolled: false,
     };
   },
 
@@ -241,6 +282,8 @@ export default {
         if (`pet_` + val.code === element.id) {
           this.petValue = val;
           element.classList.add("bg-active");
+          document.getElementsByClassName("type-life")[0].style.color =
+            "#f65a62";
         } else {
           element.classList.remove("bg-active");
         }
@@ -254,6 +297,8 @@ export default {
         if (`drinking_` + val.code === element.id) {
           this.drinkingValue = val;
           element.classList.add("bg-active");
+          document.getElementsByClassName("type-life")[0].style.color =
+            "#f65a62";
         } else {
           element.classList.remove("bg-active");
         }
@@ -267,6 +312,8 @@ export default {
         if (`workout_` + val.code === element.id) {
           this.workoutValue = val;
           element.classList.add("bg-active");
+          document.getElementsByClassName("type-life")[0].style.color =
+            "#f65a62";
         } else {
           element.classList.remove("bg-active");
         }
@@ -280,6 +327,8 @@ export default {
         if (`smoking_` + val.code === element.id) {
           this.smokingValue = val;
           element.classList.add("bg-active");
+          document.getElementsByClassName("type-life")[0].style.color =
+            "#f65a62";
         } else {
           element.classList.remove("bg-active");
         }
@@ -294,6 +343,8 @@ export default {
         if (`dietaryPreference_` + val.code === element.id) {
           this.dietaryPreferenceValue = val;
           element.classList.add("bg-active");
+          document.getElementsByClassName("type-life")[0].style.color =
+            "#f65a62";
         } else {
           element.classList.remove("bg-active");
         }
@@ -306,6 +357,8 @@ export default {
         if (`socialMedia_` + val.code === element.id) {
           this.socialMediaValue = val;
           element.classList.add("bg-active");
+          document.getElementsByClassName("type-life")[0].style.color =
+            "#f65a62";
         } else {
           element.classList.remove("bg-active");
         }
@@ -319,6 +372,8 @@ export default {
         if (`sleepingHabit_` + val.code === element.id) {
           this.sleepingHabitValue = val;
           element.classList.add("bg-active");
+          document.getElementsByClassName("type-life")[0].style.color =
+            "#f65a62";
         } else {
           element.classList.remove("bg-active");
         }
@@ -381,13 +436,32 @@ export default {
       this.setDietaryPreference(this.dietaryPreferenceValue);
       this.setSocialMedia(this.socialMediaValue);
       this.setSleepingHabit(this.sleepingHabitValue);
-      this.$emit("onClickSaveLife", false);
+      this.$emit("onClickCancelLife", false);
+    },
+    handleScroll() {
+      debugger;
+      this.scrolled = window.scrollY > 0;
     },
   },
-
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
   mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+
     const profileBasic = this.$store.state.userModule.user_profile.profiles;
 
+    if (
+      profileBasic.pet ||
+      profileBasic.drinking ||
+      profileBasic.smoking ||
+      profileBasic.workout ||
+      profileBasic.dietaryPreference ||
+      profileBasic.socialMedia ||
+      profileBasic.sleepingHabit
+    ) {
+      document.getElementsByClassName("type-life")[0].style.color = "#f65a62";
+    }
     if (profileBasic.pet) {
       document
         .getElementById("pet_" + profileBasic.petValue)
@@ -434,9 +508,7 @@ export default {
   border: 1.5px solid #f65a62 !important;
   color: #f65a62;
 }
-
-.oftion-interests {
-  border: 1.5px solid white;
-  border-radius: 8px;
+.name-option-dialog img {
+  filter: invert(90%) sepia(20%) saturate(200%) hue-rotate(80deg);
 }
 </style>

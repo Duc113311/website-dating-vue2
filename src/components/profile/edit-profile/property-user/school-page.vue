@@ -3,7 +3,7 @@
     <div class="w-full">
       <div class="w-full flex justify-between bh-title p-3">
         <div>SCHOOL</div>
-        <div v-if="nameSchool?.length === 0">+3%</div>
+        <div v-if="completeSchool">+4%</div>
       </div>
       <div class="w-full flex style-form">
         <div class="flex justify-between w-full">
@@ -41,6 +41,14 @@ export default {
         // Note: we are using destructuring assignment syntax here.
         this.nameSchool = newValue;
       },
+    },
+
+    completeSchool() {
+      const value = this.$store.state.userModule.user_profile?.profiles?.school;
+      if (value !== "") {
+        return false;
+      }
+      return true;
     },
   },
 

@@ -71,7 +71,7 @@ export default {
       await setTimeout(() => {
         this.loading = false;
         this.$router.push({
-          path: "/edit-profile",
+          path: "/test-edit",
           query: {
             scream: "edit-profile",
           },

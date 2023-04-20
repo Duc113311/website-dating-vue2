@@ -3,12 +3,18 @@
     <div class="w-full relative">
       <div class="w-full flex justify-between p-3 bh-title">
         <div class="">LIFE STYLE</div>
-        <div v-if="completeLifeStyle">+22%</div>
+        <div v-if="completeLifeStyle">+4%</div>
       </div>
 
       <div class="w-full bg-life">
         <div class="w-full item-life">
-          <div class="w-6/12 bh-item-title">Pets free</div>
+          <div class="w-6/12 bh-item-title flex items-center">
+            <img
+              class="mr-2"
+              src="@/assets/icon/ic_tinder/pets@1x.png"
+              width="25"
+            />Pets free
+          </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
@@ -23,7 +29,13 @@
           </div>
         </div>
         <div class="w-full item-life">
-          <div class="w-6/12 bh-item-title">Drink beer</div>
+          <div class="w-6/12 bh-item-title flex items-center">
+            <img
+              class="mr-2"
+              src="@/assets/icon/ic_tinder/drink_of_choice@1x.png"
+              width="25"
+            />Drink beer
+          </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
@@ -38,7 +50,13 @@
           </div>
         </div>
         <div class="w-full item-life">
-          <div class="w-6/12 bh-item-title">Are you a smoker</div>
+          <div class="w-6/12 bh-item-title flex items-center">
+            <img
+              class="mr-2"
+              src="@/assets/icon/ic_tinder/smoking@1x.png"
+              width="25"
+            />Are you a smoker
+          </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
@@ -53,7 +71,13 @@
           </div>
         </div>
         <div class="w-full item-life">
-          <div class="w-6/12 bh-item-title">Practice</div>
+          <div class="w-6/12 bh-item-title flex items-center">
+            <img
+              class="mr-2"
+              src="@/assets/icon/ic_tinder/workout@2x.png"
+              width="25"
+            />Practice
+          </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
@@ -68,7 +92,13 @@
           </div>
         </div>
         <div class="w-full item-life">
-          <div class="w-6/12 bh-item-title">Diet</div>
+          <div class="w-6/12 bh-item-title flex items-center">
+            <img
+              class="mr-2"
+              src="@/assets/icon/ic_tinder/appetite@1x.png"
+              width="25"
+            />Diet
+          </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
@@ -83,7 +113,13 @@
           </div>
         </div>
         <div class="w-full item-life">
-          <div class="w-6/12 bh-item-title">Social media</div>
+          <div class="w-6/12 bh-item-title flex items-center">
+            <img
+              class="mr-2"
+              src="@/assets/icon/ic_tinder/social_media@1x.png"
+              width="25"
+            />Social media
+          </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
@@ -99,7 +135,13 @@
         </div>
 
         <div class="w-full item-life-end">
-          <div class="w-6/12 bh-item-title">Sleeping habits</div>
+          <div class="w-6/12 bh-item-title flex items-center">
+            <img
+              class="mr-2"
+              src="@/assets/icon/ic_tinder/sleeping_habits@1x.png"
+              width="25"
+            />Sleeping habits
+          </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
@@ -207,4 +249,8 @@ export default {
 };
 </script>
 
-<style lang="css"></style>
+<style lang="css">
+.bh-item-title img {
+  filter: invert(90%) sepia(20%) saturate(200%) hue-rotate(80deg);
+}
+</style>

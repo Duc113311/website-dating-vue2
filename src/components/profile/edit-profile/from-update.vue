@@ -60,10 +60,11 @@
       v-show="isShowInterest"
       class="w-full h-full absolute top-0 left-0 z-30"
     >
-      <form-interests
+      <FormInterest
         @onClickSaveInterest="onClickSaveInterest"
         @onClickHideInterest="onClickHideInterest"
-      ></form-interests>
+      ></FormInterest>
+      x
     </div>
     <!-- Dating purposes -->
     <div class="w-full h-full absolute top-0 left-0 z-30" v-if="isShowPurposes">
@@ -100,6 +101,7 @@
 </template>
 
 <script>
+import FormInterest from "./dialog/form-interest";
 import FormLifeStyle from "./dialog/form-life-style";
 import FormInformation from "./dialog/form-information";
 import FormLanguages from "./dialog/form-languages";
@@ -123,9 +125,9 @@ import LivingPage from "./property-user/living-page.vue";
 import SexualsPage from "./property-user/sexuals-page.vue";
 import ControlPage from "./property-user/control-page.vue";
 import InterestPage from "./property-user/interest-page.vue";
-import FormInterests from "./form-interests.vue";
 export default {
   components: {
+    FormInterest,
     FormLifeStyle,
     FormInformation,
     FormLanguages,
@@ -149,7 +151,6 @@ export default {
     SexualsPage,
     ControlPage,
     InterestPage,
-    FormInterests,
   },
   name: "from-update",
 
@@ -248,4 +249,15 @@ export default {
 };
 </script>
 
-<style lang="css"></style>
+<style lang="css">
+.el-switch__core:after {
+  content: "";
+  position: absolute;
+  top: -3px !important;
+  border-radius: 100%;
+  transition: all 0.3s;
+  width: 24px !important;
+  height: 24px !important;
+  background-color: #fff;
+}
+</style>

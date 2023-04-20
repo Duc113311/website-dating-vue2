@@ -3,7 +3,7 @@
     <div class="v-modal-bg w-full h-full" @click="onChangeCancel()"></div>
     <div class="w-full absolute top-28 flex justify-center p-5">
       <div
-        class="rounded-lg items-center w-form-common overflow-hidden relative p-5 cursor-pointer"
+        class="rounded-lg items-center w-full w-form-common overflow-hidden relative p-5 cursor-pointer"
       >
         <div class="w-full justify-between flex items-center">
           <div @click="onChangeCancel()">
@@ -31,14 +31,23 @@
 
             <!-- Tìm kiếm -->
             <div class="w-full mb-2 mt-2">
-              <div class="w-full">
+              <div class="w-full relative">
                 <el-input
-                  type="search"
-                  @change="onChangeFilterText"
+                  @input="onChangeFilterText"
                   v-model="valueSearch"
+                  placeholder="Search language"
                   name=""
                   id=""
-                />
+                >
+                  <template slot="append" v-if="valueSearch.length !== 0">
+                    <div class="ic" @click="onClickRemoveLanguage">
+                      <img
+                        src="../../../../assets/icon/icon-cancel.png"
+                        width="20"
+                      />
+                    </div>
+                  </template>
+                </el-input>
               </div>
             </div>
 
@@ -64,6 +73,7 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   name: "form-languages",
 
@@ -82,10 +92,19 @@ export default {
   computed: {},
 
   methods: {
+    ...mapMutations(["setSelectLanguages"]),
+    onClickRemoveLanguage() {
+      this.valueSearch = "";
+      this.listLanguages =
+        this.$store.state.commonModule.listLifeStyleSingle.languages;
+    },
     onChangeCancel() {
       this.$emit("onHideLanguages", false);
     },
-    onChangeSaveInterest() {},
+    onChangeSaveInterest() {
+      this.setSelectLanguages(this.listChecked);
+      this.$emit("onHideLanguages", false);
+    },
 
     onSelectLanguages(val) {
       debugger;
@@ -111,11 +130,11 @@ export default {
             .innerHTML.toString();
           const objectChecked = {
             code: val,
-            value: nameInterest,
+            value: nameInterest.trim(),
           };
           this.listChecked.push(objectChecked);
           document.getElementsByClassName("type-language")[0].style.color =
-            "blue";
+            "#f65a62";
         }
       }
     },
@@ -138,6 +157,33 @@ export default {
       }
     },
   },
+
+  mounted() {
+    debugger;
+
+    const listCode =
+      this.$store.state.userModule.user_profile?.profiles?.languages;
+    debugger;
+    if (listCode.length !== 0) {
+      document.getElementsByClassName("type-language")[0].style.color =
+        "#f65a62";
+      for (let index = 0; index < listCode.length; index++) {
+        const element = listCode[index];
+        debugger;
+        document
+          .getElementById("language_" + element)
+          .classList.add("bg-active");
+        const nameInterest = document
+          .getElementById("language_" + element)
+          .innerHTML.toString();
+        const objectChecked = {
+          code: element,
+          value: nameInterest.trim(),
+        };
+        this.listChecked.push(objectChecked);
+      }
+    }
+  },
 };
 </script>
 
@@ -153,5 +199,20 @@ export default {
 .bg-active {
   border: 1.5px solid #f65a62 !important;
   color: #f65a62;
+}
+.el-input-group__append {
+  background: none !important;
+  width: 30px;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-right: 10px;
 }
 </style>

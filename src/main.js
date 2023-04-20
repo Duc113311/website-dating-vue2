@@ -11,8 +11,11 @@ import VueCarousel from "vue-carousel";
 import Vue2TouchEvents from "vue2-touch-events";
 import VueCropper from "vue-cropperjs";
 
-import store from "./stores/store-data";
+/* import specific icons */
 
+/* add icons to the library */
+
+import store from "./stores/store-data";
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 Vue.use(VueCarousel);

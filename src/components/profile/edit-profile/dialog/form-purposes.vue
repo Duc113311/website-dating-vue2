@@ -10,7 +10,7 @@
             <i class="fa-solid fa-xmark size-icon-default"></i>
           </div>
           <div @click="onChangeSaveInterest()">
-            <i class="fa-solid fa-check size-icon-default"></i>
+            <i class="fa-solid fa-check size-icon-default type-Purposes"></i>
           </div>
         </div>
 
@@ -29,14 +29,14 @@
                 :key="index"
                 class="item-dating"
                 :id="item.code"
-                @click="onClickPurposes(item.code)"
+                @click="onClickPurposes(item)"
               >
                 <div class="text-center">
                   <div class="w-full flex justify-center">
                     <img :src="item.url" width="30" />
                   </div>
 
-                  <div class="mt-2">{{ item.name }}</div>
+                  <div class="mt-2">{{ item.value }}</div>
                 </div>
               </button>
             </div>
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   name: "form-purposes",
 
@@ -56,45 +57,60 @@ export default {
       listPurposes: [
         {
           code: "item_1",
-          name: "Người yêu",
+          value: "Beloved",
           url: require("@/assets/icon_dialog/relationship_intent_cupid@1x.png"),
         },
         {
           code: "item_2",
-          name: "Bạn hẹn hò lâu dài",
+          value: "You are dating for a long time",
           url: require("@/assets/icon_dialog/relationship_intent_heart_eyes@2x.png"),
         },
         {
           code: "item_3",
-          name: "Bất kỳ điều gì có thể",
+          value: "Anything possible",
           url: require("@/assets/icon_dialog/relationship_intent_clinking_glasses@1x.png"),
         },
         {
           code: "item_4",
-          name: "Quan hệ không ràng buộc",
+          value: "Unbound relation",
           url: require("@/assets/icon_dialog/relationship_intent_tada@2x.png"),
         },
         {
           code: "item_5",
-          name: "Những người bạn mới",
+          value: "New friends",
           url: require("@/assets/icon_dialog/relationship_intent_wave@3x.png"),
         },
         {
           code: "item_6",
-          name: "Mình cũng chưa rõ lắm",
+          value: "I'm not sure either",
           url: require("@/assets/icon_dialog/relationship_intent_thinking_face@2x.png"),
         },
       ],
+      valuePurposes: {},
     };
   },
 
+  computed: {
+    listDatingPurposes() {
+      const newData =
+        this.$store.state.commonModule.listLifeStyleSingle.datingPurposes;
+
+      return newData;
+    },
+  },
+
   methods: {
+    ...mapMutations(["setDatingPurposes"]),
     onChangeCancel() {
       this.$emit("onHidePurposes", false);
     },
 
     onChangeSaveInterest() {
-      this.$emit("onSavePurposes", false);
+      if (Object.keys(this.valuePurposes).length !== 0) {
+        this.setDatingPurposes(this.valuePurposes);
+      }
+
+      this.$emit("onHidePurposes", false);
     },
 
     onClickPurposes(val) {
@@ -104,13 +120,28 @@ export default {
       for (let index = 0; index < listDocument.length; index++) {
         const element = listDocument[index];
         console.log(element);
-        if (val === element.id) {
+        if (val.code === element.id) {
+          this.valuePurposes = val;
+
           element.classList.add("border-active");
+          document.getElementsByClassName("type-Purposes")[0].style.color =
+            "#f65a62";
         } else {
           element.classList.remove("border-active");
         }
       }
     },
+  },
+
+  mounted() {
+    debugger;
+    const newData =
+      this.$store.state.userModule.user_profile.profiles.datingPurpose;
+    document.getElementById(newData).classList.add("border-active");
+    if (newData) {
+      document.getElementsByClassName("type-Purposes")[0].style.color =
+        "#f65a62";
+    }
   },
 };
 </script>
