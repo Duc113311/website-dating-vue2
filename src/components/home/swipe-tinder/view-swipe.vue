@@ -170,7 +170,6 @@ export default {
       idImage: "",
       isPointer: true,
       imageActive: 0,
-      isLoadData: true,
       isAnimating: false,
       isProgressBoost: true,
       truc_x: 0,
@@ -183,6 +182,8 @@ export default {
       bgColorApp: "linear-gradient(#FE4E58,#FD757F)",
     };
   },
+
+  props: ["isLoadData"],
 
   computed: {
     listDataUser() {
@@ -197,7 +198,6 @@ export default {
     },
   },
 
-  created() {},
   methods: {
     ...mapMutations([
       "setUrlNameAvatarUser",
@@ -370,11 +370,12 @@ export default {
     },
   },
 
-  mounted() {
-    setTimeout(() => {
-      this.isLoadData = false;
-    }, 2000);
+  created() {
+    // setTimeout(() => {
+    //   this.isLoadData = false;
+    // }, 2000);
   },
+  mounted() {},
 };
 </script>
 

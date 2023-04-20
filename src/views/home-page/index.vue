@@ -11,6 +11,7 @@
               ref="myViewSwipe"
               @onShowDetailUser="onShowDetailUser"
               @onShowPackage="onShowPackage"
+              :isLoadData="loading"
             ></ViewSwipe>
 
             <!-- <ActionDating @onClickDecide="decide"></ActionDating> -->
