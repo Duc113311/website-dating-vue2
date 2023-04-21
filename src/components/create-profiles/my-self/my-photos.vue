@@ -23,9 +23,7 @@
             <div class="wrapper">
               <div class="file-upload">
                 <input type="file" @change="toggleUpload($event, fileList)" />
-                <i
-                  class="fa fa-plus rounded-full p-1.5 text-white icon-plus"
-                ></i>
+                <i class="fa fa-plus rounded-full p-1.5 icon-plus"></i>
               </div>
 
               <div

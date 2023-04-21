@@ -5,7 +5,7 @@
     >
       <div
         class="layout-detail overflow-hidden relative"
-        v-bind:class="[isDarkTheme ? 'dark-theme-bg' : 'light-theme-bg']"
+        v-bind:class="[isDarkTheme ? 'dark-theme' : 'light-theme']"
       >
         <div
           v-show="isShowIconApp"
@@ -102,14 +102,14 @@ export default {
   mounted() {},
 };
 </script>
-<style lang="css">
+<style lang="scss">
 @import "@/assets/css/common.css";
 @import "@/assets/css/txt-common.css";
 @import "@/assets/css/color-text.css";
 @import "@/assets/css/color-bg.css";
 
-@import "@/assets/css/dark-them.css";
-@import "@/assets/css/light-theme.css";
+@import "@/assets/css/dark-them.scss";
+@import "@/assets/css/light-theme.scss";
 @import "@/assets/css/reponsive-scream.css";
 
 @import "@/assets/css/bh-animations.css";

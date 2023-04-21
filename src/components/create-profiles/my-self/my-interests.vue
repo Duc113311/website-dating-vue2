@@ -17,7 +17,7 @@
           <button
             @click="onSelectInterest(item.code)"
             :id="item.code"
-            class="oftion-interests mr-3 mb-3 p-3 text-white"
+            class="oftion-interests mr-3 mb-3 p-3"
             size="large"
           >
             {{ item.value }}

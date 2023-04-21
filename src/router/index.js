@@ -390,6 +390,14 @@ const routes = [
                 /* webpackChunkName: "phone-number-setting" */ "../views/profile-page/setting/phone-number/index.vue"
               ),
           },
+          {
+            path: "/test-setting",
+            name: "test-setting-page",
+            component: () =>
+              import(
+                /* webpackChunkName: "test-setting-page" */ "../views/profile-page/setting/test-setting/index.vue"
+              ),
+          },
         ],
       },
     ],

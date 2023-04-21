@@ -433,9 +433,6 @@
 </template>
 
 <script>
-import FormLifeStyle from "../../../../components/profile/edit-profile/form-life-style";
-import FormInterests from "../../../../components/profile/edit-profile/form-interests.vue";
-
 import Footer from "../../../../components/layout/footer-home/footer";
 import MyPhotos from "../../../../components/create-profiles/my-self/my-photos";
 import BhBack from "../../../../components/bh-element-ui/button/bh-back";
@@ -448,8 +445,6 @@ export default {
     MyPhotos,
     BhBack,
     BhMedia,
-    FormLifeStyle,
-    FormInterests,
   },
   name: "edit-profile",
 

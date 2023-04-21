@@ -118,7 +118,7 @@ export default {
 
     // Show Setting
     onClickSettingDetail() {
-      this.$router.push({ path: "/setting" });
+      this.$router.push({ path: "/test-setting" });
     },
 
     // Show Edit

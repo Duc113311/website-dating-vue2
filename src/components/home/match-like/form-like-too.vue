@@ -9,7 +9,7 @@
       :class="[isShowConfirm ? 'grid-send' : 'grid-confirm']"
     >
       <div class="w-full mt-4">
-        <i class="fa-solid fa-xmark text-white text-3xl"></i>
+        <i class="fa-solid fa-xmark text-3xl"></i>
       </div>
       <div class="w-full relative">
         <div

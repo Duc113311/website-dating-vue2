@@ -1,0 +1,58 @@
+:root[theme="light"] {
+  --bg-color: #ffffff;
+  --color-title: #000000;
+  --color-describe: #6c7995;
+  --color-button-default: #74809a;
+  --color-button-active: #fd5d65;
+  --color-button-supper: #01b983;
+  --color-button-like: #f6a800;
+  --color-button-text: #ffffff;
+  --color-input-bg: #eef1fa;
+  --color-input-text: #919cb8;
+  --color-input-focus: #000000;
+  --color-border-button-sign: #0084ff;
+  --color-border-button-select: #000000;
+  --color-border-button-active: #fd5d65;
+  --color-text-error: #ff0a09;
+  --color-text-select: #000000;
+  --color-text-button-no-bg: #fd5c64;
+  --color-icon: #5f6a86;
+  --color-icon-active: #ffffff;
+  --color-title-icon: #79849e;
+  --color-describe-setup: #5e6a85;
+  --color-placeholder-input: #747f9a;
+}
+
+.theme-light {
+  background-color: var(--bg-color);
+  color: var(--color-title);
+
+  // login
+  .describe-text {
+    color: var(--color-describe);
+  }
+
+  .button-default {
+    background-color: var(--color-button-default);
+    color: var(--color-button-text);
+  }
+
+  .button-active {
+    background-color: var(--color-button-active);
+    color: var(--color-button-text);
+  }
+
+  .input-default {
+    background-color: var(--color-input-bg);
+    color: var(--color-input-focus);
+  }
+
+  .option-default {
+    border: 1.4px solid var(--color-border-button-select);
+    color: var(--color-input-focus);
+  }
+  .option-active {
+    border: 1.4px solid var(--color-border-button-active);
+    color: var(--color-border-button-active);
+  }
+}

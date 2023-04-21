@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-center w-full pl-10 pr-10 items-center">
     <button
-      class="text-base text-white w-80 rounded-lg p-5 color-button"
+      class="text-base w-80 rounded-lg p-5 color-button"
       @click="onClickSeeLikes()"
     >
       SEE WHO LIKES YOU

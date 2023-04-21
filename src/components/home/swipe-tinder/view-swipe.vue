@@ -69,7 +69,7 @@
                   <i class="fa-solid fa-location-dot"></i>
                 </div>
                 <span class="font-describe"
-                  >{{ bindingDistance(scope.data.distanceKm) }} km away</span
+                  >{{ bindingDistance(scope.data?.distanceKm) }} km away</span
                 >
               </div>
             </div>
@@ -258,7 +258,7 @@ export default {
     },
 
     bindingDistance(val) {
-      if (parseInt(val.toFixed(0)) === 0) {
+      if ((parseInt(val) === 0) | (val === undefined)) {
         return 1;
       } else {
         return parseInt(val.toFixed(0));
@@ -333,7 +333,7 @@ export default {
             userIdCustomer: value.item.userId,
           },
         };
-        await this.patchNopeUserId(data);
+        console.log(data);
       }
       if (value.type.toString() === "super") {
         this.isAnimating = true;
@@ -350,7 +350,7 @@ export default {
             userIdCustomer: value.item.userId,
           },
         };
-        await this.postLikeUserId(data);
+        console.log(data);
       }
       this.history.push(value.item);
       this.imageActive = 0;

@@ -41,7 +41,7 @@
         <BhLocation @onShowAvoid="onShowAvoid"></BhLocation>
         <div
           v-show="isShowUp"
-          class="w-full text-base text-white mt-5 angle-down pl-10 pr-10 flex justify-center items-center"
+          class="w-full text-base mt-5 angle-down pl-10 pr-10 flex justify-center items-center"
           @click="onTellMore()"
         >
           <span class="padding-describe">Tell me more</span>
