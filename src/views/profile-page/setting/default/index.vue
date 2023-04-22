@@ -68,7 +68,7 @@
           </div>
         </div>
 
-        <!-- golbal -->
+        <!-- global -->
         <div class="w-full flex justify-center items-center">
           <div class="w-full">
             <div

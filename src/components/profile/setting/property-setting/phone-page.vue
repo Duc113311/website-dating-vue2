@@ -23,7 +23,20 @@
 </template>
 
 <script>
-export default {};
-</script>
+export default {
+  name: "phone-page-setting",
+  data() {
+    return {};
+  },
 
-<style></style>
+  methods: {
+    onClickUpdatePhone() {
+      debugger;
+      this.$router
+        .push({ path: "/phone-number", name: "phone-number-setting" })
+        .catch(() => {});
+    },
+  },
+};
+</script>
+<style css scoped></style>

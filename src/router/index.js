@@ -342,7 +342,7 @@ const routes = [
             name: "test-edit-page",
             component: () =>
               import(
-                /* webpackChunkName: "test-edit-page" */ "../views/profile-page/edit-profile/test-edit-page/index.vue"
+                /* webpackChunkName: "test-edit-page" */ "../views/profile-page/edit-profile/test-edit-page"
               ),
           },
           {
