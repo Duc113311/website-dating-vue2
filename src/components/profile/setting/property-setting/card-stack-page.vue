@@ -36,18 +36,40 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
 export default {
   name: "card-stack-page",
 
   data() {
-    return {
-      valueCardStack: "",
-    };
+    return {};
+  },
+
+  computed: {
+    ...mapGetters({ nameCardStack: "showCardStack" }),
+    // Show me on Card Stack
+    valueCardStack: {
+      get() {
+        const cardStack = this.nameCardStack;
+
+        return cardStack;
+      },
+      set(newName) {
+        debugger;
+        return newName;
+      },
+    },
   },
 
   methods: {
+    ...mapMutations(["setCardStack"]),
     onChangeCardStack() {
-      debugger;
+      const cardStack =
+        this.$store.state.userModule.user_profile.settings.toppicksDiscoverable;
+      if (cardStack) {
+        this.setCardStack(false);
+      } else {
+        this.setCardStack(true);
+      }
     },
   },
 };

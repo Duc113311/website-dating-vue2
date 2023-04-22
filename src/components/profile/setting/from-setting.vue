@@ -65,3 +65,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.el-slider__button-wrapper {
+  z-index: 10 !important;
+}
+</style>

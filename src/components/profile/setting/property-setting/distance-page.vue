@@ -31,19 +31,37 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   name: "distance-page",
 
   data() {
     return {
-      valueDistance: 10,
+      valueDistance:
+        this.$store.state.userModule.user_profile.settings.distancePreference
+          .range,
       valuePeopleDistance: "",
     };
   },
 
   methods: {
+    ...mapMutations(["setValueDistance", "setPeopleDistance"]),
+
+    onChangeDistance() {
+      debugger;
+      this.setValueDistance(this.valueDistance);
+    },
+
     onChangePeopleDistance() {
       debugger;
+      const distance =
+        this.$store.state.userModule.user_profile.settings.distancePreference
+          .onlyShowInThis;
+      if (distance) {
+        this.setPeopleDistance(false);
+      } else {
+        this.setPeopleDistance(true);
+      }
     },
   },
 };

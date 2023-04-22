@@ -47,19 +47,29 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   name: "show-me-page",
 
   data() {
-    return {
-      showMeGender: "",
-    };
+    return {};
+  },
+
+  computed: {
+    showMeGender() {
+      const genderShowMe =
+        this.$store.state.userModule.user_profile?.settings.genderShowMe;
+      debugger;
+      return genderShowMe;
+    },
   },
 
   methods: {
+    ...mapMutations(["setShowGender"]),
     onChangeGenderShowMe(val) {
       debugger;
       console.log(val);
+      this.setShowGender(val);
     },
   },
 };

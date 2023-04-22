@@ -35,25 +35,59 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
 export default {
   name: "age-page",
 
   data() {
     return {
-      showAgeMin: 10,
-      showAgeMax: 40,
-      valueAge: "",
-      valueAgePreference: "",
+      valueAge: [
+        this.$store.state.userModule.user_profile.settings.agePreference.min,
+        this.$store.state.userModule.user_profile.settings.agePreference.max,
+      ],
     };
   },
 
+  computed: {
+    ...mapGetters({ nameAgePreference: "showAgePreference" }),
+    showAgeMin() {
+      return this.valueAge[0];
+    },
+
+    showAgeMax() {
+      return this.valueAge[1];
+    },
+
+    valueAgePreference: {
+      get() {
+        const peopleDistance = this.nameAgePreference;
+
+        return peopleDistance;
+      },
+      set(newName) {
+        debugger;
+        return newName;
+      },
+    },
+  },
+
   methods: {
+    ...mapMutations(["setValueAgeRange", "setAgePreference"]),
     onChangeAgeRange() {
       debugger;
+      this.setValueAgeRange(this.valueAge);
     },
 
     onChangeAgePreference() {
       debugger;
+      const preference =
+        this.$store.state.userModule.user_profile.settings.agePreference
+          .onlyShowInThis;
+      if (preference) {
+        this.setAgePreference(false);
+      } else {
+        this.setAgePreference(true);
+      }
     },
   },
 };

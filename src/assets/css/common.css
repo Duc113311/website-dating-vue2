@@ -346,3 +346,7 @@
   padding-top: 12px;
   padding-bottom: 12px;
 }
+
+.bor-top-bottom {
+  border-bottom: 1px solid #5f6a86;
+}

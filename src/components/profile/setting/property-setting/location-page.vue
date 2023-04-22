@@ -34,9 +34,9 @@ export default {
   computed: {
     addressLocation() {
       const addressParam =
-        this.$store.state.userModule.user_profile.profiles.address;
+        this.$store.state.userModule.user_profile?.profiles?.address;
       debugger;
-      if (addressParam !== "") {
+      if (addressParam) {
         return addressParam;
       } else {
         return "My Current Location";

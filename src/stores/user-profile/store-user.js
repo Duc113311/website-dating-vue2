@@ -671,6 +671,10 @@ const mutations = {
     state.user_profile.profiles.address = data;
   },
 
+  setValueLanguage(state, value) {
+    state.user_profile.settings.global.languages.push(value);
+  },
+
   /**
    * Xét giá trị ảnh của user
    * @param {*} state
