@@ -9,8 +9,8 @@
             <div class="style-package">Sliver package</div>
           </div>
         </div>
-        <div class="w-full flex items-center form-set-list">
-          <div class="w-full style-bg-common">
+        <div class="w-full flex items-center form-set-list bg-default">
+          <div class="w-full">
             <div
               class="flex justify-between w-full form-set-item items-center bd-input"
             >
@@ -49,8 +49,8 @@
             <div class="style-package">Sliver package</div>
           </div>
         </div>
-        <div class="w-full flex items-center form-set-list">
-          <div class="w-full style-bg-common">
+        <div class="w-full flex items-center form-set-list bg-default">
+          <div class="w-full">
             <div
               class="flex justify-between w-full bd-input form-set-item items-center"
             >

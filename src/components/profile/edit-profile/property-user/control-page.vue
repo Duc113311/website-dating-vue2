@@ -1,14 +1,14 @@
 <template>
   <div class="w-full flex items-center">
-    <div class="w-full">
+    <div class="w-full mb-5">
       <div class="w-full flex bh-title p-3 items-center">
         <div>CONTROL PROFILE</div>
         <div class="ml-3">
           <div class="style-package-update">Sliver package</div>
         </div>
       </div>
-      <div class="w-full flex items-center bg-default">
-        <div class="w-full style-bg-common">
+      <div class="w-full flex items-center bg-default style-bg-common">
+        <div class="w-full">
           <div class="flex justify-between w-full bd-input pt-2 pb-2">
             <div class="bh-item-title">Don't show my age</div>
             <div>

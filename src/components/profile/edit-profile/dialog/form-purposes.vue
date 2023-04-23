@@ -3,7 +3,7 @@
     <div class="v-modal-bg w-full h-full" @click="onChangeCancel()"></div>
     <div class="w-full absolute top-56 flex justify-center p-5">
       <div
-        class="rounded-lg items-center w-form-life relative p-5 cursor-pointer"
+        class="rounded-lg items-center bg-default w-form-life relative p-5 cursor-pointer"
       >
         <div class="w-full justify-between flex items-center h-title-close">
           <div @click="onChangeCancel()">
@@ -151,7 +151,6 @@ export default {
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   border-radius: 10px;
-  background-color: #4c5468;
   height: 130px;
 }
 

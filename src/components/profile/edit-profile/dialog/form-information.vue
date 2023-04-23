@@ -4,7 +4,7 @@
     <div
       class="w-full h-full flex justify-center items-center absolute top-0 left-0"
     >
-      <div class="rounded-lg items-center w-form-life relative p-5">
+      <div class="rounded-lg bg-default items-center w-form-life relative p-5">
         <div class="w-full justify-between flex items-center h-title-close">
           <div @click="onChangeCancel()">
             <i class="fa-solid fa-xmark size-icon-default"></i>
@@ -39,7 +39,7 @@
                   v-for="(item, index) in listZodiacParams"
                   :key="index"
                   :id="`zodiac_` + item.code"
-                  class="style-option-click zodiac"
+                  class="style-option-click border-default zodiac"
                   @click="onChoseZodiac(item)"
                 >
                   {{ item.value }}
@@ -63,7 +63,7 @@
                   v-for="(item, index) in listEducationParams"
                   :key="index"
                   :id="`education_` + item.code"
-                  class="style-option-click education"
+                  class="style-option-click border-default education"
                   @click="onChoseEducation(item)"
                 >
                   {{ item.value }}
@@ -87,7 +87,7 @@
                   v-for="(item, index) in listFamilyPlansParams"
                   :key="index"
                   :id="`familyFlan_` + item.code"
-                  class="style-option-click familyFlan"
+                  class="style-option-click border-default familyFlan"
                   @click="onChoseFamilyPlan(item)"
                 >
                   {{ item.value }}
@@ -111,7 +111,7 @@
                   v-for="(item, index) in listCovidVaccinesParam"
                   :key="index"
                   :id="`covidVaccine_` + item.code"
-                  class="style-option-click covidVaccine"
+                  class="style-option-click border-default covidVaccine"
                   @click="onChoseCovidVaccines(item)"
                 >
                   {{ item.value }}
@@ -135,7 +135,7 @@
                   v-for="(item, index) in listPersonalitiesParams"
                   :key="index"
                   :id="`personality_` + item.code"
-                  class="style-option-click personality"
+                  class="style-option-click border-default personality"
                   @click="onChosePersonality(item)"
                 >
                   {{ item.value }}
@@ -159,7 +159,7 @@
                   v-for="(item, index) in listCommunicationStylesParams"
                   :key="index"
                   :id="`communicationType_` + item.code"
-                  class="style-option-click communicationType"
+                  class="style-option-click border-default communicationType"
                   @click="onChoseCommunication(item)"
                 >
                   {{ item.value }}
@@ -183,7 +183,7 @@
                   v-for="(item, index) in listLoveStylesParams"
                   :key="index"
                   :id="`loveStyle_` + item.code"
-                  class="style-option-click loveStyle"
+                  class="style-option-click border-default loveStyle"
                   @click="onChoseLoveStyles(item)"
                 >
                   {{ item.value }}

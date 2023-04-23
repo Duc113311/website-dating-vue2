@@ -194,7 +194,6 @@ export default {
 
 .w-form-common {
   height: 40rem;
-  background-color: #434a5d;
 }
 .bg-active {
   border: 1.5px solid #f65a62 !important;

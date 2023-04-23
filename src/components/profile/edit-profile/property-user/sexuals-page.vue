@@ -22,7 +22,7 @@
             </div>
             <div class="bg-interest absolute h-full w-full"></div>
           </div>
-          <div class="mr-5 flex items-center" @click="onShowPopupSexuals()">
+          <div class="flex items-center" @click="onShowPopupSexuals()">
             <i class="fa-solid fa-chevron-right bh-chevron-right"></i>
           </div>
         </div>

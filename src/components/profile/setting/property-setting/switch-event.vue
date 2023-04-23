@@ -1,8 +1,8 @@
 <template>
   <div class="w-full flex items-center mt-6">
     <div class="w-full">
-      <div class="w-full flex items-center form-set-list">
-        <div class="w-full style-bg-common">
+      <div class="w-full flex items-center form-set-list bg-default">
+        <div class="w-full">
           <div class="flex justify-between w-full">
             <div class="w-full">
               <div

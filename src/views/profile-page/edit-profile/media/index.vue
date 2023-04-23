@@ -1,13 +1,13 @@
 <template>
-  <div class="w-full h-full relative p-5" v-loading="loading">
+  <div class="w-full h-full relative title-default" v-loading="loading">
     <!--  -->
     <div class="w-full h-full" v-if="isShowCrop">
-      <div class="w-full header-edit flex justify-center items-center">
+      <div class="w-full header-page flex justify-center items-center p-5">
         <div class="w-full flex justify-center items-center">
           <div class="w-1/4">
             <BhBack @onBackComponent="onBackMedia()"></BhBack>
           </div>
-          <div class="ml-20 w-3/4 text-xl text-white">Create New</div>
+          <div class="ml-20 w-3/4 text-xl">Create New</div>
         </div>
       </div>
 
@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div class="w-full h-full" v-if="!isShowCrop">
+    <div class="w-full h-full p-5" v-if="!isShowCrop">
       <div class="w-full header-edit flex justify-center items-center">
         <div class="w-full flex justify-center items-center">
           <div class="w-1/4">

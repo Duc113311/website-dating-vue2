@@ -823,7 +823,6 @@ export default {
 .item-life {
   display: flex;
   /* padding: 12px; */
-  border-bottom: 1px solid #616781;
   padding-bottom: 15px;
   padding-top: 15px;
 }

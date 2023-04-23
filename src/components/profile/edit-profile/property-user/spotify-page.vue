@@ -8,8 +8,8 @@
         <div class="">
           <img src="@/assets/icon/ic_spotify.svg" width="30" alt="" srcset="" />
         </div>
-        <div class="flex justify-between w-full p-5">
-          <div class="bh-item-title">Connect Spotify</div>
+        <div class="flex justify-between w-full">
+          <div class="pl-5 bh-item-title">Connect Spotify</div>
           <div>
             <i class="fa-solid fa-chevron-right bh-chevron-right"></i>
           </div>

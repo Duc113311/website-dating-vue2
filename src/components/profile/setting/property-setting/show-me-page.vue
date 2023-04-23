@@ -1,11 +1,11 @@
 <template>
   <div class="w-full mt-6">
-    <div class="w-full form-set-list">
+    <div class="w-full form-set-list bg-default">
       <div class="w-full flex justify-between bh-title form-set-item">
         <div>SHOW ME</div>
       </div>
       <div class="w-full flex items-center">
-        <div class="w-full style-bg-common">
+        <div class="w-full">
           <div
             class="flex justify-between w-full bd-input items-center"
             @click="onChangeGenderShowMe(`men`)"
@@ -58,7 +58,7 @@ export default {
   computed: {
     showMeGender() {
       const genderShowMe =
-        this.$store.state.userModule.user_profile?.settings.genderFilter;
+        this.$store.state.userModule.user_profile?.settings.genderShowMe;
       debugger;
       return genderShowMe;
     },

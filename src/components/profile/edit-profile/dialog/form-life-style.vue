@@ -4,7 +4,7 @@
     <div
       class="w-full h-full flex justify-center items-center absolute top-0 left-0"
     >
-      <div class="rounded-lg items-center w-form-life relative p-5">
+      <div class="rounded-lg bg-default items-center w-form-life relative p-5">
         <div class="w-full justify-between flex items-center h-title-close">
           <div @click="onChangeCancel()">
             <i class="fa-solid fa-xmark size-icon-default"></i>
@@ -39,7 +39,7 @@
                   v-for="(item, index) in listPetParams"
                   :key="index"
                   :id="`pet_` + item.code"
-                  class="style-option-click pet"
+                  class="style-option-click border-default pet"
                   @click="onChosePet(item)"
                 >
                   {{ item.value }}
@@ -64,7 +64,7 @@
                   v-for="(item, index) in listDrinkingParams"
                   :key="index"
                   :id="`drinking_` + item.code"
-                  class="style-option-click drinking"
+                  class="style-option-click border-default drinking"
                   @click="onChoseDrinking(item)"
                 >
                   {{ item.value }}
@@ -87,7 +87,7 @@
                   v-for="(item, index) in listSmokingParams"
                   :key="index"
                   :id="`smoking_` + item.code"
-                  class="style-option-click smoking"
+                  class="style-option-click border-default smoking"
                   @click="onChoseSmoking(item)"
                 >
                   {{ item.value }}
@@ -110,7 +110,7 @@
                   v-for="(item, index) in listWorkoutParam"
                   :key="index"
                   :id="`workout_` + item.code"
-                  class="style-option-click workout"
+                  class="style-option-click border-default workout"
                   @click="onChoseWorkout(item)"
                 >
                   {{ item.value }}
@@ -133,7 +133,7 @@
                   v-for="(item, index) in listDietaryPreferenceParams"
                   :key="index"
                   :id="`dietaryPreference_` + item.code"
-                  class="style-option-click dietaryPreference"
+                  class="style-option-click border-default dietaryPreference"
                   @click="onChoseDietaryPreference(item)"
                 >
                   {{ item.value }}
@@ -157,7 +157,7 @@
                   v-for="(item, index) in listSocialMediaParams"
                   :key="index"
                   :id="`socialMedia_` + item.code"
-                  class="style-option-click socialMedia"
+                  class="style-option-click border-default socialMedia"
                   @click="onChoseSocialMedia(item)"
                 >
                   {{ item.value }}
@@ -181,7 +181,7 @@
                   v-for="(item, index) in listSleepingHabitParams"
                   :key="index"
                   :id="`sleepingHabit_` + item.code"
-                  class="style-option-click sleepingHabit"
+                  class="style-option-click border-default sleepingHabit"
                   @click="onChoseSleepingHabit(item)"
                 >
                   {{ item.value }}

@@ -9,7 +9,6 @@
         <el-input
           type="textarea"
           :rows="2"
-          class="bg-default"
           placeholder="About me - maximise 500 words"
           v-model="nameAbout"
           @change="onChangeSaveAbout"

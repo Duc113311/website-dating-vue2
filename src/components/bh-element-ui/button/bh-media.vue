@@ -4,7 +4,7 @@
       type="danger"
       :loading="isShowLoading"
       @click="onClickAddMedia()"
-      class="btContinueCode cursor-pointer w-full padding-button active-button"
+      class="btContinueCode cursor-pointer color-button-default w-full padding-button active-button"
     >
       Add Media
     </button>

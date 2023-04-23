@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full relative bg-theme p-5">
+  <div class="w-full h-full relative p-5 title-default">
     <div class="w-full h-full">
       <!-- Header -->
       <div class="w-full header-detail flex justify-center items-center">
@@ -7,14 +7,14 @@
           <div class="w-1/4">
             <BhBack @onBackComponent="onBackSettingPhone()"></BhBack>
           </div>
-          <div class="ml-14 w-3/4 text-xl text-white">Sexual orientation</div>
+          <div class="ml-14 w-3/4 text-xl">Sexual orientation</div>
         </div>
       </div>
 
       <!-- Body -->
       <div class="body-detail height-scroll overflow-scroll w-full">
         <div
-          class="flex items-center w-full justify-between p-3 form-set-input"
+          class="flex items-center w-full justify-between p-3 bg-default form-set-input"
         >
           <div class="flex justify-center items-center">
             Show my sexual orientation on profile
@@ -36,7 +36,7 @@
             <div
               v-for="(el, index) in listDataSexuals"
               :key="el.code + index"
-              class="padding-check-option dark-theme-check not-border"
+              class="padding-check-option bg-default dark-theme-check not-border"
               :id="el.code"
               @click="onClickChose(false, el.code)"
             >

@@ -97,11 +97,17 @@ export default {
   mounted() {
     debugger;
     const themeValue = localStorage.getItem("theme");
-    this.setThemeLayout(themeValue);
+    if (themeValue) {
+      this.setThemeLayout(themeValue);
 
-    if (themeValue === "dark") {
-      document.documentElement.setAttribute("theme", "dark");
+      if (themeValue === "dark") {
+        document.documentElement.setAttribute("theme", "dark");
+      } else {
+        document.documentElement.setAttribute("theme", "light");
+      }
     } else {
+      this.setThemeLayout("light");
+
       document.documentElement.setAttribute("theme", "light");
     }
   },

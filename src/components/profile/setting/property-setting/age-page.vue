@@ -1,6 +1,6 @@
 <template>
   <div class="w-full mt-6">
-    <div class="form-set-list">
+    <div class="form-set-list bg-default">
       <div class="w-full flex justify-between">
         <div class="bh-title title-item form-set-item">AGE RANGE</div>
         <div class="bh-describe">{{ showAgeMin }} - {{ showAgeMax }}</div>

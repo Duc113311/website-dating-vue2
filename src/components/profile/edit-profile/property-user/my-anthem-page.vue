@@ -7,7 +7,7 @@
       <div class="w-full flex style-form bg-default">
         <div class="flex justify-between w-full">
           <div class="bh-item-title">Choose an Anthem</div>
-          <div class="mr-5">
+          <div class="">
             <i class="fa-solid fa-chevron-right bh-chevron-right"></i>
           </div>
         </div>

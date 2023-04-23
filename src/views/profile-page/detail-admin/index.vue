@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page w-full h-full relative p-5">
+  <div class="w-full h-full relative p-5 title-default">
     <div class="w-full h-full z-10">
       <div class="flex w-full items-center header-detail">
         <div class="">
@@ -12,7 +12,7 @@
 
       <div class="body-detail w-full height-scroll overflow-scroll">
         <!-- Avatar -->
-        <div class="bg-image-detail h-2/4">
+        <div class="bg-image-detail h-2/4 relative">
           <div class="avatar w-full h-full relative">
             <div
               v-show="isActiveImag"
@@ -191,7 +191,8 @@ export default {
       const indexData =
         this.$store.state.userModule.user_profile.profiles.orientationSexuals;
 
-      const sexuals = this.$store.state.commonModule.listLifeStyle.sexuals;
+      const sexuals =
+        this.$store.state.commonModule.listLifeStyleSingle.sexuals;
       for (let index = 0; index < indexData.length; index++) {
         const element = indexData[index];
         const findIndex = sexuals.find((x) => x.code === element);
@@ -208,7 +209,8 @@ export default {
       const indexData =
         this.$store.state.userModule.user_profile.profiles.interests;
 
-      const interests = this.$store.state.commonModule.listLifeStyle.interests;
+      const interests =
+        this.$store.state.commonModule.listLifeStyleSingle.interests;
       for (let index = 0; index < indexData.length; index++) {
         const element = indexData[index];
         const findIndex = interests.find((x) => x.code === element);
@@ -302,5 +304,9 @@ export default {
 
 .no-active {
   background-color: #ffffff8f;
+}
+
+.icon-close-infor {
+  bottom: -26px;
 }
 </style>

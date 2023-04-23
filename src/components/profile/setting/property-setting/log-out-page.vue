@@ -1,8 +1,8 @@
 <template>
-  <div class="w-full h-full">
+  <div class="w-full h-full mb-6">
     <div class="w-full mt-6">
       <div
-        class="w-full flex form-set-input justify-center items-center bh-item-title"
+        class="w-full flex cursor-pointer form-set-input justify-center items-center bh-item-title bg-default"
       >
         LOG OUT
       </div>
@@ -17,9 +17,9 @@
 
     <div class="w-full mt-6">
       <div
-        class="w-full flex form-set-input justify-center items-center bh-item-title"
+        class="w-full flex cursor-pointer form-set-input justify-center items-center bh-item-title bg-default"
       >
-        Delete account
+        DELETE ACCOUNT
       </div>
     </div>
   </div>

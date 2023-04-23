@@ -7,7 +7,7 @@
       </div>
 
       <div class="w-full bg-life bg-default title-default">
-        <div class="w-full item-life">
+        <div class="w-full item-life bd-input">
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -28,7 +28,7 @@
             </div>
           </div>
         </div>
-        <div class="w-full item-life">
+        <div class="w-full item-life bd-input">
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -49,7 +49,7 @@
             </div>
           </div>
         </div>
-        <div class="w-full item-life">
+        <div class="w-full item-life bd-input">
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -70,7 +70,7 @@
             </div>
           </div>
         </div>
-        <div class="w-full item-life">
+        <div class="w-full item-life bd-input">
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -91,7 +91,7 @@
             </div>
           </div>
         </div>
-        <div class="w-full item-life">
+        <div class="w-full item-life bd-input">
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -112,7 +112,7 @@
             </div>
           </div>
         </div>
-        <div class="w-full item-life">
+        <div class="w-full item-life bd-input">
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -134,7 +134,7 @@
           </div>
         </div>
 
-        <div class="w-full item-life-end">
+        <div class="w-full item-life bd-input-end">
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -256,8 +256,4 @@ export default {
 };
 </script>
 
-<style lang="css">
-.bh-item-title img {
-  filter: invert(90%) sepia(20%) saturate(200%) hue-rotate(80deg);
-}
-</style>
+<style lang="css"></style>

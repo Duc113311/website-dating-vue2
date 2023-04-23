@@ -5,7 +5,7 @@
       class="w-full h-full flex justify-center items-center absolute top-0 left-0"
     >
       <div
-        class="rounded-lg items-center w-form-life relative p-5 cursor-pointer"
+        class="rounded-lg bg-default items-center w-form-life relative p-5 cursor-pointer"
       >
         <div class="w-full justify-between flex items-center h-title-close">
           <div @click="onChangeCancel()">
@@ -81,7 +81,7 @@
                 <button
                   @click="onSelectInterest(item.code)"
                   :id="`not-check_` + item.code"
-                  class="option-interests mr-3 mb-3 p-3 text-white"
+                  class="option-interests border-default mr-3 mb-3 p-3"
                   size="large"
                 >
                   {{ item.value }}
@@ -243,7 +243,6 @@ export default {
 }
 
 .option-interests {
-  border: 1.5px solid white;
   border-radius: 8px;
   cursor: pointer;
 }

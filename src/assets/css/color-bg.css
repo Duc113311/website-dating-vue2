@@ -1,13 +1,11 @@
 .form-set-input {
   height: 54px;
-  background-color: #495063;
   align-items: center;
   padding: 15px;
   border-radius: 10px;
 }
 
 .form-set-list {
-  background-color: #495063;
   border-radius: 10px;
   padding: 15px;
 }

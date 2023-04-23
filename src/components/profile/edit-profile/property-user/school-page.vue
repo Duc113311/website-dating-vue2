@@ -8,7 +8,7 @@
       <div class="w-full flex style-form bg-default">
         <div class="flex justify-between w-full">
           <div class="bh-item-title">{{ nameSchoolParam }}</div>
-          <div class="mr-5" @click="onChoseSchool()">
+          <div class="" @click="onChoseSchool()">
             <i class="fa-solid fa-chevron-right bh-chevron-right"></i>
           </div>
         </div>

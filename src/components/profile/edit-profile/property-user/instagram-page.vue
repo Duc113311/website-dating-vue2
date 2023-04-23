@@ -13,8 +13,8 @@
             srcset=""
           />
         </div>
-        <div class="flex justify-between w-full p-5">
-          <div class="bh-item-title">Connect Instgram</div>
+        <div class="flex justify-between w-full">
+          <div class="pl-5 bh-item-title">Connect Instgram</div>
           <div>
             <i class="fa-solid fa-chevron-right bh-chevron-right"></i>
           </div>

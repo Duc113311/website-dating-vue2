@@ -5,7 +5,7 @@
         <div>SHOW ME ON CARD STACK</div>
       </div>
       <div class="w-full flex items-center">
-        <div class="w-full style-bg-common form-set-list">
+        <div class="w-full style-bg-common form-set-list bg-default">
           <div class="flex justify-between w-full">
             <div class="w-full">
               <div class="flex justify-between items-center">
