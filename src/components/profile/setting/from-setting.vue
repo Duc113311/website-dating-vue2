@@ -8,7 +8,7 @@
       <distance-page></distance-page>
       <age-page></age-page>
       <show-me-page></show-me-page>
-      <control-page></control-page>
+      <ControlSeePage></ControlSeePage>
       <card-stack-page></card-stack-page>
       <show-wifi-page></show-wifi-page>
       <form-switch></form-switch>
@@ -23,9 +23,9 @@
 
 <script>
 import SliderGold from "../../packages/common/slider-gold";
-import ControlPage from "../edit-profile/property-user/control-page.vue";
 import AgePage from "./property-setting/age-page.vue";
 import CardStackPage from "./property-setting/card-stack-page.vue";
+import ControlSeePage from "./property-setting/control-see-page.vue";
 import DarkThemePage from "./property-setting/dark-theme-page.vue";
 import DistancePage from "./property-setting/distance-page.vue";
 import FormSwitch from "./property-setting/form-switch.vue";
@@ -45,13 +45,13 @@ export default {
     DistancePage,
     AgePage,
     ShowMePage,
-    ControlPage,
     CardStackPage,
     ShowWifiPage,
     FormSwitch,
     ShowDistance,
     NotificationPage,
     DarkThemePage,
+    ControlSeePage,
   },
   name: "from-setting-page",
   data() {

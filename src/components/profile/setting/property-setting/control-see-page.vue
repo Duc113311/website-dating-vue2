@@ -87,12 +87,29 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "control-see-page",
   data() {
-    return {
-      valueIncognitoMode: "",
-    };
+    return {};
+  },
+
+  computed: {
+    ...mapGetters({
+      nameIncognitoMode: "showIncognitoMode",
+    }),
+    // nameIncognitoMode
+    valueIncognitoMode: {
+      get() {
+        const incognitoMode = this.nameIncognitoMode;
+
+        return incognitoMode;
+      },
+      set(newName) {
+        debugger;
+        return newName;
+      },
+    },
   },
 
   methods: {},
