@@ -11,7 +11,14 @@
       <ControlSeePage></ControlSeePage>
       <card-stack-page></card-stack-page>
       <show-wifi-page></show-wifi-page>
-      <form-switch></form-switch>
+      <form-switch
+        :objectQAEvent="objectSwitch.qEvent"
+        @onChangeComponent="onChangeQAEvent"
+      ></form-switch>
+      <form-switch
+        :objectQAEvent="objectSwitch.topic"
+        @onChangeComponent="onChangeShowTopPicks"
+      ></form-switch>
       <show-distance></show-distance>
       <notification-page></notification-page>
       <dark-theme-page></dark-theme-page>
@@ -22,6 +29,7 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 import SliderGold from "../../packages/common/slider-gold";
 import AgePage from "./property-setting/age-page.vue";
 import CardStackPage from "./property-setting/card-stack-page.vue";
@@ -55,10 +63,45 @@ export default {
   },
   name: "from-setting-page",
   data() {
-    return {};
+    return {
+      objectSwitch: {
+        qEvent: {
+          titleName: "Q&A Events",
+          valueSwitch:
+            this.$store.state.userModule.user_profile.settings
+              .showMePersonLikeMe,
+          describeName:
+            "Turning this off will remove Q&A event content from your profile, and you'll no longer see profiles with Q&A event content",
+        },
+        topic: {
+          titleName: "Show me Top picks",
+          valueSwitch:
+            this.$store.state.userModule.user_profile.settings
+              .showMePersonLikeMe,
+          describeName:
+            "Turning this on will allow you to be shown as a featured Top Pick to other users near you",
+        },
+      },
+    };
   },
 
-  methods: {},
+  methods: {
+    ...mapMutations(["setShowTopPicks"]),
+    onChangeQAEvent(val) {
+      console.log(val);
+    },
+
+    onChangeShowTopPicks(val) {
+      console.log(val);
+      const topPicks =
+        this.$store.state.userModule.user_profile.settings.showMePersonLikeMe;
+      if (topPicks) {
+        this.setShowTopPicks(false);
+      } else {
+        this.setShowTopPicks(true);
+      }
+    },
+  },
 
   mounted() {
     debugger;

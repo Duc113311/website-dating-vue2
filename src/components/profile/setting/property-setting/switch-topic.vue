@@ -8,10 +8,10 @@
               <div
                 class="form-set-item bh-item-title title-item flex justify-between items-center"
               >
-                <div class="">{{ titleComponent }}</div>
+                <div class="">Show me Top picks</div>
                 <div>
                   <el-switch
-                    v-model="valueSwitchComponent"
+                    v-model="valueShowTopPicks"
                     active-color="#FB5D65"
                     inactive-color="#5F6A86"
                     @change="onChangeShowTopPicks()"
@@ -19,8 +19,9 @@
                   </el-switch>
                 </div>
               </div>
-              <div class="form-set-item bh-describe">
-                {{ describeComponent }}
+              <div class="form-set-item bh-describe w-full">
+                Turning this on will allow you to be shown as a featured Top
+                Pick to other users near you
               </div>
             </div>
           </div>
@@ -31,33 +32,45 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
 export default {
-  name: "form-switch",
+  name: "switch-topic",
 
-  props: ["objectQAEvent"],
   data() {
     return {};
   },
 
   computed: {
-    valueSwitchComponent() {
-      return this.objectQAEvent.valueSwitch;
-    },
-    titleComponent() {
-      return this.objectQAEvent.titleName;
-    },
-    describeComponent() {
-      return this.objectQAEvent.describeName;
+    ...mapGetters({
+      nameShowTopPicks: "showTopPick",
+    }),
+    // Show me Top picks
+    valueShowTopPicks: {
+      get() {
+        const showTopPicks = this.nameShowTopPicks;
+
+        return showTopPicks;
+      },
+      set(newName) {
+        debugger;
+        return newName;
+      },
     },
   },
 
   methods: {
+    ...mapMutations(["setShowTopPicks"]),
     onChangeShowTopPicks() {
-      debugger;
-      this.$emit("onChangeComponent", true);
+      const topPicks =
+        this.$store.state.userModule.user_profile.settings.showMePersonLikeMe;
+      if (topPicks) {
+        this.setShowTopPicks(false);
+      } else {
+        this.setShowTopPicks(true);
+      }
     },
   },
 };
 </script>
 
-<style css scoped></style>
+<style></style>

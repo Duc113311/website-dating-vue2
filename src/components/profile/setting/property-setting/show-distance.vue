@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "show-distance",
 
@@ -38,12 +39,77 @@ export default {
     };
   },
 
-  methods: {
-    onChangeDistanceLocation() {
-      debugger;
+  component: {
+    ...mapGetters({ nameDistanceLocation: "showDistanceLocation" }),
+
+    isShowDistance: {
+      get() {
+        const statusDistance = this.nameDistanceLocation;
+        debugger;
+        if (statusDistance === "km") {
+          return true;
+        }
+        return false;
+      },
+      set(newName) {
+        debugger;
+        if (newName === "km") {
+          return true;
+        }
+        return false;
+      },
     },
+  },
+
+  methods: {
+    onChangeDistanceLocation(val) {
+      debugger;
+      console.log(val);
+      for (let index = 0; index < this.listDistance.length; index++) {
+        const element = this.listDistance[index];
+        if (element === val) {
+          document
+            .getElementById("location_" + val)
+            .classList.add("active-distance");
+          document
+            .getElementById("location_" + val)
+            .classList.remove("no-active-distance");
+        } else {
+          document
+            .getElementById("location_" + element)
+            .classList.remove("active-distance");
+          document
+            .getElementById("location_" + element)
+            .classList.add("no-active-distance");
+        }
+      }
+    },
+  },
+
+  mounted() {
+    const location = this.nameDistanceLocation;
+    console.log(location);
+    document
+      .getElementById("location_" + location)
+      .classList.add("active-distance");
+    document
+      .getElementById("location_" + location)
+      .classList.remove("no-active-distance");
   },
 };
 </script>
 
-<style></style>
+<style lang="css">
+.style-distance {
+  width: 28%;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+.active-distance {
+  background-color: #fd5d65;
+}
+.no-active-distance {
+  background-color: #5f6a86;
+}
+</style>

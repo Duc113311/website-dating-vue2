@@ -42,17 +42,38 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
 export default {
   name: "show-wifi-page",
 
   data() {
-    return {
-      valueAutoPlayVideo: "",
-    };
+    return {};
+  },
+
+  computed: {
+    ...mapGetters({
+      nameAutoPlayVideo: "showAutoPlay",
+    }),
+    // Auto play video
+    valueAutoPlayVideo: {
+      get() {
+        const autoPlayVideo = this.nameAutoPlayVideo;
+
+        return autoPlayVideo;
+      },
+      set(newName) {
+        debugger;
+        return newName;
+      },
+    },
   },
 
   methods: {
-    onChangeAutoPlayVideo() {},
+    ...mapMutations([["setAutoPlayVideo"]]),
+    onChangeAutoPlayVideo(val) {
+      debugger;
+      this.setAutoPlayVideo(val);
+    },
   },
 };
 </script>

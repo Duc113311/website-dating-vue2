@@ -8,19 +8,20 @@
               <div
                 class="form-set-item bh-item-title title-item flex justify-between items-center"
               >
-                <div class="">{{ titleComponent }}</div>
+                <div class="">Q&A Events</div>
                 <div>
                   <el-switch
-                    v-model="valueSwitchComponent"
+                    v-model="valueQAEvent"
                     active-color="#FB5D65"
                     inactive-color="#5F6A86"
-                    @change="onChangeShowTopPicks()"
                   >
                   </el-switch>
                 </div>
               </div>
               <div class="form-set-item bh-describe">
-                {{ describeComponent }}
+                Turning this off will remove Q&A event content from your
+                profile, and you'll no longer see profiles with Q&A event
+                content
               </div>
             </div>
           </div>
@@ -32,32 +33,14 @@
 
 <script>
 export default {
-  name: "form-switch",
+  name: "switch-event",
 
-  props: ["objectQAEvent"],
   data() {
-    return {};
-  },
-
-  computed: {
-    valueSwitchComponent() {
-      return this.objectQAEvent.valueSwitch;
-    },
-    titleComponent() {
-      return this.objectQAEvent.titleName;
-    },
-    describeComponent() {
-      return this.objectQAEvent.describeName;
-    },
-  },
-
-  methods: {
-    onChangeShowTopPicks() {
-      debugger;
-      this.$emit("onChangeComponent", true);
-    },
+    return {
+      valueQAEvent: false,
+    };
   },
 };
 </script>
 
-<style css scoped></style>
+<style></style>
