@@ -34,12 +34,38 @@ export default {
     };
   },
 
+  computed: {
+    themeValue() {
+      return this.$store.state.commonModule.themeLayout;
+    },
+  },
+
   methods: {
     onChangeTheme() {
       debugger;
+      if (this.valueTheme) {
+        document.documentElement.setAttribute("theme", "dark");
+        localStorage.setItem("theme", "dark");
+        return (this.themeValue = "dark");
+      } else {
+        document.documentElement.setAttribute("theme", "light");
+        localStorage.setItem("theme", "light");
+
+        return (this.themeValue = "light");
+      }
     },
+  },
+
+  mounted() {
+    const themeValue = localStorage.getItem("theme");
+
+    if (themeValue === "dark") {
+      this.valueTheme = true;
+    } else {
+      this.valueTheme = false;
+    }
   },
 };
 </script>
 
-<style></style>
+<style lang="css"></style>

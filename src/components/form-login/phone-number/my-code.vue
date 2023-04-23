@@ -2,14 +2,7 @@
   <div class="number-code mt-5">
     <h2 class="padding-title">My code is</h2>
     <div class="flex items-center">
-      <div
-        class="padding-describe"
-        v-bind:class="[
-          isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-        ]"
-      >
-        Please enter Code sent to
-      </div>
+      <div class="padding-describe">Please enter Code sent to</div>
       <span class="ml-3">{{ this.renderPhoneNumber }}</span>
     </div>
     <div class="text-code flex justify-center mt-8 mb-8">
@@ -63,16 +56,6 @@ export default {
 
     renderCodeOTP() {
       return this.valueText;
-    },
-
-    isDarkTheme() {
-      const theme = localStorage.getItem("user-theme");
-
-      if (theme === "light-theme") {
-        return false;
-      } else {
-        return true;
-      }
     },
   },
 

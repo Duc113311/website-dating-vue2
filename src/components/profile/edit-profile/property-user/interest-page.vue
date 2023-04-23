@@ -5,7 +5,7 @@
         <div>INTEREST</div>
         <div v-if="listDataInterests.length === 0">+15%</div>
       </div>
-      <div class="w-full flex style-form">
+      <div class="w-full flex style-form bg-default">
         <div class="flex justify-between w-full">
           <div class="bh-item-title style-inter-setting relative">
             <div class="w-full flex justify-center items-center">
@@ -15,7 +15,7 @@
               >
                 <span
                   :id="index"
-                  class="mr-3 mb-3 text-white border-interest"
+                  class="mr-3 mb-3 border-interest"
                   v-for="(item, index) in listDataInterests"
                   :key="index"
                 >
@@ -23,16 +23,18 @@
                 </span>
               </div>
               <div
-                class="w-full whitespace-nowrap mr-3 overflow-hidden"
+                class="w-full title-default whitespace-nowrap mr-3 overflow-hidden"
                 v-if="listDataInterests.length === 0"
               >
                 {{ nameDefault }}
               </div>
             </div>
-            <div class="bg-interest absolute h-full w-full"></div>
+            <div class="bg-shadow-right absolute h-full w-full"></div>
           </div>
           <div class="mr-1 flex items-center" @click="onShowPopupInterest()">
-            <i class="fa-solid fa-chevron-right bh-chevron-right"></i>
+            <i
+              class="fa-solid fa-chevron-right bh-chevron-right icon-color-default"
+            ></i>
           </div>
         </div>
       </div>

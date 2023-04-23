@@ -16,12 +16,7 @@
         Want to avoid someone you know on HeartLink?
       </div>
 
-      <div
-        class="padding-describe w-full text-center"
-        v-bind:class="[
-          isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-        ]"
-      >
+      <div class="padding-describe w-full text-center">
         <div class="mt-2">
           It is easy - share your device's contact with HeartLink when using
           this feature to pick who you want to avoid
@@ -74,17 +69,7 @@ export default {
     };
   },
 
-  computed: {
-    isDarkTheme() {
-      const theme = localStorage.getItem("user-theme");
-
-      if (theme === "light-theme") {
-        return false;
-      } else {
-        return true;
-      }
-    },
-  },
+  computed: {},
 
   async created() {
     debugger;

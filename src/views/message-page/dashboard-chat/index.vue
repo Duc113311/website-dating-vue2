@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page w-full h-full relative p-2">
+  <div class="w-full h-full relative p-2">
     <div class="w-full h-full z-10">
       <Header></Header>
 

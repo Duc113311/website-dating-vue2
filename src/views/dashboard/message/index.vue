@@ -11,7 +11,7 @@
         />
       </div>
     </div>
-    <div class="w-full pl-6 pr-6 h-10 mt-6 flex items-center">
+    <div class="w-full pl-6 pr-6 h-10 mt-6 flex items-center ss">
       <div class="text-lg mr-3 description-no-padding">New Connections</div>
       <div class="p-2 txt-number-mes text-white">20</div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full relative setting-pages">
+  <div class="w-full h-full relative">
     <div class="height-setting p-3">
       <!-- package -->
 
@@ -18,16 +18,16 @@
                 :stroke-width="4"
               >
               </el-progress>
-              <div class="flex justify-center relative bor-image">
+              <div class="flex justify-center relative complete-image">
                 <div class="image-avatar" @click="onClickShowDetail()"></div>
 
-                <div class="absolute bottom-0 complete">
+                <div class="absolute bottom-0 complete-percent">
                   {{ percentage + "%" }} complete
                 </div>
               </div>
             </div>
           </div>
-          <div class="flex justify-center text-2xl text-white mt-3">
+          <div class="flex justify-center text-2xl title-default mt-3">
             {{ nameUser }}, {{ ageUser }}
             <img src="@/assets/icon/ic_verified_enable.svg" width="30" alt="" />
           </div>
@@ -35,7 +35,7 @@
       </div>
       <!-- Option chose -->
       <div
-        class="w-full option-setting flex items-center text-white cursor-pointer"
+        class="w-full option-setting flex items-center title-default cursor-pointer"
       >
         <div class="item-setting">
           <div class="flex justify-center" @click="onClickSettingDetail()">
@@ -89,8 +89,8 @@ export default {
         { color: "#f56c6c", percentage: 20 },
         { color: "#e6a23c", percentage: 40 },
         { color: "#5cb87a", percentage: 60 },
-        { color: "#1989fa", percentage: 80 },
-        { color: "#6f7ad3", percentage: 100 },
+        { color: "#f56c6c", percentage: 80 },
+        { color: "#f56c6c", percentage: 100 },
       ],
     };
   },
@@ -182,7 +182,7 @@ export default {
   border-radius: 140px;
 }
 
-.complete {
+.complete-percent {
   width: 70%;
   text-align: center;
   padding: 10px;
@@ -241,7 +241,7 @@ export default {
 .el-progress {
   position: absolute !important;
 }
-.bor-image {
+.complete-image {
   padding: 20px;
 }
 </style>

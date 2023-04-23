@@ -19,12 +19,7 @@
       </div>
     </div>
 
-    <div
-      class="padding-describe"
-      v-bind:class="[
-        isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-      ]"
-    >
+    <div class="padding-describe">
       <span
         >When you tap "Continue", Heartlink will send a text with verificatrion
         code. Message and data rates maty apply.</span
@@ -60,17 +55,7 @@ export default {
     };
   },
 
-  computed: {
-    isDarkTheme() {
-      const theme = localStorage.getItem("user-theme");
-
-      if (theme === "light-theme") {
-        return false;
-      } else {
-        return true;
-      }
-    },
-  },
+  computed: {},
 
   methods: {
     //#region Common function

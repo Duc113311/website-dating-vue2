@@ -63,6 +63,7 @@ export default {
   },
 
   mounted() {
+    debugger;
     if (this.$route.name === "home-page") {
       document
         .getElementsByClassName("fa-heart")[0]
@@ -73,7 +74,7 @@ export default {
         .getElementsByClassName("fa-magnifying-glass")[0]
         .classList.add("icon-active");
     }
-    if (this.$route.name === "like-topic-page") {
+    if (this.$route.name === "99-like-page") {
       document
         .getElementsByClassName("fa-hand-holding-heart")[0]
         .classList.add("icon-active");
@@ -101,10 +102,9 @@ export default {
   height: calc(100% - 90%);
   justify-content: space-around;
   align-items: center;
-  border-top: 1px solid #373e50;
+  box-shadow: 0 -5px 5px -5px #333;
   margin-top: 10px;
   position: absolute;
-  background-color: #382e41;
   bottom: 0;
 }
 .icon-color {

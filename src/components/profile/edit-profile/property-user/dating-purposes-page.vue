@@ -5,7 +5,7 @@
       <div v-if="completePurposes">+4%</div>
     </div>
 
-    <div class="w-full bg-life flex justify-between items-center">
+    <div class="w-full bg-life flex bg-default justify-between items-center">
       <div class="w-6/12 bh-item-title flex items-center">
         <div class="flex items-center">
           <img

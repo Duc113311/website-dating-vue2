@@ -18,12 +18,7 @@
             <!-- Title -->
             <div class="w-full">
               <div class="title-dialog">Basic information</div>
-              <div
-                class="describe-dialog"
-                v-bind:class="[
-                  isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-                ]"
-              >
+              <div class="describe-dialog">
                 Add more info so people can see your amazing pictures
               </div>
             </div>
@@ -233,16 +228,6 @@ export default {
   },
 
   computed: {
-    isDarkTheme() {
-      const theme = localStorage.getItem("user-theme");
-
-      if (theme === "light-theme") {
-        return false;
-      } else {
-        return true;
-      }
-    },
-
     listZodiacParams() {
       return this.$store.state.commonModule.listInformationBasic.zodiacs;
     },

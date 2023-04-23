@@ -9,7 +9,6 @@
       :key="index"
     >
       <button
-        v-bind:class="isDarkTheme"
         class="padding-input-option"
         :ref="index"
         :id="item.code"
@@ -55,15 +54,6 @@ export default {
         .length !== 0
         ? this.$store.state.commonModule.listLifeStyle?.showMeGenders
         : showGender;
-    },
-    isDarkTheme() {
-      const theme = localStorage.getItem("user-theme");
-
-      if (theme === "light-theme") {
-        return "light-theme-option";
-      } else {
-        return "dark-theme-option";
-      }
     },
   },
   methods: {

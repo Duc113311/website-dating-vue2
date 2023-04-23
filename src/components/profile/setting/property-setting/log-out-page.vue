@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full h-full">
     <div class="w-full mt-6">
       <div
         class="w-full flex form-set-input justify-center items-center bh-item-title"

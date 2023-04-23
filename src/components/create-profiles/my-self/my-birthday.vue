@@ -7,7 +7,6 @@
       <input
         class="your-name padding-input mb-3"
         v-model="birthday"
-        v-bind:class="[isDarkTheme ? 'dark-theme-input' : 'light-theme-input']"
         type="date"
         placeholder="dd/mm/yyyy"
         min="1977-01-01"
@@ -15,13 +14,7 @@
         @keydown="onChangeInput"
         @blur="onChangeInput"
       />
-      <span
-        class="padding-describe"
-        v-bind:class="[
-          isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-        ]"
-        >Your age will be public</span
-      >
+      <span class="padding-describe">Your age will be public</span>
     </div>
   </div>
 </template>
@@ -39,17 +32,7 @@ export default {
       birthday: "",
     };
   },
-  computed: {
-    isDarkTheme() {
-      const theme = localStorage.getItem("user-theme");
-
-      if (theme === "light-theme") {
-        return false;
-      } else {
-        return true;
-      }
-    },
-  },
+  computed: {},
   methods: {
     ...mapMutations(["setBirthday"]),
 
@@ -78,10 +61,8 @@ export default {
 
 <style lang="css">
 .birthdate .el-input__inner {
-  background-color: #696a7d;
   --el-input-inner-height: 45px !important;
   font-size: larger !important;
   padding: 10px;
-  color: white;
 }
 </style>

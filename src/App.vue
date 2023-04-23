@@ -5,7 +5,7 @@
     >
       <div
         class="layout-detail overflow-hidden relative"
-        v-bind:class="[isDarkTheme ? 'dark-theme' : 'light-theme']"
+        :class="`theme-${themeValue}`"
       >
         <div
           v-show="isShowIconApp"
@@ -47,20 +47,15 @@ export default {
     /**
      * Đổi theme
      */
-    isDarkTheme() {
-      const theme = localStorage.getItem("user-theme");
-
-      if (theme === "light-theme") {
-        return false;
-      } else {
-        return true;
-      }
+    themeValue() {
+      debugger;
+      return this.$store.state.commonModule.themeLayout;
     },
   },
 
   methods: {
     ...mapActions(["loginAppByAuthId"]),
-    ...mapMutations(["setLocation"]),
+    ...mapMutations(["setLocation", "setThemeLayout"]),
     async showPosition(position) {
       if (position.coords) {
         localStorage.setItem("latitude", position.coords.latitude);
@@ -99,7 +94,17 @@ export default {
     }
   },
 
-  mounted() {},
+  mounted() {
+    debugger;
+    const themeValue = localStorage.getItem("theme");
+    this.setThemeLayout(themeValue);
+
+    if (themeValue === "dark") {
+      document.documentElement.setAttribute("theme", "dark");
+    } else {
+      document.documentElement.setAttribute("theme", "light");
+    }
+  },
 };
 </script>
 <style lang="scss">

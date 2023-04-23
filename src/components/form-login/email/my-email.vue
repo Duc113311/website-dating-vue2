@@ -2,19 +2,13 @@
   <div class="w-full h-full user-profile z-30">
     <div class="padding-title mt-6">What's your email?</div>
 
-    <div
-      class="padding-describe"
-      v-bind:class="[
-        isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-      ]"
-    >
+    <div class="padding-describe">
       Don't lose access to your account, verify your email
     </div>
 
     <div class="mt-3">
       <input
         class="your-name padding-input mb-3"
-        v-bind:class="[isDarkTheme ? 'dark-theme-input' : 'light-theme-input']"
         v-model="txtEmail"
         placeholder="Enter email"
         @keyup="onChangeInput"
@@ -39,12 +33,7 @@
       </button>
     </div>
 
-    <div
-      class="flex justify-center padding-describe"
-      v-bind:class="[
-        isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-      ]"
-    >
+    <div class="flex justify-center padding-describe">
       Verify instantly by connecting your Google account
     </div>
 
@@ -89,17 +78,7 @@ export default {
     };
   },
 
-  computed: {
-    isDarkTheme() {
-      const theme = localStorage.getItem("user-theme");
-
-      if (theme === "light-theme") {
-        return false;
-      } else {
-        return true;
-      }
-    },
-  },
+  computed: {},
 
   methods: {
     ...mapMutations(["setEmailForUser"]),

@@ -5,14 +5,14 @@
         <div>SEXUAL ORIENTATION</div>
         <div v-if="listDataSexual.length !== 0">+3%</div>
       </div>
-      <div class="w-full flex style-form">
+      <div class="w-full flex style-form bg-default title-default">
         <div class="flex justify-between w-full">
           <div class="bh-item-title style-inter-setting relative">
             <div class="w-full flex justify-center items-center">
               <div class="w-full text-ellipsis whitespace-nowrap sexual-item">
                 <span
                   :id="index"
-                  class="mr-3 mb-3 text-white border-interest"
+                  class="mr-3 mb-3 border-interest border-default"
                   v-for="(item, index) in listDataSexual"
                   :key="index"
                 >

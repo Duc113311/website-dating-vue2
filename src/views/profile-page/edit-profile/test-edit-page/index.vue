@@ -1,14 +1,16 @@
 <template>
-  <div class="w-full h-full relative bg-theme p-5" v-loading="loading">
-    <div class="w-full h-full">
+  <div class="w-full h-full relative p-5" v-loading="loading">
+    <div class="w-full h-full title-default">
       <!-- Back -->
-      <div class="w-full header-edit flex justify-center items-center">
+      <div
+        class="w-full header-edit flex justify-center items-center title-default"
+      >
         <div class="w-full flex justify-center items-center">
           <div class="w-1/4">
             <bh-back @onBackComponent="onBackEditProfile"></bh-back>
             <!-- <BhBack @onBackComponent="onBackEditProfile"></BhBack> -->
           </div>
-          <div class="ml-20 w-3/4 text-xl text-white">Edit Profile</div>
+          <div class="ml-20 w-3/4 text-xl">Edit Profile</div>
         </div>
       </div>
       <div class="form-edit overflow-scroll w-full">
@@ -68,17 +70,12 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  border: 1px solid #495063;
   border-radius: 10px;
-  color: white;
-  background-color: #495063;
 }
 
 .el-textarea__inner {
   min-height: 140px !important;
   height: 134px !important;
-  background-color: rgb(73, 80, 99) !important;
-  border: 1px solid rgb(73, 80, 99) !important;
   border-radius: 10px !important;
   font-size: 17px !important;
   padding: 10px !important;
@@ -86,7 +83,6 @@ export default {
 }
 
 .bg-life {
-  background-color: #495063;
   border-radius: 10px;
   padding: 10px;
 }
@@ -106,25 +102,20 @@ export default {
 }
 
 .el-input__inner {
-  background-color: #495063 !important;
-  border: 1px solid #495063 !important;
   border-radius: 10px !important;
   padding: 10px !important;
   font-size: 15px !important;
   height: 50px !important;
-  color: #ffffff !important;
 }
 
 .style-form {
   height: 50px;
-  background-color: #495063;
   align-items: center;
   padding: 10px;
   border-radius: 10px;
 }
 
 .style-bg-common {
-  background-color: #495063;
   align-items: center;
   padding: 10px;
   border-radius: 10px;
@@ -162,14 +153,5 @@ export default {
   height: 50px;
   display: flex;
   align-items: center;
-}
-
-.bg-interest {
-  background: rgb(73, 80, 99);
-  background: linear-gradient(
-    270deg,
-    rgba(73, 80, 99, 1) 7%,
-    rgba(240, 233, 233, 0) 22%
-  );
 }
 </style>

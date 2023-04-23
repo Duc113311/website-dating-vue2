@@ -1,7 +1,7 @@
 <template>
   <div class="w-full flex justify-center items-center">
     <div class="w-full">
-      <div class="w-full style-switch">
+      <div class="w-full style-switch bg-default">
         <div class="name text-xl">Smart Photos</div>
 
         <div>

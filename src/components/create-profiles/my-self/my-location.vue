@@ -19,12 +19,7 @@
             <div class="padding-title">Enable Location</div>
           </div>
           <div class="flex justify-center items-center w-full">
-            <div
-              class="padding-describe w-4/5"
-              v-bind:class="[
-                isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-              ]"
-            >
+            <div class="padding-describe w-4/5">
               You will need to enable your location order to use HeartLinks
             </div>
           </div>
@@ -65,12 +60,7 @@
               <div class="padding-title">MEET PEOPLE NEARBY</div>
             </div>
             <div class="w-full flex justify-center items-center">
-              <div
-                class="padding-describe w-4/5"
-                v-bind:class="[
-                  isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-                ]"
-              >
+              <div class="padding-describe w-4/5">
                 You location will be used to show potential matches near you.
               </div>
             </div>
@@ -111,17 +101,7 @@ export default {
     };
   },
 
-  computed: {
-    isDarkTheme() {
-      const theme = localStorage.getItem("user-theme");
-
-      if (theme === "light-theme") {
-        return false;
-      } else {
-        return true;
-      }
-    },
-  },
+  computed: {},
 
   methods: {
     ...mapMutations(["setAddressLocation"]),

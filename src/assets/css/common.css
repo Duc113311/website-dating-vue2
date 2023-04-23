@@ -1,6 +1,5 @@
 .title-description {
   font-weight: 500;
-  color: #727694;
   font-size: 18px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -8,7 +7,6 @@
 
 .text-description {
   font-weight: 500;
-  color: #ffffff;
   font-size: 20px;
   padding-bottom: 5px;
   padding-top: 5px;
@@ -16,25 +14,21 @@
 
 .title-description-no-padding {
   font-weight: 500;
-  color: #727694;
   font-size: 18px;
 }
 
 .description-no-padding {
   font-weight: 500;
-  color: #727694;
   font-size: 16px;
 }
 
 .text-description-no-padding {
   font-weight: 500;
-  color: #ffffff;
   font-size: 20px;
 }
 
 .title-print {
   font-weight: 700;
-  color: #ffffff;
   font-size: 24px;
   letter-spacing: 0px;
   padding: 10px;
@@ -44,7 +38,6 @@
 
 .title-verified {
   font-weight: 800;
-  color: #ffffff;
   font-size: 29px;
   letter-spacing: 0px;
   padding: 10px;
@@ -54,7 +47,6 @@
 
 .text-describe {
   font-weight: 500;
-  color: #ffffff;
   font-size: 18px;
   padding: 10px;
 }
@@ -66,7 +58,6 @@
 
 .title-detail-explore {
   font-weight: 500;
-  color: #ffffff;
   font-size: 24px;
 }
 .title-click {
@@ -77,9 +68,7 @@
 
 .text-option {
   font-size: 19px;
-  border: 1px solid #ffffff;
   border-radius: 10px;
-  color: #ffffff;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 10px;
@@ -96,9 +85,7 @@
 
 .item-option {
   font-size: 19px;
-  border: 1.5px solid #ffffff;
   border-radius: 10px;
-  color: #ffffff;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 10px;
@@ -277,7 +264,7 @@
 }
 /* Default body */
 .body-page-default {
-  height: 80%;
+  height: 78%;
 }
 .height-scroll::-webkit-scrollbar {
   display: none;
@@ -291,7 +278,6 @@
 
 .border-interest {
   border-radius: 9px;
-  border: 1.5px solid #ffffff;
   padding: 8px;
 }
 .border-interest-checked {

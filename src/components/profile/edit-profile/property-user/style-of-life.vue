@@ -6,7 +6,7 @@
         <div v-if="completeLifeStyle">+4%</div>
       </div>
 
-      <div class="w-full bg-life">
+      <div class="w-full bg-life bg-default">
         <div class="w-full item-life">
           <div class="w-6/12 bh-item-title flex items-center">
             <img

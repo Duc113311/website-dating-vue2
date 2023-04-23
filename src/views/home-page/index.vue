@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page w-full h-full relative p-2">
+  <div class="w-full h-full relative p-2">
     <div class="w-full h-full z-10">
       <Header></Header>
       <div class="body-page-home-new w-full">
@@ -23,7 +23,10 @@
         </div>
 
         <!-- Detail user -->
-        <div v-if="isShowDetail" class="w-full body-detail h-full">
+        <div
+          v-if="isShowDetail"
+          class="w-full title-default body-detail h-full"
+        >
           <DetailProfile
             @onActionDecide="onActionDecide"
             @onHideProfile="onHideProfile"

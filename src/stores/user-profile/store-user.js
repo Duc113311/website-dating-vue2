@@ -58,7 +58,10 @@ const state = {
       autoPlayVideo: "no",
       notiSeenMsg: false,
       showMePersonLikeMe: false,
-      global: false,
+      global: {
+        isEnabled: true,
+        languages: [],
+      },
       incognitoMode: false,
     },
     verifyStatus: false,
@@ -130,6 +133,8 @@ const state = {
     interests: [],
     schools: [],
   },
+
+  languageChecked: ["English", "Vietnamese"],
 };
 
 const getters = {
@@ -656,7 +661,7 @@ const mutations = {
    * @param {*} gender
    */
   setShowGender(state, showGender) {
-    state.user_profile.settings.genderShowMe = showGender;
+    state.user_profile.settings.genderFilter = showGender;
   },
 
   setShowStatusGender(state, value) {
@@ -672,7 +677,11 @@ const mutations = {
   },
 
   setValueLanguage(state, value) {
-    state.user_profile.settings.global.languages.push(value);
+    debugger;
+    if (state.languageChecked.length < 5) {
+      state.languageChecked.push(value.value);
+    }
+    // state.user_profile.settings.global.languages.push(value.code);
   },
 
   /**

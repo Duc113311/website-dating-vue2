@@ -28,18 +28,16 @@
       <div class="w-full">
         <div>
           <div
+            v-for="(item, index) in languageChecked"
+            :key="index"
             class="w-full form-set-item bd-input title-input-item bh-item-title"
           >
-            English
-          </div>
-          <div
-            class="w-full form-set-item bd-input title-input-item bh-item-title"
-          >
-            Vietnamese
+            {{ item }}
           </div>
         </div>
         <div>
           <div
+            :disabled="isDisabled"
             class="bh-text-location form-set-item w-full cursor-pointer"
             @click="onClickAddLanguage"
           >
@@ -70,6 +68,7 @@ export default {
   data() {
     return {
       isShowLanguages: false,
+      isDisabled: false,
     };
   },
 
@@ -77,6 +76,13 @@ export default {
     ...mapGetters({
       nameGlobal: "showGlobal",
     }),
+
+    languageChecked() {
+      debugger;
+      const language = this.$store.state.userModule.languageChecked;
+
+      return language;
+    },
 
     valueGlobal: {
       get() {
@@ -115,6 +121,10 @@ export default {
 
     onClickSaveLanguage(val) {
       debugger;
+      const language = this.$store.state.userModule.languageChecked;
+      if (language.length >= 5) {
+        this.isDisabled = true;
+      }
       this.isShowLanguages = val;
     },
   },

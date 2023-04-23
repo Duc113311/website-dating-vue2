@@ -5,7 +5,6 @@
     </div>
     <div class="grid w-full" v-for="(item, index) in gendersData" :key="index">
       <button
-        v-bind:class="[isActiveButton ? 'active-border' : isDarkTheme]"
         class="padding-input-option"
         :ref="index"
         :id="item.code"
@@ -53,15 +52,6 @@ export default {
       return this.$store.state.commonModule.listLifeStyle?.genders.length !== 0
         ? this.$store.state.commonModule.listLifeStyle?.genders
         : gender;
-    },
-    isDarkTheme() {
-      const theme = localStorage.getItem("user-theme");
-
-      if (theme === "light-theme") {
-        return "light-theme-option";
-      } else {
-        return "dark-theme-option";
-      }
     },
   },
   methods: {

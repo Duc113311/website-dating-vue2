@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <div class="w-full bh-item-title title-size">Account Settings</div>
+    <div class="w-full title-size">Account Settings</div>
     <div class="w-full flex items-center">
       <div class="w-full">
         <div class="w-full flex form-set-input">
@@ -24,19 +24,18 @@
 
 <script>
 export default {
-  name: "phone-page-setting",
+  name: "phone-page",
+
   data() {
     return {};
   },
 
+  computed: {},
+
   methods: {
-    onClickUpdatePhone() {
-      debugger;
-      this.$router
-        .push({ path: "/phone-number", name: "phone-number-setting" })
-        .catch(() => {});
-    },
+    onClickUpdatePhone() {},
   },
 };
 </script>
-<style css scoped></style>
+
+<style></style>

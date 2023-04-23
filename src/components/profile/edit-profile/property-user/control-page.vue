@@ -7,7 +7,7 @@
           <div class="style-package-update">Sliver package</div>
         </div>
       </div>
-      <div class="w-full flex items-center">
+      <div class="w-full flex items-center bg-default">
         <div class="w-full style-bg-common">
           <div class="flex justify-between w-full bd-input pt-2 pb-2">
             <div class="bh-item-title">Don't show my age</div>

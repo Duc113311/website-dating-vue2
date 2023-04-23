@@ -18,12 +18,7 @@
             <!-- Title -->
             <div class="w-full" v-bind:class="{ 'scroll-header': scrolled }">
               <div class="title-dialog">Style of life</div>
-              <div
-                class="describe-dialog"
-                v-bind:class="[
-                  isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-                ]"
-              >
+              <div class="describe-dialog">
                 More lifestyle information to show everyone your best photos.
               </div>
             </div>
@@ -232,16 +227,6 @@ export default {
   },
 
   computed: {
-    isDarkTheme() {
-      const theme = localStorage.getItem("user-theme");
-
-      if (theme === "light-theme") {
-        return false;
-      } else {
-        return true;
-      }
-    },
-
     listPetParams() {
       return this.$store.state.commonModule.listLifeStyleStatic.pets;
     },

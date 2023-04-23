@@ -108,7 +108,7 @@
 
           <div class="w-full bh-margin-description">
             <div
-              class="item-option cursor-pointer"
+              class="item-option border-default cursor-pointer"
               v-for="item in bindingSexuals"
               :key="item"
             >
@@ -122,7 +122,7 @@
 
           <div class="w-full bh-margin-description">
             <div
-              class="item-option"
+              class="item-option border-default"
               v-for="item in bindingInterest"
               :key="item"
             >

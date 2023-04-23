@@ -36,9 +36,6 @@
                 <h2 class="padding-text-option">Be Yourself</h2>
                 <span
                   class="overflow-hidden break-words padding-describe-option"
-                  v-bind:class="[
-                    isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-                  ]"
                   >Make sure your photos, age and bio true to who you are</span
                 >
               </div>
@@ -51,9 +48,6 @@
                 <h2 class="padding-text-option">Stay Safe</h2>
                 <span
                   class="overflow-hidden break-words padding-describe-option"
-                  v-bind:class="[
-                    isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-                  ]"
                   >Don't be too quick to give out personal information.
                   <span class="decoration-solid"
                     >Date Safety guidelines</span
@@ -69,9 +63,6 @@
                 <h2 class="padding-text-option">Play It Cool</h2>
                 <span
                   class="overflow-hidden break-words padding-describe-option"
-                  v-bind:class="[
-                    isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-                  ]"
                   >Respect others and treat them as you would like to be
                   treated</span
                 >
@@ -85,9 +76,6 @@
                 <h2 class="padding-text-option">Be Proactive</h2>
                 <span
                   class="overflow-hidden break-words padding-describe-option"
-                  v-bind:class="[
-                    isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-                  ]"
                   >Alwways repory bad behaviour</span
                 >
               </div>

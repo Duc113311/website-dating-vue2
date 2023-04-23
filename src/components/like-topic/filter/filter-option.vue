@@ -7,13 +7,7 @@
         <div class="w-full">
           <div class="flex justify-between items-center padding-describe">
             <div>Maximum distance</div>
-            <div
-              v-bind:class="[
-                isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-              ]"
-            >
-              {{ valueMaximum }}km+
-            </div>
+            <div>{{ valueMaximum }}km+</div>
           </div>
           <div class="w-full">
             <el-slider v-model="valueMaximum"></el-slider>
@@ -22,13 +16,7 @@
         <div class="w-full">
           <div class="flex justify-between items-center padding-describe">
             <div>Age range</div>
-            <div
-              v-bind:class="[
-                isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-              ]"
-            >
-              25 - 45
-            </div>
+            <div>25 - 45</div>
           </div>
           <div class="w-full">
             <el-slider v-model="valueAge" range :marks="marks"></el-slider>

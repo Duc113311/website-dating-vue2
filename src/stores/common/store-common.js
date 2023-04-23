@@ -16,11 +16,16 @@ const state = {
   listLifeStyleSingle: {}, // Lấy danh sách chung đơn lẻ
   listInformationBasic: {}, // Lấy danh sách các thông tin cơ bản
   listLifeStyleStatic: {}, // Lấy danh sách phong cách sống
+
+  themeLayout: "dark",
 };
 
 const getters = {};
 
 const mutations = {
+  setThemeLayout(state, value) {
+    state.themeLayout = value;
+  },
   /**
    * Xet giá trị hiển th
    * @param {*} state

@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <div class="w-full bh-item-title title-size">Discovery Settings</div>
+    <div class="w-full title-size">Discovery Settings</div>
     <div class="w-full flex items-center">
       <div class="w-full">
         <div class="w-full flex form-set-input">

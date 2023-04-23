@@ -2,13 +2,7 @@
   <div class="">
     <div v-show="!isTitle" class="mt-10">
       <div class="padding-title">My Photos are</div>
-      <span
-        class="padding-describe"
-        v-bind:class="[
-          isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-        ]"
-        >Add at least 2 photos to continue</span
-      >
+      <span class="padding-describe">Add at least 2 photos to continue</span>
     </div>
 
     <!-- Image -->
@@ -19,7 +13,7 @@
           v-for="fileList in fileListValue"
           :key="fileList.id"
         >
-          <div class="dash-bor relative">
+          <div class="dash-bor bg-default relative">
             <div class="wrapper">
               <div class="file-upload">
                 <input type="file" @change="toggleUpload($event, fileList)" />
@@ -144,16 +138,6 @@ export default {
   computed: {
     isTitle() {
       return this.isShowTitle ? this.isShowTitle : false;
-    },
-
-    isDarkTheme() {
-      const theme = localStorage.getItem("user-theme");
-
-      if (theme === "light-theme") {
-        return false;
-      } else {
-        return true;
-      }
     },
   },
 
@@ -432,7 +416,6 @@ input[type="file"] {
 
 .dash-bor {
   padding: 5px;
-  background-color: #495063;
   border-radius: 10px;
 }
 

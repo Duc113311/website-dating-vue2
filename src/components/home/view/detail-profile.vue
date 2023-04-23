@@ -69,7 +69,7 @@
 
           <div class="w-full bh-margin-description">
             <div
-              class="item-option cursor-pointer"
+              class="item-option border-default cursor-pointer"
               v-for="item in this.userParam?.profiles?.orientationSexuals
                 ? this.userParam?.profiles?.orientationSexuals
                 : this.sexuals"
@@ -87,7 +87,7 @@
 
           <div class="w-full bh-margin-description">
             <div
-              class="item-option"
+              class="item-option border-default"
               v-for="item in this.userParam?.profiles?.interests
                 ? this.userParam?.profiles?.interests
                 : this.interests"
@@ -328,7 +328,6 @@ export default {
 
 <style lang="css">
 .bg-color-detail {
-  background-color: #382e41;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }

@@ -2,13 +2,7 @@
   <div>
     <div class="mt-10">
       <h2 class="padding-title">My Sexual oritenation is</h2>
-      <span
-        class="padding-describe"
-        v-bind:class="[
-          isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-        ]"
-        >Select up to 3</span
-      >
+      <span class="padding-describe">Select up to 3</span>
     </div>
     <div class="w-full overflow-scroll height-item pb-8">
       <div class="grid select-sexual mt-6 gap-4">
@@ -74,16 +68,6 @@ export default {
   computed: {
     listDataSexuals() {
       return this.$store.state.commonModule.listLifeStyle.sexuals;
-    },
-
-    isDarkTheme() {
-      const theme = localStorage.getItem("user-theme");
-
-      if (theme === "light-theme") {
-        return false;
-      } else {
-        return true;
-      }
     },
   },
 

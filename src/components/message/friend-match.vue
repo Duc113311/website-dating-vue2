@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full mt-5">
+  <div class="w-full h-full pt-2 pb-2 title-default">
     <div class="w-full pl-6 pr-6">
       <div class="flex w-full bg-input">
         <img src="@/assets/icon/ic_search.svg" class="mr-7" alt="" />
@@ -13,11 +13,11 @@
     </div>
     <div class="w-full pl-6 pr-6 h-10 mt-6 flex items-center">
       <div class="text-lg mr-3 description-no-padding">New Connections</div>
-      <div class="p-2 txt-number-mes text-white">20</div>
+      <div class="p-2 txt-number-mes">20</div>
     </div>
 
     <div class="w-full pl-6 pr-6 list-friend pb-6">
-      <div class="flex w-full h-15 text-white">
+      <div class="flex w-full h-15">
         <div class="item-avatar items-center text-center mr-5">
           <div class="image-detail-dash"></div>
           <div class="mt-3">Likes</div>
@@ -47,7 +47,7 @@
 
     <div class="w-full pl-6 pr-6 h-10 mt-6 flex items-center">
       <div class="text-lg mr-3 description-no-padding">Messages</div>
-      <div class="p-2 txt-number-mes text-white">1</div>
+      <div class="p-2 txt-number-mes">1</div>
     </div>
 
     <div class="w-full mt-3 dash-message">
@@ -60,7 +60,7 @@
           </div>
         </div>
         <div class="w-4/5 ml-8 h-full bg-mess" @click="onClickShowChat()">
-          <div class="w-full text-white">
+          <div class="w-full">
             Trang <span class="ic_like ml-3">LIKES YOU</span>
           </div>
           <div class="mt-1 description-no-padding">
@@ -77,15 +77,13 @@
           </div>
         </div>
         <div class="w-4/5 ml-8 h-full bg-mess relative">
-          <div class="w-full text-white">
+          <div class="w-full">
             Trang <span class="ic_like ml-3">LIKES YOU</span>
           </div>
           <div class="mt-1 description-no-padding">
             Recently Active, Match Now!
           </div>
-          <div class="absolute right-4 top-4 p-2 txt-number-title text-white">
-            20
-          </div>
+          <div class="absolute right-4 top-4 p-2 txt-number-title">20</div>
         </div>
       </div>
       <div class="w-full flex items-center h-20 mt-4">
@@ -97,15 +95,13 @@
           </div>
         </div>
         <div class="w-4/5 ml-8 h-full bg-mess relative">
-          <div class="w-full text-white">
+          <div class="w-full">
             Trang <span class="ic_like ml-3">LIKES YOU</span>
           </div>
           <div class="mt-1 description-no-padding">
             Recently Active, Match Now!
           </div>
-          <div class="absolute right-4 top-4 p-2 txt-number-title text-white">
-            20
-          </div>
+          <div class="absolute right-4 top-4 p-2 txt-number-title">20</div>
         </div>
       </div>
       <div class="w-full flex items-center h-20 mt-4">
@@ -117,15 +113,13 @@
           </div>
         </div>
         <div class="w-4/5 ml-8 h-full bg-mess relative">
-          <div class="w-full text-white">
+          <div class="w-full">
             Trang <span class="ic_like ml-3">LIKES YOU</span>
           </div>
           <div class="mt-1 description-no-padding">
             Recently Active, Match Now!
           </div>
-          <div class="absolute right-4 top-4 p-2 txt-number-title text-white">
-            20
-          </div>
+          <div class="absolute right-4 top-4 p-2 txt-number-title">20</div>
         </div>
       </div>
       <div class="w-full flex items-center h-20 mt-4">
@@ -137,15 +131,13 @@
           </div>
         </div>
         <div class="w-4/5 ml-8 h-full bg-mess relative">
-          <div class="w-full text-white">
+          <div class="w-full">
             Trang <span class="ic_like ml-3">LIKES YOU</span>
           </div>
           <div class="mt-1 description-no-padding">
             Recently Active, Match Now!
           </div>
-          <div class="absolute right-4 top-4 p-2 txt-number-title text-white">
-            20
-          </div>
+          <div class="absolute right-4 top-4 p-2 txt-number-title">20</div>
         </div>
       </div>
     </div>

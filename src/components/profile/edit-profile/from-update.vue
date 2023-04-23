@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full">
+  <div class="w-full h-full title-default">
     <!-- Image -->
     <div class="w-full">
       <my-photos :isShowTitle="true"></my-photos>
@@ -255,6 +255,7 @@ export default {
   position: absolute;
   top: -3px !important;
   border-radius: 100%;
+  margin-left: -5px;
   transition: all 0.3s;
   width: 24px !important;
   height: 24px !important;

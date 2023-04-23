@@ -1,5 +1,6 @@
 :root[theme="light"] {
   --bg-color: #ffffff;
+  --color-text: #ffffff;
   --color-title: #000000;
   --color-describe: #6c7995;
   --color-button-default: #74809a;
@@ -21,11 +22,12 @@
   --color-title-icon: #79849e;
   --color-describe-setup: #5e6a85;
   --color-placeholder-input: #747f9a;
+  --color-from: #eef1f8;
 }
 
 .theme-light {
   background-color: var(--bg-color);
-  color: var(--color-title);
+  color: var(--color-text);
 
   // login
   .describe-text {
@@ -54,5 +56,29 @@
   .option-active {
     border: 1.4px solid var(--color-border-button-active);
     color: var(--color-border-button-active);
+  }
+  // Home
+  .title-default {
+    color: var(--color-title);
+  }
+  .border-default {
+    border: 1.5px solid var(--color-border-button-select);
+  }
+
+  .bg-default {
+    background-color: var(--color-from);
+  }
+
+  .bh-chevron-right {
+    color: var(--color-icon) !important;
+  }
+
+  .bg-shadow-right {
+    background: rgb(73, 80, 99);
+    background: linear-gradient(
+      270deg,
+      var(--color-from) 7%,
+      rgba(240, 233, 233, 0) 22%
+    );
   }
 }

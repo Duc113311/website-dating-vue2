@@ -2,7 +2,7 @@
   <div class="w-full h-full relative">
     <div class="w-full option-like flex h-20 items-center p-5">
       <div
-        class="oftion-interests p-2 mr-3 w-10 h-10"
+        class="oftion-interests border-default p-2 mr-3 w-10 h-10"
         slot="reference"
         @click="onShowFilterLike()"
       >
@@ -11,7 +11,11 @@
 
       <div class="flex items-center w-80">
         <span v-for="(item, index) in listIntersts" :key="index">
-          <button :id="index" class="oftion-interests mr-3 p-2" size="large">
+          <button
+            :id="index"
+            class="border-default oftion-interests mr-3 p-2"
+            size="large"
+          >
             {{ item }}
           </button>
         </span>
@@ -324,11 +328,9 @@ export default {
 .oftion-interests:hover {
   background-color: #5b566b;
   color: white;
-  border: 1.5px solid white;
 }
 
 .oftion-interests {
-  border: 1.5px solid white;
   border-radius: 8px;
 }
 

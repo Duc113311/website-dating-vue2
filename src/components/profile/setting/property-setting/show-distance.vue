@@ -44,6 +44,8 @@ export default {
 
     isShowDistance: {
       get() {
+        debugger;
+
         const statusDistance = this.nameDistanceLocation;
         debugger;
         if (statusDistance === "km") {
@@ -87,14 +89,15 @@ export default {
   },
 
   mounted() {
-    const location = this.nameDistanceLocation;
-    console.log(location);
-    document
-      .getElementById("location_" + location)
-      .classList.add("active-distance");
-    document
-      .getElementById("location_" + location)
-      .classList.remove("no-active-distance");
+    debugger;
+    // const location = this.nameDistanceLocation;
+    // console.log(location);
+    // document
+    //   .getElementById("location_" + location)
+    //   .classList.add("active-distance");
+    // document
+    //   .getElementById("location_" + location)
+    //   .classList.remove("no-active-distance");
   },
 };
 </script>

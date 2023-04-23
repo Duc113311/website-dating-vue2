@@ -1,6 +1,6 @@
 <template>
-  <div class="home-page w-full h-full">
-    <div class="w-full h-full home-page overflow-hidden p-2">
+  <div class="w-full h-full">
+    <div class="w-full h-full overflow-hidden p-2">
       <Header></Header>
 
       <div class="w-full body-page-default relative height-scroll p-2">

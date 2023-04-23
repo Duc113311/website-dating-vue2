@@ -2,11 +2,7 @@
   <div>
     <div class="mt-10">
       <div class="padding-title">My interests are</div>
-      <span
-        class="padding-describe"
-        v-bind:class="[
-          isDarkTheme ? 'dark-theme-describe' : 'dark-theme-describe',
-        ]"
+      <span class="padding-describe"
         >Let everyone know what you're passionate about, by adding it to your
         profile</span
       >
@@ -45,16 +41,6 @@ export default {
   computed: {
     listDataInterests() {
       return this.$store.state.commonModule.listLifeStyle.interests;
-    },
-
-    isDarkTheme() {
-      const theme = localStorage.getItem("user-theme");
-
-      if (theme === "light-theme") {
-        return false;
-      } else {
-        return true;
-      }
     },
   },
 

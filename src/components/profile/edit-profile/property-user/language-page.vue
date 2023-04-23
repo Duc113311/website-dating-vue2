@@ -6,7 +6,7 @@
         <div v-if="completeLanguage">+4%</div>
       </div>
       <div
-        class="w-full bg-life flex justify-between items-center cursor-pointer"
+        class="w-full bg-life bg-default flex justify-between items-center cursor-pointer"
       >
         <div class="w-6/12 bh-item-title flex items-center">
           <div class="flex items-center">

@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full h-full relative p-5 bg-theme">
-    <div class="w-full h-full">
+  <div class="w-full h-full relative p-5">
+    <div class="w-full h-full title-default">
       <!-- Back -->
       <div class="w-full header-edit flex justify-center items-center">
         <div class="w-full flex justify-center items-center">
@@ -8,7 +8,7 @@
             <BhBack @onBackComponent="onBackEditProfile"></BhBack>
             <!-- <BhBack @onBackComponent="onBackEditProfile"></BhBack> -->
           </div>
-          <div class="ml-20 w-3/4 text-xl text-white">Edit Profile</div>
+          <div class="ml-20 w-3/4 text-xl">Edit Profile</div>
         </div>
       </div>
 

@@ -1,34 +1,37 @@
 <template>
   <div class="w-full h-full">
     <div class="height-scroll overflow-scroll w-full">
+      <!--  -->
       <SliderGold></SliderGold>
       <PhonePage></PhonePage>
-      <location-page></location-page>
-      <global-page></global-page>
-      <distance-page></distance-page>
-      <age-page></age-page>
-      <show-me-page></show-me-page>
+      <LocationPage></LocationPage>
+      <GlobalPage></GlobalPage>
+      <DistancePage></DistancePage>
+      <AgePage></AgePage>
+      <ShowMePage></ShowMePage>
       <ControlSeePage></ControlSeePage>
-      <card-stack-page></card-stack-page>
-      <show-wifi-page></show-wifi-page>
-      <form-switch
-        :objectQAEvent="objectSwitch.qEvent"
-        @onChangeComponent="onChangeQAEvent"
-      ></form-switch>
-      <form-switch
-        :objectQAEvent="objectSwitch.topic"
-        @onChangeComponent="onChangeShowTopPicks"
-      ></form-switch>
-      <show-distance></show-distance>
-      <notification-page></notification-page>
-      <dark-theme-page></dark-theme-page>
-      <form-link-web-page></form-link-web-page>
-      <log-out-page></log-out-page>
+      <CardStackPage></CardStackPage>
+      <ShowWifiPage></ShowWifiPage>
+      <SwitchEvent></SwitchEvent>
+      <SwitchTopic></SwitchTopic>
+      <SwitchReadReceipts></SwitchReadReceipts>
+      <SwitchActivity></SwitchActivity>
+      <ShowDistance></ShowDistance>
+      <NotificationPage></NotificationPage>
+      <DarkThemePage></DarkThemePage>
+      <PrivacyPage></PrivacyPage>
+      <LogOutPage></LogOutPage>
+      <!--  -->
     </div>
   </div>
 </template>
 
 <script>
+import LogOutPage from "./property-setting/log-out-page";
+import SwitchActivity from "./property-setting/switch-activity";
+import SwitchReadReceipts from "./property-setting/switch-read-receipts";
+import SwitchTopic from "./property-setting/switch-topic";
+import SwitchEvent from "./property-setting/switch-event";
 import { mapMutations } from "vuex";
 import SliderGold from "../../packages/common/slider-gold";
 import AgePage from "./property-setting/age-page.vue";
@@ -36,7 +39,6 @@ import CardStackPage from "./property-setting/card-stack-page.vue";
 import ControlSeePage from "./property-setting/control-see-page.vue";
 import DarkThemePage from "./property-setting/dark-theme-page.vue";
 import DistancePage from "./property-setting/distance-page.vue";
-import FormSwitch from "./property-setting/form-switch.vue";
 import GlobalPage from "./property-setting/global-page.vue";
 import LocationPage from "./property-setting/location-page.vue";
 import NotificationPage from "./property-setting/notification-page.vue";
@@ -44,8 +46,14 @@ import PhonePage from "./property-setting/phone-page.vue";
 import ShowDistance from "./property-setting/show-distance.vue";
 import ShowMePage from "./property-setting/show-me-page.vue";
 import ShowWifiPage from "./property-setting/show-wifi-page.vue";
+import PrivacyPage from "./property-setting/privacy-page.vue";
 export default {
   components: {
+    LogOutPage,
+    SwitchActivity,
+    SwitchReadReceipts,
+    SwitchTopic,
+    SwitchEvent,
     SliderGold,
     PhonePage,
     LocationPage,
@@ -55,11 +63,11 @@ export default {
     ShowMePage,
     CardStackPage,
     ShowWifiPage,
-    FormSwitch,
     ShowDistance,
     NotificationPage,
     DarkThemePage,
     ControlSeePage,
+    PrivacyPage,
   },
   name: "from-setting-page",
   data() {
@@ -112,5 +120,17 @@ export default {
 <style lang="scss">
 .el-slider__button-wrapper {
   z-index: 10 !important;
+}
+
+.el-switch__core:after {
+  content: "";
+  position: absolute;
+  top: -3px !important;
+  border-radius: 100%;
+  margin-left: -5px;
+  transition: all 0.3s;
+  width: 24px !important;
+  height: 24px !important;
+  background-color: #fff;
 }
 </style>

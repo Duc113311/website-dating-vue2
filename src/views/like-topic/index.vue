@@ -1,18 +1,18 @@
 <template>
-  <div class="like-topic w-full h-full">
+  <div class="w-full h-full title-default">
     <div class="title-none"></div>
 
     <div class="w-full title-like flex items-center">
       <div
         v-bind:class="[isActiveLike ? 'peopleLike' : 'likeForYou']"
-        class="w-2/4 cursor-pointer flex h-full justify-center like99 items-center text-xl font-bold text-white"
+        class="w-2/4 cursor-pointer flex h-full justify-center like99 items-center text-xl font-bold"
         @click="onShowLikes(true)"
       >
         <span>99+</span>like
       </div>
       <div
         v-bind:class="[isActiveLike ? 'likeForYou' : 'peopleLike']"
-        class="w-2/4 cursor-pointer flex h-full justify-center items-center text-xl font-bold text-white"
+        class="w-2/4 cursor-pointer flex h-full justify-center items-center text-xl font-bold"
         @click="onShowLikes(false)"
       >
         For you

@@ -834,10 +834,7 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  border: 1px solid #495063;
   border-radius: 10px;
-  color: white;
-  background-color: #495063;
 }
 
 .el-textarea__inner {
@@ -852,7 +849,6 @@ export default {
 }
 
 .bg-life {
-  background-color: #495063;
   border-radius: 10px;
   padding: 24px;
 }
@@ -872,25 +868,21 @@ export default {
 }
 
 .el-input__inner {
-  background-color: #495063 !important;
-  border: 1px solid #495063 !important;
   border-radius: 10px !important;
   padding: 13px !important;
   font-size: 15px !important;
   height: 50px !important;
-  color: #ffffff !important;
 }
 
 .style-form {
   height: 50px;
-  background-color: #495063;
+
   align-items: center;
   padding: 10px;
   border-radius: 10px;
 }
 
 .style-bg-common {
-  background-color: #495063;
   align-items: center;
   padding: 10px;
   border-radius: 10px;
