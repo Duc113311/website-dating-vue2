@@ -161,6 +161,7 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   name: "basic-information-page",
 
@@ -185,6 +186,7 @@ export default {
           this.educationParam ||
           this.educationParam) !== "Trống"
       ) {
+        this.setCompleteBasicInformation(false);
         return false;
       }
 
@@ -245,6 +247,7 @@ export default {
   },
 
   methods: {
+    ...mapMutations(["setCompleteBasicInformation"]),
     /**
      * Sự kiện show thoong tin cơ bản
      */

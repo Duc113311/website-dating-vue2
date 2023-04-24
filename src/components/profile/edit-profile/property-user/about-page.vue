@@ -26,8 +26,8 @@ export default {
 
   data() {
     return {
-      nameAbout: this.$store.state.userModule.user_profile?.profiles?.about
-        ? this.$store.state.userModule.user_profile?.profiles?.about
+      nameAbout: this.$store.state.userModule.user_profile.profiles.about
+        ? this.$store.state.userModule.user_profile.profiles.about
         : "",
     };
   },

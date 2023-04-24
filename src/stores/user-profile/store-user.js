@@ -135,6 +135,9 @@ const state = {
   },
 
   languageChecked: ["English", "Vietnamese"],
+  completeBasicValue: true,
+  completeLifeStyleValue: true,
+  completeUser: 0,
 };
 
 const getters = {
@@ -377,6 +380,18 @@ const actions = {
 const mutations = {
   setImageCrop(state, value) {
     state.detailProfile.profiles.avatars.push(value);
+  },
+
+  setCompleteBasicInformation(state, value) {
+    state.completeBasicValue = value;
+  },
+
+  setCompleteLifeStyle(state, value) {
+    state.completeLifeStyleValue = value;
+  },
+
+  setCompleteUser(state, data) {
+    state.completeUser = data;
   },
 
   setShowSexual(state, value) {

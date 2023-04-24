@@ -161,6 +161,7 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   name: "style-of-life",
 
@@ -184,6 +185,7 @@ export default {
           this.smokingParam ||
           this.drinkingParam) !== "Trống"
       ) {
+        this.setCompleteLifeStyle(false);
         return false;
       }
 
@@ -241,6 +243,7 @@ export default {
   },
 
   methods: {
+    ...mapMutations(["setCompleteLifeStyle"]),
     onShowFormLife() {
       //
       this.$emit("onShowFormLifeStyle", true);

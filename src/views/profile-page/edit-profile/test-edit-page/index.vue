@@ -29,6 +29,7 @@
 import fromUpdate from "@/components/profile/edit-profile/from-update.vue";
 import BhBack from "@/components/bh-element-ui/button/bh-back.vue";
 import Footer from "@/components/layout/footer-home/footer.vue";
+import { mapMutations } from "vuex";
 export default {
   components: { fromUpdate, BhBack, Footer },
   name: "test-edit-page",
@@ -39,7 +40,40 @@ export default {
   },
 
   methods: {
+    ...mapMutations(["setCompleteUser"]),
     onBackEditProfile() {
+      debugger;
+      const user_profile = this.$store.state.userModule.user_profile.profiles;
+      const lengthAvatar = user_profile.avatars.length; // ảnh
+      const lengthAbout = user_profile.about;
+      const lengthInterests = user_profile.interests;
+      const lengthDatingPurpose = user_profile.datingPurpose
+        ? user_profile.datingPurpose
+        : "";
+      const lengthLanguage = user_profile.languages
+        ? user_profile.languages
+        : "";
+      const lengthBasic = this.$store.state.userModule.completeBasicValue;
+      const lengthLifeStyle =
+        this.$store.state.userModule.completeLifeStyleValue;
+      const lengthJobTitle = user_profile.jobTitle.length;
+      const lengthCompany = user_profile.company.length;
+      const lengthSchool = user_profile.school.length;
+      const lengthAddress = user_profile.address.length;
+
+      console.log(lengthAvatar);
+      console.log(lengthAbout);
+      console.log(lengthInterests);
+      console.log(lengthDatingPurpose);
+      console.log(lengthLanguage);
+      console.log(lengthBasic);
+      console.log(lengthLifeStyle);
+      console.log(lengthJobTitle);
+      console.log(lengthCompany);
+      console.log(lengthSchool);
+      console.log(lengthAddress);
+
+      this.setCompleteUser(user_profile);
       this.$router.push({ path: "/profile" });
     },
   },
