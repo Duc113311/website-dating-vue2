@@ -196,7 +196,7 @@ export default {
       for (let index = 0; index < indexData.length; index++) {
         const element = indexData[index];
         const findIndex = sexuals.find((x) => x.code === element);
-        debugger;
+
         if (findIndex) {
           resultData.push(findIndex.value);
         }
@@ -214,7 +214,7 @@ export default {
       for (let index = 0; index < indexData.length; index++) {
         const element = indexData[index];
         const findIndex = interests.find((x) => x.code === element);
-        debugger;
+
         if (findIndex) {
           resultData.push(findIndex.value);
         }
@@ -250,7 +250,6 @@ export default {
     },
 
     nextImageRight() {
-      debugger;
       const avatar = this.$store.state.userModule.user_profile.profiles.avatars;
       document
         .getElementById(`avatar_` + this.imageActive)

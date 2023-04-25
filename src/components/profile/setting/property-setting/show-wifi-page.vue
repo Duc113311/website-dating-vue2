@@ -62,7 +62,6 @@ export default {
         return autoPlayVideo;
       },
       set(newName) {
-        debugger;
         return newName;
       },
     },
@@ -71,7 +70,6 @@ export default {
   methods: {
     ...mapMutations([["setAutoPlayVideo"]]),
     onChangeAutoPlayVideo(val) {
-      debugger;
       this.setAutoPlayVideo(val);
     },
   },

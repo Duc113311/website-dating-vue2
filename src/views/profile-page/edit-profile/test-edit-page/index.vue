@@ -29,7 +29,7 @@
 import fromUpdate from "@/components/profile/edit-profile/from-update.vue";
 import BhBack from "@/components/bh-element-ui/button/bh-back.vue";
 import Footer from "@/components/layout/footer-home/footer.vue";
-import { mapMutations } from "vuex";
+import { mapActions, mapMutations } from "vuex";
 export default {
   components: { fromUpdate, BhBack, Footer },
   name: "test-edit-page",
@@ -41,39 +41,99 @@ export default {
 
   methods: {
     ...mapMutations(["setCompleteUser"]),
+
+    ...mapActions(["updateProfileUser"]),
     onBackEditProfile() {
-      debugger;
+      let completeAvatar = 3;
+      let completeAbout = 0;
+      let completeInterest = 0;
+      let completeDatingPurpose = 0;
+      let completeLanguages = 0;
+      let completeLifeStyle = 0;
+      let completeBasicInformation = 0;
+      let completeJobTitle = 0;
+      let completeCompany = 0;
+      let completeSchool = 0;
+      let totalComplete = 0;
       const user_profile = this.$store.state.userModule.user_profile.profiles;
       const lengthAvatar = user_profile.avatars.length; // ảnh
-      const lengthAbout = user_profile.about;
-      const lengthInterests = user_profile.interests;
-      const lengthDatingPurpose = user_profile.datingPurpose
-        ? user_profile.datingPurpose
-        : "";
-      const lengthLanguage = user_profile.languages
-        ? user_profile.languages
-        : "";
-      const lengthBasic = this.$store.state.userModule.completeBasicValue;
-      const lengthLifeStyle =
-        this.$store.state.userModule.completeLifeStyleValue;
+      if (lengthAvatar === 1) {
+        completeAvatar = parseInt(3);
+      } else {
+        completeAvatar = completeAvatar + (lengthAvatar - 1) * 5;
+      }
+      const lengthAbout = user_profile.about.length;
+      if (lengthAbout !== 0) {
+        completeAbout = 20;
+      }
+      const lengthInterests = user_profile.interests.length;
+      if (lengthInterests !== 0) {
+        completeInterest = 20;
+      }
+      const lengthDatingPurpose = user_profile.datingPurpose.length;
+      if (lengthDatingPurpose !== 0) {
+        completeDatingPurpose = 4;
+      }
+      const lengthLanguage = user_profile.languages.length;
+      if (lengthLanguage !== 0) {
+        completeLanguages = 4;
+      }
+      // Basic information
+      if (
+        (user_profile.zodiac.length ||
+          user_profile.familyFlan.length ||
+          user_profile.education.length ||
+          user_profile.covidVaccine.length ||
+          user_profile.personality.length ||
+          user_profile.communicationType.length ||
+          user_profile.loveStyle.length) !== 0
+      ) {
+        completeBasicInformation = 4;
+      }
+      // life of style
+      if (
+        (user_profile.pet.length ||
+          user_profile.drinking.length ||
+          user_profile.smoking.length ||
+          user_profile.workout.length ||
+          user_profile.dietaryPreference.length ||
+          user_profile.socialMedia.length ||
+          user_profile.sleepingHabit.length) !== 0
+      ) {
+        completeLifeStyle = 4;
+      }
       const lengthJobTitle = user_profile.jobTitle.length;
+      if (lengthJobTitle !== 0) {
+        completeJobTitle = 4;
+      }
       const lengthCompany = user_profile.company.length;
+
+      if (lengthCompany !== 0) {
+        completeCompany = 4;
+      }
+
       const lengthSchool = user_profile.school.length;
-      const lengthAddress = user_profile.address.length;
 
-      console.log(lengthAvatar);
-      console.log(lengthAbout);
-      console.log(lengthInterests);
-      console.log(lengthDatingPurpose);
-      console.log(lengthLanguage);
-      console.log(lengthBasic);
-      console.log(lengthLifeStyle);
-      console.log(lengthJobTitle);
-      console.log(lengthCompany);
-      console.log(lengthSchool);
-      console.log(lengthAddress);
-
-      this.setCompleteUser(user_profile);
+      if (lengthSchool !== 0) {
+        completeSchool = 4;
+      }
+      debugger;
+      totalComplete =
+        totalComplete +
+        ((completeAvatar +
+          completeAbout +
+          completeInterest +
+          completeDatingPurpose +
+          completeLanguages +
+          completeLifeStyle +
+          completeBasicInformation +
+          completeJobTitle +
+          completeCompany +
+          completeSchool) *
+          100) /
+          100;
+      this.setCompleteUser(totalComplete);
+      this.updateProfileUser(user_profile);
       this.$router.push({ path: "/profile" });
     },
   },

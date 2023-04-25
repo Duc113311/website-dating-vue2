@@ -4,7 +4,9 @@
     <div
       class="w-full h-full flex justify-center items-center absolute top-0 left-0"
     >
-      <div class="rounded-lg bg-default items-center w-form-life relative p-5">
+      <div
+        class="rounded-lg bg-dialog-default items-center w-form-life relative p-5"
+      >
         <div class="w-full justify-between flex items-center h-title-close">
           <div @click="onChangeCancel()">
             <i class="fa-solid fa-xmark size-icon-default"></i>
@@ -424,7 +426,6 @@ export default {
       this.$emit("onClickCancelLife", false);
     },
     handleScroll() {
-      debugger;
       this.scrolled = window.scrollY > 0;
     },
   },

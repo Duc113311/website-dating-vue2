@@ -116,7 +116,7 @@ export default {
     onClickPurposes(val) {
       console.log(val);
       const listDocument = document.getElementsByClassName("item-dating");
-      debugger;
+
       for (let index = 0; index < listDocument.length; index++) {
         const element = listDocument[index];
         console.log(element);
@@ -134,7 +134,6 @@ export default {
   },
 
   mounted() {
-    debugger;
     const newData =
       this.$store.state.userModule.user_profile.profiles.datingPurpose;
     document.getElementById(newData).classList.add("border-active");

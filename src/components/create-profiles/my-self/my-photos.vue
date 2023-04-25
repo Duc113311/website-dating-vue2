@@ -152,7 +152,7 @@ export default {
     async toggleUpload(event, data) {
       this.loading = true;
       const image = event.target.files[0];
-      debugger;
+
       console.log(data);
       const idUrl = data.id;
       // const reader = new FileReader();
@@ -169,29 +169,29 @@ export default {
         console.log("Uploaded a blob or file!");
         console.log(snapshot);
       });
-      debugger;
+
       const loading = document.getElementById("loadId" + idUrl);
       // img.setAttribute("src", url);
 
       loading.style.display = "block";
       const formData = new FormData();
-      debugger;
+
       await getDownloadURL(storageRef, image)
         .then(async (url) => {
           this.dialogImageUrl = url;
 
           formData.append("imagebase64", this.dialogImageUrl);
           await this.verifyImageRegister(formData);
-          debugger;
+
           const statusImageVerify =
             this.$store.state.commonModule.statusImageVerify;
-          debugger;
+
           if (statusImageVerify) {
             const dataImage = {
               id: idUrl,
               url: url,
             };
-            debugger;
+
             this.setPhotos(dataImage);
             // Or inserted into an <img> element
             const img = document.getElementById(idUrl);
@@ -207,7 +207,6 @@ export default {
               loading.style.display = "none";
             }, 1000);
           } else {
-            debugger;
             setTimeout(() => {
               loading.style.display = "none";
             }, 1000);
@@ -245,7 +244,6 @@ export default {
     },
   },
   mounted() {
-    debugger;
     if (this.$route.query.scream !== "edit-profile") {
       this.loading = true;
       const image = this.$store.state.userModule.avatarChecked;
@@ -272,7 +270,6 @@ export default {
         this.$emit("onStatusActive", true);
       }
     } else {
-      debugger;
       this.loading = true;
 
       const image =

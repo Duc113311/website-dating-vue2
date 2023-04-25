@@ -18,6 +18,7 @@ export default {
       "getListLifeStyleCommons",
       "getListInformationBasic",
       "getListLifeStyleStatic",
+      "getDetailProfileByAuthorization",
     ]),
   },
 
@@ -25,7 +26,7 @@ export default {
     await this.getListLifeStyleCommons();
     await this.getListInformationBasic();
     await this.getListLifeStyleStatic();
-    debugger;
+    await this.getDetailProfileByAuthorization();
   },
 };
 </script>

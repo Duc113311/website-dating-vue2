@@ -59,7 +59,6 @@ export default {
     showMeGender() {
       const genderShowMe =
         this.$store.state.userModule.user_profile?.settings.genderShowMe;
-      debugger;
       return genderShowMe;
     },
   },
@@ -67,7 +66,6 @@ export default {
   methods: {
     ...mapMutations(["setShowGender"]),
     onChangeGenderShowMe(val) {
-      debugger;
       console.log(val);
       this.setShowGender(val);
     },

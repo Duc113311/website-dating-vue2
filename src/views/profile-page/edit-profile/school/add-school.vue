@@ -1,20 +1,18 @@
 <template>
-  <div class="w-full h-full relative bg-theme p-5">
+  <div class="w-full h-full relative title-default">
     <div class="w-full h-full">
       <!-- Header -->
       <div class="w-full header-detail flex justify-center items-center">
-        <div class="w-full flex justify-center items-center">
+        <div class="w-full flex justify-center items-center pl-2 pr-2">
           <div class="">
             <BhBack @onBackComponent="onBackSettingPhone()"></BhBack>
           </div>
-          <div class="ml-20 w-3/4 text-xl text-white">
-            Update information school
-          </div>
+          <div class="ml-20 w-3/4 text-xl">Update information school</div>
         </div>
       </div>
 
       <!-- Body -->
-      <div class="body-detail height-scroll overflow-scroll w-full">
+      <div class="body-detail height-scroll overflow-scroll w-full pl-5 pr-5">
         <div class="w-full">
           <div class="bh-item-title title-item">School name</div>
           <div class="w-full h-search mt-2">
@@ -84,13 +82,11 @@ export default {
 
   watch: {
     selectedItem(value) {
-      debugger;
       if (value) {
         // Fetch item name based on selectedItem value
         this.selectedItemName = this.suggestions.find(
           (item) => item.value === value
         ).id;
-        debugger;
       } else {
         this.selectedItemName = "";
       }
@@ -105,7 +101,6 @@ export default {
     },
 
     querySearchAsync(queryString, cb) {
-      debugger;
       const items = this.suggestions.filter((item) => {
         return item.id.toLowerCase().indexOf(queryString.toLowerCase()) !== -1;
       });

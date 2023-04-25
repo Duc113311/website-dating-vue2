@@ -5,7 +5,7 @@
       class="w-full h-full flex justify-center items-center absolute top-0 left-0"
     >
       <div
-        class="rounded-lg bg-default items-center w-form-life relative p-5 cursor-pointer"
+        class="rounded-lg bg-dialog-default items-center w-form-life relative p-5 cursor-pointer"
       >
         <div class="w-full justify-between flex items-center h-title-close">
           <div @click="onChangeCancel()">
@@ -122,7 +122,6 @@ export default {
     ...mapActions(["getListDataInterests"]),
 
     onRemoveItem(val) {
-      debugger;
       console.log(val);
       this.listChecked = this.listChecked.filter(function (el) {
         return el.code != val;
@@ -141,7 +140,6 @@ export default {
     },
 
     onSelectInterest(val) {
-      debugger;
       if (this.listChecked.length < 5) {
         document.getElementById("not-check_" + val).classList.add("bg-active");
         const nameInterest = document
@@ -201,16 +199,14 @@ export default {
     onClickRemoveLanguage() {},
   },
 
-  async created() {
-    debugger;
-  },
+  async created() {},
 
   mounted() {
     // this.links = this.loadAll();
-    debugger;
+
     const interestsData =
       this.$store.state.userModule.user_profile.profiles.interests;
-    debugger;
+
     if (interestsData.length !== 0) {
       document.getElementsByClassName("type-language")[0].style.color =
         "#f65a62";

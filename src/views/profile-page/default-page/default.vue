@@ -84,7 +84,7 @@ export default {
 
   data() {
     return {
-      percentage: 80,
+      percentage: this.$store.state.userModule.completeUser,
       colors: [
         { color: "#f56c6c", percentage: 20 },
         { color: "#e6a23c", percentage: 40 },

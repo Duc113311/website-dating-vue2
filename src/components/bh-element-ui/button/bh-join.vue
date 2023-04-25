@@ -19,7 +19,6 @@ export default {
 
   methods: {
     onClickJoinNow() {
-      debugger;
       this.$emit("onNextBlindOption", true);
     },
   },

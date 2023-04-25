@@ -540,7 +540,6 @@ export default {
 
   computed: {
     bindingData() {
-      debugger;
       if (this.nameGoldPackage === "platinum") {
         return this.listPackages.platinum;
       } else if (this.nameGoldPackage === "gold") {
@@ -562,7 +561,6 @@ export default {
       console.log(dataset.index, dataset.name);
     },
     onHidePopupPackage() {
-      debugger;
       this.$emit("onClickHidePackage", false);
     },
   },

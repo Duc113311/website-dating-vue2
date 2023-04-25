@@ -4,7 +4,7 @@
       type="danger"
       :loading="isShowLoading"
       @click="onClickCommon()"
-      class="btContinueCode cursor-pointer w-full padding-button active-button"
+      class="btContinueCode button-active cursor-pointer w-full padding-button active-button"
     >
       {{ nameButton }}
     </button>

@@ -23,6 +23,7 @@
   --color-describe-setup: #5e6a85;
   --color-placeholder-input: #747f9a;
   --color-from: #eef1f8;
+  --color-dialog: #ffffff;
 }
 
 .theme-light {
@@ -67,6 +68,10 @@
 
   .bg-default {
     background-color: var(--color-from);
+  }
+
+  .bg-dialog-default {
+    background-color: var(--color-dialog);
   }
 
   .bh-chevron-right {

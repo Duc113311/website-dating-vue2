@@ -48,7 +48,6 @@ export default {
         this.$store.state.userModule.user_profile?.profiles.orientationSexuals;
       const sexualDatas =
         this.$store.state.commonModule.listLifeStyleSingle?.sexuals;
-      debugger;
       for (let index = 0; index < sexualData.length; index++) {
         const element = sexualData[index];
 

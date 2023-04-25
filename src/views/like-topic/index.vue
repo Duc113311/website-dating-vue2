@@ -70,13 +70,7 @@ export default {
     this.getListDataLikedForYou(dataLike);
   },
 
-  mounted() {
-    debugger;
-    // if (this.listLikeTopicParam) {
-    //   debugger;
-    //   this.$router.push({ path: "/99-like" });
-    // }
-  },
+  mounted() {},
 };
 </script>
 

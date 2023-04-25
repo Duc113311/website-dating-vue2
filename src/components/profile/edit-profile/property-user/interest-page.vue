@@ -15,7 +15,7 @@
               >
                 <span
                   :id="index"
-                  class="mr-3 mb-3 border-interest"
+                  class="mr-3 mb-3 border-interest border-default"
                   v-for="(item, index) in listDataInterests"
                   :key="index"
                 >

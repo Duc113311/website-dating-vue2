@@ -60,7 +60,6 @@ export default {
     },
 
     onChoseLanguages(val) {
-      debugger;
       this.setValueLanguage(val);
       this.$emit("onClickSaveLanguage", false);
     },

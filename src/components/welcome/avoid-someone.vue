@@ -72,7 +72,6 @@ export default {
   computed: {},
 
   async created() {
-    debugger;
     const userProfile = this.$store.state.userModule.user_profile;
 
     const userParam = {
@@ -91,7 +90,7 @@ export default {
       showSexual: userProfile.profiles.showSexual,
     };
     console.log(userParam);
-    debugger;
+
     await this.registerUserByAuthId(userParam);
 
     await this.loginAppByAuthId({
@@ -99,9 +98,7 @@ export default {
     });
   },
 
-  mounted() {
-    debugger;
-  },
+  mounted() {},
 
   methods: {
     ...mapActions([

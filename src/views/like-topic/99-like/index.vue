@@ -21,13 +21,11 @@ export default {
   computed: {
     listLikeTopicParam: {
       get() {
-        debugger;
         return this.$store.state.likeTopicModule.listLikeForYous
           ? this.$store.state.likeTopicModule.listLikeForYous
           : this.listLikes;
       },
       set(val) {
-        debugger;
         this.listLikes = val;
       },
     },

@@ -187,7 +187,6 @@ export default {
 
   computed: {
     listDataUser() {
-      debugger;
       return this.$store.state.mongoModule.listDataCard
         ? this.$store.state.mongoModule.listDataCard
         : [];
@@ -208,19 +207,15 @@ export default {
     ...mapActions(["patchNopeUserId", "patchComeBackUserId", "postLikeUserId"]),
 
     onMouseDow(event) {
-      debugger;
       this.truc_x = event.clientX;
       this.truc_y = event.clientY;
       document.addEventListener("mousemove", this.moveElement);
       if (event.target.tagName === "IMG") {
-        debugger;
         return;
       }
       this.isPointer = true;
     },
     onMouseUp() {
-      debugger;
-
       document.removeEventListener("mousemove", this.moveElement);
       this.isHoverLike = false;
       this.isHoverNope = false;
@@ -271,7 +266,6 @@ export default {
     nextImageLeft(value) {
       console.log(value);
 
-      debugger;
       if (this.imageActive !== 0) {
         this.imageActive = this.imageActive - 1;
 
@@ -290,8 +284,6 @@ export default {
     },
 
     nextImageRight(value) {
-      debugger;
-
       this.imageActive = this.imageActive + 1;
 
       if (this.imageActive < value.length) {
@@ -310,21 +302,19 @@ export default {
     },
 
     onNopeUser(val) {
-      debugger;
       console.log(val);
     },
 
     onClickShowDetailUser(value) {
       console.log(value);
       this.setDetailUserProfile(value);
-      debugger;
+
       this.$emit("onShowDetailUser", true);
     },
     async onSubmit(value) {
-      debugger;
       this.setUrlNameAvatarUser("");
       this.isActiveImag = true;
-      debugger;
+
       if (value.type.toString() === "nope") {
         console.log("Nope");
         const data = {
@@ -356,7 +346,6 @@ export default {
       this.imageActive = 0;
     },
     async decide(choice) {
-      debugger;
       console.log(choice);
       if (choice === "rewind") {
         if (this.history.length) {

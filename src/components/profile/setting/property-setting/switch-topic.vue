@@ -52,7 +52,6 @@ export default {
         return showTopPicks;
       },
       set(newName) {
-        debugger;
         return newName;
       },
     },

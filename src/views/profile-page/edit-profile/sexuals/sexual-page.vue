@@ -122,19 +122,17 @@ export default {
     },
 
     onClickChosse(val) {
-      debugger;
       console.log(val);
     },
 
     onClickChose(val, indexValue) {
-      debugger;
       const listDarks = document.getElementsByClassName("dark-theme-check");
       const checkActive = document.getElementsByClassName("check-active");
       const notCheckActive =
         document.getElementsByClassName("not-check-active");
 
       this.setSexuals(indexValue);
-      debugger;
+
       const sexualsData =
         this.$store.state.userModule.user_profile.profiles.orientationSexuals;
       const lengthSexual = sexualsData.length;

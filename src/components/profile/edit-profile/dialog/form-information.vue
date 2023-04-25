@@ -4,7 +4,9 @@
     <div
       class="w-full h-full flex justify-center items-center absolute top-0 left-0"
     >
-      <div class="rounded-lg bg-default items-center w-form-life relative p-5">
+      <div
+        class="rounded-lg bg-dialog-default items-center w-form-life relative p-5"
+      >
         <div class="w-full justify-between flex items-center h-title-close">
           <div @click="onChangeCancel()">
             <i class="fa-solid fa-xmark size-icon-default"></i>
@@ -264,7 +266,6 @@ export default {
       "setLoveStyles",
     ]),
     onChoseZodiac(val) {
-      debugger;
       const documentZodiacs = document.getElementsByClassName("zodiac");
       for (let index = 0; index < documentZodiacs.length; index++) {
         const element = documentZodiacs[index];
@@ -365,8 +366,6 @@ export default {
     },
 
     onChangeCancel() {
-      debugger;
-
       if (this.zodiacsValue) {
         document
           .getElementById("zodiac_" + this.zodiacsValue.code)
@@ -415,7 +414,6 @@ export default {
     },
 
     onChangeSaveLife() {
-      debugger;
       if (this.zodiacsValue !== null) {
         this.setZodiac(this.zodiacsValue);
       }
@@ -443,7 +441,6 @@ export default {
   },
 
   mounted() {
-    debugger;
     const profileBasic = this.$store.state.userModule.user_profile.profiles;
     if (
       (profileBasic.zodiac ||
@@ -454,7 +451,6 @@ export default {
         profileBasic.communicationType ||
         profileBasic.loveStyle) !== ""
     ) {
-      debugger;
       document.getElementsByClassName("type-basic")[0].style.color = "#f65a62";
     }
     if (profileBasic.zodiac) {

@@ -821,14 +821,13 @@ export default {
     isShowDistance: {
       get() {
         const statusDistance = this.nameDistanceLocation;
-        debugger;
+
         if (statusDistance === "km") {
           return true;
         }
         return false;
       },
       set(newName) {
-        debugger;
         if (newName === "km") {
           return true;
         }
@@ -852,7 +851,6 @@ export default {
         return global;
       },
       set(newName) {
-        debugger;
         return newName;
       },
     },
@@ -865,7 +863,6 @@ export default {
         return peopleDistance;
       },
       set(newName) {
-        debugger;
         return newName;
       },
     },
@@ -878,7 +875,6 @@ export default {
         return peopleDistance;
       },
       set(newName) {
-        debugger;
         return newName;
       },
     },
@@ -886,7 +882,7 @@ export default {
     showMeGender() {
       const genderShowMe =
         this.$store.state.userModule.user_profile?.settings.genderShowMe;
-      debugger;
+
       return genderShowMe;
     },
 
@@ -898,7 +894,6 @@ export default {
         return cardStack;
       },
       set(newName) {
-        debugger;
         return newName;
       },
     },
@@ -911,7 +906,6 @@ export default {
         return autoPlayVideo;
       },
       set(newName) {
-        debugger;
         return newName;
       },
     },
@@ -924,7 +918,6 @@ export default {
         return showTopPicks;
       },
       set(newName) {
-        debugger;
         return newName;
       },
     },
@@ -937,7 +930,6 @@ export default {
         return readReceipts;
       },
       set(newName) {
-        debugger;
         return newName;
       },
     },
@@ -950,7 +942,6 @@ export default {
         return activityStatus;
       },
       set(newName) {
-        debugger;
         return newName;
       },
     },
@@ -963,7 +954,6 @@ export default {
         return incognitoMode;
       },
       set(newName) {
-        debugger;
         return newName;
       },
     },
@@ -971,7 +961,7 @@ export default {
     addressLocation() {
       const addressParam =
         this.$store.state.userModule.user_profile.profiles.address;
-      debugger;
+
       if (addressParam !== "") {
         return addressParam;
       } else {
@@ -997,13 +987,12 @@ export default {
     ]),
 
     onChangeShowPackage() {
-      debugger;
       this.isShowPackage = true;
     },
     onBackSetting() {
       const profile = this.$store.state.userModule.user_profile;
       // profile.about=this.valueAbout
-      debugger;
+
       this.updateProfileUser(profile.settings);
       setTimeout(() => {
         this.$router.go(-1);
@@ -1014,7 +1003,6 @@ export default {
      * Xự kiện xử lý Global
      */
     onChangeGlobal() {
-      debugger;
       const global = this.$store.state.userModule.user_profile.settings.global;
       if (global) {
         this.setShowGlobal(false);
@@ -1027,11 +1015,9 @@ export default {
      * Xự kiện xử lý Distance
      */
     onChangeDistance() {
-      debugger;
       this.setValueDistance(this.valueDistance);
     },
     onChangeDistanceLocation(val) {
-      debugger;
       console.log(val);
       for (let index = 0; index < this.listDistance.length; index++) {
         const element = this.listDistance[index];
@@ -1056,12 +1042,10 @@ export default {
      * Xự kiện xử lý giá trị age max-min
      */
     onChangeAgeRange() {
-      debugger;
       this.setValueAgeRange(this.valueAge);
     },
 
     onChangePeopleDistance() {
-      debugger;
       const distance =
         this.$store.state.userModule.user_profile.settings.distancePreference
           .onlyShowInThis;
@@ -1073,7 +1057,6 @@ export default {
     },
 
     onChangeAgePreference() {
-      debugger;
       const preference =
         this.$store.state.userModule.user_profile.settings.agePreference
           .onlyShowInThis;
@@ -1095,7 +1078,6 @@ export default {
     },
 
     onChangeAutoPlayVideo(val) {
-      debugger;
       this.setAutoPlayVideo(val);
     },
 
@@ -1130,7 +1112,6 @@ export default {
     },
 
     onChangeGenderShowMe(val) {
-      debugger;
       console.log(val);
       this.setShowGender(val);
     },
@@ -1147,7 +1128,6 @@ export default {
     onClickLocation() {},
 
     onClickUpdatePhone() {
-      debugger;
       this.$router
         .push({ path: "/phone-number", name: "phone-number-setting" })
         .catch(() => {});
@@ -1155,8 +1135,6 @@ export default {
   },
 
   mounted() {
-    debugger;
-
     const location = this.nameDistanceLocation;
     console.log(location);
     document

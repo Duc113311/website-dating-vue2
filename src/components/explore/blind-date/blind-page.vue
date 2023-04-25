@@ -69,7 +69,6 @@ export default {
     },
 
     onNextBlindOption() {
-      debugger;
       this.$router.push({ path: "/filter-date" });
     },
   },

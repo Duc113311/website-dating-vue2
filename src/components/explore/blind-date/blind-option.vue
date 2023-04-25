@@ -103,7 +103,6 @@ export default {
 
   methods: {
     onBackBlindDate() {
-      debugger;
       this.$router.go(-1);
     },
   },

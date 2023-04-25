@@ -145,7 +145,6 @@ export default {
             this.previewVisible = false;
         },
         previewImages($event) {
-            debugger;
             const file = $event.target.files;
             for (let i = 0; i < file.length; i++) {
                 this.link_url.push($event.target.files[i]);
@@ -164,7 +163,6 @@ export default {
             }
         },
         async hand() {
-            debugger;
                 const db = firebase.database();
                 const ref = db.ref(
                     `chats/${this.main_user}_${this.extra_user}/messages`
@@ -192,7 +190,6 @@ export default {
                 });
         },
         async sendMessage() {
-            debugger;
             await this.upload_img();
             if (this.newMessage !== "" || this.imageUrl_ok !== []) {
                 const db = firebase.database();

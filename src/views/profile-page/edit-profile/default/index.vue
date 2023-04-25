@@ -533,7 +533,7 @@ export default {
 
     showGenderUser() {
       const gender = this.$store.state.userModule.user_profile?.profiles.gender;
-      debugger;
+
       return gender;
     },
 
@@ -568,7 +568,7 @@ export default {
       get() {
         const about =
           this.$store.state.userModule.user_profile?.profiles?.jobTitle;
-        debugger;
+
         return about ? about : this.nameJobTitle;
       },
       // setter
@@ -587,7 +587,6 @@ export default {
       },
       // setter
       set(newValue) {
-        debugger;
         // Note: we are using destructuring assignment syntax here.
         this.nameSchool = newValue;
       },
@@ -625,7 +624,6 @@ export default {
     },
 
     personalityParam() {
-      debugger;
       const personalityData =
         this.$store.state.userModule.profileLife.personality;
 
@@ -660,7 +658,6 @@ export default {
 
     ...mapActions(["updateProfileUser"]),
     onChangeValueAge() {
-      debugger;
       const age = this.$store.state.userModule.user_profile.profiles.showAge;
       if (age) {
         this.setShowAge(false);
@@ -670,7 +667,6 @@ export default {
     },
 
     onChangeValueDistance() {
-      debugger;
       const distance =
         this.$store.state.userModule.user_profile.profiles.showDistance;
       if (distance) {
@@ -680,7 +676,6 @@ export default {
       }
     },
     onChangeGender(val) {
-      debugger;
       this.setGender(val);
     },
 
@@ -702,7 +697,7 @@ export default {
 
       const profile = this.$store.state.userModule.user_profile;
       // profile.about=this.valueAbout
-      debugger;
+
       this.updateProfileUser(profile.profiles);
 
       console.log(profile);
@@ -713,7 +708,6 @@ export default {
     },
 
     onChangeSaveAbout() {
-      debugger;
       // const userProfile = this.$store.state.userModule.user_profile;
       this.setAbout(this.valueAbout);
       // this.updateProfileUser(userProfile.profiles);
@@ -735,10 +729,8 @@ export default {
       this.isShowLifeStyle = val;
     },
     onClickSaveLife(val) {
-      debugger;
       this.isShowLifeStyle = val;
 
-      debugger;
       if (
         (this.zodiacParam ||
           this.petsParam ||

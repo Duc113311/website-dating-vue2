@@ -51,7 +51,6 @@ export default {
         return activityStatus;
       },
       set(newName) {
-        debugger;
         return newName;
       },
     },

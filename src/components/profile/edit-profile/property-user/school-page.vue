@@ -33,7 +33,6 @@ export default {
       get() {
         const schoolData =
           this.$store.state.userModule.user_profile?.profiles?.school;
-        debugger;
         return schoolData ? schoolData : this.nameSchool;
       },
       // setter

@@ -67,8 +67,6 @@ export default {
 
   methods: {
     onClickImage(event) {
-      debugger;
-
       this.$emit("onChangeImageCrop", event);
     },
   },

@@ -106,7 +106,6 @@ export default {
         return incognitoMode;
       },
       set(newName) {
-        debugger;
         return newName;
       },
     },

@@ -50,7 +50,6 @@ const mutations = {
   },
 
   setUpdateProfile_Mongo(state, data) {
-    debugger;
     state.statusUpdateUser = data;
   },
 };

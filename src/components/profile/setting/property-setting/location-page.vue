@@ -35,7 +35,6 @@ export default {
     addressLocation() {
       const addressParam =
         this.$store.state.userModule.user_profile?.profiles?.address;
-      debugger;
       if (addressParam) {
         return addressParam;
       } else {
@@ -45,9 +44,7 @@ export default {
   },
 
   methods: {
-    onClickLocation() {
-      debugger;
-    },
+    onClickLocation() {},
   },
 };
 </script>

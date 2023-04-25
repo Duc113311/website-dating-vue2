@@ -52,10 +52,9 @@ export default {
     ...mapMutations(["setImageCrop"]),
     ...mapActions(["verifyImageRegister"]),
     async getCropData() {
-      debugger;
       // const cropper = this.$refs.cropper.getCropper();
       // const data = cropper.getData();
-      // debugger;
+      //
       // console.log(data);
 
       const canvas = this.$refs.cropper.getCroppedCanvas();
@@ -72,7 +71,6 @@ export default {
           0.95
         );
       });
-      debugger;
 
       if (this.croppedImage) {
         const storage = getStorages();
@@ -88,10 +86,10 @@ export default {
 
             formData.append("imagebase64", this.dialogImageUrl);
             await this.verifyImageRegister(formData);
-            debugger;
+
             const statusImageVerify =
               this.$store.state.commonModule.statusImageVerify;
-            debugger;
+
             if (statusImageVerify) {
               this.setImageCrop(url);
             }

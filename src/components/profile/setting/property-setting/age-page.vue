@@ -65,7 +65,6 @@ export default {
         return peopleDistance;
       },
       set(newName) {
-        debugger;
         return newName;
       },
     },
@@ -74,12 +73,10 @@ export default {
   methods: {
     ...mapMutations(["setValueAgeRange", "setAgePreference"]),
     onChangeAgeRange() {
-      debugger;
       this.setValueAgeRange(this.valueAge);
     },
 
     onChangeAgePreference() {
-      debugger;
       const preference =
         this.$store.state.userModule.user_profile.settings.agePreference
           .onlyShowInThis;

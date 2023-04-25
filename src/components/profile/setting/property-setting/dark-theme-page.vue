@@ -42,7 +42,6 @@ export default {
 
   methods: {
     onChangeTheme() {
-      debugger;
       if (this.valueTheme) {
         document.documentElement.setAttribute("theme", "dark");
         localStorage.setItem("theme", "dark");

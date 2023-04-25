@@ -9,7 +9,7 @@
         <el-input
           placeholder="Add job title"
           v-model="nameCompany"
-          @change="onChangeCompany"
+          @input="onChangeCompany"
         ></el-input>
       </div>
     </div>
@@ -23,25 +23,13 @@ export default {
 
   data() {
     return {
-      nameCompany: this.$store.state.userModule.user_profile?.profiles?.company,
+      nameCompany: this.$store.state.userModule.user_profile?.profiles.company
+        ? this.$store.state.userModule.user_profile?.profiles.company
+        : "",
     };
   },
 
-  computed: {
-    valueCompany: {
-      get() {
-        const company =
-          this.$store.state.userModule.user_profile?.profiles?.company;
-        debugger;
-        return company ? company : this.nameCompany;
-      },
-      // setter
-      set(newValue) {
-        // Note: we are using destructuring assignment syntax here.
-        this.nameCompany = newValue;
-      },
-    },
-  },
+  computed: {},
 
   methods: {
     ...mapMutations(["setCompany"]),
@@ -49,7 +37,7 @@ export default {
      * Bắt sự kiện khi đã nhập xong
      */
     onChangeCompany() {
-      this.setCompany(this.valueCompany);
+      this.setCompany(this.nameCompany);
     },
   },
 };

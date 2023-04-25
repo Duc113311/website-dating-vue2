@@ -40,8 +40,7 @@
     <company-page></company-page>
     <!-- trường học -->
     <school-page></school-page>
-    <!-- Đang sống tại -->
-    <living-page></living-page>
+    <address-page></address-page>
     <!-- Instagram -->
     <InstagramPage></InstagramPage>
     <!-- Bài hát -->
@@ -64,7 +63,6 @@
         @onClickSaveInterest="onClickSaveInterest"
         @onClickHideInterest="onClickHideInterest"
       ></FormInterest>
-      x
     </div>
     <!-- Dating purposes -->
     <div class="w-full h-full absolute top-0 left-0 z-30" v-if="isShowPurposes">
@@ -121,10 +119,10 @@ import StyleOfLife from "./property-user/style-of-life.vue";
 import JobTitlePage from "./property-user/job-title-page.vue";
 import CompanyPage from "./property-user/company-page.vue";
 import SchoolPage from "./property-user/school-page.vue";
-import LivingPage from "./property-user/living-page.vue";
 import SexualsPage from "./property-user/sexuals-page.vue";
 import ControlPage from "./property-user/control-page.vue";
 import InterestPage from "./property-user/interest-page.vue";
+import AddressPage from "./property-user/address-page.vue";
 export default {
   components: {
     FormInterest,
@@ -147,10 +145,10 @@ export default {
     JobTitlePage,
     CompanyPage,
     SchoolPage,
-    LivingPage,
     SexualsPage,
     ControlPage,
     InterestPage,
+    AddressPage,
   },
   name: "from-update",
 

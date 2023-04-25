@@ -11,7 +11,7 @@
           :rows="2"
           placeholder="About me - maximise 500 words"
           v-model="nameAbout"
-          @change="onChangeSaveAbout"
+          @input="onChangeSaveAbout"
         >
         </el-input>
       </div>
@@ -32,22 +32,6 @@ export default {
     };
   },
 
-  computed: {
-    valueAbout: {
-      get() {
-        const about =
-          this.$store.state.userModule.user_profile?.profiles?.about;
-        debugger;
-        return about ? about : this.nameAbout;
-      },
-      // setter
-      set(newValue) {
-        // Note: we are using destructuring assignment syntax here.
-        this.nameAbout = newValue;
-      },
-    },
-  },
-
   methods: {
     ...mapMutations(["setAbout"]),
 
@@ -55,7 +39,8 @@ export default {
      * Gán giá trị cuối cùng valueAbout cho user_profile
      */
     onChangeSaveAbout() {
-      this.setAbout(this.valueAbout);
+      debugger;
+      this.setAbout(this.nameAbout);
     },
   },
 };

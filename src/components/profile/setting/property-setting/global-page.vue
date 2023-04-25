@@ -80,7 +80,6 @@ export default {
     }),
 
     languageChecked() {
-      debugger;
       const language = this.$store.state.userModule.languageChecked;
 
       return language;
@@ -93,7 +92,6 @@ export default {
         return global;
       },
       set(newName) {
-        debugger;
         return newName;
       },
     },
@@ -103,7 +101,6 @@ export default {
     ...mapMutations(["setShowGlobal"]),
 
     onChangeGlobal() {
-      debugger;
       const global = this.$store.state.userModule.user_profile.settings.global;
       if (global) {
         this.setShowGlobal(false);
@@ -113,7 +110,6 @@ export default {
     },
 
     onClickAddLanguage() {
-      debugger;
       this.isShowLanguages = true;
     },
 
@@ -122,7 +118,6 @@ export default {
     onChangeSaveInterest() {},
 
     onClickSaveLanguage(val) {
-      debugger;
       const language = this.$store.state.userModule.languageChecked;
       if (language.length >= 5) {
         this.isDisabled = true;

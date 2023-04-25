@@ -164,11 +164,9 @@ export default {
       console.log(val);
       this.isShowPackage = true;
       this.nameGoldPackage = val;
-      debugger;
     },
 
     onHidePackage(val) {
-      debugger;
       this.isShowPackage = val;
     },
   },

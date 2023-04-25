@@ -62,10 +62,8 @@ export default {
   methods: {
     ...mapMutations(["setValueDinnerGreat"]),
     onClickChose(val) {
-      debugger;
       console.log(val);
       this.setValueDinnerGreat(val);
-      debugger;
       setTimeout(() => this.$emit("update", "so3"), 500);
     },
   },

@@ -9,8 +9,7 @@
         <el-input
           placeholder="Add job title"
           v-model="nameJobTitle"
-          @input="onInputJobTitle()"
-          @change="onChangeJobTitle"
+          @input="onChangeJobTitle"
         ></el-input>
       </div>
     </div>
@@ -24,26 +23,13 @@ export default {
 
   data() {
     return {
-      nameJobTitle:
-        this.$store.state.userModule.user_profile?.profiles?.jobTitle,
+      nameJobTitle: this.$store.state.userModule.user_profile?.profiles.jobTitle
+        ? this.$store.state.userModule.user_profile?.profiles.jobTitle
+        : "",
     };
   },
 
-  computed: {
-    valueJobTitle: {
-      get() {
-        const about =
-          this.$store.state.userModule.user_profile?.profiles?.jobTitle;
-        debugger;
-        return about ? about : this.nameJobTitle;
-      },
-      // setter
-      set(newValue) {
-        // Note: we are using destructuring assignment syntax here.
-        this.nameJobTitle = newValue;
-      },
-    },
-  },
+  computed: {},
 
   methods: {
     ...mapMutations(["setJobTitle"]),
@@ -51,7 +37,7 @@ export default {
      * Bắt sự kiện khi đã nhập xong
      */
     onChangeJobTitle() {
-      this.setJobTitle(this.valueJobTitle);
+      this.setJobTitle(this.nameJobTitle);
     },
   },
 };

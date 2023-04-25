@@ -48,7 +48,6 @@ export default {
      * Đổi theme
      */
     themeValue() {
-      debugger;
       return this.$store.state.commonModule.themeLayout;
     },
   },
@@ -95,7 +94,6 @@ export default {
   },
 
   mounted() {
-    debugger;
     const themeValue = localStorage.getItem("theme");
     if (themeValue) {
       this.setThemeLayout(themeValue);

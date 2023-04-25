@@ -214,7 +214,6 @@ export default {
     },
 
     dietaryPreferenceParam() {
-      debugger;
       const dietData =
         this.$store.state.userModule.styleOfLife.dietaryPreference;
 
@@ -222,7 +221,6 @@ export default {
     },
 
     workoutParam() {
-      debugger;
       const practiceData = this.$store.state.userModule.styleOfLife.workout;
 
       return practiceData ? practiceData : this.nameDefault;

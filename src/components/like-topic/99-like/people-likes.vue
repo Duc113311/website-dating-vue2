@@ -174,7 +174,6 @@ export default {
 
   methods: {
     onSwipeLeft() {
-      debugger;
       this.currentCard++;
     },
     onShowFilterLike() {

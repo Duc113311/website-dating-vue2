@@ -227,11 +227,10 @@ export default {
 
   computed: {
     // idImage() {
-    //   debugger;
+    //
     //   return this.$store.state.userModule.urlAvatarUser.urlName;
     // },
     userParam() {
-      debugger;
       return this.$store.state.userModule.userProfileDetail;
     },
   },
@@ -270,7 +269,7 @@ export default {
 
     nextImageLeft() {
       const valueImg = this.userParam.profiles.avatars;
-      debugger;
+
       if (this.imageActive !== 0) {
         this.imageActive = this.imageActive - 1;
 
@@ -289,9 +288,7 @@ export default {
     },
 
     nextImageRight() {
-      debugger;
       const valueImg = this.userParam.profiles.avatars;
-      debugger;
 
       this.imageActive = this.imageActive + 1;
 

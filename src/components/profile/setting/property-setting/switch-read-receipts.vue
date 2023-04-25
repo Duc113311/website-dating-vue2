@@ -50,7 +50,6 @@ export default {
         return readReceipts;
       },
       set(newName) {
-        debugger;
         return newName;
       },
     },

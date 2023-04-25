@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full relative bg-theme p-5">
+  <div class="w-full h-full relative bg-theme p-5 s">
     <div class="w-full h-full">
       <!-- Header -->
       <div class="w-full header-detail flex justify-center items-center">

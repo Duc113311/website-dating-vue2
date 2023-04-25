@@ -66,7 +66,7 @@ export default {
   computed: {
     colorBinding() {
       const name = this.$route.query.name;
-      debugger;
+
       switch (name) {
         case "letBeFriend":
           return {
@@ -124,7 +124,6 @@ export default {
 
   methods: {
     onShowDetailUser(val) {
-      debugger;
       this.isShowDetail = val;
     },
 
@@ -138,7 +137,7 @@ export default {
 
     onActionDecide(val) {
       this.isShowDetail = false;
-      debugger;
+
       this.$nextTick(() => {
         if (this.$refs.myViewSwipe) {
           this.$refs.myViewSwipe.decide(val);

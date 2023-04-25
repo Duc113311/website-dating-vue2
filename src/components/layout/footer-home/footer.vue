@@ -63,7 +63,6 @@ export default {
   },
 
   mounted() {
-    debugger;
     if (this.$route.name === "home-page") {
       document
         .getElementsByClassName("fa-heart")[0]

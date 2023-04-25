@@ -66,10 +66,8 @@ export default {
   methods: {
     ...mapMutations(["setValueNotDating"]),
     onClickChose(val) {
-      debugger;
       console.log(val);
       this.setValueNotDating(val);
-      debugger;
       setTimeout(() => this.$emit("update", "so2"), 500);
     },
   },

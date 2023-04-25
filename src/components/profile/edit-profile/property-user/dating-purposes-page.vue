@@ -58,6 +58,7 @@ export default {
      * Binding data purposes
      */
     purposesParam() {
+      debugger;
       const datingPurposesData =
         this.$store.state.userModule.lifeStyleSingle.datingPurpose;
 

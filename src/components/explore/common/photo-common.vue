@@ -45,7 +45,6 @@ export default {
   computed: {
     title() {
       const name = this.$route.params.screamName;
-      debugger;
       switch (name) {
         case "letBeFriend":
           return {
@@ -115,9 +114,7 @@ export default {
     },
   },
 
-  mounted() {
-    debugger;
-  },
+  mounted() {},
 };
 </script>
 

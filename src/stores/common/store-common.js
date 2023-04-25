@@ -58,8 +58,6 @@ const mutations = {
    * @param {*} data
    */
   setListLifeStyleSingle(state, data) {
-    debugger;
-
     state.listLifeStyleSingle = data;
     for (let index = 0; index < data.schools.length; index++) {
       const element = data.schools[index];
@@ -89,7 +87,6 @@ const mutations = {
   },
 
   setVerifyImageRegister(state, value) {
-    debugger;
     console.log(value);
     state.statusImageVerify = value;
   },
@@ -152,7 +149,6 @@ const actions = {
     await http_mongo
       .get(`api/v1/statics/commons`)
       .then((response) => {
-        debugger;
         commit("setListLifeStyleSingle", response.data.data);
       })
       .catch((error) => {
@@ -196,7 +192,6 @@ const actions = {
    * @param {*} param1
    */
   async verifyImageRegister({ commit }, formData) {
-    debugger;
     await http_ai
       .post(`nhananh`, formData, {
         headers: {
@@ -204,7 +199,6 @@ const actions = {
         },
       })
       .then((response) => {
-        debugger;
         commit("setVerifyImageRegister", response.data.data);
       })
       .catch((error) => {

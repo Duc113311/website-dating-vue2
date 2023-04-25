@@ -56,7 +56,7 @@ export default {
     nameLanguageParam() {
       const languagesData =
         this.$store.state.userModule.lifeStyleSingle.languages;
-      debugger;
+
       return languagesData;
     },
 
@@ -75,7 +75,7 @@ export default {
     convertArrayToString(val) {
       console.log(val);
       let newString = "";
-      debugger;
+
       // for (let index = 0; index < val.length; index++) {
       //   const element = val[index];
       //   newString = newString.toString() + element.toString() + ",";

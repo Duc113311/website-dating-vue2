@@ -82,7 +82,6 @@ export default {
   methods: {
     ...mapMutations(["setShowDistance", "setShowAge"]),
     onChangeValueDistance() {
-      debugger;
       const distance =
         this.$store.state.userModule.user_profile.profiles.showDistance;
       if (distance) {
@@ -93,7 +92,6 @@ export default {
     },
 
     onChangeValueAge() {
-      debugger;
       const age = this.$store.state.userModule.user_profile.profiles.showAge;
       if (age) {
         this.setShowAge(false);

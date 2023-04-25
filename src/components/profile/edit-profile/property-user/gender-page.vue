@@ -43,7 +43,7 @@ export default {
   computed: {
     showGenderUser() {
       const gender = this.$store.state.userModule.user_profile?.profiles.gender;
-      debugger;
+
       return gender;
     },
   },
@@ -55,7 +55,6 @@ export default {
      * @param {*} val
      */
     onChangeGender(val) {
-      debugger;
       this.setGender(val);
     },
   },

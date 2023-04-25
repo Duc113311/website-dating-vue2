@@ -142,20 +142,16 @@ const state = {
 
 const getters = {
   showAge: (state) => {
-    debugger;
     return state.user_profile.profiles.showAge;
   },
   showDistance: (state) => {
-    debugger;
     return state.user_profile.profiles.showDistance;
   },
   showSexual: (state) => {
-    debugger;
     return state.user_profile.profiles.showSexual;
   },
 
   showGlobal: (state) => {
-    debugger;
     return state.user_profile.settings.global;
   },
 
@@ -171,7 +167,6 @@ const getters = {
     return state.user_profile.settings.toppicksDiscoverable;
   },
   showAutoPlay: (state) => {
-    debugger;
     return state.user_profile.settings.autoPlayVideo;
   },
   showTopPick: (state) => {
@@ -414,6 +409,38 @@ const mutations = {
       };
       state.avatarChecked.push(indexBody);
     }
+
+    for (let index = 0; index < data.profiles.interests.length; index++) {
+      const element = data.profiles.interests[index];
+      const findInterest =
+        this.state.commonModule.listLifeStyleSingle.interests.find(
+          (x) => x.code === element
+        );
+      debugger;
+      if (findInterest) {
+        state.lifeStyleSingle.interests.push(findInterest.value);
+      }
+    }
+
+    for (let index = 0; index < data.profiles.languages.length; index++) {
+      const element = data.profiles.languages[index];
+      const findLanguages =
+        this.state.commonModule.listLifeStyleSingle.languages.find(
+          (x) => x.code === element
+        );
+      debugger;
+      if (findLanguages) {
+        state.lifeStyleSingle.languages.push(findLanguages.value);
+      }
+    }
+
+    const findDatingPurpose =
+      this.state.commonModule.listLifeStyleSingle.datingPurposes.find(
+        (x) => x.code === data.profiles.datingPurpose
+      );
+    if (findDatingPurpose) {
+      state.lifeStyleSingle.datingPurpose = findDatingPurpose;
+    }
     debugger;
     (state.user_profile.dob = data.dob),
       (state.user_profile.email = data.email),
@@ -435,7 +462,8 @@ const mutations = {
       ...data.settings,
     };
 
-    debugger;
+    // interest
+
     // basic information
     const findZodiac =
       this.state.commonModule.listInformationBasic.zodiacs.find(
@@ -451,65 +479,95 @@ const mutations = {
       );
     const findCovidVaccines =
       this.state.commonModule.listInformationBasic.covidVaccines.find(
-        (x) => x.code === data.profiles.dietaryPreference
+        (x) => x.code === data.profiles.covidVaccine
       );
     const findPersonalities =
       this.state.commonModule.listInformationBasic.personalities.find(
-        (x) => x.code === data.profiles.pet
+        (x) => x.code === data.profiles.personality
       );
     const findCommunicationStyles =
       this.state.commonModule.listInformationBasic.communicationStyles.find(
-        (x) => x.code === data.profiles.smoking
+        (x) => x.code === data.profiles.communicationType
       );
     const findLoveStyles =
       this.state.commonModule.listInformationBasic.loveStyles.find(
-        (x) => x.code === data.profiles.smoking
+        (x) => x.code === data.profiles.loveStyle
       );
-
+    if (findZodiac) {
+      state.basicInformation.zodiac = findZodiac.value;
+    }
+    if (findEducation) {
+      state.basicInformation.education = findEducation.value;
+    }
+    if (findFamilyPlans) {
+      state.basicInformation.familyFlan = findFamilyPlans.value;
+    }
+    if (findCovidVaccines) {
+      state.basicInformation.covidVaccine = findCovidVaccines.value;
+    }
+    if (findPersonalities) {
+      state.basicInformation.personality = findPersonalities.value;
+    }
+    if (findCommunicationStyles) {
+      state.basicInformation.communicationType = findCommunicationStyles.value;
+    }
+    if (findLoveStyles) {
+      state.basicInformation.loveStyle = findLoveStyles.value;
+    }
+    debugger;
     // Life of style
-    const findPet = this.state.commonModule.listLifeStyleStatic.pets.find(
+    const findPets = this.state.commonModule.listLifeStyleSingle.pets.find(
       (x) => x.code === data.profiles.pet
     );
-    const findDrinking =
-      this.state.commonModule.listLifeStyleStatic.drinkings.find(
+    const findDrink =
+      this.state.commonModule.listLifeStyleSingle.drinkings.find(
         (x) => x.code === data.profiles.drinking
       );
-    const findSmoking =
-      this.state.commonModule.listLifeStyleStatic.smokings.find(
-        (x) => x.code === data.profiles.smoking
-      );
-    const findWorkout =
-      this.state.commonModule.listLifeStyleStatic.workouts.find(
-        (x) => x.code === data.profiles.workout
-      );
-    const findDietaryPreference =
-      this.state.commonModule.listLifeStyleStatic.foodPreferences.find(
+    const findFoodPreferences =
+      this.state.commonModule.listLifeStyleSingle.foodPreferences.find(
         (x) => x.code === data.profiles.dietaryPreference
       );
-    const findSocialMedia =
-      this.state.commonModule.listLifeStyleStatic.socials.find(
-        (x) => x.code === data.profiles.socialMedia
-      );
-    const findSleepingHabit =
-      this.state.commonModule.listLifeStyleStatic.sleepingStyles.find(
+    const findSleepingStyles =
+      this.state.commonModule.listLifeStyleSingle.sleepingStyles.find(
         (x) => x.code === data.profiles.sleepingHabit
       );
-    console.log(findZodiac.value);
-    (state.basicInformation.zodiac = findZodiac.value),
-      (state.basicInformation.education = findEducation.value),
-      (state.basicInformation.familyFlan = findFamilyPlans.value),
-      (state.basicInformation.covidVaccine = findCovidVaccines.value),
-      (state.basicInformation.personality = findPersonalities.value),
-      (state.basicInformation.communicationType =
-        findCommunicationStyles.value);
-    state.basicInformation.loveStyle = findLoveStyles.value;
-    state.styleOfLife.pet = findPet.value;
-    state.styleOfLife.drinking = findDrinking.value;
-    state.styleOfLife.smoking = findSmoking.value;
-    state.styleOfLife.workout = findWorkout.value;
-    state.styleOfLife.dietaryPreference = findDietaryPreference.value;
-    state.styleOfLife.socialMedia = findSocialMedia.value;
-    state.styleOfLife.sleepingHabit = findSleepingHabit.value;
+    const findSmokings =
+      this.state.commonModule.listLifeStyleSingle.smokings.find(
+        (x) => x.code === data.profiles.smoking
+      );
+    const findSocials =
+      this.state.commonModule.listLifeStyleSingle.socials.find(
+        (x) => x.code === data.profiles.socialMedia
+      );
+    const findWorkouts =
+      this.state.commonModule.listLifeStyleSingle.workouts.find(
+        (x) => x.code === data.profiles.workout
+      );
+    debugger;
+    if (findPets) {
+      state.styleOfLife.pet = findPets.value;
+    }
+    if (findDrink) {
+      state.styleOfLife.drinking = findDrink.value;
+    }
+    if (findFoodPreferences) {
+      state.styleOfLife.dietaryPreference = findFoodPreferences.value;
+    }
+    if (findSleepingStyles) {
+      state.styleOfLife.sleepingHabit = findSleepingStyles.value;
+    }
+    if (findSmokings) {
+      state.styleOfLife.smoking = findSmokings.value;
+    }
+
+    if (findSocials) {
+      state.styleOfLife.socialMedia = findSocials.value;
+    }
+    if (findWorkouts) {
+      state.styleOfLife.workout = findWorkouts.value;
+    }
+    console.log(state.basicInformation);
+    debugger;
   },
 
   /**
@@ -573,7 +631,6 @@ const mutations = {
    * @param {*} value
    */
   setShowAge(state, value) {
-    debugger;
     state.user_profile.profiles.showAge = value;
   },
 
@@ -592,7 +649,6 @@ const mutations = {
    * @param {*} value
    */
   setShowGlobal(state, value) {
-    debugger;
     state.user_profile.settings.global = value;
   },
 
@@ -637,14 +693,12 @@ const mutations = {
    * @param {*} value
    */
   setValueDistance(state, value) {
-    debugger;
     state.user_profile.settings.distancePreference.range = value;
   },
 
   setValueAgeRange(state, value) {
     state.user_profile.settings.agePreference.min = value[0];
     state.user_profile.settings.agePreference.max = value[1];
-    debugger;
   },
 
   /**
@@ -653,7 +707,6 @@ const mutations = {
    * @param {*} sexual
    */
   setSexuals(state, sexuals) {
-    debugger;
     const index =
       state.user_profile.profiles.orientationSexuals.indexOf(sexuals);
     if (index > -1) {
@@ -692,7 +745,6 @@ const mutations = {
   },
 
   setValueLanguage(state, value) {
-    debugger;
     if (state.languageChecked.length < 5) {
       state.languageChecked.push(value.value);
     }
@@ -721,7 +773,6 @@ const mutations = {
   },
 
   setListInterests(state, data) {
-    debugger;
     let newInterestCode = [];
     let newInterestValue = [];
 
@@ -747,7 +798,6 @@ const mutations = {
       // only splice array when item is found
       state.avatarChecked.splice(index, 1); // 2nd parameter means remove one item only
     } else {
-      debugger;
       state.avatarChecked.push(photos);
       state.user_profile.profiles.avatars.push(photos.url);
     }
@@ -777,7 +827,7 @@ const mutations = {
       newDataCode.push(element.code);
       newDataValue.push(element.value);
     }
-    debugger;
+
     state.user_profile.profiles.languages = newDataCode;
     state.lifeStyleSingle.languages = newDataValue;
   },
@@ -801,6 +851,10 @@ const mutations = {
    */
   setJobTitle(state, value) {
     state.user_profile.profiles.jobTitle = value;
+  },
+
+  setCompany(state, value) {
+    state.user_profile.profiles.company = value;
   },
 
   /**
@@ -948,9 +1002,8 @@ const mutations = {
 
   setLifeStyle(state, data) {
     // Object.assign(lifeStyle, { data })
-    debugger;
+
     state.lifeStyle = { ...state.lifeStyle, ...data };
-    debugger;
   },
   // Thông tin cơ bản
   /**
@@ -959,7 +1012,6 @@ const mutations = {
    * @param {*} value
    */
   setZodiac(state, value) {
-    debugger;
     state.basicInformation.zodiac = value.value;
     state.user_profile.profiles.zodiac = value.code;
   },

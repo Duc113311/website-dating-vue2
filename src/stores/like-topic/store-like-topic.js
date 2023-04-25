@@ -8,7 +8,6 @@ const getters = {};
 
 const mutations = {
   setListDataLikedForYou(state, data) {
-    debugger;
     state.listLikeForYous = data;
   },
 };

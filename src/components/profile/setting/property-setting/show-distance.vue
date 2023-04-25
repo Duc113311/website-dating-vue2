@@ -44,17 +44,14 @@ export default {
 
     isShowDistance: {
       get() {
-        debugger;
-
         const statusDistance = this.nameDistanceLocation;
-        debugger;
+
         if (statusDistance === "km") {
           return true;
         }
         return false;
       },
       set(newName) {
-        debugger;
         if (newName === "km") {
           return true;
         }
@@ -65,7 +62,6 @@ export default {
 
   methods: {
     onChangeDistanceLocation(val) {
-      debugger;
       console.log(val);
       for (let index = 0; index < this.listDistance.length; index++) {
         const element = this.listDistance[index];
@@ -89,7 +85,6 @@ export default {
   },
 
   mounted() {
-    debugger;
     // const location = this.nameDistanceLocation;
     // console.log(location);
     // document

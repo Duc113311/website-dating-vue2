@@ -54,7 +54,6 @@ export default {
         return cardStack;
       },
       set(newName) {
-        debugger;
         return newName;
       },
     },

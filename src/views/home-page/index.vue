@@ -114,29 +114,37 @@ export default {
 
   async created() {
     await this.getListCardForUser();
-    await this.getDetailProfileByAuthorization();
+
+    this.getListLifeStyleCommons();
+    this.getListInformationBasic();
+    this.getListLifeStyleStatic();
+    this.getDetailProfileByAuthorization();
     setTimeout(() => {
       this.loading = false;
     }, 1000);
   },
   methods: {
-    ...mapActions(["getListCardForUser", "getDetailProfileByAuthorization"]),
+    ...mapActions([
+      "getListCardForUser",
+      "getDetailProfileByAuthorization",
+      "getListLifeStyleStatic",
+      "getListInformationBasic",
+      "getListLifeStyleCommons",
+    ]),
 
     ...mapMutations(["setStatusLikeUser"]),
     onHideLikeYou(val) {
       this.setStatusLikeUser(val);
       this.isSendSuccess = true;
     },
-    onShowDetail() {
-      debugger;
-    },
+    onShowDetail() {},
     onHideProfile(val) {
       this.isShowDetail = val;
     },
 
     onActionDecide(val) {
       this.isShowDetail = false;
-      debugger;
+
       this.$nextTick(() => {
         if (this.$refs.myViewSwipe) {
           this.$refs.myViewSwipe.decide(val);

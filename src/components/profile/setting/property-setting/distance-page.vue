@@ -48,12 +48,10 @@ export default {
     ...mapMutations(["setValueDistance", "setPeopleDistance"]),
 
     onChangeDistance() {
-      debugger;
       this.setValueDistance(this.valueDistance);
     },
 
     onChangePeopleDistance() {
-      debugger;
       const distance =
         this.$store.state.userModule.user_profile.settings.distancePreference
           .onlyShowInThis;

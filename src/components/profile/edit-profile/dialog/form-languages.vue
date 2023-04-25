@@ -3,14 +3,16 @@
     <div class="v-modal-bg w-full h-full" @click="onChangeCancel()"></div>
     <div class="w-full absolute top-28 flex justify-center p-5">
       <div
-        class="rounded-lg items-center w-full w-form-common overflow-hidden relative p-5 cursor-pointer"
+        class="rounded-lg bg-dialog-default title-default items-center w-full w-form-common overflow-hidden relative p-5 cursor-pointer"
       >
         <div class="w-full justify-between flex items-center">
           <div @click="onChangeCancel()">
             <i class="fa-solid fa-xmark size-icon-default"></i>
           </div>
           <div @click="onChangeSaveInterest()">
-            <i class="fa-solid fa-check size-icon-default type-language"></i>
+            <i
+              class="fa-solid fa-check size-icon-default color-ic-language"
+            ></i>
           </div>
         </div>
 
@@ -53,12 +55,14 @@
 
             <!-- Danh sách sở thich -->
 
-            <div class="w-full h-full mt-5 height-scroll overflow-scroll">
+            <div
+              class="w-full h-form-option mt-5 height-scroll overflow-scroll"
+            >
               <span v-for="(item, index) in listLanguages" :key="index">
                 <button
                   @click="onSelectLanguages(item.code)"
                   :id="`language_` + item.code"
-                  class="option-interests mr-3 mb-3 p-3 text-white"
+                  class="option-interests mr-3 mb-3 p-1 border-default"
                   size="large"
                 >
                   {{ item.value }}
@@ -107,7 +111,6 @@ export default {
     },
 
     onSelectLanguages(val) {
-      debugger;
       const findData = this.listChecked.find((x) => x.code === val);
 
       if (findData) {
@@ -119,7 +122,7 @@ export default {
         );
 
         if (this.listChecked.length === 0) {
-          document.getElementsByClassName("type-language")[0].style.color =
+          document.getElementsByClassName("color-ic-language")[0].style.color =
             "white";
         }
       } else {
@@ -133,14 +136,13 @@ export default {
             value: nameInterest.trim(),
           };
           this.listChecked.push(objectChecked);
-          document.getElementsByClassName("type-language")[0].style.color =
+          document.getElementsByClassName("color-ic-language")[0].style.color =
             "#f65a62";
         }
       }
     },
 
     onChangeFilterText() {
-      debugger;
       let dataList = [];
       if (
         this.listLanguages.length <=
@@ -159,17 +161,15 @@ export default {
   },
 
   mounted() {
-    debugger;
-
     const listCode =
       this.$store.state.userModule.user_profile?.profiles?.languages;
-    debugger;
+
     if (listCode.length !== 0) {
-      document.getElementsByClassName("type-language")[0].style.color =
+      document.getElementsByClassName("color-ic-language")[0].style.color =
         "#f65a62";
       for (let index = 0; index < listCode.length; index++) {
         const element = listCode[index];
-        debugger;
+
         document
           .getElementById("language_" + element)
           .classList.add("bg-active");
@@ -213,5 +213,9 @@ export default {
   align-items: center;
   height: 100%;
   margin-right: 10px;
+}
+
+.h-form-option {
+  height: calc(100% - 30%);
 }
 </style>

@@ -107,7 +107,6 @@ export default {
 
   methods: {
     onClickChoseCategory(val) {
-      debugger;
       console.log(val);
       switch (val) {
         case "blindDate":
@@ -132,7 +131,6 @@ export default {
      * Verified image
      */
     onClickVerified() {
-      debugger;
       const verified = this.$store.state.commonModule.isVerified;
 
       if (verified) {

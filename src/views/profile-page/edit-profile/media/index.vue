@@ -64,7 +64,6 @@ export default {
      * Save image crop
      */
     async onClickSaveImageCrop() {
-      debugger;
       this.loading = true;
 
       await this.$refs.cropImages.getCropData();
@@ -91,7 +90,7 @@ export default {
         this.$refs.fileInput.value = "";
         return;
       }
-      debugger;
+
       this.selectedFile.push(URL.createObjectURL(file));
       this.selectedFile.push(file.name);
       this.isShowCrop = false;
@@ -99,7 +98,6 @@ export default {
     },
 
     onBackMedia() {
-      debugger;
       this.$router.go(-1);
     },
   },

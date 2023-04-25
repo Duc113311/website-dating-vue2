@@ -198,7 +198,7 @@ export default {
      */
     zodiacParam() {
       const zodiacData = this.$store.state.userModule.basicInformation.zodiac;
-
+      debugger;
       return zodiacData ? zodiacData : this.nameDefault;
     },
 
@@ -206,20 +206,22 @@ export default {
       const petsFreeData =
         this.$store.state.userModule.basicInformation.familyFlan;
       debugger;
+
       return petsFreeData ? petsFreeData : this.nameDefault;
     },
 
     educationParam() {
       const educationData =
         this.$store.state.userModule.basicInformation.education;
+      debugger;
 
       return educationData ? educationData : this.nameDefault;
     },
 
     personalityParam() {
-      debugger;
       const personalityData =
         this.$store.state.userModule.basicInformation.personality;
+      debugger;
 
       return personalityData ? personalityData : this.nameDefault;
     },
@@ -227,6 +229,7 @@ export default {
     vaccineParam() {
       const vaccineData =
         this.$store.state.userModule.basicInformation.covidVaccine;
+      debugger;
 
       return vaccineData ? vaccineData : this.nameDefault;
     },
@@ -234,6 +237,7 @@ export default {
     communicationParam() {
       const communicationData =
         this.$store.state.userModule.basicInformation.communicationType;
+      debugger;
 
       return communicationData ? communicationData : this.nameDefault;
     },
@@ -241,6 +245,7 @@ export default {
     loveLanguageParam() {
       const loveLanguageData =
         this.$store.state.userModule.basicInformation.loveStyle;
+      debugger;
 
       return loveLanguageData ? loveLanguageData : this.nameDefault;
     },
