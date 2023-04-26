@@ -516,31 +516,31 @@ const mutations = {
     }
     debugger;
     // Life of style
-    const findPets = this.state.commonModule.listLifeStyleSingle.pets.find(
+    const findPets = this.state.commonModule.listLifeStyleStatic.pets.find(
       (x) => x.code === data.profiles.pet
     );
     const findDrink =
-      this.state.commonModule.listLifeStyleSingle.drinkings.find(
+      this.state.commonModule.listLifeStyleStatic.drinkings.find(
         (x) => x.code === data.profiles.drinking
       );
     const findFoodPreferences =
-      this.state.commonModule.listLifeStyleSingle.foodPreferences.find(
+      this.state.commonModule.listLifeStyleStatic.foodPreferences.find(
         (x) => x.code === data.profiles.dietaryPreference
       );
     const findSleepingStyles =
-      this.state.commonModule.listLifeStyleSingle.sleepingStyles.find(
+      this.state.commonModule.listLifeStyleStatic.sleepingStyles.find(
         (x) => x.code === data.profiles.sleepingHabit
       );
     const findSmokings =
-      this.state.commonModule.listLifeStyleSingle.smokings.find(
+      this.state.commonModule.listLifeStyleStatic.smokings.find(
         (x) => x.code === data.profiles.smoking
       );
     const findSocials =
-      this.state.commonModule.listLifeStyleSingle.socials.find(
+      this.state.commonModule.listLifeStyleStatic.socials.find(
         (x) => x.code === data.profiles.socialMedia
       );
     const findWorkouts =
-      this.state.commonModule.listLifeStyleSingle.workouts.find(
+      this.state.commonModule.listLifeStyleStatic.workouts.find(
         (x) => x.code === data.profiles.workout
       );
     debugger;

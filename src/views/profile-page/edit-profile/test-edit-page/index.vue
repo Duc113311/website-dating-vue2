@@ -44,6 +44,7 @@ export default {
 
     ...mapActions(["updateProfileUser"]),
     onBackEditProfile() {
+      debugger;
       let completeAvatar = 3;
       let completeAbout = 0;
       let completeInterest = 0;
@@ -54,6 +55,7 @@ export default {
       let completeJobTitle = 0;
       let completeCompany = 0;
       let completeSchool = 0;
+      let completeAddress = 0;
       let totalComplete = 0;
       const user_profile = this.$store.state.userModule.user_profile.profiles;
       const lengthAvatar = user_profile.avatars.length; // ảnh
@@ -68,7 +70,7 @@ export default {
       }
       const lengthInterests = user_profile.interests.length;
       if (lengthInterests !== 0) {
-        completeInterest = 20;
+        completeInterest = 15;
       }
       const lengthDatingPurpose = user_profile.datingPurpose.length;
       if (lengthDatingPurpose !== 0) {
@@ -117,6 +119,12 @@ export default {
       if (lengthSchool !== 0) {
         completeSchool = 4;
       }
+
+      const lengthAddress = user_profile.address.length;
+
+      if (lengthAddress !== 0) {
+        completeAddress = 4;
+      }
       debugger;
       totalComplete =
         totalComplete +
@@ -129,6 +137,7 @@ export default {
           completeBasicInformation +
           completeJobTitle +
           completeCompany +
+          completeAddress +
           completeSchool) *
           100) /
           100;
