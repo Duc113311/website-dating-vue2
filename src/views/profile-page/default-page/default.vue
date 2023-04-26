@@ -12,17 +12,21 @@
             <div>
               <el-progress
                 type="dashboard"
-                :percentage="percentage"
+                :percentage="percentageIncrease"
                 :color="colors"
                 :text-inside="true"
                 :stroke-width="4"
               >
               </el-progress>
               <div class="flex justify-center relative complete-image">
-                <div class="image-avatar" @click="onClickShowDetail()"></div>
+                <div
+                  :style="`background-image:url(${avatarUser})`"
+                  class="image-avatar"
+                  @click="onClickShowDetail()"
+                ></div>
 
                 <div class="absolute bottom-0 complete-percent">
-                  {{ percentage + "%" }} complete
+                  {{ percentageIncrease + "%" }} complete
                 </div>
               </div>
             </div>
@@ -74,6 +78,7 @@ import functionValidate from "../../../middleware/validate.js";
 
 // import FormPackages from "../../assets/packages/form-packages";
 import SliderGold from "@/components/packages/common/slider-gold.vue";
+import { mapMutations } from "vuex";
 
 export default {
   components: {
@@ -84,7 +89,6 @@ export default {
 
   data() {
     return {
-      percentage: this.$store.state.userModule.completeUser,
       colors: [
         { color: "#f56c6c", percentage: 20 },
         { color: "#e6a23c", percentage: 40 },
@@ -92,12 +96,21 @@ export default {
         { color: "#f56c6c", percentage: 80 },
         { color: "#f56c6c", percentage: 100 },
       ],
+      // percentage: 80,
+      percentageIncrease: 0,
     };
   },
 
   computed: {
+    percentage() {
+      return this.$store.state.userModule.completeUser;
+    },
     nameUser() {
+      debugger;
       return this.$store.state.userModule.user_profile.fullname;
+    },
+    avatarUser() {
+      return this.$store.state.userModule.user_profile.profiles.avatars[0];
     },
 
     ageUser() {
@@ -107,6 +120,7 @@ export default {
   },
 
   methods: {
+    ...mapMutations(["setCompleteUser"]),
     handleSlideClick(dataset) {
       console.log(dataset.index, dataset.name);
     },
@@ -132,6 +146,126 @@ export default {
   },
 
   created() {},
+
+  async mounted() {
+    debugger;
+    let completeAvatar = 3;
+    let completeAbout = 0;
+    let completeInterest = 0;
+    let completeDatingPurpose = 0;
+    let completeLanguages = 0;
+    let completeLifeStyle = 0;
+    let completeBasicInformation = 0;
+    let completeJobTitle = 0;
+    let completeCompany = 0;
+    let completeSchool = 0;
+    let completeAddress = 0;
+    let totalComplete = 0;
+    const user_profile = this.$store.state.userModule.user_profile.profiles;
+    const lengthAvatar = user_profile.avatars.length; // ảnh
+    if (lengthAvatar === 1) {
+      completeAvatar = parseInt(3);
+    } else {
+      completeAvatar = completeAvatar + (lengthAvatar - 1) * 5;
+    }
+    const lengthAbout = user_profile.about.length;
+    if (lengthAbout !== 0) {
+      completeAbout = 20;
+    }
+    const lengthInterests = user_profile.interests.length;
+    if (lengthInterests !== 0) {
+      completeInterest = 15;
+    }
+    const lengthDatingPurpose = user_profile.datingPurpose.length;
+    if (lengthDatingPurpose !== 0) {
+      completeDatingPurpose = 4;
+    }
+    const lengthLanguage = user_profile.languages.length;
+    if (lengthLanguage !== 0) {
+      completeLanguages = 4;
+    }
+    // Basic information
+    if (
+      (user_profile.zodiac.length ||
+        user_profile.familyFlan.length ||
+        user_profile.education.length ||
+        user_profile.covidVaccine.length ||
+        user_profile.personality.length ||
+        user_profile.communicationType.length ||
+        user_profile.loveStyle.length) !== 0
+    ) {
+      completeBasicInformation = 4;
+    }
+    // life of style
+    if (
+      (user_profile.pet.length ||
+        user_profile.drinking.length ||
+        user_profile.smoking.length ||
+        user_profile.workout.length ||
+        user_profile.dietaryPreference.length ||
+        user_profile.socialMedia.length ||
+        user_profile.sleepingHabit.length) !== 0
+    ) {
+      completeLifeStyle = 4;
+    }
+    const lengthJobTitle = user_profile.jobTitle.length;
+    if (lengthJobTitle !== 0) {
+      completeJobTitle = 4;
+    }
+    const lengthCompany = user_profile.company.length;
+
+    if (lengthCompany !== 0) {
+      completeCompany = 4;
+    }
+
+    const lengthSchool = user_profile.school.length;
+
+    if (lengthSchool !== 0) {
+      completeSchool = 4;
+    }
+
+    const lengthAddress = user_profile.address.length;
+
+    if (lengthAddress !== 0) {
+      completeAddress = 4;
+    }
+    debugger;
+    totalComplete =
+      totalComplete +
+      ((completeAvatar +
+        completeAbout +
+        completeInterest +
+        completeDatingPurpose +
+        completeLanguages +
+        completeLifeStyle +
+        completeBasicInformation +
+        completeJobTitle +
+        completeCompany +
+        completeAddress +
+        completeSchool) *
+        100) /
+        100;
+    await this.setCompleteUser(totalComplete);
+    debugger;
+
+    var i = 1;
+    var interval = setInterval(() => {
+      if (i > parseInt(this.percentage) - 2) {
+        clearInterval(interval);
+        var interval0 = setInterval(() => {
+          if (i > parseInt(this.percentage)) {
+            clearInterval(interval0);
+            return;
+          }
+          this.percentageIncrease = i;
+          i++;
+        }, 200);
+        return;
+      }
+      this.percentageIncrease = i;
+      i++;
+    }, 20);
+  },
 };
 </script>
 
@@ -174,7 +308,6 @@ export default {
 }
 
 .image-avatar {
-  background-image: url("@/assets/image-dating/0659_photo-1-163186806531842640671.jpg");
   background-position: center;
   background-size: cover;
   width: 184px;

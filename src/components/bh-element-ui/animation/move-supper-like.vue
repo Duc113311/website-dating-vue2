@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full">
+  <div class="w-full h-full absolute top-0">
     <div class="supers">
       <div class="super"></div>
       <div class="super"></div>
@@ -33,11 +33,11 @@ export default {
 .supers2 {
   width: 100%;
   min-width: 200px;
-  height: 600px;
+  height: 100%;
   min-height: 200px;
   position: absolute;
   z-index: -1;
-  bottom: 90%;
+  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;

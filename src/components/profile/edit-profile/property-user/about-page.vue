@@ -39,7 +39,6 @@ export default {
      * Gán giá trị cuối cùng valueAbout cho user_profile
      */
     onChangeSaveAbout() {
-      debugger;
       this.setAbout(this.nameAbout);
     },
   },

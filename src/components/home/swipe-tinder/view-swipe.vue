@@ -110,9 +110,6 @@
       v-bind:class="{ 'pointer-event': isPointer }"
     >
       <div class="btns">
-        <div v-if="isAnimating">
-          <MoveSupperLike></MoveSupperLike>
-        </div>
         <div class="bh-odd justify-center flex items-center">
           <img src="@/assets/icon/bt_back.svg" @click="decide('rewind')" />
         </div>
@@ -142,11 +139,14 @@
         </div>
       </div>
     </div>
+    <!-- <div class="w-full absolute top-0 left-0 h-full z-40" v-if="isAnimating">
+      <MoveSupperLike></MoveSupperLike>
+    </div> -->
   </div>
 </template>
 
 <script>
-import MoveSupperLike from "../../bh-element-ui/animation/move-supper-like";
+// import MoveSupperLike from "../../bh-element-ui/animation/move-supper-like";
 import LoadApp from "../../layout/loading/load-app";
 import Tinder from "vue-tinder";
 import functionValidate from "../../../middleware/validate.js";
@@ -155,7 +155,7 @@ import { mapActions, mapMutations } from "vuex";
 export default {
   name: "view-swipe",
   components: {
-    MoveSupperLike,
+    // MoveSupperLike,
     LoadApp,
     Tinder,
   },
@@ -180,20 +180,22 @@ export default {
       icUrlApp: require("@/assets/icon/ic_icon_app.svg"),
       colorApp: "#FF828A",
       bgColorApp: "linear-gradient(#FE4E58,#FD757F)",
+      users: [],
     };
   },
 
   props: ["isLoadData"],
 
   computed: {
-    listDataUser() {
-      return this.$store.state.mongoModule.listDataCard
-        ? this.$store.state.mongoModule.listDataCard
-        : [];
-    },
-
-    isShowUrl(val) {
-      return val;
+    listDataUser: {
+      get() {
+        return this.$store.state.mongoModule.listDataCard
+          ? this.$store.state.mongoModule.listDataCard
+          : this.users;
+      },
+      set(newData) {
+        this.users = newData;
+      },
     },
   },
 
@@ -202,9 +204,16 @@ export default {
       "setUrlNameAvatarUser",
       "setLeftRightAvatar",
       "setDetailUserProfile",
+      "setDataUserMatch",
     ]),
 
-    ...mapActions(["patchNopeUserId", "patchComeBackUserId", "postLikeUserId"]),
+    ...mapActions([
+      "postNopeUser",
+      "postLikeUser",
+      "postBackUser",
+      "postSupperLikeUser",
+      "postBoostUser",
+    ]),
 
     onMouseDow(event) {
       this.truc_x = event.clientX;
@@ -312,49 +321,134 @@ export default {
       this.$emit("onShowDetailUser", true);
     },
     async onSubmit(value) {
+      debugger;
       this.setUrlNameAvatarUser("");
       this.isActiveImag = true;
 
       if (value.type.toString() === "nope") {
         console.log("Nope");
-        const data = {
-          userId: localStorage.userId,
-          objectCustomer: {
-            userIdCustomer: value.item.userId,
-          },
-        };
-        console.log(data);
+
+        await this.postNopeUser({
+          interactorId: value.key,
+        });
+
+        if (this.history.length === 0) {
+          this.history.push(value.item);
+        } else {
+          this.history[0] = { ...this.history[0], ...value.item };
+        }
+        this.imageActive = 0;
       }
       if (value.type.toString() === "super") {
-        this.isAnimating = true;
-        setTimeout(() => {
-          this.isAnimating = false;
-        }, 1200);
-        console.log("Supper");
+        // this.isAnimating = true;
+        // setTimeout(() => {
+        //   this.isAnimating = false;
+        // }, 1200);
+
+        if (this.history.length === 0) {
+          this.history.push(value.item);
+        } else {
+          this.history[0] = { ...this.history[0], ...value.item };
+        }
+
+        const isSupperLikeValue = this.$store.state.homeModule.isSupperLike;
+        if (isSupperLikeValue.isFreeRuntime) {
+          // quẹt thoải mái
+          await this.postSupperLikeUser({
+            interactorId: value.key,
+          });
+          debugger;
+          // match thành công hiện form match
+          if (isSupperLikeValue.isMatched) {
+            // this.setDataUserMatch(value.item);
+            // this.$emit("onShowFormLikeYou", true);
+          }
+
+          this.imageActive = 0;
+        } else {
+          // Check giá trị likeRemaining>0
+          if (isSupperLikeValue.superLikeRemaining > 0) {
+            //  Được quẹt
+            await this.postSupperLikeUser({
+              interactorId: value.key,
+            });
+            debugger;
+            if (isSupperLikeValue.isMatched) {
+              //   Xử lý lưu giá trị cache
+            }
+          } else {
+            // if (this.history.length) {
+            //   this.$refs.tinder.rewind([this.history.pop()]);
+            // }
+            this.decide(`rewind`);
+            // Hiển thị package
+            this.$emit("onShowPackage", true);
+          }
+        }
+        this.imageActive = 0;
       }
+
       if (value.type.toString() === "like") {
         console.log("like");
-        const data = {
-          userId: localStorage.userId,
-          objectCustomer: {
-            userIdCustomer: value.item.userId,
-          },
-        };
-        console.log(data);
+        if (this.history.length === 0) {
+          this.history.push(value.item);
+        } else {
+          this.history[0] = { ...this.history[0], ...value.item };
+        }
+        this.imageActive = 0;
+        // Check được quẹt hay ko?
+        const isLikeValue = this.$store.state.homeModule.isLike;
+        if (isLikeValue.isFreeRuntime) {
+          // quẹt thoải mái
+          await this.postLikeUser({
+            interactorId: value.key,
+          });
+          debugger;
+          // match thành công hiện form match
+          if (isLikeValue.isMatched) {
+            this.setDataUserMatch(value.item);
+            this.$emit("onShowFormLikeYou", true);
+          }
+
+          this.imageActive = 0;
+        } else {
+          // Check giá trị likeRemaining>0
+          if (isLikeValue.likeRemaining > 0) {
+            //  Được quẹt
+            await this.postLikeUser({
+              interactorId: value.key,
+            });
+            debugger;
+            if (isLikeValue.isMatched) {
+              this.setDataUserMatch(value.item);
+              this.$emit("onShowFormLikeYou", true);
+            }
+          } else {
+            debugger;
+            // Hiển thị package
+            this.$emit("onShowPackage", true);
+
+            this.$nextTick(() => {
+              this.$refs.tinder.rewind([this.history.pop()]);
+            });
+          }
+        }
       }
-      this.history.push(value.item);
-      this.imageActive = 0;
     },
     async decide(choice) {
+      debugger;
       console.log(choice);
       if (choice === "rewind") {
         if (this.history.length) {
+          this.postBackUser({
+            interactorId: this.history[0]._id,
+          });
           this.$refs.tinder.rewind([this.history.pop()]);
         }
       } else if (choice === "help") {
         this.$emit("onShowPackage", true);
       } else {
-        this.$refs.tinder.decide(choice);
+        await this.$refs.tinder.decide(choice);
       }
     },
   },

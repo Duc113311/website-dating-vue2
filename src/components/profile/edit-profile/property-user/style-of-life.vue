@@ -20,7 +20,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ petParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowFormLife()">
+              <div class="cursor-pointer" @click="onShowFormLife('scroll_1')">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -41,7 +41,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ drinkingParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowFormLife()">
+              <div class="cursor-pointer" @click="onShowFormLife('scroll_2')">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -62,7 +62,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ smokingParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowFormLife()">
+              <div class="cursor-pointer" @click="onShowFormLife('scroll_3')">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -83,7 +83,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ workoutParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowFormLife()">
+              <div class="cursor-pointer" @click="onShowFormLife('scroll_4')">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -104,7 +104,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ dietaryPreferenceParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowFormLife()">
+              <div class="cursor-pointer" @click="onShowFormLife('scroll_5')">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -125,7 +125,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ socialMediaParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowFormLife()">
+              <div class="cursor-pointer" @click="onShowFormLife('scroll_6')">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -147,7 +147,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ sleepingHabitParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowFormLife()">
+              <div class="cursor-pointer" @click="onShowFormLife('scroll_7')">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -242,9 +242,12 @@ export default {
 
   methods: {
     ...mapMutations(["setCompleteLifeStyle"]),
-    onShowFormLife() {
+    onShowFormLife(val) {
       //
-      this.$emit("onShowFormLifeStyle", true);
+      this.$emit("onShowFormLifeStyle", {
+        isShowForm: true,
+        valueScroll: val,
+      });
     },
   },
 };

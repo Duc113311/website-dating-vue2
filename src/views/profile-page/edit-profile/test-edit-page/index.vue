@@ -43,8 +43,8 @@ export default {
     ...mapMutations(["setCompleteUser"]),
 
     ...mapActions(["updateProfileUser"]),
-    onBackEditProfile() {
-      debugger;
+    async onBackEditProfile() {
+      this.loading = true;
       let completeAvatar = 3;
       let completeAbout = 0;
       let completeInterest = 0;
@@ -125,7 +125,7 @@ export default {
       if (lengthAddress !== 0) {
         completeAddress = 4;
       }
-      debugger;
+
       totalComplete =
         totalComplete +
         ((completeAvatar +
@@ -142,8 +142,12 @@ export default {
           100) /
           100;
       this.setCompleteUser(totalComplete);
-      this.updateProfileUser(user_profile);
-      this.$router.push({ path: "/profile" });
+      await this.updateProfileUser(user_profile);
+
+      await setTimeout(() => {
+        this.loading = false;
+        this.$router.push({ path: "/profile" });
+      }, 2000);
     },
   },
 };

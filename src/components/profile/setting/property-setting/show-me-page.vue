@@ -57,9 +57,9 @@ export default {
 
   computed: {
     showMeGender() {
-      const genderShowMe =
-        this.$store.state.userModule.user_profile?.settings.genderShowMe;
-      return genderShowMe;
+      const genderFilter =
+        this.$store.state.userModule.user_profile?.settings.genderFilter;
+      return genderFilter;
     },
   },
 

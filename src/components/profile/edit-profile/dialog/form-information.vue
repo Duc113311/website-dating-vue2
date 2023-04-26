@@ -16,7 +16,10 @@
           </div>
         </div>
         <div class="w-full flex justify-center items-center h-form-data">
-          <div class="w-full items-center h-full height-scroll overflow-scroll">
+          <div
+            class="w-full items-center h-full height-scroll overflow-scroll"
+            ref="scroll_1"
+          >
             <!-- Title -->
             <div class="w-full">
               <div class="title-dialog">Basic information</div>
@@ -52,7 +55,10 @@
             <!-- Trình độ học vấn -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="name-option-dialog flex items-center">
+                <div
+                  class="name-option-dialog flex items-center"
+                  ref="scroll_2"
+                >
                   <img
                     class="mr-2"
                     src="@/assets/icon/ic_tinder/education@1x.png"
@@ -75,7 +81,10 @@
             <!-- Phong cách  -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="name-option-dialog flex items-center">
+                <div
+                  class="name-option-dialog flex items-center"
+                  ref="scroll_3"
+                >
                   <img
                     class="mr-2"
                     src="@/assets/icon/ic_tinder/family@1x.png"
@@ -99,7 +108,10 @@
             <!-- Trạng thái hôn nhân -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="name-option-dialog flex items-center">
+                <div
+                  class="name-option-dialog flex items-center"
+                  ref="scroll_4"
+                >
                   <img
                     class="mr-2"
                     src="@/assets/icon/ic_tinder/covid_comfort@1x.png"
@@ -123,7 +135,10 @@
             <!-- Tính cách -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="name-option-dialog flex items-center">
+                <div
+                  class="name-option-dialog flex items-center"
+                  ref="scroll_5"
+                >
                   <img
                     class="mr-2"
                     src="@/assets/icon/ic_tinder/kietinhcach@2x.png"
@@ -147,7 +162,10 @@
 
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="name-option-dialog flex items-center">
+                <div
+                  class="name-option-dialog flex items-center"
+                  ref="scroll_6"
+                >
                   <img
                     class="mr-2"
                     src="@/assets/icon/ic_tinder/communication_style@2x.png"
@@ -171,7 +189,10 @@
 
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="name-option-dialog flex items-center">
+                <div
+                  class="name-option-dialog flex items-center"
+                  ref="scroll_7"
+                >
                   <img
                     class="mr-2"
                     src="@/assets/icon/ic_tinder/love_language@1x.png"
@@ -228,6 +249,8 @@ export default {
       loveStylesValue: null,
     };
   },
+
+  props: ["valueScroll"],
 
   computed: {
     listZodiacParams() {
@@ -441,6 +464,7 @@ export default {
   },
 
   mounted() {
+    this.$refs[this.valueScroll].scrollIntoView({ behavior: "smooth" });
     const profileBasic = this.$store.state.userModule.user_profile.profiles;
     if (
       (profileBasic.zodiac ||

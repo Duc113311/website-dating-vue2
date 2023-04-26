@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full relative p-5">
-    <div class="w-full h-full title-default">
+    <div class="w-full h-full title-default" v-loading="loading">
       <!-- Back -->
       <div class="w-full header-edit flex justify-center items-center">
         <div class="w-full flex justify-center items-center">
@@ -26,6 +26,7 @@
 import Footer from "../../../../components/layout/footer-home/footer";
 import BhBack from "../../../../components/bh-element-ui/button/bh-back";
 import FromSetting from "../../../../components/profile/setting/from-setting";
+import { mapActions } from "vuex";
 export default {
   components: {
     Footer,
@@ -35,12 +36,23 @@ export default {
   name: "test-setting-page",
 
   data() {
-    return {};
+    return {
+      loading: false,
+    };
   },
 
   methods: {
-    onBackEditProfile() {
-      this.$router.go(-1);
+    ...mapActions(["updateSettingUser"]),
+    async onBackEditProfile() {
+      this.loading = true;
+
+      const setting = this.$store.state.userModule.user_profile.settings;
+      await this.updateSettingUser(setting);
+
+      await setTimeout(() => {
+        this.loading = false;
+        this.$router.go(-1);
+      }, 2000);
     },
   },
 };

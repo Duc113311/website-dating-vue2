@@ -10,6 +10,7 @@
             <ViewSwipe
               ref="myViewSwipe"
               @onShowDetailUser="onShowDetailUser"
+              @onShowFormLikeYou="onShowFormLikeYou"
               @onShowPackage="onShowPackage"
               :isLoadData="loading"
             ></ViewSwipe>
@@ -37,7 +38,7 @@
 
     <!-- Hiển thị form chat khi cả 2 user match -->
     <div
-      v-show="isShowMatchs"
+      v-show="isShowFormMatch"
       class="w-full h-full match-like z-20 absolute top-0 left-0"
     >
       <FormLikeToo @onHideLikeYou="onHideLikeYou"></FormLikeToo>
@@ -100,6 +101,7 @@ export default {
 
       icUrlApp: require("@/assets/icon/ic_icon_app.svg"),
       colorApp: "#FF828A",
+      isShowFormMatch: false,
     };
   },
 
@@ -113,24 +115,15 @@ export default {
   },
 
   async created() {
+    await this.getDetailProfileByAuthorization();
     await this.getListCardForUser();
 
-    this.getListLifeStyleCommons();
-    this.getListInformationBasic();
-    this.getListLifeStyleStatic();
-    this.getDetailProfileByAuthorization();
     setTimeout(() => {
       this.loading = false;
     }, 1000);
   },
   methods: {
-    ...mapActions([
-      "getListCardForUser",
-      "getDetailProfileByAuthorization",
-      "getListLifeStyleStatic",
-      "getListInformationBasic",
-      "getListLifeStyleCommons",
-    ]),
+    ...mapActions(["getListCardForUser", "getDetailProfileByAuthorization"]),
 
     ...mapMutations(["setStatusLikeUser"]),
     onHideLikeYou(val) {
@@ -177,6 +170,10 @@ export default {
 
     onHidePopupSendSuperLike(val) {
       this.isSendSuccess = val;
+    },
+
+    onShowFormLikeYou(val) {
+      this.isShowFormMatch = val;
     },
   },
 

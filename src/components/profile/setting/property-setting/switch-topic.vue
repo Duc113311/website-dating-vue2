@@ -61,7 +61,7 @@ export default {
     ...mapMutations(["setShowTopPicks"]),
     onChangeShowTopPicks() {
       const topPicks =
-        this.$store.state.userModule.user_profile.settings.showMePersonLikeMe;
+        this.$store.state.userModule.user_profile.settings.toppicksDiscoverable;
       if (topPicks) {
         this.setShowTopPicks(false);
       } else {

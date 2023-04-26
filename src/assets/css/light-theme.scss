@@ -98,4 +98,9 @@
   .color-button-default {
     color: var(--color-text);
   }
+
+  .el-slider__runway {
+    height: 3px !important;
+    background-color: #ccd1e2 !important;
+  }
 }

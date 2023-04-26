@@ -16,7 +16,10 @@
           </div>
         </div>
         <div class="w-full flex justify-center items-center h-form-data">
-          <div class="w-full items-center h-full height-scroll overflow-scroll">
+          <div
+            class="w-full items-center h-full height-scroll overflow-scroll"
+            ref="scroll_1"
+          >
             <!-- Title -->
             <div class="w-full" v-bind:class="{ 'scroll-header': scrolled }">
               <div class="title-dialog">Style of life</div>
@@ -52,7 +55,10 @@
             <!-- Trình độ học vấn -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="name-option-dialog flex items-center">
+                <div
+                  class="name-option-dialog flex items-center"
+                  ref="scroll_2"
+                >
                   <img
                     class="mr-2"
                     src="@/assets/icon/ic_tinder/drink_of_choice@1x.png"
@@ -76,7 +82,10 @@
             <!-- Phong cách  -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="name-option-dialog flex items-center">
+                <div
+                  class="name-option-dialog flex items-center"
+                  ref="scroll_3"
+                >
                   <img
                     class="mr-2"
                     src="@/assets/icon/ic_tinder/smoking@1x.png"
@@ -99,7 +108,10 @@
             <!-- Trạng thái hôn nhân -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="name-option-dialog flex items-center">
+                <div
+                  class="name-option-dialog flex items-center"
+                  ref="scroll_4"
+                >
                   <img
                     class="mr-2"
                     src="@/assets/icon/ic_tinder/workout@2x.png"
@@ -122,7 +134,10 @@
             <!-- Tính cách -->
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="name-option-dialog flex items-center">
+                <div
+                  class="name-option-dialog flex items-center"
+                  ref="scroll_5"
+                >
                   <img
                     class="mr-2"
                     src="@/assets/icon/ic_tinder/appetite@1x.png"
@@ -145,7 +160,10 @@
 
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="name-option-dialog flex items-center">
+                <div
+                  class="name-option-dialog flex items-center"
+                  ref="scroll_6"
+                >
                   <img
                     class="mr-2"
                     src="@/assets/icon/ic_tinder/social_media@1x.png"
@@ -169,7 +187,10 @@
 
             <div class="w-full">
               <div class="w-full flex items-center">
-                <div class="name-option-dialog flex items-center">
+                <div
+                  class="name-option-dialog flex items-center"
+                  ref="scroll_7"
+                >
                   <img
                     class="mr-2"
                     src="@/assets/icon/ic_tinder/sleeping_habits@1x.png"
@@ -227,6 +248,8 @@ export default {
       scrolled: false,
     };
   },
+
+  props: ["valueScroll"],
 
   computed: {
     listPetParams() {
@@ -425,15 +448,10 @@ export default {
       this.setSleepingHabit(this.sleepingHabitValue);
       this.$emit("onClickCancelLife", false);
     },
-    handleScroll() {
-      this.scrolled = window.scrollY > 0;
-    },
   },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.handleScroll);
-  },
+  beforeDestroy() {},
   mounted() {
-    window.addEventListener("scroll", this.handleScroll);
+    this.$refs[this.valueScroll].scrollIntoView({ behavior: "smooth" });
 
     const profileBasic = this.$store.state.userModule.user_profile.profiles;
 

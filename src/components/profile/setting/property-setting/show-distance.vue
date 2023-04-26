@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 export default {
   name: "show-distance",
 
@@ -61,8 +61,11 @@ export default {
   },
 
   methods: {
+    ...mapMutations(["setDistanceUnit"]),
     onChangeDistanceLocation(val) {
       console.log(val);
+
+      this.setDistanceUnit(val);
       for (let index = 0; index < this.listDistance.length; index++) {
         const element = this.listDistance[index];
         if (element === val) {
@@ -85,14 +88,17 @@ export default {
   },
 
   mounted() {
-    // const location = this.nameDistanceLocation;
-    // console.log(location);
-    // document
-    //   .getElementById("location_" + location)
-    //   .classList.add("active-distance");
-    // document
-    //   .getElementById("location_" + location)
-    //   .classList.remove("no-active-distance");
+    const location =
+      this.$store.state.userModule.user_profile.settings.distancePreference
+        .unit;
+    console.log(location);
+
+    document
+      .getElementById("location_" + location)
+      .classList.add("active-distance");
+    document
+      .getElementById("location_" + location)
+      .classList.remove("no-active-distance");
   },
 };
 </script>

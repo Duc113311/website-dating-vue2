@@ -11,7 +11,7 @@
             @click="onChangeAutoPlayVideo('no')"
           >
             <div class="bh-item-title">Only Wi-fi Only</div>
-            <div v-if="valueAutoPlayVideo === `no`">
+            <div v-if="valueAutoPlayVideo === 'no'">
               <img src="@/assets/icon/ic_checked.svg" alt="" srcset="" />
             </div>
           </div>
@@ -21,7 +21,7 @@
             @click="onChangeAutoPlayVideo('wifi')"
           >
             <div class="bh-item-title">On Wi-fi and mobile data</div>
-            <div v-if="valueAutoPlayVideo === `wifi`">
+            <div v-if="valueAutoPlayVideo === 'wifi'">
               <img src="@/assets/icon/ic_checked.svg" alt="" srcset="" />
             </div>
           </div>
@@ -31,7 +31,7 @@
             @click="onChangeAutoPlayVideo('always')"
           >
             <div class="bh-item-title">Never autoplay videos</div>
-            <div v-if="valueAutoPlayVideo === `always`">
+            <div v-if="valueAutoPlayVideo === 'always'">
               <img src="@/assets/icon/ic_checked.svg" alt="" srcset="" />
             </div>
           </div>
@@ -51,24 +51,17 @@ export default {
   },
 
   computed: {
-    ...mapGetters({
-      nameAutoPlayVideo: "showAutoPlay",
-    }),
-    // Auto play video
-    valueAutoPlayVideo: {
-      get() {
-        const autoPlayVideo = this.nameAutoPlayVideo;
+    valueAutoPlayVideo() {
+      const autoPlayVideo =
+        this.$store.state.userModule.user_profile?.settings.autoPlayVideo;
 
-        return autoPlayVideo;
-      },
-      set(newName) {
-        return newName;
-      },
+      return autoPlayVideo;
     },
+    // Auto play video
   },
 
   methods: {
-    ...mapMutations([["setAutoPlayVideo"]]),
+    ...mapMutations(["setAutoPlayVideo"]),
     onChangeAutoPlayVideo(val) {
       this.setAutoPlayVideo(val);
     },

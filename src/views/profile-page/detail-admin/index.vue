@@ -144,7 +144,6 @@ import Footer from "../../../components/layout/footer-home/footer";
 import Header from "../../../components/layout/header-home/header";
 import BhHorizontalLine from "../../../components/bh-element-ui/input/bh-horizontal-line";
 import functionValidate from "../../../middleware/validate.js";
-
 export default {
   components: {
     BhBack,

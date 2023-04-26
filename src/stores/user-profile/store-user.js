@@ -48,23 +48,29 @@ const state = {
         unit: "km",
         onlyShowInThis: false,
       },
+      genderFilter: "all",
       agePreference: {
         min: 15,
         max: 30,
         onlyShowInThis: false,
       },
+      showSameOrientationSexual: false,
       showOnlineStatus: false,
       showActiveStatus: false,
-      autoPlayVideo: "no",
+      autoPlayVideo: "always",
       notiSeenMsg: false,
       showMePersonLikeMe: false,
       global: {
-        isEnabled: true,
+        isEnabled: false,
         languages: [],
       },
       incognitoMode: false,
+      toppicksDiscoverable: true,
     },
     verifyStatus: false,
+    onlineNow: false,
+    activeStatus: "",
+    location: {},
     coins: 0,
     numberBooster: 0,
     numberSuperLike: 0,
@@ -152,7 +158,7 @@ const getters = {
   },
 
   showGlobal: (state) => {
-    return state.user_profile.settings.global;
+    return state.user_profile.settings.global.isEnabled;
   },
 
   showPeopleDistance: (state) => {
@@ -166,11 +172,9 @@ const getters = {
   showCardStack: (state) => {
     return state.user_profile.settings.toppicksDiscoverable;
   },
-  showAutoPlay: (state) => {
-    return state.user_profile.settings.autoPlayVideo;
-  },
+
   showTopPick: (state) => {
-    return state.user_profile.settings.showMePersonLikeMe;
+    return state.user_profile.settings.toppicksDiscoverable;
   },
   showReadReceipt: (state) => {
     return state.user_profile.settings.notiSeenMsg;
@@ -198,6 +202,7 @@ const actions = {
     await http_mongo
       .get(`api/v1/profile`, data)
       .then((response) => {
+        debugger;
         commit("setDetailProfileAuth_Mongo", response.data.data);
       })
       .catch((error) => {
@@ -386,6 +391,7 @@ const mutations = {
   },
 
   setCompleteUser(state, data) {
+    debugger;
     state.completeUser = data;
   },
 
@@ -416,7 +422,7 @@ const mutations = {
         this.state.commonModule.listLifeStyleSingle.interests.find(
           (x) => x.code === element
         );
-      debugger;
+
       if (findInterest) {
         state.lifeStyleSingle.interests.push(findInterest.value);
       }
@@ -428,7 +434,7 @@ const mutations = {
         this.state.commonModule.listLifeStyleSingle.languages.find(
           (x) => x.code === element
         );
-      debugger;
+
       if (findLanguages) {
         state.lifeStyleSingle.languages.push(findLanguages.value);
       }
@@ -441,7 +447,7 @@ const mutations = {
     if (findDatingPurpose) {
       state.lifeStyleSingle.datingPurpose = findDatingPurpose;
     }
-    debugger;
+
     (state.user_profile.dob = data.dob),
       (state.user_profile.email = data.email),
       (state.user_profile.fullname = data.fullname),
@@ -514,7 +520,7 @@ const mutations = {
     if (findLoveStyles) {
       state.basicInformation.loveStyle = findLoveStyles.value;
     }
-    debugger;
+
     // Life of style
     const findPets = this.state.commonModule.listLifeStyleStatic.pets.find(
       (x) => x.code === data.profiles.pet
@@ -543,7 +549,7 @@ const mutations = {
       this.state.commonModule.listLifeStyleStatic.workouts.find(
         (x) => x.code === data.profiles.workout
       );
-    debugger;
+
     if (findPets) {
       state.styleOfLife.pet = findPets.value;
     }
@@ -567,7 +573,6 @@ const mutations = {
       state.styleOfLife.workout = findWorkouts.value;
     }
     console.log(state.basicInformation);
-    debugger;
   },
 
   /**
@@ -649,7 +654,12 @@ const mutations = {
    * @param {*} value
    */
   setShowGlobal(state, value) {
-    state.user_profile.settings.global = value;
+    state.user_profile.settings.global.isEnabled = value.isEnabled;
+    state.user_profile.settings.global.languages = value.languages;
+  },
+
+  setDistanceUnit(state, value) {
+    state.user_profile.settings.distancePreference.unit = value;
   },
 
   /**
@@ -678,7 +688,7 @@ const mutations = {
   },
 
   setShowTopPicks(state, value) {
-    state.user_profile.settings.showMePersonLikeMe = value;
+    state.user_profile.settings.toppicksDiscoverable = value;
   },
 
   setReadReceipts(state, value) {

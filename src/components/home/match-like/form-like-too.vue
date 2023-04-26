@@ -16,8 +16,8 @@
           class="flex justify-center absolute left-0 w-full top-0 content-center p-0.5 border-solid mt-3"
         >
           <button
-            v-for="data in btUrlImage"
-            :key="data.id"
+            v-for="(data, index) in btUrlImage"
+            :key="index"
             @click="onClickNextImage(data)"
             class="bt-img p-0.5 rounded-lg mr-0.5"
           ></button>
@@ -26,9 +26,15 @@
 
       <div class="w-full mt-28 text-center flex justify-center content-center">
         <div class="text-infor">
-          <h3 class="text-5xl">THEY</h3>
-          <h3 class="text-7xl">LIKE YOU</h3>
-          <h3 class="text-9xl">TOO!</h3>
+          <div v-if="theyValue" class="they mb-2">
+            <img src="@/assets/image-dating/ic_they.svg" alt="" />
+          </div>
+          <div v-if="likeYouValue" class="like_you">
+            <img src="@/assets/image-dating/ic_like_you.svg" alt="" />
+          </div>
+          <div v-if="tooValue" class="too mt-5">
+            <img src="@/assets/image-dating/ic_too.svg" alt="" />
+          </div>
         </div>
       </div>
 
@@ -109,32 +115,21 @@ export default {
       nameTitle: "Confirm",
 
       avatarDefault: require("@/assets/image-dating/default.png"),
+      theyValue: false,
+      likeYouValue: false,
+      tooValue: false,
     };
   },
 
   computed: {
     urlImage() {
-      return this.$store.state.homeModule.likeForUser?.avatar
-        ? this.$store.state.homeModule.likeForUser?.avatar
+      return this.$store.state.homeModule.userMatchData?.profiles?.avatar
+        ? this.$store.state.homeModule.userMatchData?.profiles?.avatar
         : this.avatarDefault;
     },
 
     btUrlImage() {
-      const imageLength = [
-        {
-          id: 1,
-          urlName: "ssss",
-        },
-        {
-          id: 2,
-          urlName: "ssss",
-        },
-        {
-          id: 3,
-          urlName: "ssss",
-        },
-      ];
-      return imageLength;
+      return this.$store.state.homeModule.userMatchData?.profiles?.avatar;
     },
   },
 
@@ -149,10 +144,95 @@ export default {
       this.$emit("onHideLikeYou", val);
     },
   },
+
+  mounted() {
+    setTimeout(() => {
+      this.theyValue = true;
+    }, 500);
+    setTimeout(() => {
+      this.likeYouValue = true;
+    }, 1000);
+    setTimeout(() => {
+      this.tooValue = true;
+    }, 1500);
+  },
 };
 </script>
 
 <style lang="css">
+.they {
+  -webkit-animation: they 0.3s cubic-bezier(0.95, 0.05, 0.795, 0.035) both;
+  animation: they 0.3s cubic-bezier(0.95, 0.05, 0.795, 0.035) both;
+}
+@-webkit-keyframes they {
+  0% {
+    -webkit-transform: scale(3);
+    transform: scale(3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes they {
+  0% {
+    -webkit-transform: scale(3);
+    transform: scale(3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.like_you {
+  -webkit-animation: like_you 0.3s cubic-bezier(0.95, 0.05, 0.795, 0.035) both;
+  animation: like_you 0.3s cubic-bezier(0.95, 0.05, 0.795, 0.035) both;
+}
+@-webkit-keyframes like_you {
+  0% {
+    -webkit-transform: scale(3);
+    transform: scale(3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes like_you {
+  0% {
+    -webkit-transform: scale(3);
+    transform: scale(3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.too {
+  -webkit-animation: too 0.3s cubic-bezier(0.95, 0.05, 0.795, 0.035) both;
+  animation: too 0.3s cubic-bezier(0.95, 0.05, 0.795, 0.035) both;
+}
+@-webkit-keyframes too {
+  0% {
+    -webkit-transform: scale(3);
+    transform: scale(3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes too {
+  0% {
+    -webkit-transform: scale(3);
+    transform: scale(3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
 .image-say {
   overflow: hidden;
   background-repeat: no-repeat;

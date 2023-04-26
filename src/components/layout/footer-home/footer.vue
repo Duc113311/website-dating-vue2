@@ -86,7 +86,9 @@ export default {
     if (
       this.$route.name === "default-page" ||
       this.$route.name === "setting" ||
-      this.$route.name === "edit-profile"
+      this.$route.name === "edit-profile" ||
+      this.$route.name === "test-edit-page" ||
+      this.$route.name === "test-setting-page"
     ) {
       document
         .getElementsByClassName("fa-user")[0]

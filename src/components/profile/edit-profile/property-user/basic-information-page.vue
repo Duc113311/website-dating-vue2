@@ -20,7 +20,10 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ zodiacParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowBasicInformation()">
+              <div
+                class="cursor-pointer"
+                @click="onShowBasicInformation('scroll_1')"
+              >
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -41,7 +44,10 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ familyParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowBasicInformation()">
+              <div
+                class="cursor-pointer"
+                @click="onShowBasicInformation('scroll_2')"
+              >
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -62,7 +68,10 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ educationParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowBasicInformation()">
+              <div
+                class="cursor-pointer"
+                @click="onShowBasicInformation('scroll_3')"
+              >
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -83,7 +92,10 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ vaccineParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowBasicInformation()">
+              <div
+                class="cursor-pointer"
+                @click="onShowBasicInformation('scroll_4')"
+              >
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -104,7 +116,10 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ personalityParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowBasicInformation()">
+              <div
+                class="cursor-pointer"
+                @click="onShowBasicInformation('scroll_5')"
+              >
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -125,7 +140,10 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ communicationParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowBasicInformation()">
+              <div
+                class="cursor-pointer"
+                @click="onShowBasicInformation('scroll_6')"
+              >
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -147,7 +165,10 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ loveLanguageParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowBasicInformation()">
+              <div
+                class="cursor-pointer"
+                @click="onShowBasicInformation('scroll_7')"
+              >
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -198,14 +219,13 @@ export default {
      */
     zodiacParam() {
       const zodiacData = this.$store.state.userModule.basicInformation.zodiac;
-      debugger;
+
       return zodiacData ? zodiacData : this.nameDefault;
     },
 
     familyParam() {
       const petsFreeData =
         this.$store.state.userModule.basicInformation.familyFlan;
-      debugger;
 
       return petsFreeData ? petsFreeData : this.nameDefault;
     },
@@ -213,7 +233,6 @@ export default {
     educationParam() {
       const educationData =
         this.$store.state.userModule.basicInformation.education;
-      debugger;
 
       return educationData ? educationData : this.nameDefault;
     },
@@ -221,7 +240,6 @@ export default {
     personalityParam() {
       const personalityData =
         this.$store.state.userModule.basicInformation.personality;
-      debugger;
 
       return personalityData ? personalityData : this.nameDefault;
     },
@@ -229,7 +247,6 @@ export default {
     vaccineParam() {
       const vaccineData =
         this.$store.state.userModule.basicInformation.covidVaccine;
-      debugger;
 
       return vaccineData ? vaccineData : this.nameDefault;
     },
@@ -237,7 +254,6 @@ export default {
     communicationParam() {
       const communicationData =
         this.$store.state.userModule.basicInformation.communicationType;
-      debugger;
 
       return communicationData ? communicationData : this.nameDefault;
     },
@@ -245,7 +261,6 @@ export default {
     loveLanguageParam() {
       const loveLanguageData =
         this.$store.state.userModule.basicInformation.loveStyle;
-      debugger;
 
       return loveLanguageData ? loveLanguageData : this.nameDefault;
     },
@@ -254,11 +269,14 @@ export default {
   methods: {
     ...mapMutations(["setCompleteBasicInformation"]),
     /**
-     * Sự kiện show thoong tin cơ bản
+     * Sự kiện show thông tin cơ bản
      */
-    onShowBasicInformation() {
+    onShowBasicInformation(val) {
       //
-      this.$emit("onShowFormBasicInformation", true);
+      this.$emit("onShowFormBasicInformation", {
+        isShowForm: true,
+        valueScroll: val,
+      });
     },
   },
 };

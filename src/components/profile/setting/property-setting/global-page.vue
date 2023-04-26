@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="w-full mb-6">
     <div class="w-full flex justify-center items-center">
       <div class="w-full">
         <div
@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <div v-show="valueGlobal" class="w-full form-set-list">
+    <div v-show="valueGlobal" class="w-full form-set-list bg-default">
       <div class="w-full bh-title title-item form-set-item">
         PREFERRED LANGUAGES
       </div>
@@ -101,11 +101,18 @@ export default {
     ...mapMutations(["setShowGlobal"]),
 
     onChangeGlobal() {
-      const global = this.$store.state.userModule.user_profile.settings.global;
+      const global =
+        this.$store.state.userModule.user_profile.settings.global.isEnabled;
       if (global) {
-        this.setShowGlobal(false);
+        this.setShowGlobal({
+          isEnabled: false,
+          languages: [],
+        });
       } else {
-        this.setShowGlobal(true);
+        this.setShowGlobal({
+          isEnabled: true,
+          languages: this.languageChecked,
+        });
       }
     },
 
@@ -113,15 +120,15 @@ export default {
       this.isShowLanguages = true;
     },
 
-    onChangeCancel() {},
-
-    onChangeSaveInterest() {},
-
     onClickSaveLanguage(val) {
       const language = this.$store.state.userModule.languageChecked;
       if (language.length >= 5) {
         this.isDisabled = true;
       }
+      this.setShowGlobal({
+        isEnabled: true,
+        languages: this.languageChecked,
+      });
       this.isShowLanguages = val;
     },
   },

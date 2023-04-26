@@ -1,119 +1,122 @@
 <template>
-  <div class="w-full h-full show-popups z-10">
-    <div class="v-modal-bg" @click="onHidePopupPackage()"></div>
-    <div class="w-full absolute top-20 flex justify-center p-5">
-      <div
-        class="popup_report"
-        :style="`background:${bindingData.colorButtonAction.colorBackground}`"
-      >
-        <div class="platinum h-full w-full text-center">
-          <div class="w-full title-packages">
-            {{ bindingData.titlePackage }}
-          </div>
-          <div class="w-full text-center mb-2 h-72">
-            <carousel
-              :per-page="1"
-              :mouse-drag="true"
-              :autoplay="true"
-              :paginationActiveColor="isColorActive"
-              :paginationColor="isColor"
-            >
-              <slide
-                data-index="0"
-                data-name="MySlideName"
-                @slideclick="handleSlideClick"
-                v-for="(item, index) in bindingData.lisNameSliderGolds"
-                :key="index"
+  <div class="w-full h-full show-popups z-10 flex justify-center items-center">
+    <div class="backdrop" @click="onHidePopupPackage"></div>
+    <div class="dialog-container">
+      <div class="dialog">
+        <div
+          class="popup_report"
+          :style="`background:${bindingData.colorButtonAction.colorBackground}`"
+        >
+          <div class="platinum h-full w-full text-center">
+            <div class="w-full title-packages">
+              {{ bindingData.titlePackage }}
+            </div>
+            <div class="w-full text-center mb-2 h-72">
+              <carousel
+                :per-page="1"
+                :mouse-drag="true"
+                :autoplay="true"
+                :paginationActiveColor="isColorActive"
+                :paginationColor="isColor"
               >
-                <div
-                  class="item-package"
-                  @click="onClickShowPackages('platinum')"
+                <slide
+                  data-index="0"
+                  data-name="MySlideName"
+                  @slideclick="handleSlideClick"
+                  v-for="(item, index) in bindingData.lisNameSliderGolds"
+                  :key="index"
                 >
                   <div
-                    class="flex justify-center"
-                    @click="onChangeShowPackage()"
+                    class="item-package"
+                    @click="onClickShowPackages('platinum')"
                   >
                     <div
-                      class="img-url"
-                      :style="`background-image: url('${item.urlImage}');`"
-                    ></div>
-                  </div>
-                  <div class="w-full mt-6 mb-3">
-                    <div
-                      class="title-packages font-bold"
-                      :style="`color:${bindingData.colorTextGold.colorFormGold}`"
+                      class="flex justify-center"
+                      @click="onChangeShowPackage()"
                     >
-                      {{ item.nameGold }}
+                      <div
+                        class="img-url"
+                        :style="`background-image: url('${item.urlImage}');`"
+                      ></div>
                     </div>
-                    <div class="describe-packages">
-                      {{ item.describeGold }}
+                    <div class="w-full mt-6 mb-3">
+                      <div
+                        class="title-packages font-bold"
+                        :style="`color:${bindingData.colorTextGold.colorFormGold}`"
+                      >
+                        {{ item.nameGold }}
+                      </div>
+                      <div class="describe-packages">
+                        {{ item.describeGold }}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </slide>
-            </carousel>
-          </div>
-          <div class="flex justify-center text-center gap-4">
-            <div
-              class="square"
-              v-for="(item, index) in bindingData.listGoldMonth"
-              :key="index"
-            >
-              <input
-                type="radio"
-                :id="`gold_` + index"
-                name="squares"
-                class="hidden"
-                :checked="item.isChecked ? 'checked' : ''"
-              />
-              <label
-                :for="`gold_` + index"
-                :style="{
-                  '--borderPlatinum': bindingData.colorBorderActive.borderColor,
-                  '--bgPlatinum': bindingData.colorBorderActive.bgColor,
-                  '--textPlatinum': bindingData.colorBorderActive.textColor,
-                }"
+                </slide>
+              </carousel>
+            </div>
+            <div class="flex justify-center text-center gap-4">
+              <div
+                class="square"
+                v-for="(item, index) in bindingData.listGoldMonth"
+                :key="index"
               >
-                <div
-                  class="bg-form-package"
-                  :style="`background-color:${bindingData.colorTextGold.bgFormGold};color:${bindingData.colorTextGold.colorFormGold}`"
+                <input
+                  type="radio"
+                  :id="`gold_` + index"
+                  name="squares"
+                  class="hidden"
+                  :checked="item.isChecked ? 'checked' : ''"
+                />
+                <label
+                  :for="`gold_` + index"
+                  :style="{
+                    '--borderPlatinum':
+                      bindingData.colorBorderActive.borderColor,
+                    '--bgPlatinum': bindingData.colorBorderActive.bgColor,
+                    '--textPlatinum': bindingData.colorBorderActive.textColor,
+                  }"
                 >
-                  <h1 class="text-5xl pt-5">{{ item.numberGold }}</h1>
-                  <p>{{ item.typeGold }}</p>
-                  <p class="pt-3">{{ item.price }}</p>
-                  <p>{{ item.currency }}</p>
-                  <p class="text-red-500 pt-3 text-xs">
-                    {{ item.percentSale }}
-                  </p>
-                </div></label
-              >
+                  <div
+                    class="bg-form-package"
+                    :style="`background-color:${bindingData.colorTextGold.bgFormGold};color:${bindingData.colorTextGold.colorFormGold}`"
+                  >
+                    <h1 class="text-5xl pt-5">{{ item.numberGold }}</h1>
+                    <p>{{ item.typeGold }}</p>
+                    <p class="pt-3">{{ item.price }}</p>
+                    <p>{{ item.currency }}</p>
+                    <p class="text-red-500 pt-3 text-xs">
+                      {{ item.percentSale }}
+                    </p>
+                  </div></label
+                >
+              </div>
             </div>
-          </div>
-          <div>
-            <button
-              class="w-11/12 py-4 px-4 rounded-xl shadow text-2xl mt-8"
-              :style="`background-color:${bindingData.colorButtonAction.bgColor};color:${bindingData.colorButtonAction.textColor}`"
-            >
-              {{ bindingData.colorButtonAction.name }}
-            </button>
-            <div
-              class="text-lg mt-3"
-              :style="`color:#7D808B`"
-              v-if="Object.keys(bindingData.colorButtonMore).length === 0"
-            >
-              Recuring billing, cancel anytime
-            </div>
-            <div v-if="Object.keys(bindingData.colorButtonMore).length !== 0">
-              <p class="mt-5 text-black font-semibold text-xl">OR</p>
+            <div>
               <button
-                :style="`background-color:${bindingData.colorButtonMore.bgColor}`"
-                class="w-11/12 text-white py-4 px-4 rounded-xl shadow text-xl mt-5"
+                class="w-11/12 py-4 px-4 rounded-xl shadow text-2xl mt-8"
+                :style="`background-color:${bindingData.colorButtonAction.bgColor};color:${bindingData.colorButtonAction.textColor}`"
               >
-                {{ bindingData.colorButtonMore.name }}
-                <p class="text-sm font-thin opacity-80">
-                  {{ bindingData.colorButtonMore.describe }}
-                </p>
+                {{ bindingData.colorButtonAction.name }}
               </button>
+              <div
+                class="text-lg mt-3"
+                :style="`color:#7D808B`"
+                v-if="Object.keys(bindingData.colorButtonMore).length === 0"
+              >
+                Recuring billing, cancel anytime
+              </div>
+              <div v-if="Object.keys(bindingData.colorButtonMore).length !== 0">
+                <p class="mt-5 text-black font-semibold text-xl">OR</p>
+                <button
+                  :style="`background-color:${bindingData.colorButtonMore.bgColor}`"
+                  class="w-11/12 text-white py-4 px-4 rounded-xl shadow text-xl mt-5"
+                >
+                  {{ bindingData.colorButtonMore.name }}
+                  <p class="text-sm font-thin opacity-80">
+                    {{ bindingData.colorButtonMore.describe }}
+                  </p>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -569,6 +572,42 @@ export default {
 };
 </script>
 <style lang="css">
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.dialog-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.dialog {
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  max-width: 90%;
+  overflow-y: auto;
+  text-align: center;
+  vertical-align: middle;
+  width: 500px;
+  z-index: 20;
+}
+
+.dialog h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
 @keyframes zoomIn {
   from {
     transform: translate(-50%, -50%) scale(0);

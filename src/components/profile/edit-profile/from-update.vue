@@ -83,6 +83,7 @@
       <FormInformation
         @onClickCancelInformation="onClickCancelInformation"
         @onClickSaveInformation="onClickSaveInformation"
+        :valueScroll="valueScrollForm"
       ></FormInformation>
     </div>
 
@@ -93,6 +94,7 @@
       <FormLifeStyle
         @onClickSaveLife="onClickSaveLife"
         @onClickCancelLife="onClickCancelLife"
+        :valueScroll="valueScrollForm"
       ></FormLifeStyle>
     </div>
   </div>
@@ -159,6 +161,7 @@ export default {
       isShowLanguage: false,
       isShowBasicInformation: false,
       isShowLifeStyle: false,
+      valueScrollForm: "scroll_1",
     };
   },
 
@@ -189,7 +192,8 @@ export default {
      * @param {*} val
      */
     onShowFormBasicInformation(val) {
-      this.isShowBasicInformation = val;
+      this.isShowBasicInformation = val.isShowForm;
+      this.valueScrollForm = val.valueScroll;
     },
 
     /**
@@ -197,7 +201,8 @@ export default {
      * @param {*} val
      */
     onShowFormLifeStyle(val) {
-      this.isShowLifeStyle = val;
+      this.isShowLifeStyle = val.isShowForm;
+      this.valueScrollForm = val.valueScroll;
     },
     /**
      * Save interest
