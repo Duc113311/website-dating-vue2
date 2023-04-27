@@ -34,6 +34,9 @@
   .describe-text {
     color: var(--color-describe);
   }
+  .bg-color-default {
+    background-color: var(--bg-color);
+  }
 
   .button-default {
     background-color: var(--color-button-default);
@@ -64,6 +67,10 @@
   }
   .border-default {
     border: 1.5px solid var(--color-border-button-select);
+  }
+  .border-login {
+    border-radius: 10px;
+    border: 1.5px solid var(--color-border-button-sign);
   }
 
   .bg-default {
@@ -102,5 +109,9 @@
   .el-slider__runway {
     height: 3px !important;
     background-color: #ccd1e2 !important;
+  }
+
+  .iti__country-list {
+    background-color: var(--color-from) !important;
   }
 }

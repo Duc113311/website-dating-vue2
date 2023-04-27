@@ -2,7 +2,7 @@
   <div class="flex justify-center w-full items-center">
     <div class="w-button">
       <button
-        class="btAgree cursor-pointer w-full padding-button"
+        class="btAgree cursor-pointer w-full padding-button button-active"
         @click="onClickIAgree()"
       >
         I agree

@@ -23,10 +23,7 @@ export default {
   },
 
   async created() {
-    await this.getListLifeStyleCommons();
-    await this.getListInformationBasic();
-    await this.getListLifeStyleStatic();
-    await this.getDetailProfileByAuthorization();
+    // await this.getDetailProfileByAuthorization();
   },
 };
 </script>

@@ -202,6 +202,7 @@ export default {
   },
 
   mounted() {
+    debugger;
     var input = document.querySelector("#phone");
     this.valCodeQR = intlTelInput(input, {
       initialCountry: "auto",
@@ -214,9 +215,6 @@ export default {
 <style lang="css">
 .text-color {
   color: #737b91;
-}
-.user-profile {
-  background-color: #232937;
 }
 
 .show-form {

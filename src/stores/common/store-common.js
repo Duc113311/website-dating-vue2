@@ -117,7 +117,7 @@ const actions = {
    */
   async getListLifeStyleForRegister({ commit }) {
     await http_mongo
-      .get(`api/v1/guest/pre_selections`)
+      .get(`api/v1/guest/statics`)
       .then((response) => {
         commit("setListLifeStyle", response.data.data);
       })

@@ -7,7 +7,7 @@
           id="phone"
           type="number"
           pattern="[0-9.]+"
-          class="txt-phone w-full rounded-lg"
+          class="txt-phone w-full rounded-lg bg-default"
           placeholder="Phone number"
           name="phone"
           v-model="valCodeQR"
@@ -55,7 +55,17 @@ export default {
     };
   },
 
-  computed: {},
+  computed: {
+    isDarkTheme() {
+      const theme = localStorage.getItem("user-theme");
+
+      if (theme === "light-theme") {
+        return false;
+      } else {
+        return true;
+      }
+    },
+  },
 
   methods: {
     //#region Common function
@@ -147,8 +157,5 @@ export default {
 #phone {
   padding-left: 58px;
   padding-right: 58px;
-  background-color: #495063;
-  border: 1px solid #495063 !important;
-  color: white;
 }
 </style>

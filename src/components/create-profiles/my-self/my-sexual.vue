@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="mt-10">
+    <div class="mt-3">
       <h2 class="padding-title">My Sexual oritenation is</h2>
       <span class="padding-describe">Select up to 3</span>
     </div>
@@ -9,7 +9,7 @@
         <div
           v-for="(el, index) in listDataSexuals"
           :key="el.code + index"
-          class="padding-check-option dark-theme-check not-border"
+          class="padding-check-option dark-theme-check not-border bg-default"
           :id="el.code"
           @click="onClickChose(false, el.code)"
         >
@@ -67,7 +67,7 @@ export default {
 
   computed: {
     listDataSexuals() {
-      return this.$store.state.commonModule.listLifeStyle.sexuals;
+      return this.$store.state.commonModule.listLifeStyleRegister.sexuals;
     },
   },
 
@@ -90,14 +90,14 @@ export default {
       const findIndex = sexualsData.findIndex((x) => x === indexValue);
       if (lengthSexual <= 3) {
         if (findIndex !== -1) {
-          listDarks[indexValue].classList.add("border-active");
+          listDarks[indexValue].classList.add("option-active");
           checkActive["check" + indexValue].classList.add("checkeds");
           notCheckActive["not-check" + indexValue].classList.add("not-check");
           listDarks[indexValue].classList.remove("not-border");
           checkActive["check" + indexValue].classList.remove("not-check");
           notCheckActive["not-check" + indexValue].classList.remove("checkeds");
         } else {
-          listDarks[indexValue].classList.remove("border-active");
+          listDarks[indexValue].classList.remove("option-active");
           checkActive["check" + indexValue].classList.remove("checkeds");
           notCheckActive["not-check" + indexValue].classList.remove(
             "not-check"
@@ -186,7 +186,7 @@ export default {
       this.$store.state.userModule.user_profile.profiles.orientationSexuals;
     for (let index = 0; index < dataSexuals.length; index++) {
       const element = dataSexuals[index];
-      listDarks[element].classList.add("border-active");
+      listDarks[element].classList.add("option-active");
       checkActive["check" + element].classList.add("checkeds");
       notCheckActive["not-check" + element].classList.add("not-check");
       listDarks[element].classList.remove("not-border");

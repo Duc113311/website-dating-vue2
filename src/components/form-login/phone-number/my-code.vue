@@ -8,7 +8,7 @@
     <div class="text-code flex justify-center mt-8 mb-8">
       <input
         type="text"
-        class="digit-box one-code text-center"
+        class="digit-box one-code bg-default text-center"
         v-for="(el, ind) in digits"
         :id="el"
         :key="el + ind"
@@ -103,7 +103,6 @@ export default {
 .one-code {
   width: 48px;
   border-radius: 4px;
-  background-color: #363d4d;
   font-size: 1.5rem;
   font-weight: 700;
   height: 48px;
@@ -115,11 +114,11 @@ export default {
 }
 
 .one-code:focus {
-  background-color: #495063;
+  background-color: #e2e5f7;
 }
 
 .bt-render:hover {
-  color: #ffffff;
+  color: #fd5d65;
 }
 
 .text-color {

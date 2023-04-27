@@ -119,7 +119,7 @@ export default {
 
 <style lang="scss">
 .el-slider__button-wrapper {
-  z-index: 10 !important;
+  z-index: 1 !important;
 }
 
 .el-switch__core:after {

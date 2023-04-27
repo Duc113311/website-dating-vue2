@@ -10,7 +10,7 @@
             :class="isShowMy ? 'not-show' : 'showed'"
             @click="onClickChosse(true)"
           >
-            <div class="bg-white flex justify-center bg-checked">
+            <div class="flex justify-center bg-checked">
               <i class="fa-solid fa-circle-check w-8 h-8"></i>
             </div>
           </div>
@@ -30,8 +30,8 @@
       <button
         v-loading="isShowLoading"
         @click="onClickContinues"
-        v-bind:class="[isActiveContinue ? 'active-button' : isDefaultTheme]"
-        class="btContinueCode cursor-pointer w-full padding-button overflow-hidden"
+        v-bind:class="[isActiveContinue ? 'button-active' : isDefaultTheme]"
+        class="btContinueCode button-default cursor-pointer w-full padding-button overflow-hidden"
         :disabled="!isActiveContinue"
         ref="continue"
       >

@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="mt-10">
+    <div class="mt-3">
       <h2 class="padding-title">I am a</h2>
     </div>
     <div class="grid w-full" v-for="(item, index) in gendersData" :key="index">
       <button
-        class="padding-input-option"
+        class="padding-input-option bg-default"
         :ref="index"
         :id="item.code"
         @click="onShowGender(item.code)"
@@ -49,8 +49,9 @@ export default {
           value: "Other",
         },
       ];
-      return this.$store.state.commonModule.listLifeStyle?.genders.length !== 0
-        ? this.$store.state.commonModule.listLifeStyle?.genders
+      return this.$store.state.commonModule.listLifeStyleRegister?.genders
+        .length !== 0
+        ? this.$store.state.commonModule.listLifeStyleRegister?.genders
         : gender;
     },
   },
@@ -122,7 +123,8 @@ export default {
       "padding-input-option"
     );
 
-    const genderList = this.$store.state.commonModule.listLifeStyle?.genders;
+    const genderList =
+      this.$store.state.commonModule.listLifeStyleRegister?.genders;
     if (this.genders) {
       for (let index = 0; index < genderList.length; index++) {
         const element = genderList[index];

@@ -1,5 +1,7 @@
 <template>
-  <div class="w-full h-full user-profile absolute top-0 left-0 z-40 welcome">
+  <div
+    class="w-full h-full user-profile absolute top-0 left-0 z-40 welcome bg-color-default title-default"
+  >
     <div class="w-full h-full">
       <div
         class="text-2xl w-full h-10 flex items-center"
@@ -128,9 +130,6 @@ export default {
 <style lang="css">
 .text-color {
   color: #737b91;
-}
-.user-profile {
-  background-color: #232937;
 }
 
 .h-scroll-welcome {

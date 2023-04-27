@@ -2,7 +2,7 @@
   <div class="w-full pl-10 pr-10 flex justify-center items-center">
     <button
       @click="onClickLocations"
-      class="btContinueCode active-button cursor-pointer w-full padding-button"
+      class="btContinueCode button-active cursor-pointer w-full padding-button"
     >
       Allow Location
     </button>

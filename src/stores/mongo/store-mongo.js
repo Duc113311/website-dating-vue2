@@ -8,6 +8,10 @@ const state = {
   listDataCard: [], // Danh sách màn quet
   listLifeStyle: {}, // Thông tin chung gồm: sexual, gender, showMeGender, interest
   statusUpdateUser: "",
+  profileUser_Mongo: {
+    token: "",
+    user: {},
+  },
 };
 const getters = {};
 
@@ -18,7 +22,10 @@ const mutations = {
    * @param {*} data
    */
   setProfileUserRegister_Mongo(state, data) {
-    state.profileUser_Mongo = data;
+    state.profileUser_Mongo.token = data.token;
+    state.profileUser_Mongo.user = data.user;
+    // localStorage.setItem("tokenId", data.token);
+    // localStorage.setItem("oAuth2Id", data.user.oAuth2Id);
   },
 
   /**
@@ -29,6 +36,7 @@ const mutations = {
   setProfileUserLogin_Mongo(state, data) {
     state.tokenId = data?.token;
     localStorage.setItem("tokenId", state.tokenId);
+    localStorage.setItem("oAuth2Id", data.user.oAuth2Id);
   },
 
   /**
@@ -80,6 +88,7 @@ const actions = {
     await http_mongo
       .post(`api/v1/login`, data)
       .then((response) => {
+        debugger;
         commit("setProfileUserLogin_Mongo", response.data.data);
       })
       .catch((error) => {

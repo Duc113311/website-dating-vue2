@@ -94,7 +94,7 @@ export default {
       isShowDetail: false,
       idImage: "",
       isDetail: false,
-      loading: true,
+      loading: false,
       isSendSuccess: false,
       isMatch: false,
       isShowPackage: false,
@@ -115,20 +115,36 @@ export default {
   },
 
   async created() {
+    debugger;
+
+    const listCards = this.$store.state.mongoModule.listDataCard;
+    if (listCards.length === 0) {
+      this.loading = true;
+      await this.getListCardForUser();
+    }
+    await this.getListLifeStyleCommons();
+    await this.getListInformationBasic();
+    await this.getListLifeStyleStatic();
     await this.getDetailProfileByAuthorization();
-    await this.getListCardForUser();
 
     setTimeout(() => {
       this.loading = false;
     }, 1000);
   },
   methods: {
-    ...mapActions(["getListCardForUser", "getDetailProfileByAuthorization"]),
+    ...mapActions([
+      "getListCardForUser",
+      "getDetailProfileByAuthorization",
+      "getListLifeStyleCommons",
+      "getListInformationBasic",
+      "getListLifeStyleStatic",
+    ]),
 
     ...mapMutations(["setStatusLikeUser"]),
     onHideLikeYou(val) {
-      this.setStatusLikeUser(val);
-      this.isSendSuccess = true;
+      // this.setStatusLikeUser(val);
+      // this.isSendSuccess = true;
+      this.isShowFormMatch = val;
     },
     onShowDetail() {},
     onHideProfile(val) {

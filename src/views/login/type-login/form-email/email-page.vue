@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full">
+  <div class="w-full h-full title-default">
     <div class="w-full h-full">
       <BhBack></BhBack>
       <div class="h-email">

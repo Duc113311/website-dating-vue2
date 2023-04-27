@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="mt-10">
+    <div class="mt-3">
       <div class="padding-title">My birthday is</div>
     </div>
     <div>
       <input
-        class="your-name padding-input mb-3"
+        class="your-name padding-input mb-3 bg-default"
         v-model="birthday"
         type="date"
         placeholder="dd/mm/yyyy"

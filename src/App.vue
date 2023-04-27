@@ -53,12 +53,7 @@ export default {
   },
 
   methods: {
-    ...mapActions([
-      "loginAppByAuthId",
-      "getListLifeStyleStatic",
-      "getListInformationBasic",
-      "getListLifeStyleCommons",
-    ]),
+    ...mapActions(["loginAppByAuthId"]),
     ...mapMutations(["setLocation", "setThemeLayout"]),
     async showPosition(position) {
       if (position.coords) {
@@ -113,10 +108,6 @@ export default {
 
       document.documentElement.setAttribute("theme", "light");
     }
-
-    this.getListLifeStyleCommons();
-    this.getListInformationBasic();
-    this.getListLifeStyleStatic();
   },
 };
 </script>

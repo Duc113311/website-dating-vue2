@@ -142,9 +142,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="w-full absolute top-0 left-0 h-full z-40" v-if="isAnimating">
-      <MoveSupperLike></MoveSupperLike>
-    </div> -->
   </div>
 </template>
 
@@ -167,6 +164,7 @@ export default {
   data() {
     return {
       queue: [],
+      isShowFormMatch: false,
       offset: 0,
       history: [],
       isShowDetail: false,
@@ -452,7 +450,9 @@ export default {
             // if (this.history.length) {
             //   this.$refs.tinder.rewind([this.history.pop()]);
             // }
-            this.decide(`rewind`);
+            this.$nextTick(() => {
+              this.$refs.tinder.rewind([this.history.pop()]);
+            });
             // Hiển thị package
             this.$emit("onShowPackage", true);
           }
@@ -498,6 +498,7 @@ export default {
           } else {
             debugger;
             // Hiển thị package
+
             this.$emit("onShowPackage", true);
 
             this.$nextTick(() => {

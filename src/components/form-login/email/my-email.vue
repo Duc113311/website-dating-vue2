@@ -8,7 +8,7 @@
 
     <div class="mt-3">
       <input
-        class="your-name padding-input mb-3"
+        class="your-name padding-input mb-3 bg-default"
         v-model="txtEmail"
         placeholder="Enter email"
         @keyup="onChangeInput"
@@ -23,7 +23,7 @@
     <div class="flex justify-center padding-title">OR</div>
     <div class="flex mt-4 justify-center">
       <button
-        class="btn-Sign cursor-pointer text-xl font-semibold bg-white text-black w-button rounded-lg px-3 py-3 mb-4"
+        class="btn-Sign cursor-pointer text-xl border-login font-semibold w-button px-3 py-3 mb-4"
         @click="onLoginGoogle()"
       >
         <span class="flex justify-center">
@@ -123,9 +123,6 @@ export default {
 <style lang="css">
 .text-color {
   color: #737b91;
-}
-.user-profile {
-  background-color: #232937;
 }
 
 .el-input__wrapper {

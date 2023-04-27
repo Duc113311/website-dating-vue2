@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="mt-10">
+    <div class="mt-3">
       <h2 class="padding-title">Show me gender</h2>
     </div>
     <div
@@ -9,7 +9,7 @@
       :key="index"
     >
       <button
-        class="padding-input-option"
+        class="padding-input-option bg-default"
         :ref="index"
         :id="item.code"
         @click="onShowMeGender(item.code)"
@@ -50,9 +50,9 @@ export default {
         },
       ];
 
-      return this.$store.state.commonModule.listLifeStyle?.showMeGenders
+      return this.$store.state.commonModule.listLifeStyleRegister?.genderFilters
         .length !== 0
-        ? this.$store.state.commonModule.listLifeStyle?.showMeGenders
+        ? this.$store.state.commonModule.listLifeStyleRegister?.genderFilters
         : showGender;
     },
   },
@@ -71,9 +71,9 @@ export default {
         const element = documentParam[index];
 
         if (val === element.id) {
-          element.classList.add("active-border");
+          element.classList.add("option-active");
         } else {
-          element.classList.remove("active-border");
+          element.classList.remove("option-active");
         }
       }
 
@@ -83,7 +83,7 @@ export default {
 
   mounted() {
     this.showMeGender =
-      this.$store.state.userModule.user_profile.settings.genderShowMe;
+      this.$store.state.userModule.user_profile.settings.genderFilters;
     this.setShowProfileCreate({
       isShowProfile: true,
       isNotShowProfile: true,
@@ -95,13 +95,13 @@ export default {
     );
 
     const showMeGenderList =
-      this.$store.state.commonModule.listLifeStyle?.showMeGenders;
+      this.$store.state.commonModule.listLifeStyleRegister?.genderFilters;
     if (this.showMeGender) {
       for (let index = 0; index < showMeGenderList.length; index++) {
         const element = showMeGenderList[index];
 
         if (element.code === this.showMeGender) {
-          documentParam[this.showMeGender].classList.add("active-border");
+          documentParam[this.showMeGender].classList.add("option-active");
           this.$emit("onStatusActive", true);
         }
       }

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full user-profile z-20 grid">
+  <div class="w-full h-full user-profile title-default z-20 grid">
     <div>
       <BhBack @onBackComponent="onBackComponent"></BhBack>
       <!-- Số điện thoại -->
@@ -226,7 +226,6 @@ export default {
   color: #737b91;
 }
 .user-profile {
-  background-color: #232937;
   grid-template-rows: 8fr 1fr;
 }
 

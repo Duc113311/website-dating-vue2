@@ -9,7 +9,7 @@
         alt=""
       />
     </div>
-    <div class="w-full text-description-no-padding pt-2 pb-4">
+    <div class="w-full text-description-no-padding pt-2 pb-4 title-default">
       Let's find people same with your vibe...
     </div>
 

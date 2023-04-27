@@ -168,10 +168,13 @@ export default {
     } else {
       completeAvatar = completeAvatar + (lengthAvatar - 1) * 5;
     }
-    const lengthAbout = user_profile.about.length;
-    if (lengthAbout !== 0) {
-      completeAbout = 20;
+    const lengthAbout = user_profile.about;
+    if (lengthAbout !== null) {
+      if (lengthAbout.length !== 0) {
+        completeAbout = 20;
+      }
     }
+
     const lengthInterests = user_profile.interests.length;
     if (lengthInterests !== 0) {
       completeInterest = 15;
@@ -208,27 +211,35 @@ export default {
     ) {
       completeLifeStyle = 4;
     }
-    const lengthJobTitle = user_profile.jobTitle.length;
-    if (lengthJobTitle !== 0) {
-      completeJobTitle = 4;
-    }
-    const lengthCompany = user_profile.company.length;
-
-    if (lengthCompany !== 0) {
-      completeCompany = 4;
+    const lengthJobTitle = user_profile.jobTitle;
+    if (lengthJobTitle !== null) {
+      if (lengthJobTitle.length !== 0) {
+        completeJobTitle = 4;
+      }
     }
 
-    const lengthSchool = user_profile.school.length;
+    const lengthCompany = user_profile.company;
 
-    if (lengthSchool !== 0) {
-      completeSchool = 4;
+    if (lengthCompany !== null) {
+      if (lengthCompany.length !== 0) {
+        completeCompany = 4;
+      }
     }
 
-    const lengthAddress = user_profile.address.length;
-
-    if (lengthAddress !== 0) {
-      completeAddress = 4;
+    const lengthSchool = user_profile.school;
+    if (lengthSchool !== null) {
+      if (lengthSchool.length !== 0) {
+        completeSchool = 4;
+      }
     }
+
+    const lengthAddress = user_profile.address;
+    if (lengthAddress !== null) {
+      if (lengthAddress.length !== 0) {
+        completeAddress = 4;
+      }
+    }
+
     debugger;
     totalComplete =
       totalComplete +

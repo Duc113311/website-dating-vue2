@@ -9,7 +9,7 @@
       :class="[isShowConfirm ? 'grid-send' : 'grid-confirm']"
     >
       <div class="w-full mt-4">
-        <i class="fa-solid fa-xmark text-3xl"></i>
+        <i class="fa-solid fa-xmark text-3xl" @click="onHideMatch"></i>
       </div>
       <div class="w-full relative">
         <div
@@ -123,13 +123,14 @@ export default {
 
   computed: {
     urlImage() {
-      return this.$store.state.homeModule.userMatchData?.profiles?.avatar
-        ? this.$store.state.homeModule.userMatchData?.profiles?.avatar
+      debugger;
+      return this.$store.state.homeModule.userMatchData?.profiles?.avatars[0]
+        ? this.$store.state.homeModule.userMatchData?.profiles?.avatars[0]
         : this.avatarDefault;
     },
 
     btUrlImage() {
-      return this.$store.state.homeModule.userMatchData?.profiles?.avatar;
+      return this.$store.state.homeModule.userMatchData?.profiles?.avatars;
     },
   },
 
@@ -142,6 +143,10 @@ export default {
 
     onChangeComfirm(val) {
       this.$emit("onHideLikeYou", val);
+    },
+
+    onHideMatch() {
+      this.$emit("onHideLikeYou", false);
     },
   },
 

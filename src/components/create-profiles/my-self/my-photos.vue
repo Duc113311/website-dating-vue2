@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <div v-show="!isTitle" class="mt-10">
+  <div class="h-full height-scroll overflow-scroll">
+    <div v-show="!isTitle" class="mt-3">
       <div class="padding-title">My Photos are</div>
       <span class="padding-describe">Add at least 2 photos to continue</span>
     </div>

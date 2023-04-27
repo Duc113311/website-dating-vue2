@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="mt-10">
+    <div class="mt-3">
       <div class="padding-title">My interests are</div>
       <span class="padding-describe"
         >Let everyone know what you're passionate about, by adding it to your
@@ -13,7 +13,7 @@
           <button
             @click="onSelectInterest(item.code)"
             :id="item.code"
-            class="oftion-interests mr-3 mb-3 p-3"
+            class="oftion-interests mr-3 mb-3 p-3 option-default"
             size="large"
           >
             {{ item.value }}
@@ -40,7 +40,7 @@ export default {
 
   computed: {
     listDataInterests() {
-      return this.$store.state.commonModule.listLifeStyle.interests;
+      return this.$store.state.commonModule.listLifeStyleRegister.interests;
     },
   },
 
@@ -54,14 +54,14 @@ export default {
         this.$store.state.userModule.user_profile.profiles.interests;
 
       if (this.$store.state.userModule.isActiveId) {
-        document.getElementById(val).classList.add("bg-active");
+        document.getElementById(val).classList.add("option-active");
         if (interestsData.length < 5) {
           this.$emit("onStatusActive", false);
         } else {
           this.$emit("onStatusActive", true);
         }
       } else {
-        document.getElementById(val).classList.remove("bg-active");
+        document.getElementById(val).classList.remove("option-active");
         if (interestsData.length < 5) {
           this.$emit("onStatusActive", false);
         }
@@ -80,7 +80,7 @@ export default {
     this.$emit("onShowName", { showCheckbox: false });
     for (let index = 0; index < interestsData.length; index++) {
       const element = interestsData[index];
-      document.getElementById(element).classList.add("bg-active");
+      document.getElementById(element).classList.add("option-active");
     }
     if (interestsData.length < 5) {
       this.$emit("onStatusActive", false);

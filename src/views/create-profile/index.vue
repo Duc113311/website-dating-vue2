@@ -1,77 +1,81 @@
 <template>
   <div class="w-full h-full">
-    <div class="w-full h-full create-profile top-0 left-0 z-20 phone-login">
+    <div
+      class="w-full h-full create-profile top-0 left-0 z-20 phone-login title-default"
+    >
       <div class="body-infor overflow-hidden">
         <!-- Nút back -->
-        <div class="back" v-if="isScream !== 7">
+        <div class="back h-item-header" v-if="isScream !== 7">
           <BhBack
             :isShowSkip="isShowSkipParam"
             @onBackComponent="onBackComponent"
             @onClickSkip="onClickSkip"
           ></BhBack>
         </div>
-        <!-- My name -->
-        <div v-if="isScream === 0">
-          <MyName
-            @onShowSkips="onShowSkips"
-            @onShowName="onShowProfiles"
-            @onStatusActive="onStatusActive"
-          ></MyName>
+        <div class="h-item-body">
+          <!-- My name -->
+          <div v-if="isScream === 0">
+            <MyName
+              @onShowSkips="onShowSkips"
+              @onShowName="onShowProfiles"
+              @onStatusActive="onStatusActive"
+            ></MyName>
+          </div>
+          <!-- Birthday -->
+          <div v-if="isScream === 1">
+            <MyBirthday
+              @onShowSkips="onShowSkips"
+              @onShowName="onShowProfiles"
+              @onStatusActive="onStatusActive"
+            ></MyBirthday>
+          </div>
+          <!-- Gender -->
+          <div v-if="isScream === 2">
+            <MyGender
+              @onShowSkips="onShowSkips"
+              @onShowName="onShowProfiles"
+              @onStatusActive="onStatusActive"
+              :isScream="isScream"
+            ></MyGender>
+          </div>
+          <!-- Sexual -->
+          <div v-if="isScream === 3">
+            <MySexual
+              @onShowSkips="onShowSkips"
+              @onShowName="onShowProfiles"
+              @onStatusActive="onStatusActive"
+              :isScream="isScream"
+            ></MySexual>
+          </div>
+          <!-- Interest -->
+          <div v-if="isScream === 4">
+            <MyInterests
+              @onShowSkips="onShowSkips"
+              @onShowName="onShowProfiles"
+              @onStatusActive="onStatusActive"
+            ></MyInterests>
+          </div>
+          <div v-if="isScream === 5">
+            <MyShowGender
+              @onShowSkips="onShowSkips"
+              @onShowName="onShowProfiles"
+              @onStatusActive="onStatusActive"
+            ></MyShowGender>
+          </div>
+          <!-- Photos -->
+          <div v-if="isScream === 6">
+            <MyPhotos
+              @onShowSkips="onShowSkips"
+              @onShowName="onShowProfiles"
+              @onStatusActive="onStatusActive"
+            ></MyPhotos>
+          </div>
+          <!-- Locations -->
+          <div class="h-full w-full" v-if="isScream === 7">
+            <MyLocation @onStatusActive="onStatusActive"></MyLocation>
+          </div>
+          <!--  -->
         </div>
-        <!-- Birthday -->
-        <div v-if="isScream === 1">
-          <MyBirthday
-            @onShowSkips="onShowSkips"
-            @onShowName="onShowProfiles"
-            @onStatusActive="onStatusActive"
-          ></MyBirthday>
-        </div>
-        <!-- Gender -->
-        <div v-if="isScream === 2">
-          <MyGender
-            @onShowSkips="onShowSkips"
-            @onShowName="onShowProfiles"
-            @onStatusActive="onStatusActive"
-            :isScream="isScream"
-          ></MyGender>
-        </div>
-        <!-- Sexual -->
-        <div v-if="isScream === 3">
-          <MySexual
-            @onShowSkips="onShowSkips"
-            @onShowName="onShowProfiles"
-            @onStatusActive="onStatusActive"
-            :isScream="isScream"
-          ></MySexual>
-        </div>
-        <!-- Interest -->
-        <div v-if="isScream === 4">
-          <MyInterests
-            @onShowSkips="onShowSkips"
-            @onShowName="onShowProfiles"
-            @onStatusActive="onStatusActive"
-          ></MyInterests>
-        </div>
-        <div v-if="isScream === 5">
-          <MyShowGender
-            @onShowSkips="onShowSkips"
-            @onShowName="onShowProfiles"
-            @onStatusActive="onStatusActive"
-          ></MyShowGender>
-        </div>
-        <!-- Photos -->
-        <div v-if="isScream === 6">
-          <MyPhotos
-            @onShowSkips="onShowSkips"
-            @onShowName="onShowProfiles"
-            @onStatusActive="onStatusActive"
-          ></MyPhotos>
-        </div>
-        <!-- Locations -->
-        <div class="h-full w-full" v-if="isScream === 7">
-          <MyLocation @onStatusActive="onStatusActive"></MyLocation>
-        </div>
-        <!--  -->
       </div>
       <div class="footer-infor pt-3" v-if="isScream !== 7">
         <BhContinue
@@ -192,5 +196,13 @@ export default {
   width: 100%;
   overflow: hidden;
   height: calc(100% - 85%);
+}
+
+.h-item-header {
+  height: 6%;
+}
+
+.h-item-body {
+  height: calc(100% - 6%);
 }
 </style>
