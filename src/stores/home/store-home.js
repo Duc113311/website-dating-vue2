@@ -20,15 +20,7 @@ const state = {
     likeRemaining: 0,
     isFreeRuntime: true,
   },
-  isBoost: {
-    _id: "",
-    customer: "",
-    startTime: "",
-    endTime: "",
-    duration: 0,
-    boostRemaining: 0,
-    isFreeRuntime: true,
-  },
+  isBoost: {},
   isBackUser: false,
 
   userMatchData: {},
@@ -96,7 +88,11 @@ const mutations = {
   },
 
   setPostBoostUser(state, value) {
-    state.isBoost = { ...state.isBoost, ...value };
+    if (value === 200) {
+      state.isBoost = { ...state.isBoost, ...value };
+    } else {
+      this.isBoost = {};
+    }
   },
 
   setDataUserMatch(state, value) {
@@ -234,7 +230,7 @@ const actions = {
     await http_mongo
       .post(`/api/v1/boost`, data)
       .then((response) => {
-        commit("setPostBoostUser", response.data.data);
+        commit("setPostBoostUser", response.status);
       })
       .catch((error) => {
         console.log(error);

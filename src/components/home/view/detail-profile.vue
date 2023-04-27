@@ -130,15 +130,7 @@
         <div class="h-2/4"></div>
       </div>
     </div>
-    <div class="absolute bt-like-count right-4">
-      <div class="number-like absolute">{{ this.userParam.coins }}</div>
-      <img
-        src="@/assets/icon/bt_like_count.svg"
-        class="w-20"
-        alt=""
-        srcset=""
-      />
-    </div>
+
     <div
       class="w-full h-24 flex justify-center items-center absolute bottom-16 cursor-pointer"
     >

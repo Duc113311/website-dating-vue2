@@ -12,6 +12,7 @@
       :queue.sync="listDataUser"
       :offset-y="10"
       @submit="onSubmit"
+      :class="{ animate2: animate2, animate1: animate1 }"
     >
       <template slot-scope="scope">
         <div
@@ -73,14 +74,6 @@
                 >
               </div>
             </div>
-            <div class="w-20 absolute bottom-24 right-0">
-              <img
-                class="cursor-pointer"
-                src="@/assets/icon/bt_like_count.svg"
-                width="70"
-              />
-              <span class="h-complete">{{ scope.data.coins }}</span>
-            </div>
           </div>
         </div>
         <div class="w-full flex absolute top-0 opacity-0 h-4/6 nextBg">
@@ -134,7 +127,17 @@
             v-bind:class="{ 'transform-hover': isHoverLike }"
           />
         </div>
-        <div class="bh-odd justify-center flex items-center">
+        <div class="justify-center flex items-center">
+          <div
+            v-if="isProgress === true"
+            class="circular-progress"
+            ref="progressBar"
+          >
+            <div class="value-container">
+              <img src="@/assets/image-dating/lightning.svg" alt="" />
+            </div>
+            <MoveBoost></MoveBoost>
+          </div>
           <img src="@/assets/icon/bt_boost.svg" @click="decide('help')" />
         </div>
       </div>
@@ -146,6 +149,7 @@
 </template>
 
 <script>
+import MoveBoost from "../../bh-element-ui/animation/move-boost";
 // import MoveSupperLike from "../../bh-element-ui/animation/move-supper-like";
 import LoadApp from "../../layout/loading/load-app";
 import Tinder from "vue-tinder";
@@ -155,6 +159,7 @@ import { mapActions, mapMutations } from "vuex";
 export default {
   name: "view-swipe",
   components: {
+    MoveBoost,
     // MoveSupperLike,
     LoadApp,
     Tinder,
@@ -181,12 +186,36 @@ export default {
       colorApp: "#FF828A",
       bgColorApp: "linear-gradient(#FE4E58,#FD757F)",
       users: [],
+      isProgress: false,
+
+      // hiệu ứng quay tròn
+      startTime: 0,
+      progressValue: 0,
+      progressEndValue: 100,
+      speed: 100,
+
+      animate2: false,
+      animate1: false,
     };
   },
 
   props: ["isLoadData"],
 
   computed: {
+    timeBoost() {
+      debugger;
+      const isBoostParam = this.$store.state.homeModule.isBoost;
+      if (Object.keys(isBoostParam).length !== 0) {
+        const startTime = new Date(isBoostParam.startTime).getTime();
+        const endTime = new Date(isBoostParam.endTime).getTime();
+
+        const timeDiffInSeconds = (endTime - startTime) / 1000; // Chênh lệch giữa hai thời điểm tính bằng giây
+
+        console.log(timeDiffInSeconds); // Kết quả
+        return timeDiffInSeconds;
+      }
+      return 1000;
+    },
     listDataUser: {
       get() {
         return this.$store.state.mongoModule.listDataCard
@@ -289,6 +318,12 @@ export default {
         }
 
         this.isActiveImag = false;
+      } else {
+        console.log("end");
+        this.animate1 = true;
+        setTimeout(() => {
+          this.animate1 = false;
+        }, 200);
       }
     },
 
@@ -304,6 +339,12 @@ export default {
           .getElementById(`avatar_` + parseInt(this.imageActive))
           .classList.add("active-image");
       } else {
+        console.log("end");
+        this.animate2 = true;
+        setTimeout(() => {
+          this.animate2 = false;
+          // Thực hiện thêm ảnh mới hoặc xóa ảnh hiện tại tại đây
+        }, 200);
         this.imageActive = this.imageActive - 1;
       }
 
@@ -312,6 +353,37 @@ export default {
 
     onNopeUser(val) {
       console.log(val);
+    },
+
+    async onClickProgress() {
+      debugger;
+      const totalTime = this.timeBoost * 1000; // Thời gian trong milisecond, ở đây là 60 giây
+      this.isProgress = !this.isProgress;
+      // hàm quay tròn
+      this.startTime = new Date().getTime();
+      let progress = await setInterval(() => {
+        debugger;
+        let now = new Date().getTime();
+        let timeElapsed = now - this.startTime;
+        let percentComplete = (timeElapsed / totalTime) * 100;
+
+        if (percentComplete >= 100) {
+          percentComplete = 100;
+          clearInterval(progress);
+          // alert("Time is up!");
+          this.isProgress = false;
+        }
+
+        this.progressValue = Math.floor(
+          (percentComplete / 100) * this.progressEndValue
+        );
+        debugger;
+
+        this.$refs.progressBar.style.background = `conic-gradient(
+            #FD656C ${percentComplete * 3.6}deg,
+            #cadcff ${percentComplete * 3.6}deg
+        )`;
+      }, this.speed);
     },
 
     onClickShowDetailUser(value) {
@@ -446,7 +518,14 @@ export default {
           this.$refs.tinder.rewind([this.history.pop()]);
         }
       } else if (choice === "help") {
-        this.$emit("onShowPackage", true);
+        await this.postBoostUser({ number: 1 });
+        const isBoostParam = this.$store.state.homeModule.isBoost;
+        debugger;
+        if (Object.keys(isBoostParam).length === 0) {
+          await this.$emit("onShowPackage", true);
+        } else {
+          await this.onClickProgress();
+        }
       } else {
         await this.$refs.tinder.decide(choice);
       }
@@ -462,7 +541,71 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style lang="scss">
+/* xoay ảnh khi hết ảnh của 1 người dùng */
+.animate2 {
+  animation: shake 0.2s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+@keyframes shake {
+  0% {
+    transform: perspective(200px) rotateY(0);
+  }
+  50% {
+    transform: perspective(200px) rotateY(1deg);
+  }
+  100% {
+    transform: perspective(200px) rotateY(0);
+  }
+}
+.animate1 {
+  animation: shake1 0.2s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+@keyframes shake1 {
+  0% {
+    transform: perspective(200px) rotateY(0);
+  }
+  50% {
+    transform: perspective(200px) rotateY(-1deg);
+  }
+  100% {
+    transform: perspective(200px) rotateY(0);
+  }
+}
+// css
+.circular-progress {
+  position: absolute;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  width: 75px;
+  height: 75px;
+  z-index: 10;
+}
+.circular-progress:before {
+  content: "";
+  position: absolute;
+  height: 84%;
+  width: 84%;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+.value-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.value-container img {
+  width: 60px;
+  height: 60px;
+}
+
 .vue-tinder {
   position: absolute;
   z-index: 1;
