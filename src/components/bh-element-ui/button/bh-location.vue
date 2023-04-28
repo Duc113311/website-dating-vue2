@@ -72,8 +72,7 @@ export default {
 }
 
 .color-button:hover,
-.color-button:active,
-.color-button:focus {
+.color-button:active {
   background-color: #fd5d65;
 }
 

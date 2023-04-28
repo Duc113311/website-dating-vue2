@@ -1,10 +1,10 @@
 <template>
-  <div class="w-full h-full relative p-2">
+  <div class="w-full h-full relative">
     <div class="w-full h-full z-10">
       <Header></Header>
       <div class="body-page-home-new w-full">
         <!-- Home -->
-        <div class="w-full h-full" v-if="!isShowDetail">
+        <div class="w-full h-full p-2" v-if="!isShowDetail">
           <div class="body-home w-full relative">
             <!-- Body home -->
             <ViewSwipe

@@ -135,8 +135,4 @@ export default {
   color: white !important;
   background-color: #495063;
 }
-
-.your-email:focus {
-  border: 1px solid white;
-}
 </style>

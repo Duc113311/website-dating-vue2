@@ -1,15 +1,11 @@
 .title-description {
   font-weight: 500;
-  font-size: 18px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  font-size: 16px;
 }
 
 .text-description {
   font-weight: 500;
-  font-size: 20px;
-  padding-bottom: 5px;
-  padding-top: 5px;
+  font-size: 18px;
 }
 
 .title-description-no-padding {
@@ -84,30 +80,24 @@
 }
 
 .item-option {
-  font-size: 19px;
+  font-size: 18px;
   border-radius: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 6px;
+  padding-bottom: 6px;
   display: inline-block;
+  width: -moz-max-content;
   width: max-content;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  margin-right: 14px;
+  margin-top: 14px;
 }
 .hr-bg {
-  background-color: #414858;
-  height: 1.5px;
+  height: 1px;
   border-width: 0;
 }
 
-.bh-margin-title {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
 .bh-margin-description {
-  margin-top: 5px;
-  margin-bottom: 5px;
 }
 /* Setup - new */
 .padding-button {
@@ -207,7 +197,6 @@
   border: 5px solid #fd5d65 !important;
   background-color: #fd5d65 !important;
 }
-
 
 .form-pack {
   width: 100%;
@@ -330,4 +319,13 @@
 
 .bor-top-bottom {
   border-bottom: 1px solid #5f6a86;
+}
+
+/*  */
+
+.padding-text-user {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-left: 2px;
+  padding-right: 2px;
 }

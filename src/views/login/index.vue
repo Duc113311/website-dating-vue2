@@ -105,9 +105,6 @@ export default {
   margin-bottom: 15px;
 }
 
-*:focus {
-  outline: none;
-}
 .el-button + .el-button {
   margin-left: 0px !important;
 }
@@ -130,7 +127,6 @@ export default {
   padding-right: 12px;
 }
 
-.btn:focus,
 .btn:hover {
   background-color: #3276b1;
   border-color: #285e8e;

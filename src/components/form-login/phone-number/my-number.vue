@@ -136,9 +136,6 @@ export default {
   font-size: 18px;
 }
 
-.txt-phone:focus {
-  outline: none;
-}
 .iti--allow-dropdown {
   width: 100% !important;
 }
@@ -159,3 +156,7 @@ export default {
   padding-right: 58px;
 }
 </style>
+<!-- 
+.txt-phone:focus {
+  outline: none;
+} -->

@@ -113,10 +113,6 @@ export default {
   margin-right: 5px;
 }
 
-.one-code:focus {
-  background-color: #e2e5f7;
-}
-
 .bt-render:hover {
   color: #fd5d65;
 }

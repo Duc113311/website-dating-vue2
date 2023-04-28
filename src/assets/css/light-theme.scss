@@ -24,6 +24,7 @@
   --color-placeholder-input: #747f9a;
   --color-from: #eef1f8;
   --color-dialog: #ffffff;
+  --color-border-bottom: #eae9ee;
 }
 
 .theme-light {
@@ -79,6 +80,9 @@
 
   .bg-dialog-default {
     background-color: var(--color-dialog);
+  }
+  .bg-border-bottom {
+    border-bottom: 1px solid var(--color-border-bottom);
   }
 
   .bh-chevron-right {

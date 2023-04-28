@@ -71,9 +71,9 @@ export default {
   font-size: larger !important;
   padding: 10px;
 }
-
+</style>
+<!-- 
 .your-name:focus {
   outline: 0;
-  border: non;
-}
-</style>
+  border: none;
+} -->

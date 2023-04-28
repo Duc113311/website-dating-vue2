@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-full relative bg-color-detail">
     <div class="detail-page w-full h-full relative">
-      <div class="bg-image-detail h-2/4">
+      <div class="bg-image-detail h-2/4 pl-2 pr-2">
         <div class="avatar w-full h-full relative">
           <div
             v-show="isActiveImag"
@@ -42,8 +42,8 @@
           </div>
         </div>
       </div>
-      <div class="h-2/4 w-full p-5">
-        <div class="w-full">
+      <div class="h-2/4 w-full">
+        <div class="w-full bg-border-bottom padding-text-user pl-2 pr-2">
           <div class="flex bh-margin-title">
             <div class="title-user">
               {{ this.userParam.fullname
@@ -52,62 +52,73 @@
             <img src="@/assets/icon/ic_infor.svg" width="30" alt="" />
           </div>
           <div class="describe-user bh-margin-description">
-            {{ this.userParam.about }}
+            {{
+              this.userParam.about
+                ? this.userParam.about
+                : "Tell me about yourself"
+            }}
           </div>
           <div class="flex bh-margin-description">
             <img src="@/assets/icon/ic_location.svg" alt="" />
             <span>{{ bindingDistance(this.userParam?.location) }} km away</span>
           </div>
         </div>
-        <BhHorizontalLine></BhHorizontalLine>
         <!-- About me -->
-        <div class="">
-          <div class="title title-description">About me</div>
+        <div class="w-full bg-border-bottom padding-text-user pl-2 pr-2">
+          <div class="title title-description describe-text">About me</div>
           <div class="text-description">
-            {{ this.userParam.about }}
+            {{
+              this.userParam.about ? this.userParam.about : "Gets hungry easily"
+            }}
           </div>
 
           <div class="w-full bh-margin-description">
             <div
               class="item-option border-default cursor-pointer"
-              v-for="item in this.userParam?.profiles?.orientationSexuals
-                ? this.userParam?.profiles?.orientationSexuals
-                : this.sexuals"
-              :key="item"
+              v-for="(item, index) in this.sexuals"
+              :key="index"
             >
               {{ item }}
             </div>
           </div>
         </div>
         <!-- Interests -->
-        <BhHorizontalLine></BhHorizontalLine>
 
-        <div class="">
-          <div class="title title-description">Interests</div>
+        <div class="w-full bg-border-bottom padding-text-user pl-2 pr-2">
+          <div class="title pl-2 title-description describe-text">
+            Interests
+          </div>
 
           <div class="w-full bh-margin-description">
             <div
-              class="item-option border-default"
-              v-for="item in this.userParam?.profiles?.interests
-                ? this.userParam?.profiles?.interests
-                : this.interests"
-              :key="item"
+              class="item-option border-default cursor-pointer"
+              v-for="(item, index) in this.interests"
+              :key="index"
             >
               {{ item }}
             </div>
           </div>
         </div>
-        <BhHorizontalLine></BhHorizontalLine>
 
-        <!-- <div class="w-full ">
-          <div class="title title-description">My Anthem</div>
-          <div class="flex w-full">
-            <div class="w-2/3 bh-margin-description">
-              All too well (Taylor's Version)
+        <!-- My Anthem -->
+        <div class="w-full padding-text-user">
+          <div class="title title-description describe-text">My Anthem</div>
+
+          <div class="w-full bh-margin-description pt-2">
+            <div class="w-full flex justify-between items-center">
+              <div class="text-description">
+                <div>All Too Well (Taylor's Version)</div>
+                <div>Taylor Swift</div>
+              </div>
+              <div class="w-my-anthem">
+                <img
+                  src="@/assets/image-dating/7-15831080159232071706060.webp"
+                />
+              </div>
             </div>
-            <div class="w-1/3"></div>
           </div>
-        </div> -->
+        </div>
+
         <div class="items-center h-14 bh-margin-title">
           <div class="flex justify-center items-center">
             <i class="fa-regular fa-share-from-square"></i>
@@ -210,7 +221,7 @@ export default {
       isActiveImag: true,
 
       sexuals: ["Gay", "Lesbian", "Demisexual", "Pansexual"],
-      interests: ["runningMan", "instagram", "reggaeton"],
+      interests: ["Ice-scream", "Reading", "Cars", "Music", "Dogs"],
 
       idImage: "",
       imageActive: 0,
@@ -223,6 +234,7 @@ export default {
     //   return this.$store.state.userModule.urlAvatarUser.urlName;
     // },
     userParam() {
+      debugger;
       return this.$store.state.userModule.userProfileDetail;
     },
   },
@@ -362,5 +374,13 @@ export default {
 
 .icon-close-infor {
   bottom: -26px;
+}
+
+.w-my-anthem {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  border: none;
+  overflow: hidden;
 }
 </style>
