@@ -66,6 +66,25 @@ const routes = [
       import(
         /* webpackChunkName: "home-page" */ "../views/home-page/index.vue"
       ),
+
+    children: [
+      {
+        path: "/",
+        name: "home-default-page",
+        component: () =>
+          import(
+            /* webpackChunkName: "home-default-page" */ "../views/home-page/default/index.vue"
+          ),
+      },
+      {
+        path: "/report/:userId",
+        name: "report-page",
+        component: () =>
+          import(
+            /* webpackChunkName: "report-page" */ "../views/home-page/report/index.vue"
+          ),
+      },
+    ],
   },
 
   // Page explore

@@ -118,4 +118,9 @@
   .iti__country-list {
     background-color: var(--color-from) !important;
   }
+
+  .border-image {
+    border-radius: 10px;
+    border: 1px solid var(--color-border-button-select);
+  }
 }

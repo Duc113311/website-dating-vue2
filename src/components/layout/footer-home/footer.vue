@@ -63,7 +63,7 @@ export default {
   },
 
   mounted() {
-    if (this.$route.name === "home-page") {
+    if (this.$route.name === "home-default-page") {
       document
         .getElementsByClassName("fa-heart")[0]
         .classList.add("icon-active");

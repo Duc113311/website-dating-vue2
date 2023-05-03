@@ -2,6 +2,11 @@
   font-weight: 600;
   font-size: 30px;
 }
+
+.title-click-ic {
+  font-weight: 600;
+  font-size: 18px;
+}
 .describe-user {
   font-size: 18px;
   letter-spacing: 1px;
@@ -11,7 +16,10 @@
   font-size: 18px;
   letter-spacing: 1px;
 }
-
+.describe-report {
+  font-size: 12px;
+  letter-spacing: 1px;
+}
 .size-icon {
   font-size: 0px;
 }

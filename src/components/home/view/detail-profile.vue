@@ -2,7 +2,7 @@
   <div class="w-full h-full relative bg-color-detail">
     <div class="detail-page w-full h-full relative">
       <div class="bg-image-detail h-2/4 pl-2 pr-2">
-        <div class="avatar w-full h-full relative">
+        <div class="avatar w-full h-full relative border-image">
           <div
             v-show="isActiveImag"
             class="avatar-url z-8"
@@ -42,7 +42,7 @@
           </div>
         </div>
       </div>
-      <div class="h-2/4 w-full">
+      <div class="h-2/4 w-full pl-2 pr-2">
         <div class="w-full bg-border-bottom padding-text-user pl-2 pr-2">
           <div class="flex bh-margin-title">
             <div class="title-user">
@@ -51,12 +51,8 @@
             </div>
             <img src="@/assets/icon/ic_infor.svg" width="30" alt="" />
           </div>
-          <div class="describe-user bh-margin-description">
-            {{
-              this.userParam.about
-                ? this.userParam.about
-                : "Tell me about yourself"
-            }}
+          <div class="describe-user bh-margin-description" v-if="aboutValue">
+            {{ userParam.profiles.about }}
           </div>
           <div class="flex bh-margin-description">
             <img src="@/assets/icon/ic_location.svg" alt="" />
@@ -64,18 +60,22 @@
           </div>
         </div>
         <!-- About me -->
-        <div class="w-full bg-border-bottom padding-text-user pl-2 pr-2">
+        <div
+          class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
+          v-if="aboutValue"
+        >
           <div class="title title-description describe-text">About me</div>
           <div class="text-description">
-            {{
-              this.userParam.about ? this.userParam.about : "Gets hungry easily"
-            }}
+            {{ userParam.profiles.about }}
           </div>
 
-          <div class="w-full bh-margin-description">
+          <div
+            class="w-full bh-margin-description"
+            v-if="userParam.profiles.orientationSexuals.length !== 0"
+          >
             <div
               class="item-option border-default cursor-pointer"
-              v-for="(item, index) in this.sexuals"
+              v-for="(item, index) in sexualsValue"
               :key="index"
             >
               {{ item }}
@@ -84,7 +84,10 @@
         </div>
         <!-- Interests -->
 
-        <div class="w-full bg-border-bottom padding-text-user pl-2 pr-2">
+        <div
+          class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
+          v-if="userParam.profiles.interests.length !== 0"
+        >
           <div class="title pl-2 title-description describe-text">
             Interests
           </div>
@@ -92,7 +95,7 @@
           <div class="w-full bh-margin-description">
             <div
               class="item-option border-default cursor-pointer"
-              v-for="(item, index) in this.interests"
+              v-for="(item, index) in interestValue"
               :key="index"
             >
               {{ item }}
@@ -101,7 +104,7 @@
         </div>
 
         <!-- My Anthem -->
-        <div class="w-full padding-text-user">
+        <div class="w-full padding-text-user bg-border-bottom pl-2 pr-2">
           <div class="title title-description describe-text">My Anthem</div>
 
           <div class="w-full bh-margin-description pt-2">
@@ -119,25 +122,29 @@
           </div>
         </div>
 
-        <div class="items-center h-14 bh-margin-title">
-          <div class="flex justify-center items-center">
+        <div
+          class="items-center padding-text-user bg-border-bottom bh-margin-title"
+        >
+          <div class="flex justify-center items-center cursor-pointer">
             <i class="fa-regular fa-share-from-square"></i>
-            <div class="text-description-no-padding ml-2">
-              Share {{ this.userParam.fullname }} profile
+            <div class="title-click-ic ml-2">
+              SHARE {{ this.userParam.fullname }} PROFILE
             </div>
           </div>
-          <div class="flex justify-center mt-2 title-description-no-padding">
+          <div class="flex justify-center title-description describe-text">
             See what a friend thinks
           </div>
         </div>
-        <BhHorizontalLine></BhHorizontalLine>
         <!-- Report -->
-        <div class="flex h-12 w-full justify-center items-center">
-          <div class="text-description-no-padding">
-            Report {{ this.userParam.fullname }}
+        <div
+          @click="onClickReport"
+          class="flex h-12 w-full justify-center bg-border-bottom items-center cursor-pointer"
+        >
+          <img src="@/assets/icon/ic_report.svg" width="25" alt="" srcset="" />
+          <div class="title-click-ic ml-2">
+            REPORT {{ this.userParam.fullname }}
           </div>
         </div>
-        <BhHorizontalLine></BhHorizontalLine>
         <div class="h-2/4"></div>
       </div>
     </div>
@@ -173,9 +180,7 @@
 <script>
 import { mapMutations } from "vuex";
 import functionValidate from "../../../middleware/validate.js";
-import BhHorizontalLine from "../../bh-element-ui/input/bh-horizontal-line";
 export default {
-  components: { BhHorizontalLine },
   name: "detail-profile",
 
   data() {
@@ -229,10 +234,58 @@ export default {
   },
 
   computed: {
-    // idImage() {
-    //
-    //   return this.$store.state.userModule.urlAvatarUser.urlName;
-    // },
+    aboutValue() {
+      const lengthAbout =
+        this.$store.state.userModule.userProfileDetail.profiles.about;
+      debugger;
+      if (lengthAbout) {
+        if (lengthAbout.length !== 0) {
+          return true;
+        }
+      }
+      return false;
+    },
+
+    interestValue() {
+      let data = [];
+      const listInterest =
+        this.$store.state.commonModule.listLifeStyleSingle.interests;
+
+      const listInterestItem =
+        this.$store.state.userModule.userProfileDetail.profiles.interests;
+
+      for (let index = 0; index < listInterestItem.length; index++) {
+        const element = listInterestItem[index];
+
+        const findData = listInterest.find((x) => x.code === element);
+        if (findData) {
+          data.push(findData.value);
+        }
+      }
+
+      return data;
+    },
+
+    sexualsValue() {
+      let data = [];
+      const listSexuals =
+        this.$store.state.commonModule.listLifeStyleSingle.sexuals;
+
+      const listSexualsItem =
+        this.$store.state.userModule.userProfileDetail.profiles
+          .orientationSexuals;
+
+      for (let index = 0; index < listSexualsItem.length; index++) {
+        const element = listSexualsItem[index];
+
+        const findData = listSexuals.find((x) => x.code === element);
+        if (findData) {
+          data.push(findData.value);
+        }
+      }
+
+      return data;
+    },
     userParam() {
       debugger;
       return this.$store.state.userModule.userProfileDetail;
@@ -243,6 +296,10 @@ export default {
     ...mapMutations(["setUrlNameAvatarUser", "setLeftRightAvatar"]),
     onActionDecide(val) {
       this.$emit("onActionDecide", val);
+    },
+
+    onClickReport() {
+      this.$router.push({ path: `/report/:${this.userParam._id}` });
     },
 
     bindingDistance(val) {
