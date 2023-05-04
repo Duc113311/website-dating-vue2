@@ -128,10 +128,6 @@ body {
   align-items: center;
 }
 
-.home-link:is(:focus, :hover) {
-  color: var(--navbar-text-color-focus);
-}
-
 .navbar-link {
   justify-content: center;
   width: 100%;
@@ -139,10 +135,6 @@ body {
   border-radius: 5px;
 }
 
-.navbar-link:is(:focus, :hover) {
-  color: var(--navbar-text-color-focus);
-  background-color: var(--navbar-bg-contrast);
-}
 .navbar-logo {
   border-radius: 50%;
   width: 40px;
@@ -167,9 +159,7 @@ body {
   margin: 2px;
   background-color: var(--navbar-text-color);
 }
-#navbar-toggle:is(:focus, :hover) .icon-bar {
-  background-color: var(--navbar-text-color-focus);
-}
+
 #navbar-toggle[aria-expanded="true"] .icon-bar:is(:first-child, :last-child) {
   position: absolute;
   margin: 0;

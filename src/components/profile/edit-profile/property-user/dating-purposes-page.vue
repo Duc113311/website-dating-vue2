@@ -15,7 +15,10 @@
           />I'm looking for
         </div>
       </div>
-      <div class="flex w-6/12 justify-end items-center">
+      <div
+        class="flex w-6/12 justify-end items-center"
+        @click="onShowPurposes()"
+      >
         <div class="bh-describe w-full whitespace-nowrap mr-3 overflow-hidden">
           <div
             class="flex justify-end w-full"
@@ -34,7 +37,7 @@
             >
           </div>
         </div>
-        <div class="cursor-pointer" @click="onShowPurposes()">
+        <div class="cursor-pointer">
           <i
             class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
           ></i>

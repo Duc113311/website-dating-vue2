@@ -3,11 +3,11 @@
     <h2 class="padding-title">My number is</h2>
     <div class="w-full">
       <div class="w-full">
-        <input
+        <el-input
           id="phone"
           type="number"
           pattern="[0-9.]+"
-          class="txt-phone w-full rounded-lg bg-default"
+          class="txt-phone phone-number-txt w-full rounded-lg bg-default"
           placeholder="Phone number"
           name="phone"
           v-model="valCodeQR"
@@ -111,7 +111,6 @@ export default {
 
   mounted() {
     var input = document.querySelector("#phone");
-
     this.valCodeQR = intlTelInput(input, {
       initialCountry: "auto",
       geoIpLookup: function (callback) {
@@ -123,8 +122,6 @@ export default {
         });
       },
     });
-
-    input.focus();
   },
 };
 </script>
@@ -147,7 +144,7 @@ export default {
 }
 
 .iti__country-list {
-  width: 472px !important;
+  width: 445px !important;
   border: none !important;
   background-color: #4e576b !important;
 }
@@ -156,7 +153,3 @@ export default {
   padding-right: 58px;
 }
 </style>
-<!-- 
-.txt-phone:focus {
-  outline: none;
-} -->

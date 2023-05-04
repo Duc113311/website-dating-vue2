@@ -53,12 +53,14 @@
           </div>
           <div class="mt-2 text-base">EDIT PROFILE</div>
         </div>
-        <div class="item-setting">
-          <div class="flex justify-center">
-            <img src="@/assets/icon/bt_safety.svg" width="100" />
+        <el-tooltip content="Coming soon" placement="top">
+          <div class="item-setting">
+            <div class="flex justify-center">
+              <img src="@/assets/icon/bt_safety.svg" width="100" />
+            </div>
+            <div class="mt-2 text-base">SAFETY</div>
           </div>
-          <div class="mt-2 text-base">SAFETY</div>
-        </div>
+        </el-tooltip>
       </div>
     </div>
 

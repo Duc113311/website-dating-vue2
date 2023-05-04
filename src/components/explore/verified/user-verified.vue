@@ -57,7 +57,7 @@ export default {
   data() {
     return {
       color: "#988bf9",
-      url: "http://localhost:6060/img/round_verified_photo.711890bf.png",
+      url: require("@/assets/image-dating/bg_verified_photo.png"),
       isShowLoadDing: true,
       isShowDetail: false,
     };

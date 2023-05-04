@@ -12,7 +12,7 @@
             @onClickSkip="onClickSkip"
           ></BhBack>
         </div>
-        <div class="h-item-body">
+        <div class="h-item-body overflow-scroll height-scroll">
           <!-- My name -->
           <div v-if="isScream === 0">
             <MyName

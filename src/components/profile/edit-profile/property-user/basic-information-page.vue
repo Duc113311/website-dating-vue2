@@ -6,8 +6,11 @@
         <div v-if="completeLifeStyle">+4%</div>
       </div>
 
-      <div class="w-full bg-life bg-default title-default">
-        <div class="w-full item-life bd-input">
+      <div class="w-full bg-life bg-default title-default cursor-pointer">
+        <div
+          class="w-full item-life bd-input"
+          @click="onShowBasicInformation('scroll_1')"
+        >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -20,10 +23,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ zodiacParam }}
               </div>
-              <div
-                class="cursor-pointer"
-                @click="onShowBasicInformation('scroll_1')"
-              >
+              <div class="cursor-pointer">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -31,7 +31,10 @@
             </div>
           </div>
         </div>
-        <div class="w-full item-life bd-input">
+        <div
+          class="w-full item-life bd-input"
+          @click="onShowBasicInformation('scroll_2')"
+        >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -44,10 +47,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ familyParam }}
               </div>
-              <div
-                class="cursor-pointer"
-                @click="onShowBasicInformation('scroll_2')"
-              >
+              <div class="cursor-pointer">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -55,7 +55,10 @@
             </div>
           </div>
         </div>
-        <div class="w-full item-life bd-input">
+        <div
+          class="w-full item-life bd-input"
+          @click="onShowBasicInformation('scroll_3')"
+        >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -68,10 +71,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ educationParam }}
               </div>
-              <div
-                class="cursor-pointer"
-                @click="onShowBasicInformation('scroll_3')"
-              >
+              <div class="cursor-pointer">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -79,7 +79,10 @@
             </div>
           </div>
         </div>
-        <div class="w-full item-life bd-input">
+        <div
+          class="w-full item-life bd-input"
+          @click="onShowBasicInformation('scroll_4')"
+        >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -92,10 +95,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ vaccineParam }}
               </div>
-              <div
-                class="cursor-pointer"
-                @click="onShowBasicInformation('scroll_4')"
-              >
+              <div class="cursor-pointer">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -103,7 +103,10 @@
             </div>
           </div>
         </div>
-        <div class="w-full item-life bd-input">
+        <div
+          class="w-full item-life bd-input"
+          @click="onShowBasicInformation('scroll_5')"
+        >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -116,10 +119,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ personalityParam }}
               </div>
-              <div
-                class="cursor-pointer"
-                @click="onShowBasicInformation('scroll_5')"
-              >
+              <div class="cursor-pointer">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -127,7 +127,10 @@
             </div>
           </div>
         </div>
-        <div class="w-full item-life bd-input">
+        <div
+          class="w-full item-life bd-input"
+          @click="onShowBasicInformation('scroll_6')"
+        >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -140,10 +143,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ communicationParam }}
               </div>
-              <div
-                class="cursor-pointer"
-                @click="onShowBasicInformation('scroll_6')"
-              >
+              <div class="cursor-pointer">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -152,7 +152,10 @@
           </div>
         </div>
 
-        <div class="w-full item-life bd-input-end">
+        <div
+          class="w-full item-life bd-input-end"
+          @click="onShowBasicInformation('scroll_7')"
+        >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -165,10 +168,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ loveLanguageParam }}
               </div>
-              <div
-                class="cursor-pointer"
-                @click="onShowBasicInformation('scroll_7')"
-              >
+              <div class="cursor-pointer">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>

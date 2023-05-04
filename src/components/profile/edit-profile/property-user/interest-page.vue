@@ -6,7 +6,7 @@
         <div v-if="listDataInterests.length === 0">+15%</div>
       </div>
       <div class="w-full flex style-form bg-default">
-        <div class="flex justify-between w-full">
+        <div class="flex justify-between w-full" @click="onShowPopupInterest()">
           <div class="bh-item-title style-inter-setting relative">
             <div class="w-full flex justify-center items-center">
               <div
@@ -31,7 +31,7 @@
             </div>
             <div class="bg-shadow-right absolute h-full w-full"></div>
           </div>
-          <div class="mr-1 flex items-center" @click="onShowPopupInterest()">
+          <div class="mr-1 flex items-center">
             <i
               class="fa-solid fa-chevron-right bh-chevron-right icon-color-default"
             ></i>

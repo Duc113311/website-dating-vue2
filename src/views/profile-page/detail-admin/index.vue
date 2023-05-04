@@ -292,10 +292,6 @@ export default {
   height: 12%;
 }
 
-.body-detail {
-  height: calc(100% - 20%);
-}
-
 .active-image {
   background-color: white !important;
 }

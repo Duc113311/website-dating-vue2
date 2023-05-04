@@ -2,13 +2,7 @@
   <div class="w-full h-full pt-2 pb-2 title-default">
     <div class="w-full pl-6 pr-6">
       <div class="flex w-full bg-input">
-        <img src="@/assets/icon/ic_search.svg" class="mr-7" alt="" />
-        <input
-          type="search"
-          value=""
-          placeholder="Search"
-          class="search-input"
-        />
+        <el-input placeholder="Search" v-model="nameSearch"></el-input>
       </div>
     </div>
     <div class="w-full pl-6 pr-6 h-10 mt-6 flex items-center">
@@ -59,7 +53,7 @@
             </div>
           </div>
         </div>
-        <div class="w-4/5 ml-8 h-full bg-mess" @click="onClickShowChat()">
+        <div class="w-4/5 ml-8 h-full bg-mess">
           <div class="w-full">
             Trang <span class="ic_like ml-3">LIKES YOU</span>
           </div>
@@ -151,7 +145,9 @@ export default {
   name: "friend-match",
 
   data() {
-    return {};
+    return {
+      nameSearch: "",
+    };
   },
 
   methods: {
@@ -177,7 +173,6 @@ export default {
 .bg-input {
   height: 42px;
   padding: 6px;
-  background-color: #495063;
   border-radius: 10px;
 }
 

@@ -15,6 +15,7 @@ import {
   GoogleAuthProvider,
   RecaptchaVerifier,
   signInWithCredential,
+  signOut,
 } from "firebase/auth";
 
 // Config
@@ -67,4 +68,5 @@ export {
   refData,
   setData,
   getStorages,
+  signOut,
 };

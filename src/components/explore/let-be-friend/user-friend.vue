@@ -72,13 +72,13 @@ export default {
           return {
             title: "Let's be friend",
             bgColor: "linear-gradient(#74d880, #d64a57)",
-            url: "http://localhost:6060/img/bg_let_be_friend.c2e165c1.png",
+            url: require("@/assets/image-dating/bg_let_be_friend.png"),
           };
         case "coffeeDate":
           return {
             title: "Looking for love",
             bgColor: "linear-gradient(#FF6762, #FF9466)",
-            url: "http://localhost:6060/img/bg_coffe_date.7ae3e2ed.png",
+            url: require("@/assets/image-dating/bg_coffe_date.png"),
           };
         case "lookingLove":
           return {

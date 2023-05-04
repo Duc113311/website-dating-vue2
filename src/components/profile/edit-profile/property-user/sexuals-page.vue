@@ -6,7 +6,7 @@
         <div v-if="listDataSexual.length !== 0">+3%</div>
       </div>
       <div class="w-full flex style-form bg-default title-default">
-        <div class="flex justify-between w-full">
+        <div class="flex justify-between w-full" @click="onShowPopupSexuals()">
           <div class="bh-item-title style-inter-setting relative">
             <div class="w-full flex justify-center items-center">
               <div class="w-full text-ellipsis whitespace-nowrap sexual-item">
@@ -22,7 +22,7 @@
             </div>
             <div class="bg-interest absolute h-full w-full"></div>
           </div>
-          <div class="flex items-center" @click="onShowPopupSexuals()">
+          <div class="flex items-center">
             <i class="fa-solid fa-chevron-right bh-chevron-right"></i>
           </div>
         </div>

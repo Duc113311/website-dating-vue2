@@ -3,7 +3,7 @@
     <div class="v-modal-bg w-full h-full" @click="onChangeCancel()"></div>
     <div class="w-full absolute top-28 flex justify-center p-5">
       <div
-        class="rounded-lg bg-dialog-default title-default items-center w-full w-form-common overflow-hidden relative p-5 cursor-pointer"
+        class="rounded-lg bg-dialog-default title-default items-center w-full height-scroll w-form-common overflow-scroll relative p-5 cursor-pointer"
       >
         <div class="w-full justify-between flex items-center">
           <div @click="onChangeCancel()">

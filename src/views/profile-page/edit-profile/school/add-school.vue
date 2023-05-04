@@ -67,7 +67,7 @@ export default {
       selectedItem: this.$store.state.userModule.user_profile.profiles.school,
       selectedItemName: "",
       suggestions: this.$store.state.commonModule.nameSchools,
-      nameTitle: "Register join Dating U",
+      nameTitle: "Register join Dating ",
     };
   },
 

@@ -17,7 +17,17 @@ const state = {
   listInformationBasic: {}, // Lấy danh sách các thông tin cơ bản
   listLifeStyleStatic: {}, // Lấy danh sách phong cách sống
 
-  themeLayout: "dark",
+  themeLayout: "light",
+
+  valueReason: {
+    code: 0,
+    value: "",
+  },
+  valueDetail: {
+    code: 0,
+    value: "",
+  },
+  valueComment: "",
 };
 
 const getters = {};
@@ -25,6 +35,16 @@ const getters = {};
 const mutations = {
   setThemeLayout(state, value) {
     state.themeLayout = value;
+  },
+
+  setReasonReport(state, value) {
+    state.valueReason = value;
+  },
+  setNameDetailsReport(state, value) {
+    state.valueDetail = value;
+  },
+  setNameCommentReport(state, value) {
+    state.valueComment = value;
   },
   /**
    * Xet giá trị hiển th
@@ -147,7 +167,9 @@ const actions = {
    */
   async getListLifeStyleCommons({ commit }) {
     await http_mongo
-      .get(`api/v1/statics/commons`)
+      .get(`api/v1/statics/commons`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("tokenId")}` },
+      })
       .then((response) => {
         commit("setListLifeStyleSingle", response.data.data);
       })
@@ -162,7 +184,9 @@ const actions = {
    */
   async getListInformationBasic({ commit }) {
     await http_mongo
-      .get(`api/v1/statics/basics`)
+      .get(`api/v1/statics/basics`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("tokenId")}` },
+      })
       .then((response) => {
         commit("setListInformationBasic", response.data.data);
       })
@@ -177,7 +201,9 @@ const actions = {
    */
   async getListLifeStyleStatic({ commit }) {
     await http_mongo
-      .get(`api/v1/statics/life-styles`)
+      .get(`api/v1/statics/life-styles`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("tokenId")}` },
+      })
       .then((response) => {
         commit("setListLifeStyleStatic", response.data.data);
       })

@@ -21,6 +21,10 @@
   .icon-color {
     font-size: 35px;
   }
+  .option-setting {
+    gap: 30px;
+    height: calc(100% - 70%);
+  }
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -70,15 +74,28 @@
   .layout-web {
     background: #9fd2e3;
   }
+  /* w-h: layout */
   .layout-detail {
-    width: 34rem;
-    height: 100%;
+    max-width: 500px;
+    height: 930px;
   }
-  .phone-login,
-  .email-login,
-  .welcome,
-  .create-profile {
-    padding: 26px;
+  /* w-h: btn: like,back,supper-like,... */
+  .btns img:nth-last-child(1) {
+    width: 88px;
+  }
+  .bh-odd {
+    width: 100px;
+  }
+  .bh-even {
+    width: 136px;
+  }
+  /* w-h: footer - icon */
+  .icon-color {
+    font-size: 35px;
+  }
+
+  .body-page-home {
+    height: 80%;
   }
 
   .size-hight {
@@ -86,7 +103,7 @@
   }
 
   .h-likes {
-    height: calc(100% - 8rem);
+    height: calc(100% - 3rem);
   }
 
   .item-user {
@@ -101,29 +118,19 @@
   .option-setting {
     gap: 60px;
   }
+  /* Css Login */
 
-  .w-form-life {
-    width: 30rem;
-    height: 80%;
+  .w-button {
+    width: 76%;
   }
 
-  .h-title-close {
-    height: 5%;
-  }
-
-  .h-form-data {
-    height: calc(100% - 5%);
-  }
-
-  .h-title-data {
+  /* setting */
+  .header-detail {
     height: 10%;
   }
 
-  .h-data-life {
-    height: calc(100% - 17%);
-  }
-  .w-button {
-    width: 76%;
+  .body-detail {
+    height: 80%;
   }
 }
 
@@ -133,9 +140,28 @@
     background: #fd5d65;
   }
 
+  /* w-h: layout */
   .layout-detail {
-    width: 530px;
+    max-width: 500px;
     height: 930px;
+  }
+  /* w-h: btn: like,back,supper-like,... */
+  .btns img:nth-last-child(1) {
+    width: 88px;
+  }
+  .bh-odd {
+    width: 100px;
+  }
+  .bh-even {
+    width: 136px;
+  }
+  /* w-h: footer - icon */
+  .icon-color {
+    font-size: 35px;
+  }
+
+  .body-page-home {
+    height: 80%;
   }
 
   .size-hight {
@@ -143,7 +169,7 @@
   }
 
   .h-likes {
-    height: calc(100% - 8rem);
+    height: calc(100% - 3rem);
   }
 
   .item-user {
@@ -158,9 +184,19 @@
   .option-setting {
     gap: 60px;
   }
+  /* Css Login */
 
   .w-button {
     width: 76%;
+  }
+
+  /* setting */
+  .header-detail {
+    height: 10%;
+  }
+
+  .body-detail {
+    height: 80%;
   }
 }
 

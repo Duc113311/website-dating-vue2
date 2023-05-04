@@ -6,8 +6,11 @@
         <div v-if="completeLifeStyle">+4%</div>
       </div>
 
-      <div class="w-full bg-life bg-default">
-        <div class="w-full item-life bd-input">
+      <div class="w-full bg-life bg-default cursor-pointer">
+        <div
+          class="w-full item-life bd-input"
+          @click="onShowFormLife('scroll_1')"
+        >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -20,7 +23,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ petParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowFormLife('scroll_1')">
+              <div class="cursor-pointer">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -28,7 +31,10 @@
             </div>
           </div>
         </div>
-        <div class="w-full item-life bd-input">
+        <div
+          class="w-full item-life bd-input"
+          @click="onShowFormLife('scroll_2')"
+        >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -41,7 +47,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ drinkingParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowFormLife('scroll_2')">
+              <div class="cursor-pointer">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -49,7 +55,10 @@
             </div>
           </div>
         </div>
-        <div class="w-full item-life bd-input">
+        <div
+          class="w-full item-life bd-input"
+          @click="onShowFormLife('scroll_3')"
+        >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -62,7 +71,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ smokingParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowFormLife('scroll_3')">
+              <div class="cursor-pointer">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -70,7 +79,10 @@
             </div>
           </div>
         </div>
-        <div class="w-full item-life bd-input">
+        <div
+          class="w-full item-life bd-input"
+          @click="onShowFormLife('scroll_4')"
+        >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -83,7 +95,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ workoutParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowFormLife('scroll_4')">
+              <div class="cursor-pointer">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -91,7 +103,10 @@
             </div>
           </div>
         </div>
-        <div class="w-full item-life bd-input">
+        <div
+          class="w-full item-life bd-input"
+          @click="onShowFormLife('scroll_5')"
+        >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -104,7 +119,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ dietaryPreferenceParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowFormLife('scroll_5')">
+              <div class="cursor-pointer">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -112,7 +127,10 @@
             </div>
           </div>
         </div>
-        <div class="w-full item-life bd-input">
+        <div
+          class="w-full item-life bd-input"
+          @click="onShowFormLife('scroll_6')"
+        >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -125,7 +143,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ socialMediaParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowFormLife('scroll_6')">
+              <div class="cursor-pointer">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>
@@ -134,7 +152,10 @@
           </div>
         </div>
 
-        <div class="w-full item-life bd-input-end">
+        <div
+          class="w-full item-life bd-input-end"
+          @click="onShowFormLife('scroll_7')"
+        >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
               class="mr-2"
@@ -147,7 +168,7 @@
               <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
                 {{ sleepingHabitParam }}
               </div>
-              <div class="cursor-pointer" @click="onShowFormLife('scroll_7')">
+              <div class="cursor-pointer">
                 <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
                 ></i>

@@ -64,16 +64,9 @@ export default {
 </script>
 
 <style lang="css">
-.el-input__wrapper {
-}
 .your-name .el-input__inner {
   --el-input-inner-height: 45px !important;
   font-size: larger !important;
   padding: 10px;
 }
 </style>
-<!-- 
-.your-name:focus {
-  outline: 0;
-  border: none;
-} -->

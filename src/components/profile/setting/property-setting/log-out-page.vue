@@ -2,6 +2,7 @@
   <div class="w-full h-full mb-6">
     <div class="w-full mt-6">
       <div
+        @click="onLogout"
         class="w-full flex cursor-pointer form-set-input justify-center items-center bh-item-title bg-default"
       >
         LOG OUT
@@ -26,7 +27,28 @@
 </template>
 
 <script>
-export default {};
+import { auth, signOut } from "../../../../configs/firebase";
+export default {
+  name: "log-out-page",
+
+  data() {
+    return {};
+  },
+
+  methods: {
+    async onLogout() {
+      await signOut(auth)
+        .then(() => {
+          debugger;
+          // Sign-out successful.
+          this.$router.push({ path: "/" });
+        })
+        .catch((error) => {
+          // An error happened.
+        });
+    },
+  },
+};
 </script>
 
 <style></style>

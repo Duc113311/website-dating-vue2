@@ -5,10 +5,10 @@
         <div>SCHOOL</div>
         <div v-if="completeSchool">+4%</div>
       </div>
-      <div class="w-full flex style-form bg-default">
+      <div class="w-full flex style-form bg-default" @click="onChoseSchool()">
         <div class="flex justify-between w-full">
           <div class="bh-item-title">{{ nameSchoolParam }}</div>
-          <div class="" @click="onChoseSchool()">
+          <div class="">
             <i class="fa-solid fa-chevron-right bh-chevron-right"></i>
           </div>
         </div>

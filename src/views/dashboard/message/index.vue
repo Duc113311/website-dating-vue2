@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-full">
     <div class="w-full pl-6 pr-6">
-      <div class="flex w-full bg-input">
+      <div class="flex w-full bg-input bg-default">
         <img src="@/assets/icon/ic_search.svg" class="mr-7" alt="" />
         <input
           type="search"
@@ -185,7 +185,6 @@ export default {
 .bg-input {
   height: 42px;
   padding: 6px;
-  background-color: #495063;
   border-radius: 10px;
 }
 

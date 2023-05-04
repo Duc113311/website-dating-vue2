@@ -6,6 +6,7 @@
         <div v-if="completeLanguage">+4%</div>
       </div>
       <div
+        @click="onShowLanguage()"
         class="w-full bg-life bg-default flex justify-between items-center cursor-pointer"
       >
         <div class="w-6/12 bh-item-title flex items-center">
@@ -28,7 +29,7 @@
           >
             {{ convertArrayToString(nameLanguageParam) }}
           </div>
-          <div class="cursor-pointer" @click="onShowLanguage()">
+          <div class="cursor-pointer">
             <i
               class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
             ></i>
