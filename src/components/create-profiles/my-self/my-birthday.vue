@@ -4,14 +4,15 @@
       <div class="padding-title">My birthday is</div>
     </div>
     <div>
-      <input
+      <el-input
         class="your-name padding-input mb-3 bg-default"
+        ref="input_focus"
         v-model="birthday"
         type="date"
         placeholder="dd/mm/yyyy"
         min="1977-01-01"
         max="2030-01-01"
-        @keydown="onChangeInput"
+        @input="onChangeInput"
         @blur="onChangeInput"
       />
       <span class="padding-describe">Your age will be public</span>
@@ -55,6 +56,8 @@ export default {
     } else {
       this.$emit("onStatusActive", false);
     }
+
+    this.$refs.input_focus.$refs.input.focus();
   },
 };
 </script>

@@ -6,18 +6,23 @@
       <span class="ml-3">{{ this.renderPhoneNumber }}</span>
     </div>
     <div class="text-code flex justify-center mt-8 mb-8">
-      <input
-        type="text"
-        class="digit-box one-code bg-default text-center"
-        v-for="(el, ind) in digits"
-        :id="el"
-        :key="el + ind"
-        v-model="renderCodeOTP[ind]"
-        @keyup="onNextOn(el, ind)"
-        :autofocus="ind === 0"
-        maxlength="1"
-      />
+      <div>
+        <input
+          type="number"
+          class="digit-box one-code bg-default text-center"
+          v-for="(number, index) in digits"
+          :id="number"
+          :key="index"
+          :ref="`input` + number"
+          v-model="renderCodeOTP[number]"
+          @keyup="onNextOn(number, index)"
+          :autofocus="index === 0"
+          step="1"
+          maxlength="1"
+        />
+      </div>
     </div>
+
     <BhInvalid v-if="renderErrorCode"></BhInvalid>
     <div class="mt-10 padding-describe dark-theme-describe justify-center flex">
       <a class="cursor-pointer bt-render" href="#" @click="onPhoneNumber()"
@@ -40,6 +45,8 @@ export default {
     return {
       digitCount: 4,
       digits: [1, 2, 3, 4, 5, 6],
+      number: "",
+      numberData: [],
     };
   },
 
@@ -55,11 +62,28 @@ export default {
     },
 
     renderCodeOTP() {
-      return this.valueText;
+      debugger;
+
+      return [
+        { value: "" },
+        { value: "" },
+        { value: "" },
+        { value: "" },
+        { value: "" },
+        { value: "" },
+      ];
     },
   },
 
   methods: {
+    isNumberKey(event) {
+      debugger;
+      var charCode = event.which ? event.which : event.keyCode;
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+      }
+      return true;
+    },
     /**
      * Render gửi lại mã OTP
      */
@@ -71,31 +95,70 @@ export default {
       this.$emit("validateRequireCode", true);
     },
 
-    onNextOn(key, on) {
-      console.log(key, on);
-      const indexData = document.getElementById(key);
-      const valueData = indexData.value;
-      if (valueData !== "") {
-        const nextBling = this.digits.length;
-        if (nextBling !== key) {
-          indexData.nextSibling.focus();
-        } else {
-          this.valueCode = this.valueText.toString().split(",").join("");
+    moveToNext(event, refName) {
+      debugger;
+      if (event.target.value.length === 1) {
+        this.$refs[refName].focus();
+      }
+    },
 
-          if (this.valueCode !== "") {
-            this.$emit("validateRequireCode", {
-              statusActive: true,
-              codeOTP: this.valueCode,
-            });
+    onNextOn(key, index) {
+      console.log(key);
+      debugger;
+      const indexData = document.getElementById(key);
+      let valueData = indexData.value;
+      if (valueData !== "") {
+        if (valueData.length === 1) {
+          const nextBling = this.digits.length;
+          if (index < this.numberData.length) {
+            this.numberData[index] = indexData.value.toString();
+          } else {
+            this.numberData.push(indexData.value.toString());
           }
+          if (this.numberData.length < 6) {
+            const keyNext = key + 1;
+            const refKey = this.$refs[`input` + keyNext];
+            const value = indexData.value.toString().slice(0, 1);
+            indexData.value = value.replace(/[^0-9]/g, "");
+            refKey[0].focus();
+          } else {
+            const filterData = this.numberData.filter((x) => x === "");
+            console.log(filterData);
+            if (filterData.length === 0) {
+              this.valueCode = this.numberData.toString().split(",").join("");
+              if (this.valueCode !== "") {
+                debugger;
+                this.$emit("validateRequireCode", {
+                  statusActive: true,
+                  codeOTP: this.valueCode,
+                  codeOld: this.numberData,
+                });
+              }
+            }
+          }
+        } else {
+          const value = indexData.value.toString().slice(0, 1);
+          indexData.value = value.replace(/[^0-9]/g, "");
         }
+      } else {
+        this.numberData[index] = indexData.value;
+
+        const refKey = this.$refs[`input` + key];
+        refKey[0].focus();
+        this.valueCode = this.numberData.toString().split(",").join("");
+        this.$emit("validateRequireCode", {
+          statusActive: false,
+          codeOTP: this.valueCode,
+        });
       }
     },
   },
 
   created() {},
 
-  mounted() {},
+  mounted() {
+    debugger;
+  },
 };
 </script>
 

@@ -25,6 +25,7 @@
   --color-from: #eef1f8;
   --color-dialog: #ffffff;
   --color-border-bottom: #eae9ee;
+  --color-focus-code: #e7e9f5;
 }
 
 .theme-light {
@@ -122,5 +123,10 @@
   .border-image {
     border-radius: 10px;
     border: 1px solid var(--color-border-button-select);
+  }
+
+  .digit-box:focus {
+    background-color: var(--color-focus-code);
+    outline: none;
   }
 }

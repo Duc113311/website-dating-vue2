@@ -4,11 +4,12 @@
       <div class="padding-title">My name is</div>
     </div>
     <div>
-      <input
-        class="your-name padding-input mb-3 bg-default"
+      <el-input
+        class="your-name digit-box padding-input bg-default"
+        ref="input_focus"
         v-model="txtFirstName"
         placeholder="Your name"
-        @keydown="onChangeFirstName"
+        @input="onChangeFirstName"
       />
       <span class="padding-describe"
         >This is how it will appear in HeartLink, and you will not able to
@@ -50,7 +51,7 @@ export default {
 
   mounted() {
     this.txtFirstName = this.$store.state.userModule.user_profile?.fullname;
-
+    debugger;
     this.$emit("onShowName", { showCheckbox: false });
     this.$emit("onShowSkips", false);
     console.log(this.txtFirstName);
@@ -59,6 +60,7 @@ export default {
     } else {
       this.$emit("onStatusActive", false);
     }
+    this.$refs.input_focus.$refs.input.focus();
   },
 };
 </script>

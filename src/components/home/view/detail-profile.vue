@@ -178,7 +178,7 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations, mapActions } from "vuex";
 import functionValidate from "../../../middleware/validate.js";
 export default {
   name: "detail-profile",
@@ -294,12 +294,13 @@ export default {
 
   methods: {
     ...mapMutations(["setUrlNameAvatarUser", "setLeftRightAvatar"]),
+    ...mapActions(["getListReasonReportUser"]),
     onActionDecide(val) {
       this.$emit("onActionDecide", val);
     },
 
     onClickReport() {
-      this.$router.push({ path: `/report/:${this.userParam._id}` });
+      this.$router.push({ path: `/report/${this.userParam._id}` });
     },
 
     bindingDistance(val) {
@@ -380,6 +381,10 @@ export default {
     onClickHideProfile() {
       this.$emit("onHideProfile", false);
     },
+  },
+
+  async created() {
+    await this.getListReasonReportUser();
   },
 };
 </script>

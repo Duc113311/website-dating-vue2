@@ -19,18 +19,18 @@
           v-for="(item, index) in listCategoryExplore"
           :key="index"
           class="relative cursor-pointer rounded-xl overflow-hidden"
-          @click="onClickChoseCategory(item.code)"
+          @click="onClickChoseCategory(item)"
         >
           <div class="w-full absolute top-dash-explore text-center bottom-0">
             <div class="countdown"></div>
-            <div class="title-date title-print">{{ item.title }}</div>
+            <div class="title-date title-print">{{ item.name }}</div>
             <div class="text-describe">
-              {{ item.describe }}
+              {{ item.description }}
             </div>
           </div>
           <img
             class="image-explore w-full h-full"
-            :src="item.urlImage"
+            :src="item.image"
             alt=""
             srcset=""
           />
@@ -46,69 +46,94 @@ export default {
 
   data() {
     return {
-      listCategoryExplore: [
-        {
-          code: "blindDate",
-          title: "Blind Date",
-          describe: "Open hour 6pm - 12pm (Local time)",
-          urlImage: require("@/assets/image-dating/explore_blind_date.png"),
-        },
-        {
-          code: "letBeFriend",
-          title: "Let's be Friend",
-          describe: "Find your best friend here",
-          urlImage: require("@/assets/image-dating/explore_let_be_friend (1).png"),
-        },
-        {
-          code: "lookingLove",
-          title: "Looking for love",
-          describe: "Find your love here",
-          urlImage: require("@/assets/image-dating/explore_looking_for_love (1).png"),
-        },
-        {
-          code: "loveMakeUp",
-          title: "Love beautiful makeup",
-          describe: "Find your love makeup here",
-          urlImage: require("@/assets/image-dating/thich_lam_dep.webp"),
-        },
-        {
-          code: "coffeeDate",
-          title: "Coffee Date",
-          describe: "Find your coffee here",
-          urlImage: require("@/assets/image-dating/explore_coffee_date (1).png"),
-        },
-        {
-          code: "traveling",
-          title: "Like traveling",
-          describe: "Find your love traveling here",
-          urlImage: require("@/assets/image-dating/thich_du_lich.webp"),
-        },
-        {
-          code: "music",
-          title: "Love music",
-          describe: "Find your love music here",
-          urlImage: require("@/assets/image-dating/thich_nghe_nhac.webp"),
-        },
-        {
-          code: "sport",
-          title: "Love sports",
-          describe: "Find your love sports here",
-          urlImage: require("@/assets/image-dating/thich_the_thao.webp"),
-        },
-        {
-          code: "drink",
-          title: "Like to drink",
-          describe: "Find your like drink here",
-          urlImage: require("@/assets/image-dating/thich_di_nhau.webp"),
-        },
-      ],
+      // listCategoryExplore: [
+      //   {
+      //     code: "blindDate",
+      //     title: "Blind Date",
+      //     describe: "Open hour 6pm - 12pm (Local time)",
+      //     urlImage: require("@/assets/image-dating/explore_blind_date.png"),
+      //   },
+      //   {
+      //     code: "letBeFriend",
+      //     title: "Let's be Friend",
+      //     describe: "Find your best friend here",
+      //     urlImage: require("@/assets/image-dating/explore_let_be_friend (1).png"),
+      //   },
+      //   {
+      //     code: "lookingLove",
+      //     title: "Looking for love",
+      //     describe: "Find your love here",
+      //     urlImage: require("@/assets/image-dating/explore_looking_for_love (1).png"),
+      //   },
+      //   {
+      //     code: "loveMakeUp",
+      //     title: "Love beautiful makeup",
+      //     describe: "Find your love makeup here",
+      //     urlImage: require("@/assets/image-dating/thich_lam_dep.webp"),
+      //   },
+      //   {
+      //     code: "coffeeDate",
+      //     title: "Coffee Date",
+      //     describe: "Find your coffee here",
+      //     urlImage: require("@/assets/image-dating/explore_coffee_date (1).png"),
+      //   },
+      //   {
+      //     code: "traveling",
+      //     title: "Like traveling",
+      //     describe: "Find your love traveling here",
+      //     urlImage: require("@/assets/image-dating/thich_du_lich.webp"),
+      //   },
+      //   {
+      //     code: "music",
+      //     title: "Love music",
+      //     describe: "Find your love music here",
+      //     urlImage: require("@/assets/image-dating/thich_nghe_nhac.webp"),
+      //   },
+      //   {
+      //     code: "sport",
+      //     title: "Love sports",
+      //     describe: "Find your love sports here",
+      //     urlImage: require("@/assets/image-dating/thich_the_thao.webp"),
+      //   },
+      //   {
+      //     code: "drink",
+      //     title: "Like to drink",
+      //     describe: "Find your like drink here",
+      //     urlImage: require("@/assets/image-dating/thich_di_nhau.webp"),
+      //   },
+      // ],
     };
+  },
+
+  computed: {
+    listCategoryExplore() {
+      const explores = this.$store.state.homeModule.listExplores;
+      let resultData = [];
+      for (let index = 0; index < explores.length; index++) {
+        const element = explores[index];
+        if (element.name === "Looking for love") {
+          element.code = "lookingLove";
+        }
+        if (element.name === "Let's be Friend") {
+          element.code = "letBeFriend";
+        }
+        if (element.name === "Coffee Date") {
+          element.code = "coffeeDate";
+        }
+        if (element.name === "Blind Date") {
+          element.code = "blindDate";
+        }
+
+        resultData.push(element);
+      }
+      return resultData;
+    },
   },
 
   methods: {
     onClickChoseCategory(val) {
       console.log(val);
-      switch (val) {
+      switch (val.code) {
         case "blindDate":
           this.$router.push({
             path: "/blind-date",
@@ -120,7 +145,7 @@ export default {
 
         default:
           this.$router.push({
-            path: `/common-explore/${val}`,
+            path: `/common-explore/${val.code}/${val._id}`,
           });
           break;
       }

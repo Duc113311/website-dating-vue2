@@ -12,6 +12,7 @@
           name="phone"
           v-model="valCodeQR"
           @change="onClickInput"
+          @input="onInputNumber"
         />
       </div>
       <div class="error-text justify-center flex text-red-600 w-full mt-2">
@@ -37,16 +38,6 @@ import intlTelInput from "intl-tel-input";
 import $ from "jquery";
 export default {
   name: "my-number",
-  setup() {
-    return;
-  },
-
-  props: {
-    sendCodeError: {
-      type: String,
-      default: "",
-    },
-  },
 
   data() {
     return {
@@ -106,6 +97,15 @@ export default {
         this.txtCodeError = "You are not enter the phone number";
       }
     },
+
+    onInputNumber() {
+      const mobile = document.getElementById("phone").value;
+      if (mobile != "") {
+        this.onValidatePhoneNumber(mobile);
+      } else {
+        this.txtCodeError = "You are not enter the phone number";
+      }
+    },
     //#endregion
   },
 
@@ -122,6 +122,8 @@ export default {
         });
       },
     });
+    debugger;
+    input.focus();
   },
 };
 </script>

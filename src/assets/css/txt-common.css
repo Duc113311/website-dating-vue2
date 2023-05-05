@@ -49,3 +49,7 @@
 .size-icon-hello {
   font-size: 40px;
 }
+
+.el-input {
+  font-size: 16px !important;
+}

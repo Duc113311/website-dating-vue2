@@ -78,6 +78,7 @@ export default {
 
     ...mapMutations(["setTokenAccount"]),
     validateRequire(value) {
+      debugger;
       this.isStatusRequire = value.statusActive;
       this.codeOTP = value.codeOTP;
     },
@@ -106,6 +107,7 @@ export default {
     },
 
     async onRenderCodeOTP() {
+      debugger;
       this.txtErrorCode = false;
       this.valueText = [];
       document.getElementById("1").focus();
@@ -130,7 +132,7 @@ export default {
      */
     async onChangeContinue(value) {
       console.log(value);
-
+      debugger;
       this.isLoadings = true;
       this.isStatusRequire = true;
       this.isHide = true;
@@ -159,7 +161,13 @@ export default {
               });
           }
         }
+        setTimeout(() => {
+          this.isStatusRequire = false;
+          this.isLoadings = false;
+          this.screenNumber = this.screenNumber + 1;
+        }, 2000);
       } else if (this.screenNumber === 1) {
+        debugger;
         if (this.sentCodeId !== "") {
           // this.$emit("onShowEmailUser", true);
 
@@ -167,13 +175,8 @@ export default {
         } else {
           this.txtErrorCode = true;
         }
-      }
-
-      setTimeout(() => {
-        this.isStatusRequire = false;
         this.isLoadings = false;
-        this.screenNumber = this.screenNumber + 1;
-      }, 2000);
+      }
     },
 
     /**
@@ -203,6 +206,7 @@ export default {
           }
         })
         .catch((error) => {
+          debugger;
           console.log(error);
           this.txtErrorCode = true;
 
@@ -218,6 +222,7 @@ export default {
       utilsScript:
         "https://cdn.jsdelivr.net/npm/intl-tel-input@16.0.3/build/js/utils.js",
     });
+    input.focus();
   },
 };
 </script>

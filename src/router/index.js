@@ -214,7 +214,7 @@ const routes = [
 
       // common page
       {
-        path: "/common-explore/:screamName",
+        path: "/common-explore/:screamName/:topicId",
         name: "common-explore-page",
         component: () =>
           import(

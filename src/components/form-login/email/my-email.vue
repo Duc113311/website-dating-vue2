@@ -7,11 +7,12 @@
     </div>
 
     <div class="mt-3">
-      <input
-        class="your-name padding-input mb-3 bg-default"
+      <el-input
+        class="your-name digit-box padding-input bg-default"
         v-model="txtEmail"
         placeholder="Enter email"
-        @keyup="onChangeInput"
+        ref="input_focus"
+        @input="onChangeInput"
       />
     </div>
     <div class="mt-4">
@@ -116,7 +117,9 @@ export default {
       this.$emit("onShowWelcome", value);
     },
   },
-  mounted() {},
+  mounted() {
+    this.$refs.input_focus.$refs.input.focus();
+  },
 };
 </script>
 

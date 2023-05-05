@@ -126,7 +126,6 @@ export default {
     await this.getListInformationBasic();
     await this.getListLifeStyleStatic();
     await this.getDetailProfileByAuthorization();
-
     setTimeout(() => {
       this.loading = false;
     }, 1000);

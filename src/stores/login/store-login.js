@@ -1,9 +1,11 @@
 import { http_request } from "../../configs/http-host";
+import { http_mongo } from "../../configs/http-mongo";
 
 const state = {
   user: [],
   tokenAccount: {},
   isExistUserId: false,
+  deleteAccount: "",
 };
 
 const getters = {};
@@ -35,6 +37,19 @@ const actions = {
         console.log(error);
       });
   },
+
+  async deleteAccountUser({ commit }, data) {
+    await http_mongo
+      .delete(`/api/v1/users/delete`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("tokenId")}` },
+      })
+      .then((response) => {
+        commit("setDeleteAccountUser", response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
 };
 
 const mutations = {
@@ -48,6 +63,11 @@ const mutations = {
    */
   setTokenAccount(state, token) {
     state.tokenAccount = token;
+  },
+
+  setDeleteAccountUser(state, data) {
+    debugger;
+    state.deleteAccount = data;
   },
 };
 

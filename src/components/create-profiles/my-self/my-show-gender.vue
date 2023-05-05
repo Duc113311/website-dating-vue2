@@ -116,9 +116,6 @@ export default {
 .el-button + .el-button {
   margin-left: 0px !important;
 }
-.rounded-lg {
-  border: 2px solid white;
-}
 
 .active-border {
   border: 1.5px solid #ee646a;

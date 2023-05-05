@@ -120,6 +120,7 @@ export default {
      *
      */
     async onChangeContinue(value) {
+      debugger;
       console.log(value);
       this.isLoadings = true;
       this.isStatusRequire = true;
@@ -150,6 +151,7 @@ export default {
           }
         }
       } else if (this.screenNumber === 1) {
+        debugger;
         if (this.sentCodeId !== "") {
           // this.$emit("onShowEmailUser", true);
 

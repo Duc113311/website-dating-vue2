@@ -3,7 +3,7 @@
   <div class="w-full h-full title-default">
     <div class="header-report w-full flex justify-between items-center p-5">
       <BhBack @onBackComponent="onBackComponent"></BhBack>
-      <div>Hủy</div>
+      <div @click="onCancel">Hủy</div>
     </div>
     <div class="w-full flex justify-center items-center">
       <img src="@/assets/icon/ic_safety (1).svg" width="50" alt="" />
@@ -40,6 +40,7 @@
               class="h-10"
               placeholder="Vui lòng cung cấp thêm chi tiết về những gì bạn đang báo cáo"
               v-model="nameComment"
+              @input="onChangeComment"
             >
             </el-input>
           </div>
@@ -53,9 +54,16 @@
       </div>
       <div>
         <bh-continue
+          v-if="this.screamReason !== 3"
           @onChangeContinue="onChangeContinue"
           :isActives="isActives"
         ></bh-continue>
+
+        <BhCommon
+          v-if="this.screamReason === 3"
+          :nameTitle="nameTitleSend"
+          @onChangeCommon="onClickSendReport"
+        ></BhCommon>
       </div>
     </div>
 
@@ -63,6 +71,7 @@
       @onHideReport="onHideReport"
       :screamForm="screamReason"
       :listNameReport="listDataChoses"
+      @onStatusActive="onStatusActive"
       v-if="isShowModal"
     ></FormReportOption>
     <!--  -->
@@ -70,12 +79,14 @@
 </template>
 
 <script>
+import BhCommon from "../../../components/bh-element-ui/button/bh-common";
 import BhBack from "../../../components/bh-element-ui/button/bh-back";
 import FormReportOption from "../../../components/home/modal-report/form-report-option";
 import bhContinue from "@/components/bh-element-ui/button/bh-continue.vue";
-import { mapMutations } from "vuex";
+import { mapActions, mapMutations } from "vuex";
 export default {
   components: {
+    BhCommon,
     BhBack,
     FormReportOption,
     bhContinue,
@@ -86,52 +97,8 @@ export default {
     return {
       nameTitle: "TIẾP THEO",
       isShowModal: false,
-      isActives: true,
-      listDataChoses1: [
-        {
-          code: 1,
-          value: "Có liên quan tới người 18 tuổi",
-        },
-        {
-          code: 2,
-          value: "Có ảnh khỏa thân hoặc nội dung nhạy cảm",
-        },
-        {
-          code: 3,
-          value: "Có liên quan tới người 18 tuổi",
-        },
-        {
-          code: 4,
-          value: "Có liên quan tới người 18 tuổi",
-        },
-        {
-          code: 4,
-          value: "Có liên quan tới người 18 tuổi",
-        },
-      ],
-
-      listDataChoses2: [
-        {
-          code: 1,
-          value: "Ở trong tin nhắn người này gửi tôi",
-        },
-        {
-          code: 2,
-          value: "Có thứ gì đó trong hình ảnh or video",
-        },
-        {
-          code: 3,
-          value: "Có liên quan tới người 18 tuổi",
-        },
-        {
-          code: 4,
-          value: "Có liên quan tới người 18 tuổi",
-        },
-        {
-          code: 4,
-          value: "Có liên quan tới người 18 tuổi",
-        },
-      ],
+      nameTitleSend: "Send",
+      isActives: false,
 
       listDataChoses: [],
 
@@ -146,16 +113,19 @@ export default {
   },
 
   computed: {
+    listDataChoses1() {
+      return this.$store.state.homeModule.listReasons;
+    },
     nameReport() {
-      const nameValue = this.$store.state.commonModule;
+      const nameValue = this.$store.state.homeModule;
       debugger;
       if (this.screamReason === 1) {
-        return nameValue.valueReason.value.length !== 0
+        return Object.keys(nameValue.valueReason).length !== 0
           ? nameValue.valueReason.value
           : "Vui lòng chọn 1 lý do";
       }
       if (this.screamReason === 2) {
-        return nameValue.valueDetail.value.length !== 0
+        return Object.keys(nameValue.valueDetail).length !== 0
           ? nameValue.valueDetail.value
           : "Vui lòng chọn 1 ";
       }
@@ -169,7 +139,16 @@ export default {
   },
 
   methods: {
-    ...mapMutations(["setOptionReport"]),
+    ...mapMutations([
+      "setOptionReport",
+      "setNameDetailsReport",
+      "setReasonReport",
+    ]),
+
+    ...mapActions(["postReasonReportUser"]),
+    onStatusActive(val) {
+      this.isActives = val;
+    },
     onHideModal() {
       this.isShowModal = false;
     },
@@ -187,31 +166,107 @@ export default {
 
     onChangeContinue() {
       debugger;
+      const nameValue = this.$store.state.homeModule;
       this.screamReason = this.screamReason + 1;
       if (this.screamReason === 2) {
-        this.listDataChoses = this.listDataChoses2;
+        if (Object.keys(nameValue.valueDetail).length !== 0) {
+          this.isActives = true;
+        } else {
+          this.isActives = false;
+        }
+        debugger;
+        const codeId = nameValue.valueReason.code;
+        const listDetails = nameValue.listReasonReports;
+        const findData = listDetails.find((x) => x._id === codeId);
+        debugger;
+        let resultData = [];
+        if (findData) {
+          for (let index = 0; index < findData.details.length; index++) {
+            const element = findData.details[index];
+
+            resultData.push({ code: index, value: element });
+          }
+        }
+        this.listDataChoses = resultData;
       }
+
       if (this.screamReason === 3) {
-        this.listDataChoses = this.listDataChoses2;
+        if (this.nameComment.length !== 0) {
+          this.isActives = true;
+        } else {
+          this.isActives = false;
+        }
       }
     },
 
     onBackComponent() {
+      const nameValue = this.$store.state.homeModule;
       this.screamReason = this.screamReason - 1;
-      if (this.screamReason === 1) {
-        this.listDataChoses = this.listDataChoses1;
+      if (this.screamReason !== 0) {
+        if (this.screamReason === 1) {
+          this.listDataChoses = this.listDataChoses1;
+        }
+        if (this.screamReason === 2) {
+          const codeId = nameValue.valueReason.code;
+          const listDetails = nameValue.listReasonReports;
+          const findData = listDetails.find((x) => x._id === codeId);
+          debugger;
+          let resultData = [];
+          if (findData) {
+            for (let index = 0; index < findData.details.length; index++) {
+              const element = findData.details[index];
+
+              resultData.push({ code: index, value: element });
+            }
+          }
+          this.listDataChoses = resultData;
+        }
+        if (this.screamReason === 3) {
+          this.listDataChoses = this.listDataChoses2;
+        }
+      } else {
+        this.$router.go(-1);
       }
-      if (this.screamReason === 2) {
-        this.listDataChoses = this.listDataChoses2;
-      }
-      if (this.screamReason === 3) {
-        this.listDataChoses = this.listDataChoses2;
+    },
+
+    async onClickSendReport() {
+      debugger;
+      const nameValue = this.$store.state.homeModule;
+      debugger;
+      const objectSave = {
+        userId: this.$route.params.userId,
+        reasonId: nameValue.valueReason.code,
+        reasonDetail: nameValue.valueDetail.value,
+        comments: this.nameComment,
+      };
+      await this.postReasonReportUser(objectSave);
+      this.$notify({
+        title: "Success",
+        message: "Report success ",
+        type: "success",
+      });
+      this.$router.go(-1);
+    },
+
+    onCancel() {
+      this.$router.go(-1);
+      this.setNameDetailsReport({});
+      this.setReasonReport({});
+    },
+
+    onChangeComment() {
+      debugger;
+      if (this.nameComment.length !== 0) {
+        this.isActives = true;
+      } else {
+        this.isActives = false;
       }
     },
   },
 
   mounted() {
-    this.listDataChoses = this.listDataChoses1;
+    debugger;
+    this.listDataChoses = this.$store.state.homeModule.listReasons;
   },
 };
 </script>

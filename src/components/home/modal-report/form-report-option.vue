@@ -76,9 +76,11 @@ export default {
           debugger;
           if (this.screamForm === 1) {
             this.setReasonReport(element);
+            this.$emit("onStatusActive", true);
           }
           if (this.screamForm === 2) {
             this.setNameDetailsReport(element);
+            this.$emit("onStatusActive", true);
           }
           this.$emit("onHideReport", false);
         } else {
@@ -97,9 +99,10 @@ export default {
     debugger;
     const checkActive = document.getElementsByClassName("check-active");
     const notCheckActive = document.getElementsByClassName("not-check-active");
-    const nameValue = this.$store.state.commonModule;
-    if (Object.keys(nameValue.valueReason).length !== 0) {
-      if (this.screamForm === 1) {
+    const nameValue = this.$store.state.homeModule;
+    debugger;
+    if (this.screamForm === 1) {
+      if (Object.keys(nameValue.valueReason).length !== 0) {
         checkActive["check" + nameValue.valueReason.code].classList.add(
           "checkeds"
         );
@@ -112,9 +115,14 @@ export default {
         notCheckActive[
           "not-check" + nameValue.valueReason.code
         ].classList.remove("checkeds");
+        this.$emit("onStatusActive", true);
+      } else {
+        this.$emit("onStatusActive", false);
       }
+    }
 
-      if (this.screamForm === 2) {
+    if (this.screamForm === 2) {
+      if (Object.keys(nameValue.valueDetail).length !== 0) {
         checkActive["check" + nameValue.valueDetail.code].classList.add(
           "checkeds"
         );
@@ -127,6 +135,9 @@ export default {
         notCheckActive[
           "not-check" + nameValue.valueDetail.code
         ].classList.remove("checkeds");
+        this.$emit("onStatusActive", true);
+      } else {
+        this.$emit("onStatusActive", false);
       }
     }
   },

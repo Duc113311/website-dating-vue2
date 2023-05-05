@@ -24,11 +24,32 @@ const state = {
   isBackUser: false,
 
   userMatchData: {},
+
+  listReasonReports: [],
+  listReasons: [],
+
+  valueReason: {},
+  valueDetail: {},
+  valueComment: "",
+
+  resultReport: "",
+
+  listExplores: [],
+  listJoinTopicExplores: {},
 };
 
 const getters = {};
 
 const mutations = {
+  setReasonReport(state, value) {
+    state.valueReason = value;
+  },
+  setNameDetailsReport(state, value) {
+    state.valueDetail = value;
+  },
+  setNameCommentReport(state, value) {
+    state.valueComment = value;
+  },
   /**
    * Set giá trị cho Nope user
    * @param {*} state
@@ -97,6 +118,31 @@ const mutations = {
 
   setDataUserMatch(state, value) {
     state.userMatchData = value;
+  },
+
+  setListReasonReportUser(state, value) {
+    state.listReasonReports = value.data;
+
+    for (let index = 0; index < value.data.length; index++) {
+      const element = value.data[index];
+
+      state.listReasons.push({
+        code: element._id,
+        value: element.reason,
+      });
+    }
+  },
+
+  setReasonReportUser(state, value) {
+    state.resultReport = value.data;
+  },
+
+  setListExplore(state, data) {
+    state.listExplores = data;
+  },
+
+  setJoinTopicExplore(state, data) {
+    state.listJoinTopicExplores = data;
   },
 };
 
@@ -231,6 +277,50 @@ const actions = {
       .post(`/api/v1/boost`, data)
       .then((response) => {
         commit("setPostBoostUser", response.status);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+
+  async getListReasonReportUser({ commit }, data) {
+    await http_mongo
+      .get(`/api/v1/reasons`, data)
+      .then((response) => {
+        commit("setListReasonReportUser", response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+
+  async postReasonReportUser({ commit }, data) {
+    await http_mongo
+      .post(`/api/v1/report`, data)
+      .then((response) => {
+        commit("setReasonReportUser", response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+
+  async getListExplores({ commit }, data) {
+    await http_mongo
+      .get(`/api/v1/topics`, data)
+      .then((response) => {
+        commit("setListExplore", response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+
+  async putJoinTopicExplore({ commit }, data) {
+    await http_mongo
+      .put(`/api/v1/topics/${data}`)
+      .then((response) => {
+        commit("setJoinTopicExplore", response.data.data);
       })
       .catch((error) => {
         console.log(error);

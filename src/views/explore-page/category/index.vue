@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import CategoryPage from "../../../components/explore/category-page";
 import Footer from "../../../components/layout/footer-home/footer";
 import Header from "../../../components/layout/header-home/header";
@@ -28,7 +29,13 @@ export default {
     return {};
   },
 
-  methods: {},
+  methods: {
+    ...mapActions(["getListExplores"]),
+  },
+
+  async mounted() {
+    await this.getListExplores();
+  },
 };
 </script>
 <style lang="css"></style>

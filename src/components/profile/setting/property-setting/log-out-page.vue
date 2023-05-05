@@ -18,6 +18,7 @@
 
     <div class="w-full mt-6">
       <div
+        @click="onDeleteAccount"
         class="w-full flex cursor-pointer form-set-input justify-center items-center bh-item-title bg-default"
       >
         DELETE ACCOUNT
@@ -27,6 +28,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import { auth, signOut } from "../../../../configs/firebase";
 export default {
   name: "log-out-page",
@@ -36,6 +38,7 @@ export default {
   },
 
   methods: {
+    ...mapActions(["deleteAccountUser"]),
     async onLogout() {
       await signOut(auth)
         .then(() => {
@@ -46,6 +49,11 @@ export default {
         .catch((error) => {
           // An error happened.
         });
+    },
+
+    async onDeleteAccount() {
+      await this.deleteAccountUser();
+      this.$router.push({ path: "/" });
     },
   },
 };

@@ -18,16 +18,6 @@ const state = {
   listLifeStyleStatic: {}, // Lấy danh sách phong cách sống
 
   themeLayout: "light",
-
-  valueReason: {
-    code: 0,
-    value: "",
-  },
-  valueDetail: {
-    code: 0,
-    value: "",
-  },
-  valueComment: "",
 };
 
 const getters = {};
@@ -37,15 +27,6 @@ const mutations = {
     state.themeLayout = value;
   },
 
-  setReasonReport(state, value) {
-    state.valueReason = value;
-  },
-  setNameDetailsReport(state, value) {
-    state.valueDetail = value;
-  },
-  setNameCommentReport(state, value) {
-    state.valueComment = value;
-  },
   /**
    * Xet giá trị hiển th
    * @param {*} state

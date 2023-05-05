@@ -30,6 +30,7 @@
 import BhNothank from "../../bh-element-ui/button/bh-nothank";
 import BhJoin from "../../bh-element-ui/button/bh-join";
 import BhBack from "../../bh-element-ui/button/bh-back";
+import { mapActions } from "vuex";
 export default {
   components: {
     BhNothank,
@@ -101,13 +102,16 @@ export default {
   },
 
   methods: {
+    ...mapActions(["putJoinTopicExplore"]),
     onBackVerified() {
       this.$router.go(-1);
     },
     //
 
-    onNextLetFriendOption() {
+    async onNextLetFriendOption() {
       const name = this.$route.params.screamName;
+      const topicId = this.$route.params.topicId;
+      await this.putJoinTopicExplore(topicId);
       this.$router.push({
         path: `/common-friend/${name}`,
       });
