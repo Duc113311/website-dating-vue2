@@ -1,5 +1,7 @@
 <template>
-  <div class="w-full h-full relative bg-color-detail">
+  <div
+    class="w-full h-full relative bg-color-detail bg-color-default title-default"
+  >
     <div class="detail-page w-full h-full relative">
       <div class="bg-image-detail h-2/4 pl-2 pr-2">
         <div class="avatar w-full h-full relative border-image">
@@ -12,7 +14,7 @@
           />
           <div
             v-show="!isActiveImag"
-            class="pic z-8 ss"
+            class="pic z-8"
             :style="{
               'background-image': `url(${idImage}
             )`,

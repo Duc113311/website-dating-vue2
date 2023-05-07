@@ -12,6 +12,7 @@
               @onShowDetailUser="onShowDetailUser"
               @onShowFormLikeYou="onShowFormLikeYou"
               @onShowPackage="onShowPackage"
+              :listUserFilter="listDataUser"
               :isLoadData="loading"
             ></ViewSwipe>
 
@@ -102,6 +103,7 @@ export default {
       icUrlApp: require("@/assets/icon/ic_icon_app.svg"),
       colorApp: "#FF828A",
       isShowFormMatch: false,
+      users: [],
     };
   },
 
@@ -111,6 +113,17 @@ export default {
     },
     isShowMatchs() {
       return this.$store.state.homeModule.statusMatch;
+    },
+
+    listDataUser: {
+      get() {
+        return this.$store.state.mongoModule.listDataCard
+          ? this.$store.state.mongoModule.listDataCard
+          : this.users;
+      },
+      set(newData) {
+        this.users = newData;
+      },
     },
   },
 
@@ -221,13 +234,6 @@ export default {
   display: flex;
   justify-content: center;
   overflow: hidden;
-}
-
-.pic {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
 }
 
 .home-page {

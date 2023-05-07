@@ -1,29 +1,38 @@
 <template>
-  <div class="w-full h-full relative p-5 title-default">
+  <div class="w-full h-full relative title-default">
     <div class="w-full h-full z-10">
-      <div class="flex w-full items-center header-detail">
+      <div class="flex w-full items-center header-detail border-bottom p-8">
         <div class="">
           <BhBack @onBackComponent="onClickBack"></BhBack>
         </div>
         <div class="w-5/6">
-          <Header></Header>
+          <div
+            class="flex header-page justify-center content-center items-center text-red-400 title-logo"
+          >
+            <img
+              src="@/assets/icon/ic_icon_app.svg"
+              class="size-hight mr-3"
+              alt=""
+            />
+            <span class="text-2xl font-semibold">heartlink</span>
+          </div>
         </div>
       </div>
 
-      <div class="body-detail w-full height-scroll overflow-scroll">
+      <div class="body-detail w-full height-scroll overflow-scroll p-3">
         <!-- Avatar -->
-        <div class="bg-image-detail h-2/4 relative">
+        <div class="bg-image-detail h-detail-admin relative">
           <div class="avatar w-full h-full relative">
             <div
               v-show="isActiveImag"
-              class="avatar-url z-8"
+              class="avatar-detail z-8"
               :style="{
                 'background-image': `url(${bindingInforUser.profiles.avatars[0]})`,
               }"
             />
             <div
               v-show="!isActiveImag"
-              class="pic z-8 ss"
+              class="avatar-detail z-8"
               :style="{
                 'background-image': `url(${imageData}
               )`,
@@ -46,85 +55,90 @@
               <div class="w-2/4 bg-orange-200" @click="nextImageRight()"></div>
             </div>
           </div>
-          <div
-            class="icon-close-infor cursor-pointer absolute right-4"
-            @click="onClickHideProfile()"
-          >
-            <img src="@/assets/icon/bt_close_infor.svg" class="w-16" />
-          </div>
         </div>
         <!-- Information -->
-        <div class="w-full">
-          <div class="flex w-full items-center">
-            <p class="padding-title">
-              {{ bindingInforUser.fullname }},
-              {{ bindingAge(bindingInforUser.dob) }}
-            </p>
+        <div class="w-full pl-4 pr-4 bg-border-bottom padding-text-user">
+          <div class="flex bh-margin-title">
+            <div class="title-user">
+              {{ bindingInforUser.fullname
+              }}<span>, {{ bindingAge(bindingInforUser.dob) }}</span>
+            </div>
             <img src="@/assets/icon/ic_infor.svg" width="30" alt="" />
           </div>
 
           <div class="flex w-full items-center">
-            <i class="fa-sharp fa-solid fa-book-open"></i>
+            <i class="fa-solid fa-book-open bh-chevron-right text-xl"></i>
             <div class="ml-3 padding-describe-option">
-              {{ bindingInforUser.profiles.jobTitle }}
+              {{
+                bindingInforUser.profiles.school
+                  ? bindingInforUser.profiles.school
+                  : "Information of technology"
+              }}
             </div>
           </div>
 
           <div class="flex w-full items-center">
-            <i class="fa-solid fa-user-graduate"></i>
-            <div class="ml-3 padding-describe-option">
-              {{ bindingInforUser.profiles.education }}
+            <i class="fa-solid fa-user-graduate bh-chevron-right text-xl"></i>
+            <div class="ml-4 padding-describe-option">
+              {{ bindingEducation(bindingInforUser.profiles.education) }}
             </div>
           </div>
 
           <div class="flex w-full items-center">
-            <i class="fa-solid fa-house"></i>
+            <i class="fa-solid fa-house bh-chevron-right text-xl"></i>
             <div class="ml-3 padding-describe-option">
-              {{ bindingInforUser.profiles.address }}
+              {{
+                bindingInforUser.profiles.address
+                  ? bindingInforUser.profiles.address
+                  : "Lives in Hanoi"
+              }}
             </div>
           </div>
 
           <div class="flex w-full items-center">
-            <i class="fa-sharp fa-solid fa-user"></i>
+            <i class="fa-solid fa-icons fa-fw bh-chevron-right text-xl"></i>
             <div class="ml-3 padding-describe-option">
-              {{ bindingInforUser.profiles.gender }}
-            </div>
-          </div>
-
-          <div class="flex w-full items-center">
-            <i class="fa-sharp fa-solid fa-location-dot"></i>
-            <div class="ml-3 padding-describe-option">
-              {{ bindingDistance(bindingInforUser.location) }} km away
+              {{ stringToUpperCase(bindingInforUser.profiles.gender) }}
             </div>
           </div>
         </div>
         <!-- About me -->
-
-        <div class="p-2">
-          <div class="title title-description">About me</div>
+        <div
+          class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
+          v-if="aboutValue"
+        >
+          <div class="title title-description describe-text">About me</div>
           <div class="text-description">
             {{ bindingInforUser?.profiles?.about }}
           </div>
 
-          <div class="w-full bh-margin-description">
+          <div
+            class="w-full bh-margin-description"
+            v-if="bindingInforUser.profiles.orientationSexuals.length !== 0"
+          >
             <div
               class="item-option border-default cursor-pointer"
-              v-for="item in bindingSexuals"
-              :key="item"
+              v-for="(item, index) in bindingSexuals"
+              :key="index"
             >
               {{ item }}
             </div>
           </div>
         </div>
-        <BhHorizontalLine></BhHorizontalLine>
-        <div class="p-2">
-          <div class="title title-description">Interests</div>
+        <!-- interest -->
+        <div
+          class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
+          v-if="bindingInforUser.profiles.interests.length !== 0"
+        >
+          <div class="title pl-2 title-description describe-text">
+            Interests
+          </div>
 
           <div class="w-full bh-margin-description">
             <div
-              class="item-option border-default"
-              v-for="item in bindingInterest"
-              :key="item"
+              class="item-option border-default cursor-pointer"
+              v-for="(item, index) in bindingInterest"
+              :key="index"
             >
               {{ item }}
             </div>
@@ -141,15 +155,11 @@
 <script>
 import BhBack from "../../../components/bh-element-ui/button/bh-back";
 import Footer from "../../../components/layout/footer-home/footer";
-import Header from "../../../components/layout/header-home/header";
-import BhHorizontalLine from "../../../components/bh-element-ui/input/bh-horizontal-line";
 import functionValidate from "../../../middleware/validate.js";
 export default {
   components: {
     BhBack,
     Footer,
-    Header,
-    BhHorizontalLine,
   },
   name: "detail-admin",
 
@@ -182,9 +192,20 @@ export default {
 
   computed: {
     bindingInforUser() {
+      debugger;
       return this.$store.state.userModule.user_profile;
     },
-
+    aboutValue() {
+      const lengthAbout =
+        this.$store.state.userModule.user_profile.profiles.about;
+      debugger;
+      if (lengthAbout) {
+        if (lengthAbout.length !== 0) {
+          return true;
+        }
+      }
+      return false;
+    },
     bindingSexuals() {
       const resultData = [];
       const indexData =
@@ -220,9 +241,26 @@ export default {
       }
       return resultData;
     },
+
+    listEducationParams() {
+      debugger;
+      return this.$store.state.commonModule.listInformationBasic.educations;
+    },
   },
 
   methods: {
+    bindingEducation(value) {
+      const educations = this.listEducationParams;
+
+      const resultData = educations.find((x) => x.code === value);
+
+      if (resultData) {
+        return resultData.value;
+      }
+    },
+    stringToUpperCase(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    },
     onClickBack() {
       this.$router.go(-1);
     },
@@ -232,35 +270,42 @@ export default {
     },
 
     nextImageLeft() {
-      const avatar = this.$store.state.userModule.user_profile.profiles.avatars;
-      document
-        .getElementById(`avatar_` + this.imageActive)
-        .classList.remove("active-image");
+      const valueImg = this.bindingInforUser.profiles.avatars;
+
       if (this.imageActive !== 0) {
         this.imageActive = this.imageActive - 1;
-        if (this.imageActive <= avatar.length) {
-          this.imageData = avatar[this.imageActive];
+
+        if (this.imageActive < valueImg.length) {
+          document
+            .getElementById(`avatar_` + parseInt(this.imageActive + 1))
+            .classList.remove("active-image");
+          this.imageData = valueImg[this.imageActive];
+          document
+            .getElementById(`avatar_` + parseInt(this.imageActive))
+            .classList.add("active-image");
         }
-        document
-          .getElementById(`avatar_` + parseInt(this.imageActive))
-          .classList.add("active-image");
+
         this.isActiveImag = false;
       }
     },
 
     nextImageRight() {
-      const avatar = this.$store.state.userModule.user_profile.profiles.avatars;
-      document
-        .getElementById(`avatar_` + this.imageActive)
-        .classList.remove("active-image");
+      const valueImg = this.bindingInforUser.profiles.avatars;
+
       this.imageActive = this.imageActive + 1;
-      if (this.imageActive <= avatar.length) {
-        this.imageData = avatar[this.imageActive];
+
+      if (this.imageActive < valueImg.length) {
+        document
+          .getElementById(`avatar_` + parseInt(this.imageActive - 1))
+          .classList.remove("active-image");
+        this.imageData = valueImg[this.imageActive];
+        document
+          .getElementById(`avatar_` + parseInt(this.imageActive))
+          .classList.add("active-image");
+      } else {
+        this.imageActive = this.imageActive - 1;
       }
 
-      document
-        .getElementById(`avatar_` + parseInt(this.imageActive))
-        .classList.add("active-image");
       this.isActiveImag = false;
     },
     bindingDistance(val) {
@@ -295,12 +340,23 @@ export default {
 .active-image {
   background-color: white !important;
 }
-
+.avatar-detail {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
 .no-active {
   background-color: #ffffff8f;
 }
 
 .icon-close-infor {
   bottom: -26px;
+}
+
+.h-detail-admin {
+  height: 70%;
 }
 </style>

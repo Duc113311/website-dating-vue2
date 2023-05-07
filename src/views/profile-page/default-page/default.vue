@@ -45,28 +45,24 @@
           <div class="flex justify-center" @click="onClickSettingDetail()">
             <img src="@/assets/icon/bt_settings.svg" width="100" alt="" />
           </div>
-          <div class="mt-2 text-base">SETTINGS</div>
+          <div class="mt-2 text-base describe-text">SETTINGS</div>
         </div>
         <div class="item-setting mt-24">
           <div class="flex justify-center" @click="onEditProfile()">
             <img src="@/assets/icon/bt_edit_profile.svg" width="100" alt="" />
           </div>
-          <div class="mt-2 text-base">EDIT PROFILE</div>
+          <div class="mt-2 text-base describe-text">EDIT PROFILE</div>
         </div>
         <el-tooltip content="Coming soon" placement="top">
           <div class="item-setting">
             <div class="flex justify-center">
               <img src="@/assets/icon/bt_safety.svg" width="100" />
             </div>
-            <div class="mt-2 text-base">SAFETY</div>
+            <div class="mt-2 text-base describe-text">SAFETY</div>
           </div>
         </el-tooltip>
       </div>
     </div>
-
-    <!-- <div class="absolute top-0 left-0 form-pack">
-      <FormPackages></FormPackages>
-    </div> -->
 
     <div class="w-full">
       <Footer></Footer>
@@ -168,7 +164,11 @@ export default {
     if (lengthAvatar === 1) {
       completeAvatar = parseInt(3);
     } else {
-      completeAvatar = completeAvatar + (lengthAvatar - 1) * 5;
+      if (lengthAvatar <= 7) {
+        completeAvatar = completeAvatar + (lengthAvatar - 1) * 5;
+      } else {
+        completeAvatar = completeAvatar + (7 - 1) * 5;
+      }
     }
     const lengthAbout = user_profile.about;
     if (lengthAbout !== null) {
@@ -314,7 +314,7 @@ export default {
 }
 
 .option-setting {
-  height: calc(100% - 80%);
+  height: calc(100% - 70%);
   justify-content: center;
   align-items: center;
   text-align: center;

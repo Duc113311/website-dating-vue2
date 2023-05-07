@@ -24,8 +24,8 @@ const mutations = {
   setProfileUserRegister_Mongo(state, data) {
     state.profileUser_Mongo.token = data.token;
     state.profileUser_Mongo.user = data.user;
-    // localStorage.setItem("tokenId", data.token);
-    // localStorage.setItem("oAuth2Id", data.user.oAuth2Id);
+    localStorage.setItem("tokenId", data.token);
+    localStorage.setItem("oAuth2Id", data.user.oAuth2Id);
   },
 
   /**

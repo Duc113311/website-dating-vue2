@@ -19,7 +19,7 @@
       </div>
     </div>
     <!-- body -->
-    <div class="w-full relative h-topic">
+    <div class="w-full h-topic">
       <router-view></router-view>
     </div>
 

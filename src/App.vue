@@ -82,7 +82,7 @@ export default {
       const tokenId = this.$store.state.mongoModule.tokenId;
       if (tokenId) {
         // Login success
-        this.$router.push({ path: "/home" });
+        this.$router.push({ path: "/home" }).catch(() => {});
       } else {
         // Login false : account not exist
         this.$router.push({ name: "login-page" }).catch(() => {});
@@ -95,16 +95,17 @@ export default {
 
   mounted() {
     const themeValue = localStorage.getItem("theme");
+    debugger;
     if (themeValue) {
-      this.setThemeLayout(themeValue);
-
       if (themeValue === "dark") {
         document.documentElement.setAttribute("theme", "dark");
+        this.setThemeLayout({ nameTheme: "dark", statusTheme: true });
       } else {
         document.documentElement.setAttribute("theme", "light");
+        this.setThemeLayout({ nameTheme: "light", statusTheme: false });
       }
     } else {
-      this.setThemeLayout("light");
+      this.setThemeLayout({ nameTheme: "light", statusTheme: false });
 
       document.documentElement.setAttribute("theme", "light");
     }

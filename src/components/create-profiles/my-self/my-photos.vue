@@ -244,6 +244,7 @@ export default {
     },
   },
   mounted() {
+    debugger;
     if (this.$route.query.scream !== "edit-profile") {
       this.loading = true;
       const image = this.$store.state.userModule.avatarChecked;

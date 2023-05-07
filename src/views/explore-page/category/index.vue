@@ -1,10 +1,10 @@
 <template>
   <div class="w-full h-full">
-    <div class="w-full h-full overflow-hidden p-2">
+    <div class="w-full h-full overflow-hidden">
       <Header></Header>
 
-      <div class="w-full body-page-default relative height-scroll p-2">
-        <CategoryPage></CategoryPage>
+      <div class="w-full body-page-default relative height-scroll p-4">
+        <category-page></category-page>
       </div>
 
       <Footer></Footer>
@@ -23,18 +23,20 @@ export default {
     Footer,
     Header,
   },
-  name: "category-page",
+  name: "category-page-topic",
 
   data() {
-    return {};
+    return {
+      loading: false,
+    };
   },
 
   methods: {
     ...mapActions(["getListExplores"]),
   },
 
-  async mounted() {
-    await this.getListExplores();
+  mounted() {
+    this.getListExplores();
   },
 };
 </script>

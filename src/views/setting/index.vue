@@ -242,13 +242,6 @@ export default {
   border-radius: 144px;
 }
 
-.option-setting {
-  height: calc(100% - 80%);
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
 .image-avatar {
   background-image: url("@/assets/image-dating/0659_photo-1-163186806531842640671.jpg");
   background-position: center;

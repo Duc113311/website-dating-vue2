@@ -381,6 +381,13 @@ const actions = {
 
 const mutations = {
   setImageCrop(state, value) {
+    debugger;
+    const indexImage = state.avatarChecked.length;
+    const objectImage = {
+      id: indexImage,
+      url: value,
+    };
+    state.avatarChecked.push(objectImage);
     state.detailProfile.profiles.avatars.push(value);
   },
 
@@ -804,11 +811,13 @@ const mutations = {
    * @param {*} photos
    */
   setPhotos(state, photos) {
+    debugger;
     const idUrl = photos.id;
     const index = state.avatarChecked.findIndex((x) => x.id === idUrl);
     if (index !== -1) {
       // only splice array when item is found
       state.avatarChecked.splice(index, 1); // 2nd parameter means remove one item only
+      state.user_profile.profiles.avatars.splice(index, 1);
     } else {
       state.avatarChecked.push(photos);
       state.user_profile.profiles.avatars.push(photos.url);

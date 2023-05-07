@@ -256,12 +256,12 @@ export default {
 .el-switch__core:after {
   content: "";
   position: absolute;
-  top: -3px !important;
+  top: -4px !important;
   border-radius: 100%;
   margin-left: -5px;
   transition: all 0.3s;
-  width: 24px !important;
-  height: 24px !important;
+  width: 28px !important;
+  height: 28px !important;
   background-color: #fff;
 }
 </style>

@@ -28,6 +28,7 @@
           <ViewSwipe
             ref="myViewSwipe"
             @onShowDetailUser="onShowDetailUser"
+            :listUserFilter="listCardGroups"
           ></ViewSwipe>
         </div>
       </div>
@@ -46,6 +47,7 @@ import LoadDefault from "../../layout/loading/load-default";
 import BhBack from "../../bh-element-ui/button/bh-back";
 import ViewSwipe from "../../home/swipe-tinder/view-swipe";
 import DetailProfile from "../../home/view/detail-profile";
+import { mapActions } from "vuex";
 export default {
   components: {
     LoadDefault,
@@ -58,6 +60,7 @@ export default {
     return {
       isShowLoadDing: true,
       isShowDetail: false,
+      users: [],
     };
   },
 
@@ -126,9 +129,22 @@ export default {
           return "";
       }
     },
+
+    listCardGroups: {
+      get() {
+        debugger;
+        return this.$store.state.homeModule.listCardGroups
+          ? this.$store.state.homeModule.listCardGroups
+          : this.users;
+      },
+      set(newData) {
+        this.users = newData;
+      },
+    },
   },
 
   methods: {
+    ...mapActions(["getListCardGroupExplores"]),
     onShowDetailUser(val) {
       this.isShowDetail = val;
     },
@@ -150,6 +166,12 @@ export default {
         }
       });
     },
+  },
+
+  async created() {
+    debugger;
+    const topicId = this.$route.params.topicId;
+    await this.getListCardGroupExplores(topicId);
   },
 
   mounted() {

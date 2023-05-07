@@ -7,11 +7,11 @@
       <div class="w-full form-set-list bg-default">
         <div class="w-full flex justify-between form-set-item">
           <div class="bh-title">SHOW DISTANCE IN</div>
-          <div class="bh-describe">km.</div>
+          <div class="bh-describe">{{ kiloValue }}.</div>
         </div>
 
         <div
-          class="w-full flex justify-center items-center form-set-item gap-6"
+          class="w-full cursor-pointer flex justify-center items-center form-set-item gap-6"
         >
           <div
             v-for="(item, index) in listDistance"
@@ -39,6 +39,14 @@ export default {
     };
   },
 
+  computed: {
+    kiloValue() {
+      debugger;
+      return this.$store.state.userModule.user_profile.settings
+        .distancePreference.unit;
+    },
+  },
+
   component: {
     ...mapGetters({ nameDistanceLocation: "showDistanceLocation" }),
 
@@ -64,7 +72,7 @@ export default {
     ...mapMutations(["setDistanceUnit"]),
     onChangeDistanceLocation(val) {
       console.log(val);
-
+      debugger;
       this.setDistanceUnit(val);
       for (let index = 0; index < this.listDistance.length; index++) {
         const element = this.listDistance[index];

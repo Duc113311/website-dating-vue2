@@ -4,6 +4,9 @@ import { http_ai } from "../../configs/http-ai";
 const state = {
   isShowMyProfile: true,
   isNotShowProfie: true,
+
+  isShowMyProfileVerified: false,
+  isNotShowProfileVerified: false,
   listScreamShowMes: [],
 
   statusImageVerify: false,
@@ -18,13 +21,19 @@ const state = {
   listLifeStyleStatic: {}, // Lấy danh sách phong cách sống
 
   themeLayout: "light",
+  statusLayout: false,
 };
 
-const getters = {};
+const getters = {
+  themeLayoutValue: (state) => {
+    return state.statusLayout;
+  },
+};
 
 const mutations = {
   setThemeLayout(state, value) {
-    state.themeLayout = value;
+    state.themeLayout = value.nameTheme;
+    state.statusLayout = value.statusTheme;
   },
 
   /**
@@ -35,6 +44,11 @@ const mutations = {
   setShowProfileCreate(state, data) {
     state.isNotShowProfie = data.isNotShowProfile;
     state.isShowMyProfile = data.isShowProfile;
+  },
+
+  setShowProfileVerified(state, data) {
+    state.isShowMyProfileVerified = data.isShowProfile;
+    state.isNotShowProfileVerified = data.isNotShowProfile;
   },
 
   setActionShowMe(state, data) {

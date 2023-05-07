@@ -8,10 +8,10 @@
               <div class="bh-item-title">Dark theme</div>
               <div>
                 <el-switch
-                  v-model="valueTheme"
+                  v-model="themeValue"
                   active-color="#FB5D65"
                   inactive-color="#5F6A86"
-                  @change="onChangeTheme"
+                  @change="onChangeTheme()"
                 >
                 </el-switch>
               </div>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
 export default {
   name: "dark-theme-page",
 
@@ -35,22 +36,39 @@ export default {
   },
 
   computed: {
-    themeValue() {
-      return this.$store.state.commonModule.themeLayout;
+    ...mapGetters({ nameLayoutValue: "themeLayoutValue" }),
+    themeValue: {
+      get() {
+        const layoutValue = this.nameLayoutValue;
+
+        return layoutValue;
+      },
+      set(newName) {
+        return newName;
+      },
     },
   },
 
   methods: {
+    ...mapMutations(["setThemeLayout"]),
     onChangeTheme() {
-      if (this.valueTheme) {
+      debugger;
+      const layoutValue = this.$store.state.commonModule.statusLayout;
+      if (!layoutValue) {
         document.documentElement.setAttribute("theme", "dark");
         localStorage.setItem("theme", "dark");
-        return (this.themeValue = "dark");
+        this.setThemeLayout({
+          nameTheme: "dark",
+          statusTheme: true,
+        });
       } else {
         document.documentElement.setAttribute("theme", "light");
         localStorage.setItem("theme", "light");
 
-        return (this.themeValue = "light");
+        this.setThemeLayout({
+          nameTheme: "light",
+          statusTheme: false,
+        });
       }
     },
   },

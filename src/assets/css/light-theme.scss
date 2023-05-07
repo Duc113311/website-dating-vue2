@@ -17,7 +17,7 @@
   --color-text-error: #ff0a09;
   --color-text-select: #000000;
   --color-text-button-no-bg: #fd5c64;
-  --color-icon: #5f6a86;
+  --color-icon: #929db9;
   --color-icon-active: #ffffff;
   --color-title-icon: #79849e;
   --color-describe-setup: #5e6a85;
@@ -26,6 +26,7 @@
   --color-dialog: #ffffff;
   --color-border-bottom: #eae9ee;
   --color-focus-code: #e7e9f5;
+  --color-top-bottom: #f6f7f9;
 }
 
 .theme-light {
@@ -128,5 +129,12 @@
   .digit-box:focus {
     background-color: var(--color-focus-code);
     outline: none;
+  }
+
+  .border-top {
+    border-top: 2px solid var(--color-top-bottom);
+  }
+  .border-bottom {
+    border-bottom: 2px solid var(--color-top-bottom);
   }
 }

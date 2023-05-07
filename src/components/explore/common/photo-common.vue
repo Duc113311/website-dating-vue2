@@ -113,7 +113,7 @@ export default {
       const topicId = this.$route.params.topicId;
       await this.putJoinTopicExplore(topicId);
       this.$router.push({
-        path: `/common-friend/${name}`,
+        path: `/common-friend/${name}/${topicId}`,
       });
     },
   },

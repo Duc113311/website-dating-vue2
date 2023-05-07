@@ -65,7 +65,7 @@ export default {
      */
     async onClickSaveImageCrop() {
       this.loading = true;
-
+      debugger;
       await this.$refs.cropImages.getCropData();
       await setTimeout(() => {
         this.loading = false;

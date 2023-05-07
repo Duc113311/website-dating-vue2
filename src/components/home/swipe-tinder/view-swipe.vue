@@ -92,6 +92,7 @@
       <div class="nope-pointer icon-tinder" slot="nope">NOPE</div>
       <div class="super-pointers icon-tinder" slot="super">SUPER</div>
     </Tinder>
+
     <div
       v-if="isLoadData"
       class="w-full h-full flex justify-center items-center"
@@ -197,7 +198,7 @@ export default {
     };
   },
 
-  props: ["isLoadData"],
+  props: ["isLoadData", "listUserFilter"],
 
   computed: {
     timeBoost() {
@@ -214,11 +215,10 @@ export default {
       }
       return 1000;
     },
+
     listDataUser: {
       get() {
-        return this.$store.state.mongoModule.listDataCard
-          ? this.$store.state.mongoModule.listDataCard
-          : this.users;
+        return this.listUserFilter ? this.listUserFilter : this.users;
       },
       set(newData) {
         this.users = newData;
@@ -659,13 +659,6 @@ export default {
   z-index: 1;
   top: 20px;
   right: 10px;
-}
-
-.pic {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
 }
 
 .home-page {

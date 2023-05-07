@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full bottom-0 right-0 footer-body flex justify-center content-center text-center cursor-pointer"
+    class="w-full bottom-0 right-0 border-top footer-body flex justify-center content-center text-center cursor-pointer"
   >
     <div @click="onClickHome()">
       <i class="fa-solid fa-heart icon-color"></i>
@@ -40,25 +40,27 @@ export default {
 
   methods: {
     onClickHome() {
-      this.$router.push({ path: "/home" });
+      this.$router.push({ path: "/home" }).catch(() => {});
     },
 
     onClickExplore() {
-      this.$router.push({ path: "/explore" });
+      this.$router.push({ path: "/explore" }).catch(() => {});
     },
 
     onClickLikeTopic() {
-      this.$router.push({
-        path: "/like-topic",
-      });
+      this.$router
+        .push({
+          path: "/like-topic",
+        })
+        .catch(() => {});
     },
 
     onClickMessage() {
-      this.$router.push({ path: "/message" });
+      this.$router.push({ path: "/message" }).catch(() => {});
     },
 
     onClickProfile() {
-      this.$router.push({ path: "/profile" });
+      this.$router.push({ path: "/profile" }).catch(() => {});
     },
   },
 
@@ -68,7 +70,7 @@ export default {
         .getElementsByClassName("fa-heart")[0]
         .classList.add("icon-active");
     }
-    if (this.$route.name === "category-page") {
+    if (this.$route.name === "category-page-topic") {
       document
         .getElementsByClassName("fa-magnifying-glass")[0]
         .classList.add("icon-active");
@@ -88,7 +90,8 @@ export default {
       this.$route.name === "setting" ||
       this.$route.name === "edit-profile" ||
       this.$route.name === "test-edit-page" ||
-      this.$route.name === "test-setting-page"
+      this.$route.name === "test-setting-page" ||
+      this.$route.name === "detail-admin"
     ) {
       document
         .getElementsByClassName("fa-user")[0]
@@ -103,7 +106,6 @@ export default {
   height: calc(100% - 90%);
   justify-content: space-around;
   align-items: center;
-  box-shadow: 0 -5px 5px -5px #333;
   margin-top: 10px;
   position: absolute;
   bottom: 0;

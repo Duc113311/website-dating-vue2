@@ -1,8 +1,8 @@
 <template>
-  <div class="w-full h-full relative">
+  <div class="w-full h-full">
     <div class="w-full option-like flex h-20 items-center p-5">
       <div
-        class="oftion-interests border-default p-2 mr-3 w-10 h-10"
+        class="oftion-interests h-w-option border-default p-2 mr-3"
         slot="reference"
         @click="onShowFilterLike()"
       >
@@ -22,13 +22,12 @@
       </div>
     </div>
 
-    <div
-      class="w-full flex items-center h-12 justify-center pr-4 pl-4 description-no-padding"
-    >
-      <span>Upgrade to Gold to see people who are interested in you</span>
-    </div>
-
-    <div class="container pr-4 pl-4">
+    <div class="container pr-4 pl-4 relative">
+      <div
+        class="w-full flex items-center h-12 justify-center pr-4 pl-4 description-no-padding"
+      >
+        <span>Upgrade to Gold to see people who are interested in you</span>
+      </div>
       <div class="grid grid-cols-2 gap-3 swipe-container">
         <div
           v-hammer:swipeleft="onSwipeLeft"
@@ -43,15 +42,13 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="absolute w-full bottom-0 z-10 mb-14">
-      <BhSeeLike></BhSeeLike>
+
+      <div class="absolute w-full bottom-0 left-0 z-10">
+        <BhSeeLike></BhSeeLike>
+      </div>
     </div>
 
-    <div
-      class="form-filter absolute top-0 left-0 w-full p-5 z-40"
-      v-show="isShowFilter"
-    >
+    <div class="w-full h-full absolute top-0 left-0 z-30" v-if="isShowFilter">
       <FilterOption @onHidePopupFilter="onHidePopupFilter"></FilterOption>
     </div>
   </div>
@@ -325,8 +322,7 @@ export default {
 }
 
 .oftion-interests:hover {
-  background-color: #5b566b;
-  color: white;
+  background-color: #d8d9e5;
 }
 
 .oftion-interests {
@@ -361,10 +357,13 @@ export default {
 }
 
 .ic_filter {
-  width: 20px;
-  height: 20px;
-  background-color: #ffffff;
-  -webkit-mask: url(@/assets/image-dating/ic_filter.svg) no-repeat center;
-  mask: url(@/assets/image-dating/ic_filter.svg) no-repeat center;
+  width: 23px;
+  height: 23px;
+  background-image: url(@/assets/image-dating/ic_filter.svg);
+}
+
+.h-w-option {
+  width: 2.65rem;
+  height: 2.65rem;
 }
 </style>

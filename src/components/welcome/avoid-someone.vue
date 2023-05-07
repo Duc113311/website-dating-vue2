@@ -95,10 +95,6 @@ export default {
     console.log(userParam);
 
     await this.registerUserByAuthId(userParam);
-
-    await this.loginAppByAuthId({
-      oAuth2Id: userProfile.oAuth2Id,
-    });
   },
 
   mounted() {},

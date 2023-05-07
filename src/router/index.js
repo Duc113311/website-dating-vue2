@@ -100,10 +100,10 @@ const routes = [
       // Dashboard
       {
         path: "/",
-        name: "category-page",
+        name: "category-page-topic",
         component: () =>
           import(
-            /* webpackChunkName: "category-page" */ "../views/explore-page/category/index.vue"
+            /* webpackChunkName: "category-page-topic" */ "../views/explore-page/category/index.vue"
           ),
       },
       // Verified user
@@ -232,7 +232,7 @@ const routes = [
           },
 
           {
-            path: "/common-friend/:screamName",
+            path: "/common-friend/:screamName/:topicId",
             name: "users-explore-page",
             component: () =>
               import(

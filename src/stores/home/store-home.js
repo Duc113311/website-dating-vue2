@@ -36,6 +36,7 @@ const state = {
 
   listExplores: [],
   listJoinTopicExplores: {},
+  listCardGroups: [],
 };
 
 const getters = {};
@@ -44,9 +45,11 @@ const mutations = {
   setReasonReport(state, value) {
     state.valueReason = value;
   },
+  //
   setNameDetailsReport(state, value) {
     state.valueDetail = value;
   },
+  //
   setNameCommentReport(state, value) {
     state.valueComment = value;
   },
@@ -143,6 +146,10 @@ const mutations = {
 
   setJoinTopicExplore(state, data) {
     state.listJoinTopicExplores = data;
+  },
+
+  setListCardGroupExplores(state, data) {
+    state.listCardGroups = data;
   },
 };
 
@@ -321,6 +328,17 @@ const actions = {
       .put(`/api/v1/topics/${data}`)
       .then((response) => {
         commit("setJoinTopicExplore", response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+
+  async getListCardGroupExplores({ commit }, data) {
+    await http_mongo
+      .get(`/api/v1/cards/group/${data}`)
+      .then((response) => {
+        commit("setListCardGroupExplores", response.data.data);
       })
       .catch((error) => {
         console.log(error);
