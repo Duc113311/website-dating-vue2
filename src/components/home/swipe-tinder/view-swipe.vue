@@ -173,6 +173,7 @@ export default {
       nameTinder: "",
       idImage: "",
       isPointer: true,
+      isPointerNext: true,
       imageActive: 0,
       isAnimating: false,
       isProgressBoost: true,
@@ -250,6 +251,7 @@ export default {
         return;
       }
       this.isPointer = true;
+      this.isPointerNext = true;
     },
     onMouseUp() {
       document.removeEventListener("mousemove", this.moveElement);
@@ -257,6 +259,7 @@ export default {
       this.isHoverNope = false;
       this.isHoverSuper = false;
       this.isPointer = false;
+      this.isPointerNext = false;
     },
 
     moveElement(event) {
@@ -301,7 +304,7 @@ export default {
     },
     nextImageLeft(value) {
       console.log(value);
-
+      debugger;
       if (this.imageActive !== 0) {
         this.imageActive = this.imageActive - 1;
 

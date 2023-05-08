@@ -36,16 +36,16 @@
           class="item swipe-card"
           :style="{ 'background-image': 'url(' + user.img[0] + ')' }"
         >
-          <div>
+          <div class="color-text-default">
             <p style="margin-bottom: 10px">{{ user.name }}, {{ user.age }}</p>
             <p><span class="status">&#x1F7E2;</span>Recently Active</p>
           </div>
         </div>
       </div>
 
-      <div class="absolute w-full bottom-0 left-0 z-10">
+      <!-- <div class="absolute w-full bottom-0 left-0 z-10">
         <BhSeeLike></BhSeeLike>
-      </div>
+      </div> -->
     </div>
 
     <div class="w-full h-full absolute top-0 left-0 z-30" v-if="isShowFilter">
@@ -59,12 +59,12 @@ import { VueHammer } from "vue2-hammer";
 
 import FilterOption from "../filter/filter-option";
 // import BhActivateLike from "../../bh-element-ui/button/bh-activateLike";
-import BhSeeLike from "../../bh-element-ui/button/bh-seeLike";
+// import BhSeeLike from "../../bh-element-ui/button/bh-seeLike";
 export default {
   components: {
     FilterOption,
     // BhActivateLike,
-    BhSeeLike,
+    // BhSeeLike,
   },
   name: "people-likes",
   directives: {
@@ -331,7 +331,7 @@ export default {
 
 .container {
   overflow: auto; /* cho phép trượt khi các thẻ div vượt quá kích thước của div cha */
-  height: calc(100% - 128px);
+  height: calc(100% - 68px);
 }
 .container::-webkit-scrollbar {
   display: none;
