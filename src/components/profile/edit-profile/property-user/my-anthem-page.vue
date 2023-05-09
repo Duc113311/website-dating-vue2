@@ -4,7 +4,7 @@
       <div class="w-full flex justify-between bh-title p-3">
         <div>MY ANTHEM</div>
       </div>
-      <div class="w-full flex style-form bg-default">
+      <div class="w-full flex style-form-single bg-default">
         <div class="flex justify-between w-full">
           <div class="bh-item-title">Choose an Anthem</div>
           <div class="">

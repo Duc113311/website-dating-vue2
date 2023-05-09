@@ -4,7 +4,7 @@
       <div class="w-full flex justify-between bh-title p-3">
         <div>MY TOP SPOTIFY ARTISTS</div>
       </div>
-      <div class="w-full flex style-form bg-default">
+      <div class="w-full flex style-form-single bg-default">
         <div class="">
           <img src="@/assets/icon/ic_spotify.svg" width="30" alt="" srcset="" />
         </div>

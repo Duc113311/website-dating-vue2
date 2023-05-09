@@ -193,11 +193,6 @@ export default {
   color: #ffffff !important;
 }
 
-.bg-life {
-  border-radius: 10px;
-  padding: 10px;
-}
-
 .item-life {
   display: flex;
   /* padding: 12px; */
@@ -213,16 +208,9 @@ export default {
 
 .el-input__inner {
   border-radius: 10px !important;
-  padding: 10px !important;
+  padding: 15px !important;
   font-size: 15px !important;
   height: 50px !important;
-}
-
-.style-form {
-  height: 50px;
-  align-items: center;
-  padding: 10px;
-  border-radius: 10px;
 }
 
 .style-bg-common {

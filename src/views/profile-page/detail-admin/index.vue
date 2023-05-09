@@ -117,7 +117,7 @@
             v-if="bindingInforUser.profiles.orientationSexuals.length !== 0"
           >
             <div
-              class="item-option border-default cursor-pointer"
+              class="item-option border-default"
               v-for="(item, index) in bindingSexuals"
               :key="index"
             >
@@ -136,7 +136,7 @@
 
           <div class="w-full bh-margin-description">
             <div
-              class="item-option border-default cursor-pointer"
+              class="item-option border-default"
               v-for="(item, index) in bindingInterest"
               :key="index"
             >

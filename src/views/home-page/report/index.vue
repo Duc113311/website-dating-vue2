@@ -16,7 +16,7 @@
         Lý do báo cáo của bạn là gì?
       </div>
       <div
-        class="w-full flex style-form bg-default mt-10"
+        class="w-full flex style-form-single bg-default mt-10"
         v-if="this.screamReason !== 3"
       >
         <div
