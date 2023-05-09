@@ -4,7 +4,7 @@
     :style="`background-image:url(${title.url})`"
   >
     <div class="w-full h-full p-5">
-      <div class="w-full header-detail flex justify-center items-center">
+      <div class="w-full header-detail-item flex justify-center items-center">
         <div class="w-full flex items-center">
           <div class="">
             <BhBack @onBackComponent="onBackVerified()"></BhBack>
