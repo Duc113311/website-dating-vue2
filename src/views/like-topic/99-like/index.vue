@@ -1,8 +1,8 @@
 <template>
   <div class="w-full h-full">
     <!-- For you -->
-    <NoOneLike v-if="listLikesYou.length !== 0"></NoOneLike>
-    <PeopleLikes v-if="listLikesYou.length === 0"></PeopleLikes>
+    <NoOneLike v-if="listLikeTopicParam.length === 0"></NoOneLike>
+    <PeopleLikes v-if="listLikeTopicParam.length !== 0"></PeopleLikes>
   </div>
 </template>
 
@@ -19,15 +19,9 @@ export default {
     return { listLikes: [], listLikesYou: [] };
   },
   computed: {
-    listLikeTopicParam: {
-      get() {
-        return this.$store.state.likeTopicModule.listLikeForYous
-          ? this.$store.state.likeTopicModule.listLikeForYous
-          : this.listLikes;
-      },
-      set(val) {
-        this.listLikes = val;
-      },
+    listLikeTopicParam() {
+      debugger;
+      return this.$store.state.likeTopicModule.listLikeForYous;
     },
   },
   methods: {},

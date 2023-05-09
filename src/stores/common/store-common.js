@@ -22,6 +22,8 @@ const state = {
 
   themeLayout: "light",
   statusLayout: false,
+
+  listInterestFilter: [],
 };
 
 const getters = {
@@ -36,6 +38,10 @@ const mutations = {
     state.statusLayout = value.statusTheme;
   },
 
+  setListInterestFilter(state, data) {
+    debugger;
+    state.listInterestFilter = data;
+  },
   /**
    * Xet giá trị hiển th
    * @param {*} state

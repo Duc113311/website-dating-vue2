@@ -292,7 +292,9 @@ const actions = {
 
   async getListReasonReportUser({ commit }, data) {
     await http_mongo
-      .get(`/api/v1/reasons`, data)
+      .get(`/api/v1/reasons`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("tokenId")}` },
+      })
       .then((response) => {
         commit("setListReasonReportUser", response.data);
       })
@@ -314,7 +316,9 @@ const actions = {
 
   async getListExplores({ commit }, data) {
     await http_mongo
-      .get(`/api/v1/topics`, data)
+      .get(`/api/v1/topics`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("tokenId")}` },
+      })
       .then((response) => {
         commit("setListExplore", response.data.data);
       })

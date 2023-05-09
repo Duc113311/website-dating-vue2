@@ -22,22 +22,26 @@
       </div>
     </div>
 
-    <div class="container pr-4 pl-4 relative">
+    <div class="container pr-5 pl-5 relative">
       <div
         class="w-full flex items-center h-12 justify-center pr-4 pl-4 description-no-padding"
       >
         <span>Upgrade to Gold to see people who are interested in you</span>
       </div>
-      <div class="grid grid-cols-2 gap-3 swipe-container">
+      <div class="grid grid-cols-2 gap swipe-container">
         <div
           v-hammer:swipeleft="onSwipeLeft"
-          v-for="(user, index) in list_users"
+          v-for="(user, index) in listLikeForYouData"
           :key="index"
           class="item swipe-card"
-          :style="{ 'background-image': 'url(' + user.img[0] + ')' }"
+          :style="{
+            'background-image': 'url(' + user.profiles.avatars[0] + ')',
+          }"
         >
           <div class="color-text-default">
-            <p style="margin-bottom: 10px">{{ user.name }}, {{ user.age }}</p>
+            <p style="margin-bottom: 10px">
+              {{ user.fullname }}, {{ bindingAge(user.dob) }}
+            </p>
             <p><span class="status">&#x1F7E2;</span>Recently Active</p>
           </div>
         </div>
@@ -60,6 +64,8 @@ import { VueHammer } from "vue2-hammer";
 import FilterOption from "../filter/filter-option";
 // import BhActivateLike from "../../bh-element-ui/button/bh-activateLike";
 // import BhSeeLike from "../../bh-element-ui/button/bh-seeLike";
+import functionValidate from "../../../middleware/validate.js";
+
 export default {
   components: {
     FilterOption,
@@ -95,81 +101,21 @@ export default {
           name: "Profile has Bio",
         },
       ],
-
-      list_users: [
-        {
-          name: "lan",
-          age: 23,
-          img: [
-            "https://images-ssl.gotinder.com/6200b29e6b308601002bac1f/original_5e0a81a4-3530-4e5f-8d39-d8bbe5462014.jpeg",
-            "https://images-ssl.gotinder.com/6200b29e6b308601002bac1f/original_a02a799f-47df-4e88-a6f5-de237ecf2c43.jpeg",
-            "https://images-ssl.gotinder.com/6200b29e6b308601002bac1f/original_d271d0c5-2978-4856-ae86-d3f02a106e7a.jpeg",
-          ],
-          distance: 20,
-          Interests: ["Reading"],
-        },
-        {
-          name: "ngọc",
-          age: 27,
-          img: [
-            "https://images-ssl.gotinder.com/627aafb74b13430100f6c8a0/original_3dc60206-8bcd-43fc-85c0-ec938baf61c4.jpeg",
-            "https://images-ssl.gotinder.com/627aafb74b13430100f6c8a0/original_c1f2aad4-71d9-47e2-9329-b8585ce70dc1.jpeg",
-            "https://images-ssl.gotinder.com/627aafb74b13430100f6c8a0/original_d7f35e17-e34f-4ee0-88dd-79a59e829c0f.jpeg",
-          ],
-          distance: 30,
-          Interests: ["Reading", "Car", "Dog"],
-        },
-        {
-          name: "vân anh",
-          age: 25,
-          img: [
-            "https://images-ssl.gotinder.com/63821b9eb9f85c0100a68921/original_6dc1f94b-564e-49cc-a65c-1c165eddd457.jpeg",
-            "https://images-ssl.gotinder.com/63821b9eb9f85c0100a68921/original_8f740e67-2a52-43ff-86e1-e320a0535c3f.jpeg",
-            "https://images-ssl.gotinder.com/63821b9eb9f85c0100a68921/original_2198e746-d646-444f-96a3-768ec46fb1c9.jpeg",
-            "https://images-ssl.gotinder.com/63821b9eb9f85c0100a68921/original_ad2aca03-1983-4ea1-ba4c-d11267aa78e5.jpeg",
-            "https://images-ssl.gotinder.com/63821b9eb9f85c0100a68921/original_6dc1f94b-564e-49cc-a65c-1c165eddd457.jpeg",
-            "https://images-ssl.gotinder.com/63821b9eb9f85c0100a68921/original_98b6a683-ffca-4071-9518-6e238d8d6966.jpeg",
-          ],
-          distance: 10,
-          Interests: ["Reading", "Dog"],
-        },
-        {
-          name: "thu huyền",
-          age: 22,
-          img: [
-            "https://images-ssl.gotinder.com/62e628d91fb44801001bf878/original_a1e4aeed-2a3f-491d-8e62-37e868c17dea.jpeg",
-            "https://images-ssl.gotinder.com/62e628d91fb44801001bf878/original_e44393cd-1365-40ba-98fb-d81ab8737a54.jpeg",
-            "https://images-ssl.gotinder.com/62e628d91fb44801001bf878/original_44e08ca1-7ade-4be7-9de7-fd2106b71bf1.jpeg",
-            "https://images-ssl.gotinder.com/62e628d91fb44801001bf878/original_3b3504d3-967d-440e-9b04-3c2660bc7ac9.jpeg",
-            "https://images-ssl.gotinder.com/62e628d91fb44801001bf878/original_82559a52-9a2f-4c3b-a21b-180f9d8efa69.jpeg",
-            "https://images-ssl.gotinder.com/62e628d91fb44801001bf878/original_6fb8cc45-d6a1-4c09-87fd-c5f9a97076f7.jpeg",
-            "https://images-ssl.gotinder.com/62e628d91fb44801001bf878/original_016c52e6-e9c8-4e86-a053-e945f3a7b929.jpeg",
-            "https://images-ssl.gotinder.com/62e628d91fb44801001bf878/original_34ead704-eb94-4d21-b228-600fd63e267c.jpeg",
-            "https://images-ssl.gotinder.com/62e628d91fb44801001bf878/original_b81679d5-e021-43b7-af3b-27f934d75f68.jpeg",
-          ],
-          distance: 60,
-          Interests: ["Dog", "Reading"],
-        },
-        {
-          name: "điệp",
-          age: 19,
-          img: [
-            "https://images-ssl.gotinder.com/64110da9d1ac12010080e73e/original_3ea5b5e0-89c3-4b4b-a6e5-04538350f48d.jpeg",
-            "https://images-ssl.gotinder.com/64110da9d1ac12010080e73e/original_51c8a930-be03-43f6-a035-697940c84a6f.jpeg",
-            "https://images-ssl.gotinder.com/64110da9d1ac12010080e73e/original_6bb9de05-5d36-448c-9fc4-d57ad738dddb.jpeg",
-            "https://images-ssl.gotinder.com/64110da9d1ac12010080e73e/original_cb0000e3-2716-4112-a8c8-5c62416ddb2e.jpeg",
-            "https://images-ssl.gotinder.com/64110da9d1ac12010080e73e/1080x1350_0a2e02f6-d491-4959-9d90-e9d26f2ae689.webp",
-          ],
-          distance: 90,
-          Interests: ["Reading", "Car"],
-        },
-      ],
     };
   },
 
-  computed: {},
+  computed: {
+    listLikeForYouData() {
+      debugger;
+      return this.$store.state.likeTopicModule.listLikeForYous;
+    },
+  },
 
   methods: {
+    bindingAge(val) {
+      const dataAge = functionValidate.calculatAge(val);
+      return dataAge;
+    },
     onSwipeLeft() {
       this.currentCard++;
     },
@@ -365,5 +311,8 @@ export default {
 .h-w-option {
   width: 2.65rem;
   height: 2.65rem;
+}
+.gap {
+  gap: 1.55rem;
 }
 </style>

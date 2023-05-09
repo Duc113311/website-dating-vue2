@@ -24,7 +24,7 @@
         />
         <div
           v-show="!isActiveImag"
-          class="pic z-8 ss"
+          class="pic z-8"
           :style="{
             'background-image': `url(${idImage}
             )`,
@@ -70,7 +70,8 @@
                   <i class="fa-solid fa-location-dot"></i>
                 </div>
                 <span class="font-describe"
-                  >{{ bindingDistance(scope.data?.distanceKm) }} km away</span
+                  >{{ bindingLocation(scope.data?.distanceKm) }}
+                  {{ valueKi }} away</span
                 >
               </div>
             </div>
@@ -164,6 +165,8 @@ export default {
   },
   data() {
     return {
+      isDragging: false, // Biến cờ để kiểm tra xem phần tử có đang được kéo hay không
+      isClickAllowed: true, // Biến cờ để kiểm tra xem sự kiện click có được phép hay không
       queue: [],
       isShowFormMatch: false,
       offset: 0,
@@ -202,6 +205,12 @@ export default {
   props: ["isLoadData", "listUserFilter"],
 
   computed: {
+    valueKi() {
+      if (localStorage.unit === "mi") {
+        return "mi";
+      }
+      return "km";
+    },
     timeBoost() {
       debugger;
       const isBoostParam = this.$store.state.homeModule.isBoost;
@@ -219,6 +228,7 @@ export default {
 
     listDataUser: {
       get() {
+        debugger;
         return this.listUserFilter ? this.listUserFilter : this.users;
       },
       set(newData) {
@@ -251,7 +261,9 @@ export default {
         return;
       }
       this.isPointer = true;
-      this.isPointerNext = true;
+      this.isPointerNext = false;
+
+      this.isClickAllowed = false;
     },
     onMouseUp() {
       document.removeEventListener("mousemove", this.moveElement);
@@ -259,7 +271,10 @@ export default {
       this.isHoverNope = false;
       this.isHoverSuper = false;
       this.isPointer = false;
-      this.isPointerNext = false;
+      this.isPointerNext = true;
+
+      this.isDragging = true;
+      this.isClickAllowed = true;
     },
 
     moveElement(event) {
@@ -291,6 +306,24 @@ export default {
       return dataAge;
     },
 
+    bindingLocation(val) {
+      debugger;
+      if (localStorage.unit === "mi") {
+        if (val === undefined) {
+          return 1;
+        } else {
+          const dataMi = functionValidate.locationKmToMi(val);
+          return dataMi;
+        }
+      } else {
+        if ((parseInt(val) === 0) | (val === undefined)) {
+          return 1;
+        } else {
+          return parseInt(val.toFixed(0));
+        }
+      }
+    },
+
     bindingDistance(val) {
       if ((parseInt(val) === 0) | (val === undefined)) {
         return 1;
@@ -305,51 +338,58 @@ export default {
     nextImageLeft(value) {
       console.log(value);
       debugger;
-      if (this.imageActive !== 0) {
-        this.imageActive = this.imageActive - 1;
+      if (this.isDragging) {
+        this.isPointerNext = true;
+        if (this.imageActive !== 0) {
+          this.imageActive = this.imageActive - 1;
+
+          if (this.imageActive < value.length) {
+            document
+              .getElementById(`avatar_` + parseInt(this.imageActive + 1))
+              .classList.remove("active-image");
+            this.idImage = value[this.imageActive];
+            document
+              .getElementById(`avatar_` + parseInt(this.imageActive))
+              .classList.add("active-image");
+          }
+
+          this.isActiveImag = false;
+        } else {
+          console.log("end");
+          this.animate1 = true;
+          setTimeout(() => {
+            this.animate1 = false;
+          }, 200);
+        }
+      }
+    },
+
+    nextImageRight(value) {
+      debugger;
+      if (this.isDragging) {
+        this.isPointerNext = true;
+        this.imageActive = this.imageActive + 1;
 
         if (this.imageActive < value.length) {
           document
-            .getElementById(`avatar_` + parseInt(this.imageActive + 1))
+            .getElementById(`avatar_` + parseInt(this.imageActive - 1))
             .classList.remove("active-image");
           this.idImage = value[this.imageActive];
           document
             .getElementById(`avatar_` + parseInt(this.imageActive))
             .classList.add("active-image");
+        } else {
+          console.log("end");
+          this.animate2 = true;
+          setTimeout(() => {
+            this.animate2 = false;
+            // Thực hiện thêm ảnh mới hoặc xóa ảnh hiện tại tại đây
+          }, 200);
+          this.imageActive = this.imageActive - 1;
         }
 
         this.isActiveImag = false;
-      } else {
-        console.log("end");
-        this.animate1 = true;
-        setTimeout(() => {
-          this.animate1 = false;
-        }, 200);
       }
-    },
-
-    nextImageRight(value) {
-      this.imageActive = this.imageActive + 1;
-
-      if (this.imageActive < value.length) {
-        document
-          .getElementById(`avatar_` + parseInt(this.imageActive - 1))
-          .classList.remove("active-image");
-        this.idImage = value[this.imageActive];
-        document
-          .getElementById(`avatar_` + parseInt(this.imageActive))
-          .classList.add("active-image");
-      } else {
-        console.log("end");
-        this.animate2 = true;
-        setTimeout(() => {
-          this.animate2 = false;
-          // Thực hiện thêm ảnh mới hoặc xóa ảnh hiện tại tại đây
-        }, 200);
-        this.imageActive = this.imageActive - 1;
-      }
-
-      this.isActiveImag = false;
     },
 
     onNopeUser(val) {
@@ -453,11 +493,14 @@ export default {
             // if (this.history.length) {
             //   this.$refs.tinder.rewind([this.history.pop()]);
             // }
+
             this.$nextTick(() => {
               this.$refs.tinder.rewind([this.history.pop()]);
             });
+
             // Hiển thị package
             this.$emit("onShowPackage", true);
+            debugger;
           }
         }
         this.imageActive = 0;

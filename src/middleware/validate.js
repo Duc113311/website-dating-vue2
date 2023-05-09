@@ -17,6 +17,16 @@ const functionValidate = {
   },
 
   /**
+   * Chuyển đôi sang mi
+   * @param {*} value
+   * @returns
+   */
+  locationKmToMi(value) {
+    const mi = value / 1.609344;
+    return Math.round(mi);
+  },
+
+  /**
    * Hàm convert lat/long  to location km
    * @param {*} latAdmin
    * @param {*} longAdmin

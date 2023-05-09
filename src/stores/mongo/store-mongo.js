@@ -37,6 +37,7 @@ const mutations = {
     state.tokenId = data?.token;
     localStorage.setItem("tokenId", state.tokenId);
     localStorage.setItem("oAuth2Id", data.user.oAuth2Id);
+    localStorage.setItem("unit", data.user.settings.distancePreference.unit);
   },
 
   /**
@@ -117,9 +118,9 @@ const actions = {
    * @param {*} param0
    * @param {*} data
    */
-  async getListCardForUser({ commit }) {
+  async getListCardForUser({ commit }, pageSize) {
     await http_mongo
-      .get(`api/v1/cards`, {
+      .get(`api/v1/cards?pageSize=${pageSize}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("tokenId")}` },
       })
       .then((response) => {

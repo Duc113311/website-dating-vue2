@@ -3,7 +3,10 @@
     <div class="w-full h-full overflow-hidden">
       <Header></Header>
 
-      <div class="w-full body-page-default relative height-scroll p-4">
+      <div
+        class="w-full body-page-default relative height-scroll p-4"
+        v-loading="loading"
+      >
         <category-page></category-page>
       </div>
 
@@ -27,7 +30,7 @@ export default {
 
   data() {
     return {
-      loading: false,
+      loading: true,
     };
   },
 
@@ -35,8 +38,21 @@ export default {
     ...mapActions(["getListExplores"]),
   },
 
+  async created() {
+    await this.getListExplores();
+  },
+
   mounted() {
-    this.getListExplores();
+    const value = this.$store.state.homeModule.listExplores;
+    if (value.length !== 0) {
+      this.loading = false;
+    } else {
+      this.loading = true;
+    }
+
+    setTimeout(() => {
+      this.loading = false;
+    }, 1000);
   },
 };
 </script>

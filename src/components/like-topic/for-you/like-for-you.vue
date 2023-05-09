@@ -1,66 +1,24 @@
 <template>
   <div class="w-full h-full relative">
-    <div class="w-full p-5">Recently Active</div>
-    <div class="w-full p-3 h-likes overflow-auto height-scroll">
-      <div class="items-center grid grid-cols-2 gap-3">
-        <div class="item-user relative overflow-hidden">
+    <div class="w-full text-title-like">Recommendations</div>
+    <div class="w-full p-5 h-likes overflow-auto height-scroll">
+      <div class="items-center gap grid grid-cols-2">
+        <div
+          class="item-user relative overflow-hidden"
+          v-for="(user, index) in listLikeYouActions"
+          :key="index"
+        >
           <div class="image absolute bottom-0 w-full p-4 z-10 text-white">
-            <div class="name">Kiều Kiều , <span>18</span></div>
+            <div class="flex">
+              <div class="name">{{ user.fullname }},&nbsp;</div>
+              <span>{{ bindingAge(user.dob) }}</span>
+            </div>
             <div class="flex padding-describe">
-              <BhActivateLike></BhActivateLike>
+              <span class="status">&#x1F7E2;</span>
               Recently active
             </div>
           </div>
           <div class="bg-shadow w-full h-full"></div>
-          <div
-            class="bg-background-shadow absolute bottom-0 w-full h-full"
-          ></div>
-        </div>
-        <div class="item-user relative overflow-hidden">
-          <div class="image absolute bottom-0 w-full p-4 z-10 text-white">
-            <div class="name">Thu Anh , <span>22</span></div>
-            <div class="flex padding-describe">
-              <BhActivateLike></BhActivateLike>
-              Recently active
-            </div>
-          </div>
-          <div class="bg-shadow w-full h-full"></div>
-          <div
-            class="bg-background-shadow absolute bottom-0 w-full h-full"
-          ></div>
-        </div>
-        <div class="item-user relative overflow-hidden">
-          <div class="image absolute bottom-0 w-full p-4 z-10 text-white">
-            <div class="name">Trang Hà , <span>25</span></div>
-            <div class="flex padding-describe">
-              <BhActivateLike></BhActivateLike>
-              Recently active
-            </div>
-          </div>
-          <div class="bg-shadow w-full h-full"></div>
-          <div
-            class="bg-background-shadow absolute bottom-0 w-full h-full"
-          ></div>
-        </div>
-        <div class="item-user relative overflow-hidden">
-          <div class="image absolute bottom-0 w-full p-4 z-10 text-white">
-            <div class="name">Trang Hà , <span>25</span></div>
-            <div class="flex padding-describe">
-              <BhActivateLike></BhActivateLike>Recently active
-            </div>
-          </div>
-          <div class="bg-shadow w-full h-full"></div>
-          <div
-            class="bg-background-shadow absolute bottom-0 w-full h-full"
-          ></div>
-        </div>
-        <div class="item-user relative overflow-hidden">
-          <div class="image absolute bottom-0 w-full p-4 z-10 text-white">
-            <div class="name">Trang Hà , <span>25</span></div>
-            <div class="flex padding-describe">
-              <BhActivateLike></BhActivateLike>Recently active
-            </div>
-          </div>
           <div
             class="bg-background-shadow absolute bottom-0 w-full h-full"
           ></div>
@@ -71,9 +29,8 @@
 </template>
 
 <script>
-import BhActivateLike from "@/components/bh-element-ui/button/bh-activateLike.vue";
+import functionValidate from "../../../middleware/validate.js";
 
-BhActivateLike;
 export default {
   name: "like-for-you",
 
@@ -81,7 +38,19 @@ export default {
     return {};
   },
 
-  methods: {},
+  computed: {
+    listLikeYouActions() {
+      debugger;
+      return this.$store.state.likeTopicModule.listLikeYouAction;
+    },
+  },
+
+  methods: {
+    bindingAge(val) {
+      const dataAge = functionValidate.calculatAge(val);
+      return dataAge;
+    },
+  },
 };
 </script>
 
@@ -106,5 +75,25 @@ export default {
     rgb(254 254 254 / 0%) 29%,
     rgb(255 255 255 / 0%) 99%
   );
+}
+
+.status {
+  font-size: 12px;
+  margin-right: 10px;
+}
+.name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-title-like {
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-right: 1rem;
+  font-size: 18px;
+}
+.gap {
+  gap: 1.55rem;
 }
 </style>

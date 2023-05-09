@@ -19,7 +19,7 @@
       </div>
     </div>
     <!-- body -->
-    <div class="w-full h-topic">
+    <div class="w-full h-topic" v-loading="loading">
       <router-view></router-view>
     </div>
 
@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import Footer from "../../components/layout/footer-home/footer";
 import { mapActions } from "vuex";
+import Footer from "../../components/layout/footer-home/footer";
 export default {
   components: {
     Footer,
@@ -40,11 +40,12 @@ export default {
     return {
       isShowComponent: true,
       isActiveLike: true,
+      loading: false,
     };
   },
 
   methods: {
-    ...mapActions(["getListDataLikedForYou"]),
+    ...mapActions(["getListDataLikedForYou", "getListDataLikeYouAction"]),
     onShowLikes(val) {
       this.isShowComponent = val;
       this.isActiveLike = val;
@@ -62,15 +63,31 @@ export default {
   },
 
   async created() {
-    const dataLike = {
-      pageSize: 0,
+    const objectLike = {
+      pageSize: 10,
       currentPage: 0,
       action: "like",
     };
-    this.getListDataLikedForYou(dataLike);
+    const objectNope = {
+      pageSize: 10,
+      currentPage: 0,
+      action: "nope",
+    };
+    await this.getListDataLikedForYou(objectLike);
+    await this.getListDataLikeYouAction(objectNope);
   },
 
-  mounted() {},
+  mounted() {
+    const value = this.$store.state.likeTopicModule.listLikeForYous;
+    if (value.length !== 0) {
+      this.loading = false;
+    } else {
+      this.loading = true;
+    }
+    setTimeout(() => {
+      this.loading = false;
+    }, 1000);
+  },
 };
 </script>
 
