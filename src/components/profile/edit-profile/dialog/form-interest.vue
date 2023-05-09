@@ -60,7 +60,7 @@
                   id=""
                 >
                   <template slot="append" v-if="valueSearch.length !== 0">
-                    <div class="ic" @click="onClickRemoveLanguage">
+                    <div class="ic" @click="onClickRemoveInterest">
                       <img
                         src="../../../../assets/icon/icon-cancel.png"
                         width="20"
@@ -75,10 +75,10 @@
             <div
               class="w-full h-full list-interest-form mt-5 height-scroll overflow-scroll"
             >
-              <span v-for="(item, index) in listInterest" :key="index">
+              <span v-for="(item, index) in this.listInterest" :key="index">
                 <button
                   @click="onSelectInterest(item.code)"
-                  :id="`not-check_` + item.code"
+                  :id="`interest` + item.code"
                   class="option-interests border-default mr-3 mb-3 p-3"
                   size="large"
                 >
@@ -104,6 +104,7 @@ export default {
       state: "",
       timeout: null,
       listChecked: [],
+      listCheckDelete: [],
       listInterestCode: [],
       valueSearch: "",
 
@@ -114,34 +115,69 @@ export default {
     };
   },
 
-  computed: {},
+  computed: {
+    listInterestsParam() {
+      return this.$store.state.commonModule.listLifeStyleSingle.interests;
+    },
+  },
   methods: {
     ...mapMutations(["setListInterests"]),
     ...mapActions(["getListDataInterests"]),
 
+    /**
+     * Remove phần tử
+     * @param {*} val
+     */
     onRemoveItem(val) {
+      debugger;
       console.log(val);
       this.listChecked = this.listChecked.filter(function (el) {
         return el.code != val;
       });
-      document.getElementById("not-check_" + val).classList.remove("bg-active");
+      document
+        .getElementById("interest" + val)
+        .classList.remove("border-active");
       const index = this.listInterestCode.indexOf(val);
       this.listInterestCode.splice(index, 1);
     },
+
+    /**
+     * Cancel interest
+     */
     onChangeCancel() {
+      debugger;
+      this.valueSearch = "";
+      this.listChecked = this.listCheckDelete;
+      for (let index = 0; index < this.listChecked.length; index++) {
+        const element = this.listChecked[index];
+
+        document
+          .getElementById("interest" + element.code)
+          .classList.add("border-active");
+      }
       this.$emit("onClickHideInterest", false);
     },
 
+    /**
+     * Lưu giá trị
+     */
     onChangeSaveInterest() {
       this.setListInterests(this.listChecked);
       this.$emit("onClickSaveInterest", false);
     },
 
+    /**
+     * Chọn giá trị
+     * @param {*} val
+     */
     onSelectInterest(val) {
+      debugger;
       if (this.listChecked.length < 5) {
-        document.getElementById("not-check_" + val).classList.add("bg-active");
+        document
+          .getElementById("interest" + val)
+          .classList.add("border-active");
         const nameInterest = document
-          .getElementById("not-check_" + val)
+          .getElementById("interest" + val)
           .innerHTML.toString();
         const objectChecked = {
           code: val,
@@ -158,50 +194,105 @@ export default {
           "#f65a62";
       }
     },
-    querySearchAsync(queryString, cb) {
-      var links = this.links;
-      var results = queryString
-        ? links.filter(this.createFilter(queryString))
-        : links;
 
-      clearTimeout(this.timeout);
-      this.timeout = setTimeout(() => {
-        cb(results);
-      }, 3000 * Math.random());
-    },
-    createFilter(queryString) {
-      return (link) => {
-        return (
-          link.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
-        );
-      };
-    },
-    handleSelect(item) {
-      console.log(item);
-    },
-
+    /**
+     * Nhập text filter
+     */
     onChangeFilterText() {
       let dataList = [];
-      if (this.listInterest.length <= this.listInterestOld.length) {
-        dataList = this.listInterestOld;
-        let result = dataList.filter(
-          (item) =>
-            item.value.toLowerCase().indexOf(this.valueSearch.toLowerCase()) !==
-            -1
-        );
-        this.listInterest = result;
-        console.log(result);
+      debugger;
+
+      if (this.valueSearch !== "") {
+        if (this.listInterest.length <= this.listInterestOld.length) {
+          dataList = this.listInterestOld;
+
+          const filteredNames = dataList.filter((item) => {
+            return item.value
+              .toLowerCase()
+              .includes(this.valueSearch.toLowerCase());
+          });
+          this.listInterest = filteredNames;
+
+          this.$nextTick(() => {
+            for (let index = 0; index < this.listInterest.length; index++) {
+              const element = this.listInterest[index];
+
+              const findIndex = this.listChecked.find(
+                (x) => x.code === element.code
+              );
+              if (findIndex) {
+                document
+                  .getElementById("interest" + element.code)
+                  .classList.add("border-active");
+              } else {
+                document
+                  .getElementById("interest" + element.code)
+                  .classList.remove("border-active");
+              }
+            }
+          });
+        }
+      } else {
+        this.listInterest =
+          this.$store.state.commonModule.listLifeStyleSingle.interests;
+        this.$nextTick(() => {
+          for (let index = 0; index < this.listInterest.length; index++) {
+            const element = this.listInterest[index];
+
+            const findIndex = this.listChecked.find(
+              (x) => x.code === element.code
+            );
+            if (findIndex) {
+              document
+                .getElementById("interest" + element.code)
+                .classList.add("border-active");
+            } else {
+              document
+                .getElementById("interest" + element.code)
+                .classList.remove("border-active");
+            }
+          }
+        });
       }
     },
 
-    onClickRemoveLanguage() {},
+    /**
+     * Nút xóa ô tìm kiếm
+     */
+    onClickRemoveInterest() {
+      debugger;
+      this.valueSearch = "";
+      this.listInterest =
+        this.$store.state.commonModule.listLifeStyleSingle.interests;
+
+      this.$nextTick(() => {
+        for (let index = 0; index < this.listInterest.length; index++) {
+          const element = this.listInterest[index];
+
+          const findIndex = this.listChecked.find(
+            (x) => x.code === element.code
+          );
+          if (findIndex) {
+            document
+              .getElementById("interest" + element.code)
+              .classList.add("border-active");
+          } else {
+            document
+              .getElementById("interest" + element.code)
+              .classList.remove("border-active");
+          }
+        }
+      });
+    },
   },
 
-  async created() {},
+  async created() {
+    debugger;
+  },
 
   mounted() {
     // this.links = this.loadAll();
-
+    debugger;
     const interestsData =
       this.$store.state.userModule.user_profile.profiles.interests;
 
@@ -211,10 +302,10 @@ export default {
       for (let index = 0; index < interestsData.length; index++) {
         const element = interestsData[index];
         document
-          .getElementById("not-check_" + element)
-          .classList.add("bg-active");
+          .getElementById("interest" + element)
+          .classList.add("border-active");
         const nameInterest = document
-          .getElementById("not-check_" + element)
+          .getElementById("interest" + element)
           .innerHTML.toString();
         const objectChecked = {
           code: element,
@@ -222,6 +313,7 @@ export default {
         };
         this.listInterestCode.push(element);
         this.listChecked.push(objectChecked);
+        this.listCheckDelete.push(objectChecked);
       }
     }
   },

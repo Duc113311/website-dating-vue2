@@ -21,14 +21,14 @@
         >
           <div class="w-full items-center h-full">
             <div class="flex w-full justify-between items-center mb-2">
-              <div class="padding-title">Ngôn ngữ tôi biết</div>
+              <div class="padding-title">The language I know</div>
               <div class="padding-describe-item">
                 {{ listChecked.length }} out of 5
               </div>
             </div>
             <!-- Những thứ đã chọn -->
             <div class="w-full">
-              Chọn đến 5 ngôn ngữ bạn biết và thêm vào hồ sơ
+              Choose up to 5 languages you know and add to your profile
             </div>
 
             <!-- Tìm kiếm -->

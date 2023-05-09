@@ -44,6 +44,8 @@ export default {
         .then(() => {
           debugger;
           // Sign-out successful.
+          localStorage.removeItem("oAuth2Id");
+          localStorage.removeItem("tokenId");
           this.$router.push({ path: "/" });
         })
         .catch((error) => {
@@ -53,6 +55,8 @@ export default {
 
     async onDeleteAccount() {
       await this.deleteAccountUser();
+      localStorage.removeItem("oAuth2Id");
+      localStorage.removeItem("tokenId");
       this.$router.push({ path: "/" });
     },
   },

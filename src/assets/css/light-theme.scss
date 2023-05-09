@@ -74,6 +74,9 @@
   .border-default {
     border: 1.5px solid var(--color-border-button-select);
   }
+  .border-active {
+    border: 1.5px solid var(--color-border-button-active);
+  }
   .border-login {
     border-radius: 10px;
     border: 1.5px solid var(--color-border-button-sign);

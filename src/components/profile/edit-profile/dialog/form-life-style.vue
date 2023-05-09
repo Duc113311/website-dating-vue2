@@ -437,18 +437,33 @@ export default {
     },
 
     onChangeSaveLife() {
-      this.setPets(this.petValue);
-      this.setDrinking(this.drinkingValue);
-      this.setWorkout(this.workoutValue);
-      this.setSmoking(this.smokingValue);
-      this.setDietaryPreference(this.dietaryPreferenceValue);
-      this.setSocialMedia(this.socialMediaValue);
-      this.setSleepingHabit(this.sleepingHabitValue);
+      if (this.zodiacsValue !== null) {
+        this.setPets(this.petValue);
+      }
+      if (this.drinkingValue !== null) {
+        this.setDrinking(this.drinkingValue);
+      }
+      if (this.workoutValue !== null) {
+        this.setWorkout(this.workoutValue);
+      }
+      if (this.smokingValue !== null) {
+        this.setSmoking(this.smokingValue);
+      }
+      if (this.dietaryPreferenceValue !== null) {
+        this.setDietaryPreference(this.dietaryPreferenceValue);
+      }
+      if (this.socialMediaValue !== null) {
+        this.setSocialMedia(this.socialMediaValue);
+      }
+      if (this.socialMediaValue !== null) {
+        this.setSleepingHabit(this.socialMediaValue);
+      }
       this.$emit("onClickCancelLife", false);
     },
   },
   beforeDestroy() {},
   mounted() {
+    debugger;
     this.$refs[this.valueScroll].scrollIntoView({ behavior: "smooth" });
 
     const profileBasic = this.$store.state.userModule.user_profile.profiles;
@@ -466,40 +481,38 @@ export default {
     }
     if (profileBasic.pet) {
       document
-        .getElementById("pet_" + profileBasic.petValue)
-        .classList.remove("bg-active");
+        .getElementById("pet_" + profileBasic.pet)
+        .classList.add("bg-active");
     }
     if (profileBasic.drinking) {
       document
-        .getElementById("drinking_" + profileBasic.drinkingValue)
-        .classList.remove("bg-active");
+        .getElementById("drinking_" + profileBasic.drinking)
+        .classList.add("bg-active");
     }
     if (profileBasic.smoking) {
       document
-        .getElementById("smoking_" + profileBasic.smokingValue)
-        .classList.remove("bg-active");
+        .getElementById("smoking_" + profileBasic.smoking)
+        .classList.add("bg-active");
     }
     if (profileBasic.workout) {
       document
-        .getElementById("workout_" + profileBasic.workoutValue)
-        .classList.remove("bg-active");
+        .getElementById("workout_" + profileBasic.workout)
+        .classList.add("bg-active");
     }
     if (profileBasic.dietaryPreference) {
       document
-        .getElementById(
-          "dietaryPreference_" + profileBasic.dietaryPreferenceValue
-        )
-        .classList.remove("bg-active");
+        .getElementById("dietaryPreference_" + profileBasic.dietaryPreference)
+        .classList.add("bg-active");
     }
     if (profileBasic.socialMedia) {
       document
-        .getElementById("socialMedia_" + profileBasic.socialMediaValue)
-        .classList.remove("bg-active");
+        .getElementById("socialMedia_" + profileBasic.socialMedia)
+        .classList.add("bg-active");
     }
     if (profileBasic.sleepingHabit) {
       document
-        .getElementById("sleepingHabit_" + profileBasic.sleepingHabitValue)
-        .classList.remove("bg-active");
+        .getElementById("sleepingHabit_" + profileBasic.sleepingHabit)
+        .classList.add("bg-active");
     }
   },
 };

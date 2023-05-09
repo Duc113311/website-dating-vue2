@@ -55,10 +55,7 @@
     <control-page></control-page>
 
     <!-- Sở thích -->
-    <div
-      v-show="isShowInterest"
-      class="w-full h-full absolute top-0 left-0 z-30"
-    >
+    <div v-if="isShowInterest" class="w-full h-full absolute top-0 left-0 z-30">
       <FormInterest
         @onClickSaveInterest="onClickSaveInterest"
         @onClickHideInterest="onClickHideInterest"
