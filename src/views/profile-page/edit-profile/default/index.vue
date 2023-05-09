@@ -825,7 +825,7 @@ export default {
 .style-switch {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px;
 }
 
@@ -838,11 +838,6 @@ export default {
   font-size: 17px !important;
   padding: 12px !important;
   color: #ffffff !important;
-}
-
-.bg-life {
-  border-radius: 10px;
-  padding: 24px;
 }
 
 .item-life {
@@ -864,14 +859,6 @@ export default {
   padding: 13px !important;
   font-size: 15px !important;
   height: 50px !important;
-}
-
-.style-form {
-  height: 50px;
-
-  align-items: center;
-  padding: 10px;
-  border-radius: 10px;
 }
 
 .style-bg-common {

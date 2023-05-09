@@ -184,13 +184,6 @@ export default {
   display: none;
 }
 
-.style-switch {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  border-radius: 10px;
-}
-
 .el-textarea__inner {
   min-height: 140px !important;
   height: 134px !important;
@@ -234,7 +227,7 @@ export default {
 
 .style-bg-common {
   align-items: center;
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px;
 }
 

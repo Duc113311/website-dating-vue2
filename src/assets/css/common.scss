@@ -329,3 +329,30 @@
   padding-left: 2px;
   padding-right: 2px;
 }
+
+.el-switch__core:after {
+  content: "";
+  position: absolute;
+  top: -3.5px !important;
+  border-radius: 100%;
+  margin-left: -5px;
+  transition: all 0.3s;
+  width: 26px !important;
+  height: 26px !important;
+  background-color: #fff;
+}
+.el-switch__core {
+  width: 36px !important;
+}
+
+.el-switch.is-checked .el-switch__core::after {
+  left: 100%;
+  margin-left: -22px !important;
+}
+.style-switch {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 10px;
+}
+

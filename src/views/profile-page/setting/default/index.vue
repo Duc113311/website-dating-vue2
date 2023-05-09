@@ -136,7 +136,7 @@
               <div class="bh-item-title title-item">
                 Only show people in this range
               </div>
-              <div>
+              <div class="mr-1">
                 <el-switch
                   v-model="valuePeopleDistance"
                   active-color="#FB5D65"

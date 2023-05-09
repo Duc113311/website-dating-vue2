@@ -2,12 +2,10 @@
   <div class="w-full mb-6">
     <div class="w-full flex justify-center items-center">
       <div class="w-full">
-        <div
-          class="w-full style-switch form-set-input flex justify-between bg-default"
-        >
+        <div class="w-full style-switch flex justify-between bg-default">
           <div class="name bh-item-title title-item">Global</div>
 
-          <div class="mr-1">
+          <div>
             <el-switch
               v-model="valueGlobal"
               active-color="#FB5D65"

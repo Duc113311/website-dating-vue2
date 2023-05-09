@@ -113,8 +113,8 @@ export default {
 };
 </script>
 <style lang="scss">
-@import "@/assets/css/common.css";
-@import "@/assets/css/txt-common.css";
+@import "@/assets/css/common.scss";
+@import "@/assets/css/txt-common.scss";
 @import "@/assets/css/color-text.css";
 @import "@/assets/css/color-bg.css";
 

@@ -815,11 +815,6 @@ export default {
   color: #ffffff !important;
 }
 
-.bg-life {
-  border-radius: 10px;
-  padding: 24px;
-}
-
 .item-life {
   display: flex;
   /* padding: 12px; */
@@ -839,14 +834,6 @@ export default {
   padding: 13px !important;
   font-size: 15px !important;
   height: 50px !important;
-}
-
-.style-form {
-  height: 50px;
-
-  align-items: center;
-  padding: 10px;
-  border-radius: 10px;
 }
 
 .style-bg-common {

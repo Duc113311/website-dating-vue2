@@ -272,14 +272,6 @@ export default {
 </script>
 
 <style lang="scss">
-.style-form {
-  height: 50px;
-
-  align-items: center;
-  padding: 10px;
-  border-radius: 10px;
-}
-
 .w-header-checked {
   border-bottom: 1px solid #000000;
   height: 50px;

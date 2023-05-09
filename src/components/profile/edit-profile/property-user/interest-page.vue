@@ -31,7 +31,7 @@
             </div>
             <div class="bg-shadow-right absolute h-full w-full"></div>
           </div>
-          <div class="mr-1 flex items-center">
+          <div class="mr-1 flex items-center justify-end">
             <i
               class="fa-solid fa-chevron-right bh-chevron-right icon-color-default"
             ></i>

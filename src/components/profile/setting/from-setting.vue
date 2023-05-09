@@ -119,16 +119,4 @@ export default {
 .el-slider__button-wrapper {
   z-index: 1 !important;
 }
-
-.el-switch__core:after {
-  content: "";
-  position: absolute;
-  top: -4.5px !important;
-  border-radius: 100%;
-  left: -7px;
-  transition: all 0.3s;
-  width: 28px !important;
-  height: 28px !important;
-  background-color: #fff;
-}
 </style>

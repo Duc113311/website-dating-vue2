@@ -43,20 +43,47 @@
       >
         <div class="item-setting">
           <div class="flex justify-center" @click="onClickSettingDetail()">
-            <img src="@/assets/icon/bt_settings.svg" width="100" alt="" />
+            <img
+              v-if="colorBt"
+              src="@/assets/icon/bt_settings_dark.svg"
+              width="100"
+              alt=""
+            />
+            <img
+              v-else
+              src="@/assets/icon/bt_settings_light.svg"
+              width="100"
+              alt=""
+            />
           </div>
           <div class="mt-2 text-base describe-text">SETTINGS</div>
         </div>
         <div class="item-setting mt-24">
           <div class="flex justify-center" @click="onEditProfile()">
-            <img src="@/assets/icon/bt_edit_profile.svg" width="100" alt="" />
+            <img
+              v-if="colorBt"
+              src="@/assets/icon/bt_edit_profile_dark.svg"
+              width="100"
+              alt=""
+            />
+            <img
+              v-else
+              src="@/assets/icon/bt_edit_profile_light.svg"
+              width="100"
+              alt=""
+            />
           </div>
           <div class="mt-2 text-base describe-text">EDIT PROFILE</div>
         </div>
         <el-tooltip content="Coming soon" placement="top">
           <div class="item-setting">
             <div class="flex justify-center">
-              <img src="@/assets/icon/bt_safety.svg" width="100" />
+              <img
+                v-if="colorBt"
+                src="@/assets/icon/bt_safety_dark.svg"
+                width="100"
+              />
+              <img v-else src="@/assets/icon/bt_safety_light.svg" width="100" />
             </div>
             <div class="mt-2 text-base describe-text">SAFETY</div>
           </div>
@@ -100,6 +127,10 @@ export default {
   },
 
   computed: {
+    colorBt() {
+      return this.$store.state.commonModule.statusLayout;
+    },
+
     percentage() {
       return this.$store.state.userModule.completeUser;
     },

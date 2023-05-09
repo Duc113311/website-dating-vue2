@@ -17,7 +17,7 @@
       <BhMedia></BhMedia>
     </div>
     <!-- Smart photo -->
-    <SmartPhoto></SmartPhoto>
+    <!-- <SmartPhoto></SmartPhoto> -->
     <!-- About -->
     <about-page></about-page>
     <!-- interest -->
@@ -107,7 +107,7 @@ import GenderPage from "./property-user/gender-page";
 import SpotifyPage from "./property-user/spotify-page";
 import MyAnthemPage from "./property-user/my-anthem-page";
 import InstagramPage from "./property-user/instagram-page";
-import SmartPhoto from "./property-user/smart-photo-page";
+// import SmartPhoto from "./property-user/smart-photo-page";
 import BhMedia from "../../bh-element-ui/button/bh-media";
 import myPhotos from "@/components/create-profiles/my-self/my-photos.vue";
 import AboutPage from "./property-user/about-page.vue";
@@ -133,7 +133,6 @@ export default {
     SpotifyPage,
     MyAnthemPage,
     InstagramPage,
-    SmartPhoto,
     BhMedia,
     myPhotos,
     AboutPage,
@@ -249,16 +248,4 @@ export default {
 };
 </script>
 
-<style lang="css">
-.el-switch__core:after {
-  content: "";
-  position: absolute;
-  top: -4px !important;
-  border-radius: 100%;
-  margin-left: -5px;
-  transition: all 0.3s;
-  width: 28px !important;
-  height: 28px !important;
-  background-color: #fff;
-}
-</style>
+<style lang="css"></style>
