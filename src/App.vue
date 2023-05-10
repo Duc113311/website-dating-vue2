@@ -74,6 +74,7 @@ export default {
     }
     const oAuth2Id = localStorage.getItem("oAuth2Id");
     // Nếu tồn tại oAuth2Id in localStorage
+    debugger;
     if (oAuth2Id) {
       await this.loginAppByAuthId({
         oAuth2Id: oAuth2Id,
@@ -82,7 +83,12 @@ export default {
       const tokenId = this.$store.state.mongoModule.tokenId;
       if (tokenId) {
         // Login success
-        this.$router.push({ path: "/home" }).catch(() => {});
+        const control = localStorage.control;
+        if (control === "show") {
+          this.$router.push({ path: "/control" }).catch(() => {});
+        } else {
+          this.$router.push({ path: "/home" }).catch(() => {});
+        }
       } else {
         // Login false : account not exist
         this.$router.push({ name: "login-page" }).catch(() => {});
