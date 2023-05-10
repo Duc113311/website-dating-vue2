@@ -9,7 +9,7 @@
       </div>
       <div class="w-full flex items-center bg-default style-bg-common">
         <div class="w-full">
-          <div class="flex justify-between w-full bd-input pt-2 pb-2">
+          <div class="flex justify-between w-full border-bottom pt-2 pb-3">
             <div class="bh-item-title">Don't show my age</div>
             <div>
               <el-switch
@@ -22,7 +22,7 @@
             </div>
           </div>
 
-          <div class="flex justify-between w-full pt-2 pb-2">
+          <div class="flex justify-between w-full pt-3 pb-2">
             <div class="bh-item-title">Don't show my distance</div>
             <div>
               <el-switch

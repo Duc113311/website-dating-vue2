@@ -116,7 +116,7 @@ export default {
       if (findData) {
         document
           .getElementById("language_" + findData.code)
-          .classList.remove("bg-active");
+          .classList.remove("border-active");
         this.listChecked = this.listChecked.filter(
           (x) => x.code !== findData.code
         );
@@ -127,7 +127,9 @@ export default {
         }
       } else {
         if (this.listChecked.length < 5) {
-          document.getElementById("language_" + val).classList.add("bg-active");
+          document
+            .getElementById("language_" + val)
+            .classList.add("border-active");
           const nameInterest = document
             .getElementById("language_" + val)
             .innerHTML.toString();
@@ -144,18 +146,61 @@ export default {
 
     onChangeFilterText() {
       let dataList = [];
-      if (
-        this.listLanguages.length <=
-        this.$store.state.commonModule.listLifeStyleSingle.languages.length
-      ) {
-        dataList = this.listLanguagesOld;
-        let result = dataList.filter(
-          (city) =>
-            city.value.toLowerCase().indexOf(this.valueSearch.toLowerCase()) !==
-            -1
-        );
-        this.listLanguages = result;
-        console.log(result);
+      if (this.valueSearch !== "") {
+        if (
+          this.listLanguages.length <=
+          this.$store.state.commonModule.listLifeStyleSingle.languages.length
+        ) {
+          dataList = this.listLanguagesOld;
+          let result = dataList.filter(
+            (city) =>
+              city.value
+                .toLowerCase()
+                .indexOf(this.valueSearch.toLowerCase()) !== -1
+          );
+          this.listLanguages = result;
+
+          this.$nextTick(() => {
+            for (let index = 0; index < this.listLanguages.length; index++) {
+              const element = this.listLanguages[index];
+              const findIndex = this.listChecked.find(
+                (x) => x.code === element.code
+              );
+
+              if (findIndex) {
+                document
+                  .getElementById("language_" + element.code)
+                  .classList.add("border-active");
+              } else {
+                document
+                  .getElementById("language_" + element.code)
+                  .classList.remove("border-active");
+              }
+            }
+          });
+          console.log(result);
+        }
+      } else {
+        (this.listLanguages =
+          this.$store.state.commonModule.listLifeStyleSingle.languages),
+          this.$nextTick(() => {
+            for (let index = 0; index < this.listLanguages.length; index++) {
+              const element = this.listLanguages[index];
+              const findIndex = this.listChecked.find(
+                (x) => x.code === element.code
+              );
+
+              if (findIndex) {
+                document
+                  .getElementById("language_" + element.code)
+                  .classList.add("border-active");
+              } else {
+                document
+                  .getElementById("language_" + element.code)
+                  .classList.remove("border-active");
+              }
+            }
+          });
       }
     },
   },
@@ -172,7 +217,7 @@ export default {
 
         document
           .getElementById("language_" + element)
-          .classList.add("bg-active");
+          .classList.add("border-active");
         const nameInterest = document
           .getElementById("language_" + element)
           .innerHTML.toString();

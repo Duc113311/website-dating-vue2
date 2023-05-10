@@ -53,6 +53,7 @@
                 >
                   {{ scope.data.fullname }},
                 </div>
+                &nbsp;
                 <div class="mr-3">{{ bindingAge(scope.data?.dob) }}</div>
                 <div
                   class="flex justify-center items-center cursor-pointer"

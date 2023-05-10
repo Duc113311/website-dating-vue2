@@ -8,7 +8,7 @@
 
       <div class="w-full bg-life bg-default cursor-pointer">
         <div
-          class="w-full item-life bd-input"
+          class="w-full item-life border-bottom"
           @click="onShowFormLife('scroll_1')"
         >
           <div class="w-6/12 bh-item-title flex items-center">
@@ -32,7 +32,7 @@
           </div>
         </div>
         <div
-          class="w-full item-life bd-input"
+          class="w-full item-life border-bottom"
           @click="onShowFormLife('scroll_2')"
         >
           <div class="w-6/12 bh-item-title flex items-center">
@@ -56,7 +56,7 @@
           </div>
         </div>
         <div
-          class="w-full item-life bd-input"
+          class="w-full item-life border-bottom"
           @click="onShowFormLife('scroll_3')"
         >
           <div class="w-6/12 bh-item-title flex items-center">
@@ -80,7 +80,7 @@
           </div>
         </div>
         <div
-          class="w-full item-life bd-input"
+          class="w-full item-life border-bottom"
           @click="onShowFormLife('scroll_4')"
         >
           <div class="w-6/12 bh-item-title flex items-center">
@@ -104,7 +104,7 @@
           </div>
         </div>
         <div
-          class="w-full item-life bd-input"
+          class="w-full item-life border-bottom"
           @click="onShowFormLife('scroll_5')"
         >
           <div class="w-6/12 bh-item-title flex items-center">
@@ -128,7 +128,7 @@
           </div>
         </div>
         <div
-          class="w-full item-life bd-input"
+          class="w-full item-life border-bottom"
           @click="onShowFormLife('scroll_6')"
         >
           <div class="w-6/12 bh-item-title flex items-center">

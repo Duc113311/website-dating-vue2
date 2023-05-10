@@ -51,13 +51,30 @@
               {{ this.userParam.fullname
               }}<span>, {{ bindingAge(this.userParam.dob) }}</span>
             </div>
-            <img src="@/assets/icon/ic_infor.svg" width="30" alt="" />
+            <img
+              v-if="colorBt"
+              src="@/assets/icon/ic_infor_dark.svg"
+              width="30"
+              alt=""
+            />
+            <img
+              v-else
+              src="@/assets/icon/ic_infor_light.svg"
+              width="30"
+              alt=""
+            />
           </div>
           <div class="describe-user bh-margin-description" v-if="aboutValue">
             {{ userParam.profiles.about }}
           </div>
           <div class="flex bh-margin-description">
-            <img src="@/assets/icon/ic_location.svg" alt="" />
+            <img
+              v-if="colorBt"
+              src="@/assets/icon/ic_location_dark.svg"
+              alt=""
+            />
+            <img v-else src="@/assets/icon/ic_location_dark.svg" alt="" />
+
             <span>{{ bindingDistance(this.userParam?.location) }} km away</span>
           </div>
         </div>
@@ -128,9 +145,8 @@
           class="items-center padding-text-user bg-border-bottom bh-margin-title"
         >
           <div class="flex justify-center items-center cursor-pointer">
-            <i class="fa-regular fa-share-from-square"></i>
             <div class="title-click-ic ml-2">
-              SHARE {{ this.userParam.fullname }} PROFILE
+              Share {{ this.userParam.fullname }} profile
             </div>
           </div>
           <div class="flex justify-center title-description describe-text">
@@ -142,9 +158,23 @@
           @click="onClickReport"
           class="flex h-12 w-full justify-center bg-border-bottom items-center cursor-pointer"
         >
-          <img src="@/assets/icon/ic_report.svg" width="25" alt="" srcset="" />
+          <img
+            v-if="colorBt"
+            src="@/assets/icon/ic_report_dark.svg"
+            width="25"
+            alt=""
+            srcset=""
+          />
+
+          <img
+            v-else
+            src="@/assets/icon/ic_report_light.svg"
+            width="25"
+            alt=""
+            srcset=""
+          />
           <div class="title-click-ic ml-2">
-            REPORT {{ this.userParam.fullname }}
+            Report {{ this.userParam.fullname }}
           </div>
         </div>
         <div class="h-2/4"></div>
@@ -164,7 +194,7 @@
       <div>
         <img
           src="@/assets/icon/bt_super_like.svg"
-          class="w-20"
+          class="w-super"
           @click="onActionDecide('super')"
         />
       </div>
@@ -236,6 +266,9 @@ export default {
   },
 
   computed: {
+    colorBt() {
+      return this.$store.state.commonModule.statusLayout;
+    },
     aboutValue() {
       const lengthAbout =
         this.$store.state.userModule.userProfileDetail.profiles.about;
@@ -446,5 +479,9 @@ export default {
   border-radius: 10px;
   border: none;
   overflow: hidden;
+}
+
+.w-super {
+  width: 4.5rem;
 }
 </style>

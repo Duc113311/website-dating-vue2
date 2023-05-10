@@ -63,7 +63,18 @@
               {{ bindingInforUser.fullname
               }}<span>, {{ bindingAge(bindingInforUser.dob) }}</span>
             </div>
-            <img src="@/assets/icon/ic_infor.svg" width="30" alt="" />
+            <img
+              v-if="colorBt"
+              src="@/assets/icon/ic_infor_dark.svg"
+              width="30"
+              alt=""
+            />
+            <img
+              v-else
+              src="@/assets/icon/ic_infor_light.svg"
+              width="30"
+              alt=""
+            />
           </div>
 
           <div class="flex w-full items-center">
@@ -191,6 +202,9 @@ export default {
   },
 
   computed: {
+    colorBt() {
+      return this.$store.state.commonModule.statusLayout;
+    },
     bindingInforUser() {
       debugger;
       return this.$store.state.userModule.user_profile;

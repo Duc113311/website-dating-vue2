@@ -24,8 +24,9 @@
   --color-placeholder-input: #747f9a;
   --color-from: #495063;
   --color-dialog: #434a5d;
-  --color-border-bottom: #eae9ee;
+  --color-border-bottom: #383d50;
   --color-focus-code: #e7e9f5;
+  --color-top-bottom: #616a7f;
 }
 
 .theme-dark {
@@ -125,11 +126,18 @@
 
   .border-image {
     border-radius: 10px;
-    border: 1px solid var(--color-border-button-select);
+    border: 1px solid var(--color-border-bottom);
   }
 
   .digit-box:focus {
     background-color: var(--color-focus-code);
     outline: none;
+  }
+
+  .border-top {
+    border-top: 2px solid var(--color-top-bottom);
+  }
+  .border-bottom {
+    border-bottom: 1px solid var(--color-top-bottom);
   }
 }
