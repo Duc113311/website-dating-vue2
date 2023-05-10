@@ -13,7 +13,7 @@
           v-for="fileList in fileListValue"
           :key="fileList.id"
         >
-          <div class="dash-bor bg-default relative">
+          <div class="dash-bor border-image bg-default relative">
             <div class="wrapper">
               <div class="file-upload">
                 <input type="file" @change="toggleUpload($event, fileList)" />
@@ -414,8 +414,6 @@ input[type="file"] {
 
 .dash-bor {
   padding: 5px;
-  border-radius: 10px;
-  border: 1px solid #eef1f8;
 }
 
 .el-loading-spinner .circular {

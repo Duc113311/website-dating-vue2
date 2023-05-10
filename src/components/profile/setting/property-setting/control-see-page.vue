@@ -12,7 +12,7 @@
         <div class="w-full flex items-center form-set-list bg-default">
           <div class="w-full">
             <div
-              class="flex justify-between w-full form-set-item items-center bd-input"
+              class="flex justify-between w-full form-set-item items-center border-bottom"
             >
               <div class="w-full">
                 <div class="bh-item-title">Balance recommendations</div>
@@ -52,7 +52,7 @@
         <div class="w-full flex items-center form-set-list bg-default">
           <div class="w-full">
             <div
-              class="flex justify-between w-full bd-input form-set-item items-center"
+              class="flex justify-between w-full border-bottom form-set-item items-center"
             >
               <div class="w-full">
                 <div class="bh-item-title title-item">Standard</div>

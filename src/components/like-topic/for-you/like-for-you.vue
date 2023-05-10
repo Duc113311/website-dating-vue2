@@ -8,17 +8,17 @@
           v-for="(user, index) in listLikeYouActions"
           :key="index"
         >
-          <div class="image absolute bottom-0 w-full p-4 z-10 text-white">
+          <div class="image absolute bottom-0 w-full p-3 z-10 text-white">
             <div class="flex">
               <div class="name">{{ user.fullname }},&nbsp;</div>
               <span>{{ bindingAge(user.dob) }}</span>
             </div>
-            <div class="flex padding-describe">
+            <div class="flex padding-describe-like items-center">
               <span class="status">&#x1F7E2;</span>
               Recently active
             </div>
           </div>
-          <div class="bg-shadow w-full h-full"></div>
+          <!-- <div class="bg-shadow w-full h-full"></div> -->
           <div
             class="bg-background-shadow absolute bottom-0 w-full h-full"
           ></div>

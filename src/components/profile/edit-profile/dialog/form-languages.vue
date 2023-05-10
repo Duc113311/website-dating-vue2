@@ -101,6 +101,24 @@ export default {
       this.valueSearch = "";
       this.listLanguages =
         this.$store.state.commonModule.listLifeStyleSingle.languages;
+      this.$nextTick(() => {
+        for (let index = 0; index < this.listLanguages.length; index++) {
+          const element = this.listLanguages[index];
+          const findIndex = this.listChecked.find(
+            (x) => x.code === element.code
+          );
+
+          if (findIndex) {
+            document
+              .getElementById("language_" + element.code)
+              .classList.add("border-active");
+          } else {
+            document
+              .getElementById("language_" + element.code)
+              .classList.remove("border-active");
+          }
+        }
+      });
     },
     onChangeCancel() {
       this.$emit("onHideLanguages", false);

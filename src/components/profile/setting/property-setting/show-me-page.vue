@@ -7,7 +7,7 @@
       <div class="w-full flex items-center">
         <div class="w-full">
           <div
-            class="flex justify-between w-full bd-input items-center"
+            class="flex justify-between w-full border-bottom items-center"
             @click="onChangeGenderShowMe(`men`)"
           >
             <div class="bh-item-title form-set-item">Men</div>
@@ -17,7 +17,7 @@
           </div>
 
           <div
-            class="flex justify-between w-full bd-input items-center"
+            class="flex justify-between w-full border-bottom items-center"
             @click="onChangeGenderShowMe(`women`)"
           >
             <div class="bh-item-title form-set-item">Women</div>

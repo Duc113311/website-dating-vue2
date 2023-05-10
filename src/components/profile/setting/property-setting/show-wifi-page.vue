@@ -7,7 +7,7 @@
       <div class="w-full flex items-center bh-item-title">
         <div class="w-full">
           <div
-            class="flex justify-between w-full form-set-item bd-input"
+            class="flex justify-between w-full form-set-item border-bottom"
             @click="onChangeAutoPlayVideo('no')"
           >
             <div class="bh-item-title">Only Wi-fi Only</div>
@@ -17,7 +17,7 @@
           </div>
 
           <div
-            class="flex justify-between w-full form-set-item bd-input"
+            class="flex justify-between w-full form-set-item border-bottom"
             @click="onChangeAutoPlayVideo('wifi')"
           >
             <div class="bh-item-title">On Wi-fi and mobile data</div>

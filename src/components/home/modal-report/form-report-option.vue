@@ -1,7 +1,9 @@
 <template>
   <div class="absolute w-full h-full top-0 left-0">
     <div class="v-modal-bg" @click="onHideModal"></div>
-    <div class="w-full absolute bottom-0 bg-white left-0 form-report">
+    <div
+      class="w-full absolute bottom-0 bg-color-default left-0 form-report title-default"
+    >
       <div class="w-header-checked flex items-center">
         <div class="pl-5 font-describe">Vui lòng chọn một lý do</div>
       </div>

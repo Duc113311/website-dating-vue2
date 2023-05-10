@@ -6,7 +6,20 @@
         slot="reference"
         @click="onShowFilterLike()"
       >
-        <div class="ic_filter flex justify-center items-center"></div>
+        <div class="flex justify-center items-center">
+          <img
+            v-if="colorBt"
+            src="@/assets/icon/ic_filter_dark.svg"
+            alt=""
+            srcset=""
+          />
+          <img
+            v-else
+            src="@/assets/icon/ic_filter_light.svg"
+            alt=""
+            srcset=""
+          />
+        </div>
       </div>
 
       <div class="flex items-center w-80">
@@ -30,20 +43,24 @@
       </div>
       <div class="grid grid-cols-2 gap swipe-container">
         <div
-          v-hammer:swipeleft="onSwipeLeft"
+          class="item-user relative overflow-hidden"
           v-for="(user, index) in listLikeForYouData"
           :key="index"
-          class="item swipe-card"
-          :style="{
-            'background-image': 'url(' + user.profiles.avatars[0] + ')',
-          }"
         >
-          <div class="color-text-default">
-            <p style="margin-bottom: 10px">
-              {{ user.fullname }}, {{ bindingAge(user.dob) }}
-            </p>
-            <p><span class="status">&#x1F7E2;</span>Recently Active</p>
+          <div class="image absolute bottom-0 w-full p-3 z-10 text-white">
+            <div class="flex">
+              <div class="name">{{ user.fullname }},&nbsp;</div>
+              <span>{{ bindingAge(user.dob) }}</span>
+            </div>
+            <div class="flex padding-describe-like items-center">
+              <span class="status">&#x1F7E2;</span>
+              Recently active
+            </div>
           </div>
+          <!-- <div class="bg-shadow w-full h-full"></div> -->
+          <div
+            class="bg-background-shadow absolute bottom-0 w-full h-full"
+          ></div>
         </div>
       </div>
 
@@ -101,6 +118,8 @@ export default {
           name: "Profile has Bio",
         },
       ],
+      listInterest:
+        this.$store.state.commonModule.listLifeStyleSingle.interests,
     };
   },
 
@@ -108,6 +127,25 @@ export default {
     listLikeForYouData() {
       debugger;
       return this.$store.state.likeTopicModule.listLikeForYous;
+    },
+
+    colorBt() {
+      return this.$store.state.commonModule.statusLayout;
+    },
+
+    listInterestValue() {
+      let result = [];
+      debugger;
+      const interestsData = this.$store.state.commonModule.listInterestFilter;
+
+      for (let index = 0; index < interestsData.length; index++) {
+        const element = interestsData[index];
+        const findData = this.listInterest.find((x) => x.code === element);
+        if (findData) {
+          result.push(findData.value);
+        }
+      }
+      return result;
     },
   },
 
@@ -162,7 +200,13 @@ export default {
     },
   },
 
-  mounted() {},
+  mounted() {
+    const scrollContainer = this.$refs.scrollContainer;
+    scrollContainer.addEventListener("wheel", (e) => {
+      e.preventDefault();
+      scrollContainer.scrollLeft += e.deltaY;
+    });
+  },
 };
 </script>
 

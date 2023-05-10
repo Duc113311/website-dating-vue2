@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full h-full relative bg-color-detail bg-color-default title-default"
+    class="w-full h-full relative bg-color-detail pt-2 bg-color-default title-default"
   >
     <div class="detail-page w-full h-full relative">
       <div class="bg-image-detail h-2/4 pl-2 pr-2">
@@ -73,7 +73,7 @@
               src="@/assets/icon/ic_location_dark.svg"
               alt=""
             />
-            <img v-else src="@/assets/icon/ic_location_dark.svg" alt="" />
+            <img v-else src="@/assets/icon/ic_location_light.svg" alt="" />
 
             <span>{{ bindingDistance(this.userParam?.location) }} km away</span>
           </div>

@@ -2,7 +2,7 @@
   <div class="w-full h-full relative p-5 title-default">
     <div class="w-full h-full">
       <!-- Header -->
-      <div class="w-full header-detail flex justify-center items-center">
+      <div class="w-full header-detail-sexual flex justify-center items-center">
         <div class="w-full flex justify-center items-center">
           <div class="w-1/4">
             <BhBack @onBackComponent="onBackSettingPhone()"></BhBack>
@@ -210,5 +210,8 @@ export default {
 
 .showed {
   display: block;
+}
+.header-detail-sexual {
+  height: 8%;
 }
 </style>
