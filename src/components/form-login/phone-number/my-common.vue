@@ -67,6 +67,7 @@ export default {
       codeOTP: "",
       isHide: false,
       sentCodeId: "", // Mã sendCodeId firebase gửi về
+      txtPhoneNumber: "",
     };
   },
 
@@ -95,6 +96,7 @@ export default {
     onBackComponent(value) {
       if (value) {
         this.screenNumber = 0;
+        this.txtPhoneNumber = "";
       }
     },
 

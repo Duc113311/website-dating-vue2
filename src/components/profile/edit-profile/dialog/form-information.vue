@@ -55,7 +55,7 @@
               <div class="w-full flex items-center">
                 <div
                   class="name-option-dialog flex items-center"
-                  ref="scroll_2"
+                  ref="scroll_3"
                 >
                   <img
                     class="mr-2"
@@ -81,7 +81,7 @@
               <div class="w-full flex items-center">
                 <div
                   class="name-option-dialog flex items-center"
-                  ref="scroll_3"
+                  ref="scroll_2"
                 >
                   <img
                     class="mr-2"

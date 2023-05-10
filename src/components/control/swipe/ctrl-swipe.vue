@@ -13,7 +13,7 @@
           }"
           @mousedown="onMouseDow($event, index)"
           @mouseup="onMouseUp"
-          v-for="(user, index) in listLikeForYouData"
+          v-for="(user, index) in listUserData"
           :key="index"
           :id="`image` + index"
           class="card"
@@ -31,12 +31,12 @@
             <template>
               <div
                 class="item-user relative overflow-hidden"
-                :style="`background-image:url(${user.url})`"
+                :style="`background-image:url(${user.profiles.avatars[0]})`"
               >
                 <div class="image absolute bottom-0 w-full p-3 z-10 text-white">
                   <div class="flex">
-                    <div class="name">{{ user.userName }}&nbsp;</div>
-                    <span>{{ user.age }}</span>
+                    <div class="name">{{ user.fullname }}&nbsp;</div>
+                    <span>{{ bindingAge(user.dob) }}</span>
                   </div>
                   <div class="flex padding-describe-like items-center">
                     <span class="status">&#x1F7E2;</span>
@@ -79,12 +79,11 @@
 /*interact-x-threshold: giá trị khi kích hoạt */
 /*interact-block-drag-down: ngăn chặn sự kiện kéo xuống*/
 import { Vue2InteractDraggable } from "vue2-interact";
+import functionValidate from "../../../middleware/validate.js";
 
 export default {
-  name: "control-page",
-
+  name: "ctrl-swipe-page",
   components: { Vue2InteractDraggable },
-
   data() {
     return {
       opacity: 0,
@@ -95,50 +94,6 @@ export default {
       isHoverLike: false,
       isHoverNope: false,
       isHoverSuper: false,
-      listLikeForYouData: [
-        {
-          _id: 1,
-          userName: "Duc",
-          age: 23,
-          url: require("@/assets/image-dating/7-15831080159232071706060.webp"),
-        },
-        {
-          _id: 2,
-          userName: "Quang",
-          age: 23,
-          url: require("@/assets/image-dating/7-15831080159232071706060.webp"),
-        },
-        {
-          _id: 3,
-          userName: "Hieu Ha",
-          age: 23,
-          url: require("@/assets/image-dating/7-15831080159232071706060.webp"),
-        },
-        {
-          _id: 4,
-          userName: "Huy Trang",
-          age: 23,
-          url: require("@/assets/image-dating/7-15831080159232071706060.webp"),
-        },
-        {
-          _id: 5,
-          userName: "Huu Quan",
-          age: 23,
-          url: require("@/assets/image-dating/7-15831080159232071706060.webp"),
-        },
-        {
-          _id: 6,
-          userName: "Tung Anh",
-          age: 23,
-          url: require("@/assets/image-dating/7-15831080159232071706060.webp"),
-        },
-        {
-          _id: 7,
-          userName: "Dang Trung",
-          age: 23,
-          url: require("@/assets/image-dating/7-15831080159232071706060.webp"),
-        },
-      ],
     };
   },
 
@@ -150,6 +105,10 @@ export default {
   },
 
   methods: {
+    bindingAge(val) {
+      const dataAge = functionValidate.calculatAge(val);
+      return dataAge;
+    },
     emitAndNext(index) {
       setTimeout(() => {
         this.$refs["index"][index].style.display = "none";

@@ -4,7 +4,7 @@
       <Header></Header>
       <div class="body-page-home-new w-full">
         <!-- Home -->
-        <div class="w-full h-full p-2" v-if="!isShowDetail">
+        <div class="w-full h-full pl-1 pr-1 pt-3 pb-3" v-if="!isShowDetail">
           <div class="body-home w-full relative">
             <!-- Body home -->
             <ViewSwipe
@@ -219,7 +219,7 @@ export default {
 }
 
 .body-home {
-  height: calc(100% - 14%);
+  height: calc(100% - 11%);
 }
 
 .vue-tinder {

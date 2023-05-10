@@ -1,8 +1,8 @@
 <template>
   <div class="w-full">
     <div class="w-full">
-      <div class="w-full flex justify-between bh-title">
-        <div class="w-full bh-item-title title-size">App Setiings</div>
+      <div class="w-full flex justify-between color-text-default">
+        <div class="w-full bh-item-title title-size">App Settings</div>
       </div>
       <div class="w-full form-set-list bg-default">
         <div class="w-full flex justify-between form-set-item">

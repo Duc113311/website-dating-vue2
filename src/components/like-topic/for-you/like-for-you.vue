@@ -1,37 +1,16 @@
 <template>
   <div class="w-full h-full relative">
     <div class="w-full text-title-like">Recommendations</div>
-    <div class="w-full p-5 h-likes overflow-auto height-scroll">
-      <div class="items-center gap grid grid-cols-2">
-        <div
-          class="item-user relative overflow-hidden"
-          v-for="(user, index) in listLikeYouActions"
-          :key="index"
-        >
-          <div class="image absolute bottom-0 w-full p-3 z-10 text-white">
-            <div class="flex">
-              <div class="name">{{ user.fullname }},&nbsp;</div>
-              <span>{{ bindingAge(user.dob) }}</span>
-            </div>
-            <div class="flex padding-describe-like items-center">
-              <span class="status">&#x1F7E2;</span>
-              Recently active
-            </div>
-          </div>
-          <!-- <div class="bg-shadow w-full h-full"></div> -->
-          <div
-            class="bg-background-shadow absolute bottom-0 w-full h-full"
-          ></div>
-        </div>
-      </div>
-    </div>
+    <ctrlSwipe :listUser="listLikeYouActions"></ctrlSwipe>
   </div>
 </template>
 
 <script>
+import ctrlSwipe from "@/components/control/swipe/ctrl-swipe.vue";
 import functionValidate from "../../../middleware/validate.js";
 
 export default {
+  components: { ctrlSwipe },
   name: "like-for-you",
 
   data() {

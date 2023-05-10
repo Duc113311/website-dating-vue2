@@ -4,7 +4,7 @@
       <Header></Header>
 
       <div
-        class="w-full body-page-default relative height-scroll p-4"
+        class="w-full body-page-default relative height-scroll p-3"
         v-loading="loading"
       >
         <category-page></category-page>

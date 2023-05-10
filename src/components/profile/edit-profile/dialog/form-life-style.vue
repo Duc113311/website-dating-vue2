@@ -37,7 +37,7 @@
                   Do you have pets
                 </div>
               </div>
-              <div class="bor-bottom">
+              <div class="border-bottom">
                 <button
                   v-for="(item, index) in listPetParams"
                   :key="index"
@@ -65,7 +65,7 @@
                   How often do you drink alcohol?
                 </div>
               </div>
-              <div class="bor-bottom">
+              <div class="border-bottom">
                 <button
                   v-for="(item, index) in listDrinkingParams"
                   :key="index"
@@ -91,7 +91,7 @@
                   />Are you a smoker?
                 </div>
               </div>
-              <div class="bor-bottombor-bottom">
+              <div class="border-bottom">
                 <button
                   v-for="(item, index) in listSmokingParams"
                   :key="index"
@@ -117,7 +117,7 @@
                   />Do you exercise?
                 </div>
               </div>
-              <div class="bor-bottom">
+              <div class="border-bottom">
                 <button
                   v-for="(item, index) in listWorkoutParam"
                   :key="index"
@@ -143,7 +143,7 @@
                   />Do you follow any diet?
                 </div>
               </div>
-              <div class="bor-bottom">
+              <div class="border-bottom">
                 <button
                   v-for="(item, index) in listDietaryPreferenceParams"
                   :key="index"
@@ -170,7 +170,7 @@
                   How active you are on social media?
                 </div>
               </div>
-              <div class="bor-bottom">
+              <div class="border-bottom">
                 <button
                   v-for="(item, index) in listSocialMediaParams"
                   :key="index"

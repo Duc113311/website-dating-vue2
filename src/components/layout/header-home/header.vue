@@ -23,6 +23,6 @@ export default {
 
 <style lang="css">
 .header-page {
-  height: 12%;
+  height: 10%;
 }
 </style>

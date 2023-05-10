@@ -75,7 +75,7 @@ export default {
           // Số điện thoại của bạn không đúng định dạng!
         } else {
           this.txtCodeError = "";
-
+          debugger;
           this.$emit("validateRequirePhone", { statusActive: true });
         }
       } else {
@@ -110,6 +110,7 @@ export default {
   },
 
   mounted() {
+    debugger;
     var input = document.querySelector("#phone");
     this.valCodeQR = intlTelInput(input, {
       initialCountry: "auto",
