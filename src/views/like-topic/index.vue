@@ -56,10 +56,6 @@ export default {
         this.$router.push({ path: "/for-you" });
       }
     },
-
-    paramLikeForYous() {
-      return this.$store.state.likeTopicModule.listLikeForYous.length;
-    },
   },
 
   async created() {

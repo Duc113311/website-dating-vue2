@@ -1,29 +1,31 @@
 <template>
   <div class="w-full h-full">
-    <div class="w-full option-like flex h-20 items-center p-5">
-      <div
-        class="oftion-interests h-w-option border-default p-2 mr-3"
-        slot="reference"
-        @click="onShowFilterLike()"
-      >
-        <div class="flex justify-center items-center">
-          <img
-            v-if="colorBt"
-            src="@/assets/icon/ic_filter_dark.svg"
-            alt=""
-            srcset=""
-          />
-          <img
-            v-else
-            src="@/assets/icon/ic_filter_light.svg"
-            alt=""
-            srcset=""
-          />
+    <div class="w-full option-like flex h-20 items-center pl-5 pr-5">
+      <div class="flex justify-center items-center">
+        <div
+          class="oftion-interests h-w-option border-default p-2 mr-3"
+          slot="reference"
+          @click="onShowFilterLike()"
+        >
+          <div class="flex justify-center items-center">
+            <img
+              v-if="colorBt"
+              src="@/assets/icon/ic_filter_dark.svg"
+              alt=""
+              srcset=""
+            />
+            <img
+              v-else
+              src="@/assets/icon/ic_filter_light.svg"
+              alt=""
+              srcset=""
+            />
+          </div>
         </div>
       </div>
 
-      <div class="flex items-center w-80">
-        <span v-for="(item, index) in listIntersts" :key="index">
+      <div class="flex items-center scroll-container" ref="scrollContainer">
+        <span v-for="(item, index) in listInterestValue" :key="index">
           <button
             :id="index"
             class="border-default oftion-interests mr-3 p-2"
@@ -42,7 +44,10 @@
         <span>Upgrade to Gold to see people who are interested in you</span>
       </div>
 
-      <CtrlSwipe :listUser="listLikeForYouData"></CtrlSwipe>
+      <CtrlSwipe
+        @onInputFile="onInputFile"
+        :listUser="listLikeForYouAction"
+      ></CtrlSwipe>
 
       <!-- <div class="absolute w-full bottom-0 left-0 z-10">
         <BhSeeLike></BhSeeLike>
@@ -56,18 +61,19 @@
 </template>
 
 <script>
+import CtrlSwipe from "../../control/swipe/ctrl-swipe";
 import { VueHammer } from "vue2-hammer";
 
 import FilterOption from "../filter/filter-option";
 // import BhActivateLike from "../../bh-element-ui/button/bh-activateLike";
 // import BhSeeLike from "../../bh-element-ui/button/bh-seeLike";
 import functionValidate from "../../../middleware/validate.js";
-import CtrlSwipe from "@/components/control/swipe/ctrl-swipe.vue";
+import { mapMutations } from "vuex";
 
 export default {
   components: {
-    FilterOption,
     CtrlSwipe,
+    FilterOption,
   },
   name: "people-likes",
   directives: {
@@ -75,7 +81,6 @@ export default {
   },
   data() {
     return {
-      listIntersts: ["Reading", "Car", "Dog", "Reading"],
       visible: false,
       valueMaximum: 50,
       valueAge: [25, 45],
@@ -104,7 +109,7 @@ export default {
   },
 
   computed: {
-    listLikeForYouData() {
+    listLikeForYouAction() {
       debugger;
       return this.$store.state.likeTopicModule.listLikeForYous;
     },
@@ -115,7 +120,6 @@ export default {
 
     listInterestValue() {
       let result = [];
-      debugger;
       const interestsData = this.$store.state.commonModule.listInterestFilter;
 
       for (let index = 0; index < interestsData.length; index++) {
@@ -130,6 +134,17 @@ export default {
   },
 
   methods: {
+    ...mapMutations(["setPutListUserAction"]),
+    onInputFile(val) {
+      const listOld = this.$store.state.likeTopicModule.listLikeForYous;
+      const lengthListOld = listOld.length;
+      const objectNew = {
+        lengthListOld: lengthListOld,
+        index: val,
+      };
+      this.setPutListUserAction(objectNew);
+    },
+
     bindingAge(val) {
       const dataAge = functionValidate.calculatAge(val);
       return dataAge;
@@ -180,13 +195,7 @@ export default {
     },
   },
 
-  mounted() {
-    const scrollContainer = this.$refs.scrollContainer;
-    scrollContainer.addEventListener("wheel", (e) => {
-      e.preventDefault();
-      scrollContainer.scrollLeft += e.deltaY;
-    });
-  },
+  mounted() {},
 };
 </script>
 
@@ -338,5 +347,22 @@ export default {
 }
 .gap {
   gap: 1.55rem;
+}
+
+.scroll-container {
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+}
+
+.scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
 }
 </style>

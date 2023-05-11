@@ -1,20 +1,25 @@
 <template>
   <div class="w-full h-full relative">
     <div class="w-full text-title-like">Recommendations</div>
-    <ctrlSwipe :listUser="listLikeYouActions"></ctrlSwipe>
+    <div class="w-full pl-5 pr-5 pt-5 h-likes overflow-auto height-scroll">
+      <ctrlSwipe :listUser="listLikeYouActions"></ctrlSwipe>
+    </div>
   </div>
 </template>
 
 <script>
 import ctrlSwipe from "@/components/control/swipe/ctrl-swipe.vue";
 import functionValidate from "../../../middleware/validate.js";
+import { mapMutations } from "vuex";
 
 export default {
   components: { ctrlSwipe },
   name: "like-for-you",
 
   data() {
-    return {};
+    return {
+      listLikes: this.$store.state.likeTopicModule.listLikeForYous,
+    };
   },
 
   computed: {
@@ -25,11 +30,19 @@ export default {
   },
 
   methods: {
+    ...mapMutations(["setPutListUser"]),
     bindingAge(val) {
       const dataAge = functionValidate.calculatAge(val);
       return dataAge;
     },
+    onInputFile(val) {
+      console.log("vao", val);
+      debugger;
+      this.setPutListUser(this.listLikes[0]);
+    },
   },
+
+  mounted() {},
 };
 </script>
 

@@ -139,6 +139,7 @@ export default {
       return this.$store.state.userModule.user_profile.fullname;
     },
     avatarUser() {
+      debugger;
       return this.$store.state.userModule.user_profile.profiles.avatars[0];
     },
 

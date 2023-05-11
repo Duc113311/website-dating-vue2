@@ -19,6 +19,23 @@ const mutations = {
     state.listLikeYouAction = data.list_data;
   },
 
+  setPutListUser(state, data) {
+    debugger;
+    state.listLikeYouAction.push(data);
+  },
+
+  setPutListUserAction(state, data) {
+    debugger;
+    const lengthLike = data.lengthListOld;
+    const indexData = data.index;
+
+    state.listLikeForYous.splice(indexData, 1);
+    console.log(state.listLikeForYous.length);
+    const dataNew = state.listLikeYouAction[lengthLike + 2];
+
+    state.listLikeForYous.push(dataNew);
+  },
+
   setListUserLikeFilter(state, data) {
     debugger;
     let userFilter = [];

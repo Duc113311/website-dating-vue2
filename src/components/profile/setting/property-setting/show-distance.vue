@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <div class="w-full">
-      <div class="w-full flex justify-between color-text-default">
+      <div class="w-full flex justify-between title-default">
         <div class="w-full bh-item-title title-size">App Settings</div>
       </div>
       <div class="w-full form-set-list bg-default">

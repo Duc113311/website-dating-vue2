@@ -92,6 +92,8 @@
 
 <script>
 import BhArge from "../bh-element-ui/button/bh-arge";
+import { auth, signOut } from "../../configs/firebase";
+
 export default {
   components: {
     BhArge,
@@ -117,11 +119,18 @@ export default {
   },
 
   methods: {
-    onShowDialogQuit() {
-      this.$emit("onCloseWelcome", true);
-      this.$router.push({
-        path: "create-user",
-      });
+    async onShowDialogQuit() {
+      await signOut(auth)
+        .then(() => {
+          debugger;
+          // Sign-out successful.
+          localStorage.removeItem("oAuth2Id");
+          localStorage.removeItem("tokenId");
+        })
+        .catch((error) => {
+          // An error happened.
+        });
+      this.$emit("onCloseWelcome", false);
     },
   },
 };

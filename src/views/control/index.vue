@@ -1,73 +1,69 @@
 <template>
-  <div class="w-full h-full">
-    <div class="p-5 w-full h-full height-scroll overflow-scroll">
-      <div class="grid grid-cols-2 gap swipe-container">
-        <div
-          ref="index"
-          :class="[selectedIdx === index ? 'zIndex' : '']"
-          :style="{
-            transform:
-              'rotate(' +
-              (selectedIdx === index ? rotation : rotationDefault) +
-              'deg)',
-          }"
-          @mousedown="onMouseDow($event, index)"
-          @mouseup="onMouseUp"
-          v-for="(user, index) in listLikeForYouData"
-          :key="index"
-          :id="`image` + index"
-          class="card"
-        >
-          <Vue2InteractDraggable
-            :interact-out-of-sight-x-coordinate="700"
-            :interact-x-threshold="20"
-            :interact-y-threshold="50"
-            :invert="invertImage"
-            :interact-block-drag-down="true"
-            @draggedRight="emitAndNext(index)"
-            @draggedLeft="emitAndNext(index)"
-            @draggedUp="emitAndNext(index)"
+  <div class="grid grid-cols-2 gap swipe-container">
+    <div
+      ref="index"
+      :class="[selectedIdx === index ? 'zIndex' : '']"
+      :style="{
+        transform:
+          'rotate(' +
+          (selectedIdx === index ? rotation : rotationDefault) +
+          'deg)',
+      }"
+      @mousedown="onMouseDow($event, index)"
+      @mouseup="onMouseUp"
+      v-for="(user, index) in listLikeForYouData"
+      :key="index"
+      :id="`image` + index"
+      class="card"
+    >
+      <Vue2InteractDraggable
+        :interact-out-of-sight-x-coordinate="700"
+        :interact-x-threshold="20"
+        :interact-y-threshold="50"
+        :invert="invertImage"
+        :interact-block-drag-down="true"
+        @draggedRight="emitAndNext(index)"
+        @draggedLeft="emitAndNext(index)"
+        @draggedUp="emitAndNext(index)"
+      >
+        <template>
+          <div
+            class="item-user relative overflow-hidden"
+            :style="`background-image:url(${user.url})`"
           >
-            <template>
-              <div
-                class="item-user relative overflow-hidden"
-                :style="`background-image:url(${user.url})`"
-              >
-                <div class="image absolute bottom-0 w-full p-3 z-10 text-white">
-                  <div class="flex">
-                    <div class="name">{{ user.userName }}&nbsp;</div>
-                    <span>{{ user.age }}</span>
-                  </div>
-                  <div class="flex padding-describe-like items-center">
-                    <span class="status">&#x1F7E2;</span>
-                    Recently active
-                  </div>
-                </div>
-                <!-- <div class="bg-shadow w-full h-full"></div> -->
-                <div
-                  class="bg-background-shadow absolute bottom-0 w-full h-full"
-                ></div>
-
-                <div
-                  :style="{ opacity: opacity }"
-                  v-if="selectedIdx == index"
-                  class="w-full h-full relative"
-                >
-                  <div v-if="isHoverLike" class="like-pointer icon-tinder">
-                    LIKE
-                  </div>
-                  <div v-if="isHoverNope" class="nope-pointer icon-tinder">
-                    NOPE
-                  </div>
-                  <div v-if="isHoverSuper" class="super-pointers icon-tinder">
-                    SUPER
-                  </div>
-                </div>
+            <div class="image absolute bottom-0 w-full p-3 z-10 text-white">
+              <div class="flex">
+                <div class="name">{{ user.userName }}&nbsp;</div>
+                <span>{{ user.age }}</span>
               </div>
-            </template>
-          </Vue2InteractDraggable>
-        </div>
-      </div>
+              <div class="flex padding-describe-like items-center">
+                <span class="status">&#x1F7E2;</span>
+                Recently active
+              </div>
+            </div>
+            <!-- <div class="bg-shadow w-full h-full"></div> -->
+            <div
+              class="bg-background-shadow absolute bottom-0 w-full h-full"
+            ></div>
+
+            <div
+              :style="{ opacity: opacity }"
+              v-if="selectedIdx == index"
+              class="w-full h-full relative"
+            >
+              <div v-if="isHoverLike" class="like-pointer icon-tinder">
+                LIKE
+              </div>
+              <div v-if="isHoverNope" class="nope-pointer icon-tinder">
+                NOPE
+              </div>
+              <div v-if="isHoverSuper" class="super-pointers icon-tinder">
+                SUPER
+              </div>
+            </div>
+          </div>
+        </template>
+      </Vue2InteractDraggable>
     </div>
   </div>
 </template>

@@ -1,37 +1,35 @@
 <template>
   <div class="w-full h-full">
-    <div class="p-5 w-full h-full height-scroll overflow-scroll">
-      <div class="grid grid-cols-2 gap swipe-container">
-        <div
-          ref="index"
-          :class="[selectedIdx === index ? 'zIndex' : '']"
-          :style="{
+    <div class="w-full h-full height-scroll overflow-scroll">
+      <div class="grid grid-cols-2 gap animation-grid">
+        <!--  :style="{
             transform:
               'rotate(' +
               (selectedIdx === index ? rotation : rotationDefault) +
               'deg)',
-          }"
+          }" -->
+        <div
+          ref="index"
+          :class="[selectedIdx === index ? 'zIndex' : '']"
           @mousedown="onMouseDow($event, index)"
           @mouseup="onMouseUp"
           v-for="(user, index) in listUserData"
           :key="index"
-          :id="`image` + index"
-          class="card"
+          :id="`image` + user._id"
         >
           <Vue2InteractDraggable
-            :interact-out-of-sight-x-coordinate="700"
+            :interact-max-rotation="15"
             :interact-x-threshold="20"
             :interact-y-threshold="50"
-            :invert="invertImage"
             :interact-block-drag-down="true"
-            @draggedRight="emitAndNext(index)"
-            @draggedLeft="emitAndNext(index)"
-            @draggedUp="emitAndNext(index)"
+            @draggedRight="emitAndNext(user._id)"
+            @draggedLeft="emitAndNext(user._id)"
+            @draggedUp="emitAndNext(user._id)"
           >
             <template>
               <div
-                class="item-user relative overflow-hidden"
-                :style="`background-image:url(${user.profiles.avatars[0]})`"
+                class="item-user relative overflow-hidden border-image"
+                :style="`background-image:url(${user?.profiles?.avatars[0]})`"
               >
                 <div class="image absolute bottom-0 w-full p-3 z-10 text-white">
                   <div class="flex">
@@ -53,14 +51,17 @@
                   v-if="selectedIdx == index"
                   class="w-full h-full relative"
                 >
-                  <div v-if="isHoverLike" class="like-pointer icon-tinder">
+                  <div
+                    v-if="isHoverLike"
+                    class="like-pointer-topic icon-tinder"
+                  >
                     LIKE
                   </div>
-                  <div v-if="isHoverNope" class="nope-pointer icon-tinder">
+                  <div
+                    v-if="isHoverNope"
+                    class="nope-pointer-topic icon-tinder"
+                  >
                     NOPE
-                  </div>
-                  <div v-if="isHoverSuper" class="super-pointers icon-tinder">
-                    SUPER
                   </div>
                 </div>
               </div>
@@ -80,6 +81,7 @@
 /*interact-block-drag-down: ngăn chặn sự kiện kéo xuống*/
 import { Vue2InteractDraggable } from "vue2-interact";
 import functionValidate from "../../../middleware/validate.js";
+import { wrapGrid } from "animate-css-grid";
 
 export default {
   name: "ctrl-swipe-page",
@@ -93,13 +95,13 @@ export default {
       invertImage: false,
       isHoverLike: false,
       isHoverNope: false,
-      isHoverSuper: false,
     };
   },
 
   props: ["listUser"],
   computed: {
     listUserData() {
+      debugger;
       return this.listUser;
     },
   },
@@ -109,67 +111,70 @@ export default {
       const dataAge = functionValidate.calculatAge(val);
       return dataAge;
     },
-    emitAndNext(index) {
-      setTimeout(() => {
-        this.$refs["index"][index].style.display = "none";
-      }, 500);
-
+    emitAndNext(id) {
+      // this.$refs["index"][index].style.display = "none";
       this.onMouseUp();
     },
     onMouseDow($event, index) {
       console.log(index);
-      debugger;
 
       this.selectedIdx = index;
       this.truc_x = $event.clientX;
       this.truc_y = $event.clientY;
       document.addEventListener("mousemove", this.moveElement);
     },
-    onMouseUp() {
-      this.selectedIdx = -1;
+    async onMouseUp() {
+      debugger;
       document.removeEventListener("mousemove", this.moveElement);
       this.isHoverLike = false;
       this.isHoverNope = false;
-      this.isHoverSuper = false;
       this.rotation = 0;
+      await this.$emit("onInputFile", this.selectedIdx);
     },
 
     moveElement(event) {
+      console.log();
       if (event.clientX > this.truc_x + 25) {
         this.opacity = Math.min((event.clientX - this.truc_x - 25) / 50, 1);
-        console.log(event.clientX - this.truc_x - 25);
-        if (event.clientX - this.truc_x - 25 < 18) {
-          this.rotation = -(event.clientX - this.truc_x - 25);
-        }
+        // console.log(event.clientX - this.truc_x - 25);
+        // if (event.clientX - this.truc_x - 25 < 18) {
+        //   this.rotation = -(event.clientX - this.truc_x - 25);
+        // }
 
         this.isHoverLike = true;
         this.isHoverNope = false;
-        this.isHoverSuper = false;
         console.log("right");
       } else if (event.clientX < this.truc_x - 25) {
         this.opacity = Math.min((this.truc_x - event.clientX - 25) / 50, 1);
-        console.log(this.truc_x - event.clientX - 25);
-        if (this.truc_x - event.clientX - 25 < 18) {
-          this.rotation = this.truc_x - event.clientX - 25;
-        }
+        // console.log(this.truc_x - event.clientX - 25);
+        // if (this.truc_x - event.clientX - 25 < 18) {
+        //   this.rotation = this.truc_x - event.clientX - 25;
+        // }
+        console.log(event);
         this.isHoverLike = false;
         this.isHoverNope = true;
-        this.isHoverSuper = false;
         console.log("left");
       } else if (event.clientY < this.truc_y - 25) {
         this.opacity = Math.min((this.truc_y - event.clientY - 25) / 50, 1);
         this.isHoverLike = false;
         this.isHoverNope = false;
-        this.isHoverSuper = true;
         console.log("up");
       } else {
         this.opacity = 0;
-        this.rotation = 0;
+        // this.rotation = 0;
         this.isHoverLike = false;
         this.isHoverNope = false;
-        this.isHoverSuper = false;
       }
     },
+  },
+
+  mounted() {
+    debugger;
+    this.$nextTick(() => {
+      const grid = this.$el.querySelector(".animation-grid");
+      // Sử dụng wrapGrid
+      wrapGrid(grid);
+    });
   },
 };
 </script>
@@ -204,40 +209,29 @@ export default {
   font-size: 12px;
   margin-right: 10px;
 }
-.like-pointer {
+.like-pointer-topic {
   position: absolute;
-  left: 10px;
-  color: linear-gradient(321deg, #447267 23%, #b1eee1 50%, #447267 76%);
-  border: 5px solid #b1eee1;
+  left: 12px;
+  color: #f6a800;
+  border: 5px solid #f6a800;
   transform: rotate(-45deg);
   bottom: 12rem;
 }
 
-.nope-pointer {
+.nope-pointer-topic {
   position: absolute;
-  right: 0;
+  right: 12px;
   color: #fd5c64;
   border: 5px solid #fd5c64;
   transform: rotate(45deg);
-  bottom: 10rem;
+  bottom: 12rem;
 }
 
-.super-pointers {
-  bottom: 5px;
-  position: absolute;
-  color: #00ba83;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 5px solid #00ba83;
-}
 .icon-tinder {
   font-size: 30px;
   font-weight: 700;
-  border-radius: 10px;
-  text-align: center;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .info {
   position: absolute;
@@ -251,8 +245,5 @@ export default {
 
 .left-class {
   transform: rotate(-20deg);
-}
-.card {
-  transition: transform 0.3s ease;
 }
 </style>

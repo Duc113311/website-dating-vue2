@@ -59,7 +59,10 @@
       </div>
     </div>
 
-    <NewAccount v-show="isShowWelcome"></NewAccount>
+    <NewAccount
+      @onCloseWelcome="onCloseWelcome"
+      v-show="isShowWelcome"
+    ></NewAccount>
   </div>
 </template>
 
@@ -83,6 +86,10 @@ export default {
 
   methods: {
     onShowWelcome(val) {
+      this.isShowWelcome = val;
+    },
+
+    onCloseWelcome(val) {
       this.isShowWelcome = val;
     },
   },
