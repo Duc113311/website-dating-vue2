@@ -13,7 +13,7 @@
       <div
         class="w-full text-center flex items-center justify-center title-click-ic"
       >
-        Lý do báo cáo của bạn là gì?
+        {{ titleReport }}
       </div>
       <div
         class="w-full flex style-form-single bg-default mt-10"
@@ -50,20 +50,13 @@
 
     <div class="w-full absolute bottom-0 left-0 p-10 text-center">
       <div class="describe-report mb-2">
-        Chúng tôi sẽ không cho Puddink biết rằng bạn đã báo cáo họ
+        We won't let Puddink know that you reported them
       </div>
       <div>
         <bh-continue
-          v-if="this.screamReason !== 3"
           @onChangeContinue="onChangeContinue"
           :isActives="isActives"
         ></bh-continue>
-
-        <BhCommon
-          v-if="this.screamReason === 3"
-          :nameTitle="nameTitleSend"
-          @onChangeCommon="onClickSendReport"
-        ></BhCommon>
       </div>
     </div>
 
@@ -74,19 +67,27 @@
       @onStatusActive="onStatusActive"
       v-if="isShowModal"
     ></FormReportOption>
+
+    <BhQuestion
+      @onHidePopupPackage="onHidePopupPackage"
+      @onActionApplyQuestion="onActionApplyQuestion"
+      v-show="isShowFormQuestion"
+      :titleQuestion="titleQuestion"
+      :describeQuestion="describeQuestion"
+    ></BhQuestion>
     <!--  -->
   </div>
 </template>
 
 <script>
-import BhCommon from "../../../components/bh-element-ui/button/bh-common";
+import BhQuestion from "../../../components/bh-element-ui/notification/bh-question";
 import BhBack from "../../../components/bh-element-ui/button/bh-back";
 import FormReportOption from "../../../components/home/modal-report/form-report-option";
 import bhContinue from "@/components/bh-element-ui/button/bh-continue.vue";
 import { mapActions, mapMutations } from "vuex";
 export default {
   components: {
-    BhCommon,
+    BhQuestion,
     BhBack,
     FormReportOption,
     bhContinue,
@@ -99,13 +100,14 @@ export default {
       isShowModal: false,
       nameTitleSend: "Send",
       isActives: false,
-
+      isShowFormQuestion: false,
+      titleQuestion: "Are you sure?",
+      describeQuestion: "Are you sure about the content of this report?",
       listDataChoses: [],
 
-      titleReason: "Lý do báo cáo của bạn là gì?",
-      titleDetail: "Bạn có thể cho chúng tôi biết chuyện gì đã xảy ra",
-      titleComment:
-        "Bạn có phiền khi chia sẻ thêm chi tiết với chúng tôi không",
+      titleReason: "What is the reason for your report?",
+      titleDetail: "Can you tell us what happened?",
+      titleComment: "Would you mind sharing more details with us?",
 
       screamReason: 1,
       nameComment: "",
@@ -122,19 +124,34 @@ export default {
       if (this.screamReason === 1) {
         return Object.keys(nameValue.valueReason).length !== 0
           ? nameValue.valueReason.value
-          : "Vui lòng chọn 1 lý do";
+          : "Please choose 1 reason";
       }
       if (this.screamReason === 2) {
         return Object.keys(nameValue.valueDetail).length !== 0
           ? nameValue.valueDetail.value
-          : "Vui lòng chọn 1 ";
+          : "Please choose 1 reason ";
       }
       if (this.screamReason === 3) {
         return nameValue.valueComment.length !== 0
           ? nameValue.valueComment
-          : "vui lòng cung cấp thêm chi tiết về những gì bạn đang báo cáo";
+          : "Please provide more details about what you are reporting";
       }
-      return "Vui lòng chọn 1 lý do";
+      return "Please choose 1 reason ";
+    },
+
+    titleReport() {
+      const nameValue = this.$store.state.homeModule;
+      debugger;
+      if (this.screamReason === 1) {
+        return this.titleReason;
+      }
+      if (this.screamReason === 2) {
+        return this.titleDetail;
+      }
+      if (this.screamReason === 3) {
+        return this.titleComment;
+      }
+      return this.titleReason;
     },
   },
 
@@ -143,6 +160,8 @@ export default {
       "setOptionReport",
       "setNameDetailsReport",
       "setReasonReport",
+      "setListReasonReportUser",
+      "setIsValueReport",
     ]),
 
     ...mapActions(["postReasonReportUser"]),
@@ -154,49 +173,65 @@ export default {
     },
 
     onShowModal() {
-      this.isShowModal = true;
+      setTimeout(() => {
+        this.isShowModal = true;
+      }, 100);
     },
 
     onHideReport() {
       debugger;
       setTimeout(() => {
         this.isShowModal = false;
-      }, 50);
+      }, 100);
     },
 
     onChangeContinue() {
       debugger;
       const nameValue = this.$store.state.homeModule;
-      this.screamReason = this.screamReason + 1;
-      if (this.screamReason === 2) {
-        if (Object.keys(nameValue.valueDetail).length !== 0) {
-          this.isActives = true;
-        } else {
-          this.isActives = false;
-        }
-        debugger;
-        const codeId = nameValue.valueReason.code;
-        const listDetails = nameValue.listReasonReports;
-        const findData = listDetails.find((x) => x._id === codeId);
-        debugger;
-        let resultData = [];
-        if (findData) {
-          for (let index = 0; index < findData.details.length; index++) {
-            const element = findData.details[index];
+      if (this.screamReason < 3) {
+        this.screamReason = this.screamReason + 1;
+        if (this.screamReason === 2) {
+          if (Object.keys(nameValue.valueDetail).length !== 0) {
+            this.isActives = true;
+          } else {
+            this.isActives = false;
+          }
+          debugger;
+          const codeId = nameValue.valueReason.code;
+          const listDetails = nameValue.listReasonReports;
+          const findData = listDetails.find((x) => x._id === codeId);
+          debugger;
+          let resultData = [];
+          if (findData) {
+            for (let index = 0; index < findData.details.length; index++) {
+              const element = findData.details[index];
 
-            resultData.push({ code: index, value: element });
+              resultData.push({ code: index, value: element });
+            }
+          }
+          this.listDataChoses = resultData;
+        }
+
+        if (this.screamReason === 3) {
+          if (this.nameComment.length !== 0) {
+            this.isActives = true;
+          } else {
+            this.isActives = false;
           }
         }
-        this.listDataChoses = resultData;
+      } else {
+        this.isShowFormQuestion = true;
       }
+    },
 
-      if (this.screamReason === 3) {
-        if (this.nameComment.length !== 0) {
-          this.isActives = true;
-        } else {
-          this.isActives = false;
-        }
-      }
+    onActionApplyQuestion(val) {
+      this.isShowFormQuestion = val;
+
+      this.onClickSendReport();
+    },
+
+    onHidePopupPackage(val) {
+      this.isShowFormQuestion = val;
     },
 
     onBackComponent() {
@@ -225,6 +260,9 @@ export default {
           this.listDataChoses = this.listDataChoses2;
         }
       } else {
+        this.setListReasonReportUser([]);
+        this.setReasonReport({});
+        this.setNameDetailsReport({});
         this.$router.go(-1);
       }
     },
@@ -245,7 +283,11 @@ export default {
         message: "Report success ",
         type: "success",
       });
+      this.setListReasonReportUser([]);
+      this.setReasonReport({});
+      this.setNameDetailsReport({});
       this.$router.go(-1);
+      this.setIsValueReport(true);
     },
 
     onCancel() {

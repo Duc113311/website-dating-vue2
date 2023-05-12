@@ -37,6 +37,8 @@ const state = {
   listExplores: [],
   listJoinTopicExplores: {},
   listCardGroups: [],
+
+  isNopeReport: false,
 };
 
 const getters = {};
@@ -48,6 +50,10 @@ const mutations = {
   //
   setNameDetailsReport(state, value) {
     state.valueDetail = value;
+  },
+
+  setIsValueReport(state, value) {
+    state.isNopeReport = value;
   },
   //
   setNameCommentReport(state, value) {
@@ -124,15 +130,19 @@ const mutations = {
   },
 
   setListReasonReportUser(state, value) {
-    state.listReasonReports = value.data;
+    if (value.length === 0) {
+      state.listReasons = [];
+    } else {
+      state.listReasonReports = value.data;
 
-    for (let index = 0; index < value.data.length; index++) {
-      const element = value.data[index];
+      for (let index = 0; index < value.data.length; index++) {
+        const element = value.data[index];
 
-      state.listReasons.push({
-        code: element._id,
-        value: element.reason,
-      });
+        state.listReasons.push({
+          code: element._id,
+          value: element.reason,
+        });
+      }
     }
   },
 

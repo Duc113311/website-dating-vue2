@@ -2,8 +2,9 @@
   <div class="number-code mt-5">
     <h2 class="padding-title">My code is</h2>
     <div class="flex items-center">
-      <div class="padding-describe-item">Please enter Code sent to</div>
-      <span class="ml-3">{{ this.renderPhoneNumber }}</span>
+      <div class="padding-describe">
+        Please enter Code sent to {{ this.renderPhoneNumber }}
+      </div>
     </div>
     <div class="text-code flex justify-center mt-8 mb-8">
       <div>
@@ -15,10 +16,11 @@
           :key="index"
           :ref="`input` + number"
           v-model="renderCodeOTP[number]"
-          @keyup="onNextOn(number, index)"
+          @input="onNextOn(number, index)"
           :autofocus="index === 0"
           step="1"
           maxlength="1"
+          v-on:keyup="backCode($event, index)"
         />
       </div>
     </div>
@@ -76,6 +78,26 @@ export default {
   },
 
   methods: {
+    backCode(event, index) {
+      debugger;
+      if (event.keyCode === 8) {
+        if (index > 0) {
+          const keyBack = index;
+          const refKey = this.$refs[`input${keyBack}`][0];
+          this.numberData.splice(index, 1);
+          refKey.focus();
+        }
+      } else {
+        if (this.numberData.length < 6) {
+          if (event.target.value.length === 1) {
+            const keyBack2 = index + 2;
+            const refKey2 = this.$refs[`input${keyBack2}`][0];
+            refKey2.focus();
+          }
+        }
+      }
+    },
+
     isNumberKey(event) {
       debugger;
       var charCode = event.which ? event.which : event.keyCode;
@@ -103,8 +125,6 @@ export default {
     },
 
     onNextOn(key, index) {
-      console.log(key);
-      debugger;
       const indexData = document.getElementById(key);
       let valueData = indexData.value;
       if (valueData !== "") {

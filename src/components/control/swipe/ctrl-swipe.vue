@@ -15,16 +15,15 @@
           @mouseup="onMouseUp"
           v-for="(user, index) in listUserData"
           :key="index"
-          :id="`image` + user._id"
         >
           <Vue2InteractDraggable
             :interact-max-rotation="15"
             :interact-x-threshold="20"
             :interact-y-threshold="50"
             :interact-block-drag-down="true"
-            @draggedRight="emitAndNext(user._id)"
-            @draggedLeft="emitAndNext(user._id)"
-            @draggedUp="emitAndNext(user._id)"
+            @draggedRight="emitAndNext(index)"
+            @draggedLeft="emitAndNext(index)"
+            @draggedUp="emitAndNext(index)"
           >
             <template>
               <div
@@ -111,8 +110,8 @@ export default {
       const dataAge = functionValidate.calculatAge(val);
       return dataAge;
     },
-    emitAndNext(id) {
-      // this.$refs["index"][index].style.display = "none";
+    emitAndNext(index) {
+      this.$refs["index"][index].style.display = "none";
       this.onMouseUp();
     },
     onMouseDow($event, index) {
@@ -129,7 +128,6 @@ export default {
       this.isHoverLike = false;
       this.isHoverNope = false;
       this.rotation = 0;
-      await this.$emit("onInputFile", this.selectedIdx);
     },
 
     moveElement(event) {
@@ -154,11 +152,6 @@ export default {
         this.isHoverLike = false;
         this.isHoverNope = true;
         console.log("left");
-      } else if (event.clientY < this.truc_y - 25) {
-        this.opacity = Math.min((this.truc_y - event.clientY - 25) / 50, 1);
-        this.isHoverLike = false;
-        this.isHoverNope = false;
-        console.log("up");
       } else {
         this.opacity = 0;
         // this.rotation = 0;
@@ -237,13 +230,5 @@ export default {
   position: absolute;
   bottom: 0;
   margin-left: 10px;
-}
-
-.right-class {
-  transform: rotate(20deg);
-}
-
-.left-class {
-  transform: rotate(-20deg);
 }
 </style>

@@ -244,6 +244,7 @@ export default {
       "setLeftRightAvatar",
       "setDetailUserProfile",
       "setDataUserMatch",
+      "setIsValueReport",
     ]),
 
     ...mapActions([
@@ -585,7 +586,19 @@ export default {
     //   this.isLoadData = false;
     // }, 2000);
   },
-  mounted() {},
+  mounted() {
+    this.$nextTick(() => {
+      debugger;
+
+      const isNopeReportValue = this.$store.state.homeModule.isNopeReport;
+      if (isNopeReportValue) {
+        this.decide("nope");
+        setTimeout(() => {
+          this.setIsValueReport(false);
+        }, 1000);
+      }
+    });
+  },
 };
 </script>
 
