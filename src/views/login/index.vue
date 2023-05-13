@@ -27,20 +27,16 @@
                 </div>
               </div>
               <!-- Body -->
-              <div class="h-30 justify-center flex p-10">
+              <div class="mt-5 mb-5 justify-center flex p-10">
                 <LoginBtn @onShowWelcome="onShowWelcome"></LoginBtn>
               </div>
 
-              <div
-                class="mt-5 items-center content-center text-white ml-5 mr-3"
-              >
+              <div class="items-center content-center text-white ml-5 mr-5">
                 <div>
-                  <h2 class="text-base mb-2 text-center">
-                    Trouble logging in?
-                  </h2>
-                  <span class="text-lg text-gray-400"
+                  <h2 class="text-lg mb-5 text-center">Trouble logging in?</h2>
+                  <span class="text-lg text-trouble mt-2"
                     >By clicking "Login", you agree with our Terms. Learn how we
-                    process your data our
+                    process your data in our
                     <a class="underline decoration-1" href="http://"
                       >Privacy policy</a
                     >
@@ -193,4 +189,8 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 /* màn hình điện thoại */
+
+.text-trouble {
+  color: #6e7995;
+}
 </style>
