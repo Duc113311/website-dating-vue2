@@ -13,7 +13,6 @@
           :txtPhoneNumber="txtPhoneNumber"
           :sentCodeId="sentCodeId"
           :txtErrorCode="txtErrorCode"
-          :valueText="valueText"
           @validateRequireCode="validateRequire"
           @onRenderCodeOTP="onRenderCodeOTP"
         >
@@ -60,7 +59,6 @@ export default {
       isLoadings: false,
       isScream: false,
       txtErrorCode: false,
-      valueText: [],
       codeOTP: "",
       isHide: false,
       sentCodeId: "", // Mã sendCodeId firebase gửi về
@@ -78,7 +76,6 @@ export default {
 
     ...mapMutations(["setTokenAccount"]),
     validateRequire(value) {
-      debugger;
       this.isStatusRequire = value.statusActive;
       this.codeOTP = value.codeOTP;
     },
@@ -109,7 +106,7 @@ export default {
     async onRenderCodeOTP() {
       debugger;
       this.txtErrorCode = false;
-      this.valueText = [];
+      this.isStatusRequire = false;
       document.getElementById("1").focus();
       const phoneNumber = this.valCodeQR.getNumber();
       const appVerifier = window.recaptchaVerifier;
@@ -173,9 +170,11 @@ export default {
 
           await this.singWithPhone(this.sentCodeId);
         } else {
-          this.txtErrorCode = true;
+          setTimeout(() => {
+            this.txtErrorCode = true;
+            this.isLoadings = false;
+          }, 2000);
         }
-        this.isLoadings = false;
       }
     },
 

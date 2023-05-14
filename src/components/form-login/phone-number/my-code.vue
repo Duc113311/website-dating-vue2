@@ -2,8 +2,12 @@
   <div class="number-code mt-5">
     <h2 class="padding-title">My code is</h2>
     <div class="flex items-center">
+      <div class="padding-describe describe-text">
+        Please enter Code sent to
+      </div>
+      &nbsp;
       <div class="padding-describe">
-        Please enter Code sent to {{ this.renderPhoneNumber }}
+        {{ this.renderPhoneNumber }}
       </div>
     </div>
     <div class="text-code flex justify-center mt-8 mb-8">
@@ -15,12 +19,10 @@
           :id="number"
           :key="index"
           :ref="`input` + number"
-          v-model="renderCodeOTP[number]"
           @input="onNextOn(number, index)"
           :autofocus="index === 0"
           step="1"
           maxlength="1"
-          v-on:keyup="backCode($event, index)"
         />
       </div>
     </div>
@@ -52,51 +54,41 @@ export default {
     };
   },
 
-  props: ["txtPhoneNumber", "valueText", "txtErrorCode", "sentCodeId"],
+  props: ["txtPhoneNumber", "txtErrorCode", "sentCodeId"],
 
   computed: {
     renderPhoneNumber() {
+      debugger;
       return this.txtPhoneNumber;
     },
 
     renderErrorCode() {
       return this.txtErrorCode;
     },
-
-    renderCodeOTP() {
-      debugger;
-
-      return [
-        { value: "" },
-        { value: "" },
-        { value: "" },
-        { value: "" },
-        { value: "" },
-        { value: "" },
-      ];
-    },
   },
 
   methods: {
-    backCode(event, index) {
-      debugger;
-      if (event.keyCode === 8) {
-        if (index > 0) {
-          const keyBack = index;
-          const refKey = this.$refs[`input${keyBack}`][0];
-          this.numberData.splice(index, 1);
-          refKey.focus();
-        }
-      } else {
-        if (this.numberData.length < 6) {
-          if (event.target.value.length === 1) {
-            const keyBack2 = index + 2;
-            const refKey2 = this.$refs[`input${keyBack2}`][0];
-            refKey2.focus();
-          }
-        }
-      }
-    },
+    // backCode(event, index) {
+    //   debugger;
+    //   if (event.keyCode === 8) {
+    //     debugger;
+    //     if (index > 0) {
+    //       const keyBack = index;
+    //       const refKey = this.$refs[`input${keyBack}`][0];
+    //       this.numberData.splice(index, 1);
+    //       refKey.focus();
+    //     }
+    //   } else {
+    //     debugger;
+    //     if (this.numberData.length < 6) {
+    //       if (event.target.value.length === 1) {
+    //         const keyBack2 = index + 2;
+    //         const refKey2 = this.$refs[`input${keyBack2}`][0];
+    //         refKey2.focus();
+    //       }
+    //     }
+    //   }
+    // },
 
     isNumberKey(event) {
       debugger;
@@ -110,6 +102,13 @@ export default {
      * Render gửi lại mã OTP
      */
     onPhoneNumber() {
+      debugger;
+      for (let index = 0; index < this.digits.length; index++) {
+        const element = this.digits[index];
+
+        this.$refs[`input` + element][0].value = "";
+      }
+      this.numberData = [];
       this.$emit("onRenderCodeOTP", this.txtPhoneNumber);
     },
 
@@ -125,6 +124,7 @@ export default {
     },
 
     onNextOn(key, index) {
+      debugger;
       const indexData = document.getElementById(key);
       let valueData = indexData.value;
       if (valueData !== "") {
@@ -142,9 +142,9 @@ export default {
             indexData.value = value.replace(/[^0-9]/g, "");
             refKey[0].focus();
           } else {
-            const filterData = this.numberData.filter((x) => x === "");
+            const filterData = this.numberData.findIndex((x) => x === "");
             console.log(filterData);
-            if (filterData.length === 0) {
+            if (filterData === -1) {
               this.valueCode = this.numberData.toString().split(",").join("");
               if (this.valueCode !== "") {
                 debugger;
@@ -154,6 +154,9 @@ export default {
                   codeOld: this.numberData,
                 });
               }
+            } else {
+              const refKey = this.$refs[`input` + parseInt(filterData + 1)];
+              refKey[0].focus();
             }
           }
         } else {
@@ -164,7 +167,7 @@ export default {
         this.numberData[index] = indexData.value;
 
         const refKey = this.$refs[`input` + key];
-        refKey[0].focus();
+        // refKey[0].focus();
         this.valueCode = this.numberData.toString().split(",").join("");
         this.$emit("validateRequireCode", {
           statusActive: false,

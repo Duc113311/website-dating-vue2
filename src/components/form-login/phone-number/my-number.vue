@@ -26,7 +26,7 @@
         code. Message and data rates maty apply.</span
       >
       <span> The verifed phone number can be used to log in.</span>
-      <a href="http://" class="decoration-solid">
+      <a href="http://" class="decoration-solid underline">
         Learn what happens when your number changes</a
       >
     </div>
@@ -34,8 +34,6 @@
 </template>
 
 <script>
-import intlTelInput from "intl-tel-input";
-import $ from "jquery";
 export default {
   name: "my-number",
 
@@ -69,7 +67,7 @@ export default {
       var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
       if (val !== "") {
         if (vnf_regex.test(val) == false) {
-          this.txtCodeError = "Your phone number is not wrong format";
+          this.txtCodeError = "Please enter a valid phone number";
           this.$emit("validateRequirePhone", { statusActive: false });
 
           // Số điện thoại của bạn không đúng định dạng!
@@ -111,20 +109,6 @@ export default {
 
   mounted() {
     debugger;
-    var input = document.querySelector("#phone");
-    this.valCodeQR = intlTelInput(input, {
-      initialCountry: "auto",
-      geoIpLookup: function (callback) {
-        $.get("https://ipinfo.io", function () {}, "jsonp").always(function (
-          resp
-        ) {
-          var countryCode = resp && resp.country ? resp.country : "vn";
-          callback(countryCode);
-        });
-      },
-    });
-    debugger;
-    input.focus();
   },
 };
 </script>
