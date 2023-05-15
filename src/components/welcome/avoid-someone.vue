@@ -13,12 +13,12 @@
       </div>
 
       <div
-        class="flex w-full justify-center items-center text-center padding-title"
+        class="flex w-full justify-center items-center text-center padding-describe-or"
       >
         Want to avoid someone you know on HeartLink?
       </div>
 
-      <div class="padding-describe w-full text-center">
+      <div class="padding-describe w-full text-center describe-text">
         <div class="mt-2">
           It is easy - share your device's contact with HeartLink when using
           this feature to pick who you want to avoid
@@ -27,8 +27,8 @@
 
         <div class="mt-2">
           We'll store your vlocked contact to stop you from seeing each other if
-          your contact has an account with the same infor tou provide. You can
-          stop sharing with us in your settings
+          your contact has an account with the same infor you provide. You can
+          stop sharing with us in your settings.
         </div>
         <br />
         <div class="mt-4 underline">
@@ -39,17 +39,10 @@
       </div>
 
       <div class="w-full absolute bottom-0 left-0 pb-16">
-        <el-tooltip
-          class="item"
-          effect="dark"
-          content="The skill are improving"
-          placement="top"
-        >
-          <BhComfirm
-            :nameTitle="nameTitle"
-            @onChangeComfirm="onChangeComfirm"
-          ></BhComfirm>
-        </el-tooltip>
+        <BhComfirm
+          :nameTitle="nameTitle"
+          @onChangeComfirm="onChangeComfirm"
+        ></BhComfirm>
       </div>
     </div>
   </div>

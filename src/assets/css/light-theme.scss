@@ -27,6 +27,7 @@
   --color-border-bottom: #eae9ee;
   --color-focus-code: #e7e9f5;
   --color-top-bottom: #f6f7f9;
+  --color-radio: #000000;
 }
 
 .theme-light {
@@ -143,5 +144,9 @@
   }
   .border-bottom {
     border-bottom: 2px solid var(--color-top-bottom);
+  }
+
+  .fa-circle {
+    color: var(--color-radio);
   }
 }

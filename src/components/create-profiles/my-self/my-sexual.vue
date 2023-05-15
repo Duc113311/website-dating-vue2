@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="mt-3">
-      <h2 class="padding-title">My Sexual oritenation is</h2>
-      <span class="padding-describe">Select up to 3</span>
+      <h2 class="padding-title">My Sexual orientation is</h2>
+      <span class="padding-describe describe-text">Select up to 3</span>
     </div>
     <div class="w-full overflow-scroll height-item pb-8">
       <div class="grid select-sexual mt-6 gap-4">
@@ -17,7 +17,7 @@
             <div class="flex justify-center items-center">
               <div class="check-active not-check" :id="'check' + el.code">
                 <div class="bg-white flex justify-center bg-checked">
-                  <i class="fa-solid fa-circle-check w-8 h-8"></i>
+                  <i class="fa-solid fa-circle-check w-ic-solid"></i>
                 </div>
               </div>
               <div
@@ -25,7 +25,7 @@
                 :id="'not-check' + el.code"
               >
                 <div class="flex justify-center">
-                  <i class="fa-regular fa-circle w-8 h-8"></i>
+                  <i class="fa-regular fa-circle w-ic-solid"></i>
                 </div>
               </div>
             </div>
@@ -208,7 +208,7 @@ export default {
 }
 
 .height-item {
-  height: 527px;
+  height: 634px;
 }
 
 .height-item {
@@ -256,5 +256,10 @@ export default {
 
 .fa-circle-check::before {
   font-size: 33px;
+}
+
+.w-ic-solid {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 </style>

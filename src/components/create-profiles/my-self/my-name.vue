@@ -3,7 +3,7 @@
     <div class="mt-3">
       <div class="padding-title">My name is</div>
     </div>
-    <div>
+    <div class="mt-4">
       <el-input
         class="your-name digit-box padding-input bg-default"
         ref="input_focus"
@@ -11,10 +11,10 @@
         placeholder="Your name"
         @input="onChangeFirstName"
       />
-      <span class="padding-describe"
-        >This is how it will appear in HeartLink, and you will not able to
-        change it</span
-      >
+      <div class="padding-describe mt-2 describe-text">
+        This is how it will appear in HeartLink, and you will not able to change
+        it
+      </div>
     </div>
   </div>
 </template>

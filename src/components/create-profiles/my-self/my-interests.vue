@@ -2,7 +2,7 @@
   <div>
     <div class="mt-3">
       <div class="padding-title">My interests are</div>
-      <span class="padding-describe"
+      <span class="padding-describe describe-text"
         >Let everyone know what you're passionate about, by adding it to your
         profile</span
       >

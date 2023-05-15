@@ -75,7 +75,7 @@ export default {
         .getElementsByClassName("fa-magnifying-glass")[0]
         .classList.add("icon-active");
     }
-    if (this.$route.name === "99-like-page") {
+    if (this.$route.name === "you-like-action") {
       document
         .getElementsByClassName("fa-hand-holding-heart")[0]
         .classList.add("icon-active");
@@ -112,6 +112,9 @@ export default {
 }
 .icon-color {
   color: #5f6a86;
+}
+.icon-color:hover {
+  opacity: 0.8;
 }
 .icon-active {
   color: #fd5d65;

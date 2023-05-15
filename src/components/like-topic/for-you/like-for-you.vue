@@ -1,8 +1,11 @@
 <template>
   <div class="w-full h-full relative">
     <div class="w-full text-title-like">Recommendations</div>
-    <div class="w-full pl-5 pr-5 pt-5 h-likes overflow-auto height-scroll">
-      <ctrlSwipe :listUser="listLikeYouActions"></ctrlSwipe>
+    <div class="w-full pl-5 pr-5 pt-5 h-likes overflow-auto height-scroll z-30">
+      <ctrlSwipe
+        :listUser="listLikeYouActions"
+        @onShowDetailUserLikeTopic="onShowDetailUserLikeTopic"
+      ></ctrlSwipe>
     </div>
   </div>
 </template>
@@ -39,6 +42,10 @@ export default {
       console.log("vao", val);
       debugger;
       this.setPutListUser(this.listLikes[0]);
+    },
+
+    onShowDetailUserLikeTopic(val) {
+      this.$emit("onShowDetailYouLike", val);
     },
   },
 

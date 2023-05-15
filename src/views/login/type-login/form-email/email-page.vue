@@ -6,7 +6,10 @@
         <MyEmail @onShowWelcome="onShowWelcome"></MyEmail>
       </div>
     </div>
-    <NewAccount v-show="isShowWelcome"></NewAccount>
+    <NewAccount
+      v-show="isShowWelcome"
+      @onShowQuestion="onShowQuestion"
+    ></NewAccount>
     <BhQuestion
       @onHidePopupPackage="onHidePopupPackage"
       @onActionApplyQuestion="onActionApplyQuestion"
@@ -46,6 +49,11 @@ export default {
   methods: {
     onShowWelcome(val) {
       this.isShowWelcome = val;
+    },
+
+    onShowQuestion(val) {
+      debugger;
+      this.isShowFormQuestion = val;
     },
 
     onHidePopupPackage(val) {

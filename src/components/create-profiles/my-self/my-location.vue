@@ -16,10 +16,10 @@
             />
           </div>
           <div class="">
-            <div class="padding-title">Enable Location</div>
+            <div class="padding-title-location">Enable Location</div>
           </div>
           <div class="flex justify-center items-center w-full">
-            <div class="padding-describe w-4/5">
+            <div class="padding-describe w-4/5 describe-text">
               You will need to enable your location order to use HeartLinks
             </div>
           </div>
@@ -39,7 +39,7 @@
           class="w-full text-base mt-5 angle-down pl-10 pr-10 flex justify-center items-center"
           @click="onTellMore()"
         >
-          <span class="padding-describe">Tell me more</span>
+          <span class="padding-describe-or">Tell me more</span>
           <i class="text-2xl ml-3 fas fa-angle-down" @click="onAngleDown()"></i>
         </div>
       </div>
@@ -57,10 +57,10 @@
               />
             </div>
             <div class="mt-10">
-              <div class="padding-title">MEET PEOPLE NEARBY</div>
+              <div class="padding-title-location">MEET PEOPLE NEARBY</div>
             </div>
             <div class="w-full flex justify-center items-center">
-              <div class="padding-describe w-4/5">
+              <div class="padding-describe w-4/5 describe-text">
                 You location will be used to show potential matches near you.
               </div>
             </div>

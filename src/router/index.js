@@ -255,10 +255,10 @@ const routes = [
     children: [
       {
         path: "/",
-        name: "99-like-page",
+        name: "you-like-action",
         component: () =>
           import(
-            /* webpackChunkName: "99-like-page" */ "../views/like-topic/99-like/index.vue"
+            /* webpackChunkName: "you-like-action" */ "../views/like-topic/99-like/index.vue"
           ),
       },
       {

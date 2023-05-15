@@ -2,7 +2,7 @@
   <div class="w-full h-full user-profile z-30">
     <div class="padding-title mt-6">What's your email?</div>
 
-    <div class="padding-describe">
+    <div class="padding-describe describe-text">
       Don't lose access to your account, verify your email
     </div>
 
@@ -15,16 +15,16 @@
         @input="onChangeInput"
       />
     </div>
-    <div class="mt-4">
+    <div class="mt-5">
       <BhContinue
         :isActives="isActives"
         @onChangeContinue="onChangeContinue"
       ></BhContinue>
     </div>
-    <div class="flex justify-center padding-title">OR</div>
-    <div class="flex mt-4 justify-center">
+    <div class="flex justify-center padding-describe-or">OR</div>
+    <div class="flex mt-5 justify-center">
       <button
-        class="btn-Sign cursor-pointer text-xl border-login font-semibold w-button px-3 py-3 mb-4"
+        class="btn-Sign cursor-pointer border-login w-button padding-button"
         @click="onLoginGoogle()"
       >
         <span class="flex justify-center">
@@ -34,7 +34,7 @@
       </button>
     </div>
 
-    <div class="flex justify-center padding-describe">
+    <div class="flex justify-center padding-describe mt-5 describe-text">
       Verify instantly by connecting your Google account
     </div>
 

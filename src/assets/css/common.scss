@@ -97,14 +97,13 @@
   border-width: 0;
 }
 
-.bh-margin-description {
-}
 /* Setup - new */
 .padding-button {
-  padding: 8px;
+  padding: 10px;
   border-radius: 10px;
   font-size: 20px;
   letter-spacing: 0.5px;
+  font-weight: 500;
 }
 .padding-input {
   width: 100%;
@@ -127,14 +126,33 @@
 }
 
 .padding-describe {
-  font-size: 18px;
-  padding: 5px 0 5px 0;
+  font-size: 16px;
   font-weight: 500;
+}
+
+.padding-describe-title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.padding-describe-or {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.padding-title-location {
+  font-size: 22px;
+  font-weight: 600;
 }
 
 .padding-describe-like {
   font-size: 18px;
   padding: 5px 0 0 0;
+  font-weight: 500;
+}
+
+.padding-describe-item {
+  font-size: 14px;
   font-weight: 500;
 }
 
@@ -228,10 +246,6 @@
 
 .fa-circle-check {
   color: #fd5d65;
-}
-
-.fa-circle {
-  color: #b8bbca;
 }
 
 .bg-checked {

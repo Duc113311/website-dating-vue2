@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full show-error absolute z-30">
+  <div class="w-full h-full show-error absolute z-50">
     <div class="v-modal-bg" @click="onHidePopupPackage()"></div>
     <div class="w-full absolute top-64 left-0 flex justify-center items-center">
       <div
@@ -26,7 +26,7 @@
               @click="onActionCancel(false)"
               class="w-32 mr-5 cursor-pointer button-default rounded-xl p-3 text-center justify-center flex"
             >
-              Clear
+              Cancel
             </div>
             <div
               @click="onActionApply(true)"

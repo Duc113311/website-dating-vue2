@@ -2,7 +2,9 @@
   <div class="h-full height-scroll overflow-scroll">
     <div v-show="!isTitle" class="mt-3">
       <div class="padding-title">My Photos are</div>
-      <span class="padding-describe">Add at least 2 photos to continue</span>
+      <span class="padding-describe describe-text"
+        >Add at least 2 photos to continue</span
+      >
     </div>
 
     <!-- Image -->
@@ -17,7 +19,7 @@
             <div class="wrapper">
               <div class="file-upload">
                 <input type="file" @change="toggleUpload($event, fileList)" />
-                <i class="fa fa-plus rounded-full p-1.5 icon-plus"></i>
+                <img src="@/assets/icon/ic_add_photo.svg" width="35" alt="" />
               </div>
 
               <div
@@ -26,9 +28,8 @@
                 v-bind:id="'close' + fileList.id"
               >
                 <img
-                  src="../../../assets/icon/icon-cancel.png"
-                  alt=""
-                  srcset=""
+                  src="../../../assets/icon/ic_delete_photo.svg"
+                  width="43"
                 />
               </div>
             </div>
@@ -341,7 +342,7 @@ export default {
   justify-content: center;
 }
 .wrapper .file-upload {
-  height: 190px;
+  height: 170px;
   width: 200px;
   border-radius: 10px;
   position: relative;
@@ -382,11 +383,11 @@ input[type="file"] {
 }
 
 .img-close {
-  width: 26px;
+  width: 36px;
   position: absolute;
-  top: -8px;
+  top: -14px;
   overflow: hidden;
-  right: -10px;
+  right: -14px;
   display: none;
 }
 

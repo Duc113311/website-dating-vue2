@@ -3,9 +3,9 @@
     <div class="mt-3">
       <div class="padding-title">My birthday is</div>
     </div>
-    <div>
+    <div class="mt-4">
       <el-input
-        class="your-name padding-input mb-3 bg-default"
+        class="your-name padding-input bg-default"
         ref="input_focus"
         v-model="birthday"
         type="date"
@@ -15,7 +15,9 @@
         @input="onChangeInput"
         @blur="onChangeInput"
       />
-      <span class="padding-describe">Your age will be public</span>
+      <div class="padding-describe mt-2 describe-text">
+        Your age will be public
+      </div>
     </div>
   </div>
 </template>

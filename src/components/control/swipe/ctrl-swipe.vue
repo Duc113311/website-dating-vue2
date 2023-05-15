@@ -11,9 +11,10 @@
         <div
           ref="index"
           :class="[selectedIdx === index ? 'zIndex' : '']"
-          @mousedown="onMouseDow($event, index)"
-          @mouseup="onMouseUp"
+          @mousedown.prevent="onMouseDow($event, index)"
+          @mouseup.prevent="onMouseUp"
           v-for="(user, index) in listUserData"
+          @click="onClickShowDetail(user)"
           :key="index"
         >
           <Vue2InteractDraggable
@@ -81,6 +82,7 @@
 import { Vue2InteractDraggable } from "vue2-interact";
 import functionValidate from "../../../middleware/validate.js";
 import { wrapGrid } from "animate-css-grid";
+import { mapMutations } from "vuex";
 
 export default {
   name: "ctrl-swipe-page",
@@ -106,6 +108,7 @@ export default {
   },
 
   methods: {
+    ...mapMutations(["setDetailUserLikeTopic"]),
     bindingAge(val) {
       const dataAge = functionValidate.calculatAge(val);
       return dataAge;
@@ -123,7 +126,6 @@ export default {
       document.addEventListener("mousemove", this.moveElement);
     },
     async onMouseUp() {
-      debugger;
       document.removeEventListener("mousemove", this.moveElement);
       this.isHoverLike = false;
       this.isHoverNope = false;
@@ -158,6 +160,11 @@ export default {
         this.isHoverLike = false;
         this.isHoverNope = false;
       }
+    },
+
+    onClickShowDetail(val) {
+      this.setDetailUserLikeTopic(val);
+      this.$emit("onShowDetailUserLikeTopic", true);
     },
   },
 

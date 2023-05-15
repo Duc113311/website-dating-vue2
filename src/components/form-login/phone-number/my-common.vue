@@ -36,8 +36,7 @@
 import MyCode from "./my-code";
 import BhBack from "../../bh-element-ui/button/bh-back";
 import BhContinue from "../../bh-element-ui/button/bh-continue";
-import intlTelInput from "intl-tel-input";
-import $ from "jquery";
+
 import MyNumber from "./my-number";
 import { mapActions, mapMutations } from "vuex";
 
@@ -206,24 +205,7 @@ export default {
     },
   },
 
-  mounted() {
-    debugger;
-    var input = document.querySelector("#phone");
-    this.valCodeQR = intlTelInput(input, {
-      initialCountry: "auto",
-      geoIpLookup: function (callback) {
-        $.get("https://ipinfo.io", function () {}, "jsonp").always(function (
-          resp
-        ) {
-          debugger;
-          var countryCode = resp && resp.country ? resp.country : "vn";
-          callback(countryCode);
-        });
-      },
-    });
-    debugger;
-    input.focus();
-  },
+  mounted() {},
 };
 </script>
 <style lang="css">

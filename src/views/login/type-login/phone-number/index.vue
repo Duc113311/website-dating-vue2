@@ -43,6 +43,7 @@ import {
   PhoneAuthProvider,
   signInWithCredential,
 } from "../../../../configs/firebase.js";
+import { child } from "firebase/database";
 export default {
   name: "phone-number",
   components: {
@@ -61,6 +62,7 @@ export default {
       txtErrorCode: false,
       codeOTP: "",
       isHide: false,
+      valCodeQR: "",
       sentCodeId: "", // Mã sendCodeId firebase gửi về
     };
   },
@@ -137,6 +139,8 @@ export default {
         const mobile = document.getElementById("phone").value;
         console.log(mobile);
         const result = true;
+        const textCode = this.renderCountryCode();
+        console.log("Mã vung", textCode);
         const phoneNumber = this.valCodeQR.getNumber();
         this.txtPhoneNumber = phoneNumber;
         console.log(this.txtPhoneNumber);
@@ -208,9 +212,23 @@ export default {
           debugger;
           console.log(error);
           this.txtErrorCode = true;
-
-          document.getElementById("1").focus();
+          setTimeout(() => {
+            this.isLoadings = false;
+          }, 2000);
         });
+    },
+
+    renderCountryCode() {
+      var input = document.querySelector("#phone");
+      this.valCodeQR = intlTelInput(input, {
+        separateDialCode: true, // Hiển thị mã điện thoại quốc gia riêng rẽ
+        utilsScript:
+          "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js", // Đường dẫn đến tệp utils.js
+      });
+
+      this.valCodeQR.setCountry("vn");
+
+      return this.valCodeQR;
     },
   },
 
@@ -221,6 +239,7 @@ export default {
       utilsScript:
         "https://cdn.jsdelivr.net/npm/intl-tel-input@16.0.3/build/js/utils.js",
     });
+    debugger;
     input.focus();
   },
 };

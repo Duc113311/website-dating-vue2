@@ -3,19 +3,21 @@
     <div class="mt-3">
       <h2 class="padding-title">Show me gender</h2>
     </div>
-    <div
-      class="grid w-full"
-      v-for="(item, index) in showGendersData"
-      :key="index"
-    >
-      <button
-        class="padding-input-option bg-default"
-        :ref="index"
-        :id="item.code"
-        @click="onShowMeGender(item.code)"
+    <div class="w-full mt-4">
+      <div
+        class="grid w-full"
+        v-for="(item, index) in showGendersData"
+        :key="index"
       >
-        {{ item.value }}
-      </button>
+        <button
+          class="padding-input-option option-default"
+          :ref="index"
+          :id="item.code"
+          @click="onShowMeGender(item.code)"
+        >
+          {{ item.value }}
+        </button>
+      </div>
     </div>
   </div>
 </template>

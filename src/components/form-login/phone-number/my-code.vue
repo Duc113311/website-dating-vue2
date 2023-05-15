@@ -28,7 +28,9 @@
     </div>
 
     <BhInvalid v-if="renderErrorCode"></BhInvalid>
-    <div class="mt-10 padding-describe dark-theme-describe justify-center flex">
+    <div
+      class="mt-10 padding-describe-title dark-theme-describe justify-center flex"
+    >
       <a class="cursor-pointer bt-render" href="#" @click="onPhoneNumber()"
         >Resend code</a
       >

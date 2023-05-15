@@ -22,7 +22,7 @@
           </div>
           <div class="flex text-center justify-center mt-3 w-full">
             <div class="w-5/6">
-              <h2 class="padding-title">Welcome to HeartLink</h2>
+              <div class="padding-title">Welcome to HeartLink</div>
               <span class="padding-describe">
                 Please follow our rules to have more fun and build a great
                 community together
@@ -30,55 +30,49 @@
             </div>
           </div>
           <div class="mt-8 mb-6">
-            <div class="flex mt-3">
-              <div class="mr-4 text-2xl pt-2">
-                <i class="far fa-hand-point-right text-slate-500"></i>
+            <div class="flex mt-3 w-full">
+              <div class="mr-4">
+                <img src="@/assets/icon/ic_hand.svg" class="ic_hands" alt="" />
               </div>
-              <div>
-                <h2 class="padding-text-option">Be Yourself</h2>
-                <span
-                  class="overflow-hidden break-words padding-describe-option"
+              <div class="w-3/4">
+                <div class="padding-text-option">Be Yourself</div>
+                <span class="decoration-solid describe-text"
                   >Make sure your photos, age and bio true to who you are</span
                 >
               </div>
             </div>
-            <div class="flex mt-3">
-              <div class="mr-4 text-2xl pt-2">
-                <i class="far fa-hand-point-right text-slate-500"></i>
+            <div class="flex mt-3 w-full">
+              <div class="mr-4">
+                <img src="@/assets/icon/ic_hand.svg" class="ic_hands" alt="" />
               </div>
-              <div>
-                <h2 class="padding-text-option">Stay Safe</h2>
-                <span
-                  class="overflow-hidden break-words padding-describe-option"
+              <div class="w-3/4">
+                <div class="padding-text-option">Stay Safe</div>
+                <span class="decoration-solid describe-text"
                   >Don't be too quick to give out personal information.
-                  <span class="decoration-solid"
-                    >Date Safety guidelines</span
-                  ></span
+                  <span class="underline">Date Safety guidelines</span></span
                 >
               </div>
             </div>
-            <div class="flex mt-3">
-              <div class="mr-4 text-2xl pt-2">
-                <i class="far fa-hand-point-right text-slate-500"></i>
+            <div class="flex mt-3 w-full">
+              <div class="mr-4">
+                <img src="@/assets/icon/ic_hand.svg" class="ic_hands" alt="" />
               </div>
-              <div>
-                <h2 class="padding-text-option">Play It Cool</h2>
-                <span
-                  class="overflow-hidden break-words padding-describe-option"
+              <div class="w-3/4">
+                <div class="padding-text-option">Play It Cool</div>
+                <span class="decoration-solid describe-text"
                   >Respect others and treat them as you would like to be
                   treated</span
                 >
               </div>
             </div>
-            <div class="flex mt-3">
-              <div class="mr-4 text-2xl pt-2">
-                <i class="far fa-hand-point-right text-slate-500"></i>
+            <div class="flex mt-3 w-full">
+              <div class="mr-4">
+                <img src="@/assets/icon/ic_hand.svg" class="ic_hands" alt="" />
               </div>
-              <div>
-                <h2 class="padding-text-option">Be Proactive</h2>
-                <span
-                  class="overflow-hidden break-words padding-describe-option"
-                  >Alwways repory bad behaviour</span
+              <div class="w-3/4">
+                <div class="padding-text-option">Be Proactive</div>
+                <span class="decoration-solid describe-text"
+                  >Always report bad behavior</span
                 >
               </div>
             </div>
@@ -92,7 +86,6 @@
 
 <script>
 import BhArge from "../bh-element-ui/button/bh-arge";
-import { auth, signOut } from "../../configs/firebase";
 
 export default {
   components: {
@@ -119,18 +112,8 @@ export default {
   },
 
   methods: {
-    async onShowDialogQuit() {
-      await signOut(auth)
-        .then(() => {
-          debugger;
-          // Sign-out successful.
-          localStorage.removeItem("oAuth2Id");
-          localStorage.removeItem("tokenId");
-        })
-        .catch((error) => {
-          // An error happened.
-        });
-      this.$emit("onCloseWelcome", false);
+    onShowDialogQuit() {
+      this.$emit("onShowQuestion", true);
     },
   },
 };
@@ -144,5 +127,9 @@ export default {
 .h-scroll-welcome {
   height: calc(100% - 10%);
   overflow: scroll;
+}
+
+.ic_hands {
+  width: 35px;
 }
 </style>

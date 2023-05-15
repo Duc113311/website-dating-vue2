@@ -1,17 +1,23 @@
 <template>
   <div>
     <div class="mt-3">
-      <h2 class="padding-title">I am a</h2>
+      <div class="padding-title">I am a</div>
     </div>
-    <div class="grid w-full" v-for="(item, index) in gendersData" :key="index">
-      <button
-        class="padding-input-option bg-default"
-        :ref="index"
-        :id="item.code"
-        @click="onShowGender(item.code)"
+    <div class="w-full mt-4">
+      <div
+        class="grid w-full"
+        v-for="(item, index) in gendersData"
+        :key="index"
       >
-        {{ item.value }}
-      </button>
+        <button
+          class="padding-input-option option-default"
+          :ref="index"
+          :id="item.code"
+          @click="onShowGender(item.code)"
+        >
+          {{ item.value }}
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -74,9 +80,9 @@ export default {
         const element = documentParam[index];
 
         if (val === element.id) {
-          element.classList.add("active-border");
+          element.classList.add("option-active");
         } else {
-          element.classList.remove("active-border");
+          element.classList.remove("option-active");
         }
       }
 
@@ -130,7 +136,7 @@ export default {
         const element = genderList[index];
 
         if (element.code === this.genders) {
-          documentParam[this.genders].classList.add("active-border");
+          documentParam[this.genders].classList.add("option-active");
           this.$emit("onStatusActive", true);
         }
       }

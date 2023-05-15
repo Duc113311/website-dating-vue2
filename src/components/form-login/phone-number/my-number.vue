@@ -1,7 +1,7 @@
 <template>
-  <div class="phone-number">
+  <div class="phone-number mt-5">
     <h2 class="padding-title">My number is</h2>
-    <div class="w-full">
+    <div class="w-full mt-3 mb-3">
       <div class="w-full">
         <el-input
           id="phone"
@@ -25,15 +25,17 @@
         >When you tap "Continue", Heartlink will send a text with verificatrion
         code. Message and data rates maty apply.</span
       >
-      <span> The verifed phone number can be used to log in.</span>
-      <a href="http://" class="decoration-solid underline">
-        Learn what happens when your number changes</a
+      <span> The verifed phone number can be used to log in. </span>
+      <a href="http://" class="decoration-solid underline"
+        >Learn what happens when your number changes</a
       >
     </div>
   </div>
 </template>
 
 <script>
+import intlTelInput from "intl-tel-input";
+import $ from "jquery";
 export default {
   name: "my-number",
 
@@ -109,6 +111,14 @@ export default {
 
   mounted() {
     debugger;
+    var input = document.querySelector("#phone");
+    this.valCodeQR = intlTelInput(input, {
+      separateDialCode: true, // Hiển thị mã điện thoại quốc gia riêng rẽ
+      initialCountry: "vn", // Đặt quốc gia mặc định là Việt Nam
+      preferredCountries: ["vn"], // Sử dụng Việt Nam là quốc gia ưu tiên
+      utilsScript:
+        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js", // Đường dẫn đến tệp utils.js
+    });
   },
 };
 </script>
@@ -136,7 +146,11 @@ export default {
   background-color: #4e576b !important;
 }
 #phone {
-  padding-left: 58px;
+  padding-left: 94px !important;
   padding-right: 58px;
+}
+
+.iti--separate-dial-code .iti__selected-flag {
+  background-color: #eef1f8 !important;
 }
 </style>
