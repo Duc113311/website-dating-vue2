@@ -437,7 +437,8 @@ export default {
     },
 
     onChangeSaveLife() {
-      if (this.zodiacsValue !== null) {
+      debugger;
+      if (this.petValue !== null) {
         this.setPets(this.petValue);
       }
       if (this.drinkingValue !== null) {
@@ -455,8 +456,8 @@ export default {
       if (this.socialMediaValue !== null) {
         this.setSocialMedia(this.socialMediaValue);
       }
-      if (this.socialMediaValue !== null) {
-        this.setSleepingHabit(this.socialMediaValue);
+      if (this.sleepingHabitValue !== null) {
+        this.setSleepingHabit(this.sleepingHabitValue);
       }
       this.$emit("onClickCancelLife", false);
     },

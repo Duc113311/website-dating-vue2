@@ -54,6 +54,7 @@
 import BhCommon from "../../../../components/bh-element-ui/button/bh-common";
 import BhBack from "../../../../components/bh-element-ui/button/bh-back";
 import Footer from "../../../../components/layout/footer-home/footer";
+import unorm from "unorm";
 import { mapMutations } from "vuex";
 export default {
   components: {
@@ -83,10 +84,16 @@ export default {
   watch: {
     selectedItem(value) {
       if (value) {
+        debugger;
         // Fetch item name based on selectedItem value
         this.selectedItemName = this.suggestions.find(
           (item) => item.value === value
-        ).id;
+        );
+        if (this.selectedItemName !== undefined) {
+          this.selectedItemName = this.selectedItemName.value;
+        }
+        console.log("Test", this.selectedItemName);
+        debugger;
       } else {
         this.selectedItemName = "";
       }
@@ -100,9 +107,62 @@ export default {
       this.$router.go(-1);
     },
 
+    // querySearchAsync(queryString, cb) {
+    //   debugger;
+    //   console.log(queryString);
+    //   var searchPattern = queryString
+    //     .toLowerCase()
+    //     .normalize("NFD")
+    //     .replace(/[\u0300-\u036f]/g, "");
+    //   var regexPattern = new RegExp(searchPattern, "i");
+    //   const items = this.suggestions.filter((item) => {
+    //     var normalizedSchoolId = item.id
+    //       .toLowerCase()
+    //       .normalize("NFD")
+    //       .replace(/[\u0300-\u036f]/g, "");
+    //     var normalizedSchoolValue = item.value
+    //       .toLowerCase()
+    //       .normalize("NFD")
+    //       .replace(/[\u0300-\u036f]/g, "");
+
+    //     return (
+    //       regexPattern.test(normalizedSchoolId) ||
+    //       regexPattern.test(normalizedSchoolValue)
+    //     );
+    //   });
+    //   console.log("item", items);
+    //   cb(items);
+    // },
+    normalizeString(str) {
+      return str
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    },
+
     querySearchAsync(queryString, cb) {
+      console.log(queryString);
+
       const items = this.suggestions.filter((item) => {
-        return item.id.toLowerCase().indexOf(queryString.toLowerCase()) !== -1;
+        const searchPattern = unorm
+          .nfkd(queryString)
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+
+        const normalizedSchoolId = unorm
+          .nfkd(item.id)
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+
+        const normalizedSchoolValue = unorm
+          .nfkd(item.value)
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+
+        return (
+          normalizedSchoolId.includes(searchPattern) ||
+          normalizedSchoolValue.includes(searchPattern)
+        );
       });
       cb(items);
     },

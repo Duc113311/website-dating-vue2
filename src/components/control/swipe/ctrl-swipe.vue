@@ -14,7 +14,6 @@
           @mousedown.prevent="onMouseDow($event, index)"
           @mouseup.prevent="onMouseUp"
           v-for="(user, index) in listUserData"
-          @click="onClickShowDetail(user)"
           :key="index"
         >
           <Vue2InteractDraggable

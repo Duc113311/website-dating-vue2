@@ -171,27 +171,31 @@ export default {
      * @param {*} val
      */
     onSelectInterest(val) {
+      const listInterest =
+        this.$store.state.commonModule.listLifeStyleSingle.interests;
+
       debugger;
       if (this.listChecked.length < 5) {
         document
           .getElementById("interest" + val)
           .classList.add("border-active");
-        const nameInterest = document
-          .getElementById("interest" + val)
-          .innerHTML.toString();
-        const objectChecked = {
-          code: val,
-          value: nameInterest,
-        };
+        const findValue = listInterest.find((x) => x.code === val);
+        debugger;
+        if (findValue) {
+          const objectChecked = {
+            code: val,
+            value: findValue.value,
+          };
 
-        const findData = this.listChecked.find((x) => x.code === val);
-        if (!findData) {
-          this.listInterestCode.push(val);
+          const findData = this.listChecked.find((x) => x.code === val);
+          if (!findData) {
+            this.listInterestCode.push(val);
 
-          this.listChecked.push(objectChecked);
+            this.listChecked.push(objectChecked);
+          }
+          document.getElementsByClassName("type-language")[0].style.color =
+            "#f65a62";
         }
-        document.getElementsByClassName("type-language")[0].style.color =
-          "#f65a62";
       }
     },
 

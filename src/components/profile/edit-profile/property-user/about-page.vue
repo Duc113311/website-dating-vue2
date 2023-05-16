@@ -12,6 +12,7 @@
           placeholder="About me - maximise 500 words"
           v-model="nameAbout"
           @input="onChangeSaveAbout"
+          maxlength="500"
         >
         </el-input>
       </div>
@@ -39,7 +40,9 @@ export default {
      * Gán giá trị cuối cùng valueAbout cho user_profile
      */
     onChangeSaveAbout() {
-      this.setAbout(this.nameAbout);
+      debugger;
+      var substring = this.nameAbout.substring(0, 500);
+      this.setAbout(substring);
     },
   },
 };
