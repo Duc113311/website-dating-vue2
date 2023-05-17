@@ -136,21 +136,24 @@ export default {
 
     onSelectInterest(val) {
       debugger;
+      const listInterest =
+        this.$store.state.commonModule.listLifeStyleSingle.interests;
       if (this.listChecked.length < 5) {
         document.getElementById("not-check_" + val).classList.add("bg-active");
-        const nameInterest = document
-          .getElementById("not-check_" + val)
-          .innerHTML.toString();
-        const objectChecked = {
-          code: val,
-          value: nameInterest,
-        };
 
-        const findData = this.listChecked.find((x) => x.code === val);
-        if (!findData) {
-          this.listInterestCode.push(val);
+        const findValue = listInterest.find((x) => x.code === val);
+        if (findValue) {
+          const objectChecked = {
+            code: val,
+            value: findValue.value,
+          };
 
-          this.listChecked.push(objectChecked);
+          const findData = this.listChecked.find((x) => x.code === val);
+          if (!findData) {
+            this.listInterestCode.push(val);
+
+            this.listChecked.push(objectChecked);
+          }
         }
       }
     },
@@ -186,21 +189,25 @@ export default {
     debugger;
     const interestsData =
       this.$store.state.userModule.user_profile.profiles.interests;
+
+    const listInterest =
+      this.$store.state.commonModule.listLifeStyleSingle.interests;
     debugger;
     for (let index = 0; index < interestsData.length; index++) {
       const element = interestsData[index];
       document
         .getElementById("not-check_" + element)
         .classList.add("bg-active");
-      const nameInterest = document
-        .getElementById("not-check_" + element)
-        .innerHTML.toString();
-      const objectChecked = {
-        code: element,
-        value: nameInterest,
-      };
-      this.listInterestCode.push(element);
-      this.listChecked.push(objectChecked);
+      const findValue = listInterest.find((x) => x.code === element);
+      debugger;
+      if (findValue) {
+        const objectChecked = {
+          code: element,
+          value: findValue.value,
+        };
+        this.listInterestCode.push(element);
+        this.listChecked.push(objectChecked);
+      }
     }
   },
 };

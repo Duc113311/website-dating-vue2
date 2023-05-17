@@ -1,12 +1,17 @@
 <template>
   <div class="w-full h-full">
     <!-- For you -->
-    <LikeForYou @onShowDetailYouLike="onShowDetailYouLike"></LikeForYou>
+    <LikeForYou
+      :actionDecide="actionDecide"
+      @onShowDetailYouLike="onShowDetailYouLike"
+    ></LikeForYou>
     <div
       v-if="isShowDetailUserLike"
       class="w-full user-like h-full absolute top-0 left-0 z-50"
     >
-      <DetailUserLikeTopic></DetailUserLikeTopic>
+      <DetailUserLikeTopic
+        @onActionDecide="onActionDecide"
+      ></DetailUserLikeTopic>
     </div>
   </div>
 </template>
@@ -20,12 +25,19 @@ export default {
   data() {
     return {
       isShowDetailUserLike: false,
+      actionDecide: "",
     };
   },
 
   methods: {
     onShowDetailYouLike(val) {
+      this.actionDecide = "";
       this.isShowDetailUserLike = val;
+    },
+
+    onActionDecide(val) {
+      this.actionDecide = val;
+      this.isShowDetailUserLike = false;
     },
   },
 

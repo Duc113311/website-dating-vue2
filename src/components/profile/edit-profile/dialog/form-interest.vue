@@ -299,7 +299,8 @@ export default {
     debugger;
     const interestsData =
       this.$store.state.userModule.user_profile.profiles.interests;
-
+    const listInterest =
+      this.$store.state.commonModule.listLifeStyleSingle.interests;
     if (interestsData.length !== 0) {
       document.getElementsByClassName("type-language")[0].style.color =
         "#f65a62";
@@ -308,16 +309,18 @@ export default {
         document
           .getElementById("interest" + element)
           .classList.add("border-active");
-        const nameInterest = document
-          .getElementById("interest" + element)
-          .innerHTML.toString();
-        const objectChecked = {
-          code: element,
-          value: nameInterest,
-        };
-        this.listInterestCode.push(element);
-        this.listChecked.push(objectChecked);
-        this.listCheckDelete.push(objectChecked);
+
+        const findValue = listInterest.find((x) => x.code === element);
+
+        if (findValue) {
+          const objectChecked = {
+            code: element,
+            value: findValue.value,
+          };
+          this.listInterestCode.push(element);
+          this.listChecked.push(objectChecked);
+          this.listCheckDelete.push(objectChecked);
+        }
       }
     }
   },

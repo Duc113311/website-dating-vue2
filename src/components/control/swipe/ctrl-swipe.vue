@@ -10,20 +10,23 @@
           }" -->
         <div
           ref="index"
-          :class="[selectedIdx === index ? 'zIndex' : '']"
+          :class="[selectedIdx === index ? `zIndex draggable_${index}` : '']"
           @mousedown.prevent="onMouseDow($event, index)"
           @mouseup.prevent="onMouseUp"
           v-for="(user, index) in listUserData"
+          @click="onClickShowDetail(user, index)"
           :key="index"
         >
           <Vue2InteractDraggable
+            v-if="isVisible"
             :interact-max-rotation="15"
             :interact-x-threshold="20"
-            :interact-y-threshold="50"
+            :interact-y-threshold="20"
             :interact-block-drag-down="true"
             @draggedRight="emitAndNext(index)"
             @draggedLeft="emitAndNext(index)"
             @draggedUp="emitAndNext(index)"
+            :class="`draggable_${index}`"
           >
             <template>
               <div
@@ -82,6 +85,7 @@ import { Vue2InteractDraggable } from "vue2-interact";
 import functionValidate from "../../../middleware/validate.js";
 import { wrapGrid } from "animate-css-grid";
 import { mapMutations } from "vuex";
+import { nextTick } from "vue";
 
 export default {
   name: "ctrl-swipe-page",
@@ -95,30 +99,77 @@ export default {
       invertImage: false,
       isHoverLike: false,
       isHoverNope: false,
+      isMouseDown: false,
+      isVisible: true,
+      isIndexNew: 0,
+      index_info: null,
     };
   },
 
-  props: ["listUser"],
+  props: ["listUser", "actionDecide"],
   computed: {
     listUserData() {
       debugger;
       return this.listUser;
     },
   },
-
+  watch: {
+    actionDecide(val) {
+      this.swipe(val);
+    },
+  },
   methods: {
     ...mapMutations(["setDetailUserLikeTopic"]),
     bindingAge(val) {
       const dataAge = functionValidate.calculatAge(val);
       return dataAge;
     },
+    swipe(val) {
+      debugger;
+      this.opacity = 1;
+      nextTick(() => {
+        if (val == "nope") {
+          this.isHoverNope = true;
+          document
+            .getElementsByClassName("draggable_" + this.index_info)[0]
+            .classList.add("moving-element-left");
+          setTimeout(() => {
+            document
+              .getElementsByClassName("draggable_" + this.index_info)[0]
+              .remove();
+            this.$emit("swipe", "");
+            this.isHoverLike = false;
+            this.isHoverNope = false;
+            this.opacity = 0;
+          }, 500);
+        } else if (val == "like") {
+          this.isHoverLike = true;
+          document
+            .getElementsByClassName("draggable_" + this.index_info)[0]
+            .classList.add("moving-element-right");
+          setTimeout(() => {
+            document
+              .getElementsByClassName("draggable_" + this.index_info)[0]
+              .remove();
+            this.$emit("swipe", "");
+            this.isHoverLike = false;
+            this.isHoverNope = false;
+            this.opacity = 0;
+          }, 500);
+        }
+      });
+    },
     emitAndNext(index) {
-      this.$refs["index"][index].style.display = "none";
+      debugger;
+      // this.$refs["index"][index].style.display = "none";
+      // if(this.isIndexNew===)
+      // setTimeout(() => (this.isVisible = false), 200);
+      document.getElementsByClassName("draggable_" + index)[0].remove();
       this.onMouseUp();
     },
     onMouseDow($event, index) {
       console.log(index);
-
+      this.isMouseDown = true;
       this.selectedIdx = index;
       this.truc_x = $event.clientX;
       this.truc_y = $event.clientY;
@@ -132,6 +183,7 @@ export default {
     },
 
     moveElement(event) {
+      this.isMouseDown = false;
       console.log();
       if (event.clientX > this.truc_x + 25) {
         this.opacity = Math.min((event.clientX - this.truc_x - 25) / 50, 1);
@@ -161,9 +213,12 @@ export default {
       }
     },
 
-    onClickShowDetail(val) {
-      this.setDetailUserLikeTopic(val);
-      this.$emit("onShowDetailUserLikeTopic", true);
+    onClickShowDetail(user, index) {
+      if (this.isMouseDown) {
+        this.index_info = index;
+        this.setDetailUserLikeTopic(user);
+        this.$emit("onShowDetailUserLikeTopic", true);
+      }
     },
   },
 
@@ -179,13 +234,41 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.moving-element-left {
+  position: relative;
+  animation: moveLeft 0.6s linear infinite;
+}
+
+@keyframes moveLeft {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: -400%; /* Điều chỉnh giá trị left theo ý muốn */
+    transform: rotate(-45deg);
+  }
+}
+.moving-element-right {
+  position: relative;
+  animation: moveRight 0.6s linear infinite;
+}
+
+@keyframes moveRight {
+  0% {
+    right: 0%;
+  }
+  100% {
+    right: -400%; /* Điều chỉnh giá trị left theo ý muốn */
+    transform: rotate(45deg);
+  }
+}
 .item-user {
   border-radius: 10px;
   background-position: center;
   background-size: cover;
 }
 .zIndex {
-  z-index: 1000;
+  z-index: 20;
 }
 .gap {
   gap: 1.55rem;

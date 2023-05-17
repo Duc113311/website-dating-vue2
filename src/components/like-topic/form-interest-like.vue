@@ -36,25 +36,28 @@ export default {
   methods: {
     onSelectInterest(val) {
       debugger;
+      const listInterest =
+        this.$store.state.commonModule.listLifeStyleSingle.interests;
       const findData = this.listChecked.find((x) => x.code === val);
       if (!findData) {
         if (this.listChecked.length < 5) {
           document
             .getElementById("not-check_" + val)
             .classList.add("bg-active");
+          const findValue = listInterest.find((x) => x.code === val);
           document
             .getElementById("not-check_" + val)
             .classList.remove("border-default");
-          const nameInterest = document
-            .getElementById("not-check_" + val)
-            .innerHTML.toString();
-          const objectChecked = {
-            code: val,
-            value: nameInterest,
-          };
-          this.listInterestCode.push(val);
 
-          this.listChecked.push(objectChecked);
+          if (findValue) {
+            const objectChecked = {
+              code: val,
+              value: findValue.value,
+            };
+            this.listInterestCode.push(val);
+
+            this.listChecked.push(objectChecked);
+          }
         }
         // Khong ton tai
       } else {

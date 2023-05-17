@@ -130,7 +130,8 @@ export default {
 
     onSelectLanguages(val) {
       const findData = this.listChecked.find((x) => x.code === val);
-
+      const listLanguages =
+        this.$store.state.commonModule.listLifeStyleSingle.languages;
       if (findData) {
         document
           .getElementById("language_" + findData.code)
@@ -148,16 +149,17 @@ export default {
           document
             .getElementById("language_" + val)
             .classList.add("border-active");
-          const nameInterest = document
-            .getElementById("language_" + val)
-            .innerHTML.toString();
-          const objectChecked = {
-            code: val,
-            value: nameInterest.trim(),
-          };
-          this.listChecked.push(objectChecked);
-          document.getElementsByClassName("color-ic-language")[0].style.color =
-            "#f65a62";
+          const findValue = listLanguages.find((x) => x.code === val);
+          if (findValue) {
+            const objectChecked = {
+              code: val,
+              value: findValue.value.trim(),
+            };
+            this.listChecked.push(objectChecked);
+            document.getElementsByClassName(
+              "color-ic-language"
+            )[0].style.color = "#f65a62";
+          }
         }
       }
     },

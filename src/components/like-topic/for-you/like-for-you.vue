@@ -4,6 +4,7 @@
     <div class="w-full pl-5 pr-5 pt-5 h-likes overflow-auto height-scroll z-30">
       <ctrlSwipe
         :listUser="listLikeYouActions"
+        :actionDecide="actionDecide"
         @onShowDetailUserLikeTopic="onShowDetailUserLikeTopic"
       ></ctrlSwipe>
     </div>
@@ -24,7 +25,7 @@ export default {
       listLikes: this.$store.state.likeTopicModule.listLikeForYous,
     };
   },
-
+  props: ["actionDecide"],
   computed: {
     listLikeYouActions() {
       debugger;
