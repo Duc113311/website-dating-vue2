@@ -1,8 +1,10 @@
 <template>
   <div class="w-full mt-6">
     <div class="w-full form-set-list bg-default">
-      <div class="w-full flex justify-between bh-title form-set-item">
-        <div>SHOW ME</div>
+      <div
+        class="w-full flex justify-between bh-title title-item form-set-item"
+      >
+        <div>Show me</div>
       </div>
       <div class="w-full flex items-center">
         <div class="w-full">

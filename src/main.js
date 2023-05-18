@@ -10,7 +10,9 @@ import "@fortawesome/fontawesome-free/js/all.js";
 import VueCarousel from "vue-carousel";
 import Vue2TouchEvents from "vue2-touch-events";
 import VueCropper from "vue-cropperjs";
+import i18n from "./middleware/i18n.js";
 
+import VueI18n from "vue-i18n";
 /* import specific icons */
 
 /* add icons to the library */
@@ -21,8 +23,10 @@ Vue.use(ElementUI);
 Vue.use(VueCarousel);
 Vue.use(Vue2TouchEvents);
 Vue.use(VueCropper);
+Vue.use(VueI18n);
 
 new Vue({
+  i18n,
   router,
   store,
   render: (h) => h(App),

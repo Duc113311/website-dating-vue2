@@ -417,6 +417,15 @@ const routes = [
                 /* webpackChunkName: "test-setting-page" */ "../views/profile-page/setting/test-setting/index.vue"
               ),
           },
+
+          {
+            path: "/global-language",
+            name: "global-language-page",
+            component: () =>
+              import(
+                /* webpackChunkName: "global-language-page" */ "../views/profile-page/setting/global-language/index.vue"
+              ),
+          },
         ],
       },
     ],

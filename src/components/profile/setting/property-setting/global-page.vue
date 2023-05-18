@@ -23,21 +23,29 @@
 
     <div v-show="valueGlobal" class="w-full form-set-list bg-default">
       <div class="w-full bh-title title-item form-set-item">
-        PREFERRED LANGUAGES
+        Preferred languages
       </div>
       <div class="w-full">
-        <div>
+        <div v-if="languageChecked.length !== 0">
           <div
             v-for="(item, index) in languageChecked"
             :key="index"
-            class="w-full form-set-item bd-input title-input-item bh-item-title"
+            @click="onClickPreferredLanguage(item)"
+            class="w-full flex items-center justify-between form-set-item bd-input title-input-item bh-item-title"
           >
-            {{ item }}
+            <div>
+              {{ item }}
+            </div>
+            <div class="cursor-pointer">
+              <i
+                class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
+              ></i>
+            </div>
           </div>
         </div>
+        <div v-else>No data</div>
         <div>
           <div
-            :disabled="isDisabled"
             class="bh-text-location form-set-item w-full cursor-pointer"
             @click="onClickAddLanguage"
           >
@@ -69,6 +77,8 @@ export default {
     return {
       isShowLanguages: false,
       isDisabled: false,
+      languageSingle:
+        this.$store.state.commonModule.listLifeStyleSingle.languages,
     };
   },
 
@@ -78,9 +88,19 @@ export default {
     }),
 
     languageChecked() {
-      const language = this.$store.state.userModule.languageChecked;
+      const language =
+        this.$store.state.userModule.user_profile.settings.global.languages;
 
-      return language;
+      let resultData = [];
+      for (let index = 0; index < language.length; index++) {
+        const element = language[index];
+
+        const findData = this.languageSingle.find((x) => x.code === element);
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      return resultData;
     },
 
     valueGlobal: {
@@ -110,7 +130,7 @@ export default {
       } else {
         this.setShowGlobal({
           isEnabled: true,
-          languages: this.languageChecked,
+          languages: this.$store.state.userModule.listLanguageGlobal,
         });
       }
     },
@@ -121,15 +141,13 @@ export default {
 
     onClickSaveLanguage(val) {
       debugger;
-      const language = this.$store.state.userModule.languageChecked;
-      if (language.length >= 5) {
-        this.isDisabled = true;
-      }
-      this.setShowGlobal({
-        isEnabled: true,
-        languages: this.languageChecked,
-      });
       this.isShowLanguages = val;
+    },
+
+    onClickPreferredLanguage(val) {
+      debugger;
+      console.log(val);
+      this.$router.push({ path: "/global-language" }).catch(() => {});
     },
   },
 };

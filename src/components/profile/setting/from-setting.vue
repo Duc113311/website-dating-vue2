@@ -18,10 +18,13 @@
         <!-- <SwitchReadReceipts></SwitchReadReceipts> -->
         <SwitchActivity></SwitchActivity>
         <ShowDistance></ShowDistance>
+        <ShowLanguage></ShowLanguage>
+
         <!-- <NotificationPage></NotificationPage> -->
         <DarkThemePage></DarkThemePage>
         <!-- <PrivacyPage></PrivacyPage> -->
         <LogOutPage></LogOutPage>
+        <!-- Show language -->
       </div>
       <!--  -->
     </div>
@@ -29,6 +32,7 @@
 </template>
 
 <script>
+import ShowLanguage from "./property-setting/show-language";
 import LogOutPage from "./property-setting/log-out-page";
 import SwitchActivity from "./property-setting/switch-activity";
 // import SwitchReadReceipts from "./property-setting/switch-read-receipts";
@@ -51,6 +55,7 @@ import ShowWifiPage from "./property-setting/show-wifi-page.vue";
 // import PrivacyPage from "./property-setting/privacy-page.vue";
 export default {
   components: {
+    ShowLanguage,
     LogOutPage,
     SwitchActivity,
     // SwitchReadReceipts,

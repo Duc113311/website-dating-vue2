@@ -6,7 +6,7 @@
         class="rounded-lg items-center bg-default title-default w-full w-form-common overflow-hidden relative p-5 cursor-pointer"
       >
         <div class="w-full h-dialog-title justify-between flex items-center">
-          <div class="title-packages">Languages</div>
+          <div class="title-packages">{{ $t("hello_name") }}</div>
         </div>
 
         <div class="w-full h-dialog-body height-scroll overflow-scroll">
@@ -16,9 +16,9 @@
               :key="index"
               :id="`language_` + item.code"
               class="w-full pt-2 pb-2 border-bottom"
-              @click="onChoseLanguages(item)"
+              @click="onChoseLanguages(item.code)"
             >
-              <div class="text-base">Tiếng {{ item.value }}</div>
+              <div class="text-base">{{ item.value }}</div>
             </div>
           </div>
         </div>
@@ -28,9 +28,8 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
 export default {
-  name: "form-add-languages",
+  name: "form-show-languages",
 
   data() {
     return {};
@@ -38,12 +37,20 @@ export default {
 
   computed: {
     languageParam() {
-      return this.$store.state.commonModule.listLifeStyleSingle.languages;
+      return [
+        {
+          code: "vn",
+          value: "Tiếng Việt",
+        },
+        {
+          code: "en",
+          value: "English",
+        },
+      ];
     },
   },
 
   methods: {
-    ...mapMutations(["setValueLanguage"]),
     onChangeCancel() {
       this.$emit("onClickSaveLanguage", false);
     },
@@ -53,12 +60,12 @@ export default {
     },
 
     onChoseLanguages(val) {
-      const objectLanguage = {
-        language: val,
-        action: true,
-      };
-      this.setValueLanguage(objectLanguage);
-      this.$emit("onClickSaveLanguage", false);
+      debugger;
+      const newLocale = this.$i18n.locale === val ? "vi" : "en";
+      this.$i18n.locale = newLocale;
+      localStorage.setItem("language", newLocale);
+
+      // this.$emit("onClickSaveLanguage", false);
     },
   },
 };

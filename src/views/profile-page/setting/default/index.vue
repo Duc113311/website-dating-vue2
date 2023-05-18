@@ -121,7 +121,7 @@
           <div class="form-set-list">
             <div class="w-full flex justify-between items-center">
               <div class="bh-title title-item form-set-item">
-                MAXIMUM DISTANCE
+                Maximum distance
               </div>
               <div class="bh-describe">{{ valueDistance }}km</div>
             </div>

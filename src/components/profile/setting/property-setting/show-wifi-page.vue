@@ -2,7 +2,7 @@
   <div class="w-full flex items-center mt-6">
     <div class="w-full form-set-list bg-default">
       <div class="w-full title-item form-set-item bh-title">
-        <div>SHOW ME</div>
+        <div>Show me</div>
       </div>
       <div class="w-full flex items-center bh-item-title">
         <div class="w-full">

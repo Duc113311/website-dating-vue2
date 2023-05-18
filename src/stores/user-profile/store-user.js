@@ -140,10 +140,11 @@ const state = {
     schools: [],
   },
 
-  languageChecked: ["English", "Vietnamese"],
   completeBasicValue: true,
   completeLifeStyleValue: true,
   completeUser: 0,
+
+  listLanguageGlobal: [],
 };
 
 const getters = {
@@ -664,6 +665,9 @@ const mutations = {
    * @param {*} value
    */
   setShowGlobal(state, value) {
+    if (!value.isEnabled) {
+      state.listLanguageGlobal = state.user_profile.settings.global.languages;
+    }
     state.user_profile.settings.global.isEnabled = value.isEnabled;
     state.user_profile.settings.global.languages = value.languages;
   },
@@ -766,11 +770,19 @@ const mutations = {
     state.user_profile.profiles.address = data;
   },
 
-  setValueLanguage(state, value) {
-    if (state.languageChecked.length < 5) {
-      state.languageChecked.push(value.value);
+  setValueLanguage(state, data) {
+    const languages = state.user_profile.settings.global.languages;
+    const findData = languages.find((x) => x === data.language.code);
+    debugger;
+    if (findData) {
+      if (!data.action) {
+        languages.splice(data.language.code, 1);
+      }
+    } else {
+      if (languages.length < 5) {
+        languages.push(data.language.code);
+      }
     }
-    // state.user_profile.settings.global.languages.push(value.code);
   },
 
   /**
