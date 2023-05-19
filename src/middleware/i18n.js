@@ -1,17 +1,13 @@
 import Vue from "vue";
 import VueI18n from "vue-i18n";
+import vnValue from "../locales/vn.json";
+import enValue from "../locales/en.json";
 
 Vue.use(VueI18n);
 
 const messages = {
-  en: {
-    hello_name: "Languages",
-    welcome: "Welcome to my app.",
-  },
-  vi: {
-    hello_name: "Ngôn ngữ",
-    welcome: "Chào mừng bạn đến với ứng dụng của tôi.",
-  },
+  en: enValue,
+  vi: vnValue,
 };
 const storedLanguage = localStorage.getItem("language");
 

@@ -8,6 +8,9 @@
         <div class="w-full h-dialog-title justify-between flex items-center">
           <div class="title-packages">{{ $t("hello_name") }}</div>
         </div>
+        <div>
+          {{ $t("welcome") }}
+        </div>
 
         <div class="w-full h-dialog-body height-scroll overflow-scroll">
           <div class="w-full items-center grid">
