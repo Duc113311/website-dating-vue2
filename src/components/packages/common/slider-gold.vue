@@ -26,9 +26,9 @@
                   alt=""
                 />
               </div>
-              <div class="mt-2 text-xl">Platinum package</div>
+              <div class="mt-2 text-xl">{{ $t("get_read_receipts") }}</div>
               <div class="mt-2 text-sm">
-                Level up everyone action you take on HeartLink
+                {{ $t("level_up_everyone_action_you_take_on_heartlink") }}
               </div>
             </div>
           </div>
@@ -44,9 +44,9 @@
               <div class="flex justify-center">
                 <img src="@/assets/icon/package/ic_gold_package.svg" alt="" />
               </div>
-              <div class="mt-2 text-xl">Gold package</div>
+              <div class="mt-2 text-xl">{{ $t("gold_package") }}</div>
               <div class="mt-2 text-sm">
-                Level up everyone action you take on HeartLink
+                {{ $t("level_up_everyone_action_you_take_on_heartlink") }}
               </div>
             </div>
           </div></slide
@@ -63,9 +63,9 @@
               <div class="flex justify-center">
                 <img src="@/assets/icon/package/ic_silver_package.svg" alt="" />
               </div>
-              <div class="mt-2 text-xl">Silver package</div>
+              <div class="mt-2 text-xl">{{ $t("silver_package") }}</div>
               <div class="mt-2 text-sm">
-                Level up everyone action you take on HeartLink
+                {{ $t("level_up_everyone_action_you_take_on_heartlink") }}
               </div>
             </div>
           </div></slide
@@ -81,9 +81,9 @@
               <div class="flex justify-center">
                 <img src="@/assets/icon/package/ic_super_like.svg" alt="" />
               </div>
-              <div class="mt-2 text-xl">Get Supper Like</div>
+              <div class="mt-2 text-xl">{{ $t("get_supper_like") }}</div>
               <div class="mt-2 text-sm">
-                Level up everyone action you take on HeartLink
+                {{ $t("level_up_everyone_action_you_take_on_heartlink") }}
               </div>
             </div>
           </div></slide
@@ -99,9 +99,9 @@
               <div class="flex justify-center">
                 <img src="@/assets/icon/package/ic_boost.svg" alt="" />
               </div>
-              <div class="mt-2 text-xl">Get Boost Profile</div>
+              <div class="mt-2 text-xl">{{ $t("get_boost_profile") }}</div>
               <div class="mt-2 text-sm">
-                Level up everyone action you take on HeartLink
+                {{ $t("level_up_everyone_action_you_take_on_heartlink") }}
               </div>
             </div>
           </div></slide
@@ -117,9 +117,9 @@
               <div class="flex justify-center">
                 <img src="@/assets/icon/package/ic_read_receipts.svg" alt="" />
               </div>
-              <div class="mt-2 text-xl">Get Read Receipts</div>
+              <div class="mt-2 text-xl">{{ $t("get_read_receipts") }}</div>
               <div class="mt-2 text-sm">
-                Level up everyone action you take on HeartLink
+                {{ $t("level_up_everyone_action_you_take_on_heartlink") }}
               </div>
             </div>
           </div></slide

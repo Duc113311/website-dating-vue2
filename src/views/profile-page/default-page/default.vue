@@ -42,7 +42,10 @@
         class="w-full option-setting flex items-center title-default cursor-pointer"
       >
         <div class="item-setting">
-          <div class="flex justify-center" @click="onClickSettingDetail()">
+          <div
+            class="flex justify-center hover-item cursor-pointer"
+            @click="onClickSettingDetail()"
+          >
             <img
               v-if="colorBt"
               src="@/assets/icon/bt_settings_dark.svg"
@@ -59,7 +62,10 @@
           <div class="mt-2 text-base describe-text">{{ $t("settings") }}</div>
         </div>
         <div class="item-setting mt-24">
-          <div class="flex justify-center" @click="onEditProfile()">
+          <div
+            class="flex justify-center hover-item cursor-pointer"
+            @click="onEditProfile()"
+          >
             <img
               v-if="colorBt"
               src="@/assets/icon/bt_edit_profile_dark.svg"
@@ -79,7 +85,7 @@
         </div>
         <el-tooltip content="Coming soon" placement="top">
           <div class="item-setting">
-            <div class="flex justify-center">
+            <div class="flex justify-center hover-item cursor-pointer">
               <img
                 v-if="colorBt"
                 src="@/assets/icon/bt_safety_dark.svg"

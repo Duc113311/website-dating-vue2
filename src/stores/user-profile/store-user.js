@@ -204,7 +204,7 @@ const actions = {
       .get(`api/v1/profile`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("tokenId")}` },
       })
-      .then((response) => {
+      .then(async (response) => {
         debugger;
         commit("setDetailProfileAuth_Mongo", response.data.data);
       })
