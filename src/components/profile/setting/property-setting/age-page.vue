@@ -2,23 +2,31 @@
   <div class="w-full mt-6">
     <div class="form-set-list bg-default">
       <div class="w-full flex justify-between">
-        <div class="bh-title title-item form-set-item">Age range</div>
+        <div class="bh-title title-item form-set-item">
+          {{ $t("age_range") }}
+        </div>
         <div class="bh-describe">{{ showAgeMin }} - {{ showAgeMax }}</div>
       </div>
 
       <div class="w-full">
-        <el-slider
+        <vue-slider
           v-model="valueAge"
-          range
-          :show-input-controls="true"
+          :enable-cross="false"
           :max="50"
           @change="onChangeAgeRange()"
+          :process-style="{ backgroundColor: '#fd5d65 ' }"
+          :tooltip-style="{
+            backgroundColor: 'black',
+            borderColor: 'black',
+          }"
+          dotSize="21"
         >
-        </el-slider>
+          <template v-slot:dot> <div class="custom-dot"></div> </template
+        ></vue-slider>
       </div>
       <div class="flex justify-between w-full">
         <div class="bh-item-title title-item">
-          Only show people in this range
+          {{ $t("only_show_people_in_this_range") }}
         </div>
         <div>
           <el-switch
@@ -35,10 +43,14 @@
 </template>
 
 <script>
+import VueSlider from "vue-slider-component";
+import "vue-slider-component/theme/default.css";
 import { mapGetters, mapMutations } from "vuex";
 export default {
   name: "age-page",
-
+  components: {
+    VueSlider,
+  },
   data() {
     return {
       valueAge: [
@@ -90,4 +102,17 @@ export default {
 };
 </script>
 
-<style css scoped></style>
+<style lang="css" scoped>
+.custom-dot {
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #fb5d65;
+  box-sizing: border-box;
+  transition: transform 0.4s ease;
+}
+.custom-dot:hover {
+  transform: scale(1.2);
+}
+</style>

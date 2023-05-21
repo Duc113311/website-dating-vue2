@@ -5,7 +5,7 @@
         <div class="w-full">
           <div class="w-full">
             <div class="w-full form-set-item flex justify-between items-center">
-              <div class="bh-item-title">Dark theme</div>
+              <div class="bh-item-title">{{ $t("dark_theme") }}</div>
               <div>
                 <el-switch
                   v-model="themeValue"
@@ -16,7 +16,9 @@
                 </el-switch>
               </div>
             </div>
-            <div class="bh-describe">Choose the theme you like most</div>
+            <div class="bh-describe">
+              {{ $t("choose_the_theme_you_like_most") }}
+            </div>
           </div>
         </div>
       </div>

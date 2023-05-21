@@ -2,11 +2,13 @@
   <div class="w-full">
     <div class="w-full">
       <div class="w-full flex justify-between title-default">
-        <div class="w-full bh-item-title title-size">App Settings</div>
+        <div class="w-full bh-item-title title-size">
+          {{ $t("app_settings") }}
+        </div>
       </div>
       <div class="w-full form-set-list bg-default">
         <div class="w-full flex justify-between form-set-item">
-          <div class="bh-title">SHOW DISTANCE IN</div>
+          <div class="bh-title">{{ $t("show_distance_in") }}</div>
           <div class="bh-describe">{{ kiloValue }}.</div>
         </div>
 

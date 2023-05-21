@@ -10,7 +10,9 @@
             <bh-back @onBackComponent="onBackEditProfile"></bh-back>
             <!-- <BhBack @onBackComponent="onBackEditProfile"></BhBack> -->
           </div>
-          <div class="ml-20 w-3/4 text-xl">Edit Profile</div>
+          <div class="ml-20 w-3/4 text-xl">
+            {{ formatString($t("edit_profile")) }}
+          </div>
         </div>
       </div>
       <div class="form-edit overflow-scroll w-full">
@@ -29,6 +31,7 @@
 import fromUpdate from "@/components/profile/edit-profile/from-update.vue";
 import BhBack from "@/components/bh-element-ui/button/bh-back.vue";
 import Footer from "@/components/layout/footer-home/footer.vue";
+import functionValidate from "../../../../middleware/validate.js";
 import { mapActions, mapMutations } from "vuex";
 export default {
   components: { fromUpdate, BhBack, Footer },
@@ -159,6 +162,10 @@ export default {
         this.loading = false;
         this.$router.push({ path: "/profile" });
       }, 2000);
+    },
+
+    formatString(value) {
+      return functionValidate.titleCase(value);
     },
   },
 };

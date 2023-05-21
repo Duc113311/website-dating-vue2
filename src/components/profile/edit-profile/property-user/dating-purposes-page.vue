@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <div class="w-full flex justify-between p-3 bh-title">
-      <div class="">DATING PURPOSES</div>
+      <div class="">{{ $t("dating_purposes") }}</div>
       <div v-if="completePurposes">+4%</div>
     </div>
 
@@ -12,7 +12,7 @@
             class="mr-2"
             src="@/assets/icon/ic_tinder/ic_purpose.png"
             width="25"
-          />I'm looking for
+          />{{ $t("i'm_looking_for") }}
         </div>
       </div>
       <div
@@ -52,7 +52,7 @@ export default {
   name: "dating-purposes-page",
   data() {
     return {
-      nameDefault: "Trống",
+      nameDefault: this.$t("empty"),
     };
   },
 

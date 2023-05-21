@@ -23,6 +23,9 @@
         >
           <div class="w-full absolute top-dash-explore text-center bottom-0">
             <div class="countdown"></div>
+            <div v-if="index == 3" class="countdown" id="countdown">
+              {{ countdown }}
+            </div>
             <div class="title-date title-print">{{ item.name }}</div>
             <div class="text-describe">
               {{ item.description }}
@@ -46,6 +49,8 @@ export default {
 
   data() {
     return {
+      countdown: "",
+      countdownInterval: null,
       // listCategoryExplore: [
       //   {
       //     code: "blindDate",
@@ -129,8 +134,42 @@ export default {
       return resultData;
     },
   },
-
+  mounted() {
+    this.startCountdown();
+  },
+  beforeDestroy() {
+    clearInterval(this.countdownInterval);
+  },
   methods: {
+    startCountdown() {
+      const startHour = new Date();
+      startHour.setHours(17, 0, 0);
+
+      const end = new Date();
+      end.setHours(18, 0, 0); // Kết thúc lúc 12 giờ
+      this.countdownInterval = setInterval(() => {
+        const now = new Date();
+        if (now - startHour > 0) {
+          const timeLeft = end - now;
+          console.log("end", end);
+          console.log("now", now);
+          console.log("timeLeft", timeLeft);
+          if (timeLeft < 0) {
+            clearInterval(this.countdownInterval);
+            if (now - end < 1000 * 60 * 60) {
+              this.countdown = "Sự kiện đã kết thúc!";
+            } else {
+              this.countdown = "";
+            }
+          } else {
+            const hours = Math.floor(timeLeft / 3600000);
+            const minutes = Math.floor((timeLeft % 3600000) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            this.countdown = `Sự kiện còn lại ${hours} giờ ${minutes} phút ${seconds} giây`;
+          }
+        }
+      }, 1000);
+    },
     onClickChoseCategory(val) {
       console.log(val);
       switch (val.code) {

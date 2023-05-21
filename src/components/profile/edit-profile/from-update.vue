@@ -9,8 +9,11 @@
     <div
       class="flex justify-center text-center w-full mt-4 mb-4 description-no-padding"
     >
-      Add video, pic or logo toget 4% closer to completing your profile and you
-      may even get more likes
+      {{
+        $t(
+          "add_video,_pic_or_logo_target_4%_closer_to_completing_your_profile_and_you_may_even_get_more_likes"
+        )
+      }}
     </div>
     <!-- Button add media -->
     <div class="w-full mb-4">

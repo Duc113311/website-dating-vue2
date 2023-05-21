@@ -21,14 +21,16 @@
         >
           <div class="w-full items-center h-full">
             <div class="flex w-full justify-between items-center mb-2">
-              <div class="padding-title">The language I know</div>
+              <div class="padding-title">{{ $t("the_language_i_know") }}</div>
               <div class="padding-describe-item">
-                {{ listChecked.length }} out of 5
+                {{ listChecked.length }} {{ $t("5_out_of_5") }}
               </div>
             </div>
             <!-- Những thứ đã chọn -->
             <div class="w-full">
-              Choose up to 5 languages you know and add to your profile
+              {{
+                $t("choose_up_to_5_languages_you_know_and_add_to_your_profile")
+              }}
             </div>
 
             <!-- Tìm kiếm -->
@@ -37,7 +39,7 @@
                 <el-input
                   @input="onChangeFilterText"
                   v-model="valueSearch"
-                  placeholder="Search language"
+                  :placeholder="placeholderLanguage"
                   name=""
                   id=""
                 >
@@ -86,6 +88,8 @@ export default {
       listChecked: [],
       valueSearch: "",
       listData: [],
+
+      placeholderLanguage: this.$t("search_language"),
       listLanguages:
         this.$store.state.commonModule.listLifeStyleSingle.languages,
       listLanguagesOld:

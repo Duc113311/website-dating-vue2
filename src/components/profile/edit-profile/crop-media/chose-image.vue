@@ -19,21 +19,9 @@
             <div class="image w-1/3 text-left">
               <i class="fa-solid fa-image text-5xl text-slate-500"></i>
             </div>
-            <div class="w-2/3 text-left padding-text-option">Upload Photo</div>
-          </label>
-        </div>
-        <div
-          class="w-full flex justify-center p-3 rounded-lg bg-image-crop bg-default"
-        >
-          <label
-            class="w-full flex items-center justify-center"
-            for="upload_image"
-          >
-            <input type="file" id="upload_image" ref="fileInput" hidden />
-            <div class="image w-1/3 text-left">
-              <i class="fa-solid fa-camera text-5xl text-slate-500"></i>
+            <div class="w-2/3 text-left padding-text-option">
+              {{ $t("upload_photo") }}
             </div>
-            <div class="w-2/3 text-left padding-text-option">Upload Loop</div>
           </label>
         </div>
         <div
@@ -48,7 +36,23 @@
               <i class="fa-solid fa-camera text-5xl text-slate-500"></i>
             </div>
             <div class="w-2/3 text-left padding-text-option">
-              Capture from Camera
+              {{ $t("upload_loop") }}
+            </div>
+          </label>
+        </div>
+        <div
+          class="w-full flex justify-center p-3 rounded-lg bg-image-crop bg-default"
+        >
+          <label
+            class="w-full flex items-center justify-center"
+            for="upload_image"
+          >
+            <input type="file" id="upload_image" ref="fileInput" hidden />
+            <div class="image w-1/3 text-left">
+              <i class="fa-solid fa-camera text-5xl text-slate-500"></i>
+            </div>
+            <div class="w-2/3 text-left padding-text-option">
+              {{ $t("capture_from_camera") }}
             </div>
           </label>
         </div>

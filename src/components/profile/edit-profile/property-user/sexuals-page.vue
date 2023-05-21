@@ -2,7 +2,7 @@
   <div class="w-full flex items-center">
     <div class="w-full">
       <div class="w-full flex justify-between bh-title p-3">
-        <div>SEXUAL ORIENTATION</div>
+        <div>{{ $t("sexual_orientation") }}</div>
       </div>
       <div class="w-full flex style-form bg-default title-default">
         <div class="flex justify-between w-full" @click="onShowPopupSexuals()">

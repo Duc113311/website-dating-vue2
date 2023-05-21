@@ -2,7 +2,7 @@
   <div class="w-full flex items-center">
     <div class="w-full">
       <div class="w-full flex justify-between bh-title p-3">
-        <div>SCHOOL</div>
+        <div>{{ $t("school") }}</div>
         <div v-if="completeSchool">+4%</div>
       </div>
       <div
@@ -27,7 +27,7 @@ export default {
     return {
       nameSchool: this.$store.state.userModule.user_profile?.profiles?.school
         ? this.$store.state.userModule.user_profile?.profiles?.school
-        : "Add school",
+        : this.$t("add_school"),
     };
   },
 

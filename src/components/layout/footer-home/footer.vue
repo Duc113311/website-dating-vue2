@@ -118,5 +118,6 @@ export default {
 }
 .icon-active {
   color: #fd5d65;
+  transform: scale(1.2);
 }
 </style>

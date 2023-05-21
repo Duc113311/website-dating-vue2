@@ -8,7 +8,7 @@
               @click="onShowChoseLanguage"
               class="w-full form-set-item flex justify-between items-center"
             >
-              <div class="bh-item-title w-6/12">Language</div>
+              <div class="bh-item-title w-6/12">{{ $t("language") }}</div>
               <div class="flex w-6/12 justify-end items-center cursor-pointer">
                 <div class="bh-describe mr-2">English</div>
                 <div class="cursor-pointer">
@@ -19,7 +19,7 @@
               </div>
             </div>
             <div class="bh-describe">
-              Chose the language you want to display
+              {{ $t("chose_the_language_you_want_to_display") }}
             </div>
           </div>
         </div>

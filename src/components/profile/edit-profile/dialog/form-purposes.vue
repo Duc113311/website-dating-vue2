@@ -18,8 +18,10 @@
           <div class="w-full items-center h-full">
             <div class="flex w-full justify-center items-center mb-2">
               <div class="text-center">
-                <div class="padding-title">Bây giờ mình đang tìm...</div>
-                <div>Chia sẻ mục đích để tìm được "người ấy"</div>
+                <div class="padding-title">
+                  {{ $t("now_i'm_looking_for...") }}
+                </div>
+                <div>{{ $t("share_the_purpose_to_find_'that_person'") }}</div>
               </div>
             </div>
 

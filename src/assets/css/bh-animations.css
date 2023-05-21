@@ -26,3 +26,11 @@
     transform: scale(2);
   }
 }
+
+
+.hover-item:hover {
+  transform: scale(1.1);
+}
+.boxShadowTransform:hover {
+  opacity: 0.9;
+}

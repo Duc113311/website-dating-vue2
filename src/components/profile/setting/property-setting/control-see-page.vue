@@ -4,9 +4,9 @@
     <div class="w-full flex items-center">
       <div class="w-full">
         <div class="w-full flex bh-title items-center p-3">
-          <div class="form-set-item">CONTROL WHO YOU SEE</div>
+          <div class="form-set-item">{{ $t("control_who_you_see") }}</div>
           <div class="ml-3">
-            <div class="style-package">Sliver package</div>
+            <div class="style-package">{{ $t("sliver_package") }}</div>
           </div>
         </div>
         <div class="w-full flex items-center form-set-list bg-default">
@@ -15,9 +15,13 @@
               class="flex justify-between w-full form-set-item items-center border-bottom"
             >
               <div class="w-full">
-                <div class="bh-item-title">Balance recommendations</div>
+                <div class="bh-item-title">
+                  {{ $t("balance_recommendations") }}
+                </div>
                 <div class="bh-describe">
-                  See the most relevant people to you (default settings)
+                  {{
+                    $t("see_the_most_relevant_people_to_you_(default_settings)")
+                  }}
                 </div>
               </div>
               <div v-if="valueIncognitoMode">
@@ -27,9 +31,9 @@
 
             <div class="flex justify-between w-full form-set-item items-center">
               <div class="w-full">
-                <div class="bh-item-title">Recently Active</div>
+                <div class="bh-item-title">{{ $t("recently_active") }}</div>
                 <div class="bh-describe">
-                  See the most recently active people first
+                  {{ $t("see_the_most_recently_active_people_first") }}
                 </div>
               </div>
               <div v-if="!valueIncognitoMode">
@@ -44,9 +48,9 @@
     <div class="w-full flex items-center">
       <div class="w-full">
         <div class="w-full flex bh-title p-3 items-center">
-          <div class="form-set-item">CONTROL WHO YOU SEE</div>
+          <div class="form-set-item">{{ $t("control_who_you_see") }}</div>
           <div class="ml-3">
-            <div class="style-package">Sliver package</div>
+            <div class="style-package">{{ $t("sliver_package") }}</div>
           </div>
         </div>
         <div class="w-full flex items-center form-set-list bg-default">
@@ -55,10 +59,13 @@
               class="flex justify-between w-full border-bottom form-set-item items-center"
             >
               <div class="w-full">
-                <div class="bh-item-title title-item">Standard</div>
+                <div class="bh-item-title title-item">{{ $t("standard") }}</div>
                 <div class="bh-describe">
-                  Only be shown to certain types of people for individual
-                  recommendations
+                  {{
+                    $t(
+                      "only_be_shown_to_certain_types_of_people_for_individual_recommendations"
+                    )
+                  }}
                 </div>
               </div>
               <div v-if="!valueIncognitoMode">
@@ -69,10 +76,10 @@
             <div class="flex justify-between w-full form-set-item items-center">
               <div class="w-full">
                 <div class="bh-item-title title-item">
-                  Only people I've liked
+                  {{ $t("only_people_i've_liked") }}
                 </div>
                 <div class="bh-describe">
-                  Only people you have liked will see me
+                  {{ $t("only_people_you_have_liked_will_see_me") }}
                 </div>
               </div>
               <div v-if="valueIncognitoMode">

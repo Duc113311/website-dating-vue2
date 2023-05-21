@@ -2,7 +2,9 @@
   <div class="w-full">
     <div class="form-set-list bg-default">
       <div class="w-full flex justify-between items-center">
-        <div class="bh-title title-item form-set-item">Maximum distance</div>
+        <div class="bh-title title-item form-set-item">
+          {{ $t("maximum_distance") }}
+        </div>
         <div class="bh-describe">{{ valueDistance }}km</div>
       </div>
 
@@ -14,7 +16,7 @@
       </div>
       <div class="flex justify-between w-full mt-2">
         <div class="bh-item-title title-item">
-          Only show people in this range
+          {{ $t("only_show_people_in_this_range") }}
         </div>
         <div>
           <el-switch

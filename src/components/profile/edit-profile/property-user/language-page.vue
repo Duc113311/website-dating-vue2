@@ -2,7 +2,7 @@
   <div class="w-full flex items-center">
     <div class="w-full">
       <div class="w-full flex justify-between bh-title p-3">
-        <div>I KNOW LANGUAGES</div>
+        <div>{{ $t("i_know_languages") }}</div>
         <div v-if="completeLanguage">+4%</div>
       </div>
       <div
@@ -16,7 +16,7 @@
               src="@/assets/icon/ic_tinder/language@1x.png"
               width="25"
             />
-            Add language
+            {{ $t("add_language") }}
             <!-- <span v-for="(item, index) in nameLanguageParam" :key="index">{{
               item
             }}</span> -->
@@ -45,7 +45,7 @@ export default {
   name: "language-page",
   data() {
     return {
-      nameDefault: "Trống",
+      nameDefault: this.$t("empty"),
     };
   },
 

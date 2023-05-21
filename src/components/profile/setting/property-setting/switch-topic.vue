@@ -8,7 +8,7 @@
               <div
                 class="form-set-item bh-item-title title-item flex justify-between items-center"
               >
-                <div class="">Show me Top picks</div>
+                <div class="">{{ $t("show_me_top_picks") }}</div>
                 <div>
                   <el-switch
                     v-model="valueShowTopPicks"
@@ -20,8 +20,11 @@
                 </div>
               </div>
               <div class="form-set-item bh-describe w-full">
-                Turning this on will allow you to be shown as a featured Top
-                Pick to other users near you
+                {{
+                  $t(
+                    "turning_this_on_will_allow_you_to_be_shown_as_a_featured_top_pick_to_other_users_near_you"
+                  )
+                }}
               </div>
             </div>
           </div>

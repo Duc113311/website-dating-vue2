@@ -2,12 +2,12 @@
   <div class="w-full flex items-center">
     <div class="w-full">
       <div class="w-full flex justify-between bh-title p-3">
-        <div>COMPANY</div>
+        <div>{{ $t("company") }}</div>
         <div v-if="nameCompany.length === 0">+4%</div>
       </div>
       <div class="w-full">
         <el-input
-          placeholder="Add job title"
+          :placeholder="placeholderCompany"
           v-model="nameCompany"
           @input="onChangeCompany"
         ></el-input>
@@ -23,6 +23,7 @@ export default {
 
   data() {
     return {
+      placeholderCompany: this.$t("add_company"),
       nameCompany: this.$store.state.userModule.user_profile?.profiles.company
         ? this.$store.state.userModule.user_profile?.profiles.company
         : "",

@@ -2,14 +2,14 @@
   <div class="w-full flex justify-center items-center">
     <div class="w-full">
       <div class="w-full flex justify-between p-3 bh-title">
-        <div>ABOUT ME</div>
+        <div>{{ $t("about_me") }}</div>
         <div v-if="nameAbout.length === 0">+20%</div>
       </div>
       <div>
         <el-input
           type="textarea"
           :rows="2"
-          placeholder="About me - maximise 500 words"
+          :placeholder="$t('about_me_-_maximize_500_words')"
           v-model="nameAbout"
           @input="onChangeSaveAbout"
           maxlength="500"

@@ -2,7 +2,7 @@
   <div class="w-full flex justify-center items-center">
     <div class="w-full relative">
       <div class="w-full flex justify-between p-3 bh-title">
-        <div class="">BASIC INFORMATION</div>
+        <div class="">{{ $t("basic_information") }}</div>
         <div v-if="completeLifeStyle">+4%</div>
       </div>
 
@@ -16,7 +16,7 @@
               class="mr-2"
               src="@/assets/icon/ic_tinder/astrological_sign@2x.png"
               width="25"
-            />Zodiac
+            />{{ $t("zodiac") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -40,7 +40,7 @@
               class="mr-2"
               src="@/assets/icon/ic_tinder/family@1x.png"
               width="25"
-            />Future family
+            />{{ $t("future_family") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -64,7 +64,7 @@
               class="mr-2"
               src="@/assets/icon/ic_tinder/education@1x.png"
               width="25"
-            />Education
+            />{{ $t("education") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -88,7 +88,7 @@
               class="mr-2"
               src="@/assets/icon/ic_tinder/covid_comfort@1x.png"
               width="25"
-            />Vaccine for COVID
+            />{{ $t("vaccine_for_covid") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -112,7 +112,7 @@
               class="mr-2"
               src="@/assets/icon/ic_tinder/kietinhcach@2x.png"
               width="25"
-            />Personality Type
+            />{{ $t("personality_type") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -136,7 +136,7 @@
               class="mr-2"
               src="@/assets/icon/ic_tinder/communication_style@2x.png"
               width="25"
-            />Communication Style
+            />{{ $t("communication_style") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -161,7 +161,7 @@
               class="mr-2"
               src="@/assets/icon/ic_tinder/love_language@1x.png"
               width="25"
-            />Love Languages
+            />{{ $t("love_languages") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -188,7 +188,7 @@ export default {
 
   data() {
     return {
-      nameDefault: "Trống",
+      nameDefault: this.$t("empty"),
     };
   },
 

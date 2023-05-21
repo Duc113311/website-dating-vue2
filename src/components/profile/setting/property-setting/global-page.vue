@@ -3,7 +3,7 @@
     <div class="w-full flex justify-center items-center">
       <div class="w-full">
         <div class="w-full style-switch flex justify-between bg-default">
-          <div class="name bh-item-title title-item">Global</div>
+          <div class="name bh-item-title title-item">{{ $t("global") }}</div>
 
           <div>
             <el-switch
@@ -16,14 +16,14 @@
           </div>
         </div>
         <div class="w-full p-3 bh-describe">
-          You can meet people nearby and from around the world
+          {{ $t("you_can_meet_people_nearby_and_from_around_the_world") }}
         </div>
       </div>
     </div>
 
     <div v-show="valueGlobal" class="w-full form-set-list bg-default">
       <div class="w-full bh-title title-item form-set-item">
-        Preferred languages
+        {{ $t("preferred_languages") }}
       </div>
       <div class="w-full">
         <div v-if="languageChecked.length !== 0">
@@ -43,13 +43,13 @@
             </div>
           </div>
         </div>
-        <div v-else>No data</div>
+        <div v-else>{{ $t("no_data") }}</div>
         <div>
           <div
             class="bh-text-location form-set-item w-full cursor-pointer"
             @click="onClickAddLanguage"
           >
-            Add language...
+            {{ $t("add_language") }}
           </div>
         </div>
       </div>

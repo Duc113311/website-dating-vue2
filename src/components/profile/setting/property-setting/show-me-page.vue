@@ -4,7 +4,7 @@
       <div
         class="w-full flex justify-between bh-title title-item form-set-item"
       >
-        <div>Show me</div>
+        <div>{{ $t("show_me") }}</div>
       </div>
       <div class="w-full flex items-center">
         <div class="w-full">
@@ -42,8 +42,11 @@
     </div>
 
     <div class="w-full p-3 bh-describe">
-      We use these preferences to find matches. Some match suggestions may not
-      fall within your desired parameters
+      {{
+        $t(
+          "we_use_these_preferences_to_find_matches._some_match_suggestions_may_not_fall_within_your_desired_parameters"
+        )
+      }}
     </div>
   </div>
 </template>

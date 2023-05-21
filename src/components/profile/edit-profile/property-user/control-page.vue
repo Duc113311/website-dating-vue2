@@ -2,15 +2,15 @@
   <div class="w-full flex items-center">
     <div class="w-full mb-5">
       <div class="w-full flex bh-title p-3 items-center">
-        <div>CONTROL PROFILE</div>
+        <div>{{ $t("control_profile") }}</div>
         <div class="ml-3">
-          <div class="style-package-update">Sliver package</div>
+          <div class="style-package-update">{{ $t("sliver_package") }}</div>
         </div>
       </div>
       <div class="w-full flex items-center bg-default style-bg-common">
         <div class="w-full">
           <div class="flex justify-between w-full border-bottom pt-2 pb-3">
-            <div class="bh-item-title">Don't show my age</div>
+            <div class="bh-item-title">{{ $t("don't_show_my_age") }}</div>
             <div>
               <el-switch
                 v-model="showValueAge"
@@ -23,7 +23,7 @@
           </div>
 
           <div class="flex justify-between w-full pt-3 pb-2">
-            <div class="bh-item-title">Don't show my distance</div>
+            <div class="bh-item-title">{{ $t("don't_show_my_distance") }}</div>
             <div>
               <el-switch
                 v-model="showDistance"

@@ -2,12 +2,12 @@
   <div class="w-full flex items-center">
     <div class="w-full">
       <div class="w-full flex justify-between bh-title p-3">
-        <div>LIVING IN</div>
+        <div>{{ $t("living_in") }}</div>
         <div v-if="nameLiving.length === 0">+4%</div>
       </div>
       <div class="w-full">
         <el-input
-          placeholder="Add city"
+          :placeholder="placeholderLiving"
           v-model="nameLiving"
           @input="onChangeLiving()"
         ></el-input>
@@ -23,6 +23,7 @@ export default {
 
   data() {
     return {
+      placeholderLiving: this.$t("add_living"),
       nameLiving: this.$store.state.userModule.user_profile?.profiles.address,
     };
   },

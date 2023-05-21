@@ -2,7 +2,7 @@
   <div class="w-full flex items-center">
     <div class="w-full">
       <div class="w-full flex justify-between bh-title p-3">
-        <div>GENDER</div>
+        <div>{{ $t("gender") }}</div>
       </div>
       <div class="w-full flex items-center">
         <div class="w-full style-bg-common bg-default">

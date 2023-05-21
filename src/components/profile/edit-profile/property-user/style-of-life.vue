@@ -2,7 +2,7 @@
   <div class="w-full flex justify-center items-center">
     <div class="w-full relative">
       <div class="w-full flex justify-between p-3 bh-title">
-        <div class="">LIFE STYLE</div>
+        <div class="">{{ $t("life_style") }}</div>
         <div v-if="completeLifeStyle">+4%</div>
       </div>
 
@@ -16,7 +16,7 @@
               class="mr-2"
               src="@/assets/icon/ic_tinder/pets@1x.png"
               width="25"
-            />Pets free
+            />{{ $t("pets_free") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -40,7 +40,7 @@
               class="mr-2"
               src="@/assets/icon/ic_tinder/drink_of_choice@1x.png"
               width="25"
-            />Drink beer
+            />{{ $t("drink_beer") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -64,7 +64,7 @@
               class="mr-2"
               src="@/assets/icon/ic_tinder/smoking@1x.png"
               width="25"
-            />Are you a smoker
+            />{{ $t("are_you_a_smoker") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -88,7 +88,7 @@
               class="mr-2"
               src="@/assets/icon/ic_tinder/workout@2x.png"
               width="25"
-            />Practice
+            />{{ $t("practice") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -112,7 +112,7 @@
               class="mr-2"
               src="@/assets/icon/ic_tinder/appetite@1x.png"
               width="25"
-            />Diet
+            />{{ $t("diet") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -136,7 +136,7 @@
               class="mr-2"
               src="@/assets/icon/ic_tinder/social_media@1x.png"
               width="25"
-            />Social media
+            />{{ $t("social_media") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -161,7 +161,7 @@
               class="mr-2"
               src="@/assets/icon/ic_tinder/sleeping_habits@1x.png"
               width="25"
-            />Sleeping habits
+            />{{ $t("sleeping_habits") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -188,7 +188,7 @@ export default {
 
   data() {
     return {
-      nameDefault: "Trống",
+      nameDefault: this.$t("empty"),
     };
   },
 

@@ -8,7 +8,7 @@
               <div
                 class="form-set-item bh-item-title title-item flex justify-between items-center"
               >
-                <div class="">Activity Status</div>
+                <div class="">{{ $t("activity_status") }}</div>
                 <div>
                   <el-switch
                     v-model="valueActivityStatus"
@@ -20,9 +20,11 @@
                 </div>
               </div>
               <div class="form-set-item bh-describe w-full">
-                Allow other members to see if you were recently active within
-                the last 24h on HeartLink. If you have turned this off, they
-                will not be able to see your recently active status
+                {{
+                  $t(
+                    "allow_other_members_to_see_if_you_were_recently_active_within_the_last_24h_on_heartlink._if_you_have_turned_this_off,_they_will_not_be_able_to_see_your_recently_active_status"
+                  )
+                }}
               </div>
             </div>
           </div>
