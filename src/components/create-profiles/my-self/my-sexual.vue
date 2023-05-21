@@ -1,8 +1,10 @@
 <template>
   <div>
     <div class="mt-3">
-      <h2 class="padding-title">My Sexual orientation is</h2>
-      <span class="padding-describe describe-text">Select up to 3</span>
+      <h2 class="padding-title">{{ $t("my_sexual_orientation_is") }}</h2>
+      <span class="padding-describe describe-text">{{
+        $t("select_up_to_3")
+      }}</span>
     </div>
     <div class="w-full overflow-scroll height-item pb-8">
       <div class="grid select-sexual mt-6 gap-4">

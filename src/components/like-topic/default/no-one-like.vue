@@ -3,7 +3,9 @@
     <div
       class="w-full flex items-center h-14 justify-center p-4 mt-3 description-no-padding"
     >
-      <span>Upgrade to Gold to see people who are interested in you</span>
+      <span>{{
+        $t("upgrade_to_gold_to_see_people_who_are_interested_in_you")
+      }}</span>
     </div>
 
     <div class="w-full mt-28 mb-28 flex justify-center items-center">
@@ -16,8 +18,11 @@
           />
         </div>
         <div class="w-full items-center text-describe">
-          No one likes you yet. Done't worry, make sure you complete your
-          profile to other find you faster
+          {{
+            $t(
+              "no_one_likes_you_yet._done't_worry,_make_sure_you_complete_your_profile_to_other_find_you_faster"
+            )
+          }}
         </div>
       </div>
     </div>

@@ -54,7 +54,7 @@ export default {
 
   methods: {
     ...mapActions(["loginAppByAuthId"]),
-    ...mapMutations(["setLocation", "setThemeLayout"]),
+    ...mapMutations(["setLocation", "setThemeLayout", "setLanguageTranslate"]),
     async showPosition(position) {
       if (position.coords) {
         localStorage.setItem("latitude", position.coords.latitude);
@@ -64,6 +64,16 @@ export default {
   },
 
   async created() {
+    const language = localStorage.getItem("language");
+    if (language) {
+      this.$i18n.locale = language;
+      this.setLanguageTranslate(language);
+    } else {
+      const languageDefault = "en";
+      this.$i18n.locale = languageDefault;
+      this.setLanguageTranslate(languageDefault);
+    }
+
     // Set time out show loading
     setTimeout(() => {
       this.isShowIconApp = false;

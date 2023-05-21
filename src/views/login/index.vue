@@ -20,9 +20,9 @@
                   />
                 </div>
                 <div class="block text-center justify-center mt-3 text-white">
-                  <div class="padding-title">Warm Welcome</div>
+                  <div class="padding-title">{{ $t("warm_welcome") }}</div>
                   <div class="padding-text-option">
-                    We hope you have a sweet time here
+                    {{ $t("we_hope_you_have_a_sweet_time_here") }}
                   </div>
                 </div>
               </div>
@@ -33,17 +33,22 @@
 
               <div class="items-center content-center text-white ml-5 mr-5">
                 <div>
-                  <h2 class="text-lg mb-5 text-center">Trouble logging in?</h2>
+                  <h2 class="text-lg mb-5 text-center">
+                    {{ $t("trouble_logging_in") }}
+                  </h2>
                   <span class="text-lg text-trouble mt-2"
-                    >By clicking "Login", you agree with our Terms. Learn how we
-                    process your data in our
-                    <a class="underline decoration-1" href="http://"
-                      >Privacy policy</a
-                    >
-                    and
-                    <a class="underline decoration-1" href="http://"
-                      >Cookies Policy</a
-                    ></span
+                    >{{
+                      $t(
+                        "by_clicking_'login',_you_agree_with_our_terms._learn_how_we_process_your_data_in_our"
+                      )
+                    }}
+                    <a class="underline decoration-1" href="http://">{{
+                      $t("privacy_policy")
+                    }}</a>
+                    {{ $t("and") }}
+                    <a class="underline decoration-1" href="http://">{{
+                      $t("cookies_policy")
+                    }}</a></span
                   >
                 </div>
               </div>

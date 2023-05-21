@@ -15,25 +15,34 @@
       <div
         class="flex w-full justify-center items-center text-center padding-describe-or"
       >
-        Want to avoid someone you know on HeartLink?
+        {{ $t("want_to_avoid_someone_you_know_on_heartlink?") }}
       </div>
 
       <div class="padding-describe w-full text-center describe-text">
         <div class="mt-2">
-          It is easy - share your device's contact with HeartLink when using
-          this feature to pick who you want to avoid
+          {{
+            $t(
+              "it_is_easy_-_share_your_device's_contact_with_heartlink_when_using_this_feature_to_pick_who_you_want_to_avoid"
+            )
+          }}
         </div>
         <br />
 
         <div class="mt-2">
-          We'll store your vlocked contact to stop you from seeing each other if
-          your contact has an account with the same infor you provide. You can
-          stop sharing with us in your settings.
+          {{
+            $t(
+              "we'll_store_your_locked_contact_to_stop_you_from_seeing_each_other_if_your_contact_has_an_account_with_the_same_information_you_provide._you_can_stop_sharing_with_us_in_your_settings."
+            )
+          }}
         </div>
         <br />
         <div class="mt-4 underline">
           <a class="" href="#">
-            Learn more here, including how HeartLink process your contacts
+            {{
+              $t(
+                "learn_more_here,_including_how_heartlink_process_your_contacts"
+              )
+            }}
           </a>
         </div>
       </div>

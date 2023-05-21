@@ -1,16 +1,16 @@
 <template>
   <div class="w-full h-full user-profile z-30">
-    <div class="padding-title mt-6">What's your email?</div>
+    <div class="padding-title mt-6">{{ $t("what's_your_email?") }}</div>
 
     <div class="padding-describe describe-text">
-      Don't lose access to your account, verify your email
+      {{ $t("don't_lose_access_to_your_account,_verify_your_email") }}
     </div>
 
     <div class="mt-3">
       <el-input
         class="your-name digit-box padding-input bg-default"
         v-model="txtEmail"
-        placeholder="Enter email"
+        :placeholder="$t(`enter_email`)"
         ref="input_focus"
         @input="onChangeInput"
       />
@@ -35,7 +35,7 @@
     </div>
 
     <div class="flex justify-center padding-describe mt-5 describe-text">
-      Verify instantly by connecting your Google account
+      {{ $t("verify_instantly_by_connecting_your_google_account") }}
     </div>
 
     <div class="text-base flex items-center w-full mt-4">
@@ -51,9 +51,9 @@
           </div>
         </div>
       </div>
-      <span class="ml-4"
-        >I want to receive news, updates and offers from Heartlink</span
-      >
+      <span class="ml-4">{{
+        $t("i_want_to_receive_news,_updates_and_offers_from_heartlink")
+      }}</span>
     </div>
   </div>
 </template>

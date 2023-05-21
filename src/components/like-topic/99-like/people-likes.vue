@@ -41,7 +41,9 @@
       <div
         class="w-full flex items-center h-12 justify-center pr-4 pl-4 description-no-padding"
       >
-        <span>Upgrade to Gold to see people who are interested in you</span>
+        <span>{{
+          $t("upgrade_to_gold_to_see_people_who_are_interested_in_you")
+        }}</span>
       </div>
 
       <CtrlSwipe

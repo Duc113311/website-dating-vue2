@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="mt-3">
-      <div class="padding-title">I am a</div>
+      <div class="padding-title">{{ $t("i_am_a") }}</div>
     </div>
     <div class="w-full mt-4">
       <div

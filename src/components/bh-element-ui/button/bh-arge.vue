@@ -5,7 +5,7 @@
         class="btAgree cursor-pointer w-full padding-button button-active"
         @click="onClickIAgree()"
       >
-        I agree
+        {{ $t("i_agree") }}
       </button>
     </div>
   </div>

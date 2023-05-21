@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="mt-3">
-      <div class="padding-title">My birthday is</div>
+      <div class="padding-title">{{ $t("my_birthday_is") }}</div>
     </div>
     <div class="mt-4">
       <el-input
@@ -16,7 +16,7 @@
         @blur="onChangeInput"
       />
       <div class="padding-describe mt-2 describe-text">
-        Your age will be public
+        {{ $t("your_age_will_be_public") }}
       </div>
     </div>
   </div>

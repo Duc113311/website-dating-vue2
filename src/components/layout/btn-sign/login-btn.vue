@@ -7,7 +7,7 @@
       >
         <span class="flex justify-center">
           <img src="@/assets/icon/google_icon.svg" class="mr-2" alt="" />
-          <span class="font-sans">Log in with Google</span>
+          <span class="font-sans">{{ $t("log_in_with_google") }}</span>
         </span>
       </button>
 
@@ -19,7 +19,7 @@
         <span class="flex justify-center">
           <img src="@/assets/icon/facebook_icon.svg" class="mr-2" alt="" /><span
             class="font-sans"
-            >Log in with Facebook</span
+            >{{ $t("log_in_with_facebook") }}</span
           >
         </span>
       </button>
@@ -30,7 +30,7 @@
       >
         <span class="flex justify-center">
           <img src="@/assets/icon/phone_number_icon.svg" class="mr-2" alt="" />
-          <span class="font-sans">Log in with Phone number</span>
+          <span class="font-sans">{{ $t("log_in_with_phone_number") }}</span>
         </span>
       </button>
     </div>

@@ -1,19 +1,22 @@
 <template>
   <div ref="myName">
     <div class="mt-3">
-      <div class="padding-title">My name is</div>
+      <div class="padding-title">{{ $t("my_name_is") }}</div>
     </div>
     <div class="mt-4">
       <el-input
         class="your-name digit-box padding-input bg-default"
         ref="input_focus"
         v-model="txtFirstName"
-        placeholder="Your name"
+        :placeholder="$t('your_name')"
         @input="onChangeFirstName"
       />
       <div class="padding-describe mt-2 describe-text">
-        This is how it will appear in HeartLink, and you will not able to change
-        it
+        {{
+          $t(
+            "this_is_how_it_will_appear_in_heartlink,_and_you_will_not_able_to_change_it"
+          )
+        }}
       </div>
     </div>
   </div>

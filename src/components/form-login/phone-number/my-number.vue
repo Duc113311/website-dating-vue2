@@ -1,6 +1,6 @@
 <template>
   <div class="phone-number mt-5">
-    <h2 class="padding-title">My number is</h2>
+    <h2 class="padding-title">{{ $t("my_number_is") }}</h2>
     <div class="w-full mt-3 mb-3">
       <div class="w-full">
         <el-input
@@ -8,7 +8,7 @@
           type="number"
           pattern="[0-9.]+"
           class="txt-phone phone-number-txt w-full rounded-lg bg-default"
-          placeholder="Phone number"
+          :placeholder="$t(`phone_number`)"
           name="phone"
           v-model="valCodeQR"
           @change="onClickInput"
@@ -21,14 +21,17 @@
     </div>
 
     <div class="padding-describe">
-      <span
-        >When you tap "Continue", Heartlink will send a text with verificatrion
-        code. Message and data rates maty apply.</span
-      >
-      <span> The verifed phone number can be used to log in. </span>
-      <a href="http://" class="decoration-solid underline"
-        >Learn what happens when your number changes</a
-      >
+      <span>{{
+        $t(
+          "when_you_tap_'continue',_heartlink_will_send_a_text_with_verification_code._message_and_data_rates_mate_apply."
+        )
+      }}</span>
+      <span>
+        {{ $t("the_verified_phone_number_can_be_used_to_log_in.") }}
+      </span>
+      <a href="http://" class="decoration-solid underline">{{
+        $t("learn_what_happens_when_your_number_changes")
+      }}</a>
     </div>
   </div>
 </template>

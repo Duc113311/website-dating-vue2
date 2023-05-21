@@ -1,10 +1,10 @@
 <template>
   <div class="h-full height-scroll overflow-scroll">
     <div v-show="!isTitle" class="mt-3">
-      <div class="padding-title">My Photos are</div>
-      <span class="padding-describe describe-text"
-        >Add at least 2 photos to continue</span
-      >
+      <div class="padding-title">{{ $t("my_photos_are") }}</div>
+      <span class="padding-describe describe-text">{{
+        $t("add_at_least_2_photos_to_continue")
+      }}</span>
     </div>
 
     <!-- Image -->

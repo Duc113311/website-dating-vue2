@@ -16,11 +16,17 @@
             />
           </div>
           <div class="">
-            <div class="padding-title-location">Enable Location</div>
+            <div class="padding-title-location">
+              {{ $t("enable_location") }}
+            </div>
           </div>
           <div class="flex justify-center items-center w-full">
             <div class="padding-describe w-4/5 describe-text">
-              You will need to enable your location order to use HeartLinks
+              {{
+                $t(
+                  "you_will_need_to_enable_your_location_order_to_use_heartlinks"
+                )
+              }}
             </div>
           </div>
         </div>
@@ -39,7 +45,7 @@
           class="w-full text-base mt-5 angle-down pl-10 pr-10 flex justify-center items-center"
           @click="onTellMore()"
         >
-          <span class="padding-describe-or">Tell me more</span>
+          <span class="padding-describe-or">{{ $t("tell_me_more") }}</span>
           <i class="text-2xl ml-3 fas fa-angle-down" @click="onAngleDown()"></i>
         </div>
       </div>
@@ -57,11 +63,17 @@
               />
             </div>
             <div class="mt-10">
-              <div class="padding-title-location">MEET PEOPLE NEARBY</div>
+              <div class="padding-title-location">
+                {{ $t("meet_people_nearby") }}
+              </div>
             </div>
             <div class="w-full flex justify-center items-center">
               <div class="padding-describe w-4/5 describe-text">
-                You location will be used to show potential matches near you.
+                {{
+                  $t(
+                    "you_location_will_be_used_to_show_potential_matches_near_you"
+                  )
+                }}
               </div>
             </div>
           </div>

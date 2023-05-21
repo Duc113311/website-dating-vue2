@@ -1,9 +1,9 @@
 <template>
   <div class="number-code mt-5">
-    <h2 class="padding-title">My code is</h2>
+    <h2 class="padding-title">{{ $t("my_code_is") }}</h2>
     <div class="flex items-center">
       <div class="padding-describe describe-text">
-        Please enter Code sent to
+        {{ $t("please_enter_code_sent_to") }}}
       </div>
       &nbsp;
       <div class="padding-describe">
@@ -31,9 +31,9 @@
     <div
       class="mt-10 padding-describe-title dark-theme-describe justify-center flex"
     >
-      <a class="cursor-pointer bt-render" href="#" @click="onPhoneNumber()"
-        >Resend code</a
-      >
+      <a class="cursor-pointer bt-render" href="#" @click="onPhoneNumber()">{{
+        $t("resend_code")
+      }}</a>
     </div>
   </div>
 </template>

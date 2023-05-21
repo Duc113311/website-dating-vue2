@@ -6,10 +6,7 @@
         class="rounded-lg items-center bg-default title-default w-full w-form-common overflow-hidden relative p-5 cursor-pointer"
       >
         <div class="w-full h-dialog-title justify-between flex items-center">
-          <div class="title-packages">{{ $t("hello_name") }}</div>
-        </div>
-        <div>
-          {{ $t("welcome") }}
+          <div class="title-packages">{{ $t("language") }}</div>
         </div>
 
         <div class="w-full h-dialog-body height-scroll overflow-scroll">
@@ -31,6 +28,7 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   name: "form-show-languages",
 
@@ -42,18 +40,27 @@ export default {
     languageParam() {
       return [
         {
-          code: "vn",
+          code: "vi",
           value: "Tiếng Việt",
         },
         {
           code: "en",
           value: "English",
         },
+        {
+          code: "ja",
+          value: "Japan",
+        },
+        {
+          code: "ko",
+          value: "Korea",
+        },
       ];
     },
   },
 
   methods: {
+    ...mapMutations(["setLanguageTranslate"]),
     onChangeCancel() {
       this.$emit("onClickSaveLanguage", false);
     },
@@ -64,9 +71,9 @@ export default {
 
     onChoseLanguages(val) {
       debugger;
-      const newLocale = this.$i18n.locale === val ? "vi" : "en";
-      this.$i18n.locale = newLocale;
-      localStorage.setItem("language", newLocale);
+      this.$i18n.locale = val;
+      this.setLanguageTranslate(val);
+      localStorage.setItem("language", val);
 
       // this.$emit("onClickSaveLanguage", false);
     },

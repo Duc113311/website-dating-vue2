@@ -10,7 +10,7 @@
       />
     </div>
     <div class="w-full text-description-no-padding pt-2 pb-4 title-default">
-      Let's find people same with your vibe...
+      {{ $t("let's_find_people_same_with_your_vibe...") }}
     </div>
 
     <div class="w-full option-find">

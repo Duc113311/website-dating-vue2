@@ -22,10 +22,13 @@
           </div>
           <div class="flex text-center justify-center mt-3 w-full">
             <div class="w-5/6">
-              <div class="padding-title">Welcome to HeartLink</div>
+              <div class="padding-title">{{ $t("welcome_to_heartlink") }}</div>
               <span class="padding-describe">
-                Please follow our rules to have more fun and build a great
-                community together
+                {{
+                  $t(
+                    "please_follow_our_rules_to_have_more_fun_and_build_a_great_community_together"
+                  )
+                }}
               </span>
             </div>
           </div>
@@ -35,9 +38,25 @@
                 <img src="@/assets/icon/ic_hand.svg" class="ic_hands" alt="" />
               </div>
               <div class="w-3/4">
-                <div class="padding-text-option">Be Yourself</div>
+                <div class="padding-text-option">{{ $t("be_yourself") }}</div>
+                <span class="decoration-solid describe-text">{{
+                  $t("make_sure_your_photos,_age_and_bio_true_to_who_you_are")
+                }}</span>
+              </div>
+            </div>
+            <div class="flex mt-3 w-full">
+              <div class="mr-4">
+                <img src="@/assets/icon/ic_hand.svg" class="ic_hands" alt="" />
+              </div>
+              <div class="w-3/4">
+                <div class="padding-text-option">{{ $t("stay_safe") }}</div>
                 <span class="decoration-solid describe-text"
-                  >Make sure your photos, age and bio true to who you are</span
+                  >{{
+                    $t("don't_be_too_quick_to_give_out_personal_information.")
+                  }}
+                  <span class="underline">{{
+                    $t("date_safety_guidelines")
+                  }}</span></span
                 >
               </div>
             </div>
@@ -46,11 +65,12 @@
                 <img src="@/assets/icon/ic_hand.svg" class="ic_hands" alt="" />
               </div>
               <div class="w-3/4">
-                <div class="padding-text-option">Stay Safe</div>
-                <span class="decoration-solid describe-text"
-                  >Don't be too quick to give out personal information.
-                  <span class="underline">Date Safety guidelines</span></span
-                >
+                <div class="padding-text-option">{{ $t("play_it_cool") }}</div>
+                <span class="decoration-solid describe-text">{{
+                  $t(
+                    "respect_others_and_treat_them_as_you_would_like_to_be_treated"
+                  )
+                }}</span>
               </div>
             </div>
             <div class="flex mt-3 w-full">
@@ -58,22 +78,10 @@
                 <img src="@/assets/icon/ic_hand.svg" class="ic_hands" alt="" />
               </div>
               <div class="w-3/4">
-                <div class="padding-text-option">Play It Cool</div>
-                <span class="decoration-solid describe-text"
-                  >Respect others and treat them as you would like to be
-                  treated</span
-                >
-              </div>
-            </div>
-            <div class="flex mt-3 w-full">
-              <div class="mr-4">
-                <img src="@/assets/icon/ic_hand.svg" class="ic_hands" alt="" />
-              </div>
-              <div class="w-3/4">
-                <div class="padding-text-option">Be Proactive</div>
-                <span class="decoration-solid describe-text"
-                  >Always report bad behavior</span
-                >
+                <div class="padding-text-option">{{ $t("be_proactive") }}</div>
+                <span class="decoration-solid describe-text">{{
+                  $t("always_report_bad_behavior")
+                }}</span>
               </div>
             </div>
           </div>

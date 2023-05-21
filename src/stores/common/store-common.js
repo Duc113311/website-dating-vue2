@@ -24,6 +24,8 @@ const state = {
   statusLayout: false,
 
   listInterestFilter: [],
+
+  languageTranslate: "en",
 };
 
 const getters = {
@@ -36,6 +38,10 @@ const mutations = {
   setThemeLayout(state, value) {
     state.themeLayout = value.nameTheme;
     state.statusLayout = value.statusTheme;
+  },
+
+  setLanguageTranslate(state, value) {
+    state.languageTranslate = value;
   },
 
   setListInterestFilter(state, data) {

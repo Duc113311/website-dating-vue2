@@ -9,7 +9,7 @@
               class="w-full form-set-item flex justify-between items-center"
             >
               <div class="bh-item-title w-6/12">Language</div>
-              <div class="flex w-6/12 justify-end items-center">
+              <div class="flex w-6/12 justify-end items-center cursor-pointer">
                 <div class="bh-describe mr-2">English</div>
                 <div class="cursor-pointer">
                   <i

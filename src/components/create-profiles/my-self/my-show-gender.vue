@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="mt-3">
-      <h2 class="padding-title">Show me gender</h2>
+      <h2 class="padding-title">{{ $t("show_me_gender") }}</h2>
     </div>
     <div class="w-full mt-4">
       <div

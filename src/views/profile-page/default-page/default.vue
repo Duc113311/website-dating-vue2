@@ -56,7 +56,7 @@
               alt=""
             />
           </div>
-          <div class="mt-2 text-base describe-text">SETTINGS</div>
+          <div class="mt-2 text-base describe-text">{{ $t("settings") }}</div>
         </div>
         <div class="item-setting mt-24">
           <div class="flex justify-center" @click="onEditProfile()">
@@ -73,7 +73,9 @@
               alt=""
             />
           </div>
-          <div class="mt-2 text-base describe-text">EDIT PROFILE</div>
+          <div class="mt-2 text-base describe-text">
+            {{ $t("edit_profile") }}
+          </div>
         </div>
         <el-tooltip content="Coming soon" placement="top">
           <div class="item-setting">
@@ -85,7 +87,7 @@
               />
               <img v-else src="@/assets/icon/bt_safety_light.svg" width="100" />
             </div>
-            <div class="mt-2 text-base describe-text">SAFETY</div>
+            <div class="mt-2 text-base describe-text">{{ $t("safety") }}</div>
           </div>
         </el-tooltip>
       </div>

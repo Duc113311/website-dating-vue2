@@ -1,11 +1,12 @@
 <template>
   <div>
     <div class="mt-3">
-      <div class="padding-title">My interests are</div>
-      <span class="padding-describe describe-text"
-        >Let everyone know what you're passionate about, by adding it to your
-        profile</span
-      >
+      <div class="padding-title">{{ $t("my_interests_are") }}</div>
+      <span class="padding-describe describe-text">{{
+        $t(
+          "let_everyone_know_what_you're_passionate_about,_by_adding_it_to_your_profile"
+        )
+      }}</span>
     </div>
     <div class="w-full mt-4 overflow-y-auto list-interest">
       <div class="w-full h-full">
