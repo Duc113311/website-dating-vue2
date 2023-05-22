@@ -4,7 +4,6 @@ import vnValue from "../locales/vn.json";
 import enValue from "../locales/en.json";
 import jaValue from "../locales/ja.json";
 import koValue from "../locales/ko.json";
-import storeCommon from "../stores/store-data";
 Vue.use(VueI18n);
 
 const messages = {

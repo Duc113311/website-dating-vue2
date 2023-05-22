@@ -41,19 +41,131 @@ export default {
       return [
         {
           code: "vi",
-          value: "Tiếng Việt",
+          value: "Vietnamese",
         },
         {
           code: "en",
           value: "English",
         },
         {
+          code: "ar",
+          value: "Arabic",
+        },
+        {
+          code: "ca",
+          value: "Catalan",
+        },
+        {
+          code: "zh-rCN",
+          value: "Chinese",
+        },
+        {
+          code: "zh-rTW",
+          value: "Taiwanese",
+        },
+        {
+          code: "hr",
+          value: "Croatian",
+        },
+        {
+          code: "da",
+          value: "Danish",
+        },
+        {
+          code: "nl",
+          value: "Dutch",
+        },
+        {
+          code: "en-rGB",
+          value: "English (UK)",
+        },
+        {
+          code: "fi",
+          value: "Finnish",
+        },
+        {
+          code: "fr",
+          value: "French",
+        },
+        {
+          code: "de",
+          value: "German",
+        },
+        {
+          code: "el",
+          value: "Greek",
+        },
+        {
+          code: "hi",
+          value: "Hindi",
+        },
+        {
+          code: "hu",
+          value: "Hungarian",
+        },
+        {
+          code: "id",
+          value: "Indonesian",
+        },
+        {
+          code: "it",
+          value: "Italian",
+        },
+        {
           code: "ja",
-          value: "Japan",
+          value: "Japanese",
         },
         {
           code: "ko",
-          value: "Korea",
+          value: "Korean",
+        },
+        {
+          code: "ms",
+          value: "Malay",
+        },
+        {
+          code: "nb",
+          value: "Norwegian Bokmal",
+        },
+        {
+          code: "pl",
+          value: "Polish",
+        },
+        {
+          code: "pt",
+          value: "Portuguese",
+        },
+        {
+          code: "ro",
+          value: "Romanian",
+        },
+        {
+          code: "ru",
+          value: "Russian",
+        },
+        {
+          code: "sk",
+          value: "Slovak",
+        },
+        {
+          code: "es",
+          value: "Spanish",
+        },
+        {
+          code: "sv",
+          value: "Swedish",
+        },
+        {
+          code: "th",
+          value: "Thai",
+        },
+        {
+          code: "tr",
+          value: "Turkish",
+        },
+        {
+          code: "uk",
+          value: "Ukrainian",
         },
       ];
     },

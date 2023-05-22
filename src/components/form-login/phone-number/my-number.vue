@@ -115,13 +115,20 @@ export default {
   mounted() {
     debugger;
     var input = document.querySelector("#phone");
+
     this.valCodeQR = intlTelInput(input, {
-      separateDialCode: true, // Hiển thị mã điện thoại quốc gia riêng rẽ
-      initialCountry: "vn", // Đặt quốc gia mặc định là Việt Nam
-      preferredCountries: ["vn"], // Sử dụng Việt Nam là quốc gia ưu tiên
-      utilsScript:
-        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js", // Đường dẫn đến tệp utils.js
+      initialCountry: "auto",
+      geoIpLookup: function (callback) {
+        $.get("https://ipinfo.io", function () {}, "jsonp").always(function (
+          resp
+        ) {
+          var countryCode = resp && resp.country ? resp.country : "vn";
+          callback(countryCode);
+        });
+      },
     });
+
+    input.focus();
   },
 };
 </script>
@@ -149,7 +156,7 @@ export default {
   background-color: #4e576b !important;
 }
 #phone {
-  padding-left: 94px !important;
+  padding-left: 58px !important;
   padding-right: 58px;
 }
 

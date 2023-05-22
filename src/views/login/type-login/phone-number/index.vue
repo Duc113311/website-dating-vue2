@@ -35,6 +35,7 @@ import BhContinue from "@/components/bh-element-ui/button/bh-continue.vue";
 import intlTelInput from "intl-tel-input";
 import MyNumber from "@/components/form-login/phone-number/my-number";
 import { mapActions, mapMutations } from "vuex";
+import $ from "jquery";
 
 import {
   auth,
@@ -43,7 +44,6 @@ import {
   PhoneAuthProvider,
   signInWithCredential,
 } from "../../../../configs/firebase.js";
-import { child } from "firebase/database";
 export default {
   name: "phone-number",
   components: {
@@ -139,8 +139,8 @@ export default {
         const mobile = document.getElementById("phone").value;
         console.log(mobile);
         const result = true;
-        const textCode = this.renderCountryCode();
-        console.log("Mã vung", textCode);
+        // const textCode = this.renderCountryCode();
+        // console.log("Mã vung", textCode);
         const phoneNumber = this.valCodeQR.getNumber();
         this.txtPhoneNumber = phoneNumber;
         console.log(this.txtPhoneNumber);
@@ -218,18 +218,16 @@ export default {
         });
     },
 
-    renderCountryCode() {
-      var input = document.querySelector("#phone");
-      this.valCodeQR = intlTelInput(input, {
-        separateDialCode: true, // Hiển thị mã điện thoại quốc gia riêng rẽ
-        utilsScript:
-          "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js", // Đường dẫn đến tệp utils.js
-      });
+    // renderCountryCode() {
+    //   var input = document.querySelector("#phone");
+    //   this.valCodeQR = intlTelInput(input, {
+    //     initialCountry: "vn",
+    //     utilsScript:
+    //       "https://cdn.jsdelivr.net/npm/intl-tel-input@16.0.3/build/js/utils.js",
+    //   });
 
-      this.valCodeQR.setCountry("vn");
-
-      return this.valCodeQR;
-    },
+    //   return this.valCodeQR;
+    // },
   },
 
   mounted() {
@@ -240,7 +238,6 @@ export default {
         "https://cdn.jsdelivr.net/npm/intl-tel-input@16.0.3/build/js/utils.js",
     });
     debugger;
-    input.focus();
   },
 };
 </script>

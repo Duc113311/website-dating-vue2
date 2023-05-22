@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="ml-3 text-show-my">
-          Show my {{ showName }} on my profile
+          {{ $t("show_{nameScream}_on_my_profile", { nameScream: showName }) }}
         </div>
       </div>
       <button

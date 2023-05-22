@@ -35,6 +35,9 @@
             {{ nameUser }}, {{ ageUser }}
             <img src="@/assets/icon/ic_verified_enable.svg" width="30" alt="" />
           </div>
+          <div>
+            {{ $t("show_{name}_profile", { name: "Duc" }) }}
+          </div>
         </div>
       </div>
       <!-- Option chose -->

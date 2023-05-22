@@ -3,7 +3,7 @@
     <h2 class="padding-title">{{ $t("my_code_is") }}</h2>
     <div class="flex items-center">
       <div class="padding-describe describe-text">
-        {{ $t("please_enter_code_sent_to") }}}
+        {{ $t("please_enter_code_sent_to") }}
       </div>
       &nbsp;
       <div class="padding-describe">
