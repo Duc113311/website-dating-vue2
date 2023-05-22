@@ -124,7 +124,9 @@
 
         <!-- My Anthem -->
         <div class="w-full padding-text-user bg-border-bottom pl-2 pr-2">
-          <div class="title title-description describe-text">My Anthem</div>
+          <div class="title title-description describe-text">
+            {{ convertString($t("my_anthem")) }}
+          </div>
 
           <div class="w-full bh-margin-description pt-2">
             <div class="w-full flex justify-between items-center">
@@ -146,11 +148,15 @@
         >
           <div class="flex justify-center items-center cursor-pointer">
             <div class="title-click-ic ml-2">
-              Share {{ this.userParam.fullname }} profile
+              {{
+                $t("share_{nameUser}_profile", {
+                  nameUser: this.userParam.fullname,
+                })
+              }}
             </div>
           </div>
           <div class="flex justify-center title-description describe-text">
-            See what a friend thinks
+            {{ $t("see_what_a_friend_thinks") }}
           </div>
         </div>
         <!-- Report -->
@@ -174,7 +180,7 @@
             srcset=""
           />
           <div class="title-click-ic ml-2">
-            Report {{ this.userParam.fullname }}
+            {{ $t("report_{nameUser}", { nameUser: this.userParam.fullname }) }}
           </div>
         </div>
         <div class="h-2/4"></div>
@@ -217,48 +223,7 @@ export default {
 
   data() {
     return {
-      btUrlImage: [
-        {
-          id: 1,
-          urlName: "ssd",
-        },
-        {
-          id: 2,
-          urlName: "ssd",
-        },
-        {
-          id: 3,
-          urlName: "ssd",
-        },
-        {
-          id: 4,
-          urlName: "ssd",
-        },
-        {
-          id: 5,
-          urlName: "ssd",
-        },
-        {
-          id: 6,
-          urlName: "ssd",
-        },
-        {
-          id: 7,
-          urlName: "ssd",
-        },
-        {
-          id: 8,
-          urlName: "ssd",
-        },
-        {
-          id: 9,
-          urlName: "ssd",
-        },
-      ],
       isActiveImag: true,
-
-      sexuals: ["Gay", "Lesbian", "Demisexual", "Pansexual"],
-      interests: ["Ice-scream", "Reading", "Cars", "Music", "Dogs"],
 
       idImage: "",
       imageActive: 0,
@@ -334,6 +299,9 @@ export default {
       this.$emit("onActionDecide", val);
     },
 
+    convertString(val) {
+      return functionValidate.titleCase(val);
+    },
     onClickReport() {
       this.$router.push({ path: `/report/${this.userParam._id}` });
     },
