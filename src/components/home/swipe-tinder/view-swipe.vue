@@ -46,46 +46,132 @@
         <div class="w-full flex items-center absolute bottom-0 h-80 p-4">
           <div class="grid w-full title-boy mb-4">
             <div class="w-70">
-              <div class="flex items-center font-title">
-                <div
-                  :title="scope.data.fullname"
-                  class="text-ellipsis whitespace-nowrap overflow-hidden"
-                >
-                  {{ scope.data.fullname }},
+              <div>
+                <div class="flex items-center">
+                  <div
+                    :title="scope.data.fullname"
+                    class="text-ellipsis whitespace-nowrap font-title overflow-hidden"
+                  >
+                    {{ scope.data.fullname }},
+                  </div>
+                  &nbsp;
+                  <div
+                    class="mr-2 text-age"
+                    v-if="scope.data.profiles.showAge === true"
+                  >
+                    {{ bindingAge(scope.data?.dob) }}
+                  </div>
+                  <div v-if="scope.data?.verifyStatus === true">
+                    <img src="@/assets/icon/ic_verified_enable.svg" />
+                  </div>
                 </div>
-                &nbsp;
-                <div class="mr-3">{{ bindingAge(scope.data?.dob) }}</div>
-                <div
-                  class="flex justify-center items-center cursor-pointer"
-                  @click="onClickShowDetailUser(scope.data)"
-                >
-                  <i class="fa-solid fa-circle-info text-xl"></i>
+                <div v-if="scrods === 0">
+                  <div
+                    class="flex items-center"
+                    v-if="scope.data.onlineNow === false"
+                  >
+                    <div class="online-off ml-2 mr-4"></div>
+                    <div>Recently Active</div>
+                  </div>
+                  <div
+                    class="flex items-center"
+                    v-if="scope.data.onlineNow === true"
+                  >
+                    <div class="online-status ml-2 mr-3"></div>
+                    <div>Recently Active</div>
+                  </div>
+                  <div class="flex" v-if="scope.data.profiles.address">
+                    <div class="mr-2">
+                      <img src="@/assets/icon/ic_city_light.svg" />
+                    </div>
+                    <span class="font-describe"
+                      >Sống tại {{ scope.data.profiles.address }}</span
+                    >
+                  </div>
+                  <div
+                    class="flex"
+                    v-if="scope.data.profiles.showDistance === true"
+                  >
+                    <div class="mr-2">
+                      <img src="@/assets/icon/ic_location_dark.svg" />
+                    </div>
+                    <span class="font-describe"
+                      >{{ bindingLocation(scope.data?.distanceKm) }}
+                      {{ valueKi }} away</span
+                    >
+                  </div>
+                </div>
+                <div v-if="scrods === 1">
+                  {{ scope.data.profiles.about }}
+                </div>
+                <div v-if="scrods === 2">
+                  <span
+                    v-for="(item, index) in bingBasicInformation(
+                      scope.data.profiles
+                    )"
+                    :key="index"
+                  >
+                    <button class="item-home">{{ item }}</button>
+                  </span>
+                </div>
+                <div v-if="scrods === 3">
+                  <span
+                    v-for="(item, index) in bingLifeStyleStatic(
+                      scope.data.profiles
+                    )"
+                    :key="index"
+                  >
+                    <button class="item-home">{{ item }}</button>
+                  </span>
+                </div>
+                <div v-if="scrods === 4">
+                  <div class="flex">
+                    <div class="mr-2">
+                      <img src="@/assets/icon/ic_city_light.svg" />
+                    </div>
+                    <span class="font-describe">{{
+                      scope.data.profiles.jobTitle
+                    }}</span>
+                  </div>
+                  <div class="flex">
+                    <div class="mr-2">
+                      <img src="@/assets/icon/ic_location_dark.svg" alt="" />
+                    </div>
+                    <span class="font-describe">{{
+                      scope.data.profiles.school
+                    }}</span>
+                  </div>
+                </div>
+                <div v-if="scrods === 5">
+                  <span
+                    v-for="(item, index) in bingInterests(scope.data.profiles)"
+                    :key="index"
+                  >
+                    <button class="item-home">{{ item }}</button>
+                  </span>
                 </div>
               </div>
-              <span class="font-describe">{{
-                scope.data?.about ? scope.data?.about : "Tell me about"
-              }}</span
-              ><br />
-              <div class="flex">
-                <div class="mr-2">
-                  <i class="fa-solid fa-location-dot"></i>
-                </div>
-                <span class="font-describe"
-                  >{{ bindingLocation(scope.data?.distanceKm) }}
-                  {{ valueKi }} away</span
-                >
-              </div>
+            </div>
+            <div
+              class="flex w-30 justify-end items-end cursor-pointer"
+              @click="onClickShowDetailUser(scope.data)"
+            >
+              <i class="fa-solid fa-circle-info text-2xl"></i>
             </div>
           </div>
         </div>
         <div class="w-full flex absolute top-0 opacity-0 h-4/6 nextBg">
           <div
             class="w-2/4 bg-slate-500"
-            @click="nextImageLeft(scope.data.profiles.avatars)"
+            @click="
+              nextImageLeft(scope.data.profiles.avatars, scope.data.profiles)
+            "
           ></div>
           <div
             class="w-2/4 bg-orange-200"
-            @click="nextImageRight(scope.data.profiles.avatars)"
+            @click="
+              nextImageRight(scope.data.profiles.avatars, scope.data.profiles)
+            "
           ></div>
         </div>
       </template>
@@ -130,7 +216,7 @@
             v-bind:class="{ 'transform-hover': isHoverLike }"
           />
         </div>
-        <div class="justify-center flex items-center">
+        <div class="bh-odd justify-center flex items-center">
           <div
             v-if="isProgress === true"
             class="circular-progress"
@@ -200,6 +286,8 @@ export default {
 
       animate2: false,
       animate1: false,
+
+      scrods: 0,
     };
   },
 
@@ -213,7 +301,6 @@ export default {
       return "km";
     },
     timeBoost() {
-      debugger;
       const isBoostParam = this.$store.state.homeModule.isBoost;
       if (Object.keys(isBoostParam).length !== 0) {
         const startTime = new Date(isBoostParam.startTime).getTime();
@@ -229,7 +316,6 @@ export default {
 
     listDataUser: {
       get() {
-        debugger;
         return this.listUserFilter ? this.listUserFilter : this.users;
       },
       set(newData) {
@@ -303,13 +389,173 @@ export default {
         }
       }
     },
+
+    // Thông tin cơ bản
+    bingBasicInformation(val) {
+      const zodiacValue = val.zodiac;
+      const familyFlanValue = val.familyFlan;
+      const educationValue = val.education;
+      const covidVaccineValue = val.covidVaccine;
+      const personalityValue = val.personality;
+      const communicationTypeValue = val.communicationType;
+      const loveStyleValue = val.loveStyle;
+      const informationBasic =
+        this.$store.state.commonModule.listInformationBasic;
+      let resultData = [];
+      if (zodiacValue) {
+        const findData = informationBasic.zodiacs.find(
+          (x) => x.code === zodiacValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (familyFlanValue) {
+        const findData = informationBasic.familyPlans.find(
+          (x) => x.code === familyFlanValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (educationValue) {
+        const findData = informationBasic.educations.find(
+          (x) => x.code === educationValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (covidVaccineValue) {
+        const findData = informationBasic.covidVaccines.find(
+          (x) => x.code === covidVaccineValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (personalityValue) {
+        const findData = informationBasic.personalities.find(
+          (x) => x.code === personalityValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (communicationTypeValue) {
+        const findData = informationBasic.communicationStyles.find(
+          (x) => x.code === communicationTypeValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (loveStyleValue) {
+        const findData = informationBasic.loveStyles.find(
+          (x) => x.code === loveStyleValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      return resultData;
+    },
+
+    // Phong cách sống
+    bingLifeStyleStatic(val) {
+      const petValue = val.pet;
+      const drinkingValue = val.drinking;
+      const smokingValue = val.smoking;
+      const workoutValue = val.workout;
+      const dietaryPreferenceValue = val.dietaryPreference;
+      const socialMediaValue = val.socialMedia;
+      const sleepingHabitValue = val.sleepingHabit;
+      const lifeStyleStatic =
+        this.$store.state.commonModule.listLifeStyleStatic;
+      let resultData = [];
+      if (petValue) {
+        const findData = lifeStyleStatic.pets.find((x) => x.code === petValue);
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (drinkingValue) {
+        const findData = lifeStyleStatic.drinkings.find(
+          (x) => x.code === drinkingValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (smokingValue) {
+        const findData = lifeStyleStatic.smokings.find(
+          (x) => x.code === smokingValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (workoutValue) {
+        const findData = lifeStyleStatic.workouts.find(
+          (x) => x.code === workoutValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (dietaryPreferenceValue) {
+        const findData = lifeStyleStatic.foodPreferences.find(
+          (x) => x.code === dietaryPreferenceValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (socialMediaValue) {
+        const findData = lifeStyleStatic.socials.find(
+          (x) => x.code === socialMediaValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (sleepingHabitValue) {
+        const findData = lifeStyleStatic.sleepingStyles.find(
+          (x) => x.code === sleepingHabitValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      return resultData;
+    },
+
+    bingInterests(val) {
+      const interestDefaults =
+        this.$store.state.commonModule.listLifeStyleSingle;
+      const interests = val.interests;
+      const resultData = [];
+      for (let index = 0; index < interests.length; index++) {
+        const element = interests[index];
+
+        const findData = interestDefaults.interests.find(
+          (x) => x.code === element
+        );
+
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+
+      return resultData;
+    },
+
     bindingAge(val) {
       const dataAge = functionValidate.calculatAge(val);
       return dataAge;
     },
 
     bindingLocation(val) {
-      debugger;
       if (localStorage.unit === "mi") {
         if (val === undefined) {
           return 1;
@@ -337,13 +583,80 @@ export default {
     onClickNopeDetail(value) {
       this.isShowDetail = value;
     },
-    nextImageLeft(value) {
-      console.log(value);
+    nextImageLeft(value, data) {
+      console.log(data);
       debugger;
       if (this.isDragging) {
         this.isPointerNext = true;
         if (this.imageActive !== 0) {
           this.imageActive = this.imageActive - 1;
+
+          if (this.imageActive === 0) {
+            if (data.about.length !== 0) {
+              this.scrods = this.scrods - 1;
+            } else {
+              const basic = this.bingBasicInformation(data);
+              if (basic.length !== 0) {
+                this.scrods = this.scrods + 0;
+              }
+            }
+          }
+          if (this.imageActive === 1) {
+            const basic = this.bingBasicInformation(data);
+            if (basic.length !== 0) {
+              if (this.scrods === 3) {
+                this.scrods = this.scrods - 2;
+              } else {
+                this.scrods = this.scrods - 1;
+              }
+            } else {
+              const styleStatic = this.bingLifeStyleStatic(data);
+              if (styleStatic.length !== 0) {
+                this.scrods = this.scrods - 1;
+              }
+            }
+          }
+          if (this.imageActive === 2) {
+            const styleStatic = this.bingLifeStyleStatic(data);
+            if (styleStatic.length !== 0) {
+              this.scrods = this.scrods - 1;
+            } else {
+              const styleStatic = this.bingLifeStyleStatic(data);
+              if (styleStatic.length !== 0) {
+                this.scrods = this.scrods + 0;
+              }
+            }
+          }
+          if (this.imageActive === 3) {
+            const styleStatic = this.bingLifeStyleStatic(data);
+            if (styleStatic.length !== 0) {
+              if (this.scrods === 5) {
+                this.scrods = this.scrods - 2;
+              } else {
+                this.scrods = this.scrods - 1;
+              }
+            } else {
+              if (data.jobTitle.length !== 0 || data.school.length !== 0) {
+                this.scrods = this.scrods + 0;
+              }
+            }
+          }
+          if (this.imageActive === 4) {
+            if (data.jobTitle.length !== 0 || data.school.length !== 0) {
+              this.scrods = this.scrods - 1;
+            } else {
+              const styleStatic = this.bingInterests(data);
+              if (styleStatic.length !== 0) {
+                this.scrods = this.scrods + 0;
+              }
+            }
+          }
+          if (this.imageActive === 5) {
+            const styleStatic = this.bingInterests(data);
+            if (styleStatic.length !== 0) {
+              this.scrods = this.scrods - 1;
+            }
+          }
 
           if (this.imageActive < value.length) {
             document
@@ -366,11 +679,62 @@ export default {
       }
     },
 
-    nextImageRight(value) {
+    nextImageRight(value, data) {
       debugger;
       if (this.isDragging) {
         this.isPointerNext = true;
+
         this.imageActive = this.imageActive + 1;
+        if (this.imageActive === 1) {
+          if (data.about.length !== 0) {
+            this.scrods = this.scrods + 1;
+          } else {
+            const basic = this.bingBasicInformation(data);
+            if (basic.length !== 0) {
+              this.scrods = this.scrods + 2;
+            }
+          }
+        }
+        if (this.imageActive === 2) {
+          const basic = this.bingBasicInformation(data);
+          if (basic.length !== 0) {
+            this.scrods = this.scrods + 1;
+          } else {
+            const styleStatic = this.bingLifeStyleStatic(data);
+            if (styleStatic.length !== 0) {
+              this.scrods = this.scrods + 2;
+            }
+          }
+        }
+        if (this.imageActive === 3) {
+          const styleStatic = this.bingLifeStyleStatic(data);
+          if (styleStatic.length !== 0) {
+            this.scrods = this.scrods + 1;
+          } else {
+            if (data.jobTitle.length !== 0 || data.school.length !== 0) {
+              this.scrods = this.scrods + 2;
+            }
+          }
+        }
+        if (this.imageActive === 4) {
+          if (data.jobTitle.length !== 0 || data.school.length !== 0) {
+            this.scrods = this.scrods + 1;
+          } else {
+            const styleStatic = this.bingInterests(data);
+            if (styleStatic.length !== 0) {
+              this.scrods = this.scrods + 2;
+            }
+          }
+        }
+        if (this.imageActive === 5) {
+          const styleStatic = this.bingInterests(data);
+          if (styleStatic.length !== 0) {
+            if (this.scrods !== 5) {
+              this.scrods = this.scrods + 1;
+            }
+          }
+        }
+        console.log(data);
 
         if (this.imageActive < value.length) {
           document
@@ -399,13 +763,11 @@ export default {
     },
 
     async onClickProgress() {
-      debugger;
       const totalTime = this.timeBoost * 1000; // Thời gian trong milisecond, ở đây là 60 giây
       this.isProgress = !this.isProgress;
       // hàm quay tròn
       this.startTime = new Date().getTime();
       let progress = await setInterval(() => {
-        debugger;
         let now = new Date().getTime();
         let timeElapsed = now - this.startTime;
         let percentComplete = (timeElapsed / totalTime) * 100;
@@ -420,7 +782,6 @@ export default {
         this.progressValue = Math.floor(
           (percentComplete / 100) * this.progressEndValue
         );
-        debugger;
 
         this.$refs.progressBar.style.background = `conic-gradient(
             #FD656C ${percentComplete * 3.6}deg,
@@ -436,7 +797,6 @@ export default {
       this.$emit("onShowDetailUser", true);
     },
     async onSubmit(value) {
-      debugger;
       this.setUrlNameAvatarUser("");
       this.isActiveImag = true;
 
@@ -472,7 +832,7 @@ export default {
           await this.postSupperLikeUser({
             interactorId: value.key,
           });
-          debugger;
+
           // match thành công hiện form match
           if (isSupperLikeValue.isMatched) {
             // this.setDataUserMatch(value.item);
@@ -487,7 +847,7 @@ export default {
             await this.postSupperLikeUser({
               interactorId: value.key,
             });
-            debugger;
+
             if (isSupperLikeValue.isMatched) {
               //   Xử lý lưu giá trị cache
             }
@@ -502,7 +862,6 @@ export default {
 
             // Hiển thị package
             this.$emit("onShowPackage", true);
-            debugger;
           }
         }
         this.imageActive = 0;
@@ -523,7 +882,7 @@ export default {
           await this.postLikeUser({
             interactorId: value.key,
           });
-          debugger;
+
           // match thành công hiện form match
           if (isLikeValue.isMatched) {
             this.setDataUserMatch(value.item);
@@ -538,13 +897,12 @@ export default {
             await this.postLikeUser({
               interactorId: value.key,
             });
-            debugger;
+
             if (isLikeValue.isMatched) {
               this.setDataUserMatch(value.item);
               this.$emit("onShowFormLikeYou", true);
             }
           } else {
-            debugger;
             // Hiển thị package
 
             this.$emit("onShowPackage", true);
@@ -557,7 +915,6 @@ export default {
       }
     },
     async decide(choice) {
-      debugger;
       console.log(choice);
       if (choice === "rewind") {
         if (this.history.length) {
@@ -569,7 +926,7 @@ export default {
       } else if (choice === "help") {
         await this.postBoostUser({ number: 1 });
         const isBoostParam = this.$store.state.homeModule.isBoost;
-        debugger;
+
         if (Object.keys(isBoostParam).length === 0) {
           await this.$emit("onShowPackage", true);
         } else {
@@ -588,8 +945,6 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      debugger;
-
       const isNopeReportValue = this.$store.state.homeModule.isNopeReport;
       if (isNopeReportValue) {
         this.decide("nope");
@@ -837,5 +1192,31 @@ export default {
 }
 .transform-hover {
   transform: scale(1.1);
+}
+
+.item-home {
+  border: 1px solid #ccd2e266;
+  padding: 0px 10px 0px 10px;
+  margin: 3px;
+  background-color: #ccd2e266;
+  border-radius: 14px;
+}
+
+.online-status {
+  width: 12px;
+  background-color: yellow;
+  height: 12px;
+  border-radius: 50%;
+}
+.online-off {
+  width: 8px;
+  background-color: yellow;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.text-age {
+  font-size: 22px;
+  padding-top: 3px;
 }
 </style>

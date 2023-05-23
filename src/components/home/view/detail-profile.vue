@@ -45,37 +45,71 @@
         </div>
       </div>
       <div class="h-2/4 w-full pl-2 pr-2">
-        <div class="w-full bg-border-bottom padding-text-user pl-2 pr-2">
-          <div class="flex bh-margin-title">
-            <div class="title-user">
-              {{ this.userParam.fullname
-              }}<span>, {{ bindingAge(this.userParam.dob) }}</span>
+        <div class="w-full bg-border-bottom padding-text-user">
+          <div class="w-full pl-2 pr-2">
+            <div class="flex bh-margin-title">
+              <div class="">
+                <span class="title-user">{{ this.userParam.fullname }}</span>
+                <span class="describe-user"
+                  >, {{ bindingAge(this.userParam.dob) }}</span
+                >
+              </div>
             </div>
-            <img
-              v-if="colorBt"
-              src="@/assets/icon/ic_infor_dark.svg"
-              width="30"
-              alt=""
-            />
-            <img
-              v-else
-              src="@/assets/icon/ic_infor_light.svg"
-              width="30"
-              alt=""
-            />
-          </div>
-          <div class="describe-user bh-margin-description" v-if="aboutValue">
-            {{ userParam.profiles.about }}
-          </div>
-          <div class="flex bh-margin-description">
-            <img
-              v-if="colorBt"
-              src="@/assets/icon/ic_location_dark.svg"
-              alt=""
-            />
-            <img v-else src="@/assets/icon/ic_location_light.svg" alt="" />
+            <div
+              class="flex w-full items-center"
+              v-if="this.userParam.verifyStatus === true"
+            >
+              <img src="@/assets/icon/ic_verified_enable.svg" alt="" />
+              <div class="ml-3 padding-describe-option">Đã xác minh</div>
+            </div>
+            <div class="flex w-full items-center">
+              <img src="@/assets/icon/ic_major.svg" alt="" />
+              <div class="ml-3 padding-describe-option">
+                {{
+                  this.userParam.profiles.school
+                    ? this.userParam.profiles.school
+                    : "Information of technology"
+                }}
+              </div>
+            </div>
 
-            <span>{{ bindingDistance(this.userParam?.location) }} km away</span>
+            <div
+              class="flex w-full items-center"
+              v-if="this.userParam.profiles.education"
+            >
+              <img src="@/assets/icon/ic_university.svg" alt="" srcset="" />
+              <div class="ml-4 padding-describe-option">
+                {{ bindingEducation(this.userParam.profiles.education) }}
+              </div>
+            </div>
+
+            <div
+              class="flex w-full items-center"
+              v-if="this.userParam.profiles.address"
+            >
+              <img src="@/assets/icon/ic_city_dark.svg" alt="" srcset="" />
+              <div class="ml-3 padding-describe-option">
+                {{
+                  this.userParam.profiles.address
+                    ? this.userParam.profiles.address
+                    : "Lives in Hanoi"
+                }}
+              </div>
+            </div>
+
+            <div class="flex w-full items-center">
+              <img src="@/assets/icon/ic_city_dark.svg" alt="" srcset="" />
+              <div class="ml-3 padding-describe-option">
+                {{ stringToUpperCase(this.userParam.profiles.gender) }}
+              </div>
+            </div>
+
+            <div class="flex w-full items-center">
+              <img src="@/assets/icon/ic_location_light.svg" alt="" />
+              <div class="ml-3 padding-describe-option">
+                {{ bindingDistance(this.userParam?.location) }} km away
+              </div>
+            </div>
           </div>
         </div>
         <!-- About me -->
@@ -101,8 +135,46 @@
             </div>
           </div>
         </div>
-        <!-- Interests -->
+        <!-- Thông tin cơ bản -->
+        <div
+          class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
+          v-if="bingBasicInformation(userParam.profiles).length !== 0"
+        >
+          <div class="title pl-2 title-description describe-text">
+            Basic information
+          </div>
 
+          <div class="w-full bh-margin-description">
+            <div
+              class="item-option border-default"
+              v-for="(item, index) in bingBasicInformation(userParam.profiles)"
+              :key="index"
+            >
+              {{ item }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Phong cách sống -->
+        <div
+          class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
+          v-if="bingLifeStyleStatic(userParam.profiles).length !== 0"
+        >
+          <div class="title pl-2 title-description describe-text">
+            Style of life
+          </div>
+
+          <div class="w-full bh-margin-description">
+            <div
+              class="item-option border-default"
+              v-for="(item, index) in bingLifeStyleStatic(userParam.profiles)"
+              :key="index"
+            >
+              {{ item }}
+            </div>
+          </div>
+        </div>
+        <!-- Interests -->
         <div
           class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
           v-if="userParam.profiles.interests.length !== 0"
@@ -121,7 +193,12 @@
             </div>
           </div>
         </div>
-
+        <!-- <img
+          src="@/assets/icon-profile/zodiac.svg"
+          width="30"
+          alt=""
+          srcset=""
+        /> -->
         <!-- My Anthem -->
         <div class="w-full padding-text-user bg-border-bottom pl-2 pr-2">
           <div class="title title-description describe-text">
@@ -227,6 +304,8 @@ export default {
 
       idImage: "",
       imageActive: 0,
+      listEducation:
+        this.$store.state.commonModule.listInformationBasic.educations,
     };
   },
 
@@ -299,9 +378,6 @@ export default {
       this.$emit("onActionDecide", val);
     },
 
-    convertString(val) {
-      return functionValidate.titleCase(val);
-    },
     onClickReport() {
       this.$router.push({ path: `/report/${this.userParam._id}` });
     },

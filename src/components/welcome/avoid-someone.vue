@@ -31,7 +31,7 @@
         <div class="mt-2">
           {{
             $t(
-              "we'll_store_your_locked_contact_to_stop_you_from_seeing_each_other_if_your_contact_has_an_account_with_the_same_information_you_provide._you_can_stop_sharing_with_us_in_your_settings."
+              "we'll_store_your_blocked_contact_to_stop_you_from_seeing_each_other_if_your_contact_has_an_account_with_the_same_infor_you_provide._you_can_stop_sharing_with_us_in_your_settings."
             )
           }}
         </div>

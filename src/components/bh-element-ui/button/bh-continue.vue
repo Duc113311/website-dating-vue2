@@ -35,7 +35,7 @@
         :disabled="!isActiveContinue"
         ref="continue"
       >
-        Continue
+        {{ $t("continue") }}
         <span v-show="isScreamInterestShow"
           >({{ isShowNumberInterests }}/5)</span
         >

@@ -4,6 +4,7 @@ import vnValue from "../locales/vn.json";
 import enValue from "../locales/en.json";
 import jaValue from "../locales/ja.json";
 import koValue from "../locales/ko.json";
+import arValue from "../locales/ar.json";
 Vue.use(VueI18n);
 
 const messages = {
@@ -11,6 +12,7 @@ const messages = {
   vi: vnValue,
   ja: jaValue,
   ko: koValue,
+  ar: arValue,
 };
 const storedLanguage = localStorage.getItem("language");
 const languageTranslate = "en";

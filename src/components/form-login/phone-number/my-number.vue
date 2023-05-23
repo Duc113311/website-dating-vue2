@@ -30,7 +30,7 @@
         {{ $t("the_verified_phone_number_can_be_used_to_log_in.") }}
       </span>
       <a href="http://" class="decoration-solid underline">{{
-        $t("learn_what_happens_when_your_number_changes")
+        $t("learn_what_happens_when_your_number_changes.")
       }}</a>
     </div>
   </div>
@@ -72,7 +72,7 @@ export default {
       var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
       if (val !== "") {
         if (vnf_regex.test(val) == false) {
-          this.txtCodeError = "Please enter a valid phone number";
+          this.txtCodeError = this.$t("please_enter_a_valid_phone_number");
           this.$emit("validateRequirePhone", { statusActive: false });
 
           // Số điện thoại của bạn không đúng định dạng!
