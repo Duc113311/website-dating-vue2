@@ -201,9 +201,7 @@
         /> -->
         <!-- My Anthem -->
         <div class="w-full padding-text-user bg-border-bottom pl-2 pr-2">
-          <div class="title title-description describe-text">
-            {{ convertString($t("my_anthem")) }}
-          </div>
+          <div class="title title-description describe-text">My Anthem</div>
 
           <div class="w-full bh-margin-description pt-2">
             <div class="w-full flex justify-between items-center">
@@ -225,15 +223,11 @@
         >
           <div class="flex justify-center items-center cursor-pointer">
             <div class="title-click-ic ml-2">
-              {{
-                $t("share_{nameUser}_profile", {
-                  nameUser: this.userParam.fullname,
-                })
-              }}
+              Share {{ this.userParam.fullname }} profile
             </div>
           </div>
           <div class="flex justify-center title-description describe-text">
-            {{ $t("see_what_a_friend_thinks") }}
+            See what a friend thinks
           </div>
         </div>
         <!-- Report -->
@@ -257,7 +251,7 @@
             srcset=""
           />
           <div class="title-click-ic ml-2">
-            {{ $t("report_{nameUser}", { nameUser: this.userParam.fullname }) }}
+            Report {{ this.userParam.fullname }}
           </div>
         </div>
         <div class="h-2/4"></div>
@@ -300,7 +294,48 @@ export default {
 
   data() {
     return {
+      btUrlImage: [
+        {
+          id: 1,
+          urlName: "ssd",
+        },
+        {
+          id: 2,
+          urlName: "ssd",
+        },
+        {
+          id: 3,
+          urlName: "ssd",
+        },
+        {
+          id: 4,
+          urlName: "ssd",
+        },
+        {
+          id: 5,
+          urlName: "ssd",
+        },
+        {
+          id: 6,
+          urlName: "ssd",
+        },
+        {
+          id: 7,
+          urlName: "ssd",
+        },
+        {
+          id: 8,
+          urlName: "ssd",
+        },
+        {
+          id: 9,
+          urlName: "ssd",
+        },
+      ],
       isActiveImag: true,
+
+      sexuals: ["Gay", "Lesbian", "Demisexual", "Pansexual"],
+      interests: ["Ice-scream", "Reading", "Cars", "Music", "Dogs"],
 
       idImage: "",
       imageActive: 0,
@@ -378,6 +413,157 @@ export default {
       this.$emit("onActionDecide", val);
     },
 
+    stringToUpperCase(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    },
+
+    bingBasicInformation(val) {
+      const zodiacValue = val.zodiac;
+      const familyFlanValue = val.familyFlan;
+      const educationValue = val.education;
+      const covidVaccineValue = val.covidVaccine;
+      const personalityValue = val.personality;
+      const communicationTypeValue = val.communicationType;
+      const loveStyleValue = val.loveStyle;
+      const informationBasic =
+        this.$store.state.commonModule.listInformationBasic;
+      let resultData = [];
+      if (zodiacValue) {
+        const findData = informationBasic.zodiacs.find(
+          (x) => x.code === zodiacValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (familyFlanValue) {
+        const findData = informationBasic.familyPlans.find(
+          (x) => x.code === familyFlanValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (educationValue) {
+        const findData = informationBasic.educations.find(
+          (x) => x.code === educationValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (covidVaccineValue) {
+        const findData = informationBasic.covidVaccines.find(
+          (x) => x.code === covidVaccineValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (personalityValue) {
+        const findData = informationBasic.personalities.find(
+          (x) => x.code === personalityValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (communicationTypeValue) {
+        const findData = informationBasic.communicationStyles.find(
+          (x) => x.code === communicationTypeValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (loveStyleValue) {
+        const findData = informationBasic.loveStyles.find(
+          (x) => x.code === loveStyleValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      return resultData;
+    },
+
+    bingLifeStyleStatic(val) {
+      const petValue = val.pet;
+      const drinkingValue = val.drinking;
+      const smokingValue = val.smoking;
+      const workoutValue = val.workout;
+      const dietaryPreferenceValue = val.dietaryPreference;
+      const socialMediaValue = val.socialMedia;
+      const sleepingHabitValue = val.sleepingHabit;
+      const lifeStyleStatic =
+        this.$store.state.commonModule.listLifeStyleStatic;
+      let resultData = [];
+      if (petValue) {
+        const findData = lifeStyleStatic.pets.find((x) => x.code === petValue);
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (drinkingValue) {
+        const findData = lifeStyleStatic.drinkings.find(
+          (x) => x.code === drinkingValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (smokingValue) {
+        const findData = lifeStyleStatic.smokings.find(
+          (x) => x.code === smokingValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (workoutValue) {
+        const findData = lifeStyleStatic.workouts.find(
+          (x) => x.code === workoutValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (dietaryPreferenceValue) {
+        const findData = lifeStyleStatic.foodPreferences.find(
+          (x) => x.code === dietaryPreferenceValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (socialMediaValue) {
+        const findData = lifeStyleStatic.socials.find(
+          (x) => x.code === socialMediaValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (sleepingHabitValue) {
+        const findData = lifeStyleStatic.sleepingStyles.find(
+          (x) => x.code === sleepingHabitValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      return resultData;
+    },
+
+    bindingEducation(value) {
+      const educations = this.listEducation;
+
+      const resultData = educations.find((x) => x.code === value);
+
+      if (resultData) {
+        return resultData.value;
+      }
+    },
     onClickReport() {
       this.$router.push({ path: `/report/${this.userParam._id}` });
     },
