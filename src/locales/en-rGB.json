@@ -235,5 +235,9 @@
   "control_profile": "CONTROL PROFILE",
   "don't_show_my_age": "Don't show my age",
   "don't_show_my_distance": "Don't show my distance",
-  "show_{nameScream}_on_my_profile": "Show {nameScream} on my profile"
+  "show_{nameScream}_on_my_profile": "Show {nameScream} on my profile",
+  "you_are_not_enter_the_phone_number": "You are not enter the phone number",
+  "Interests": "Interests",
+  "my_gender": "my gender",
+  "my_orientation": "my orientation"
 }

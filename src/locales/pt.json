@@ -90,7 +90,7 @@
   "get_read_receipts": "Obtenha recibos de leitura",
   "level_up_everyone_action_you_take_on_heartlink": "Level -up todos ações que você toma no HeartLink",
   "get_boost_profile": "Obtenha o perfil de impulso",
-  "get_supper_like": "Obtenha o jantar como",
+  "get_supper_like": "Pegue o jantar como",
   "silver_package": "Pacote de prata",
   "gold_package": "Pacote de ouro",
   "get_read_receipt_package": "Obtenha o pacote de recibo de leitura",
@@ -235,5 +235,9 @@
   "control_profile": "Perfil de controle",
   "don't_show_my_age": "Não mostre minha idade",
   "don't_show_my_distance": "Não mostre minha distância",
-  "show_{nameScream}_on_my_profile": "Mostre {namescream} no meu perfil"
+  "show_{nameScream}_on_my_profile": "Mostre {namescream} no meu perfil",
+  "you_are_not_enter_the_phone_number": "Você não entra no número de telefone",
+  "Interests": "Interesses",
+  "my_gender": "O meu sexo",
+  "my_orientation": "minha orientação"
 }

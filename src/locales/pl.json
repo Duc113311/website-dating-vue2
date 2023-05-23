@@ -13,7 +13,7 @@
   "phone_number": "Numer telefonu",
   "please_enter_a_valid_phone_number": "Proszę wpisać poprawny numer telefonu",
   "when_you_tap_'continue',_heartlink_will_send_a_text_with_verification_code._message_and_data_rates_mate_apply.": "Po dotknięciu „Kontynuuj” HeartLink wyśle ​​tekst z kodem weryfikacji. Korzystanie z komunikatów i stawek danych mają zastosowanie.",
-  "the_verified_phone_number_can_be_used_to_log_in.": "Weryfikowany numer telefonu można użyć do logowania się.",
+  "the_verified_phone_number_can_be_used_to_log_in.": "Do logowania można użyć zweryfikowanego numeru telefonu.",
   "learn_what_happens_when_your_number_changes.": "Dowiedz się, co się stanie, gdy zmieni się twój numer.",
   "continue": "Kontynuować",
   "my_code_is": "Mój kod jest",
@@ -235,5 +235,9 @@
   "control_profile": "Profil sterowania",
   "don't_show_my_age": "Nie pokazuj mojego wieku",
   "don't_show_my_distance": "Nie pokazuj mojej odległości",
-  "show_{nameScream}_on_my_profile": "Pokaż {nazwa Cream} na moim profilu"
+  "show_{nameScream}_on_my_profile": "Pokaż {nazwa Cream} na moim profilu",
+  "you_are_not_enter_the_phone_number": "Nie wprowadź numeru telefonu",
+  "Interests": "Zainteresowania",
+  "my_gender": "Moja płeć",
+  "my_orientation": "moja orientacja"
 }

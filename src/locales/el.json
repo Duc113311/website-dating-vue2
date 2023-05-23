@@ -132,7 +132,7 @@
   "no_data": "Χωρίς δεδομένα",
   "add_language": "Προσθέστε τη γλώσσα",
   "maximum_distance": "Μέγιστη απόσταση",
-  "only_show_people_in_this_range": "Δείξτε μόνο τους ανθρώπους σε αυτό το εύρος",
+  "only_show_people_in_this_range": "Εμφανίστε μόνο τους ανθρώπους σε αυτό το εύρος",
   "age_range": "Εύρος ηλικίας",
   "show_me": "Δείξε μου",
   "we_use_these_preferences_to_find_matches._some_match_suggestions_may_not_fall_within_your_desired_parameters": "Χρησιμοποιούμε αυτές τις προτιμήσεις για να βρούμε αγώνες. Ορισμένες προτάσεις αντιστοίχισης ενδέχεται να μην εμπίπτουν στις επιθυμητές παραμέτρους σας",
@@ -145,7 +145,7 @@
   "standard": "Πρότυπο",
   "only_be_shown_to_certain_types_of_people_for_individual_recommendations": "Να αποδειχθεί μόνο σε ορισμένους τύπους ατόμων για μεμονωμένες συστάσεις",
   "only_people_i've_liked": "Μόνο άτομα που μου άρεσαν",
-  "only_people_you_have_liked_will_see_me": "Μόνο τα άτομα που σας άρεσαν θα με δουν",
+  "only_people_you_have_liked_will_see_me": "Μόνο άτομα που σας άρεσαν θα με δουν",
   "only_wi-fi_only": "Μόνο Wi-Fi μόνο",
   "on_wi-fi_and_mobile_data": "Σε δεδομένα Wi-Fi και κινητής τηλεφωνίας",
   "never_auto_play_videos": "Never Auto Play Videos",
@@ -235,5 +235,9 @@
   "control_profile": "Προφίλ ελέγχου",
   "don't_show_my_age": "Μην δείχνετε την ηλικία μου",
   "don't_show_my_distance": "Μην δείχνετε την απόσταση μου",
-  "show_{nameScream}_on_my_profile": "Εμφάνιση {NamesCream} στο προφίλ μου"
+  "show_{nameScream}_on_my_profile": "Εμφάνιση {NamesCream} στο προφίλ μου",
+  "you_are_not_enter_the_phone_number": "Δεν εισάγετε τον αριθμό τηλεφώνου",
+  "Interests": "Τα ενδιαφέροντα",
+  "my_gender": "το γένος μου",
+  "my_orientation": "ο προσανατολισμός μου"
 }

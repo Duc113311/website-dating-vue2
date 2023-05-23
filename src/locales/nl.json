@@ -235,5 +235,9 @@
   "control_profile": "Controleprofiel",
   "don't_show_my_age": "Laat mijn leeftijd niet zien",
   "don't_show_my_distance": "Laat mijn afstand niet zien",
-  "show_{nameScream}_on_my_profile": "Toon {namescream} op mijn profiel"
+  "show_{nameScream}_on_my_profile": "Toon {namescream} op mijn profiel",
+  "you_are_not_enter_the_phone_number": "U bent niet in het telefoonnummer",
+  "Interests": "Belangen",
+  "my_gender": "Mijn geslacht",
+  "my_orientation": "Mijn oriëntatie"
 }

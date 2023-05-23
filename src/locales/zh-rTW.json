@@ -88,7 +88,7 @@
   "new_connections": "新連接",
   "messages": "消息",
   "get_read_receipts": "獲取閱讀收據",
-  "level_up_everyone_action_you_take_on_heartlink": "升級每個人的動作您採取心動鏈接",
+  "level_up_everyone_action_you_take_on_heartlink": "升級每個人的動作，您採取心動鏈接",
   "get_boost_profile": "獲取Boost配置文件",
   "get_supper_like": "吃晚飯",
   "silver_package": "銀包",
@@ -235,5 +235,9 @@
   "control_profile": "控製配置文件",
   "don't_show_my_age": "不要顯示我的年齡",
   "don't_show_my_distance": "不要顯示我的距離",
-  "show_{nameScream}_on_my_profile": "在我的個人資料上顯示{namescream}"
+  "show_{nameScream}_on_my_profile": "在我的個人資料上顯示{namescream}",
+  "you_are_not_enter_the_phone_number": "您不是輸入電話號碼",
+  "Interests": "利益",
+  "my_gender": "我的性別",
+  "my_orientation": "我的方向"
 }

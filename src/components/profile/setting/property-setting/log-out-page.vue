@@ -5,7 +5,7 @@
         @click="onLogout"
         class="w-full flex cursor-pointer form-set-input justify-center items-center bh-item-title bg-default"
       >
-        LOG OUT
+        {{ $t("log_out") }}
       </div>
     </div>
 
@@ -21,7 +21,7 @@
         @click="onDeleteAccount"
         class="w-full flex cursor-pointer form-set-input justify-center items-center bh-item-title bg-default"
       >
-        DELETE ACCOUNT
+        {{ $t("delete_account") }}
       </div>
     </div>
   </div>

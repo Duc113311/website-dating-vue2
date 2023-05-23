@@ -145,7 +145,7 @@
   "standard": "मानक",
   "only_be_shown_to_certain_types_of_people_for_individual_recommendations": "केवल व्यक्तिगत सिफारिशों के लिए कुछ प्रकार के लोगों को दिखाया गया है",
   "only_people_i've_liked": "केवल वे लोग जो मुझे पसंद हैं",
-  "only_people_you_have_liked_will_see_me": "केवल वे लोग जिन्हें आपने पसंद किया है, वे मुझे देखेंगे",
+  "only_people_you_have_liked_will_see_me": "केवल वे लोग जिन्हें आपने पसंद किया है, मुझे देखेंगे",
   "only_wi-fi_only": "केवल वाई-फाई",
   "on_wi-fi_and_mobile_data": "वाई-फाई और मोबाइल डेटा पर",
   "never_auto_play_videos": "कभी भी ऑटो प्ले वीडियो नहीं",
@@ -156,7 +156,7 @@
   "app_settings": "एप्लिकेशन सेटिंग",
   "show_distance_in": "में दूरी दिखाओ",
   "language": "भाषा",
-  "chose_the_language_you_want_to_display": "उस भाषा को चुना जिसे आप प्रदर्शित करना चाहते हैं",
+  "chose_the_language_you_want_to_display": "जिस भाषा को आप प्रदर्शित करना चाहते हैं उसे चुना",
   "dark_theme": "डार्क थीम",
   "choose_the_theme_you_like_most": "वह विषय चुनें जिसे आप सबसे ज्यादा पसंद करते हैं",
   "log_out": "लॉग आउट",
@@ -235,5 +235,9 @@
   "control_profile": "नियंत्रण प्रोफ़ाइल",
   "don't_show_my_age": "मेरी उम्र मत दिखाओ",
   "don't_show_my_distance": "मेरी दूरी मत दिखाओ",
-  "show_{nameScream}_on_my_profile": "मेरी प्रोफ़ाइल पर {NamesCream} दिखाएं"
+  "show_{nameScream}_on_my_profile": "मेरी प्रोफ़ाइल पर {NamesCream} दिखाएं",
+  "you_are_not_enter_the_phone_number": "आप फ़ोन नंबर दर्ज नहीं कर रहे हैं",
+  "Interests": "रूचियाँ",
+  "my_gender": "मेरी लैंगिकता",
+  "my_orientation": "मेरा अभिविन्यास"
 }

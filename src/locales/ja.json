@@ -33,7 +33,7 @@
   "don't_be_too_quick_to_give_out_personal_information.": "個人情報を提供しすぎないでください。",
   "date_safety_guidelines": "日付安全ガイドライン",
   "play_it_cool": "かっこよくプレイしてください",
-  "respect_others_and_treat_them_as_you_would_like_to_be_treated": "他の人を尊重し、あなたが扱われたいと思うようにそれらを扱う",
+  "respect_others_and_treat_them_as_you_would_like_to_be_treated": "他の人を尊重し、あなたが扱われたいと思うように扱う",
   "be_proactive": "積極的に",
   "always_report_bad_behavior": "常に悪い行動を報告してください",
   "i_agree": "同意します",
@@ -139,7 +139,7 @@
   "control_who_you_see": "あなたが見る人をコントロールします",
   "sliver_package": "スライバーパッケージ",
   "balance_recommendations": "バランスの推奨事項",
-  "see_the_most_relevant_people_to_you_(default_settings)": "あなたに最も関連する人々を見る（デフォルト設定）",
+  "see_the_most_relevant_people_to_you_(default_settings)": "あなたに最も関連性の高い人々を見てください（デフォルト設定）",
   "recently_active": "最近アクティブ",
   "see_the_most_recently_active_people_first": "最初に最近アクティブな人々をご覧ください",
   "standard": "標準",
@@ -148,7 +148,7 @@
   "only_people_you_have_liked_will_see_me": "あなたが好きな人だけが私に会うでしょう",
   "only_wi-fi_only": "Wi-Fiのみ",
   "on_wi-fi_and_mobile_data": "Wi-Fiおよびモバイルデータについて",
-  "never_auto_play_videos": "ビデオを自動再生しないでください",
+  "never_auto_play_videos": "動画を自動再生しないでください",
   "show_me_top_picks": "トップピックを見せてください",
   "turning_this_on_will_allow_you_to_be_shown_as_a_featured_top_pick_to_other_users_near_you": "これをオンにすると、近くの他のユーザーに注目のトップピックとして表示されることができます",
   "activity_status": "アクティビティステータス",
@@ -235,5 +235,9 @@
   "control_profile": "制御プロファイル",
   "don't_show_my_age": "私の年齢を見せないでください",
   "don't_show_my_distance": "私の距離を見せないでください",
-  "show_{nameScream}_on_my_profile": "私のプロフィールに{namescream}を表示します"
+  "show_{nameScream}_on_my_profile": "私のプロフィールに{namescream}を表示します",
+  "you_are_not_enter_the_phone_number": "電話番号を入力していません",
+  "Interests": "興味",
+  "my_gender": "私の性別",
+  "my_orientation": "私のオリエンテーション"
 }

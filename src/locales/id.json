@@ -87,8 +87,8 @@
   "recommendations": "Rekomendasi",
   "new_connections": "Koneksi baru",
   "messages": "Pesan",
-  "get_read_receipts": "Baca tanda terima",
-  "level_up_everyone_action_you_take_on_heartlink": "Level semua orang tindakan yang Anda ambil dalam tink",
+  "get_read_receipts": "Dapatkan tanda terima baca",
+  "level_up_everyone_action_you_take_on_heartlink": "Level semua tindakan yang Anda ambil dalam tink",
   "get_boost_profile": "Dapatkan Profil Boost",
   "get_supper_like": "Dapatkan makan malam",
   "silver_package": "Paket perak",
@@ -141,7 +141,7 @@
   "balance_recommendations": "Rekomendasi Balance",
   "see_the_most_relevant_people_to_you_(default_settings)": "Lihat orang yang paling relevan untuk Anda (pengaturan default)",
   "recently_active": "Baru -baru ini aktif",
-  "see_the_most_recently_active_people_first": "Lihat orang -orang yang paling baru aktif terlebih dahulu",
+  "see_the_most_recently_active_people_first": "Lihat orang -orang yang paling baru yang paling aktif",
   "standard": "Standar",
   "only_be_shown_to_certain_types_of_people_for_individual_recommendations": "Hanya ditunjukkan kepada tipe orang tertentu untuk rekomendasi individu",
   "only_people_i've_liked": "Hanya orang yang saya sukai",
@@ -235,5 +235,9 @@
   "control_profile": "Profil kontrol",
   "don't_show_my_age": "Jangan tunjukkan usia saya",
   "don't_show_my_distance": "Jangan tunjukkan jarak saya",
-  "show_{nameScream}_on_my_profile": "Tampilkan {namescream} di profil saya"
+  "show_{nameScream}_on_my_profile": "Tampilkan {namescream} di profil saya",
+  "you_are_not_enter_the_phone_number": "Anda tidak memasukkan nomor telepon",
+  "Interests": "Minat",
+  "my_gender": "Jenis kelamin saya",
+  "my_orientation": "orientasi saya"
 }

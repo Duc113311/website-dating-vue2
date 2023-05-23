@@ -235,5 +235,9 @@
   "control_profile": "Profil de contrôle",
   "don't_show_my_age": "Ne montrez pas mon âge",
   "don't_show_my_distance": "Ne montrez pas ma distance",
-  "show_{nameScream}_on_my_profile": "Afficher {nomscream} sur mon profil"
+  "show_{nameScream}_on_my_profile": "Afficher {nomscream} sur mon profil",
+  "you_are_not_enter_the_phone_number": "Vous n'entrez pas le numéro de téléphone",
+  "Interests": "Intérêts",
+  "my_gender": "mon sexe",
+  "my_orientation": "Mon orientation"
 }

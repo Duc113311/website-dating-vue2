@@ -235,5 +235,9 @@
   "control_profile": "Kontrol Profili",
   "don't_show_my_age": "Yaşımı Gösterme",
   "don't_show_my_distance": "Mesafemi gösterme",
-  "show_{nameScream}_on_my_profile": "Profilimde {NamesCream} göster"
+  "show_{nameScream}_on_my_profile": "Profilimde {NamesCream} göster",
+  "you_are_not_enter_the_phone_number": "Telefon numarasını girmiyorsun",
+  "Interests": "İlgi alanları",
+  "my_gender": "Cinsiyetim",
+  "my_orientation": "benim yönelim"
 }

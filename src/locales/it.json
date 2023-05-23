@@ -57,7 +57,7 @@
   "my_photos_are": "Le mie foto sono",
   "add_at_least_2_photos_to_continue": "Aggiungi almeno 2 foto per continuare",
   "enable_location": "Abilita posizione",
-  "you_will_need_to_enable_your_location_order_to_use_heartlinks": "Dovrai abilitare il tuo ordine di posizione per utilizzare il cuore del cuore",
+  "you_will_need_to_enable_your_location_order_to_use_heartlinks": "Dovrai abilitare il tuo ordine di posizione per utilizzare i pezzi di cuore",
   "allow_location": "Consentire la posizione",
   "tell_me_more": "Dimmi di più",
   "meet_people_nearby": "Incontra persone nelle vicinanze",
@@ -83,7 +83,7 @@
   "no_thanks": "NO GRAZIE",
   "upgrade_to_gold_to_see_people_who_are_interested_in_you": "Aggiorna all'oro per vedere persone che sono interessate a te",
   "no_one_likes_you_yet._done't_worry,_make_sure_you_complete_your_profile_to_other_find_you_faster": "A nessuno piaci ancora. Non preoccuparti, assicurati di completare il tuo profilo ad altri trovarti più velocemente",
-  "see_who_likes_you": "Guarda a chi piaci",
+  "see_who_likes_you": "Guarda chi piaci",
   "recommendations": "Raccomandazioni",
   "new_connections": "Nuove connessioni",
   "messages": "Messaggi",
@@ -176,7 +176,7 @@
   "dating_purposes": "Scopi di appuntamenti",
   "i'm_looking_for": "Sto cercando",
   "empty": "vuoto",
-  "now_i'm_looking_for...": "Ora sto cercando ...",
+  "now_i'm_looking_for...": "Adesso sto cercando ...",
   "share_the_purpose_to_find_'that_person'": "Condividi lo scopo di trovare \"quella persona\"",
   "i_know_languages": "Conosco le lingue",
   "the_language_i_know": "La lingua che conosco",
@@ -235,5 +235,9 @@
   "control_profile": "Profilo di controllo",
   "don't_show_my_age": "Non mostrare la mia età",
   "don't_show_my_distance": "Non mostrare la mia distanza",
-  "show_{nameScream}_on_my_profile": "Mostra {namescream} sul mio profilo"
+  "show_{nameScream}_on_my_profile": "Mostra {namescream} sul mio profilo",
+  "you_are_not_enter_the_phone_number": "Non sei inserire il numero di telefono",
+  "Interests": "Interessi",
+  "my_gender": "Il mio genere",
+  "my_orientation": "il mio orientamento"
 }

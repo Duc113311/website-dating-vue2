@@ -200,7 +200,7 @@
   "how_are_your_sleeping_habits?": "Cum sunt obiceiurile tale de dormit?",
   "more_lifestyle_information_to_show_everyone_your_best_photos.": "Mai multe informații despre stilul de viață pentru a arăta tuturor cele mai bune fotografii ale tale.",
   "zodiac": "Zodiac",
-  "future_family": "Viitoare familie",
+  "future_family": "Viitoarea familie",
   "education": "Educaţie",
   "vaccine_for_covid": "Vaccin pentru Covid",
   "personality_type": "Tip de personalitate",
@@ -235,5 +235,9 @@
   "control_profile": "Profil de control",
   "don't_show_my_age": "Nu -mi arăta vârsta",
   "don't_show_my_distance": "Nu -mi arăta distanța",
-  "show_{nameScream}_on_my_profile": "Afișați {namescream} pe profilul meu"
+  "show_{nameScream}_on_my_profile": "Afișați {namescream} pe profilul meu",
+  "you_are_not_enter_the_phone_number": "Nu introduceți numărul de telefon",
+  "Interests": "Interese",
+  "my_gender": "Genul meu",
+  "my_orientation": "Orientarea mea"
 }

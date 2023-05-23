@@ -58,7 +58,7 @@
   "add_at_least_2_photos_to_continue": "Dodajte najmanje 2 fotografije za nastavak",
   "enable_location": "Omogući mjesto",
   "you_will_need_to_enable_your_location_order_to_use_heartlinks": "Morat ćete omogućiti svoju lokaciju kako biste koristili srčane veze",
-  "allow_location": "Dopustite mjesto",
+  "allow_location": "Omogućite lokaciju",
   "tell_me_more": "Reci mi više",
   "meet_people_nearby": "Upoznajte ljude u blizini",
   "you_location_will_be_used_to_show_potential_matches_near_you.": "Vi lokacija će se koristiti za prikazivanje potencijalnih podudaranja u vašoj blizini.",
@@ -226,7 +226,7 @@
   "show_instagram_photos": "Pokažite Instagram fotografije",
   "connect_instagram": "Povežite Instagram",
   "choose_an_anthem": "Odaberite himnu",
-  "my_top_spotify_artists": "Moji najbolji Spotify umjetnici",
+  "my_top_spotify_artists": "Moji vrhunski Spotify umjetnici",
   "connect_spotify": "Povežite Spotify",
   "gender": "Spol",
   "sexual_orientation": "Seksualna orijentacija",
@@ -235,5 +235,9 @@
   "control_profile": "Kontrolni profil",
   "don't_show_my_age": "Ne pokazuje moje godine",
   "don't_show_my_distance": "Ne pokazuje moju udaljenost",
-  "show_{nameScream}_on_my_profile": "Prikaži {NamesCream} na mom profilu"
+  "show_{nameScream}_on_my_profile": "Prikaži {NamesCream} na mom profilu",
+  "you_are_not_enter_the_phone_number": "Niste uneseni telefonski broj",
+  "Interests": "Interesi",
+  "my_gender": "moj spol",
+  "my_orientation": "Moja orijentacija"
 }

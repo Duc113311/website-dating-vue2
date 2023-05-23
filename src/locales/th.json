@@ -235,5 +235,9 @@
   "control_profile": "โปรไฟล์ควบคุม",
   "don't_show_my_age": "อย่าแสดงอายุของฉัน",
   "don't_show_my_distance": "อย่าแสดงระยะทางของฉัน",
-  "show_{nameScream}_on_my_profile": "แสดง {namescream} ในโปรไฟล์ของฉัน"
+  "show_{nameScream}_on_my_profile": "แสดง {namescream} ในโปรไฟล์ของฉัน",
+  "you_are_not_enter_the_phone_number": "คุณไม่ได้ป้อนหมายเลขโทรศัพท์",
+  "Interests": "ความสนใจ",
+  "my_gender": "เพศของฉัน",
+  "my_orientation": "การปฐมนิเทศของฉัน"
 }

@@ -235,5 +235,9 @@
   "control_profile": "控制配置文件",
   "don't_show_my_age": "不要显示我的年龄",
   "don't_show_my_distance": "不要显示我的距离",
-  "show_{nameScream}_on_my_profile": "在我的个人资料上显示{namescream}"
+  "show_{nameScream}_on_my_profile": "在我的个人资料上显示{namescream}",
+  "you_are_not_enter_the_phone_number": "您没有输入电话号码",
+  "Interests": "利益",
+  "my_gender": "我的性别",
+  "my_orientation": "我的方向"
 }

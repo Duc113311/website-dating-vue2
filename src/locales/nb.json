@@ -5,7 +5,7 @@
   "log_in_with_facebook": "Logg inn med Facebook",
   "log_in_with_phone_number": "Logg inn med telefonnummer",
   "trouble_logging_in?": "Problemer med å logge inn?",
-  "by_clicking_'login',_you_agree_with_our_terms._learn_how_we_process_your_data_in_our": "Ved å klikke på 'Logg inn', er du enig i våre vilkår. Lær hvordan vi behandler dataene dine i vår",
+  "by_clicking_'login',_you_agree_with_our_terms._learn_how_we_process_your_data_in_our": "Ved å klikke på \"Logg inn\", er du enig i våre vilkår. Lær hvordan vi behandler dataene dine i vår",
   "privacy_policy": "Personvernregler",
   "and": "og",
   "cookies_policy": "Cookies Policy",
@@ -62,7 +62,7 @@
   "tell_me_more": "Fortell meg mer",
   "meet_people_nearby": "Møt mennesker i nærheten",
   "you_location_will_be_used_to_show_potential_matches_near_you.": "Plasseringen din vil bli brukt til å vise potensielle kamper i nærheten.",
-  "want_to_avoid_someone_you_know_on_heartlink?": "Vil du unngå noen du kjenner på HeartLink?",
+  "want_to_avoid_someone_you_know_on_heartlink?": "Vil du unngå noen du kjenner på Heartlink?",
   "it_is_easy_-_share_your_device's_contact_with_heartlink_when_using_this_feature_to_pick_who_you_want_to_avoid": "Det er enkelt - del enhetens kontakt med HeartLink når du bruker denne funksjonen for å velge hvem du vil unngå",
   "we'll_store_your_blocked_contact_to_stop_you_from_seeing_each_other_if_your_contact_has_an_account_with_the_same_infor_you_provide._you_can_stop_sharing_with_us_in_your_settings.": "Vi lagrer den blokkerte kontakten din for å hindre deg i å se hverandre hvis kontakten din har en konto med den samme informasjonen du gir. Du kan slutte å dele med oss ​​i innstillingene dine.",
   "learn_more_here,_including_how_heartlink_process_your_contacts": "Lær mer her, inkludert hvordan Heartlink behandler kontaktene dine",
@@ -235,5 +235,9 @@
   "control_profile": "Kontrollprofil",
   "don't_show_my_age": "Ikke vis min alder",
   "don't_show_my_distance": "Ikke vis min avstand",
-  "show_{nameScream}_on_my_profile": "Vis {namescream} på profilen min"
+  "show_{nameScream}_on_my_profile": "Vis {namescream} på profilen min",
+  "you_are_not_enter_the_phone_number": "Du skriver ikke inn telefonnummeret",
+  "Interests": "Interesser",
+  "my_gender": "kjønnet mitt",
+  "my_orientation": "Orienteringen min"
 }
