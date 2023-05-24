@@ -20,9 +20,13 @@
           >
             <!-- Title -->
             <div class="w-full" v-bind:class="{ 'scroll-header': scrolled }">
-              <div class="title-dialog">Style of life</div>
+              <div class="title-dialog">{{ $t("style_of_life") }}</div>
               <div class="describe-dialog">
-                More lifestyle information to show everyone your best photos.
+                {{
+                  $t(
+                    "more_lifestyle_information_to_show_everyone_your_best_photos."
+                  )
+                }}
               </div>
             </div>
             <!-- Cung hoàng đạo -->
@@ -34,7 +38,7 @@
                     src="@/assets/icon/ic_tinder/pets@1x.png"
                     width="25"
                   />
-                  Do you have pets
+                  {{ $t("do_you_have_pets") }}
                 </div>
               </div>
               <div class="border-bottom">
@@ -62,7 +66,7 @@
                     src="@/assets/icon/ic_tinder/drink_of_choice@1x.png"
                     width="25"
                   />
-                  How often do you drink alcohol?
+                  {{ $t("how_often_do_you_drink_alcohol?") }}
                 </div>
               </div>
               <div class="border-bottom">
@@ -88,7 +92,8 @@
                     class="mr-2"
                     src="@/assets/icon/ic_tinder/smoking@1x.png"
                     width="25"
-                  />Are you a smoker?
+                  />
+                  {{ $t("are_you_a_smoker?") }}
                 </div>
               </div>
               <div class="border-bottom">
@@ -114,7 +119,7 @@
                     class="mr-2"
                     src="@/assets/icon/ic_tinder/workout@2x.png"
                     width="25"
-                  />Do you exercise?
+                  />{{ $t("do_you_exercise?") }}
                 </div>
               </div>
               <div class="border-bottom">
@@ -140,7 +145,7 @@
                     class="mr-2"
                     src="@/assets/icon/ic_tinder/appetite@1x.png"
                     width="25"
-                  />Do you follow any diet?
+                  />{{ $t("do_you_follow_any_diet?") }}
                 </div>
               </div>
               <div class="border-bottom">
@@ -167,7 +172,7 @@
                     src="@/assets/icon/ic_tinder/social_media@1x.png"
                     width="25"
                   />
-                  How active you are on social media?
+                  {{ $t("how_active_you_are_on_social_media?") }}
                 </div>
               </div>
               <div class="border-bottom">
@@ -194,7 +199,7 @@
                     src="@/assets/icon/ic_tinder/sleeping_habits@1x.png"
                     width="25"
                   />
-                  How are your sleeping habits?
+                  {{ $t("how_are_your_sleeping_habits?") }}
                 </div>
               </div>
               <div class="bor-bottom-not">

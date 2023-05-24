@@ -28,6 +28,7 @@
   --color-focus-code: #e7e9f5;
   --color-top-bottom: #ccd2e2;
   --color-radio: #000000;
+  --color-verified: #1c92ff;
 }
 
 .theme-light {
@@ -148,5 +149,9 @@
 
   .fa-circle {
     color: var(--color-radio);
+  }
+
+  .color-text-verified {
+    color: var(--color-verified);
   }
 }

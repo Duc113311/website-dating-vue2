@@ -60,16 +60,17 @@
               v-if="this.userParam.verifyStatus === true"
             >
               <img src="@/assets/icon/ic_verified_enable.svg" alt="" />
-              <div class="ml-3 padding-describe-option">Đã xác minh</div>
+              <div class="ml-3 padding-describe-option color-text-verified">
+                {{ $t("verified") }}
+              </div>
             </div>
-            <div class="flex w-full items-center">
+            <div
+              class="flex w-full items-center"
+              v-if="this.userParam.profiles.school"
+            >
               <img src="@/assets/icon/ic_major.svg" alt="" />
               <div class="ml-3 padding-describe-option">
-                {{
-                  this.userParam.profiles.school
-                    ? this.userParam.profiles.school
-                    : "Information of technology"
-                }}
+                {{ this.userParam.profiles.school }}
               </div>
             </div>
 
@@ -89,16 +90,12 @@
             >
               <img src="@/assets/icon/ic_city_dark.svg" alt="" srcset="" />
               <div class="ml-3 padding-describe-option">
-                {{
-                  this.userParam.profiles.address
-                    ? this.userParam.profiles.address
-                    : "Lives in Hanoi"
-                }}
+                {{ this.userParam.profiles.address }}
               </div>
             </div>
 
             <div class="flex w-full items-center">
-              <img src="@/assets/icon/ic_city_dark.svg" alt="" srcset="" />
+              <img src="@/assets/icon/ic_gender.svg" alt="" srcset="" />
               <div class="ml-3 padding-describe-option">
                 {{ stringToUpperCase(this.userParam.profiles.gender) }}
               </div>

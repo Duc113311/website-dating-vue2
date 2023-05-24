@@ -26,14 +26,8 @@
                   v-for="(item, index) in bindingData.lisNameSliderGolds"
                   :key="index"
                 >
-                  <div
-                    class="item-package"
-                    @click="onClickShowPackages('platinum')"
-                  >
-                    <div
-                      class="flex justify-center"
-                      @click="onChangeShowPackage()"
-                    >
+                  <div class="item-package">
+                    <div class="flex justify-center">
                       <div
                         class="img-url"
                         :style="`background-image: url('${item.urlImage}');`"
@@ -153,26 +147,30 @@ export default {
           },
           lisNameSliderGolds: [
             {
-              nameGold: "Prioritized Likes",
+              nameGold: this.$t("prioritized_likes"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold: "Everyone you like will see you soon",
+              describeGold: this.$t("everyone_you_like_will_see_you_soon"),
             },
             {
-              nameGold: "See who likes you ",
+              nameGold: this.$t("see_who_likes_you"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold: "Match instantly with people who already like you",
+              describeGold: this.$t(
+                "match_instantly_with_people_who_already_like_you"
+              ),
             },
             {
               nameGold: "",
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold:
-                "Including Top Picks, Unlimited likes, 1free Boost every month, 5 free Supper Like every week, Rewind and Passport",
+              describeGold: this.$t(
+                "including_top_picks,_unlimited_likes,_1free_boost_every_month,_5_free_supper_like_every_week,_rewind_and_passport"
+              ),
             },
             {
-              nameGold: "Message before matching",
+              nameGold: this.$t("message_before_matching"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold:
-                "Including Top Picks, Unlimited likes, 1free Boost every month, 5 free Supper Like every week, Rewind and Passport",
+              describeGold: this.$t(
+                "including_top_picks,_unlimited_likes,_1free_boost_every_month,_5_free_supper_like_every_week,_rewind_and_passport"
+              ),
             },
           ],
 
@@ -221,55 +219,56 @@ export default {
           },
           lisNameSliderGolds: [
             {
-              nameGold: "99+ people already like you",
+              nameGold: this.$t("99+_people_already_like_you"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold: "See who likes you and match instantly",
+              describeGold: this.$t("see_who_likes_you_and_match_instantly"),
             },
             {
-              nameGold: "Buy more Top Picks",
+              nameGold: this.$t("buy_more_top_picks"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold:
-                "Get full access to Top Picks, Like you, send unlimited likes & more",
+              describeGold: this.$t(
+                "get_full_access_to_top_picks,_like_you,_send_unlimited_likes_&_more"
+              ),
             },
             {
-              nameGold: "Unlimited Likes",
+              nameGold: this.$t("unlimited_likes"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold: "See as many likes as you want",
+              describeGold: this.$t("see_as_many_likes_as_you_want"),
             },
             {
-              nameGold: "1 free boost every month",
+              nameGold: this.$t("1_free_boost_every_month"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold: "Skip the line & get more matches",
+              describeGold: this.$t("skip_the_queue"),
             },
             {
               nameGold: "Control your profile",
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold: "Limit what others see with Dating Plus",
+              describeGold: this.$t("limit_what_others_see_with_dating_plus"),
             },
             {
-              nameGold: "Choose who see you ",
+              nameGold: this.$t("choose_who_see_you"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold: "Only be shown to people you've liked",
+              describeGold: this.$t("only_be_shown_to_people_you've_liked"),
             },
             {
-              nameGold: "Like profile around the world",
+              nameGold: this.$t("like_profile_around_the_world"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold: "Passport to anywhere",
+              describeGold: this.$t("passport_to_anywhere"),
             },
             {
-              nameGold: "5 free Supper Likes very week",
+              nameGold: this.$t("5_free_supper_likes_very_week"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold: "You're 3x more likely to get a match",
+              describeGold: this.$t("you're_3x_more_likely_to_get_a_match"),
             },
             {
-              nameGold: "Unlimited rewinds",
+              nameGold: this.$t("unlimited_rewinds"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold: "Go back and try again",
+              describeGold: this.$t("go_back_and_try_again"),
             },
             {
-              nameGold: "Turn Off Ads",
+              nameGold: this.$t("turn_off_ads"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold: "Have fun without interruptions",
+              describeGold: this.$t("have_fun_without_interruptions"),
             },
           ],
 
@@ -318,34 +317,34 @@ export default {
           },
           lisNameSliderGolds: [
             {
-              nameGold: "Unlimited Likes",
+              nameGold: this.$t("unlimited_likes"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold: "Send as many likes as you want",
+              describeGold: this.$t("send_as_many_likes_as_you_want"),
             },
             {
-              nameGold: "Control your profile",
+              nameGold: this.$t("control_your_profile"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold: "Limit what others see with Dating Plus",
+              describeGold: this.$t("limit_what_others_see_with_dating_plus"),
             },
             {
-              nameGold: "Choose who sees you ",
+              nameGold: this.$t("choose_who_sees_you"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold: "Only be shown to people you've liked",
+              describeGold: this.$t("only_be_shown_to_people_you've_liked"),
             },
             {
-              nameGold: "Like profile around the world",
+              nameGold: this.$t("like_profile_around_the_world"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold: "Passport to anywhere",
+              describeGold: this.$t("passport_to_anywhere"),
             },
             {
-              nameGold: "Unlimited rewinds",
+              nameGold: this.$t("unlimited_rewinds"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold: "Go back and try again",
+              describeGold: this.$t("go_back_and_try_again"),
             },
             {
-              nameGold: "Turn Off Ads",
+              nameGold: this.$t("turn_off_ads"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold: "Have fun without interruptions",
+              describeGold: this.$t("have_fun_without_interruptions"),
             },
           ],
 
@@ -375,7 +374,7 @@ export default {
         },
         // Supper Likes
         supperLike: {
-          titlePackage: "Get Supper Likes Package",
+          titlePackage: this.$t("get_supper_likes_package"),
           colorTextGold: {
             bgFormGold: "#ECEFEE",
             colorFormGold: "#000000",
@@ -388,15 +387,15 @@ export default {
           colorButtonAction: {
             bgColor: "#50B181",
             textColor: "#ffffff",
-            name: "GET SUPPER LIKES",
+            name: this.$t("get_supper_likes"),
             colorBackground:
               "linear-gradient(#26b78b 10%,#ffffff 44%, rgb(253, 253, 251)56%)",
           },
           lisNameSliderGolds: [
             {
-              nameGold: "Stand out with Super like",
+              nameGold: this.$t("stand_out_with_super_like"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold: "3x chance to get a match",
+              describeGold: this.$t("3x_chance_to_get_a_match"),
             },
           ],
 
@@ -443,16 +442,17 @@ export default {
           colorButtonAction: {
             bgColor: "#8820D0",
             textColor: "#ffffff",
-            name: "BOOST MY PROFILE ",
+            name: this.$t("boost_my_profile"),
             colorBackground:
               " linear-gradient(rgb(66 77 204), rgb(250 250 250),rgb(253, 253, 251))",
           },
           lisNameSliderGolds: [
             {
-              nameGold: "Skip the Queue",
+              nameGold: this.$t("skip_the_queue"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold:
-                "Always on top profile in your area for 30 mins to get more matches",
+              describeGold: this.$t(
+                "always_on_top_profile_in_your_area_for_30_mins_to_get_more_matches"
+              ),
             },
           ],
 
@@ -486,7 +486,7 @@ export default {
         },
         // read receipt
         readReceipt: {
-          titlePackage: "Get Read Receipt Package",
+          titlePackage: this.$t("get_read_receipt_package"),
           colorTextGold: {
             bgFormGold: "#F7F2FB",
             colorFormGold: "#000000",
@@ -504,10 +504,11 @@ export default {
           },
           lisNameSliderGolds: [
             {
-              nameGold: "Stay up to date",
+              nameGold: this.$t("stay_up_to_date"),
               urlImage: require("../../../assets/icon/package/ic_platium_package.svg"),
-              describeGold:
-                "Know when your messages have been read with Read Receipt",
+              describeGold: this.$t(
+                "know_when_your_messages_have_been_read_with_read_receipt"
+              ),
             },
           ],
 

@@ -71,22 +71,26 @@
                     v-if="scope.data.onlineNow === false"
                   >
                     <div class="online-off ml-2 mr-4"></div>
-                    <div>Recently Active</div>
+                    <div>{{ $t("recently_active") }}</div>
                   </div>
                   <div
                     class="flex items-center"
                     v-if="scope.data.onlineNow === true"
                   >
                     <div class="online-status ml-2 mr-3"></div>
-                    <div>Recently Active</div>
+                    <div>{{ $t("online_now") }}</div>
                   </div>
                   <div class="flex" v-if="scope.data.profiles.address">
                     <div class="mr-2">
                       <img src="@/assets/icon/ic_city_light.svg" />
                     </div>
                     <span class="font-describe"
-                      >Sống tại {{ scope.data.profiles.address }}</span
-                    >
+                      >{{
+                        $t(`live_at_{nameAddress}`, {
+                          nameAddress: scope.data.profiles.address,
+                        })
+                      }}
+                    </span>
                   </div>
                   <div
                     class="flex"
@@ -125,7 +129,7 @@
                   </span>
                 </div>
                 <div v-if="scrods === 4">
-                  <div class="flex">
+                  <div class="flex" v-if="scope.data.profiles.jobTitle">
                     <div class="mr-2">
                       <img src="@/assets/icon/ic_city_light.svg" />
                     </div>
@@ -133,7 +137,7 @@
                       scope.data.profiles.jobTitle
                     }}</span>
                   </div>
-                  <div class="flex">
+                  <div class="flex" v-if="scope.data.profiles.school">
                     <div class="mr-2">
                       <img src="@/assets/icon/ic_location_dark.svg" alt="" />
                     </div>
@@ -176,9 +180,11 @@
         </div>
       </template>
 
-      <div class="like-pointer icon-tinder" slot="like">LIKE</div>
-      <div class="nope-pointer icon-tinder" slot="nope">NOPE</div>
-      <div class="super-pointers icon-tinder" slot="super">SUPER</div>
+      <div class="like-pointer icon-tinder" slot="like">{{ $t("like") }}</div>
+      <div class="nope-pointer icon-tinder" slot="nope">{{ $t("nope") }}</div>
+      <div class="super-pointers icon-tinder" slot="super">
+        {{ $t("supper_like") }}
+      </div>
     </Tinder>
 
     <div
@@ -802,7 +808,7 @@ export default {
 
       if (value.type.toString() === "nope") {
         console.log("Nope");
-
+        this.scrods = 0;
         await this.postNopeUser({
           interactorId: value.key,
         });
@@ -819,6 +825,7 @@ export default {
         // setTimeout(() => {
         //   this.isAnimating = false;
         // }, 1200);
+        this.scrods = 0;
 
         if (this.history.length === 0) {
           this.history.push(value.item);
@@ -869,6 +876,8 @@ export default {
 
       if (value.type.toString() === "like") {
         console.log("like");
+        this.scrods = 0;
+
         if (this.history.length === 0) {
           this.history.push(value.item);
         } else {

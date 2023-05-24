@@ -8,7 +8,7 @@
             <BhBack @onBackComponent="onBackEditProfile"></BhBack>
             <!-- <BhBack @onBackComponent="onBackEditProfile"></BhBack> -->
           </div>
-          <div class="w-full text-xl text-center">Settings</div>
+          <div class="w-full text-xl text-center">{{ $t("settings") }}</div>
         </div>
       </div>
 

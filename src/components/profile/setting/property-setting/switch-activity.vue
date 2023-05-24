@@ -22,7 +22,7 @@
               <div class="form-set-item bh-describe w-full">
                 {{
                   $t(
-                    "allow_other_members_to_see_if_you_were_recently_active_within_the_last_24h_on_heartlink._if_you_have_turned_this_off,_they_will_not_be_able_to_see_your_recently_active_status"
+                    "allow_other_members_to_see_if_you_were_recently_active_within_the_last_24h_on_heartLink._if_you_have_turned_this_off,_they_will_not_be_able_to_see_your_recently_active_status"
                   )
                 }}
               </div>

@@ -11,7 +11,7 @@
     >
       {{
         $t(
-          "add_video,_pic_or_logo_target_4%_closer_to_completing_your_profile_and_you_may_even_get_more_likes"
+          "add_video,_pic_or_logo_toget_4%_closer_to_completing_your_profile_and_you_may_even_get_more_likes"
         )
       }}
     </div>

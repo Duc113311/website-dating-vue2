@@ -15,7 +15,7 @@ const messages = {
   ar: arValue,
 };
 const storedLanguage = localStorage.getItem("language");
-const languageTranslate = "en";
+const languageTranslate = "ar";
 const i18n = new VueI18n({
   locale: storedLanguage || languageTranslate, // Ngôn ngữ mặc định
   messages,

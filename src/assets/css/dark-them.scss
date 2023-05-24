@@ -28,6 +28,7 @@
   --color-focus-code: #e7e9f5;
   --color-top-bottom: #616a7f;
   --color-radio: #ffffff;
+  --color-verified: #1c92ff;
 }
 
 .theme-dark {
@@ -140,5 +141,8 @@
   }
   .border-bottom {
     border-bottom: 1px solid var(--color-top-bottom);
+  }
+  .color-text-verified {
+    color: var(--color-verified);
   }
 }

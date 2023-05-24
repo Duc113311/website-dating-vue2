@@ -37,7 +37,7 @@ export default {
 
   data() {
     return {
-      listDistance: ["km", "mi"],
+      listDistance: [this.$t("km"), this.$t("mi")],
     };
   },
 

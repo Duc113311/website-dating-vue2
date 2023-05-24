@@ -20,7 +20,7 @@
               class="item-package platinum-bg"
               @click="onClickShowPackages('platinum')"
             >
-              <div class="flex justify-center" @click="onChangeShowPackage()">
+              <div class="flex justify-center">
                 <img
                   src="@/assets/icon/package/ic_platium_package.svg"
                   alt=""
@@ -28,7 +28,7 @@
               </div>
               <div class="mt-2 text-xl">{{ $t("get_read_receipts") }}</div>
               <div class="mt-2 text-sm">
-                {{ $t("level_up_everyone_action_you_take_on_heartlink") }}
+                {{ $t("level_up_everyone_action_you_take_on_heartLink") }}
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@
               </div>
               <div class="mt-2 text-xl">{{ $t("gold_package") }}</div>
               <div class="mt-2 text-sm">
-                {{ $t("level_up_everyone_action_you_take_on_heartlink") }}
+                {{ $t("level_up_everyone_action_you_take_on_heartLink") }}
               </div>
             </div>
           </div></slide
@@ -65,7 +65,7 @@
               </div>
               <div class="mt-2 text-xl">{{ $t("silver_package") }}</div>
               <div class="mt-2 text-sm">
-                {{ $t("level_up_everyone_action_you_take_on_heartlink") }}
+                {{ $t("level_up_everyone_action_you_take_on_heartLink") }}
               </div>
             </div>
           </div></slide
@@ -83,7 +83,7 @@
               </div>
               <div class="mt-2 text-xl">{{ $t("get_supper_like") }}</div>
               <div class="mt-2 text-sm">
-                {{ $t("level_up_everyone_action_you_take_on_heartlink") }}
+                {{ $t("level_up_everyone_action_you_take_on_heartLink") }}
               </div>
             </div>
           </div></slide
@@ -101,7 +101,7 @@
               </div>
               <div class="mt-2 text-xl">{{ $t("get_boost_profile") }}</div>
               <div class="mt-2 text-sm">
-                {{ $t("level_up_everyone_action_you_take_on_heartlink") }}
+                {{ $t("level_up_everyone_action_you_take_on_heartLink") }}
               </div>
             </div>
           </div></slide
@@ -119,7 +119,7 @@
               </div>
               <div class="mt-2 text-xl">{{ $t("get_read_receipts") }}</div>
               <div class="mt-2 text-sm">
-                {{ $t("level_up_everyone_action_you_take_on_heartlink") }}
+                {{ $t("level_up_everyone_action_you_take_on_heartLink") }}
               </div>
             </div>
           </div></slide

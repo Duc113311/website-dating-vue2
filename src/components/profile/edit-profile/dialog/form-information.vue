@@ -20,9 +20,13 @@
           >
             <!-- Title -->
             <div class="w-full">
-              <div class="title-dialog">Basic information</div>
+              <div class="title-dialog">
+                {{ bingString($t("basic_information")) }}
+              </div>
               <div class="describe-dialog">
-                Add more info so people can see your amazing pictures
+                {{
+                  $t("add_more_info_so_people_can_see_your_amazing_pictures")
+                }}
               </div>
             </div>
             <!-- Cung hoàng đạo -->
@@ -34,7 +38,7 @@
                     src="@/assets/icon/ic_tinder/astrological_sign@2x.png"
                     width="30"
                   />
-                  What is your zodiac sign?
+                  {{ $t("what_is_your_zodiac_sign?") }}
                 </div>
               </div>
               <div class="bor-bottom">
@@ -61,7 +65,8 @@
                     class="mr-2"
                     src="@/assets/icon/ic_tinder/education@1x.png"
                     width="30"
-                  />Your education level?
+                  />
+                  {{ $t("your_education_level?") }}
                 </div>
               </div>
               <div class="bor-bottom">
@@ -88,7 +93,7 @@
                     src="@/assets/icon/ic_tinder/family@1x.png"
                     width="30"
                   />
-                  Do you want to have children?
+                  {{ $t("do_you_want_to_have_children?") }}
                 </div>
               </div>
               <div class="bor-bottom">
@@ -115,7 +120,7 @@
                     src="@/assets/icon/ic_tinder/covid_comfort@1x.png"
                     width="30"
                   />
-                  Have you been vaccinated yet?
+                  {{ $t("have_you_been_vaccinated_yet?") }}
                 </div>
               </div>
               <div class="bor-bottom">
@@ -142,7 +147,7 @@
                     src="@/assets/icon/ic_tinder/kietinhcach@2x.png"
                     width="30"
                   />
-                  What is your personality type?
+                  {{ $t("what_is_your_personality_type?") }}
                 </div>
               </div>
               <div class="bor-bottom">
@@ -169,7 +174,7 @@
                     src="@/assets/icon/ic_tinder/communication_style@2x.png"
                     width="30"
                   />
-                  What is your communication style?
+                  {{ $t("what_is_your_communication_style?") }}
                 </div>
               </div>
               <div class="bor-bottom">
@@ -196,7 +201,7 @@
                     src="@/assets/icon/ic_tinder/love_language@1x.png"
                     width="30"
                   />
-                  When love, what do you like to receive?
+                  {{ $t("when_love,_what_do_you_like_to_receive?") }}
                 </div>
               </div>
               <div class="bor-bottom-not">
@@ -222,6 +227,7 @@
 
 <script>
 import { mapMutations } from "vuex";
+import functionValidate from "../../../../middleware/validate.js";
 export default {
   name: "form-information",
 
@@ -286,6 +292,11 @@ export default {
       "setCommunication",
       "setLoveStyles",
     ]),
+
+    bingString(val) {
+      const stringName = functionValidate.titleCase(val);
+      return stringName;
+    },
     onChoseZodiac(val) {
       const documentZodiacs = document.getElementsByClassName("zodiac");
       for (let index = 0; index < documentZodiacs.length; index++) {

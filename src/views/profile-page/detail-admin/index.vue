@@ -1,11 +1,11 @@
 <template>
   <div class="w-full h-full relative title-default">
     <div class="w-full h-full z-10">
-      <div class="flex w-full items-center header-detail border-bottom p-8">
+      <div class="flex w-full items-center header-detail border-bottom p-4">
         <div class="">
           <BhBack @onBackComponent="onClickBack"></BhBack>
         </div>
-        <div class="w-5/6">
+        <div class="w-full">
           <div
             class="flex header-page justify-center content-center items-center text-red-400 title-logo"
           >
@@ -14,12 +14,15 @@
               class="size-hight mr-3"
               alt=""
             />
-            <span class="text-2xl font-semibold">heartlink</span>
+            <span class="text-2xl font-semibold">{{ $t("HeartLink") }}</span>
           </div>
         </div>
       </div>
 
-      <div class="body-detail w-full height-scroll overflow-scroll p-3">
+      <div
+        class="body-detail w-full height-scroll overflow-scroll p-3"
+        v-bind:class="{ 'reverse-layout': isArabic }"
+      >
         <!-- Avatar -->
         <div class="bg-image-detail h-detail-admin relative">
           <div class="avatar w-full h-full relative">
@@ -27,7 +30,7 @@
               v-show="isActiveImag"
               class="avatar-detail z-8"
               :style="{
-                'background-image': `url(${bindingInforUser.profiles.avatars[0]})`,
+                'background-image': `url(${bingInformationUser.profiles.avatars[0]})`,
               }"
             />
             <div
@@ -42,7 +45,7 @@
               class="flex w-full justify-center absolute top-0 content-center p-0.5 border-solid mt-3"
             >
               <button
-                v-for="(data, index) in bindingInforUser.profiles.avatars"
+                v-for="(data, index) in bingInformationUser.profiles.avatars"
                 :key="data"
                 :id="`avatar_${index}`"
                 :class="index === 0 ? 'active-image' : 'no-active'"
@@ -59,57 +62,57 @@
         <!-- Information -->
         <div class="w-full pl-4 pr-4 bg-border-bottom padding-text-user">
           <div class="flex bh-margin-title">
-            <div class="title-user">
-              {{ bindingInforUser.fullname
-              }}<span>, {{ bindingAge(bindingInforUser.dob) }}</span>
+            <div>
+              <span class="title-user">{{ bingInformationUser.fullname }}</span>
+              <span class="describe-user"
+                >, {{ bindingAge(bingInformationUser.dob) }}</span
+              >
             </div>
-            <img
-              v-if="colorBt"
-              src="@/assets/icon/ic_infor_dark.svg"
-              width="30"
-              alt=""
-            />
-            <img
-              v-else
-              src="@/assets/icon/ic_infor_light.svg"
-              width="30"
-              alt=""
-            />
           </div>
-
-          <div class="flex w-full items-center">
-            <i class="fa-solid fa-book-open bh-chevron-right text-xl"></i>
-            <div class="ml-3 padding-describe-option">
-              {{
-                bindingInforUser.profiles.school
-                  ? bindingInforUser.profiles.school
-                  : "Information of technology"
-              }}
+          <div
+            class="flex w-full items-center"
+            v-if="this.bingInformationUser.verifyStatus === false"
+          >
+            <img src="@/assets/icon/ic_verified_enable.svg" alt="" />
+            <div class="ml-3 padding-describe-option-none color-text-verified">
+              {{ $t("verified") }}
             </div>
           </div>
 
-          <div class="flex w-full items-center">
-            <i class="fa-solid fa-user-graduate bh-chevron-right text-xl"></i>
-            <div class="ml-4 padding-describe-option">
-              {{ bindingEducation(bindingInforUser.profiles.education) }}
+          <div
+            class="flex w-full items-center"
+            v-if="bingInformationUser.profiles.school"
+          >
+            <img src="@/assets/icon/ic_major.svg" alt="" />
+            <div class="ml-3 padding-describe-option-none">
+              {{ bingInformationUser.profiles.school }}
+            </div>
+          </div>
+
+          <div
+            class="flex w-full items-center"
+            v-if="bingInformationUser.profiles.education"
+          >
+            <img src="@/assets/icon/ic_university.svg" alt="" srcset="" />
+            <div class="ml-3 padding-describe-option-none">
+              {{ bindingEducation(bingInformationUser.profiles.education) }}
+            </div>
+          </div>
+
+          <div
+            class="flex w-full items-center"
+            v-if="bingInformationUser.profiles.address"
+          >
+            <img src="@/assets/icon/ic_city_dark.svg" alt="" srcset="" />
+            <div class="ml-3 padding-describe-option-none">
+              {{ bingInformationUser.profiles.address }}
             </div>
           </div>
 
           <div class="flex w-full items-center">
-            <i class="fa-solid fa-house bh-chevron-right text-xl"></i>
-            <div class="ml-3 padding-describe-option">
-              {{
-                bindingInforUser.profiles.address
-                  ? bindingInforUser.profiles.address
-                  : "Lives in Hanoi"
-              }}
-            </div>
-          </div>
-
-          <div class="flex w-full items-center">
-            <i class="fa-solid fa-icons fa-fw bh-chevron-right text-xl"></i>
-            <div class="ml-3 padding-describe-option">
-              {{ stringToUpperCase(bindingInforUser.profiles.gender) }}
+            <img src="@/assets/icon/ic_gender.svg" alt="" srcset="" />
+            <div class="ml-3 padding-describe-option-none">
+              {{ stringToUpperCase(bingInformationUser.profiles.gender) }}
             </div>
           </div>
         </div>
@@ -118,14 +121,16 @@
           class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
           v-if="aboutValue"
         >
-          <div class="title title-description describe-text">About me</div>
+          <div class="title title-description describe-text">
+            {{ bingString($t("about_me")) }}
+          </div>
           <div class="text-description">
-            {{ bindingInforUser?.profiles?.about }}
+            {{ bingInformationUser?.profiles?.about }}
           </div>
 
           <div
             class="w-full bh-margin-description"
-            v-if="bindingInforUser.profiles.orientationSexuals.length !== 0"
+            v-if="bingInformationUser.profiles.orientationSexuals.length !== 0"
           >
             <div
               class="item-option border-default"
@@ -136,10 +141,54 @@
             </div>
           </div>
         </div>
+        <!-- Thông tin cơ bản -->
+
+        <div
+          class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
+          v-if="bingBasicInformation(bingInformationUser.profiles).length !== 0"
+        >
+          <div class="title pl-2 title-description describe-text">
+            Basic information
+          </div>
+
+          <div class="w-full bh-margin-description">
+            <div
+              class="item-option border-default"
+              v-for="(item, index) in bingBasicInformation(
+                bingInformationUser.profiles
+              )"
+              :key="index"
+            >
+              {{ item }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Phong cách sống -->
+        <div
+          class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
+          v-if="bingLifeStyleStatic(bingInformationUser?.profiles).length !== 0"
+        >
+          <div class="title pl-2 title-description describe-text">
+            Style of life
+          </div>
+
+          <div class="w-full bh-margin-description">
+            <div
+              class="item-option border-default"
+              v-for="(item, index) in bingLifeStyleStatic(
+                bingInformationUser?.profiles
+              )"
+              :key="index"
+            >
+              {{ item }}
+            </div>
+          </div>
+        </div>
         <!-- interest -->
         <div
           class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
-          v-if="bindingInforUser.profiles.interests.length !== 0"
+          v-if="bingInformationUser.profiles.interests.length !== 0"
         >
           <div class="title pl-2 title-description describe-text">
             Interests
@@ -205,7 +254,7 @@ export default {
     colorBt() {
       return this.$store.state.commonModule.statusLayout;
     },
-    bindingInforUser() {
+    bingInformationUser() {
       debugger;
       return this.$store.state.userModule.user_profile;
     },
@@ -219,6 +268,11 @@ export default {
         }
       }
       return false;
+    },
+
+    isArabic() {
+      debugger;
+      return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
     },
     bindingSexuals() {
       const resultData = [];
@@ -263,6 +317,143 @@ export default {
   },
 
   methods: {
+    bingBasicInformation(val) {
+      const zodiacValue = val.zodiac;
+      const familyFlanValue = val.familyFlan;
+      const educationValue = val.education;
+      const covidVaccineValue = val.covidVaccine;
+      const personalityValue = val.personality;
+      const communicationTypeValue = val.communicationType;
+      const loveStyleValue = val.loveStyle;
+      const informationBasic =
+        this.$store.state.commonModule.listInformationBasic;
+      let resultData = [];
+      if (zodiacValue) {
+        const findData = informationBasic.zodiacs.find(
+          (x) => x.code === zodiacValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (familyFlanValue) {
+        const findData = informationBasic.familyPlans.find(
+          (x) => x.code === familyFlanValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (educationValue) {
+        const findData = informationBasic.educations.find(
+          (x) => x.code === educationValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (covidVaccineValue) {
+        const findData = informationBasic.covidVaccines.find(
+          (x) => x.code === covidVaccineValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (personalityValue) {
+        const findData = informationBasic.personalities.find(
+          (x) => x.code === personalityValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (communicationTypeValue) {
+        const findData = informationBasic.communicationStyles.find(
+          (x) => x.code === communicationTypeValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (loveStyleValue) {
+        const findData = informationBasic.loveStyles.find(
+          (x) => x.code === loveStyleValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      return resultData;
+    },
+
+    bingLifeStyleStatic(val) {
+      const petValue = val.pet;
+      const drinkingValue = val.drinking;
+      const smokingValue = val.smoking;
+      const workoutValue = val.workout;
+      const dietaryPreferenceValue = val.dietaryPreference;
+      const socialMediaValue = val.socialMedia;
+      const sleepingHabitValue = val.sleepingHabit;
+      const lifeStyleStatic =
+        this.$store.state.commonModule.listLifeStyleStatic;
+      let resultData = [];
+      if (petValue) {
+        const findData = lifeStyleStatic.pets.find((x) => x.code === petValue);
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (drinkingValue) {
+        const findData = lifeStyleStatic.drinkings.find(
+          (x) => x.code === drinkingValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (smokingValue) {
+        const findData = lifeStyleStatic.smokings.find(
+          (x) => x.code === smokingValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (workoutValue) {
+        const findData = lifeStyleStatic.workouts.find(
+          (x) => x.code === workoutValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (dietaryPreferenceValue) {
+        const findData = lifeStyleStatic.foodPreferences.find(
+          (x) => x.code === dietaryPreferenceValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (socialMediaValue) {
+        const findData = lifeStyleStatic.socials.find(
+          (x) => x.code === socialMediaValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      if (sleepingHabitValue) {
+        const findData = lifeStyleStatic.sleepingStyles.find(
+          (x) => x.code === sleepingHabitValue
+        );
+        if (findData) {
+          resultData.push(findData.value);
+        }
+      }
+      return resultData;
+    },
     bindingEducation(value) {
       const educations = this.listEducationParams;
 
@@ -283,8 +474,13 @@ export default {
       return dataAge;
     },
 
+    bingString(val) {
+      const stringName = functionValidate.titleCase(val);
+      return stringName;
+    },
+
     nextImageLeft() {
-      const valueImg = this.bindingInforUser.profiles.avatars;
+      const valueImg = this.bingInformationUser.profiles.avatars;
 
       if (this.imageActive !== 0) {
         this.imageActive = this.imageActive - 1;
@@ -304,7 +500,7 @@ export default {
     },
 
     nextImageRight() {
-      const valueImg = this.bindingInforUser.profiles.avatars;
+      const valueImg = this.bingInformationUser.profiles.avatars;
 
       this.imageActive = this.imageActive + 1;
 
@@ -372,5 +568,10 @@ export default {
 
 .h-detail-admin {
   height: 70%;
+}
+
+.reverse-layout {
+  direction: rtl; /* Đảo ngược hướng dòng hiển thị */
+  text-align: right; /* Canh lề phải cho các thành phần văn bản */
 }
 </style>

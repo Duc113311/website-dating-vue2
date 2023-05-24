@@ -12,7 +12,7 @@
     <div class="w-full flex justify-center items-center form-set-item mt-10">
       <div>
         <img src="@/assets/icon/ic_icon_app.svg" style="width: 100%" />
-        <div class="bh-describe">Version x.y.z</div>
+        <div class="bh-describe">{{ $t("version_x.y.z") }}</div>
       </div>
     </div>
 

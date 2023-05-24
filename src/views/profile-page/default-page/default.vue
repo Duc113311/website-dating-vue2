@@ -26,7 +26,7 @@
                 ></div>
 
                 <div class="absolute bottom-0 complete-percent">
-                  {{ percentageIncrease + "%" }} complete
+                  {{ percentageIncrease + "%" }} {{ $t("complete") }}
                 </div>
               </div>
             </div>
@@ -80,7 +80,7 @@
             />
           </div>
           <div class="mt-2 text-base describe-text">
-            {{ $t("edit_profile") }}
+            {{ $t("edit_profile").toUpperCase() }}
           </div>
         </div>
         <el-tooltip content="Coming soon" placement="top">

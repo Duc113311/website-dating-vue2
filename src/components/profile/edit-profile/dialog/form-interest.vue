@@ -21,7 +21,7 @@
                 {{ formatString($t("interest")) }}
               </div>
               <div class="padding-describe-item">
-                {{ listChecked.length }} {{ $t("5_out_of_5") }}
+                {{ listChecked.length }} {{ $t("out_of_5") }}
               </div>
             </div>
             <!-- Những thứ đã chọn -->
