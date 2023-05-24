@@ -26,16 +26,16 @@
         </div>
       </div>
     </div>
-    <div class="w-full z-10">
+    <!-- <div class="w-full z-10">
       <BhSeeLike></BhSeeLike>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import BhSeeLike from "../../bh-element-ui/button/bh-seeLike";
+// import BhSeeLike from "../../bh-element-ui/button/bh-seeLike";
 export default {
-  components: { BhSeeLike },
+  // components: { BhSeeLike },
   name: "no-one-like",
 
   data() {

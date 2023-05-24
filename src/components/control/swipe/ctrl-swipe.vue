@@ -34,13 +34,15 @@
                 :style="`background-image:url(${user?.profiles?.avatars[0]})`"
               >
                 <div class="image absolute bottom-0 w-full p-3 z-10 text-white">
-                  <div class="flex">
-                    <div class="name">{{ user.fullname }}&nbsp;</div>
-                    <span>{{ bindingAge(user.dob) }}</span>
+                  <div class="flex items-center">
+                    <span class="padding-describe-like"
+                      >{{ user.fullname }}&nbsp;</span
+                    >
+                    <span class="pt-1">{{ bindingAge(user.dob) }}</span>
                   </div>
                   <div class="flex padding-describe-like items-center">
                     <span class="status">&#x1F7E2;</span>
-                    Recently active
+                    {{ $t("recently_active") }}
                   </div>
                 </div>
                 <!-- <div class="bg-shadow w-full h-full"></div> -->
@@ -57,13 +59,13 @@
                     v-if="isHoverLike"
                     class="like-pointer-topic icon-tinder"
                   >
-                    LIKE
+                    {{ $t("like") }}
                   </div>
                   <div
                     v-if="isHoverNope"
                     class="nope-pointer-topic icon-tinder"
                   >
-                    NOPE
+                    {{ $t("nope") }}
                   </div>
                 </div>
               </div>
@@ -271,7 +273,7 @@ export default {
   z-index: 20;
 }
 .gap {
-  gap: 1.55rem;
+  gap: 0.6rem;
 }
 
 .bg-background-shadow {

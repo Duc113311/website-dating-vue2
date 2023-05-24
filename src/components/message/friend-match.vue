@@ -6,7 +6,9 @@
       </div>
     </div>
     <div class="w-full pl-6 pr-6 h-10 mt-6 flex items-center">
-      <div class="text-lg mr-3 description-no-padding">New Connections</div>
+      <div class="text-lg mr-3 description-no-padding">
+        {{ $t("new_connections") }}
+      </div>
       <div class="p-2 txt-number-mes">20</div>
     </div>
 
@@ -40,7 +42,9 @@
     </div>
 
     <div class="w-full pl-6 pr-6 h-10 mt-6 flex items-center">
-      <div class="text-lg mr-3 description-no-padding">Messages</div>
+      <div class="text-lg mr-3 description-no-padding">
+        {{ $t("messages") }}
+      </div>
       <div class="p-2 txt-number-mes">1</div>
     </div>
 
