@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{ 'dir-rtl': isRtl }">
     <div
       class="tracking-wide layout-web w-full h-full absolute flex justify-center items-center"
     >
@@ -49,6 +49,10 @@ export default {
      */
     themeValue() {
       return this.$store.state.commonModule.themeLayout;
+    },
+
+    isRtl() {
+      return this.lang === "arb";
     },
   },
 
@@ -161,5 +165,9 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
+}
+
+.dir-rtl {
+  direction: rtl !important;
 }
 </style>
