@@ -67,11 +67,11 @@ export default {
     const language = localStorage.getItem("language");
     if (language) {
       this.$i18n.locale = language;
-      this.setLanguageTranslate(language);
+      await this.setLanguageTranslate(language);
     } else {
       const languageDefault = "en";
       this.$i18n.locale = languageDefault;
-      this.setLanguageTranslate(languageDefault);
+      await this.setLanguageTranslate(languageDefault);
     }
 
     // Set time out show loading

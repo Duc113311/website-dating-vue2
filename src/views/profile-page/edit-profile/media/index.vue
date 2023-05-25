@@ -2,12 +2,18 @@
   <div class="w-full h-full relative title-default" v-loading="loading">
     <!--  -->
     <div class="w-full h-full" v-if="isShowCrop">
-      <div class="w-full header-page flex justify-center items-center p-5">
-        <div class="w-full flex justify-center items-center">
-          <div class="w-1/4">
-            <BhBack @onBackComponent="onBackMedia()"></BhBack>
+      <div class="flex w-full items-center header-edit border-bottom p-4">
+        <div class="">
+          <BhBack @onBackComponent="onBackMedia"></BhBack>
+        </div>
+        <div class="w-full">
+          <div
+            class="flex header-page justify-center content-center items-center text-red-400 title-logo"
+          >
+            <span class="text-2xl font-semibold mr-1">{{
+              $t("create_new")
+            }}</span>
           </div>
-          <div class="ml-20 w-3/4 text-xl">Create New</div>
         </div>
       </div>
 
@@ -16,22 +22,26 @@
       </div>
     </div>
 
-    <div class="w-full h-full p-5" v-if="!isShowCrop">
-      <div class="w-full header-edit flex justify-center items-center">
-        <div class="w-full flex justify-center items-center">
+    <div class="w-full h-full" v-if="!isShowCrop">
+      <div
+        class="w-full header-edit border-bottom flex justify-center items-center"
+      >
+        <div class="w-full flex justify-center items-center p-5">
           <div class="w-1/4">
             <BhBack></BhBack>
           </div>
-          <div class="text-center w-3/4 title-detail-explore">Photo</div>
+          <div class="text-center w-3/4 title-detail-explore">
+            {{ $t("photo") }}
+          </div>
           <div
             class="w-1/4 text-right title-click cursor-pointer"
             @click="onClickSaveImageCrop"
           >
-            Done
+            {{ $t("done") }}
           </div>
         </div>
       </div>
-      <div class="w-full body-crop-tow">
+      <div class="w-full body-crop-tow p-5">
         <CropImage ref="cropImages" :selectedFile="selectedFile"></CropImage>
       </div>
     </div>

@@ -10,7 +10,7 @@ export default {
 
   data() {
     return {
-      txtCodeError: "Invalid code. please try again",
+      txtCodeError: this.$t("invalid_code._please_try_again"),
     };
   },
 };

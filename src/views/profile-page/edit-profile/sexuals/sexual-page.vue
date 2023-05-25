@@ -7,7 +7,9 @@
           <div class="w-1/4">
             <BhBack @onBackComponent="onBackSettingPhone()"></BhBack>
           </div>
-          <div class="ml-14 w-3/4 text-xl">Sexual orientation</div>
+          <div class="ml-14 w-3/4 text-xl">
+            {{ bingString($t("sexual_orientation")) }}
+          </div>
         </div>
       </div>
 
@@ -17,7 +19,7 @@
           class="flex items-center w-full justify-between p-3 bg-default form-set-input"
         >
           <div class="flex justify-center items-center">
-            Show my sexual orientation on profile
+            {{ $t("show_my_sexual_orientation_on_profile") }}
           </div>
           <div class="ml-3 text-show-my">
             <el-switch
@@ -31,7 +33,9 @@
         </div>
 
         <div class="w-full mt-4">
-          <div class="bh-item-title pl-2 title-item">Select to 3</div>
+          <div class="bh-item-title pl-2 title-item">
+            {{ $t("select_to_3") }}
+          </div>
           <div class="grid select-sexual mt-1 gap-1">
             <div
               v-for="(el, index) in listDataSexuals"
@@ -79,6 +83,7 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
+import functionValidate from "../../../../middleware/validate.js";
 import BhBack from "../../../../components/bh-element-ui/button/bh-back";
 import Footer from "../../../../components/layout/footer-home/footer";
 export default {
@@ -120,7 +125,10 @@ export default {
     onBackSettingPhone() {
       this.$router.go(-1);
     },
-
+    bingString(val) {
+      const stringName = functionValidate.titleCase(val);
+      return stringName;
+    },
     onClickChosse(val) {
       console.log(val);
     },

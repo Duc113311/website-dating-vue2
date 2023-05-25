@@ -15,14 +15,14 @@
       <div
         class="flex w-full justify-center items-center text-center padding-describe-or"
       >
-        {{ $t("want_to_avoid_someone_you_know_on_heartlink?") }}
+        {{ $t("want_to_avoid_someone_you_know_on_heartLink?") }}
       </div>
 
       <div class="padding-describe w-full text-center describe-text">
         <div class="mt-2">
           {{
             $t(
-              "it_is_easy_-_share_your_device's_contact_with_heartlink_when_using_this_feature_to_pick_who_you_want_to_avoid"
+              "it_is_easy_-_share_your_device's_contact_with_heartLink_when_using_this_feature_to_pick_who_you_want_to_avoid"
             )
           }}
         </div>
@@ -40,7 +40,7 @@
           <a class="" href="#">
             {{
               $t(
-                "learn_more_here,_including_how_heartlink_process_your_contacts"
+                "learn_more_here,_including_how_heartLink_process_your_contacts"
               )
             }}
           </a>

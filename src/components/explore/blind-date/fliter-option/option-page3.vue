@@ -8,7 +8,7 @@
         <span style="--i: 3"></span>
       </div>
     </div>
-    <div class="text-describe">Finding people near you...</div>
+    <div class="text-describe">{{ $t("finding_people_near_you...") }}</div>
   </div>
 </template>
 

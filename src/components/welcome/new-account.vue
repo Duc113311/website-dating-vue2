@@ -22,7 +22,7 @@
           </div>
           <div class="flex text-center justify-center mt-3 w-full">
             <div class="w-5/6">
-              <div class="padding-title">{{ $t("welcome_to_heartlink") }}</div>
+              <div class="padding-title">{{ $t("welcome_to_heartLink") }}</div>
               <span class="padding-describe">
                 {{
                   $t(

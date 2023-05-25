@@ -1,21 +1,23 @@
 <template>
-  <div class="w-full h-full relative p-5" v-loading="loading">
+  <div class="w-full h-full relative" v-loading="loading">
     <div class="w-full h-full title-default">
       <!-- Back -->
-      <div
-        class="w-full header-edit flex justify-center items-center title-default"
-      >
-        <div class="w-full flex justify-center items-center">
-          <div class="w-1/4">
-            <bh-back @onBackComponent="onBackEditProfile"></bh-back>
-            <!-- <BhBack @onBackComponent="onBackEditProfile"></BhBack> -->
-          </div>
-          <div class="ml-20 w-3/4 text-xl">
-            {{ formatString($t("edit_profile")) }}
+
+      <div class="flex w-full items-center header-edit border-bottom p-4">
+        <div class="">
+          <BhBack @onBackComponent="onBackEditProfile"></BhBack>
+        </div>
+        <div class="w-full">
+          <div
+            class="flex header-page justify-center content-center items-center text-red-400 title-logo"
+          >
+            <span class="text-2xl font-semibold">{{
+              formatString($t("edit_profile"))
+            }}</span>
           </div>
         </div>
       </div>
-      <div class="form-edit overflow-scroll w-full">
+      <div class="form-edit overflow-scroll w-full p-3">
         <from-update></from-update>
       </div>
 
@@ -177,14 +179,14 @@ export default {
 }
 
 .header-edit {
-  height: 8%;
+  height: 10%;
 }
 
 .form-edit {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
   overflow-y: scroll; /* Add the ability to scroll */
-  height: 84%;
+  height: 80%;
 }
 
 .form-edit::-webkit-scrollbar {

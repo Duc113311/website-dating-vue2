@@ -6,7 +6,7 @@
       <i class="fas fa-chevron-left size-icon"></i>
     </div>
     <div class="font-skip" v-show="isShowSkipParam" @click="onClickSkip()">
-      Skip
+      {{ $t("skip") }}
     </div>
   </div>
 </template>

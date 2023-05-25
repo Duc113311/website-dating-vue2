@@ -79,7 +79,7 @@
               v-if="this.userParam.profiles.education"
             >
               <img src="@/assets/icon/ic_university.svg" alt="" srcset="" />
-              <div class="ml-4 padding-describe-option">
+              <div class="ml-3 padding-describe-option">
                 {{ bindingEducation(this.userParam.profiles.education) }}
               </div>
             </div>
@@ -94,17 +94,30 @@
               </div>
             </div>
 
-            <div class="flex w-full items-center">
+            <div
+              class="flex w-full items-center"
+              v-if="this.userParam.profiles.showGender === true"
+            >
               <img src="@/assets/icon/ic_gender.svg" alt="" srcset="" />
               <div class="ml-3 padding-describe-option">
                 {{ stringToUpperCase(this.userParam.profiles.gender) }}
               </div>
             </div>
 
-            <div class="flex w-full items-center">
+            <div
+              class="flex w-full items-center"
+              v-if="this.userParam.profiles.showDistance === true"
+            >
               <img src="@/assets/icon/ic_location_light.svg" alt="" />
               <div class="ml-3 padding-describe-option">
-                {{ bindingDistance(this.userParam?.location) }} km away
+                {{
+                  $t(`{numberKilometers}_{unit}_away`, {
+                    numberKilometers: bindingDistance(
+                      this.userParam?.distanceKm
+                    ),
+                    unit: kilometer,
+                  })
+                }}
               </div>
             </div>
           </div>
@@ -114,14 +127,19 @@
           class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
           v-if="aboutValue"
         >
-          <div class="title title-description describe-text">About me</div>
+          <div class="title title-description describe-text pl-2">
+            {{ stringName($t("about_me")) }}
+          </div>
           <div class="text-description">
             {{ userParam.profiles.about }}
           </div>
 
           <div
             class="w-full bh-margin-description"
-            v-if="userParam.profiles.orientationSexuals.length !== 0"
+            v-if="
+              userParam.profiles.orientationSexuals.length !== 0 &&
+              userParam.profiles.showSexual === true
+            "
           >
             <div
               class="item-option border-default"
@@ -138,7 +156,7 @@
           v-if="bingBasicInformation(userParam.profiles).length !== 0"
         >
           <div class="title pl-2 title-description describe-text">
-            Basic information
+            {{ stringName($t("basic_information")) }}
           </div>
 
           <div class="w-full bh-margin-description">
@@ -147,7 +165,10 @@
               v-for="(item, index) in bingBasicInformation(userParam.profiles)"
               :key="index"
             >
-              {{ item }}
+              <div class="flex items-center">
+                <img class="pr-1 img_ic" :src="item.icDefault" alt="" />
+                <span>{{ item.value }}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -158,7 +179,7 @@
           v-if="bingLifeStyleStatic(userParam.profiles).length !== 0"
         >
           <div class="title pl-2 title-description describe-text">
-            Style of life
+            {{ $t("style_of_life") }}
           </div>
 
           <div class="w-full bh-margin-description">
@@ -167,7 +188,10 @@
               v-for="(item, index) in bingLifeStyleStatic(userParam.profiles)"
               :key="index"
             >
-              {{ item }}
+              <div class="flex items-center">
+                <img class="pr-1 img_ic" :src="item.icDefault" alt="" />
+                <span>{{ item.value }}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -177,7 +201,7 @@
           v-if="userParam.profiles.interests.length !== 0"
         >
           <div class="title pl-2 title-description describe-text">
-            Interests
+            {{ $t("interests") }}
           </div>
 
           <div class="w-full bh-margin-description">
@@ -190,21 +214,18 @@
             </div>
           </div>
         </div>
-        <!-- <img
-          src="@/assets/icon-profile/zodiac.svg"
-          width="30"
-          alt=""
-          srcset=""
-        /> -->
+
         <!-- My Anthem -->
         <div class="w-full padding-text-user bg-border-bottom pl-2 pr-2">
-          <div class="title title-description describe-text">My Anthem</div>
+          <div class="title title-description describe-text pl-2">
+            {{ stringName($t("my_anthem")) }}
+          </div>
 
           <div class="w-full bh-margin-description pt-2">
             <div class="w-full flex justify-between items-center">
               <div class="text-description">
-                <div>All Too Well (Taylor's Version)</div>
-                <div>Taylor Swift</div>
+                <div>{{ $t("all_too_well_(taylor's_version)") }}</div>
+                <div>{{ $t("taylor_swift") }}</div>
               </div>
               <div class="w-my-anthem">
                 <img
@@ -220,11 +241,15 @@
         >
           <div class="flex justify-center items-center cursor-pointer">
             <div class="title-click-ic ml-2">
-              Share {{ this.userParam.fullname }} profile
+              {{
+                $t(`share_{nameUser}_profile`, {
+                  nameUser: this.userParam.fullname,
+                })
+              }}
             </div>
           </div>
           <div class="flex justify-center title-description describe-text">
-            See what a friend thinks
+            {{ $t("see_what_a_friend_thinks") }}
           </div>
         </div>
         <!-- Report -->
@@ -248,7 +273,7 @@
             srcset=""
           />
           <div class="title-click-ic ml-2">
-            Report {{ this.userParam.fullname }}
+            {{ $t(`report_{nameUser}`, { nameUser: this.userParam.fullname }) }}
           </div>
         </div>
         <div class="h-2/4"></div>
@@ -338,10 +363,31 @@ export default {
       imageActive: 0,
       listEducation:
         this.$store.state.commonModule.listInformationBasic.educations,
+
+      icZodiac: require("@/assets/icon-profile/astrological_sign@.png"),
+      icFamilyFlan: require("@/assets/icon-profile/kids@1x.png"),
+      icLoveStyle: require("@/assets/icon-profile/love_language@1x.png"),
+      icEducation: require("@/assets/icon-profile/education@1x.png"),
+      icCovidVaccine: require("@/assets/icon-profile/covid_comfort@1x.png"),
+      icPersonality: require("@/assets/icon-profile/mbti@1x.png"),
+      icCommunicationType: require("@/assets/icon-profile/communication_style@1x.png"),
+      icPet: require("@/assets/icon-profile/pets@1x.png"),
+      icDrinking: require("@/assets/icon-profile/drink_of_choice@1x.png"),
+      icSmoking: require("@/assets/icon-profile/smoking@1x.png"),
+      icWorkout: require("@/assets/icon-profile/social_media@1x.png"),
+      icDietaryPreference: require("@/assets/icon-profile/appetite@1x.png"),
+      icSocialMedia: require("@/assets/icon-profile/social_media@1x.png"),
+      icSleepingHabit: require("@/assets/icon-profile/sleeping_habits@1x.png"),
     };
   },
 
   computed: {
+    kilometer() {
+      if (localStorage.unit === "mi") {
+        return "mi";
+      }
+      return "km";
+    },
     colorBt() {
       return this.$store.state.commonModule.statusLayout;
     },
@@ -414,6 +460,10 @@ export default {
       return string.charAt(0).toUpperCase() + string.slice(1);
     },
 
+    stringName(value) {
+      return functionValidate.titleCase(value);
+    },
+
     bingBasicInformation(val) {
       const zodiacValue = val.zodiac;
       const familyFlanValue = val.familyFlan;
@@ -430,7 +480,10 @@ export default {
           (x) => x.code === zodiacValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icZodiac,
+            value: findData.value,
+          });
         }
       }
       if (familyFlanValue) {
@@ -438,7 +491,10 @@ export default {
           (x) => x.code === familyFlanValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icFamilyFlan,
+            value: findData.value,
+          });
         }
       }
       if (educationValue) {
@@ -446,7 +502,10 @@ export default {
           (x) => x.code === educationValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icEducation,
+            value: findData.value,
+          });
         }
       }
       if (covidVaccineValue) {
@@ -454,7 +513,10 @@ export default {
           (x) => x.code === covidVaccineValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icCovidVaccine,
+            value: findData.value,
+          });
         }
       }
       if (personalityValue) {
@@ -462,7 +524,10 @@ export default {
           (x) => x.code === personalityValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icPersonality,
+            value: findData.value,
+          });
         }
       }
       if (communicationTypeValue) {
@@ -470,7 +535,10 @@ export default {
           (x) => x.code === communicationTypeValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icCommunicationType,
+            value: findData.value,
+          });
         }
       }
       if (loveStyleValue) {
@@ -478,7 +546,10 @@ export default {
           (x) => x.code === loveStyleValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icLoveStyle,
+            value: findData.value,
+          });
         }
       }
       return resultData;
@@ -498,7 +569,10 @@ export default {
       if (petValue) {
         const findData = lifeStyleStatic.pets.find((x) => x.code === petValue);
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icPet,
+            value: findData.value,
+          });
         }
       }
       if (drinkingValue) {
@@ -506,7 +580,10 @@ export default {
           (x) => x.code === drinkingValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icDrinking,
+            value: findData.value,
+          });
         }
       }
       if (smokingValue) {
@@ -514,7 +591,10 @@ export default {
           (x) => x.code === smokingValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icSmoking,
+            value: findData.value,
+          });
         }
       }
       if (workoutValue) {
@@ -522,7 +602,10 @@ export default {
           (x) => x.code === workoutValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icWorkout,
+            value: findData.value,
+          });
         }
       }
       if (dietaryPreferenceValue) {
@@ -530,7 +613,10 @@ export default {
           (x) => x.code === dietaryPreferenceValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icDietaryPreference,
+            value: findData.value,
+          });
         }
       }
       if (socialMediaValue) {
@@ -538,7 +624,10 @@ export default {
           (x) => x.code === socialMediaValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icSocialMedia,
+            value: findData.value,
+          });
         }
       }
       if (sleepingHabitValue) {
@@ -546,7 +635,10 @@ export default {
           (x) => x.code === sleepingHabitValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icSleepingHabit,
+            value: findData.value,
+          });
         }
       }
       return resultData;
@@ -566,23 +658,20 @@ export default {
     },
 
     bindingDistance(val) {
-      const latAdmin = localStorage.latitude;
-      const longAdmin = localStorage.longitude;
-      const latUser = val?.lat ? val?.lat : "21.0012507";
-
-      const longUser = val?.long ? val?.long : "105.7938183";
-
-      const dataDistance = functionValidate.convertDistance(
-        latAdmin,
-        longAdmin,
-        latUser,
-        longUser,
-        "K"
-      );
-      if (parseInt(dataDistance.toFixed(0)) === 0) {
-        return 1;
+      debugger;
+      if (localStorage.unit === "mi") {
+        if (val === undefined) {
+          return 1;
+        } else {
+          const dataMi = functionValidate.locationKmToMi(val);
+          return dataMi;
+        }
       } else {
-        return parseInt(dataDistance.toFixed(0));
+        if ((parseInt(val) === 0) | (val === undefined)) {
+          return 1;
+        } else {
+          return parseInt(val.toFixed(0));
+        }
       }
     },
 
@@ -710,5 +799,9 @@ export default {
 
 .w-super {
   width: 4.5rem;
+}
+.img_ic {
+  filter: brightness(0) saturate(100%) invert(80%) sepia(10%) saturate(10%)
+    hue-rotate(136deg) brightness(91%) contrast(100%);
 }
 </style>

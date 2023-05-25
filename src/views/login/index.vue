@@ -34,7 +34,7 @@
               <div class="items-center content-center text-white ml-5 mr-5">
                 <div>
                   <h2 class="text-lg mb-5 text-center">
-                    {{ $t("trouble_logging_in") }}
+                    {{ $t("trouble_logging_in?") }}
                   </h2>
                   <span class="text-lg text-trouble mt-2"
                     >{{

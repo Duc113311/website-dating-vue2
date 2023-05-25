@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-full relative">
     <div
-      class="w-full flex items-center h-14 justify-center p-4 mt-3 description-no-padding"
+      class="w-full flex items-center h-14 justify-center p-4 description-no-padding"
     >
       <span>{{
         $t("upgrade_to_gold_to_see_people_who_are_interested_in_you")

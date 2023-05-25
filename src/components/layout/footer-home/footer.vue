@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full bottom-0 right-0 border-top footer-body flex justify-center content-center text-center cursor-pointer"
+    class="w-full bottom-0 right-0 border-top footer-body flex justify-center bg-color-default content-center text-center cursor-pointer"
   >
     <div @click="onClickHome()">
       <i class="fa-solid fa-heart icon-color"></i>

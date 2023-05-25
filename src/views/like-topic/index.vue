@@ -8,14 +8,17 @@
         class="w-2/4 cursor-pointer flex h-full justify-center like99 items-center text-xl font-bold"
         @click="onShowLikes(true)"
       >
-        <span>99+</span>like
+        <span v-if="isListLikeForYous.length !== 0"
+          >99+ {{ bingString($t("like")) }}</span
+        >
+        <span v-else>0 {{ bingString($t("like")) }}</span>
       </div>
       <div
         v-bind:class="[isActiveLike ? 'likeForYou' : 'peopleLike']"
         class="w-2/4 cursor-pointer flex h-full justify-center items-center text-xl font-bold"
         @click="onShowLikes(false)"
       >
-        For you
+        {{ $t("for_you") }}
       </div>
     </div>
     <!-- body -->
@@ -29,6 +32,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import functionValidate from "../../middleware/validate.js";
 import Footer from "../../components/layout/footer-home/footer";
 export default {
   components: {
@@ -41,11 +45,17 @@ export default {
       isShowComponent: true,
       isActiveLike: true,
       loading: false,
+      isListLikeForYous: this.$store.state.likeTopicModule.listLikeForYous,
     };
   },
 
   methods: {
     ...mapActions(["getListDataLikedForYou", "getListDataLikeYouAction"]),
+
+    bingString(val) {
+      const stringName = functionValidate.titleCase(val);
+      return stringName;
+    },
     onShowLikes(val) {
       this.isShowComponent = val;
       this.isActiveLike = val;
@@ -92,7 +102,7 @@ export default {
   height: 4%;
 }
 .h-topic {
-  height: calc(100% - 22%);
+  height: calc(100% - 20.5%);
 }
 .like-topic {
   background-color: #382e41;

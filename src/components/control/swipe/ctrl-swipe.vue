@@ -35,12 +35,12 @@
               >
                 <div class="image absolute bottom-0 w-full p-3 z-10 text-white">
                   <div class="flex items-center">
-                    <span class="padding-describe-like"
-                      >{{ user.fullname }}&nbsp;</span
+                    <span class="describe-user">{{ user.fullname }}</span>
+                    <span class="title-input-item"
+                      >, {{ bindingAge(user.dob) }}</span
                     >
-                    <span class="pt-1">{{ bindingAge(user.dob) }}</span>
                   </div>
-                  <div class="flex padding-describe-like items-center">
+                  <div class="flex describe-user items-center">
                     <span class="status">&#x1F7E2;</span>
                     {{ $t("recently_active") }}
                   </div>

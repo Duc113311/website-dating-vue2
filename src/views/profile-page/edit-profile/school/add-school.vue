@@ -7,14 +7,16 @@
           <div class="">
             <BhBack @onBackComponent="onBackSettingPhone()"></BhBack>
           </div>
-          <div class="ml-20 w-3/4 text-xl">Update information school</div>
+          <div class="ml-20 w-3/4 text-xl">
+            {{ bingString($t("update_information_school")) }}
+          </div>
         </div>
       </div>
 
       <!-- Body -->
       <div class="body-detail height-scroll overflow-scroll w-full pl-5 pr-5">
         <div class="w-full">
-          <div class="bh-item-title title-item">School name</div>
+          <div class="bh-item-title title-item">{{ $t("school_name") }}</div>
           <div class="w-full h-search mt-2">
             <div class="w-full">
               <el-autocomplete
@@ -37,10 +39,6 @@
             </div>
           </div>
         </div>
-
-        <div class="w-full mt-6">
-          <BhCommon :nameTitle="nameTitle"></BhCommon>
-        </div>
       </div>
 
       <div class="w-full">
@@ -51,7 +49,7 @@
 </template>
 
 <script>
-import BhCommon from "../../../../components/bh-element-ui/button/bh-common";
+import functionValidate from "../../../../middleware/validate.js";
 import BhBack from "../../../../components/bh-element-ui/button/bh-back";
 import Footer from "../../../../components/layout/footer-home/footer";
 import unorm from "unorm";
@@ -60,7 +58,6 @@ export default {
   components: {
     BhBack,
     Footer,
-    BhCommon,
   },
   name: "add-school-page",
   data() {
@@ -102,6 +99,11 @@ export default {
 
   methods: {
     ...mapMutations(["setSchool"]),
+
+    bingString(val) {
+      const stringName = functionValidate.titleCase(val);
+      return stringName;
+    },
     onBackSettingPhone() {
       this.setSchool(this.selectedItemName);
       this.$router.go(-1);

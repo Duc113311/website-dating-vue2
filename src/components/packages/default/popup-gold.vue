@@ -97,7 +97,7 @@
                 :style="`color:#7D808B`"
                 v-if="Object.keys(bindingData.colorButtonMore).length === 0"
               >
-                Recuring billing, cancel anytime
+                {{ $t("recuring_billing,_cancel_anytime") }}
               </div>
               <div v-if="Object.keys(bindingData.colorButtonMore).length !== 0">
                 <p class="mt-5 text-black font-semibold text-xl">OR</p>
@@ -128,7 +128,7 @@ export default {
       isColorActive: "#ffffff",
       listPackages: {
         platinum: {
-          titlePackage: "Get Platinum Package",
+          titlePackage: this.$t("get_platinum_package"),
           colorTextGold: {
             bgFormGold: "rgb(84 74 74)",
             colorFormGold: "#ffffff",
@@ -141,7 +141,7 @@ export default {
           colorButtonAction: {
             bgColor: "#ffffff",
             textColor: "#000000",
-            name: "Continue",
+            name: this.$t("continue"),
             colorBackground:
               "linear-gradient(    321deg,    rgb(32 29 29) 10%,    rgb(46 41 41) 50%,    rgb(18 16 16) 90%  )",
           },
@@ -177,30 +177,30 @@ export default {
           listGoldMonth: [
             {
               numberGold: 3,
-              typeGold: "Month",
+              typeGold: this.$t(this.$t("months")),
               price: 2.49,
-              currency: "USD/each",
+              currency: this.$t("usd/each"),
             },
             {
               numberGold: 9,
-              typeGold: "Month",
+              typeGold: this.$t(this.$t("months")),
               price: 2.49,
-              currency: "USD/each",
-              percentSale: "Sale 50%",
+              currency: this.$t("usd/each"),
+              percentSale: this.$t("sale") + "50%",
               isChecked: true,
             },
             {
               numberGold: 30,
-              typeGold: "Month",
+              typeGold: this.$t(this.$t("months")),
               price: 2.49,
-              currency: "USD/each",
+              currency: this.$t("usd/each"),
             },
           ],
           colorButtonMore: {},
         },
         // Gold
         gold: {
-          titlePackage: "Get Gold Package",
+          titlePackage: this.$t("get_gold_package"),
           colorTextGold: {
             bgFormGold: "#FEF6E7",
             colorFormGold: "#000000",
@@ -213,7 +213,7 @@ export default {
           colorButtonAction: {
             bgColor: "#EBAB3B",
             textColor: "#ffffff",
-            name: "Continue",
+            name: this.$t("continue"),
             colorBackground:
               "linear-gradient(#f4b939 0%,rgb(253, 253, 251)50%, rgb(253, 253, 251))",
           },
@@ -275,30 +275,30 @@ export default {
           listGoldMonth: [
             {
               numberGold: 1,
-              typeGold: "months",
+              typeGold: this.$t(this.$t("months")),
               price: 7.99,
-              currency: "USD/Months",
+              currency: this.$t("usd/months"),
             },
             {
               numberGold: 6,
-              typeGold: "months",
+              typeGold: this.$t(this.$t("months")),
               price: 3.99,
-              currency: "USD/Months",
-              percentSale: "Sale 50%",
+              currency: this.$t("usd/months"),
+              percentSale: this.$t("sale") + "50%",
               isChecked: true,
             },
             {
               numberGold: 12,
-              typeGold: "months",
+              typeGold: this.$t(this.$t("months")),
               price: 2.99,
-              currency: "USD/Months",
+              currency: this.$t("usd/months"),
             },
           ],
           colorButtonMore: {},
         },
         // Silver
         silver: {
-          titlePackage: "Get Silver Package",
+          titlePackage: this.$t("get_silver_package"),
           colorTextGold: {
             bgFormGold: "#ECEFEE",
             colorFormGold: "#000000",
@@ -311,7 +311,7 @@ export default {
           colorButtonAction: {
             bgColor: "#44665A",
             textColor: "#ffffff",
-            name: "Continue",
+            name: this.$t("continue"),
             colorBackground:
               " linear-gradient(rgb(82 145 127) 0%,rgb(255 255 255)50%, rgb(253, 253, 251))",
           },
@@ -351,23 +351,23 @@ export default {
           listGoldMonth: [
             {
               numberGold: 1,
-              typeGold: "months",
+              typeGold: this.$t("months"),
               price: 7.99,
-              currency: "USD/Months",
+              currency: this.$t("usd/months"),
             },
             {
               numberGold: 6,
-              typeGold: "months",
+              typeGold: this.$t("months"),
               price: 3.99,
-              currency: "USD/Months",
-              percentSale: "Sale 50%",
+              currency: this.$t("usd/months"),
+              percentSale: this.$t("sale") + "50%",
               isChecked: true,
             },
             {
               numberGold: 12,
-              typeGold: "months",
+              typeGold: this.$t("months"),
               price: 2.99,
-              currency: "USD/Months",
+              currency: this.$t("usd/months"),
             },
           ],
           colorButtonMore: {},
@@ -402,23 +402,23 @@ export default {
           listGoldMonth: [
             {
               numberGold: 3,
-              typeGold: "Supper likes",
+              typeGold: this.$t("supper_likes"),
               price: 2.99,
-              currency: "USD/each",
+              currency: this.$t("usd/each"),
             },
             {
               numberGold: 15,
-              typeGold: "Supper likes",
+              typeGold: this.$t("supper_likes"),
               price: 2.49,
-              currency: "USD/each",
-              percentSale: "Sale 50%",
+              currency: this.$t("usd/each"),
+              percentSale: this.$t("sale") + "50%",
               isChecked: true,
             },
             {
               numberGold: 30,
-              typeGold: "Supper likes",
+              typeGold: this.$t("supper_likes"),
               price: 1.99,
-              currency: "USD/each",
+              currency: this.$t("usd/each"),
             },
           ],
           colorButtonMore: {
@@ -459,29 +459,29 @@ export default {
           listGoldMonth: [
             {
               numberGold: 3,
-              typeGold: "Supper likes",
+              typeGold: this.$t("supper_likes"),
               price: 2.99,
-              currency: "USD/each",
+              currency: this.$t("usd/each"),
             },
             {
               numberGold: 15,
-              typeGold: "Supper likes",
+              typeGold: this.$t("supper_likes"),
               price: 2.49,
-              currency: "USD/each",
-              percentSale: "Sale 50%",
+              currency: this.$t("usd/each"),
+              percentSale: this.$t("sale") + "50%",
               isChecked: true,
             },
             {
               numberGold: 30,
-              typeGold: "Supper likes",
+              typeGold: this.$t("supper_likes"),
               price: 1.99,
-              currency: "USD/each",
+              currency: this.$t("usd/each"),
             },
           ],
           colorButtonMore: {
             bgColor: "#EBAB3B",
-            name: "Get a Gold package",
-            describe: "5 free Supper Like weekly",
+            name: this.$t("get_a_gold_package"),
+            describe: this.$t("5_free_supper_like_weekly"),
           },
         },
         // read receipt
@@ -499,7 +499,7 @@ export default {
           colorButtonAction: {
             bgColor: "#3983F6",
             textColor: "#ffffff",
-            name: "GET READ RECEIPT ",
+            name: this.$t("get_read_receipt"),
             colorBackground: " linear-gradient(to bottom, #1690ff, #fdfdfb)",
           },
           lisNameSliderGolds: [
@@ -515,23 +515,23 @@ export default {
           listGoldMonth: [
             {
               numberGold: 1,
-              typeGold: "Read Receipt",
+              typeGold: this.$t("read_receipt"),
               price: 2.99,
-              currency: "USD/each",
+              currency: this.$t("usd/each"),
             },
             {
               numberGold: 5,
-              typeGold: "Read Receipt",
+              typeGold: this.$t("read_receipt"),
               price: 2.49,
-              currency: "USD/each",
-              percentSale: "Sale 50%",
+              currency: this.$t("usd/each"),
+              percentSale: this.$t("sale") + "50%",
               isChecked: true,
             },
             {
               numberGold: 20,
-              typeGold: "Read Receipt",
+              typeGold: this.$t("read_receipt"),
               price: 1.99,
-              currency: "USD/each",
+              currency: this.$t("usd/each"),
             },
           ],
           colorButtonMore: {},

@@ -101,13 +101,15 @@ export default {
       nameTitleSend: "Send",
       isActives: false,
       isShowFormQuestion: false,
-      titleQuestion: "Are you sure?",
-      describeQuestion: "Are you sure about the content of this report?",
+      titleQuestion: this.$t("are_you_sure?"),
+      describeQuestion: this.$t(
+        "are_you_sure_about_the_content_of_this_report?"
+      ),
       listDataChoses: [],
 
-      titleReason: "What is the reason for your report?",
-      titleDetail: "Can you tell us what happened?",
-      titleComment: "Would you mind sharing more details with us?",
+      titleReason: this.$t("what_is_the_reason_for_your_report?"),
+      titleDetail: this.$t("can_you_tell_us_what_happened?"),
+      titleComment: this.$t("would_you_mind_sharing_more_details_with_us?"),
 
       screamReason: 1,
       nameComment: "",
@@ -124,19 +126,19 @@ export default {
       if (this.screamReason === 1) {
         return Object.keys(nameValue.valueReason).length !== 0
           ? nameValue.valueReason.value
-          : "Please choose 1 reason";
+          : this.$t("please_choose_1_reason");
       }
       if (this.screamReason === 2) {
         return Object.keys(nameValue.valueDetail).length !== 0
           ? nameValue.valueDetail.value
-          : "Please choose 1 reason ";
+          : this.$t("please_choose_1_reason");
       }
       if (this.screamReason === 3) {
         return nameValue.valueComment.length !== 0
           ? nameValue.valueComment
-          : "Please provide more details about what you are reporting";
+          : this.$t("please_provide_more_details_about_what_you_are_reporting");
       }
-      return "Please choose 1 reason ";
+      return this.$t("please_choose_1_reason");
     },
 
     titleReport() {

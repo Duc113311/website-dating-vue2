@@ -2,7 +2,9 @@
   <div class="w-full border-collapse body-explore overflow-y-auto">
     <!-- Verified -->
     <div class="w-full h-verified relative cursor-pointer">
-      <div class="title-verified absolute top-12 left-2">Verified photo</div>
+      <div class="title-verified absolute top-12 left-2">
+        {{ this.$t("verified_photo") }}
+      </div>
       <img
         @click="onClickVerified()"
         src="@/assets/image-dating/explore_verified_photo (1).png"

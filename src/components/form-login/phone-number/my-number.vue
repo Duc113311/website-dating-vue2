@@ -23,7 +23,7 @@
     <div class="padding-describe">
       <span>{{
         $t(
-          "when_you_tap_'continue',_heartlink_will_send_a_text_with_verification_code._message_and_data_rates_mate_apply."
+          "when_you_tap_'continue',_heartLink_will_send_a_text_with_verification_code._message_and_data_rates_mate_apply."
         )
       }}</span>
       <span>
@@ -82,7 +82,7 @@ export default {
           this.$emit("validateRequirePhone", { statusActive: true });
         }
       } else {
-        this.txtCodeError = "You are not enter the phone number";
+        this.txtCodeError = this.$t("you_are_not_enter_the_phone_number");
         this.$emit("validateRequirePhone", { statusActive: false });
       }
     },
@@ -97,7 +97,7 @@ export default {
       if (mobile != "") {
         this.onValidatePhoneNumber(mobile);
       } else {
-        this.txtCodeError = "You are not enter the phone number";
+        this.txtCodeError = this.$t("you_are_not_enter_the_phone_number");
       }
     },
 
@@ -106,7 +106,7 @@ export default {
       if (mobile != "") {
         this.onValidatePhoneNumber(mobile);
       } else {
-        this.txtCodeError = "You are not enter the phone number";
+        this.txtCodeError = this.$t("you_are_not_enter_the_phone_number");
       }
     },
     //#endregion

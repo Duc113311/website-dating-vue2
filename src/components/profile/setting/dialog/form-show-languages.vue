@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import { updateAcceptLanguage } from "../../../../configs/http-mongo.js";
 import { mapMutations } from "vuex";
 export default {
   name: "form-show-languages",
@@ -38,136 +39,7 @@ export default {
 
   computed: {
     languageParam() {
-      return [
-        {
-          code: "vi",
-          value: "Vietnamese",
-        },
-        {
-          code: "en",
-          value: "English",
-        },
-        {
-          code: "ar",
-          value: "Arabic",
-        },
-        {
-          code: "ca",
-          value: "Catalan",
-        },
-        {
-          code: "zh-rCN",
-          value: "Chinese",
-        },
-        {
-          code: "zh-rTW",
-          value: "Taiwanese",
-        },
-        {
-          code: "hr",
-          value: "Croatian",
-        },
-        {
-          code: "da",
-          value: "Danish",
-        },
-        {
-          code: "nl",
-          value: "Dutch",
-        },
-        {
-          code: "en-rGB",
-          value: "English (UK)",
-        },
-        {
-          code: "fi",
-          value: "Finnish",
-        },
-        {
-          code: "fr",
-          value: "French",
-        },
-        {
-          code: "de",
-          value: "German",
-        },
-        {
-          code: "el",
-          value: "Greek",
-        },
-        {
-          code: "hi",
-          value: "Hindi",
-        },
-        {
-          code: "hu",
-          value: "Hungarian",
-        },
-        {
-          code: "id",
-          value: "Indonesian",
-        },
-        {
-          code: "it",
-          value: "Italian",
-        },
-        {
-          code: "ja",
-          value: "Japanese",
-        },
-        {
-          code: "ko",
-          value: "Korean",
-        },
-        {
-          code: "ms",
-          value: "Malay",
-        },
-        {
-          code: "nb",
-          value: "Norwegian Bokmal",
-        },
-        {
-          code: "pl",
-          value: "Polish",
-        },
-        {
-          code: "pt",
-          value: "Portuguese",
-        },
-        {
-          code: "ro",
-          value: "Romanian",
-        },
-        {
-          code: "ru",
-          value: "Russian",
-        },
-        {
-          code: "sk",
-          value: "Slovak",
-        },
-        {
-          code: "es",
-          value: "Spanish",
-        },
-        {
-          code: "sv",
-          value: "Swedish",
-        },
-        {
-          code: "th",
-          value: "Thai",
-        },
-        {
-          code: "tr",
-          value: "Turkish",
-        },
-        {
-          code: "uk",
-          value: "Ukrainian",
-        },
-      ];
+      return this.$store.state.commonModule.languageParam;
     },
   },
 
@@ -181,13 +53,13 @@ export default {
       this.$emit("onClickSaveLanguage", false);
     },
 
-    onChoseLanguages(val) {
+    async onChoseLanguages(val) {
       debugger;
       this.$i18n.locale = val;
-      this.setLanguageTranslate(val);
+      await this.setLanguageTranslate(val);
       localStorage.setItem("language", val);
-
-      // this.$emit("onClickSaveLanguage", false);
+      updateAcceptLanguage();
+      this.$emit("onClickSaveLanguage", false);
     },
   },
 };

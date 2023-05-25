@@ -45,37 +45,79 @@
         </div>
       </div>
       <div class="h-2/4 w-full pl-2 pr-2">
-        <div class="w-full bg-border-bottom padding-text-user pl-2 pr-2">
-          <div class="flex bh-margin-title">
-            <div class="title-user">
-              {{ this.userParam.fullname
-              }}<span>, {{ bindingAge(this.userParam.dob) }}</span>
+        <div class="w-full bg-border-bottom padding-text-user">
+          <div class="w-full pl-2 pr-2">
+            <div class="flex bh-margin-title">
+              <div class="">
+                <span class="title-user">{{ this.userParam.fullname }}</span>
+                <span class="describe-user"
+                  >, {{ bindingAge(this.userParam.dob) }}</span
+                >
+              </div>
             </div>
-            <img
-              v-if="colorBt"
-              src="@/assets/icon/ic_infor_dark.svg"
-              width="30"
-              alt=""
-            />
-            <img
-              v-else
-              src="@/assets/icon/ic_infor_light.svg"
-              width="30"
-              alt=""
-            />
-          </div>
-          <div class="describe-user bh-margin-description" v-if="aboutValue">
-            {{ userParam.profiles.about }}
-          </div>
-          <div class="flex bh-margin-description">
-            <img
-              v-if="colorBt"
-              src="@/assets/icon/ic_location_dark.svg"
-              alt=""
-            />
-            <img v-else src="@/assets/icon/ic_location_light.svg" alt="" />
+            <div
+              class="flex w-full items-center"
+              v-if="this.userParam.verifyStatus === true"
+            >
+              <img src="@/assets/icon/ic_verified_enable.svg" alt="" />
+              <div class="ml-3 padding-describe-option color-text-verified">
+                {{ $t("verified") }}
+              </div>
+            </div>
+            <div
+              class="flex w-full items-center"
+              v-if="this.userParam.profiles.school"
+            >
+              <img src="@/assets/icon/ic_major.svg" alt="" />
+              <div class="ml-3 padding-describe-option">
+                {{ this.userParam.profiles.school }}
+              </div>
+            </div>
 
-            <span>{{ bindingDistance(this.userParam?.location) }} km away</span>
+            <div
+              class="flex w-full items-center"
+              v-if="this.userParam.profiles.education"
+            >
+              <img src="@/assets/icon/ic_university.svg" alt="" srcset="" />
+              <div class="ml-3 padding-describe-option">
+                {{ bindingEducation(this.userParam.profiles.education) }}
+              </div>
+            </div>
+
+            <div
+              class="flex w-full items-center"
+              v-if="this.userParam.profiles.address"
+            >
+              <img src="@/assets/icon/ic_city_dark.svg" alt="" srcset="" />
+              <div class="ml-3 padding-describe-option">
+                {{ this.userParam.profiles.address }}
+              </div>
+            </div>
+
+            <div
+              class="flex w-full items-center"
+              v-if="this.userParam.profiles.showGender === true"
+            >
+              <img src="@/assets/icon/ic_gender.svg" alt="" srcset="" />
+              <div class="ml-3 padding-describe-option">
+                {{ stringToUpperCase(this.userParam.profiles.gender) }}
+              </div>
+            </div>
+
+            <div
+              class="flex w-full items-center"
+              v-if="this.userParam.profiles.showDistance === true"
+            >
+              <img src="@/assets/icon/ic_location_light.svg" alt="" />
+              <div class="ml-3 padding-describe-option">
+                {{
+                  $t(`{numberKilometers}_{unit}_away`, {
+                    numberKilometers: bindingDistance(this.userParam?.location),
+                    unit: kilometer,
+                  })
+                }}
+              </div>
+            </div>
           </div>
         </div>
         <!-- About me -->
@@ -83,14 +125,19 @@
           class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
           v-if="aboutValue"
         >
-          <div class="title title-description describe-text">About me</div>
+          <div class="title title-description describe-text pl-2">
+            {{ stringName($t("about_me")) }}
+          </div>
           <div class="text-description">
             {{ userParam.profiles.about }}
           </div>
 
           <div
             class="w-full bh-margin-description"
-            v-if="userParam.profiles.orientationSexuals.length !== 0"
+            v-if="
+              userParam.profiles.orientationSexuals.length !== 0 &&
+              userParam.profiles.showSexual === true
+            "
           >
             <div
               class="item-option border-default"
@@ -101,14 +148,58 @@
             </div>
           </div>
         </div>
-        <!-- Interests -->
+        <!-- Thông tin cơ bản -->
+        <div
+          class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
+          v-if="bingBasicInformation(userParam.profiles).length !== 0"
+        >
+          <div class="title pl-2 title-description describe-text">
+            {{ stringName($t("basic_information")) }}
+          </div>
 
+          <div class="w-full bh-margin-description">
+            <div
+              class="item-option border-default"
+              v-for="(item, index) in bingBasicInformation(userParam.profiles)"
+              :key="index"
+            >
+              <div class="flex items-center">
+                <img class="pr-1 img_ic" :src="item.icDefault" alt="" />
+                <span>{{ item.value }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phong cách sống -->
+        <div
+          class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
+          v-if="bingLifeStyleStatic(userParam.profiles).length !== 0"
+        >
+          <div class="title pl-2 title-description describe-text">
+            {{ $t("style_of_life") }}
+          </div>
+
+          <div class="w-full bh-margin-description">
+            <div
+              class="item-option border-default"
+              v-for="(item, index) in bingLifeStyleStatic(userParam.profiles)"
+              :key="index"
+            >
+              <div class="flex items-center">
+                <img class="pr-1 img_ic" :src="item.icDefault" alt="" />
+                <span>{{ item.value }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Interests -->
         <div
           class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
           v-if="userParam.profiles.interests.length !== 0"
         >
           <div class="title pl-2 title-description describe-text">
-            Interests
+            {{ $t("interests") }}
           </div>
 
           <div class="w-full bh-margin-description">
@@ -124,13 +215,15 @@
 
         <!-- My Anthem -->
         <div class="w-full padding-text-user bg-border-bottom pl-2 pr-2">
-          <div class="title title-description describe-text">My Anthem</div>
+          <div class="title title-description describe-text pl-2">
+            {{ stringName($t("my_anthem")) }}
+          </div>
 
           <div class="w-full bh-margin-description pt-2">
             <div class="w-full flex justify-between items-center">
               <div class="text-description">
-                <div>All Too Well (Taylor's Version)</div>
-                <div>Taylor Swift</div>
+                <div>{{ $t("all_too_well_(taylor's_version)") }}</div>
+                <div>{{ $t("taylor_swift") }}</div>
               </div>
               <div class="w-my-anthem">
                 <img
@@ -146,11 +239,15 @@
         >
           <div class="flex justify-center items-center cursor-pointer">
             <div class="title-click-ic ml-2">
-              Share {{ this.userParam.fullname }} profile
+              {{
+                $t(`share_{nameUser}_profile`, {
+                  nameUser: this.userParam.fullname,
+                })
+              }}
             </div>
           </div>
           <div class="flex justify-center title-description describe-text">
-            See what a friend thinks
+            {{ $t("see_what_a_friend_thinks") }}
           </div>
         </div>
         <!-- Report -->
@@ -174,7 +271,7 @@
             srcset=""
           />
           <div class="title-click-ic ml-2">
-            Report {{ this.userParam.fullname }}
+            {{ $t(`report_{nameUser}`, { nameUser: this.userParam.fullname }) }}
           </div>
         </div>
         <div class="h-2/4"></div>
@@ -256,10 +353,29 @@ export default {
 
       idImage: "",
       imageActive: 0,
+      listEducation:
+        this.$store.state.commonModule.listInformationBasic.educations,
+      icZodiac: require("@/assets/icon-profile/astrological_sign@.png"),
+      icFamilyFlan: require("@/assets/icon-profile/kids@1x.png"),
+      icLoveStyle: require("@/assets/icon-profile/love_language@1x.png"),
+      icEducation: require("@/assets/icon-profile/education@1x.png"),
+      icCovidVaccine: require("@/assets/icon-profile/covid_comfort@1x.png"),
+      icPersonality: require("@/assets/icon-profile/mbti@1x.png"),
+      icCommunicationType: require("@/assets/icon-profile/communication_style@1x.png"),
+      icPet: require("@/assets/icon-profile/pets@1x.png"),
+      icDrinking: require("@/assets/icon-profile/drink_of_choice@1x.png"),
+      icSmoking: require("@/assets/icon-profile/smoking@1x.png"),
+      icWorkout: require("@/assets/icon-profile/social_media@1x.png"),
+      icDietaryPreference: require("@/assets/icon-profile/appetite@1x.png"),
+      icSocialMedia: require("@/assets/icon-profile/social_media@1x.png"),
+      icSleepingHabit: require("@/assets/icon-profile/sleeping_habits@1x.png"),
     };
   },
 
   computed: {
+    kilometer() {
+      return localStorage.getItem("unit") ? localStorage.getItem("unit") : "km";
+    },
     colorBt() {
       return this.$store.state.commonModule.statusLayout;
     },
@@ -329,8 +445,203 @@ export default {
       this.$emit("onActionDecide", val);
     },
 
+    stringToUpperCase(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    },
+
+    bindingEducation(value) {
+      const educations = this.listEducation;
+
+      const resultData = educations.find((x) => x.code === value);
+
+      if (resultData) {
+        return resultData.value;
+      }
+    },
     onClickReport() {
       this.$router.push({ path: `/report/${this.userParam._id}` });
+    },
+
+    bingBasicInformation(val) {
+      const zodiacValue = val.zodiac;
+      const familyFlanValue = val.familyFlan;
+      const educationValue = val.education;
+      const covidVaccineValue = val.covidVaccine;
+      const personalityValue = val.personality;
+      const communicationTypeValue = val.communicationType;
+      const loveStyleValue = val.loveStyle;
+      const informationBasic =
+        this.$store.state.commonModule.listInformationBasic;
+      let resultData = [];
+      if (zodiacValue) {
+        const findData = informationBasic.zodiacs.find(
+          (x) => x.code === zodiacValue
+        );
+        if (findData) {
+          resultData.push({
+            icDefault: this.icZodiac,
+            value: findData.value,
+          });
+        }
+      }
+      if (familyFlanValue) {
+        const findData = informationBasic.familyPlans.find(
+          (x) => x.code === familyFlanValue
+        );
+        if (findData) {
+          resultData.push({
+            icDefault: this.icFamilyFlan,
+            value: findData.value,
+          });
+        }
+      }
+      if (educationValue) {
+        const findData = informationBasic.educations.find(
+          (x) => x.code === educationValue
+        );
+        if (findData) {
+          resultData.push({
+            icDefault: this.icEducation,
+            value: findData.value,
+          });
+        }
+      }
+      if (covidVaccineValue) {
+        const findData = informationBasic.covidVaccines.find(
+          (x) => x.code === covidVaccineValue
+        );
+        if (findData) {
+          resultData.push({
+            icDefault: this.icCovidVaccine,
+            value: findData.value,
+          });
+        }
+      }
+      if (personalityValue) {
+        const findData = informationBasic.personalities.find(
+          (x) => x.code === personalityValue
+        );
+        if (findData) {
+          resultData.push({
+            icDefault: this.icPersonality,
+            value: findData.value,
+          });
+        }
+      }
+      if (communicationTypeValue) {
+        const findData = informationBasic.communicationStyles.find(
+          (x) => x.code === communicationTypeValue
+        );
+        if (findData) {
+          resultData.push({
+            icDefault: this.icCommunicationType,
+            value: findData.value,
+          });
+        }
+      }
+      if (loveStyleValue) {
+        const findData = informationBasic.loveStyles.find(
+          (x) => x.code === loveStyleValue
+        );
+        if (findData) {
+          resultData.push({
+            icDefault: this.icLoveStyle,
+            value: findData.value,
+          });
+        }
+      }
+      return resultData;
+    },
+    stringName(value) {
+      return functionValidate.titleCase(value);
+    },
+    bingLifeStyleStatic(val) {
+      const petValue = val.pet;
+      const drinkingValue = val.drinking;
+      const smokingValue = val.smoking;
+      const workoutValue = val.workout;
+      const dietaryPreferenceValue = val.dietaryPreference;
+      const socialMediaValue = val.socialMedia;
+      const sleepingHabitValue = val.sleepingHabit;
+      const lifeStyleStatic =
+        this.$store.state.commonModule.listLifeStyleStatic;
+      let resultData = [];
+      if (petValue) {
+        const findData = lifeStyleStatic.pets.find((x) => x.code === petValue);
+        if (findData) {
+          resultData.push({
+            icDefault: this.icPet,
+            value: findData.value,
+          });
+        }
+      }
+      if (drinkingValue) {
+        const findData = lifeStyleStatic.drinkings.find(
+          (x) => x.code === drinkingValue
+        );
+        if (findData) {
+          resultData.push({
+            icDefault: this.icDrinking,
+            value: findData.value,
+          });
+        }
+      }
+      if (smokingValue) {
+        const findData = lifeStyleStatic.smokings.find(
+          (x) => x.code === smokingValue
+        );
+        if (findData) {
+          resultData.push({
+            icDefault: this.icSmoking,
+            value: findData.value,
+          });
+        }
+      }
+      if (workoutValue) {
+        const findData = lifeStyleStatic.workouts.find(
+          (x) => x.code === workoutValue
+        );
+        if (findData) {
+          resultData.push({
+            icDefault: this.icWorkout,
+            value: findData.value,
+          });
+        }
+      }
+      if (dietaryPreferenceValue) {
+        const findData = lifeStyleStatic.foodPreferences.find(
+          (x) => x.code === dietaryPreferenceValue
+        );
+        if (findData) {
+          resultData.push({
+            icDefault: this.icDietaryPreference,
+            value: findData.value,
+          });
+        }
+      }
+      if (socialMediaValue) {
+        const findData = lifeStyleStatic.socials.find(
+          (x) => x.code === socialMediaValue
+        );
+        if (findData) {
+          resultData.push({
+            icDefault: this.icSocialMedia,
+            value: findData.value,
+          });
+        }
+      }
+      if (sleepingHabitValue) {
+        const findData = lifeStyleStatic.sleepingStyles.find(
+          (x) => x.code === sleepingHabitValue
+        );
+        if (findData) {
+          resultData.push({
+            icDefault: this.icSleepingHabit,
+            value: findData.value,
+          });
+        }
+      }
+      return resultData;
     },
 
     bindingDistance(val) {

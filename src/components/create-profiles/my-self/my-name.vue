@@ -14,7 +14,7 @@
       <div class="padding-describe mt-2 describe-text">
         {{
           $t(
-            "this_is_how_it_will_appear_in_heartlink,_and_you_will_not_able_to_change_it"
+            "this_is_how_it_will_appear_in_heartLink,_and_you_will_not_able_to_change_it"
           )
         }}
       </div>

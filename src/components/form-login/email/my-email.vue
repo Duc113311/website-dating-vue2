@@ -29,7 +29,7 @@
       >
         <span class="flex justify-center">
           <img src="@/assets/icon/google_icon.svg" class="mr-2" alt="" />
-          <span class="font-sans">Log in with Google</span>
+          <span class="font-sans">{{ $t("log_in_with_google") }}</span>
         </span>
       </button>
     </div>
@@ -52,7 +52,7 @@
         </div>
       </div>
       <span class="ml-4">{{
-        $t("i_want_to_receive_news,_updates_and_offers_from_heartlink")
+        $t("i_want_to_receive_news,_updates_and_offers_from_heartLink")
       }}</span>
     </div>
   </div>

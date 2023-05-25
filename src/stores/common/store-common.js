@@ -26,6 +26,138 @@ const state = {
   listInterestFilter: [],
 
   languageTranslate: "en",
+  languageTranslateValue: "EngLish",
+
+  languageParam: [
+    {
+      code: "vi",
+      value: "Vietnamese",
+    },
+    {
+      code: "en",
+      value: "English",
+    },
+    {
+      code: "ar",
+      value: "Arabic",
+    },
+    {
+      code: "ca",
+      value: "Catalan",
+    },
+    {
+      code: "zh-rCN",
+      value: "Chinese",
+    },
+    {
+      code: "zh-rTW",
+      value: "Taiwanese",
+    },
+    {
+      code: "hr",
+      value: "Croatian",
+    },
+    {
+      code: "da",
+      value: "Danish",
+    },
+    {
+      code: "nl",
+      value: "Dutch",
+    },
+    {
+      code: "en-rGB",
+      value: "English (UK)",
+    },
+    {
+      code: "fi",
+      value: "Finnish",
+    },
+    {
+      code: "fr",
+      value: "French",
+    },
+    {
+      code: "de",
+      value: "German",
+    },
+    {
+      code: "el",
+      value: "Greek",
+    },
+    {
+      code: "hi",
+      value: "Hindi",
+    },
+    {
+      code: "hu",
+      value: "Hungarian",
+    },
+    {
+      code: "id",
+      value: "Indonesian",
+    },
+    {
+      code: "it",
+      value: "Italian",
+    },
+    {
+      code: "ja",
+      value: "Japanese",
+    },
+    {
+      code: "ko",
+      value: "Korean",
+    },
+    {
+      code: "ms",
+      value: "Malay",
+    },
+    {
+      code: "nb",
+      value: "Norwegian Bokmal",
+    },
+    {
+      code: "pl",
+      value: "Polish",
+    },
+    {
+      code: "pt",
+      value: "Portuguese",
+    },
+    {
+      code: "ro",
+      value: "Romanian",
+    },
+    {
+      code: "ru",
+      value: "Russian",
+    },
+    {
+      code: "sk",
+      value: "Slovak",
+    },
+    {
+      code: "es",
+      value: "Spanish",
+    },
+    {
+      code: "sv",
+      value: "Swedish",
+    },
+    {
+      code: "th",
+      value: "Thai",
+    },
+    {
+      code: "tr",
+      value: "Turkish",
+    },
+    {
+      code: "uk",
+      value: "Ukrainian",
+    },
+  ],
 };
 
 const getters = {
@@ -41,7 +173,13 @@ const mutations = {
   },
 
   setLanguageTranslate(state, value) {
+    debugger;
     state.languageTranslate = value;
+    debugger;
+    const findData = state.languageParam.find((x) => x.code === value);
+    if (findData) {
+      state.languageTranslateValue = findData.value;
+    }
   },
 
   setListInterestFilter(state, data) {
@@ -136,6 +274,7 @@ const mutations = {
     state.valueDinnerGreat = value;
   },
 };
+const language = state.languageTranslate; // Lấy giá trị ngôn ngữ từ localStorage
 
 const actions = {
   /**
@@ -173,11 +312,15 @@ const actions = {
    * @param {*} param0
    */
   async getListLifeStyleCommons({ commit }) {
+    debugger;
     await http_mongo
       .get(`api/v1/statics/commons`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("tokenId")}` },
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("tokenId")}`,
+        },
       })
       .then((response) => {
+        debugger;
         commit("setListLifeStyleSingle", response.data.data);
       })
       .catch((error) => {

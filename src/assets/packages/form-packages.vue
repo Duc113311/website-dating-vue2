@@ -39,7 +39,7 @@
         <BhComfirm></BhComfirm>
       </div>
       <div class="w-full flex justify-center items-center text-center">
-        Recuring billing, cancel anytime
+        {{ $t("recuring_billing,_cancel_anytime") }}
       </div>
     </div>
   </div>

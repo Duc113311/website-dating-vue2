@@ -20,7 +20,7 @@
 
       <div class="footer-detail">
         <BhJoin @onNextBlindOption="onNextLetFriendOption()"></BhJoin>
-        <BhNothank></BhNothank>
+        <BhNothank @onHideMayBeLater="onHideMayBeLater"></BhNothank>
       </div>
     </div>
   </div>
@@ -49,19 +49,19 @@ export default {
       switch (name) {
         case "letBeFriend":
           return {
-            title: "Let's be friend",
-            describe: "Find someone that wants to be friends",
+            title: this.$t("let's_be_friend"),
+            describe: this.$t("find_someone_that_wants_to_be_friends"),
             url: require("@/assets/image-dating/bg_let_be_friend.png"),
           };
         case "coffeeDate":
           return {
-            title: "Coffee Date",
-            describe: "Find someone to get coffee with",
+            title: this.$t("coffee_date"),
+            describe: this.$t("find_someone_to_get_coffee_with"),
             url: require("@/assets/image-dating/bg_coffe_date.png"),
           };
         case "lookingLove":
           return {
-            title: "Looking for love",
+            title: this.$t("looking_for_love"),
             describe: "Find someone that also looking for love as you",
             url: require("@/assets/image-dating/bg_looking_for_love.png"),
           };
@@ -104,6 +104,10 @@ export default {
   methods: {
     ...mapActions(["putJoinTopicExplore"]),
     onBackVerified() {
+      this.$router.go(-1);
+    },
+
+    onHideMayBeLater() {
       this.$router.go(-1);
     },
     //

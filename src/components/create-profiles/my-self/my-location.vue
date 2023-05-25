@@ -24,7 +24,7 @@
             <div class="padding-describe w-4/5 describe-text">
               {{
                 $t(
-                  "you_will_need_to_enable_your_location_order_to_use_heartlinks"
+                  "you_will_need_to_enable_your_location_order_to_use_heartLinks"
                 )
               }}
             </div>
@@ -71,7 +71,7 @@
               <div class="padding-describe w-4/5 describe-text">
                 {{
                   $t(
-                    "you_location_will_be_used_to_show_potential_matches_near_you"
+                    "you_location_will_be_used_to_show_potential_matches_near_you."
                   )
                 }}
               </div>

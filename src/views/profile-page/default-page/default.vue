@@ -6,7 +6,10 @@
       <slider-gold></slider-gold>
 
       <!-- avatar -->
-      <div class="flex h-64 justify-center items-center">
+      <div
+        class="flex h-64 justify-center items-center"
+        v-bind:class="{ 'reverse-layout': isArabic }"
+      >
         <div class="w-full h-full">
           <div class="w-full h-full image-profiles">
             <div>
@@ -39,6 +42,7 @@
       </div>
       <!-- Option chose -->
       <div
+        v-bind:class="{ 'reverse-layout': isArabic }"
         class="w-full option-setting flex items-center title-default cursor-pointer"
       >
         <div class="item-setting">
@@ -111,7 +115,7 @@ import functionValidate from "../../../middleware/validate.js";
 
 // import FormPackages from "../../assets/packages/form-packages";
 import SliderGold from "@/components/packages/common/slider-gold.vue";
-import { mapMutations } from "vuex";
+import { mapActions, mapMutations } from "vuex";
 
 export default {
   components: {
@@ -135,6 +139,10 @@ export default {
   },
 
   computed: {
+    isArabic() {
+      debugger;
+      return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
+    },
     colorBt() {
       return this.$store.state.commonModule.statusLayout;
     },
@@ -159,6 +167,12 @@ export default {
 
   methods: {
     ...mapMutations(["setCompleteUser"]),
+    ...mapActions([
+      "getDetailProfileByAuthorization",
+      "getListLifeStyleCommons",
+      "getListInformationBasic",
+      "getListLifeStyleStatic",
+    ]),
     handleSlideClick(dataset) {
       console.log(dataset.index, dataset.name);
     },
@@ -318,6 +332,11 @@ export default {
       this.percentageIncrease = i;
       i++;
     }, 20);
+
+    await this.getListLifeStyleCommons();
+    await this.getListInformationBasic();
+    await this.getListLifeStyleStatic();
+    await this.getDetailProfileByAuthorization();
   },
 };
 </script>

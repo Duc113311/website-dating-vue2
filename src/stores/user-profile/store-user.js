@@ -415,7 +415,11 @@ const mutations = {
    */
   setDetailProfileAuth_Mongo(state, data) {
     state.detailProfile = data;
-    this.state.commonModule.listInterestFilter = data.profiles.interests;
+    (state.lifeStyleSingle.datingPurpose = {}),
+      (state.lifeStyleSingle.languages = []),
+      (state.lifeStyleSingle.interests = []),
+      (state.lifeStyleSingle.schools = []),
+      (this.state.commonModule.listInterestFilter = data.profiles.interests);
     debugger;
     for (let index = 0; index < data.profiles.avatars.length; index++) {
       const element = data.profiles.avatars[index];
@@ -441,6 +445,7 @@ const mutations = {
 
     for (let index = 0; index < data.profiles.languages.length; index++) {
       const element = data.profiles.languages[index];
+      debugger;
       const findLanguages =
         this.state.commonModule.listLifeStyleSingle.languages.find(
           (x) => x.code === element

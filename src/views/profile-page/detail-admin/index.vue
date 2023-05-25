@@ -14,7 +14,7 @@
               class="size-hight mr-3"
               alt=""
             />
-            <span class="text-2xl font-semibold">{{ $t("HeartLink") }}</span>
+            <span class="text-2xl font-semibold">HeartLink</span>
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@
           </div>
           <div
             class="flex w-full items-center"
-            v-if="this.bingInformationUser.verifyStatus === false"
+            v-if="this.bingInformationUser.verifyStatus === true"
           >
             <img src="@/assets/icon/ic_verified_enable.svg" alt="" />
             <div class="ml-3 padding-describe-option-none color-text-verified">
@@ -121,7 +121,7 @@
           class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
           v-if="aboutValue"
         >
-          <div class="title title-description describe-text">
+          <div class="title title-description describe-text pl-2">
             {{ bingString($t("about_me")) }}
           </div>
           <div class="text-description">
@@ -159,7 +159,10 @@
               )"
               :key="index"
             >
-              {{ item }}
+              <div class="flex items-center">
+                <img class="pr-1 img_ic" :src="item.icDefault" alt="" />
+                <span>{{ item.value }}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -181,7 +184,10 @@
               )"
               :key="index"
             >
-              {{ item }}
+              <div class="flex items-center">
+                <img class="pr-1 img_ic" :src="item.icDefault" alt="" />
+                <span>{{ item.value }}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -247,6 +253,21 @@ export default {
       orientationSexuals: ["pansexual", "straight", "queer"],
       imageActive: 0,
       imageData: "",
+
+      icZodiac: require("@/assets/icon-profile/astrological_sign@.png"),
+      icFamilyFlan: require("@/assets/icon-profile/kids@1x.png"),
+      icLoveStyle: require("@/assets/icon-profile/love_language@1x.png"),
+      icEducation: require("@/assets/icon-profile/education@1x.png"),
+      icCovidVaccine: require("@/assets/icon-profile/covid_comfort@1x.png"),
+      icPersonality: require("@/assets/icon-profile/mbti@1x.png"),
+      icCommunicationType: require("@/assets/icon-profile/communication_style@1x.png"),
+      icPet: require("@/assets/icon-profile/pets@1x.png"),
+      icDrinking: require("@/assets/icon-profile/drink_of_choice@1x.png"),
+      icSmoking: require("@/assets/icon-profile/smoking@1x.png"),
+      icWorkout: require("@/assets/icon-profile/social_media@1x.png"),
+      icDietaryPreference: require("@/assets/icon-profile/appetite@1x.png"),
+      icSocialMedia: require("@/assets/icon-profile/social_media@1x.png"),
+      icSleepingHabit: require("@/assets/icon-profile/sleeping_habits@1x.png"),
     };
   },
 
@@ -333,7 +354,10 @@ export default {
           (x) => x.code === zodiacValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icZodiac,
+            value: findData.value,
+          });
         }
       }
       if (familyFlanValue) {
@@ -341,7 +365,10 @@ export default {
           (x) => x.code === familyFlanValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icFamilyFlan,
+            value: findData.value,
+          });
         }
       }
       if (educationValue) {
@@ -349,7 +376,10 @@ export default {
           (x) => x.code === educationValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icEducation,
+            value: findData.value,
+          });
         }
       }
       if (covidVaccineValue) {
@@ -357,7 +387,10 @@ export default {
           (x) => x.code === covidVaccineValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icCovidVaccine,
+            value: findData.value,
+          });
         }
       }
       if (personalityValue) {
@@ -365,7 +398,10 @@ export default {
           (x) => x.code === personalityValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icPersonality,
+            value: findData.value,
+          });
         }
       }
       if (communicationTypeValue) {
@@ -373,7 +409,10 @@ export default {
           (x) => x.code === communicationTypeValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icCommunicationType,
+            value: findData.value,
+          });
         }
       }
       if (loveStyleValue) {
@@ -381,7 +420,10 @@ export default {
           (x) => x.code === loveStyleValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icLoveStyle,
+            value: findData.value,
+          });
         }
       }
       return resultData;
@@ -401,7 +443,10 @@ export default {
       if (petValue) {
         const findData = lifeStyleStatic.pets.find((x) => x.code === petValue);
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icPet,
+            value: findData.value,
+          });
         }
       }
       if (drinkingValue) {
@@ -409,7 +454,10 @@ export default {
           (x) => x.code === drinkingValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icDrinking,
+            value: findData.value,
+          });
         }
       }
       if (smokingValue) {
@@ -417,7 +465,10 @@ export default {
           (x) => x.code === smokingValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icSmoking,
+            value: findData.value,
+          });
         }
       }
       if (workoutValue) {
@@ -425,7 +476,10 @@ export default {
           (x) => x.code === workoutValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icWorkout,
+            value: findData.value,
+          });
         }
       }
       if (dietaryPreferenceValue) {
@@ -433,7 +487,10 @@ export default {
           (x) => x.code === dietaryPreferenceValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icDietaryPreference,
+            value: findData.value,
+          });
         }
       }
       if (socialMediaValue) {
@@ -441,7 +498,10 @@ export default {
           (x) => x.code === socialMediaValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icSocialMedia,
+            value: findData.value,
+          });
         }
       }
       if (sleepingHabitValue) {
@@ -449,7 +509,10 @@ export default {
           (x) => x.code === sleepingHabitValue
         );
         if (findData) {
-          resultData.push(findData.value);
+          resultData.push({
+            icDefault: this.icSleepingHabit,
+            value: findData.value,
+          });
         }
       }
       return resultData;
@@ -568,10 +631,5 @@ export default {
 
 .h-detail-admin {
   height: 70%;
-}
-
-.reverse-layout {
-  direction: rtl; /* Đảo ngược hướng dòng hiển thị */
-  text-align: right; /* Canh lề phải cho các thành phần văn bản */
 }
 </style>

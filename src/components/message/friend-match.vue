@@ -59,10 +59,10 @@
         </div>
         <div class="w-4/5 ml-8 h-full bg-mess">
           <div class="w-full">
-            Trang <span class="ic_like ml-3">LIKES YOU</span>
+            Trang <span class="ic_like ml-3">{{ $t("likes_you") }}</span>
           </div>
           <div class="mt-1 description-no-padding">
-            Recently Active, Match Now!
+            {{ $t("recently_active") }}
           </div>
         </div>
       </div>
@@ -76,10 +76,10 @@
         </div>
         <div class="w-4/5 ml-8 h-full bg-mess relative">
           <div class="w-full">
-            Trang <span class="ic_like ml-3">LIKES YOU</span>
+            Trang <span class="ic_like ml-3">{{ $t("likes_you") }}</span>
           </div>
           <div class="mt-1 description-no-padding">
-            Recently Active, Match Now!
+            {{ $t("recently_active") }}
           </div>
           <div class="absolute right-4 top-4 p-2 txt-number-title">20</div>
         </div>
@@ -94,10 +94,10 @@
         </div>
         <div class="w-4/5 ml-8 h-full bg-mess relative">
           <div class="w-full">
-            Trang <span class="ic_like ml-3">LIKES YOU</span>
+            Trang <span class="ic_like ml-3">{{ $t("likes_you") }}</span>
           </div>
           <div class="mt-1 description-no-padding">
-            Recently Active, Match Now!
+            {{ $t("recently_active") }}
           </div>
           <div class="absolute right-4 top-4 p-2 txt-number-title">20</div>
         </div>
@@ -112,10 +112,10 @@
         </div>
         <div class="w-4/5 ml-8 h-full bg-mess relative">
           <div class="w-full">
-            Trang <span class="ic_like ml-3">LIKES YOU</span>
+            Trang <span class="ic_like ml-3">{{ $t("likes_you") }}</span>
           </div>
           <div class="mt-1 description-no-padding">
-            Recently Active, Match Now!
+            {{ $t("recently_active") }}
           </div>
           <div class="absolute right-4 top-4 p-2 txt-number-title">20</div>
         </div>
@@ -130,10 +130,10 @@
         </div>
         <div class="w-4/5 ml-8 h-full bg-mess relative">
           <div class="w-full">
-            Trang <span class="ic_like ml-3">LIKES YOU</span>
+            Trang <span class="ic_like ml-3">{{ $t("likes_you") }}</span>
           </div>
           <div class="mt-1 description-no-padding">
-            Recently Active, Match Now!
+            {{ $t("recently_active") }}
           </div>
           <div class="absolute right-4 top-4 p-2 txt-number-title">20</div>
         </div>
@@ -154,6 +154,7 @@ export default {
     };
   },
 
+  computed: {},
   methods: {
     onClickShowChat() {
       this.$router.push({ path: "/chat" });

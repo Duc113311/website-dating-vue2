@@ -6,7 +6,7 @@
       </div>
       <div class="w-full flex style-form-single bg-default">
         <div class="flex justify-between w-full">
-          <div class="bh-item-title">{{ $t("connect_anthem") }}</div>
+          <div class="bh-item-title">{{ $t("choose_an_anthem") }}</div>
           <div class="">
             <i class="fa-solid fa-chevron-right bh-chevron-right"></i>
           </div>

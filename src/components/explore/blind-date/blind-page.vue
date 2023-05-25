@@ -10,31 +10,41 @@
           <div class="flex justify-center items-center w-full mb-8">
             <div class="content w-96">
               <i class="fa-solid fa-circle-question icon-date"></i>
-              <div class="text-description">Chia sẻ quan điểm</div>
+              <div class="text-description">{{ $t("share_idea") }}</div>
               <p class="text-note">
-                Trả lời các câu hỏi hóc búa thay câu mở lời! Các câu trả lời của
-                bạn sẽ hiển thị trên giao diện Blind Date và có thể được dùng để
-                bắt đầu cuộc trò chuyện
+                {{
+                  $t(
+                    "answer_tough_questions_instead_of_opening_sentences!_your_responses_will_appear_on_the_blind_date_interface_and_can_be_used_to_start_a_conversation"
+                  )
+                }}
               </p>
             </div>
           </div>
           <div class="flex justify-center items-center w-full mb-8">
             <div class="content w-96">
               <i class="fa-solid fa-circle-question icon-date"></i>
-              <div class="text-description">Hãy chuẩn bị sẵn sàng</div>
+              <div class="text-description">{{ $t("get_ready") }}</div>
               <p class="text-note">
-                Các câu hỏi và thời gian chat được giới hạn, nên hãy nghĩ và trả
-                lời nhanh nhé
+                {{
+                  $t(
+                    "questions_and_chat_time_are_limited,_so_think_and_answer_quickly"
+                  )
+                }}
               </p>
             </div>
           </div>
           <div class="flex justify-center items-center w-full">
             <div class="content w-96">
               <i class="fa-solid fa-circle-question icon-date"></i>
-              <div class="text-description">Tương hợp để xem hồ sơ</div>
+              <div class="text-description">
+                {{ $t("compatible_to_view_profiles") }}
+              </div>
               <p class="text-note">
-                Sau khi chat xong, bạn sẽ thấy hồ sơ của người ấy nếu cả hai hợp
-                nhau
+                {{
+                  $t(
+                    "after_the_chat_is_over,_you'll_see_the_person's_profile_if_you_both_match"
+                  )
+                }}
               </p>
             </div>
           </div>
@@ -42,7 +52,7 @@
       </div>
       <div class="footer-bg w-full">
         <div><BhJoin @onNextBlindOption="onNextBlindOption"></BhJoin></div>
-        <div><BhNothank></BhNothank></div>
+        <div><BhNothank @onHideMayBeLater="onHideMayBeLater"></BhNothank></div>
       </div>
     </div>
   </div>
@@ -65,6 +75,10 @@ export default {
 
   methods: {
     onBackBlindDate() {
+      this.$router.go(-1);
+    },
+
+    onHideMayBeLater() {
       this.$router.go(-1);
     },
 

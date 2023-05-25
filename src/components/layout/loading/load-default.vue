@@ -15,7 +15,9 @@
           <span style="--i: 5" :style="colorParam"></span>
         </div>
       </div>
-      <div class="text-describe z-20 absolute">Finding people near you...</div>
+      <div class="text-describe z-20 absolute">
+        {{ $t("finding_people_near_you...") }}
+      </div>
     </div>
   </div>
 </template>

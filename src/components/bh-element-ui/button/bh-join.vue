@@ -5,7 +5,7 @@
       class="btContinueCode cursor-pointer w-full padding-button active-button overflow-hidden"
       ref="joinNow"
     >
-      Join now
+      {{ $t("join_now") }}
     </button>
   </div>
 </template>

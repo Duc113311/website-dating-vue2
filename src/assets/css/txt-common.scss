@@ -92,3 +92,8 @@
   border: 1px solid #dce0e9; /* Đường viền của thẻ */
   box-shadow: 0px 0px 5px rgba(153, 153, 153, 0.3); /* Hiệu ứng đổ bóng */
 }
+
+.reverse-layout {
+  direction: rtl; /* Đảo ngược hướng dòng hiển thị */
+  text-align: right; /* Canh lề phải cho các thành phần văn bản */
+}

@@ -10,7 +10,7 @@
             >
               <div class="bh-item-title w-6/12">{{ $t("language") }}</div>
               <div class="flex w-6/12 justify-end items-center cursor-pointer">
-                <div class="bh-describe mr-2">English</div>
+                <div class="bh-describe mr-2">{{ bingLanguage }}</div>
                 <div class="cursor-pointer">
                   <i
                     class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
@@ -48,7 +48,12 @@ export default {
     };
   },
 
-  computed: {},
+  computed: {
+    bingLanguage() {
+      debugger;
+      return this.$store.state.commonModule.languageTranslateValue;
+    },
+  },
 
   methods: {
     onShowChoseLanguage() {

@@ -5,7 +5,7 @@
         <div class="">
           <BhBack @onBackComponent="onBackBlindDate()"></BhBack>
         </div>
-        <div class="w-5/6 flex justify-center">Blind Date</div>
+        <div class="text-center w-full flex justify-center">Blind Date</div>
       </div>
 
       <div class="content-bg flex justify-center items-center">
@@ -68,9 +68,13 @@
             </label>
           </div>
           <div class="footer02">
-            <p :class="{ active: show === 'so1' }">Answer question</p>
-            <p :class="{ active: show === 'so2' }">Optimise pairing</p>
-            <p :class="{ active: show === 'so3' }">Connecting</p>
+            <p :class="{ active: show === 'so1' }">
+              {{ $t("answer_question") }}
+            </p>
+            <p :class="{ active: show === 'so2' }">
+              {{ $t("optimise_pairing") }}
+            </p>
+            <p :class="{ active: show === 'so3' }">{{ $t("connecting") }}</p>
           </div>
         </div>
       </div>

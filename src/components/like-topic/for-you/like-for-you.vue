@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-full relative">
     <div class="w-full text-title-like">Recommendations</div>
-    <div class="w-full pl-5 pr-5 pt-5 h-likes overflow-auto height-scroll z-30">
+    <div class="w-full p-5 h-likes overflow-auto height-scroll z-30">
       <ctrlSwipe
         :listUser="listLikeYouActions"
         :actionDecide="actionDecide"

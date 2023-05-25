@@ -99,10 +99,16 @@
                     <div class="mr-2">
                       <img src="@/assets/icon/ic_location_dark.svg" />
                     </div>
-                    <span class="font-describe"
-                      >{{ bindingLocation(scope.data?.distanceKm) }}
-                      {{ valueKi }} away</span
-                    >
+                    <span class="font-describe">
+                      {{
+                        $t(`{numberKilometers}_{unit}_away`, {
+                          numberKilometers: bindingLocation(
+                            scope.data?.distanceKm
+                          ),
+                          unit: valueKi,
+                        })
+                      }}
+                    </span>
                   </div>
                 </div>
                 <div v-if="scrods === 1">

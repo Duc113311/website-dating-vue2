@@ -5,7 +5,7 @@
         <div class="bh-title title-item form-set-item">
           {{ $t("maximum_distance") }}
         </div>
-        <div class="bh-describe">{{ valueDistance }}km</div>
+        <div class="bh-describe">{{ valueDistance }} {{ kiloValue }}</div>
       </div>
 
       <div>
@@ -44,6 +44,14 @@ export default {
           .range,
       valuePeopleDistance: "",
     };
+  },
+
+  computed: {
+    kiloValue() {
+      debugger;
+      return this.$store.state.userModule.user_profile.settings
+        .distancePreference.unit;
+    },
   },
 
   methods: {

@@ -9,7 +9,7 @@
 
     <!-- Image -->
     <div class="">
-      <div class="mt-4 grid grid-cols-3 gap-4 p-3">
+      <div class="grid grid-cols-3 gap-4 p-3">
         <div
           class="h-image-detail"
           v-for="fileList in fileListValue"
