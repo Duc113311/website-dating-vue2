@@ -18,7 +18,7 @@ const state = {
   isLike: {
     isMatched: false,
     likeRemaining: 0,
-    isFreeRuntime: true,
+    isFreeRuntime: false,
   },
   isBoost: {},
   isBackUser: false,

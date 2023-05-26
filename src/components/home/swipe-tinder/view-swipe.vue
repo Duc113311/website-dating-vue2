@@ -809,6 +809,7 @@ export default {
       this.$emit("onShowDetailUser", true);
     },
     async onSubmit(value) {
+      debugger;
       this.setUrlNameAvatarUser("");
       this.isActiveImag = true;
 
@@ -930,6 +931,7 @@ export default {
       }
     },
     async decide(choice) {
+      debugger;
       console.log(choice);
       if (choice === "rewind") {
         if (this.history.length) {
