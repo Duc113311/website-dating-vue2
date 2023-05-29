@@ -3,7 +3,10 @@
     <div class="w-full h-full title-default">
       <!-- Back -->
 
-      <div class="flex w-full items-center header-edit border-bottom p-4">
+      <div
+        class="flex w-full items-center header-edit border-bottom p-4"
+        v-bind:class="{ 'reverse-layout': isArabic }"
+      >
         <div class="">
           <BhBack @onBackComponent="onBackEditProfile"></BhBack>
         </div>
@@ -17,7 +20,10 @@
           </div>
         </div>
       </div>
-      <div class="form-edit overflow-scroll w-full p-3">
+      <div
+        class="form-edit overflow-scroll w-full p-3"
+        v-bind:class="{ 'reverse-layout': isArabic }"
+      >
         <from-update></from-update>
       </div>
 
@@ -42,6 +48,13 @@ export default {
     return {
       loading: false,
     };
+  },
+
+  computed: {
+    isArabic() {
+      debugger;
+      return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
+    },
   },
 
   methods: {

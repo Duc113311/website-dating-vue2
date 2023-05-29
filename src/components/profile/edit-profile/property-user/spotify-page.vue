@@ -11,7 +11,7 @@
         <div class="flex justify-between w-full">
           <div class="pl-5 bh-item-title">{{ $t("connect_spotify") }}</div>
           <div>
-            <i class="fa-solid fa-chevron-right bh-chevron-right"></i>
+            <BhChevron></BhChevron>
           </div>
         </div>
       </div>
@@ -20,7 +20,9 @@
 </template>
 
 <script>
+import BhChevron from "../../../bh-element-ui/button/bh-chevron";
 export default {
+  components: { BhChevron },
   name: "spotify-page",
   data() {
     return {};

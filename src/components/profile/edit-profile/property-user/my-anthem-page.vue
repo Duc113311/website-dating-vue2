@@ -8,7 +8,7 @@
         <div class="flex justify-between w-full">
           <div class="bh-item-title">{{ $t("choose_an_anthem") }}</div>
           <div class="">
-            <i class="fa-solid fa-chevron-right bh-chevron-right"></i>
+            <BhChevron></BhChevron>
           </div>
         </div>
       </div>
@@ -17,7 +17,9 @@
 </template>
 
 <script>
+import BhChevron from "../../../bh-element-ui/button/bh-chevron";
 export default {
+  components: { BhChevron },
   name: "my-anthem-page",
 
   data() {

@@ -97,3 +97,11 @@
   direction: rtl; /* Đảo ngược hướng dòng hiển thị */
   text-align: right; /* Canh lề phải cho các thành phần văn bản */
 }
+
+.chevron-left {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}

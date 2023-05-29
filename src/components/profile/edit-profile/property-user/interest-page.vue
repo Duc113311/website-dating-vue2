@@ -29,12 +29,13 @@
                 {{ nameDefault }}
               </div>
             </div>
-            <div class="bg-shadow-right absolute h-full w-full"></div>
+            <div
+              class="bg-shadow-right absolute h-full w-full"
+              id="shadow-r"
+            ></div>
           </div>
           <div class="flex items-center justify-end">
-            <i
-              class="fa-solid fa-chevron-right bh-chevron-right icon-color-default"
-            ></i>
+            <BhChevron></BhChevron>
           </div>
         </div>
       </div>
@@ -43,7 +44,9 @@
 </template>
 
 <script>
+import BhChevron from "../../../bh-element-ui/button/bh-chevron";
 export default {
+  components: { BhChevron },
   name: "interest-page",
   data() {
     return {
@@ -60,6 +63,11 @@ export default {
         this.$store.state.userModule.lifeStyleSingle.interests;
       return interestData ? interestData : [];
     },
+
+    isArabic() {
+      debugger;
+      return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
+    },
   },
 
   methods: {
@@ -70,6 +78,16 @@ export default {
       // this.isShowInterest = true;
       this.$emit("onShowPopupInterest", true);
     },
+  },
+
+  mounted() {
+    if (this.$i18n.locale === "ar") {
+      document.getElementById("shadow-r").classList.remove("bg-shadow-right");
+      document.getElementById("shadow-r").classList.add("bg-shadow-left");
+    } else {
+      document.getElementById("shadow-r").classList.remove("bg-shadow-left");
+      document.getElementById("shadow-r").classList.add("bg-shadow-right");
+    }
   },
 };
 </script>

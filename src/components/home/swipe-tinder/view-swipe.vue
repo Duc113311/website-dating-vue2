@@ -1,6 +1,7 @@
 <template>
   <div
     class="w-full h-full relative"
+    v-bind:class="{ 'reverse-layout': isArabic }"
     @mousedown="onMouseDow"
     @mouseup="onMouseUp"
   >
@@ -333,6 +334,11 @@ export default {
       set(newData) {
         this.users = newData;
       },
+    },
+
+    isArabic() {
+      debugger;
+      return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
     },
   },
 

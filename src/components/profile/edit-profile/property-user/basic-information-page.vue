@@ -13,20 +13,20 @@
         >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
-              class="mr-2"
+              class="mr-2 ml-2"
               src="@/assets/icon/ic_tinder/astrological_sign@2x.png"
               width="25"
             />{{ $t("zodiac") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
-              <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
+              <div
+                class="bh-describe whitespace-nowrap ml-3 mr-3 overflow-hidden"
+              >
                 {{ zodiacParam }}
               </div>
               <div class="cursor-pointer">
-                <i
-                  class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
-                ></i>
+                <BhChevron></BhChevron>
               </div>
             </div>
           </div>
@@ -37,20 +37,20 @@
         >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
-              class="mr-2"
+              class="mr-2 ml-2"
               src="@/assets/icon/ic_tinder/family@1x.png"
               width="25"
             />{{ $t("future_family") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
-              <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
+              <div
+                class="bh-describe whitespace-nowrap ml-3 mr-3 overflow-hidden"
+              >
                 {{ familyParam }}
               </div>
               <div class="cursor-pointer">
-                <i
-                  class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
-                ></i>
+                <BhChevron></BhChevron>
               </div>
             </div>
           </div>
@@ -61,20 +61,20 @@
         >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
-              class="mr-2"
+              class="mr-2 ml-2"
               src="@/assets/icon/ic_tinder/education@1x.png"
               width="25"
             />{{ $t("education") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
-              <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
+              <div
+                class="bh-describe whitespace-nowrap ml-3 mr-3 overflow-hidden"
+              >
                 {{ educationParam }}
               </div>
               <div class="cursor-pointer">
-                <i
-                  class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
-                ></i>
+                <BhChevron></BhChevron>
               </div>
             </div>
           </div>
@@ -85,20 +85,20 @@
         >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
-              class="mr-2"
+              class="mr-2 ml-2"
               src="@/assets/icon/ic_tinder/covid_comfort@1x.png"
               width="25"
             />{{ $t("vaccine_for_covid") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
-              <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
+              <div
+                class="bh-describe whitespace-nowrap ml-3 mr-3 overflow-hidden"
+              >
                 {{ vaccineParam }}
               </div>
               <div class="cursor-pointer">
-                <i
-                  class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
-                ></i>
+                <BhChevron></BhChevron>
               </div>
             </div>
           </div>
@@ -109,20 +109,20 @@
         >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
-              class="mr-2"
+              class="mr-2 ml-2"
               src="@/assets/icon/ic_tinder/kietinhcach@2x.png"
               width="25"
             />{{ $t("personality_type") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
-              <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
+              <div
+                class="bh-describe whitespace-nowrap ml-3 mr-3 overflow-hidden"
+              >
                 {{ personalityParam }}
               </div>
               <div class="cursor-pointer">
-                <i
-                  class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
-                ></i>
+                <BhChevron></BhChevron>
               </div>
             </div>
           </div>
@@ -133,20 +133,20 @@
         >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
-              class="mr-2"
+              class="mr-2 ml-2"
               src="@/assets/icon/ic_tinder/communication_style@2x.png"
               width="25"
             />{{ $t("communication_style") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
-              <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
+              <div
+                class="bh-describe whitespace-nowrap ml-3 mr-3 overflow-hidden"
+              >
                 {{ communicationParam }}
               </div>
               <div class="cursor-pointer">
-                <i
-                  class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
-                ></i>
+                <BhChevron></BhChevron>
               </div>
             </div>
           </div>
@@ -158,20 +158,23 @@
         >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
-              class="mr-2"
+              class="mr-2 ml-2"
               src="@/assets/icon/ic_tinder/love_language@1x.png"
               width="25"
             />{{ $t("love_languages") }}
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
-              <div class="bh-describe whitespace-nowrap mr-3 overflow-hidden">
+              <div
+                class="bh-describe whitespace-nowrap ml-3 mr-3 overflow-hidden"
+              >
                 {{ loveLanguageParam }}
               </div>
               <div class="cursor-pointer">
-                <i
+                <!-- <i
                   class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
-                ></i>
+                ></i> -->
+                <BhChevron></BhChevron>
               </div>
             </div>
           </div>
@@ -182,8 +185,10 @@
 </template>
 
 <script>
+import BhChevron from "../../../bh-element-ui/button/bh-chevron";
 import { mapMutations } from "vuex";
 export default {
+  components: { BhChevron },
   name: "basic-information-page",
 
   data() {

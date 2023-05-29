@@ -12,7 +12,10 @@
         </div>
       </div>
 
-      <div class="form-edit overflow-scroll w-full">
+      <div
+        class="form-edit overflow-scroll w-full"
+        v-bind:class="{ 'reverse-layout': isArabic }"
+      >
         <FromSetting></FromSetting>
         <!--  -->
       </div>
@@ -39,6 +42,13 @@ export default {
     return {
       loading: false,
     };
+  },
+
+  computed: {
+    isArabic() {
+      debugger;
+      return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
+    },
   },
 
   methods: {

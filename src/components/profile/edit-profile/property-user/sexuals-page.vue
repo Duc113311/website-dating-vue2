@@ -22,7 +22,7 @@
             <div class="bg-interest absolute h-full w-full"></div>
           </div>
           <div class="flex items-center">
-            <i class="fa-solid fa-chevron-right bh-chevron-right"></i>
+            <bh-chevron></bh-chevron>
           </div>
         </div>
       </div>
@@ -31,7 +31,9 @@
 </template>
 
 <script>
+import bhChevron from "@/components/bh-element-ui/button/bh-chevron.vue";
 export default {
+  components: { bhChevron },
   name: "sexuals-page",
   data() {
     return {};

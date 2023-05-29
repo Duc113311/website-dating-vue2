@@ -2,7 +2,10 @@
   <div class="w-full h-full relative title-default" v-loading="loading">
     <!--  -->
     <div class="w-full h-full" v-if="isShowCrop">
-      <div class="flex w-full items-center header-edit border-bottom p-4">
+      <div
+        class="flex w-full items-center header-edit border-bottom p-4"
+        v-bind:class="{ 'reverse-layout': isArabic }"
+      >
         <div class="">
           <BhBack @onBackComponent="onBackMedia"></BhBack>
         </div>
@@ -67,6 +70,13 @@ export default {
       selectedFile: [],
       loading: false,
     };
+  },
+
+  computed: {
+    isArabic() {
+      debugger;
+      return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
+    },
   },
 
   methods: {

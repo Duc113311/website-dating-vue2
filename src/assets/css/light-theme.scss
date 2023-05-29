@@ -108,7 +108,14 @@
       rgba(240, 233, 233, 0) 22%
     );
   }
-
+  .bg-shadow-left {
+    background: rgb(73, 80, 99);
+    background: linear-gradient(
+      270deg,
+      var(--color-from) 7%,
+      rgba(240, 233, 233, 0) 22%
+    );
+  }
   .el-textarea__inner,
   .el-input__inner {
     border-radius: 10px !important;

@@ -30,9 +30,7 @@
             {{ convertArrayToString(nameLanguageParam) }}
           </div>
           <div class="cursor-pointer">
-            <i
-              class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
-            ></i>
+            <BhChevron></BhChevron>
           </div>
         </div>
       </div>
@@ -41,7 +39,9 @@
 </template>
 
 <script>
+import BhChevron from "../../../bh-element-ui/button/bh-chevron";
 export default {
+  components: { BhChevron },
   name: "language-page",
   data() {
     return {

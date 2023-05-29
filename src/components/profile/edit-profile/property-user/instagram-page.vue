@@ -16,7 +16,7 @@
         <div class="flex justify-between w-full items-center">
           <div class="pl-5 bh-item-title">{{ $t("connect_instagram") }}</div>
           <div>
-            <i class="fa-solid fa-chevron-right bh-chevron-right"></i>
+            <BhChevron></BhChevron>
           </div>
         </div>
       </div>
@@ -25,7 +25,9 @@
 </template>
 
 <script>
+import BhChevron from "../../../bh-element-ui/button/bh-chevron";
 export default {
+  components: { BhChevron },
   name: "instagram-page",
 
   data() {
