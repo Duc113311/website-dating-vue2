@@ -375,10 +375,12 @@ const actions = {
         },
       })
       .then((response) => {
+        debugger;
         commit("setVerifyImageRegister", response.data.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.log("Lỗi", error);
+        commit("setVerifyImageRegister", true);
       });
   },
 };

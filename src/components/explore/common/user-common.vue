@@ -28,6 +28,8 @@
           <ViewSwipe
             ref="myViewSwipe"
             @onShowDetailUser="onShowDetailUser"
+            @onShowPackage="onShowPackage"
+            @onShowFormLikeYou="onShowFormLikeYou"
             :listUserFilter="listCardGroups"
           ></ViewSwipe>
         </div>
@@ -39,6 +41,27 @@
         ></DetailProfile>
       </div>
     </div>
+
+    <!-- Hiển thị form chat khi cả 2 user match -->
+    <div
+      v-show="isShowFormMatch"
+      class="w-full h-full match-like z-20 absolute top-0 left-0"
+    >
+      <FormLikeToo @onHideLikeYou="onHideLikeYou"></FormLikeToo>
+    </div>
+    <div
+      v-if="isSendSuccess"
+      class="w-full h-full send-supper-like absolute top-0 left-0 z-20"
+    >
+      <FormSendSupperLike></FormSendSupperLike>
+    </div>
+
+    <div class="w-full h-full" v-if="isShowPackage">
+      <PopupGold
+        ref="packageDefault"
+        @onClickHidePackage="onClickHidePackage"
+      ></PopupGold>
+    </div>
   </div>
 </template>
 
@@ -48,12 +71,18 @@ import BhBack from "../../bh-element-ui/button/bh-back";
 import ViewSwipe from "../../home/swipe-tinder/view-swipe";
 import DetailProfile from "../../home/view/detail-profile";
 import { mapActions } from "vuex";
+import FormLikeToo from "@/components/home/match-like/form-like-too.vue";
+import FormSendSupperLike from "@/components/home/send-supper-like/form-send-supper-like.vue";
+import PopupGold from "@/components/packages/default/popup-gold.vue";
 export default {
   components: {
     LoadDefault,
     BhBack,
     DetailProfile,
     ViewSwipe,
+    FormLikeToo,
+    FormSendSupperLike,
+    PopupGold,
   },
   name: "user-common",
   data() {
@@ -61,6 +90,9 @@ export default {
       isShowLoadDing: true,
       isShowDetail: false,
       users: [],
+      isShowFormMatch: false,
+      isSendSuccess: false,
+      isShowPackage: false,
     };
   },
 
@@ -148,7 +180,21 @@ export default {
     onShowDetailUser(val) {
       this.isShowDetail = val;
     },
-
+    onClickHidePackage(val) {
+      this.isShowPackage = val;
+    },
+    onShowPackage(val) {
+      this.isShowPackage = val;
+    },
+    onHidePopupSendSuperLike(val) {
+      this.isSendSuccess = val;
+    },
+    onHideLikeYou(val) {
+      this.isShowFormMatch = val;
+    },
+    onShowFormLikeYou(val) {
+      this.isShowFormMatch = val;
+    },
     onBackVerified() {
       this.$router.go(-1);
     },

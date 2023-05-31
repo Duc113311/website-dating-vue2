@@ -12,9 +12,7 @@
               <div class="flex w-6/12 justify-end items-center cursor-pointer">
                 <div class="bh-describe mr-2">{{ bingLanguage }}</div>
                 <div class="cursor-pointer">
-                  <i
-                    class="fa-solid bh-chevron-right cursor-pointer fa-chevron-right"
-                  ></i>
+                  <bh-chevron></bh-chevron>
                 </div>
               </div>
             </div>
@@ -37,9 +35,10 @@
 </template>
 
 <script>
+import BhChevron from "@/components/bh-element-ui/button/bh-chevron.vue";
 import FormShowLanguages from "../dialog/form-show-languages";
 export default {
-  components: { FormShowLanguages },
+  components: { FormShowLanguages, BhChevron },
   name: "show-language",
 
   data() {
