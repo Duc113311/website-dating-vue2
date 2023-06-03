@@ -25,7 +25,7 @@
         <div class="flex w-6/12 justify-end">
           <div
             :title="convertArrayToString(nameLanguageParam)"
-            class="bh-describe whitespace-nowrap text-ellipsis mr-3 overflow-hidden"
+            class="bh-describe whitespace-nowrap text-ellipsis mr-3 overflow-hidden ml-3"
           >
             {{ convertArrayToString(nameLanguageParam) }}
           </div>

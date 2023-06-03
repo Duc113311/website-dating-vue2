@@ -3,7 +3,7 @@
     <div class="w-full mb-5">
       <div class="w-full flex bh-title p-3 items-center">
         <div>{{ $t("control_profile") }}</div>
-        <div class="ml-3">
+        <div class="ml-3 mr-3">
           <div class="style-package-update">{{ $t("sliver_package") }}</div>
         </div>
       </div>

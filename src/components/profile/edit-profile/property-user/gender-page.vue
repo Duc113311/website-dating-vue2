@@ -7,21 +7,13 @@
       <div class="w-full flex items-center">
         <div class="w-full style-bg-common bg-default">
           <div
-            class="flex justify-between w-full border-bottom pb-3 pt-3"
-            @click="onChangeGender(`men`)"
-          >
-            <div class="bh-item-title">Men</div>
-            <div v-if="showGenderUser === `men`">
-              <img src="@/assets/icon/ic_checked.svg" alt="" srcset="" />
-            </div>
-          </div>
-
-          <div
             class="flex justify-between w-full pb-3 pt-3"
-            @click="onChangeGender(`women`)"
+            v-for="(item, index) in listGenderUser"
+            :key="index"
+            @click="onChangeGender(item.code)"
           >
-            <div class="bh-item-title">Women</div>
-            <div v-if="showGenderUser === 'women'">
+            <div class="bh-item-title">{{ item.value }}</div>
+            <div v-if="showGenderUser === item.code">
               <img src="@/assets/icon/ic_checked.svg" alt="" srcset="" />
             </div>
           </div>
@@ -45,6 +37,10 @@ export default {
       const gender = this.$store.state.userModule.user_profile?.profiles.gender;
 
       return gender;
+    },
+
+    listGenderUser() {
+      return this.$store.state.commonModule.listLifeStyleSingle.genders;
     },
   },
 

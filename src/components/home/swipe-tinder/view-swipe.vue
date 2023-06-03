@@ -55,12 +55,11 @@
                   >
                     {{ scope.data.fullname }},
                   </div>
-                  &nbsp;
                   <div
                     class="mr-2 text-age"
                     v-if="scope.data.profiles.showAge === true"
                   >
-                    {{ bindingAge(scope.data?.dob) }}
+                    &nbsp;{{ bindingAge(scope.data?.dob) }}
                   </div>
                   <div v-if="scope.data?.verifyStatus === true">
                     <img src="@/assets/icon/ic_verified_enable.svg" />

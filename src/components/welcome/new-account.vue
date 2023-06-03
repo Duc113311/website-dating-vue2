@@ -4,7 +4,7 @@
   >
     <div class="w-full h-full">
       <div
-        class="text-2xl w-full h-10 flex items-center"
+        class="text-2xl w-full h-10 flex items-center cursor-pointer"
         @click="onShowDialogQuit()"
       >
         <i class="fas fa-times"></i>

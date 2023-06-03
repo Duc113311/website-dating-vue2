@@ -84,7 +84,7 @@ export default {
           // The signed-in user info.
           const userID = result.user.uid;
           await this.setOAuth2Id(userID);
-
+          debugger;
           await this.loginAppByAuthId({
             oAuth2Id: userID,
           });
@@ -107,10 +107,10 @@ export default {
           // The AuthCredential type that was used.
           const credential = GoogleAuthProvider.credentialFromError(error);
 
-          console.log(errorCode);
-          console.log(errorMessage);
-          console.log(email);
-          console.log(credential);
+          console.log("errorCode", errorCode);
+          console.log("errorMessage", errorMessage);
+          console.log("email", email);
+          console.log("credential", credential);
 
           // ...
         });

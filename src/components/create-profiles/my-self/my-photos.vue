@@ -15,7 +15,7 @@
           v-for="fileList in fileListValue"
           :key="fileList.id"
         >
-          <div class="dash-bor border-image bg-default relative">
+          <div class="dash-bor border-image bg-default relative cursor-pointer">
             <div class="wrapper">
               <div class="file-upload">
                 <input type="file" @change="toggleUpload($event, fileList)" />

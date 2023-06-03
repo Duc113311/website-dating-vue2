@@ -29,7 +29,7 @@
 
 <script>
 import { updateAcceptLanguage } from "../../../../configs/http-mongo.js";
-import { mapMutations } from "vuex";
+import { mapActions, mapMutations } from "vuex";
 export default {
   name: "form-show-languages",
 
@@ -45,6 +45,7 @@ export default {
 
   methods: {
     ...mapMutations(["setLanguageTranslate"]),
+    ...mapActions(["getListLifeStyleCommons"]),
     onChangeCancel() {
       this.$emit("onClickSaveLanguage", false);
     },
@@ -58,7 +59,8 @@ export default {
       this.$i18n.locale = val;
       await this.setLanguageTranslate(val);
       localStorage.setItem("language", val);
-      updateAcceptLanguage();
+      await updateAcceptLanguage();
+      await this.getListLifeStyleCommons();
       this.$emit("onClickSaveLanguage", false);
     },
   },

@@ -1,19 +1,24 @@
 <template>
-  <div class="w-full h-full relative bg-verified-success">
+  <div
+    class="w-full h-full relative bg-verified-success"
+    v-bind:class="{ 'reverse-layout': isArabic }"
+  >
     <div class="w-full h-full p-5">
       <div class="w-full header-detail flex justify-center items-center">
         <div class="w-full flex justify-center items-center">
           <div class="">
             <BhBack @onBackComponent="onBackVerified()"></BhBack>
           </div>
-          <div class="ml-28 w-3/4 title-print flex items-center">
-            <img
-              width="40"
-              src="@/assets/icon/ic_verified_enable.svg"
-              alt=""
-              srcset=""
-            />
-            <div>Photo verified</div>
+          <div class="title-print w-full text-center">
+            <div class="w-full text-center items-center flex justify-center">
+              <img
+                width="40"
+                src="@/assets/icon/ic_verified_enable.svg"
+                alt=""
+                srcset=""
+              />
+              <div>Photo verified</div>
+            </div>
           </div>
         </div>
       </div>
@@ -43,6 +48,13 @@ export default {
 
   data() {
     return {};
+  },
+
+  computed: {
+    isArabic() {
+      debugger;
+      return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
+    },
   },
 
   methods: {

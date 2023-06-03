@@ -14,7 +14,9 @@
           />
         </div>
         <div class="flex justify-between w-full items-center">
-          <div class="pl-5 bh-item-title">{{ $t("connect_instagram") }}</div>
+          <div class="pl-5 bh-item-title ml-3 mr-3">
+            {{ $t("connect_instagram") }}
+          </div>
           <div>
             <BhChevron></BhChevron>
           </div>

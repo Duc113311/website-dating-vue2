@@ -46,7 +46,10 @@
           @click="onTellMore()"
         >
           <span class="padding-describe-or">{{ $t("tell_me_more") }}</span>
-          <i class="text-2xl ml-3 fas fa-angle-down" @click="onAngleDown()"></i>
+          <i
+            class="text-2xl ml-3 fas fa-angle-down cursor-pointer"
+            @click="onAngleDown()"
+          ></i>
         </div>
       </div>
 
@@ -80,21 +83,21 @@
         </div>
       </div>
     </div>
-    <AvoidSomeone
+    <!-- <AvoidSomeone
       v-if="isShowAvoid"
       @onHideWellcome="onHideWellcome"
-    ></AvoidSomeone>
+    ></AvoidSomeone> -->
   </div>
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapActions, mapMutations } from "vuex";
 import BhLocation from "../../bh-element-ui/button/bh-location";
-import AvoidSomeone from "../../welcome/avoid-someone";
+// import AvoidSomeone from "../../welcome/avoid-someone";
 export default {
   components: {
     BhLocation,
-    AvoidSomeone,
+    // AvoidSomeone,
   },
   name: "my-location",
 
@@ -117,8 +120,31 @@ export default {
 
   methods: {
     ...mapMutations(["setAddressLocation"]),
-    onShowAvoid(value) {
-      this.isShowAvoid = value;
+    ...mapActions(["registerUserByAuthId"]),
+    async onShowAvoid(value) {
+      const userProfile = this.$store.state.userModule.user_profile;
+      debugger;
+      const userParam = {
+        oAuth2Id: userProfile.oAuth2Id,
+        fullname: userProfile.fullname,
+        dob: userProfile.dob,
+        gender: userProfile.profiles.gender,
+        address: userProfile.profiles.address,
+        location: userProfile.location,
+        genderFilter: userProfile.settings.genderFilter,
+        university: userProfile.profiles.university,
+        avatars: userProfile.profiles.avatars,
+        orientationSexuals: userProfile.profiles.orientationSexuals,
+        interests: userProfile.profiles.interests,
+        showGender: userProfile.profiles.showGender,
+        showSexual: userProfile.profiles.showSexual,
+        school: "",
+      };
+      console.log(userParam);
+
+      await this.registerUserByAuthId(userParam);
+
+      await this.$router.push({ path: "/home" }).catch(() => {});
     },
     async onHideWellcome(val) {
       this.$router.push({ path: "/home" });
@@ -168,6 +194,7 @@ export default {
         .then((data) => {
           if (data.results.length > 0) {
             this.address = data.results[0].formatted_address;
+            debugger;
             this.setAddressLocation(this.address);
           } else {
             this.address = "No address found";

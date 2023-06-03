@@ -1,10 +1,10 @@
 <template>
   <div
-    class="w-full h-full user-profile absolute top-0 bg-color-default p-8 left-0"
+    class="w-full h-full user-profile absolute top-0 bg-color-default p-5 left-0"
   >
     <div class="p-2">
       <div class="text-2xl w-full h-10 flex items-center">
-        <i class="fas fa-times" @click="onCloseDialog()"></i>
+        <i class="fas fa-times cursor-pointer" @click="onCloseDialog()"></i>
       </div>
       <div class="pt-5 pb-5">
         <div class="flex justify-center">

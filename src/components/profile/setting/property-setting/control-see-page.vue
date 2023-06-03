@@ -5,8 +5,8 @@
       <div class="w-full">
         <div class="w-full flex bh-title items-center p-3">
           <div class="form-set-item">{{ $t("control_who_you_see") }}</div>
-          <div class="ml-3">
-            <div class="style-package">{{ $t("sliver_package") }}</div>
+          <div class="ml-3 mr-3">
+            <div class="style-package-update">{{ $t("sliver_package") }}</div>
           </div>
         </div>
         <div class="w-full flex items-center form-set-list bg-default">
@@ -49,8 +49,8 @@
       <div class="w-full">
         <div class="w-full flex bh-title p-3 items-center">
           <div class="form-set-item">{{ $t("control_who_you_see") }}</div>
-          <div class="ml-3">
-            <div class="style-package">{{ $t("sliver_package") }}</div>
+          <div class="ml-3 mr-3">
+            <div class="style-package-update">{{ $t("sliver_package") }}</div>
           </div>
         </div>
         <div class="w-full flex items-center form-set-list bg-default">

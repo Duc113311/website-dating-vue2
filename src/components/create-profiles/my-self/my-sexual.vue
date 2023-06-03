@@ -11,7 +11,7 @@
         <div
           v-for="(el, index) in listDataSexuals"
           :key="el.code + index"
-          class="padding-check-option dark-theme-check not-border bg-default"
+          class="padding-check-option dark-theme-check not-border cursor-pointer bg-default"
           :id="el.code"
           @click="onClickChose(false, el.code)"
         >

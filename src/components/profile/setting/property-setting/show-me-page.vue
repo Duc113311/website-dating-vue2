@@ -9,31 +9,13 @@
       <div class="w-full flex items-center">
         <div class="w-full">
           <div
-            class="flex justify-between w-full border-bottom items-center"
-            @click="onChangeGenderShowMe(`men`)"
-          >
-            <div class="bh-item-title form-set-item">Men</div>
-            <div v-if="showMeGender === `men`">
-              <img src="@/assets/icon/ic_checked.svg" alt="" srcset="" />
-            </div>
-          </div>
-
-          <div
-            class="flex justify-between w-full border-bottom items-center"
-            @click="onChangeGenderShowMe(`women`)"
-          >
-            <div class="bh-item-title form-set-item">Women</div>
-            <div v-if="showMeGender === `women`">
-              <img src="@/assets/icon/ic_checked.svg" alt="" srcset="" />
-            </div>
-          </div>
-
-          <div
             class="flex justify-between w-full items-center"
-            @click="onChangeGenderShowMe(`all`)"
+            v-for="(item, index) in listGenderFilter"
+            :key="index"
+            @click="onChangeGenderShowMe(item.code)"
           >
-            <div class="bh-item-title form-set-item">Everyone</div>
-            <div v-if="showMeGender === `all`">
+            <div class="bh-item-title form-set-item">{{ item.value }}</div>
+            <div v-if="showMeGender === item.code">
               <img src="@/assets/icon/ic_checked.svg" alt="" srcset="" />
             </div>
           </div>
@@ -65,6 +47,11 @@ export default {
       const genderFilter =
         this.$store.state.userModule.user_profile?.settings.genderFilter;
       return genderFilter;
+    },
+
+    listGenderFilter() {
+      debugger;
+      return this.$store.state.commonModule.listLifeStyleSingle.genderFilters;
     },
   },
 

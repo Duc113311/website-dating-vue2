@@ -1,6 +1,7 @@
 <template>
   <div
     class="w-full h-full relative bg-color-detail pt-2 bg-color-default title-default"
+    v-bind:class="{ 'reverse-layout': isArabic }"
   >
     <div class="detail-page w-full h-full relative">
       <div class="bg-image-detail h-2/4 pl-2 pr-2">
@@ -37,7 +38,8 @@
             <div class="w-2/4 bg-orange-200" @click="nextImageRight()"></div>
           </div>
           <div
-            class="icon-close-infor cursor-pointer absolute right-4"
+            class="icon-close-infor cursor-pointer absolute"
+            v-bind:class="[isShowLeft ? 'left-4' : 'right-4']"
             @click="onClickHideProfile()"
           >
             <img src="@/assets/icon/bt_close_infor.svg" class="w-16" />
@@ -49,10 +51,10 @@
           <div class="w-full pl-2 pr-2">
             <div class="flex bh-margin-title">
               <div class="">
-                <span class="title-user">{{ this.userParam.fullname }}</span>
-                <span class="describe-user"
-                  >, {{ bindingAge(this.userParam.dob) }}</span
-                >
+                <span class="title-user">{{ this.userParam.fullname }},</span>
+                <span class="describe-user">{{
+                  bindingAge(this.userParam.dob)
+                }}</span>
               </div>
             </div>
             <div
@@ -382,6 +384,16 @@ export default {
   },
 
   computed: {
+    isShowLeft() {
+      if (this.$i18n.locale === "ar") {
+        return true;
+      }
+      return false;
+    },
+    isArabic() {
+      debugger;
+      return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
+    },
     kilometer() {
       if (localStorage.unit === "mi") {
         return "mi";

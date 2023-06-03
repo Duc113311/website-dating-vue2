@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-full show-popups z-10 flex justify-center items-center">
     <div class="backdrop" @click="onHidePopupPackage"></div>
-    <div class="dialog-container">
+    <div class="dialog-container" v-bind:class="{ 'reverse-layout': isArabic }">
       <div class="dialog">
         <div
           class="popup_report"
@@ -543,6 +543,10 @@ export default {
   props: ["nameGoldPackage"],
 
   computed: {
+    isArabic() {
+      debugger;
+      return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
+    },
     bindingData() {
       if (this.nameGoldPackage === "platinum") {
         return this.listPackages.platinum;

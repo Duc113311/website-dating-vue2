@@ -607,7 +607,7 @@ export default {
 
 <style lang="css">
 .header-detail {
-  height: 12%;
+  height: 10%;
 }
 
 .active-image {

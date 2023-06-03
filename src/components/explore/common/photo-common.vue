@@ -1,6 +1,7 @@
 <template>
   <div
     class="w-full h-full relative bg-verified-success"
+    v-bind:class="{ 'reverse-layout': isArabic }"
     :style="`background-image:url(${title.url})`"
   >
     <div class="w-full h-full p-5">
@@ -44,6 +45,10 @@ export default {
   },
 
   computed: {
+    isArabic() {
+      debugger;
+      return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
+    },
     title() {
       const name = this.$route.params.screamName;
       switch (name) {

@@ -1,6 +1,9 @@
 <template>
   <div class="w-full h-full">
-    <div class="w-full h-full height-scroll overflow-scroll">
+    <div
+      class="w-full h-full height-scroll overflow-scroll"
+      v-bind:class="{ 'reverse-layout': isArabic }"
+    >
       <div class="grid grid-cols-2 gap animation-grid">
         <!--  :style="{
             transform:
@@ -113,6 +116,11 @@ export default {
     listUserData() {
       debugger;
       return this.listUser;
+    },
+
+    isArabic() {
+      debugger;
+      return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
     },
   },
   watch: {

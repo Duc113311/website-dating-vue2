@@ -61,18 +61,30 @@
     </div>
 
     <NewAccount
-      @onCloseWelcome="onCloseWelcome"
       v-show="isShowWelcome"
+      @onShowQuestion="onShowQuestion"
     ></NewAccount>
+
+    <BhQuestion
+      @onHidePopupPackage="onHidePopupPackage"
+      @onActionApplyQuestion="onActionApplyQuestion"
+      :titleQuestion="titleQuestion"
+      :describeQuestion="describeQuestion"
+      v-show="isShowFormQuestion"
+    ></BhQuestion>
   </div>
 </template>
 
 <script>
+import { auth, signOut } from "../../configs/firebase";
+
+import BhQuestion from "../../components/bh-element-ui/notification/bh-question";
 import LoginBtn from "../../components/layout/btn-sign/login-btn";
 import NewAccount from "../../components/welcome/new-account";
 // import NavbarPage from "../../components/layout/navbar-login/navbar-page";
 export default {
   components: {
+    BhQuestion,
     LoginBtn,
     NewAccount,
     // NavbarPage,
@@ -82,6 +94,11 @@ export default {
   data() {
     return {
       isShowWelcome: false,
+      isShowFormQuestion: false,
+      titleQuestion: this.$t("are_you_sure?"),
+      describeQuestion: this.$t(
+        "you_will_exit_this_sign-up_process_and_all_your_information_will_be_deleted?"
+      ),
     };
   },
 
@@ -89,9 +106,32 @@ export default {
     onShowWelcome(val) {
       this.isShowWelcome = val;
     },
-
+    onShowQuestion(val) {
+      debugger;
+      this.isShowFormQuestion = val;
+    },
     onCloseWelcome(val) {
       this.isShowWelcome = val;
+    },
+
+    onHidePopupPackage(val) {
+      this.isShowFormQuestion = val;
+    },
+
+    async onActionApplyQuestion(val) {
+      await signOut(auth)
+        .then(() => {
+          debugger;
+          this.isShowFormQuestion = false;
+
+          this.isShowWelcome = false;
+          // Sign-out successful.
+          localStorage.removeItem("oAuth2Id");
+        })
+        .catch((error) => {
+          // An error happened.
+        });
+      this.$router.push({ path: "/" }).catch(() => {});
     },
   },
 };

@@ -2,7 +2,10 @@
   <div class="w-full h-full title-default">
     <div class="title-none"></div>
 
-    <div class="w-full title-like flex items-center">
+    <div
+      class="w-full title-like flex items-center"
+      v-bind:class="{ 'reverse-layout': isArabic }"
+    >
       <div
         v-bind:class="[isActiveLike ? 'peopleLike' : 'likeForYou']"
         class="w-2/4 cursor-pointer flex h-full justify-center like99 items-center text-xl font-bold"
@@ -47,6 +50,13 @@ export default {
       loading: false,
       isListLikeForYous: this.$store.state.likeTopicModule.listLikeForYous,
     };
+  },
+
+  computed: {
+    isArabic() {
+      debugger;
+      return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
+    },
   },
 
   methods: {

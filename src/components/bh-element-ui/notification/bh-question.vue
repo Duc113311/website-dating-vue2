@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full show-error absolute z-50">
-    <div class="v-modal-bg" @click="onHidePopupPackage()"></div>
+    <div class="v-modal-bg cursor-pointer" @click="onHidePopupPackage()"></div>
     <div class="w-full absolute top-64 left-0 flex justify-center items-center">
       <div
         class="bg-button-clear relative rounded-lg w-96 title-default bg-color-default"

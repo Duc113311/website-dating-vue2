@@ -1,6 +1,7 @@
 <template>
   <div
     class="w-full h-full p-2 bg-color-verified"
+    v-bind:class="{ 'reverse-layout': isArabic }"
     :style="`background:${colorBinding.bgColor}`"
   >
     <div class="w-full header-detail flex justify-center items-center p-3">
@@ -8,7 +9,7 @@
         <div class="">
           <BhBack @onBackComponent="onBackVerified()"></BhBack>
         </div>
-        <div class="ml-28 w-3/4 title-print flex items-center">
+        <div class="text-center title-print w-full">
           <div>{{ colorBinding.title }}</div>
         </div>
       </div>
@@ -97,6 +98,10 @@ export default {
   },
 
   computed: {
+    isArabic() {
+      debugger;
+      return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
+    },
     colorBinding() {
       const name = this.$route.params.screamName;
 

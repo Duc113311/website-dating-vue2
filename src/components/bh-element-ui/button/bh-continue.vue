@@ -8,6 +8,7 @@
         <div class="flex justify-center items-center">
           <div
             :class="isShowMy ? 'not-show' : 'showed'"
+            class="cursor-pointer"
             @click="onClickChosse(true)"
           >
             <div class="flex justify-center bg-checked">
@@ -17,6 +18,7 @@
           <div
             :class="isNotShowMy ? 'showed' : 'not-show'"
             @click="onClickChosse(false)"
+            class="cursor-pointer"
           >
             <div class="flex justify-center">
               <i class="fa-regular fa-circle w-8 h-8"></i>

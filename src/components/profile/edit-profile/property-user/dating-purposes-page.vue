@@ -19,7 +19,9 @@
         class="flex w-6/12 justify-end items-center"
         @click="onShowPurposes()"
       >
-        <div class="bh-describe w-full whitespace-nowrap mr-3 overflow-hidden">
+        <div
+          class="bh-describe w-full whitespace-nowrap mr-3 ml-3 overflow-hidden"
+        >
           <div
             class="flex justify-end w-full"
             v-if="Object.keys(purposesParam).length === 0"

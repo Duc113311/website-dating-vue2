@@ -40,9 +40,10 @@ export default {
     return {
       isShowWelcome: false,
       isShowFormQuestion: false,
-      titleQuestion: "Are you sure?",
-      describeQuestion:
-        "You will exit this sign-up process and all your information will be deleted?",
+      titleQuestion: this.$t("are_you_sure?"),
+      describeQuestion: this.$t(
+        "you_will_exit_this_sign-up_process_and_all_your_information_will_be_deleted?"
+      ),
     };
   },
 

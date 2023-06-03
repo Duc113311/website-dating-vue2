@@ -2,7 +2,10 @@
   <div
     class="w-full h-full relative bg-color-detail pt-2 bg-color-default title-default"
   >
-    <div class="detail-page w-full h-full relative">
+    <div
+      class="detail-page w-full h-full relative"
+      v-bind:class="{ 'reverse-layout': isArabic }"
+    >
       <div class="bg-image-detail h-2/4 pl-2 pr-2">
         <div class="avatar w-full h-full relative border-image">
           <div
@@ -373,6 +376,10 @@ export default {
   },
 
   computed: {
+    isArabic() {
+      debugger;
+      return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
+    },
     kilometer() {
       return localStorage.getItem("unit") ? localStorage.getItem("unit") : "km";
     },

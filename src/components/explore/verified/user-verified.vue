@@ -1,11 +1,16 @@
 <template>
-  <div class="w-full h-full p-2 bg-color-verified">
+  <div
+    class="w-full h-full p-2 bg-color-verified"
+    v-bind:class="{ 'reverse-layout': isArabic }"
+  >
     <div class="w-full header-detail flex justify-center items-center p-3">
       <div class="w-full flex justify-center items-center">
         <div class="">
           <BhBack @onBackComponent="onBackVerified()"></BhBack>
         </div>
-        <div class="ml-28 w-3/4 title-print flex items-center">
+        <div
+          class="text-center title-print w-full flex justify-center items-center"
+        >
           <img
             width="40"
             src="@/assets/icon/ic_verified_enable.svg"
@@ -28,6 +33,9 @@
           <ViewSwipe
             ref="myViewSwipe"
             @onShowDetailUser="onShowDetailUser"
+            @onShowPackage="onShowPackage"
+            @onShowFormLikeYou="onShowFormLikeYou"
+            :listUserFilter="listCardGroups"
           ></ViewSwipe>
         </div>
       </div>
@@ -63,6 +71,25 @@ export default {
     };
   },
 
+  computed: {
+    isArabic() {
+      debugger;
+      return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
+    },
+
+    listCardGroups: {
+      get() {
+        debugger;
+        return this.$store.state.homeModule.listCardGroups
+          ? this.$store.state.homeModule.listCardGroups
+          : this.users;
+      },
+      set(newData) {
+        this.users = newData;
+      },
+    },
+  },
+
   methods: {
     onShowDetailUser(val) {
       this.isShowDetail = val;
@@ -75,7 +102,12 @@ export default {
     onHideProfile(val) {
       this.isShowDetail = val;
     },
-
+    onShowFormLikeYou(val) {
+      this.isShowFormMatch = val;
+    },
+    onShowPackage(val) {
+      this.isShowPackage = val;
+    },
     onActionDecide(val) {
       this.isShowDetail = false;
 
