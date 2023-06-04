@@ -40,7 +40,7 @@
             <div
               v-for="(el, index) in listDataSexuals"
               :key="el.code + index"
-              class="padding-check-option bg-default dark-theme-check not-border"
+              class="padding-check-option bg-default dark-theme-check border-default-radio"
               :id="el.code"
               @click="onClickChose(false, el.code)"
             >
@@ -151,7 +151,7 @@ export default {
           listDarks[indexValue].classList.add("border-active");
           checkActive["check" + indexValue].classList.add("checkeds");
           notCheckActive["not-check" + indexValue].classList.add("not-check");
-          listDarks[indexValue].classList.remove("not-border");
+          listDarks[indexValue].classList.remove("border-default-radio");
           checkActive["check" + indexValue].classList.remove("not-check");
           notCheckActive["not-check" + indexValue].classList.remove("checkeds");
         } else {
@@ -160,7 +160,7 @@ export default {
           notCheckActive["not-check" + indexValue].classList.remove(
             "not-check"
           );
-          listDarks[indexValue].classList.add("not-border");
+          listDarks[indexValue].classList.add("border-default-radio");
           checkActive["check" + indexValue].classList.add("not-check");
           notCheckActive["not-check" + indexValue].classList.add("checkeds");
         }
@@ -198,7 +198,7 @@ export default {
       listDarks[element].classList.add("border-active");
       checkActive["check" + element].classList.add("checkeds");
       notCheckActive["not-check" + element].classList.add("not-check");
-      listDarks[element].classList.remove("not-border");
+      listDarks[element].classList.remove("border-default-radio");
       checkActive["check" + element].classList.remove("not-check");
       notCheckActive["not-check" + element].classList.remove("checkeds");
     }

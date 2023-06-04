@@ -11,7 +11,7 @@
         <div
           v-for="(el, index) in listDataSexuals"
           :key="el.code + index"
-          class="padding-check-option dark-theme-check not-border cursor-pointer bg-default"
+          class="padding-check-option dark-theme-check border-default-radio cursor-pointer bg-default"
           :id="el.code"
           @click="onClickChose(false, el.code)"
         >
@@ -78,6 +78,7 @@ export default {
     ...mapActions(["getListDataSexuals"]),
 
     onClickChose(val, indexValue) {
+      debugger;
       const listDarks = document.getElementsByClassName("dark-theme-check");
       const checkActive = document.getElementsByClassName("check-active");
       const notCheckActive =
@@ -90,27 +91,27 @@ export default {
       const lengthSexual = sexualsData.length;
 
       const findIndex = sexualsData.findIndex((x) => x === indexValue);
-      if (lengthSexual <= 3) {
+      if (lengthSexual >= 1) {
         if (findIndex !== -1) {
-          listDarks[indexValue].classList.add("option-active");
+          listDarks[indexValue].classList.add("border-active");
           checkActive["check" + indexValue].classList.add("checkeds");
           notCheckActive["not-check" + indexValue].classList.add("not-check");
-          listDarks[indexValue].classList.remove("not-border");
+          listDarks[indexValue].classList.remove("border-default-radio");
           checkActive["check" + indexValue].classList.remove("not-check");
           notCheckActive["not-check" + indexValue].classList.remove("checkeds");
         } else {
-          listDarks[indexValue].classList.remove("option-active");
+          listDarks[indexValue].classList.remove("border-active");
           checkActive["check" + indexValue].classList.remove("checkeds");
           notCheckActive["not-check" + indexValue].classList.remove(
             "not-check"
           );
-          listDarks[indexValue].classList.add("not-border");
+          listDarks[indexValue].classList.add("border-default-radio");
           checkActive["check" + indexValue].classList.add("not-check");
           notCheckActive["not-check" + indexValue].classList.add("checkeds");
         }
       }
 
-      if (lengthSexual === 3) {
+      if (lengthSexual >= 1) {
         this.$emit("onStatusActive", true);
       } else {
         this.$emit("onStatusActive", false);
@@ -188,10 +189,10 @@ export default {
       this.$store.state.userModule.user_profile.profiles.orientationSexuals;
     for (let index = 0; index < dataSexuals.length; index++) {
       const element = dataSexuals[index];
-      listDarks[element].classList.add("option-active");
+      listDarks[element].classList.add("border-active");
       checkActive["check" + element].classList.add("checkeds");
       notCheckActive["not-check" + element].classList.add("not-check");
-      listDarks[element].classList.remove("not-border");
+      listDarks[element].classList.remove("border-default-radio");
       checkActive["check" + element].classList.remove("not-check");
       notCheckActive["not-check" + element].classList.remove("checkeds");
     }

@@ -76,6 +76,10 @@
   .border-active {
     border: 1.5px solid var(--color-border-button-active);
   }
+
+  .border-default-radio {
+    border: 1.5px solid var(--color-from);
+  }
   .border-login {
     border-radius: 10px;
     border: 1.5px solid var(--color-border-button-sign);
