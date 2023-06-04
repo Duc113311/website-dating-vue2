@@ -120,7 +120,7 @@ const actions = {
    */
   async getListCardForUser({ commit }, pageSize) {
     await http_mongo
-      .get(`api/v1/cards/recommends?pageSize=${pageSize}`, {
+      .get(`api/v1/cards?pageSize=${pageSize}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("tokenId")}` },
       })
       .then((response) => {

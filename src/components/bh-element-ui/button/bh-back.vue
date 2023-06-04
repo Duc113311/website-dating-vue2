@@ -3,7 +3,13 @@
     class="text-xl w-full h-10 flex items-center justify-between cursor-pointer"
   >
     <div @click="onClickBack()" class="cursor-pointer">
-      <i class="fas fa-chevron-left size-icon"></i>
+      <img
+        src="@/assets/icon/ic_back_dark.svg"
+        width="30"
+        alt=""
+        v-if="colorBt"
+      />
+      <img src="@/assets/icon/ic_back_light.svg" width="30" alt="" v-else />
     </div>
     <div class="font-skip" v-show="isShowSkipParam" @click="onClickSkip()">
       {{ $t("skip") }}
@@ -23,6 +29,10 @@ export default {
   computed: {
     isShowSkipParam() {
       return this.isShowSkip;
+    },
+
+    colorBt() {
+      return this.$store.state.commonModule.statusLayout;
     },
   },
 

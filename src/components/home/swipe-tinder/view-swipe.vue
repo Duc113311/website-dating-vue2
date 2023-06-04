@@ -33,12 +33,17 @@
         />
         <div
           class="flex w-full justify-center absolute top-0 content-center p-0.5 border-solid mt-3"
+          v-if="scope.data.profiles.avatars.length > 1"
         >
           <button
             v-for="(data, index) in scope.data.profiles.avatars"
             :key="data"
             :id="`avatar_${index}`"
-            :class="index === 0 ? 'active-image' : 'no-active'"
+            :class="
+              index === 0 && urlImageLength === ''
+                ? 'active-image'
+                : 'no-active'
+            "
             class="bt-img imageAvatar p-0.5 rounded-lg mr-0.5 no-active"
             @click="onClickNextImage(data)"
           ></button>
@@ -276,7 +281,7 @@ export default {
       idImage: "",
       isPointer: true,
       isPointerNext: true,
-      imageActive: 0,
+      imageActive: this.$store.state.userModule.imageActives,
       isAnimating: false,
       isProgressBoost: true,
       truc_x: 0,
@@ -306,6 +311,9 @@ export default {
   props: ["isLoadData", "listUserFilter"],
 
   computed: {
+    urlImageLength() {
+      return this.$store.state.userModule.urlImage;
+    },
     valueKi() {
       if (localStorage.unit === "mi") {
         return "mi";
@@ -348,6 +356,10 @@ export default {
       "setDetailUserProfile",
       "setDataUserMatch",
       "setIsValueReport",
+      "setIndexImageActiveRight",
+      "setIndexImageActiveLeft",
+      "setIndexImageActiveDefault",
+      "setUrlImage",
     ]),
 
     ...mapActions([
@@ -605,10 +617,12 @@ export default {
       debugger;
       if (this.isDragging) {
         this.isPointerNext = true;
-        if (this.imageActive !== 0) {
-          this.imageActive = this.imageActive - 1;
 
-          if (this.imageActive === 0) {
+        if (this.$store.state.userModule.imageActives !== 0) {
+          this.setIndexImageActiveLeft();
+          const indexActive = this.$store.state.userModule.imageActives;
+
+          if (indexActive === 0) {
             if (data.about.length !== 0) {
               this.scrods = this.scrods - 1;
             } else {
@@ -618,7 +632,7 @@ export default {
               }
             }
           }
-          if (this.imageActive === 1) {
+          if (indexActive === 1) {
             const basic = this.bingBasicInformation(data);
             if (basic.length !== 0) {
               if (this.scrods === 3) {
@@ -633,7 +647,7 @@ export default {
               }
             }
           }
-          if (this.imageActive === 2) {
+          if (indexActive === 2) {
             const styleStatic = this.bingLifeStyleStatic(data);
             if (styleStatic.length !== 0) {
               this.scrods = this.scrods - 1;
@@ -644,7 +658,7 @@ export default {
               }
             }
           }
-          if (this.imageActive === 3) {
+          if (indexActive === 3) {
             const styleStatic = this.bingLifeStyleStatic(data);
             if (styleStatic.length !== 0) {
               if (this.scrods === 5) {
@@ -658,7 +672,7 @@ export default {
               }
             }
           }
-          if (this.imageActive === 4) {
+          if (indexActive === 4) {
             if (data.jobTitle.length !== 0 || data.school.length !== 0) {
               this.scrods = this.scrods - 1;
             } else {
@@ -668,20 +682,22 @@ export default {
               }
             }
           }
-          if (this.imageActive === 5) {
+          if (indexActive === 5) {
             const styleStatic = this.bingInterests(data);
             if (styleStatic.length !== 0) {
               this.scrods = this.scrods - 1;
             }
           }
 
-          if (this.imageActive < value.length) {
+          if (indexActive < value.length) {
             document
-              .getElementById(`avatar_` + parseInt(this.imageActive + 1))
+              .getElementById(`avatar_` + parseInt(indexActive + 1))
               .classList.remove("active-image");
-            this.idImage = value[this.imageActive];
+            this.idImage = value[indexActive];
+            this.setUrlImage(this.idImage);
+
             document
-              .getElementById(`avatar_` + parseInt(this.imageActive))
+              .getElementById(`avatar_` + parseInt(indexActive))
               .classList.add("active-image");
           }
 
@@ -701,8 +717,10 @@ export default {
       if (this.isDragging) {
         this.isPointerNext = true;
 
-        this.imageActive = this.imageActive + 1;
-        if (this.imageActive === 1) {
+        this.setIndexImageActiveRight();
+        let indexActive = this.$store.state.userModule.imageActives;
+
+        if (indexActive === 1) {
           if (data.about.length !== 0) {
             this.scrods = this.scrods + 1;
           } else {
@@ -712,7 +730,7 @@ export default {
             }
           }
         }
-        if (this.imageActive === 2) {
+        if (indexActive === 2) {
           const basic = this.bingBasicInformation(data);
           if (basic.length !== 0) {
             this.scrods = this.scrods + 1;
@@ -723,7 +741,7 @@ export default {
             }
           }
         }
-        if (this.imageActive === 3) {
+        if (indexActive === 3) {
           const styleStatic = this.bingLifeStyleStatic(data);
           if (styleStatic.length !== 0) {
             this.scrods = this.scrods + 1;
@@ -733,7 +751,7 @@ export default {
             }
           }
         }
-        if (this.imageActive === 4) {
+        if (indexActive === 4) {
           if (data.jobTitle.length !== 0 || data.school.length !== 0) {
             this.scrods = this.scrods + 1;
           } else {
@@ -743,7 +761,7 @@ export default {
             }
           }
         }
-        if (this.imageActive === 5) {
+        if (indexActive === 5) {
           const styleStatic = this.bingInterests(data);
           if (styleStatic.length !== 0) {
             if (this.scrods !== 5) {
@@ -753,13 +771,15 @@ export default {
         }
         console.log(data);
 
-        if (this.imageActive < value.length) {
+        if (indexActive < value.length) {
           document
-            .getElementById(`avatar_` + parseInt(this.imageActive - 1))
+            .getElementById(`avatar_` + parseInt(indexActive - 1))
             .classList.remove("active-image");
-          this.idImage = value[this.imageActive];
+          this.idImage = value[indexActive];
+          this.setUrlImage(this.idImage);
+
           document
-            .getElementById(`avatar_` + parseInt(this.imageActive))
+            .getElementById(`avatar_` + parseInt(indexActive))
             .classList.add("active-image");
         } else {
           console.log("end");
@@ -768,7 +788,7 @@ export default {
             this.animate2 = false;
             // Thực hiện thêm ảnh mới hoặc xóa ảnh hiện tại tại đây
           }, 200);
-          this.imageActive = this.imageActive - 1;
+          this.setIndexImageActiveLeft();
         }
 
         this.isActiveImag = false;
@@ -831,6 +851,7 @@ export default {
           this.history[0] = { ...this.history[0], ...value.item };
         }
         this.imageActive = 0;
+        this.setIndexImageActiveDefault(0);
       }
       if (value.type.toString() === "super") {
         // this.isAnimating = true;
@@ -859,6 +880,7 @@ export default {
           }
 
           this.imageActive = 0;
+          this.setIndexImageActiveDefault(0);
         } else {
           // Check giá trị likeRemaining>0
           if (isSupperLikeValue.superLikeRemaining > 0) {
@@ -967,6 +989,7 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
+      debugger;
       const isNopeReportValue = this.$store.state.homeModule.isNopeReport;
       if (isNopeReportValue) {
         this.decide("nope");
@@ -975,6 +998,73 @@ export default {
         }, 1000);
       }
     });
+    debugger;
+    if (this.$store.state.userModule.urlImage !== "") {
+      const indexActive = this.$store.state.userModule.imageActives;
+      this.idImage = this.$store.state.userModule.urlImage;
+      this.isActiveImag = false;
+      document
+        .getElementById(`avatar_` + parseInt(indexActive))
+        .classList.add("active-image");
+      debugger;
+      const informationUser =
+        this.$store.state.userModule.userProfileDetail.profiles;
+      if (indexActive === 1) {
+        if (informationUser.about.length !== 0) {
+          this.scrods = this.scrods + 1;
+        } else {
+          const basic = this.bingBasicInformation(informationUser);
+          if (basic.length !== 0) {
+            this.scrods = this.scrods + 2;
+          }
+        }
+      }
+      if (indexActive === 2) {
+        const basic = this.bingBasicInformation(informationUser);
+        if (basic.length !== 0) {
+          this.scrods = this.scrods + 1;
+        } else {
+          const styleStatic = this.bingLifeStyleStatic(informationUser);
+          if (styleStatic.length !== 0) {
+            this.scrods = this.scrods + 2;
+          }
+        }
+      }
+      if (indexActive === 3) {
+        const styleStatic = this.bingLifeStyleStatic(informationUser);
+        if (styleStatic.length !== 0) {
+          this.scrods = this.scrods + 1;
+        } else {
+          if (
+            informationUser.jobTitle.length !== 0 ||
+            informationUser.school.length !== 0
+          ) {
+            this.scrods = this.scrods + 2;
+          }
+        }
+      }
+      if (indexActive === 4) {
+        if (
+          informationUser.jobTitle.length !== 0 ||
+          informationUser.school.length !== 0
+        ) {
+          this.scrods = this.scrods + 1;
+        } else {
+          const styleStatic = this.bingInterests(informationUser);
+          if (styleStatic.length !== 0) {
+            this.scrods = this.scrods + 2;
+          }
+        }
+      }
+      if (indexActive === 5) {
+        const styleStatic = this.bingInterests(informationUser);
+        if (styleStatic.length !== 0) {
+          if (this.scrods !== 5) {
+            this.scrods = this.scrods + 1;
+          }
+        }
+      }
+    }
   },
 };
 </script>

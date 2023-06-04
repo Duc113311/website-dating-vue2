@@ -145,6 +145,9 @@ const state = {
   completeUser: 0,
 
   listLanguageGlobal: [],
+
+  imageActives: 0,
+  urlImage: "",
 };
 
 const getters = {
@@ -381,6 +384,20 @@ const actions = {
 };
 
 const mutations = {
+  setIndexImageActiveRight(state, data) {
+    debugger;
+    state.imageActives = state.imageActives + 1;
+  },
+  setIndexImageActiveLeft(state, data) {
+    state.imageActives = state.imageActives - 1;
+  },
+  setIndexImageActiveDefault(state, data) {
+    state.imageActives = data;
+    state.urlImage = "";
+  },
+  setUrlImage(state, value) {
+    state.urlImage = value;
+  },
   setImageCrop(state, value) {
     debugger;
     const indexImage = state.avatarChecked.length;

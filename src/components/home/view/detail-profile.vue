@@ -28,7 +28,6 @@
               v-for="(data, index) in this.userParam?.profiles?.avatars"
               :key="data"
               :id="`avatar_${index}`"
-              :class="index === 0 ? 'active-image' : 'no-active'"
               class="bt-img imageAvatar p-0.5 rounded-lg mr-0.5 no-active"
               @click="onClickNextImage(data)"
             ></button>
@@ -52,9 +51,9 @@
             <div class="flex bh-margin-title">
               <div class="">
                 <span class="title-user">{{ this.userParam.fullname }},</span>
-                <span class="describe-user">{{
-                  bindingAge(this.userParam.dob)
-                }}</span>
+                <span class="describe-user"
+                  >&nbsp;{{ bindingAge(this.userParam.dob) }}</span
+                >
               </div>
             </div>
             <div
@@ -102,7 +101,7 @@
             >
               <img src="@/assets/icon/ic_gender.svg" alt="" srcset="" />
               <div class="ml-3 padding-describe-option">
-                {{ stringToUpperCase(this.userParam.profiles.gender) }}
+                {{ bingGenderLanguage(this.userParam.profiles.gender) }}
               </div>
             </div>
 
@@ -462,7 +461,13 @@ export default {
   },
 
   methods: {
-    ...mapMutations(["setUrlNameAvatarUser", "setLeftRightAvatar"]),
+    ...mapMutations([
+      "setUrlNameAvatarUser",
+      "setLeftRightAvatar",
+      "setIndexImageActiveLeft",
+      "setIndexImageActiveRight",
+      "setUrlImage",
+    ]),
     ...mapActions(["getListReasonReportUser"]),
     onActionDecide(val) {
       this.$emit("onActionDecide", val);
@@ -474,6 +479,21 @@ export default {
 
     stringName(value) {
       return functionValidate.titleCase(value);
+    },
+
+    bingGenderLanguage(val) {
+      debugger;
+
+      const genderCode = val;
+      const genderList =
+        this.$store.state.commonModule.listLifeStyleSingle.genders;
+      debugger;
+      if (genderCode) {
+        const findData = genderList.find((x) => x.code === genderCode);
+        if (findData) {
+          return findData.value;
+        }
+      }
     },
 
     bingBasicInformation(val) {
@@ -695,16 +715,20 @@ export default {
     nextImageLeft() {
       const valueImg = this.userParam.profiles.avatars;
 
-      if (this.imageActive !== 0) {
-        this.imageActive = this.imageActive - 1;
+      debugger;
+      if (this.$store.state.userModule.imageActives !== 0) {
+        this.setIndexImageActiveLeft();
+        let indexActive = this.$store.state.userModule.imageActives;
 
-        if (this.imageActive < valueImg.length) {
+        if (indexActive < valueImg.length) {
           document
-            .getElementById(`avatar_` + parseInt(this.imageActive + 1))
+            .getElementById(`avatar_` + parseInt(indexActive + 1))
             .classList.remove("active-image");
-          this.idImage = valueImg[this.imageActive];
+          this.idImage = valueImg[indexActive];
+          this.setUrlImage(this.idImage);
+
           document
-            .getElementById(`avatar_` + parseInt(this.imageActive))
+            .getElementById(`avatar_` + parseInt(indexActive))
             .classList.add("active-image");
         }
 
@@ -715,18 +739,20 @@ export default {
     nextImageRight() {
       const valueImg = this.userParam.profiles.avatars;
 
-      this.imageActive = this.imageActive + 1;
-
-      if (this.imageActive < valueImg.length) {
+      this.setIndexImageActiveRight();
+      let indexActive = this.$store.state.userModule.imageActives;
+      if (indexActive < valueImg.length) {
         document
-          .getElementById(`avatar_` + parseInt(this.imageActive - 1))
+          .getElementById(`avatar_` + parseInt(indexActive - 1))
           .classList.remove("active-image");
-        this.idImage = valueImg[this.imageActive];
+        this.idImage = valueImg[indexActive];
+        console.log(this.idImage);
+        this.setUrlImage(this.idImage);
         document
-          .getElementById(`avatar_` + parseInt(this.imageActive))
+          .getElementById(`avatar_` + parseInt(indexActive))
           .classList.add("active-image");
       } else {
-        this.imageActive = this.imageActive - 1;
+        this.setIndexImageActiveLeft();
       }
 
       this.isActiveImag = false;
@@ -748,6 +774,20 @@ export default {
 
   async created() {
     await this.getListReasonReportUser();
+  },
+
+  mounted() {
+    debugger;
+    const indexActive = this.$store.state.userModule.imageActives;
+
+    const avatarUrl = this.userParam.profiles?.avatars;
+    const findUrl = avatarUrl[indexActive];
+    debugger;
+    this.idImage = findUrl;
+    this.isActiveImag = false;
+    document
+      .getElementById(`avatar_` + parseInt(indexActive))
+      .classList.add("active-image");
   },
 };
 </script>
