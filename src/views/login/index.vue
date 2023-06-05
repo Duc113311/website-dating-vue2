@@ -42,11 +42,11 @@
                         "by_clicking_'login',_you_agree_with_our_terms._learn_how_we_process_your_data_in_our"
                       )
                     }}
-                    <a class="underline decoration-1" href="http://">{{
+                    <a class="underline decoration-1" href="#">{{
                       $t("privacy_policy")
                     }}</a>
                     {{ $t("and") }}
-                    <a class="underline decoration-1" href="http://">{{
+                    <a class="underline decoration-1" href="#">{{
                       $t("cookies_policy")
                     }}</a></span
                   >
