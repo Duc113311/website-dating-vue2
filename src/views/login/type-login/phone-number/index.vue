@@ -35,7 +35,6 @@ import BhContinue from "@/components/bh-element-ui/button/bh-continue.vue";
 import intlTelInput from "intl-tel-input";
 import MyNumber from "@/components/form-login/phone-number/my-number";
 import { mapActions, mapMutations } from "vuex";
-import $ from "jquery";
 
 import {
   auth,
@@ -55,6 +54,7 @@ export default {
 
   data() {
     return {
+      valCodeQR: "",
       screenNumber: 0,
       isStatusRequire: false,
       isLoadings: false,
@@ -62,8 +62,9 @@ export default {
       txtErrorCode: false,
       codeOTP: "",
       isHide: false,
-      valCodeQR: "",
       sentCodeId: "", // Mã sendCodeId firebase gửi về
+      valueIntlTel: {},
+      valuePhoneNumber: "",
     };
   },
 
@@ -80,6 +81,8 @@ export default {
     validateRequire(value) {
       this.isStatusRequire = value.statusActive;
       this.codeOTP = value.codeOTP;
+      this.valuePhoneNumber = value.valueIntlTel;
+      this.valueIntlTel = value.valuePhoneNumber;
     },
 
     setuprecaptcha() {
@@ -141,7 +144,9 @@ export default {
         const result = true;
         // const textCode = this.renderCountryCode();
         // console.log("Mã vung", textCode);
-        const phoneNumber = this.valCodeQR.getNumber();
+        debugger;
+        const phoneNumber = this.valuePhoneNumber.getNumber();
+
         this.txtPhoneNumber = phoneNumber;
         console.log(this.txtPhoneNumber);
         if (result) {
@@ -218,26 +223,35 @@ export default {
         });
     },
 
-    // renderCountryCode() {
-    //   var input = document.querySelector("#phone");
-    //   this.valCodeQR = intlTelInput(input, {
-    //     initialCountry: "vn",
-    //     utilsScript:
-    //       "https://cdn.jsdelivr.net/npm/intl-tel-input@16.0.3/build/js/utils.js",
-    //   });
+    renderCountryCode() {
+      var input = document.querySelector("#phone");
+      debugger;
+      this.valCodeQR = intlTelInput(input, {
+        separateDialCode: true, // Hiển thị mã điện thoại quốc gia riêng rẽ
+        initialCountry: "vn",
+        utilsScript:
+          "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js", // Đường dẫn đến tệp utils.js
+      });
 
-    //   return this.valCodeQR;
-    // },
+      return this.valCodeQR;
+    },
   },
 
   mounted() {
-    var input = document.querySelector("#phone");
-    this.valCodeQR = intlTelInput(input, {
-      initialCountry: "auto",
-      utilsScript:
-        "https://cdn.jsdelivr.net/npm/intl-tel-input@16.0.3/build/js/utils.js",
-    });
-    debugger;
+    // var input = document.querySelector("#phone");
+    // this.valueIntlTel = intlTelInput(input, {
+    //   initialCountry: "auto",
+    //   geoIpLookup: function (callback) {
+    //     $.get("https://ipinfo.io", function () {}, "jsonp").always(function (
+    //       resp
+    //     ) {
+    //       var countryCode = resp && resp.country ? resp.country : "vn";
+    //       callback(countryCode);
+    //     });
+    //   },
+    // });
+    // debugger;
+    // input.focus();
   },
 };
 </script>

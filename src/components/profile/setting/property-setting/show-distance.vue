@@ -102,13 +102,14 @@ export default {
       this.$store.state.userModule.user_profile.settings.distancePreference
         .unit;
     console.log(location);
-
-    document
-      .getElementById("location_" + location)
-      .classList.add("active-distance");
-    document
-      .getElementById("location_" + location)
-      .classList.remove("no-active-distance");
+    if (location) {
+      document
+        .getElementById("location_" + location)
+        .classList.add("active-distance");
+      document
+        .getElementById("location_" + location)
+        .classList.remove("no-active-distance");
+    }
   },
 };
 </script>

@@ -1,5 +1,6 @@
 <template>
   <div
+    v-bind:class="{ 'reverse-layout': isArabic }"
     class="w-full bottom-0 right-0 border-top footer-body flex justify-center bg-color-default content-center text-center cursor-pointer"
   >
     <div @click="onClickHome()">
@@ -35,6 +36,10 @@ export default {
   computed: {
     isActiveFooter() {
       return true;
+    },
+    isArabic() {
+      debugger;
+      return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
     },
   },
 

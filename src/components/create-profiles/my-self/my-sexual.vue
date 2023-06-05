@@ -91,7 +91,7 @@ export default {
       const lengthSexual = sexualsData.length;
 
       const findIndex = sexualsData.findIndex((x) => x === indexValue);
-      if (lengthSexual >= 1) {
+      if (lengthSexual <= 3) {
         if (findIndex !== -1) {
           listDarks[indexValue].classList.add("border-active");
           checkActive["check" + indexValue].classList.add("checkeds");

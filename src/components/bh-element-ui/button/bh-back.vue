@@ -2,7 +2,11 @@
   <div
     class="text-xl w-full h-10 flex items-center justify-between cursor-pointer"
   >
-    <div @click="onClickBack()" class="cursor-pointer">
+    <div
+      @click="onClickBack()"
+      class="cursor-pointer"
+      v-bind:class="{ 'chevron-left': isArabic }"
+    >
       <img
         src="@/assets/icon/ic_back_dark.svg"
         width="30"
@@ -30,7 +34,10 @@ export default {
     isShowSkipParam() {
       return this.isShowSkip;
     },
-
+    isArabic() {
+      debugger;
+      return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
+    },
     colorBt() {
       return this.$store.state.commonModule.statusLayout;
     },

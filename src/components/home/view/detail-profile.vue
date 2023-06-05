@@ -4,7 +4,7 @@
     v-bind:class="{ 'reverse-layout': isArabic }"
   >
     <div class="detail-page w-full h-full relative">
-      <div class="bg-image-detail h-2/4 pl-2 pr-2">
+      <div class="bg-image-detail h-4/6 pl-2 pr-2">
         <div class="avatar w-full h-full relative border-image">
           <div
             v-show="isActiveImag"
@@ -45,7 +45,7 @@
           </div>
         </div>
       </div>
-      <div class="h-2/4 w-full pl-2 pr-2">
+      <div class="h-2/6 w-full pl-2 pr-2">
         <div class="w-full bg-border-bottom padding-text-user">
           <div class="w-full pl-2 pr-2">
             <div class="flex bh-margin-title">
@@ -282,7 +282,7 @@
     </div>
 
     <div
-      class="w-full h-24 flex justify-center items-center absolute bottom-16 cursor-pointer"
+      class="w-full h-24 flex justify-center items-center absolute bottom-8 cursor-pointer"
     >
       <div>
         <img

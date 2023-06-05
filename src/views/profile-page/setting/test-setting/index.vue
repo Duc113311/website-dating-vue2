@@ -1,6 +1,9 @@
 <template>
   <div class="w-full h-full relative p-5" v-loading="loading">
-    <div class="w-full h-full title-default">
+    <div
+      class="w-full h-full title-default"
+      v-bind:class="{ 'reverse-layout': isArabic }"
+    >
       <!-- Back -->
       <div class="w-full header-edit flex justify-center items-center">
         <div class="w-full flex items-center">
@@ -12,10 +15,7 @@
         </div>
       </div>
 
-      <div
-        class="form-edit overflow-scroll w-full"
-        v-bind:class="{ 'reverse-layout': isArabic }"
-      >
+      <div class="form-edit overflow-scroll w-full">
         <FromSetting></FromSetting>
         <!--  -->
       </div>

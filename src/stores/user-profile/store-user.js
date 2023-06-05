@@ -1016,8 +1016,9 @@ const mutations = {
   },
 
   setSkipProfiles(state, data) {
+    debugger;
     if (data === 3) {
-      state.user_profile.profiles.sexuals = [];
+      state.user_profile.profiles.orientationSexuals = [];
     }
     if (data === 4) {
       state.user_profile.profiles.interests = [];

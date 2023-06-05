@@ -56,14 +56,14 @@ export default {
 
       if (this.$store.state.userModule.isActiveId) {
         document.getElementById(val).classList.add("option-active");
-        if (interestsData.length < 5) {
+        if (interestsData.length < 1) {
           this.$emit("onStatusActive", false);
         } else {
           this.$emit("onStatusActive", true);
         }
       } else {
         document.getElementById(val).classList.remove("option-active");
-        if (interestsData.length < 5) {
+        if (interestsData.length < 1) {
           this.$emit("onStatusActive", false);
         }
       }
@@ -83,7 +83,7 @@ export default {
       const element = interestsData[index];
       document.getElementById(element).classList.add("option-active");
     }
-    if (interestsData.length < 5) {
+    if (interestsData.length < 1) {
       this.$emit("onStatusActive", false);
     } else {
       this.$emit("onStatusActive", true);

@@ -183,6 +183,7 @@ export default {
 
   mounted() {
     debugger;
+    this.$refs.input1[0].focus();
   },
 };
 </script>

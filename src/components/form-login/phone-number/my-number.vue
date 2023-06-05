@@ -10,7 +10,7 @@
           class="txt-phone phone-number-txt w-full rounded-lg bg-default"
           :placeholder="$t(`phone_number`)"
           name="phone"
-          v-model="valCodeQR"
+          v-model="valuePhoneNumber"
           @change="onClickInput"
           @input="onInputNumber"
         />
@@ -44,8 +44,10 @@ export default {
 
   data() {
     return {
-      valCodeQR: "",
       txtCodeError: "",
+
+      valueIntlTel: {},
+      valuePhoneNumber: "",
     };
   },
 
@@ -79,7 +81,11 @@ export default {
         } else {
           this.txtCodeError = "";
           debugger;
-          this.$emit("validateRequirePhone", { statusActive: true });
+          this.$emit("validateRequirePhone", {
+            statusActive: true,
+            valueIntlTel: this.valueIntlTel,
+            valuePhoneNumber: this.valuePhoneNumber,
+          });
         }
       } else {
         this.txtCodeError = this.$t("you_are_not_enter_the_phone_number");
@@ -114,19 +120,17 @@ export default {
 
   mounted() {
     debugger;
-    var input = document.querySelector("#phone");
 
-    this.valCodeQR = intlTelInput(input, {
-      initialCountry: "auto",
-      geoIpLookup: function (callback) {
-        $.get("https://ipinfo.io", function () {}, "jsonp").always(function (
-          resp
-        ) {
-          var countryCode = resp && resp.country ? resp.country : "vn";
-          callback(countryCode);
-        });
-      },
+    var input = document.querySelector("#phone");
+    this.valueIntlTel = intlTelInput(input, {
+      separateDialCode: true,
+      initialCountry: "vn",
+      preferredCountries: ["us", "gb", "de"],
+      utilsScript:
+        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+      formatOnDisplay: true,
     });
+    debugger;
 
     input.focus();
   },
@@ -156,7 +160,7 @@ export default {
   background-color: #4e576b !important;
 }
 #phone {
-  padding-left: 58px !important;
+  padding-left: 94px !important;
   padding-right: 58px;
 }
 

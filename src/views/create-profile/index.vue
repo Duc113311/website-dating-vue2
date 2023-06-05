@@ -146,6 +146,7 @@ export default {
       }
     },
     onShowSkips(val) {
+      debugger;
       this.isShowSkipParam = val;
     },
 
