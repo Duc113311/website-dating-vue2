@@ -87,10 +87,18 @@
         ></BhContinue>
       </div>
     </div>
+    <BhQuestion
+      @onHidePopupPackage="onHidePopupPackage"
+      @onActionApplyQuestion="onActionApplyQuestion"
+      :titleQuestion="titleQuestion"
+      :describeQuestion="describeQuestion"
+      v-show="isShowFormQuestion"
+    ></BhQuestion>
   </div>
 </template>
 
 <script>
+import BhQuestion from "../../components/bh-element-ui/notification/bh-question";
 import MyShowGender from "../../components/create-profiles/my-self/my-show-gender";
 import BhContinue from "../../components/bh-element-ui/button/bh-continue";
 import MyLocation from "../../components/create-profiles/my-self/my-location";
@@ -101,10 +109,12 @@ import MyGender from "../../components/create-profiles/my-self/my-gender";
 import MyBirthday from "../../components/create-profiles/my-self/my-birthday";
 import MyName from "../../components/create-profiles/my-self/my-name";
 import BhBack from "../../components/bh-element-ui/button/bh-back";
+import { auth, signOut } from "../../configs/firebase";
 
 import { mapActions, mapMutations } from "vuex";
 export default {
   components: {
+    BhQuestion,
     MyShowGender,
     BhContinue,
     MyLocation,
@@ -126,6 +136,12 @@ export default {
       isShowHeader: true,
       isShowProfile: {},
       isShowSkipParam: false,
+
+      isShowFormQuestion: false,
+      titleQuestion: this.$t("are_you_sure?"),
+      describeQuestion: this.$t(
+        "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information."
+      ),
     };
   },
 
@@ -138,9 +154,28 @@ export default {
     ]),
 
     ...mapActions(["getListLifeStyleForRegister"]),
+    onHidePopupPackage(val) {
+      this.isShowFormQuestion = val;
+    },
+    async onActionApplyQuestion(val) {
+      debugger;
+      await signOut(auth)
+        .then(() => {
+          debugger;
+          this.isShowFormQuestion = false;
+
+          // Sign-out successful.
+          localStorage.removeItem("oAuth2Id");
+        })
+        .catch((error) => {
+          // An error happened.
+        });
+      this.$router.replace({ name: "login-page" }).catch(() => {});
+    },
     onBackComponent() {
+      debugger;
       if (this.isScream === 0) {
-        this.$router.replace({ name: "login-page" }).catch(() => {});
+        this.isShowFormQuestion = true;
       } else {
         this.isScream = this.isScream - 1;
       }

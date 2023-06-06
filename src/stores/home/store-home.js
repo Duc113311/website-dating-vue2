@@ -220,7 +220,9 @@ const actions = {
    */
   async postNopeUser({ commit }, data) {
     await http_mongo
-      .post(`/api/v1/nope`, data)
+      .post(`/api/v1/nope`, data, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("tokenId")}` },
+      })
       .then((response) => {
         commit("setPostNopeUser", response.data.data);
       })
@@ -236,7 +238,9 @@ const actions = {
    */
   async postLikeUser({ commit }, data) {
     await http_mongo
-      .post(`/api/v1/like`, data)
+      .post(`/api/v1/like`, data, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("tokenId")}` },
+      })
       .then((response) => {
         debugger;
         commit("setPostLikeUser", response.data.data);
@@ -259,7 +263,9 @@ const actions = {
    */
   async postBackUser({ commit }, data) {
     await http_mongo
-      .post(`/api/v1/back`, data)
+      .post(`/api/v1/back`, data, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("tokenId")}` },
+      })
       .then((response) => {
         commit("setPostBackUser", response.status);
       })
@@ -275,7 +281,9 @@ const actions = {
    */
   async postSupperLikeUser({ commit }, data) {
     await http_mongo
-      .post(`/api/v1/superLike`, data)
+      .post(`/api/v1/superLike`, data, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("tokenId")}` },
+      })
       .then((response) => {
         commit("setPostSupperLikeUser", response.data.data);
       })
@@ -291,7 +299,9 @@ const actions = {
    */
   async postBoostUser({ commit }, data) {
     await http_mongo
-      .post(`/api/v1/boost`, data)
+      .post(`/api/v1/boost`, data, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("tokenId")}` },
+      })
       .then((response) => {
         commit("setPostBoostUser", response.status);
       })

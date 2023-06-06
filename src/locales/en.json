@@ -293,7 +293,7 @@
   "like": "LIKE",
   "nope": "NOPE",
   "supper_like": "SUPPER LIKE",
-  "add_living": "Add living",
+  "add_living": "Add Living",
   "99+_like": "99+ like",
   "for_you": "For you",
   "create_new": "Create New",
@@ -314,5 +314,6 @@
   "usd/each": "USD/each",
   "get_gold_package": "Get Gold Package",
   "search_language": "Search Language",
-  "please_provide_more_details_about_what_you_are_reporting": "Please provide more details about what you are reporting"
+  "please_provide_more_details_about_what_you_are_reporting": "Please provide more details about what you are reporting",
+  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "If you exit you will have to re-register your account and delete all information."
 }

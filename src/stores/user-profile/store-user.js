@@ -48,7 +48,7 @@ const state = {
         unit: "km",
         onlyShowInThis: false,
       },
-      genderFilter: "all",
+      genderFilter: "",
       agePreference: {
         min: 15,
         max: 30,

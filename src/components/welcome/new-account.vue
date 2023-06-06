@@ -7,7 +7,7 @@
         class="text-2xl w-full h-10 flex items-center cursor-pointer"
         @click="onShowDialogQuit()"
       >
-        <i class="fas fa-times"></i>
+        <img src="@/assets/icon/ic_closed.svg" width="30" alt="" srcset="" />
       </div>
       <div class="p-2 mt-10 overflow-scroll h-scroll-welcome height-scroll">
         <div class="mb-16">
@@ -138,6 +138,6 @@ export default {
 }
 
 .ic_hands {
-  width: 35px;
+  width: 30px;
 }
 </style>

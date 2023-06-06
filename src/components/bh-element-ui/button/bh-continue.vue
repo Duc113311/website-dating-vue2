@@ -12,7 +12,7 @@
             @click="onClickChosse(true)"
           >
             <div class="flex justify-center bg-checked">
-              <i class="fa-solid fa-circle-check w-8 h-8"></i>
+              <i class="fa-solid fa-circle-check w-6 h-6"></i>
             </div>
           </div>
           <div
@@ -21,7 +21,7 @@
             class="cursor-pointer"
           >
             <div class="flex justify-center">
-              <i class="fa-regular fa-circle w-8 h-8"></i>
+              <i class="fa-regular fa-circle w-6 h-6"></i>
             </div>
           </div>
         </div>

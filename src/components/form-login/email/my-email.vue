@@ -47,7 +47,7 @@
         </div>
         <div class="not-check-active checked" @click="onClickChosse(false)">
           <div class="flex justify-center">
-            <i class="fa-regular fa-circle w-8 h-8"></i>
+            <i class="fa-regular fa-circle w-6 h-6"></i>
           </div>
         </div>
       </div>

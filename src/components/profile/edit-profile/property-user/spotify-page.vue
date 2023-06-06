@@ -9,7 +9,7 @@
           <img src="@/assets/icon/ic_spotify.svg" width="30" alt="" srcset="" />
         </div>
         <div class="flex justify-between w-full">
-          <div class="pl-5 bh-item-title ml-3 mr-3">
+          <div class="bh-item-title ml-3 mr-3">
             {{ $t("connect_spotify") }}
           </div>
           <div>

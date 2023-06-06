@@ -8,7 +8,6 @@
         <div class="w-full style-bg-common bg-default">
           <div
             class="flex justify-between w-full pb-3 pt-3"
-            :class="border - bottom"
             v-for="(item, index) in listGenderUser"
             :key="index"
             @click="onChangeGender(item.code)"

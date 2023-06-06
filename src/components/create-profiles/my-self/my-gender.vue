@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="mt-3">
-      <div class="padding-title">{{ $t("i_am_a") }}</div>
+      <div class="padding-title">{{ bingToUpperString($t("i_am_a")) }}</div>
     </div>
     <div class="w-full mt-4">
       <div
@@ -24,6 +24,7 @@
 
 <script>
 import { mapMutations, mapActions } from "vuex";
+import functionValidate from "../../../middleware/validate.js";
 
 export default {
   name: "my-gender",
@@ -65,7 +66,10 @@ export default {
     ...mapActions(["getListDataInterests", "getListDataSexuals"]),
 
     ...mapMutations(["setGender", "setShowProfileCreate"]),
-
+    bingToUpperString(val) {
+      const stringName = functionValidate.toUpperCaseString(val);
+      return stringName;
+    },
     onShowGender(val) {
       console.log(val);
 

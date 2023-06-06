@@ -5,13 +5,14 @@
         class="btAgree cursor-pointer w-full padding-button button-active"
         @click="onClickIAgree()"
       >
-        {{ $t("i_agree") }}
+        {{ bingToUpperString($t("i_agree")) }}
       </button>
     </div>
   </div>
 </template>
 
 <script>
+import functionValidate from "../../../middleware/validate.js";
 export default {
   name: "bt-agree",
 
@@ -32,6 +33,10 @@ export default {
   },
 
   methods: {
+    bingToUpperString(val) {
+      const stringName = functionValidate.toUpperCaseString(val);
+      return stringName;
+    },
     /**
      * Click show dialog
      */

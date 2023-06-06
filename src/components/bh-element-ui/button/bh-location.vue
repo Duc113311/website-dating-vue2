@@ -4,7 +4,7 @@
       @click="onClickLocations"
       class="btContinueCode button-active cursor-pointer w-full padding-button"
     >
-      Allow Location
+      {{ $t("allow_location") }}
     </button>
   </div>
 </template>

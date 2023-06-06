@@ -127,7 +127,6 @@ export default {
           url: "image9",
         },
       ],
-      loading: false,
       showUpload: true,
       file: "",
       dialogImageUrl: "",
@@ -151,11 +150,14 @@ export default {
       this.isShowErrorVerify = value;
     },
     async toggleUpload(event, data) {
-      this.loading = true;
       const image = event.target.files[0];
-
+      debugger;
       console.log(data);
       const idUrl = data.id;
+      const loading = await document.getElementById("loadId" + idUrl);
+      const avatar = document.getElementById("avatar" + idUrl);
+      avatar.style.display = "block";
+      loading.style.display = "block";
       // const reader = new FileReader();
       // reader.readAsDataURL(image);
       // reader.onload = (e) => {
@@ -171,10 +173,8 @@ export default {
         console.log(snapshot);
       });
 
-      const loading = document.getElementById("loadId" + idUrl);
       // img.setAttribute("src", url);
 
-      loading.style.display = "block";
       const formData = new FormData();
 
       await getDownloadURL(storageRef, image)
@@ -196,13 +196,13 @@ export default {
             this.setPhotos(dataImage);
             // Or inserted into an <img> element
             const img = document.getElementById(idUrl);
-            const avatar = document.getElementById("avatar" + idUrl);
+
             const close = document.getElementById("close" + idUrl);
 
             let bg = "url('" + url + "')";
 
             img.style.backgroundImage = bg;
-            avatar.style.display = "block";
+
             close.style.display = "block";
             setTimeout(() => {
               loading.style.display = "none";
@@ -247,7 +247,6 @@ export default {
   mounted() {
     debugger;
     if (this.$route.query.scream !== "edit-profile") {
-      this.loading = true;
       const image = this.$store.state.userModule.avatarChecked;
       this.$emit("onShowSkips", false);
       for (let index = 0; index < image.length; index++) {
@@ -272,8 +271,6 @@ export default {
         this.$emit("onStatusActive", true);
       }
     } else {
-      this.loading = true;
-
       const image =
         this.$store.state.userModule.detailProfile?.profiles?.avatars;
       for (let index = 0; index < image.length; index++) {

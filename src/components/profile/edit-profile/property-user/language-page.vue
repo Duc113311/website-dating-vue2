@@ -11,12 +11,8 @@
       >
         <div class="w-6/12 bh-item-title flex items-center">
           <div class="flex items-center">
-            <img
-              class="mr-2"
-              src="@/assets/icon/ic_tinder/language@1x.png"
-              width="25"
-            />
-            {{ $t("add_language") }}
+            <img src="@/assets/icon/ic_tinder/language@1x.png" width="25" />
+            <span class="mr-2 ml-2">{{ $t("add_language") }}</span>
             <!-- <span v-for="(item, index) in nameLanguageParam" :key="index">{{
               item
             }}</span> -->

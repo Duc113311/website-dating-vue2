@@ -314,5 +314,6 @@
   "usd/each": "USD/Mindegyik",
   "get_gold_package": "Szerezzen aranycsomagot",
   "search_language": "Keresési nyelv",
-  "please_provide_more_details_about_what_you_are_reporting": "Kérjük, adjon további részleteket arról, hogy mit jelent"
+  "please_provide_more_details_about_what_you_are_reporting": "Kérjük, adjon további részleteket arról, hogy mit jelent",
+  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Loading..."
 }

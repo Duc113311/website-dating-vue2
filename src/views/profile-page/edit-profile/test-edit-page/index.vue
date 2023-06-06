@@ -175,7 +175,7 @@ export default {
 
       await setTimeout(() => {
         this.loading = false;
-        this.$router.push({ path: "/profile" });
+        this.$router.push({ path: "/profile" }).catch(() => {});
       }, 2000);
     },
 

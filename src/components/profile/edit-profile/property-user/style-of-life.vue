@@ -12,11 +12,8 @@
           @click="onShowFormLife('scroll_1')"
         >
           <div class="w-6/12 bh-item-title flex items-center">
-            <img
-              class="mr-2 ml-2"
-              src="@/assets/icon/ic_tinder/pets@1x.png"
-              width="25"
-            />{{ $t("pets_free") }}
+            <img src="@/assets/icon/ic_tinder/pets@1x.png" width="25" />
+            <span class="mr-2 ml-2">{{ $t("pets_free") }}</span>
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -37,10 +34,10 @@
         >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
-              class="mr-2 ml-2"
               src="@/assets/icon/ic_tinder/drink_of_choice@1x.png"
               width="25"
-            />{{ $t("drink_beer") }}
+            />
+            <span class="mr-2 ml-2">{{ $t("drink_beer") }}</span>
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -60,11 +57,8 @@
           @click="onShowFormLife('scroll_3')"
         >
           <div class="w-6/12 bh-item-title flex items-center">
-            <img
-              class="mr-2 ml-2"
-              src="@/assets/icon/ic_tinder/smoking@1x.png"
-              width="25"
-            />{{ $t("are_you_a_smoker") }}
+            <img src="@/assets/icon/ic_tinder/smoking@1x.png" width="25" />
+            <span class="mr-2 ml-2">{{ $t("are_you_a_smoker") }}</span>
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -84,11 +78,8 @@
           @click="onShowFormLife('scroll_4')"
         >
           <div class="w-6/12 bh-item-title flex items-center">
-            <img
-              class="mr-2 ml-2"
-              src="@/assets/icon/ic_tinder/workout@2x.png"
-              width="25"
-            />{{ $t("practice") }}
+            <img src="@/assets/icon/ic_tinder/workout@2x.png" width="25" />
+            <span class="mr-2 ml-2">{{ $t("practice") }}</span>
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -108,11 +99,8 @@
           @click="onShowFormLife('scroll_5')"
         >
           <div class="w-6/12 bh-item-title flex items-center">
-            <img
-              class="mr-2 ml-2"
-              src="@/assets/icon/ic_tinder/appetite@1x.png"
-              width="25"
-            />{{ $t("diet") }}
+            <img src="@/assets/icon/ic_tinder/appetite@1x.png" width="25" />
+            <span class="mr-2 ml-2">{{ $t("diet") }}</span>
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -132,11 +120,8 @@
           @click="onShowFormLife('scroll_6')"
         >
           <div class="w-6/12 bh-item-title flex items-center">
-            <img
-              class="mr-2 ml-2"
-              src="@/assets/icon/ic_tinder/social_media@1x.png"
-              width="25"
-            />{{ $t("social_media") }}
+            <img src="@/assets/icon/ic_tinder/social_media@1x.png" width="25" />
+            <span class="mr-2 ml-2">{{ $t("social_media") }}</span>
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -158,10 +143,10 @@
         >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
-              class="mr-2 ml-2"
               src="@/assets/icon/ic_tinder/sleeping_habits@1x.png"
               width="25"
-            />{{ $t("sleeping_habits") }}
+            />
+            <span class="mr-2 ml-2">{{ $t("sleeping_habits") }}</span>
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">

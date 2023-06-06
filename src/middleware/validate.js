@@ -74,6 +74,17 @@ const functionValidate = {
     //3. Nối các từ, cụm từ đã xử lý ở trên và trả về kết quả
     return sentence.join(" ");
   },
+
+  /**
+   * Viết hoa chữ cái đầu
+   * @param {*} string
+   * @returns
+   */
+  toUpperCaseString(string) {
+    const capitalizedStr = string.charAt(0).toUpperCase() + string.slice(1);
+
+    return capitalizedStr;
+  },
 };
 
 export default functionValidate;

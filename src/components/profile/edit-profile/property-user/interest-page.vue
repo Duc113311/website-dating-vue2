@@ -7,7 +7,7 @@
       </div>
       <div class="w-full flex style-form bg-default">
         <div class="flex justify-between w-full" @click="onShowPopupInterest()">
-          <div class="bh-item-title style-inter-setting relative ml-3 mr-3">
+          <div class="bh-item-title style-inter-setting relative">
             <div class="w-full flex justify-center items-center">
               <div
                 class="w-full text-ellipsis whitespace-nowrap"

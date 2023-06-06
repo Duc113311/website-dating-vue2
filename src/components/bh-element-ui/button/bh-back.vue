@@ -9,11 +9,11 @@
     >
       <img
         src="@/assets/icon/ic_back_dark.svg"
-        width="30"
+        width="24"
         alt=""
         v-if="colorBt"
       />
-      <img src="@/assets/icon/ic_back_light.svg" width="30" alt="" v-else />
+      <img src="@/assets/icon/ic_back_light.svg" width="24" alt="" v-else />
     </div>
     <div class="font-skip" v-show="isShowSkipParam" @click="onClickSkip()">
       {{ $t("skip") }}

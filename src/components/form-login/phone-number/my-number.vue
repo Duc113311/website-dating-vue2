@@ -29,7 +29,7 @@
       <span>
         {{ $t("the_verified_phone_number_can_be_used_to_log_in.") }}
       </span>
-      <a href="http://" class="decoration-solid underline">{{
+      <a href="#" class="decoration-solid underline">{{
         $t("learn_what_happens_when_your_number_changes.")
       }}</a>
     </div>

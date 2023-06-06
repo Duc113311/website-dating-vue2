@@ -1,9 +1,9 @@
 {
   "warm_welcome": "Chào đón nồng nhiệt",
   "we_hope_you_have_a_sweet_time_here": "Chúng tôi hy vọng bạn có một thời gian ngọt ngào ở đây",
-  "log_in_with_google": "Đăng nhập bằng Google",
-  "log_in_with_facebook": "Đăng nhập Facebook",
-  "log_in_with_phone_number": "Đăng nhập bằng số điện thoại",
+  "log_in_with_google": "Đăng nhập với Google",
+  "log_in_with_facebook": "Đăng nhập với Facebook",
+  "log_in_with_phone_number": "Đăng nhập với số điện thoại",
   "trouble_logging_in?": "Rắc rối đăng nhập?",
   "by_clicking_'login',_you_agree_with_our_terms._learn_how_we_process_your_data_in_our": "Bằng cách nhấp vào 'Đăng nhập', bạn đồng ý với các điều khoản của chúng tôi. Tìm hiểu cách chúng tôi xử lý dữ liệu của bạn trong",
   "privacy_policy": "Chính sách bảo mật",
@@ -50,7 +50,7 @@
   "show_{nameInformation}_on_my_profile": "Hiển thị {nameinformation} trên hồ sơ của tôi",
   "my_sexual_orientation_is": "Xu hướng tình dục của tôi là",
   "select_up_to_3": "Chọn tối đa 3",
-  "skip": "Nhảy",
+  "skip": "Bỏ qua",
   "my_interests_are": "Sở thích của tôi là",
   "let_everyone_know_what_you're_passionate_about,_by_adding_it_to_your_profile": "Cho mọi người biết bạn đam mê điều gì, bằng cách thêm nó vào hồ sơ của bạn",
   "show_me_gender": "Cho tôi thấy giới tính",
@@ -314,5 +314,6 @@
   "usd/each": "USD/mỗi",
   "get_gold_package": "Nhận gói vàng",
   "search_language": "Ngôn ngữ tìm kiếm",
-  "please_provide_more_details_about_what_you_are_reporting": "Vui lòng cung cấp thêm chi tiết về những gì bạn đang báo cáo"
+  "please_provide_more_details_about_what_you_are_reporting": "Vui lòng cung cấp thêm chi tiết về những gì bạn đang báo cáo",
+  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Loading..."
 }

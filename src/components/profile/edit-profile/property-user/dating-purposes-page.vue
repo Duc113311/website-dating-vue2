@@ -8,11 +8,8 @@
     <div class="w-full bg-life flex bg-default justify-between items-center">
       <div class="w-6/12 bh-item-title flex items-center">
         <div class="flex items-center">
-          <img
-            class="mr-2"
-            src="@/assets/icon/ic_tinder/ic_purpose.png"
-            width="25"
-          />{{ $t("i'm_looking_for") }}
+          <img src="@/assets/icon/ic_tinder/ic_purpose.png" width="25" />
+          <span class="mr-2 ml-2">{{ $t("i'm_looking_for") }}</span>
         </div>
       </div>
       <div

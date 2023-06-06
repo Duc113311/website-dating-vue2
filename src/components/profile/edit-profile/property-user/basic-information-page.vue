@@ -13,15 +13,16 @@
         >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
-              class="mr-2 ml-2"
+              class=""
               src="@/assets/icon/ic_tinder/astrological_sign@2x.png"
               width="25"
-            />{{ $t("zodiac") }}
+            />
+            <span class="ml-2 mr-2">{{ $t("zodiac") }}</span>
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
               <div
-                class="bh-describe whitespace-nowrap ml-3 mr-3 overflow-hidden"
+                class="bh-describe whitespace-nowrap ml-2 mr-2 overflow-hidden"
               >
                 {{ zodiacParam }}
               </div>
@@ -37,10 +38,12 @@
         >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
-              class="mr-2 ml-2"
+              class=""
               src="@/assets/icon/ic_tinder/family@1x.png"
               width="25"
-            />{{ $t("future_family") }}
+            />
+
+            <span class="mr-2 ml-2">{{ $t("future_family") }}</span>
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -61,10 +64,11 @@
         >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
-              class="mr-2 ml-2"
+              class=""
               src="@/assets/icon/ic_tinder/education@1x.png"
               width="25"
-            />{{ $t("education") }}
+            />
+            <span class="mr-2 ml-2">{{ $t("education") }}</span>
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -85,10 +89,11 @@
         >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
-              class="mr-2 ml-2"
+              class=""
               src="@/assets/icon/ic_tinder/covid_comfort@1x.png"
               width="25"
-            />{{ $t("vaccine_for_covid") }}
+            />
+            <span class="mr-2 ml-2">{{ $t("vaccine_for_covid") }}</span>
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -109,10 +114,11 @@
         >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
-              class="mr-2 ml-2"
+              class=""
               src="@/assets/icon/ic_tinder/kietinhcach@2x.png"
               width="25"
-            />{{ $t("personality_type") }}
+            />
+            <span class="mr-2 ml-2">{{ $t("personality_type") }}</span>
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -133,10 +139,10 @@
         >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
-              class="mr-2 ml-2"
               src="@/assets/icon/ic_tinder/communication_style@2x.png"
               width="25"
-            />{{ $t("communication_style") }}
+            />
+            <span class="mr-2 ml-2">{{ $t("communication_style") }}</span>
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">
@@ -158,10 +164,10 @@
         >
           <div class="w-6/12 bh-item-title flex items-center">
             <img
-              class="mr-2 ml-2"
               src="@/assets/icon/ic_tinder/love_language@1x.png"
               width="25"
-            />{{ $t("love_languages") }}
+            />
+            <span class="mr-2 ml-2">{{ $t("love_languages") }}</span>
           </div>
           <div class="flex w-6/12 justify-end">
             <div class="flex">

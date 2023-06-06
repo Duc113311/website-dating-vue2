@@ -26,13 +26,13 @@
               @click="onActionCancel(false)"
               class="w-32 mr-5 cursor-pointer button-default rounded-xl p-3 text-center justify-center flex"
             >
-              Cancel
+              {{ $t("cancel") }}
             </div>
             <div
               @click="onActionApply(true)"
               class="w-32 ml-5 button-active cursor-pointer rounded-xl p-3 text-center justify-center flex"
             >
-              Apply
+              {{ $t("apply") }}
             </div>
           </div>
         </div>

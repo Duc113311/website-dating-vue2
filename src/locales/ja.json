@@ -314,5 +314,6 @@
   "usd/each": "USD/それぞれ",
   "get_gold_package": "ゴールドパッケージを入手してください",
   "search_language": "言語を検索します",
-  "please_provide_more_details_about_what_you_are_reporting": "あなたが報告しているものの詳細を提供してください"
+  "please_provide_more_details_about_what_you_are_reporting": "あなたが報告しているものの詳細を提供してください",
+  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Loading..."
 }
