@@ -1204,7 +1204,7 @@ export default {
 }
 
 .bt-img {
-  width: 70px;
+  width: 100%;
 }
 
 .bt-option {
