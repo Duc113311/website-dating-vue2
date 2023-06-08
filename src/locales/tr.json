@@ -315,5 +315,6 @@
   "get_gold_package": "Altın Paketi Alın",
   "search_language": "Arama dili",
   "please_provide_more_details_about_what_you_are_reporting": "Lütfen rapor ettiğiniz hakkında daha fazla bilgi verin",
-  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Loading..."
+  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Çıkarsanız, hesabınızı yeniden kaydetmeniz ve tüm bilgileri silmeniz gerekir.",
+  "invalid_date_of_birth": "Geçersiz doğum tarihi"
 }

@@ -315,5 +315,6 @@
   "get_gold_package": "Obtener el paquete de oro",
   "search_language": "Lenguaje de búsqueda",
   "please_provide_more_details_about_what_you_are_reporting": "Proporcione más detalles sobre lo que está informando",
-  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Loading..."
+  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Si sale, tendrá que volver a registrar su cuenta y eliminar toda la información.",
+  "invalid_date_of_birth": "fecha de nacimiento invalida"
 }

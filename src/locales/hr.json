@@ -315,5 +315,6 @@
   "get_gold_package": "Dobiti zlatni paket",
   "search_language": "Jezik pretraživanja",
   "please_provide_more_details_about_what_you_are_reporting": "Navedite više detalja o onome što prijavljujete",
-  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Loading..."
+  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Ako izađete, morat ćete ponovno registrirati svoj račun i izbrisati sve podatke.",
+  "invalid_date_of_birth": "Nevažeći datum rođenja"
 }

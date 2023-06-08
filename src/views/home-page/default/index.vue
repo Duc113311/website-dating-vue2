@@ -102,7 +102,7 @@ export default {
 
       icUrlApp: require("@/assets/icon/ic_icon_app.svg"),
       colorApp: "#FF828A",
-      isShowFormMatch: false,
+      isShowFormMatch: true,
       users: [],
     };
   },

@@ -315,5 +315,6 @@
   "get_gold_package": "금 패키지를 받으십시오",
   "search_language": "검색어",
   "please_provide_more_details_about_what_you_are_reporting": "보고 한 내용에 대한 자세한 내용을 제공하십시오",
-  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Loading..."
+  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "나가면 계정을 다시 등록하고 모든 정보를 삭제해야합니다.",
+  "invalid_date_of_birth": "유효하지 않은 생년월일"
 }

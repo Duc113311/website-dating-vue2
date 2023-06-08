@@ -15,6 +15,9 @@
         @input="onChangeInput"
         @blur="onChangeInput"
       />
+      <div class="w-full flex justify-center items-center value-error">
+        {{ textError }}
+      </div>
       <div class="padding-describe mt-2 describe-text">
         {{ $t("your_age_will_be_public") }}
       </div>
@@ -33,6 +36,7 @@ export default {
   data() {
     return {
       birthday: "",
+      textError: "",
     };
   },
   computed: {},
@@ -41,11 +45,51 @@ export default {
 
     onChangeInput() {
       if (this.birthday !== "") {
-        this.setBirthday(this.birthday);
-        this.$emit("onStatusActive", true);
-      } else {
-        this.$emit("onStatusActive", false);
+        const birthdayValue = this.validateDateOfBirth(this.birthday);
+        debugger;
+        if (birthdayValue) {
+          this.textError = "";
+          this.setBirthday(this.birthday);
+          this.$emit("onStatusActive", true);
+        } else {
+          this.textError = this.$t("invalid_date_of_birth");
+          this.$emit("onStatusActive", false);
+        }
       }
+    },
+
+    validateDateOfBirth(dateString) {
+      debugger;
+      // Kiểm tra định dạng ngày tháng năm (YYYY-MM-DD)
+      var regex = /^\d{4}-\d{2}-\d{2}$/;
+      if (!regex.test(dateString)) {
+        return false;
+      }
+
+      // Chuyển đổi thành đối tượng Date
+      var dateObject = new Date(dateString);
+      if (isNaN(dateObject.getTime())) {
+        return false;
+      }
+
+      // Lấy ngày hiện tại
+      var currentDate = new Date();
+
+      // Kiểm tra năm sinh không lớn hơn ngày hiện tại
+      if (dateObject > currentDate) {
+        return false;
+      }
+
+      // Tính toán tuổi
+      var age = currentDate.getFullYear() - dateObject.getFullYear();
+
+      // Kiểm tra tuổi hợp lệ (từ 18 đến 70)
+      if (age < 18 || age > 70) {
+        return false;
+      }
+
+      // Ngày tháng năm sinh hợp lệ
+      return true;
     },
   },
 

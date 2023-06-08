@@ -45,7 +45,7 @@
               type="text"
               v-model="txtValueMes"
               placeholder="Say something nice"
-              class="text-send text-red-600"
+              class="input-mes"
               id="11"
               ref="id2"
             />
@@ -69,7 +69,7 @@
       </div>
 
       <div
-        v-show="isHideComfirm"
+        v-show="isHideConfirm"
         class="w-full h-80 absolute bottom-0 left-0 p-3"
       >
         <div class="w-full h-full form-sending p-5">
@@ -89,10 +89,10 @@
           </div>
 
           <div class="w-full flex justify-center p-2">
-            <BhComfirm
-              @onChangeComfirm="onChangeComfirm"
+            <BhConfirm
+              @onChangeConfirm="onChangeConfirm"
               :nameTitle="nameTitle"
-            ></BhComfirm>
+            ></BhConfirm>
           </div>
         </div>
       </div>
@@ -101,16 +101,16 @@
 </template>
 
 <script>
-import BhComfirm from "../../bh-element-ui/button/bh-comfirm";
+import BhConfirm from "../../bh-element-ui/button/bh-comfirm";
 export default {
-  components: { BhComfirm },
+  components: { BhConfirm },
   name: "form-like-too",
 
   data() {
     return {
       isShowConfirm: true,
       nameComfirm: "Comfirm",
-      isHideComfirm: false,
+      isHideConfirm: false,
       txtValueMes: "",
       nameTitle: "Confirm",
 
@@ -138,10 +138,11 @@ export default {
     onClickNextImage() {},
 
     onClickSendMessage() {
-      this.isHideComfirm = true;
+      this.isHideConfirm = true;
+      this.isShowConfirm = true;
     },
 
-    onChangeComfirm(val) {
+    onChangeConfirm(val) {
       this.$emit("onHideLikeYou", val);
     },
 
@@ -313,5 +314,22 @@ export default {
   padding: 6px;
   border-radius: 50px;
   border: 4px solid #fd5d65;
+}
+
+.input-mes {
+  -webkit-appearance: none;
+  background-color: #fff;
+  background-image: none;
+  /* border-radius: 4px; */
+  border: 1px solid #dcdfe6;
+  box-sizing: border-box;
+  color: #606266;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  outline: 0;
+  padding: 0 15px;
+  transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  width: 100%;
 }
 </style>

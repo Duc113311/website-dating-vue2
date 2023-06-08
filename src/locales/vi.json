@@ -315,5 +315,6 @@
   "get_gold_package": "Nhận gói vàng",
   "search_language": "Ngôn ngữ tìm kiếm",
   "please_provide_more_details_about_what_you_are_reporting": "Vui lòng cung cấp thêm chi tiết về những gì bạn đang báo cáo",
-  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Loading..."
+  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Nếu bạn thoát, bạn sẽ phải đăng ký lại tài khoản của mình và xóa tất cả thông tin.",
+  "invalid_date_of_birth": "Ngày sinh không hợp lệ"
 }

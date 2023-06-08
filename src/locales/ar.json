@@ -315,5 +315,6 @@
   "get_gold_package": "احصل على حزمة الذهب",
   "search_language": "لغة البحث",
   "please_provide_more_details_about_what_you_are_reporting": "يرجى تقديم المزيد من التفاصيل حول ما تقوم بالإبلاغ عنه",
-  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Loading..."
+  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "إذا خرجت ، فسيتعين عليك إعادة تسجيل حسابك وحذف جميع المعلومات.",
+  "invalid_date_of_birth": "تاريخ ميلاد غير صالح"
 }

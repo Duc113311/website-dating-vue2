@@ -315,5 +315,6 @@
   "get_gold_package": "获取黄金包",
   "search_language": "搜索语言",
   "please_provide_more_details_about_what_you_are_reporting": "请提供有关您报告的内容的更多详细信息",
-  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Loading..."
+  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "如果您退出，则必须重新注册您的帐户并删除所有信息。",
+  "invalid_date_of_birth": "无效的出生日期"
 }

@@ -22,6 +22,7 @@
             }"
           />
           <div
+            v-if="this.userParam?.profiles?.avatars.length > 1"
             class="flex w-full justify-center absolute top-0 content-center p-0.5 border-solid mt-3"
           >
             <button

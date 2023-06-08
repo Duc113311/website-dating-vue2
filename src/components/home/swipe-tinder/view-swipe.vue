@@ -719,68 +719,71 @@ export default {
 
         this.setIndexImageActiveRight();
         let indexActive = this.$store.state.userModule.imageActives;
+        debugger;
 
-        if (indexActive === 1) {
-          if (data.about.length !== 0) {
-            this.scrods = this.scrods + 1;
-          } else {
+        if (indexActive !== data.avatars.length) {
+          if (indexActive === 1) {
+            if (data.about.length !== 0) {
+              this.scrods = this.scrods + 1;
+            } else {
+              const basic = this.bingBasicInformation(data);
+              if (basic.length !== 0) {
+                this.scrods = this.scrods + 2;
+              }
+            }
+          }
+          if (indexActive === 2) {
             const basic = this.bingBasicInformation(data);
             if (basic.length !== 0) {
-              this.scrods = this.scrods + 2;
+              this.scrods = this.scrods + 1;
+            } else {
+              const styleStatic = this.bingLifeStyleStatic(data);
+              if (styleStatic.length !== 0) {
+                this.scrods = this.scrods + 2;
+              }
             }
           }
-        }
-        if (indexActive === 2) {
-          const basic = this.bingBasicInformation(data);
-          if (basic.length !== 0) {
-            this.scrods = this.scrods + 1;
-          } else {
+          if (indexActive === 3) {
             const styleStatic = this.bingLifeStyleStatic(data);
             if (styleStatic.length !== 0) {
-              this.scrods = this.scrods + 2;
+              this.scrods = this.scrods + 1;
+            } else {
+              if (data.jobTitle.length !== 0 || data.school.length !== 0) {
+                this.scrods = this.scrods + 2;
+              }
             }
           }
-        }
-        if (indexActive === 3) {
-          const styleStatic = this.bingLifeStyleStatic(data);
-          if (styleStatic.length !== 0) {
-            this.scrods = this.scrods + 1;
-          } else {
+          if (indexActive === 4) {
             if (data.jobTitle.length !== 0 || data.school.length !== 0) {
-              this.scrods = this.scrods + 2;
+              this.scrods = this.scrods + 1;
+            } else {
+              const styleStatic = this.bingInterests(data);
+              if (styleStatic.length !== 0) {
+                this.scrods = this.scrods + 2;
+              }
             }
           }
-        }
-        if (indexActive === 4) {
-          if (data.jobTitle.length !== 0 || data.school.length !== 0) {
-            this.scrods = this.scrods + 1;
-          } else {
+          if (indexActive === 5) {
             const styleStatic = this.bingInterests(data);
             if (styleStatic.length !== 0) {
-              this.scrods = this.scrods + 2;
+              if (this.scrods !== 5) {
+                this.scrods = this.scrods + 1;
+              }
             }
           }
-        }
-        if (indexActive === 5) {
-          const styleStatic = this.bingInterests(data);
-          if (styleStatic.length !== 0) {
-            if (this.scrods !== 5) {
-              this.scrods = this.scrods + 1;
-            }
+
+          if (indexActive < value.length) {
+            document
+              .getElementById(`avatar_` + parseInt(indexActive - 1))
+              .classList.remove("active-image");
+            this.idImage = value[indexActive];
+            this.setUrlImage(this.idImage);
+
+            document
+              .getElementById(`avatar_` + parseInt(indexActive))
+              .classList.add("active-image");
           }
-        }
-        console.log(data);
-
-        if (indexActive < value.length) {
-          document
-            .getElementById(`avatar_` + parseInt(indexActive - 1))
-            .classList.remove("active-image");
-          this.idImage = value[indexActive];
-          this.setUrlImage(this.idImage);
-
-          document
-            .getElementById(`avatar_` + parseInt(indexActive))
-            .classList.add("active-image");
+          this.isActiveImag = false;
         } else {
           console.log("end");
           this.animate2 = true;
@@ -790,8 +793,6 @@ export default {
           }, 200);
           this.setIndexImageActiveLeft();
         }
-
-        this.isActiveImag = false;
       }
     },
 
@@ -911,7 +912,7 @@ export default {
       if (value.type.toString() === "like") {
         console.log("like");
         this.scrods = 0;
-
+        debugger;
         if (this.history.length === 0) {
           this.history.push(value.item);
         } else {
@@ -919,29 +920,24 @@ export default {
         }
         this.imageActive = 0;
         // Check được quẹt hay ko?
+        await this.postLikeUser({
+          interactorId: value.key,
+        });
         const isLikeValue = this.$store.state.homeModule.isLike;
         if (isLikeValue.isFreeRuntime) {
           // quẹt thoải mái
-          await this.postLikeUser({
-            interactorId: value.key,
-          });
-
           // match thành công hiện form match
           if (isLikeValue.isMatched) {
             this.setDataUserMatch(value.item);
             this.$emit("onShowFormLikeYou", true);
           }
-
           this.imageActive = 0;
         } else {
           // Check giá trị likeRemaining>0
           if (isLikeValue.likeRemaining > 0) {
             //  Được quẹt
-            await this.postLikeUser({
-              interactorId: value.key,
-            });
 
-            if (isLikeValue.isMatched) {
+            if (!isLikeValue.isMatched) {
               this.setDataUserMatch(value.item);
               this.$emit("onShowFormLikeYou", true);
             }
@@ -1204,7 +1200,7 @@ export default {
 }
 
 .bt-img {
-  width: 100%;
+  width: 70px;
 }
 
 .bt-option {

@@ -315,5 +315,6 @@
   "get_gold_package": "Zdobądź pakiet złota",
   "search_language": "Wyszukaj język",
   "please_provide_more_details_about_what_you_are_reporting": "Podaj więcej szczegółów na temat tego, co zgłaszasz",
-  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Loading..."
+  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Jeśli wyjdziesz, będziesz musiał ponownie zarejestrować swoje konto i usunąć wszystkie informacje.",
+  "invalid_date_of_birth": "Nieprawidłowa data urodzenia"
 }

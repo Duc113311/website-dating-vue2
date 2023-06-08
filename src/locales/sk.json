@@ -315,5 +315,6 @@
   "get_gold_package": "Získajte zlatý balík",
   "search_language": "Výhľad",
   "please_provide_more_details_about_what_you_are_reporting": "Uveďte ďalšie podrobnosti o tom, čo hlásíte",
-  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Loading..."
+  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Ak ukončíte, budete musieť znovu zaregistrovať svoj účet a odstrániť všetky informácie.",
+  "invalid_date_of_birth": "Neplatný dátum narodenia"
 }

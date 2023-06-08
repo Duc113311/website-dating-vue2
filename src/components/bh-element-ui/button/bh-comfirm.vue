@@ -3,17 +3,17 @@
     <button
       type="danger"
       :loading="isShowLoading"
-      @click="onClickComfirm()"
+      @click="onClickConfirm()"
       class="btContinueCode cursor-pointer w-full padding-button button-active"
     >
-      {{ nameButtom }}
+      {{ nameButton }}
     </button>
   </div>
 </template>
 
 <script>
 export default {
-  name: "bh-comfirm",
+  name: "bh-confirm",
   props: ["isLoading", "isActives", "nameTitle"],
   data() {
     return {
@@ -26,7 +26,7 @@ export default {
       return this.isLoading;
     },
 
-    nameButtom() {
+    nameButton() {
       return this.nameTitle;
     },
   },
@@ -35,8 +35,8 @@ export default {
     /**
      * Sự kiện click để tiếp tục
      */
-    onClickComfirm() {
-      this.$emit("onChangeComfirm", false);
+    onClickConfirm() {
+      this.$emit("onChangeConfirm", false);
     },
   },
 };

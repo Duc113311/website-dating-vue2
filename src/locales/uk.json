@@ -315,5 +315,6 @@
   "get_gold_package": "Отримайте золотий пакет",
   "search_language": "Мови пошуку",
   "please_provide_more_details_about_what_you_are_reporting": "Будь ласка, надайте детальніше про те, про що ви повідомляєте",
-  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Loading..."
+  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Якщо ви вийдете, вам доведеться повторно реєструвати свій обліковий запис та видалити всю інформацію.",
+  "invalid_date_of_birth": "Недійсна дата народження"
 }

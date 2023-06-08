@@ -48,10 +48,10 @@
       </div>
 
       <div class="w-full absolute bottom-0 left-0 pb-16">
-        <BhComfirm
+        <BhConfirm
           :nameTitle="nameTitle"
-          @onChangeComfirm="onChangeComfirm"
-        ></BhComfirm>
+          @onChangeConfirm="onChangeConfirm"
+        ></BhConfirm>
       </div>
     </div>
   </div>
@@ -60,10 +60,10 @@
 <script>
 import { mapActions } from "vuex";
 
-import BhComfirm from "../bh-element-ui/button/bh-comfirm";
+import BhConfirm from "../bh-element-ui/button/bh-comfirm";
 export default {
   components: {
-    BhComfirm,
+    BhConfirm,
   },
   name: "avoid-someone",
 
@@ -122,7 +122,7 @@ export default {
       this.isShowQuitSing = false;
     },
 
-    async onChangeComfirm(val) {
+    async onChangeConfirm(val) {
       console.log(val);
       // await this.getListCardForUser();
       this.$router.push({ path: "/home" });

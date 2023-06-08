@@ -35,6 +35,9 @@
   background-color: var(--bg-color);
   color: var(--color-text);
 
+  .value-error {
+    color: var(--color-text-error);
+  }
   // login
   .describe-text {
     color: var(--color-describe);

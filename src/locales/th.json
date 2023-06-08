@@ -315,5 +315,6 @@
   "get_gold_package": "รับแพ็คเกจทองคำ",
   "search_language": "ภาษาค้นหา",
   "please_provide_more_details_about_what_you_are_reporting": "โปรดให้รายละเอียดเพิ่มเติมเกี่ยวกับสิ่งที่คุณกำลังรายงาน",
-  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Loading..."
+  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "หากคุณออกจากคุณจะต้องลงทะเบียนบัญชีของคุณอีกครั้งและลบข้อมูลทั้งหมด",
+  "invalid_date_of_birth": "วันเดือนปีเกิดไม่ถูกต้อง"
 }

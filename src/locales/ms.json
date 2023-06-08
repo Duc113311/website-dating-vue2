@@ -315,5 +315,6 @@
   "get_gold_package": "Dapatkan pakej emas",
   "search_language": "Bahasa cari",
   "please_provide_more_details_about_what_you_are_reporting": "Sila berikan lebih banyak maklumat mengenai apa yang anda laporkan",
-  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Loading..."
+  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Jika anda keluar, anda perlu mendaftar semula akaun anda dan memadam semua maklumat.",
+  "invalid_date_of_birth": "Tarikh lahir tidak sah"
 }

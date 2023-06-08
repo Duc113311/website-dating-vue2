@@ -315,5 +315,6 @@
   "get_gold_package": "ゴールドパッケージを入手してください",
   "search_language": "言語を検索します",
   "please_provide_more_details_about_what_you_are_reporting": "あなたが報告しているものの詳細を提供してください",
-  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Loading..."
+  "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "終了する場合は、アカウントを再登録してすべての情報を削除する必要があります。",
+  "invalid_date_of_birth": "無効な生年月日"
 }
