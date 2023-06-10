@@ -6,10 +6,16 @@
     <div class="bg-background-shadow w-full h-full absolute top-0 left-0"></div>
     <div
       class="overflow-hidden absolute h-full w-full p-5 top-0 left-0"
-      :class="[isShowConfirm ? 'grid-send' : 'grid-confirm']"
+      :class="[valueShowInputMes ? 'grid-send' : 'grid-confirm']"
     >
       <div class="w-full mt-4">
-        <i class="fa-solid fa-xmark text-3xl" @click="onHideMatch"></i>
+        <img
+          class="cursor-pointer"
+          src="@/assets/icon/ic_closed_dark.svg"
+          alt=""
+          srcset=""
+          @click="onHideMatchUser"
+        />
       </div>
       <div class="w-full relative">
         <div
@@ -38,7 +44,10 @@
         </div>
       </div>
 
-      <div v-show="isShowConfirm" class="w-full absolute bottom-0 left-0 mb-4">
+      <div
+        v-if="valueShowInputMes"
+        class="w-full absolute bottom-0 left-0 mb-4"
+      >
         <div class="w-full flex justify-center">
           <div class="flex justify-center dad-input">
             <input
@@ -59,20 +68,45 @@
         </div>
 
         <div class="flex justify-center gap-5 content-center mt-3">
-          <div class="style-icon">😉</div>
-          <div class="style-icon">👋</div>
-          <div class="style-icon flex justify-center">
+          <div
+            class="style-icon cursor-pointer"
+            id="ic_01"
+            @click="onClickSendIcon"
+          >
+            😉
+          </div>
+          <div
+            class="style-icon cursor-pointer"
+            id="ic_02"
+            @click="onClickSendIcon"
+          >
+            👋
+          </div>
+          <div
+            class="style-icon flex justify-center cursor-pointer"
+            @click="onClickSendIcon"
+          >
             <img src="@/assets/icon/ic_home_tab.svg" alt="" srcset="" />
           </div>
-          <div class="style-icon">😍</div>
+          <div class="style-icon cursor-pointer" @click="onClickSendIcon">
+            😍
+          </div>
         </div>
       </div>
 
       <div
-        v-show="isHideConfirm"
-        class="w-full h-80 absolute bottom-0 left-0 p-3"
+        v-if="valueHideConfirm"
+        class="w-full h-96 absolute bottom-0 left-0 p-3"
       >
         <div class="w-full h-full form-sending p-5">
+          <div class="flex justify-end pt-2 pb-2 items-end text-right w-full">
+            <img
+              src="@/assets/icon/ic_closed_dark.svg"
+              class="cursor-pointer"
+              alt=""
+              srcset=""
+            />
+          </div>
           <div class="w-full h-24 flex justify-center items-centerD">
             <div class="avatar-send">
               <div
@@ -85,7 +119,7 @@
           <div
             class="w-full text-xl text-white mt-5 mb-5 flex justify-center items-center"
           >
-            You are sending Ngoc Trinh
+            You are sending {{ fullName }}: {{ txtValueMes }}
           </div>
 
           <div class="w-full flex justify-center p-2">
@@ -101,6 +135,7 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 import BhConfirm from "../../bh-element-ui/button/bh-comfirm";
 export default {
   components: { BhConfirm },
@@ -122,11 +157,29 @@ export default {
   },
 
   computed: {
+    colorBt() {
+      return this.$store.state.commonModule.statusLayout;
+    },
+    valueShowInputMes() {
+      debugger;
+      return this.$store.state.commonModule.isShowInputMes;
+    },
+    valueHideConfirm() {
+      debugger;
+
+      return this.$store.state.commonModule.isHideConfirm;
+    },
     urlImage() {
       debugger;
       return this.$store.state.homeModule.userMatchData?.profiles?.avatars[0]
         ? this.$store.state.homeModule.userMatchData?.profiles?.avatars[0]
         : this.avatarDefault;
+    },
+
+    fullName() {
+      return this.$store.state.homeModule.userMatchData?.fullname
+        ? this.$store.state.homeModule.userMatchData?.fullname
+        : "";
     },
 
     btUrlImage() {
@@ -135,18 +188,38 @@ export default {
   },
 
   methods: {
-    onClickNextImage() {},
+    ...mapMutations(["setHideConfirm"]),
 
+    onHideMatchUser() {
+      this.$emit("onHideLikeYou", false);
+    },
+    onClickNextImage() {},
+    onClickSendIcon(value) {
+      debugger;
+      this.txtValueMes = document
+        .getElementById("ic_" + value)
+        .innerHTML.split(" ")
+        .join("");
+      debugger;
+    },
     onClickSendMessage() {
+      debugger;
+
       this.isHideConfirm = true;
+      this.setHideConfirm(true);
       this.isShowConfirm = true;
     },
 
     onChangeConfirm(val) {
+      this.txtValueMes = "";
+      this.setHideConfirm(false);
       this.$emit("onHideLikeYou", val);
     },
 
     onHideMatch() {
+      debugger;
+      this.setHideConfirm(false);
+
       this.$emit("onHideLikeYou", false);
     },
   },

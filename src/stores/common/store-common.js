@@ -158,6 +158,9 @@ const state = {
       value: "Ukrainian",
     },
   ],
+
+  isShowInputMes: true,
+  isHideConfirm: false,
 };
 
 const getters = {
@@ -170,6 +173,15 @@ const mutations = {
   setThemeLayout(state, value) {
     state.themeLayout = value.nameTheme;
     state.statusLayout = value.statusTheme;
+  },
+
+  setShowInputMes(state, value) {
+    state.isShowInputMes = value;
+  },
+
+  setHideConfirm(state, value) {
+    debugger;
+    state.isHideConfirm = value;
   },
 
   setLanguageTranslate(state, value) {

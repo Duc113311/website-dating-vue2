@@ -15,7 +15,7 @@
         @input="onChangeInput"
         @blur="onChangeInput"
       />
-      <div class="w-full flex justify-center items-center value-error">
+      <div class="w-full flex justify-center items-center mt-2 value-error">
         {{ textError }}
       </div>
       <div class="padding-describe mt-2 describe-text">

@@ -1322,9 +1322,4 @@ export default {
   height: 8px;
   border-radius: 50%;
 }
-
-.text-age {
-  font-size: 22px;
-  padding-top: 3px;
-}
 </style>

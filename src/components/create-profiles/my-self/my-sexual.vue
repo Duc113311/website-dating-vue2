@@ -196,7 +196,7 @@ export default {
       checkActive["check" + element].classList.remove("not-check");
       notCheckActive["not-check" + element].classList.remove("checkeds");
     }
-    if (lengthSexual < 3) {
+    if (lengthSexual < 1) {
       this.$emit("onStatusActive", false);
     } else {
       this.$emit("onStatusActive", true);

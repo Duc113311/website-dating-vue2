@@ -18,7 +18,11 @@
           <div class="dash-bor border-image bg-default relative cursor-pointer">
             <div class="wrapper">
               <div class="file-upload">
-                <input type="file" @change="toggleUpload($event, fileList)" />
+                <input
+                  type="file"
+                  @change="toggleUpload($event, fileList)"
+                  accept="image/*"
+                />
                 <img src="@/assets/icon/ic_add_photo.svg" width="35" alt="" />
               </div>
 
@@ -152,83 +156,94 @@ export default {
     async toggleUpload(event, data) {
       const image = event.target.files[0];
       debugger;
-      console.log(data);
-      const idUrl = data.id;
-      const loading = await document.getElementById("loadId" + idUrl);
-      const avatar = document.getElementById("avatar" + idUrl);
-      avatar.style.display = "block";
-      loading.style.display = "block";
-      // const reader = new FileReader();
-      // reader.readAsDataURL(image);
-      // reader.onload = (e) => {
-      //   console.log(e);
-      //   console.log(this.dialogImageUrl);
-      // };
-      this.isShowImage = true;
 
-      const storage = getStorages();
-      const storageRef = ref(storage, "dating/" + image.name);
-      await uploadBytes(storageRef, image).then((snapshot) => {
-        console.log("Uploaded a blob or file!");
-        console.log(snapshot);
-      });
+      const fileType = image.type;
 
-      // img.setAttribute("src", url);
+      if (!fileType.startsWith("image/")) {
+        this.$notify.error({
+          title: "Error Image",
+          message: "Please select only photos",
+        });
+        event.target.value = ""; // Xóa giá trị của input file
+      } else {
+        const idUrl = data.id;
+        const loading = await document.getElementById("loadId" + idUrl);
+        const avatar = document.getElementById("avatar" + idUrl);
+        avatar.style.display = "block";
+        loading.style.display = "block";
+        // const reader = new FileReader();
+        // reader.readAsDataURL(image);
+        // reader.onload = (e) => {
+        //   console.log(e);
+        //   console.log(this.dialogImageUrl);
+        // };
+        this.isShowImage = true;
 
-      const formData = new FormData();
-
-      await getDownloadURL(storageRef, image)
-        .then(async (url) => {
-          this.dialogImageUrl = url;
-
-          formData.append("imagebase64", this.dialogImageUrl);
-          await this.verifyImageRegister(formData);
-
-          const statusImageVerify =
-            this.$store.state.commonModule.statusImageVerify;
-
-          if (statusImageVerify) {
-            const dataImage = {
-              id: idUrl,
-              url: url,
-            };
-
-            this.setPhotos(dataImage);
-            // Or inserted into an <img> element
-            const img = document.getElementById(idUrl);
-
-            const close = document.getElementById("close" + idUrl);
-
-            let bg = "url('" + url + "')";
-
-            img.style.backgroundImage = bg;
-
-            close.style.display = "block";
-            setTimeout(() => {
-              loading.style.display = "none";
-            }, 1000);
-          } else {
-            setTimeout(() => {
-              loading.style.display = "none";
-            }, 1000);
-            this.isShowErrorVerify = true;
-            this.$notify.error({
-              title: "Error Image",
-              message: "Your photo is not suitable",
-            });
-          }
-        })
-        .catch((error) => {
-          console.log(error);
+        const storage = getStorages();
+        const storageRef = ref(storage, "dating/" + image.name);
+        await uploadBytes(storageRef, image).then((snapshot) => {
+          console.log("Uploaded a blob or file!");
+          console.log(snapshot);
         });
 
-      // Check
-      const imageNumber = this.$store.state.userModule.avatarChecked.length;
-      if (imageNumber < 2) {
-        this.$emit("onStatusActive", false);
-      } else {
-        this.$emit("onStatusActive", true);
+        // img.setAttribute("src", url);
+
+        const formData = new FormData();
+
+        await getDownloadURL(storageRef, image)
+          .then(async (url) => {
+            this.dialogImageUrl = url;
+
+            formData.append("imagebase64", this.dialogImageUrl);
+            await this.verifyImageRegister(formData);
+
+            const statusImageVerify =
+              this.$store.state.commonModule.statusImageVerify;
+
+            if (statusImageVerify) {
+              const dataImage = {
+                id: idUrl,
+                url: url,
+              };
+
+              this.setPhotos(dataImage);
+              // Or inserted into an <img> element
+              const img = document.getElementById(idUrl);
+
+              const close = document.getElementById("close" + idUrl);
+
+              let bg = "url('" + url + "')";
+
+              img.style.backgroundImage = bg;
+
+              close.style.display = "block";
+              setTimeout(() => {
+                loading.style.display = "none";
+              }, 1000);
+            } else {
+              setTimeout(() => {
+                loading.style.display = "none";
+              }, 1000);
+              this.isShowErrorVerify = true;
+              this.$notify.error({
+                title: "Error Image",
+                message: "Your photo is not suitable",
+              });
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+        // Check
+        const imageNumber = this.$store.state.userModule.avatarChecked.length;
+        if (imageNumber < 2) {
+          this.$emit("onStatusActive", false);
+        } else {
+          this.$emit("onStatusActive", true);
+        }
       }
+      console.log(data);
     },
 
     removeUpload(val) {

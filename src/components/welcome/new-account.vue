@@ -7,7 +7,21 @@
         class="text-2xl w-full h-10 flex items-center cursor-pointer"
         @click="onShowDialogQuit()"
       >
-        <img src="@/assets/icon/ic_closed.svg" width="30" alt="" srcset="" />
+        <img
+          v-if="colorBt"
+          src="@/assets/icon/ic_closed_dark.svg"
+          width="30"
+          alt=""
+          srcset=""
+        />
+
+        <img
+          v-else
+          src="@/assets/icon/ic_closed_light.svg"
+          width="30"
+          alt=""
+          srcset=""
+        />
       </div>
       <div class="p-2 mt-10 overflow-scroll h-scroll-welcome height-scroll">
         <div class="mb-16">
@@ -108,6 +122,9 @@ export default {
   },
 
   computed: {
+    colorBt() {
+      return this.$store.state.commonModule.statusLayout;
+    },
     isDarkTheme() {
       const theme = localStorage.getItem("user-theme");
 

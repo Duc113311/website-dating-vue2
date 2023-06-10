@@ -52,7 +52,7 @@
             <div class="flex bh-margin-title">
               <div class="">
                 <span class="title-user">{{ this.userParam.fullname }},</span>
-                <span class="describe-user"
+                <span class="text-age"
                   >&nbsp;{{ bindingAge(this.userParam.dob) }}</span
                 >
               </div>
