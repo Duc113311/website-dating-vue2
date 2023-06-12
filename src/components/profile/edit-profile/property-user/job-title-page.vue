@@ -2,7 +2,7 @@
   <div class="w-full flex items-center">
     <div class="w-full">
       <div class="w-full flex justify-between bh-title p-3">
-        <div>{{ $t("job_title") }}</div>
+        <div>{{ $t("job_title").toUpperCase() }}</div>
         <div v-if="nameJobTitle.length === 0">+4%</div>
       </div>
       <div class="w-full">

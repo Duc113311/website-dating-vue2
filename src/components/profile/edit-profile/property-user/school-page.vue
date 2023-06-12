@@ -6,7 +6,7 @@
         <div v-if="completeSchool">+4%</div>
       </div>
       <div
-        class="w-full flex style-form-single bg-default"
+        class="w-full flex style-form-single bg-default cursor-pointer"
         @click="onChoseSchool()"
       >
         <div class="flex justify-between w-full">

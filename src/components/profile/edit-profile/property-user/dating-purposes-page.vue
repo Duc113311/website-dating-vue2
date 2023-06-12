@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <div class="w-full flex justify-between p-3 bh-title">
-      <div class="">{{ $t("dating_purposes") }}</div>
+      <div class="">{{ $t("dating_purposes").toUpperCase() }}</div>
       <div v-if="completePurposes">+4%</div>
     </div>
 

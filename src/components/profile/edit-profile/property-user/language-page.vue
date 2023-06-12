@@ -2,7 +2,7 @@
   <div class="w-full flex items-center">
     <div class="w-full">
       <div class="w-full flex justify-between bh-title p-3">
-        <div>{{ $t("i_know_languages") }}</div>
+        <div>{{ $t("i_know_languages").toUpperCase() }}</div>
         <div v-if="completeLanguage">+4%</div>
       </div>
       <div

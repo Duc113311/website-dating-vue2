@@ -4,7 +4,7 @@
       <div class="w-full flex justify-between bh-title p-3">
         <div>{{ $t("my_anthem") }}</div>
       </div>
-      <div class="w-full flex style-form-single bg-default">
+      <div class="w-full flex style-form-single bg-default cursor-pointer">
         <div class="flex justify-between w-full">
           <div class="bh-item-title">{{ $t("choose_an_anthem") }}</div>
           <div class="">

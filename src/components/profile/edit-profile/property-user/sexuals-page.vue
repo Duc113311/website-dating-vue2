@@ -2,13 +2,19 @@
   <div class="w-full flex items-center">
     <div class="w-full">
       <div class="w-full flex justify-between bh-title p-3">
-        <div>{{ $t("sexual_orientation") }}</div>
+        <div>{{ $t("sexual_orientation").toUpperCase() }}</div>
       </div>
-      <div class="w-full flex style-form bg-default title-default">
-        <div class="flex justify-between w-full" @click="onShowPopupSexuals()">
+      <div class="w-full flex style-form bg-default">
+        <div
+          class="flex justify-between w-full cursor-pointer"
+          @click="onShowPopupSexuals()"
+        >
           <div class="bh-item-title style-inter-setting relative">
             <div class="w-full flex justify-center items-center">
-              <div class="w-full text-ellipsis whitespace-nowrap sexual-item">
+              <div
+                class="w-full text-ellipsis whitespace-nowrap"
+                v-if="listDataSexual.length !== 0"
+              >
                 <span
                   :id="index"
                   class="mr-3 mb-3 border-interest border-default"
@@ -18,11 +24,20 @@
                   {{ item }}
                 </span>
               </div>
+              <div
+                class="w-full title-default whitespace-nowrap mr-3 overflow-hidden"
+                v-if="listDataSexual.length === 0"
+              >
+                {{ nameDefault }}
+              </div>
             </div>
-            <div class="bg-interest absolute h-full w-full"></div>
+            <div
+              class="bg-shadow-right absolute h-full w-full"
+              id="shadow-r"
+            ></div>
           </div>
-          <div class="flex items-center">
-            <bh-chevron></bh-chevron>
+          <div class="flex items-center justify-end">
+            <BhChevron></BhChevron>
           </div>
         </div>
       </div>
@@ -31,12 +46,14 @@
 </template>
 
 <script>
-import bhChevron from "@/components/bh-element-ui/button/bh-chevron.vue";
+import BhChevron from "@/components/bh-element-ui/button/bh-chevron.vue";
 export default {
-  components: { bhChevron },
+  components: { BhChevron },
   name: "sexuals-page",
   data() {
-    return {};
+    return {
+      nameDefault: this.$t("add_sexual"),
+    };
   },
 
   computed: {

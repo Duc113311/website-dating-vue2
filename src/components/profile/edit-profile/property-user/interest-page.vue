@@ -6,7 +6,10 @@
         <div v-if="listDataInterests.length === 0">+15%</div>
       </div>
       <div class="w-full flex style-form bg-default">
-        <div class="flex justify-between w-full" @click="onShowPopupInterest()">
+        <div
+          class="flex justify-between w-full cursor-pointer"
+          @click="onShowPopupInterest()"
+        >
           <div class="bh-item-title style-inter-setting relative">
             <div class="w-full flex justify-center items-center">
               <div
@@ -50,7 +53,7 @@ export default {
   name: "interest-page",
   data() {
     return {
-      nameDefault: "Add interests",
+      nameDefault: this.$t("add_interests"),
     };
   },
 

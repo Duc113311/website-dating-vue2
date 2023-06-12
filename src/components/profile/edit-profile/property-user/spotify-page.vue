@@ -2,9 +2,9 @@
   <div class="w-full flex items-center">
     <div class="w-full">
       <div class="w-full flex justify-between bh-title p-3">
-        <div>{{ $t("my_top_spotify_artists") }}</div>
+        <div>{{ $t("my_top_spotify_artists").toUpperCase() }}</div>
       </div>
-      <div class="w-full flex style-form-single bg-default">
+      <div class="w-full flex style-form-single bg-default cursor-pointer">
         <div class="">
           <img src="@/assets/icon/ic_spotify.svg" width="30" alt="" srcset="" />
         </div>
