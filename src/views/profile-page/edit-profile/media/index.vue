@@ -31,7 +31,7 @@
       >
         <div class="w-full flex justify-center items-center p-5">
           <div class="w-1/4">
-            <BhBack></BhBack>
+            <BhBack @onBackComponent="onBackComponent"></BhBack>
           </div>
           <div class="text-center w-3/4 title-detail-explore">
             {{ $t("photo") }}
@@ -80,6 +80,9 @@ export default {
   },
 
   methods: {
+    onBackComponent() {
+      this.isShowCrop = true;
+    },
     /**
      * Save image crop
      */
