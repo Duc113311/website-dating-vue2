@@ -660,6 +660,7 @@ const mutations = {
    * @param {*} gender
    */
   setGender(state, gender) {
+    debugger;
     state.user_profile.profiles.gender = gender;
   },
 

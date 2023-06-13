@@ -51,6 +51,7 @@ export default {
      * @param {*} val
      */
     onChangeGender(val) {
+      debugger;
       this.setGender(val);
     },
   },

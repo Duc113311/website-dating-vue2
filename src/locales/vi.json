@@ -245,7 +245,7 @@
   "version_x.y.z": "Phiên bản X.Y.Z",
   "km": "km",
   "mi": "mi",
-  "live_at_{nameAddress}": "Trực tiếp tại {nameaddress}",
+  "live_at_{nameAddress}": "Sống tại {nameaddress}",
   "{numberKilometers}_{unit}_away": "{numberKilometers} {unit}",
   "verified": "Đã xác minh",
   "heartLink": "Liên kết trái tim",
