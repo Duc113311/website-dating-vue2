@@ -627,33 +627,37 @@ export default {
           if (indexActive === 1) {
             if (indexActive !== this.scrods) {
               if (data.about.length !== 0) {
-                if (this.scrods > indexActive) {
-                  this.scrods = this.scrods + 0;
+                if (this.scrods === 5) {
+                  this.scrods = 1;
                 } else {
                   this.scrods = this.scrods - 1;
                 }
               } else if (this.bingBasicInformation(data).length !== 0) {
-                if (this.scrods > indexActive) {
-                  this.scrods = this.scrods + 0;
+                if (this.scrods === 5) {
+                  this.scrods = 2;
                 } else {
-                  this.scrods = this.scrods + 0;
+                  this.scrods = this.scrods - 1;
                 }
               } else if (this.bingLifeStyleStatic(data).length !== 0) {
-                this.scrods = this.scrods + 1;
+                if (this.scrods === 5) {
+                  this.scrods = 3;
+                } else {
+                  this.scrods = this.scrods - 1;
+                }
               } else if (
                 data.jobTitle.length !== 0 ||
                 data.school.length !== 0
               ) {
-                if (this.scrods > indexActive) {
-                  this.scrods = this.scrods + 0;
+                if (this.scrods === 5) {
+                  this.scrods = 4;
                 } else {
-                  this.scrods = this.scrods + 2;
+                  this.scrods = this.scrods - 1;
                 }
               } else if (this.bingInterests(data).length !== 0) {
-                if (this.scrods > indexActive) {
-                  this.scrods = this.scrods + 0;
+                if (this.scrods === 5) {
+                  this.scrods = 5;
                 } else {
-                  this.scrods = this.scrods + 3;
+                  this.scrods = this.scrods - 1;
                 }
               }
             } else {
@@ -663,23 +667,31 @@ export default {
           if (indexActive === 2) {
             if (indexActive !== this.scrods) {
               if (this.bingBasicInformation(data).length !== 0) {
-                this.scrods = this.scrods - 1;
+                if (this.scrods === 5) {
+                  this.scrods = 2;
+                } else {
+                  this.scrods = this.scrods - 1;
+                }
               } else if (this.bingLifeStyleStatic(data).length !== 0) {
-                this.scrods = this.scrods + 0;
+                if (this.scrods === 5) {
+                  this.scrods = 3;
+                } else {
+                  this.scrods = this.scrods - 1;
+                }
               } else if (
                 data.jobTitle.length !== 0 ||
                 data.school.length !== 0
               ) {
-                if (this.scrods > indexActive) {
-                  this.scrods = this.scrods + 0;
+                if (this.scrods === 5) {
+                  this.scrods = 4;
                 } else {
-                  this.scrods = this.scrods + 1;
+                  this.scrods = this.scrods - 1;
                 }
               } else if (this.bingInterests(data).length !== 0) {
-                if (this.scrods > indexActive) {
-                  this.scrods = this.scrods + 0;
+                if (this.scrods === 5) {
+                  this.scrods = 5;
                 } else {
-                  this.scrods = this.scrods + 2;
+                  this.scrods = this.scrods - 1;
                 }
               }
             } else {
@@ -689,21 +701,25 @@ export default {
           if (indexActive === 3) {
             if (indexActive !== this.scrods) {
               if (this.bingLifeStyleStatic(data).length !== 0) {
-                this.scrods = this.scrods - 1;
+                if (this.scrods === 5) {
+                  this.scrods = 3;
+                } else {
+                  this.scrods = this.scrods - 1;
+                }
               } else if (
                 data.jobTitle.length !== 0 ||
                 data.school.length !== 0
               ) {
-                if (this.scrods > indexActive) {
-                  this.scrods = this.scrods + 0;
+                if (this.scrods === 5) {
+                  this.scrods = 4;
                 } else {
-                  this.scrods = this.scrods + 1;
+                  this.scrods = this.scrods - 1;
                 }
               } else if (this.bingInterests(data).length !== 0) {
-                if (this.scrods > indexActive) {
-                  this.scrods = this.scrods + 0;
+                if (this.scrods === 5) {
+                  this.scrods = 5;
                 } else {
-                  this.scrods = this.scrods + 2;
+                  this.scrods = this.scrods - 1;
                 }
               }
             } else {
@@ -713,7 +729,11 @@ export default {
           if (indexActive === 4) {
             if (indexActive !== this.scrods) {
               if (data.jobTitle.length !== 0 || data.school.length !== 0) {
-                this.scrods = this.scrods - 1;
+                if (this.scrods === 5) {
+                  this.scrods = 4;
+                } else {
+                  this.scrods = this.scrods - 1;
+                }
               } else if (this.bingInterests(data).length !== 0) {
                 this.scrods = this.scrods + 0;
               }
