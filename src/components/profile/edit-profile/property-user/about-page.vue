@@ -40,7 +40,6 @@ export default {
      * Gán giá trị cuối cùng valueAbout cho user_profile
      */
     onChangeSaveAbout() {
-      debugger;
       var substring = this.nameAbout.substring(0, 500);
       this.setAbout(substring);
     },

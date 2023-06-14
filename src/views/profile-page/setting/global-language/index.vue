@@ -113,13 +113,10 @@ export default {
     },
 
     onClickAddLanguage() {
-      debugger;
       this.isShowLanguages = true;
     },
 
     onClickSaveLanguage(val) {
-      debugger;
-
       this.isShowLanguages = val;
     },
     /**

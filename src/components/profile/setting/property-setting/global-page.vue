@@ -119,7 +119,6 @@ export default {
     ...mapMutations(["setShowGlobal"]),
 
     onChangeGlobal() {
-      debugger;
       const global =
         this.$store.state.userModule.user_profile.settings.global.isEnabled;
       if (global) {
@@ -140,12 +139,10 @@ export default {
     },
 
     onClickSaveLanguage(val) {
-      debugger;
       this.isShowLanguages = val;
     },
 
     onClickPreferredLanguage(val) {
-      debugger;
       console.log(val);
       this.$router.push({ path: "/global-language" }).catch(() => {});
     },

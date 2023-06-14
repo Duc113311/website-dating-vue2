@@ -122,7 +122,7 @@ export default {
     },
     nameReport() {
       const nameValue = this.$store.state.homeModule;
-      debugger;
+
       if (this.screamReason === 1) {
         return Object.keys(nameValue.valueReason).length !== 0
           ? nameValue.valueReason.value
@@ -143,7 +143,7 @@ export default {
 
     titleReport() {
       const nameValue = this.$store.state.homeModule;
-      debugger;
+
       if (this.screamReason === 1) {
         return this.titleReason;
       }
@@ -181,14 +181,12 @@ export default {
     },
 
     onHideReport() {
-      debugger;
       setTimeout(() => {
         this.isShowModal = false;
       }, 100);
     },
 
     onChangeContinue() {
-      debugger;
       const nameValue = this.$store.state.homeModule;
       if (this.screamReason < 3) {
         this.screamReason = this.screamReason + 1;
@@ -198,11 +196,11 @@ export default {
           } else {
             this.isActives = false;
           }
-          debugger;
+
           const codeId = nameValue.valueReason.code;
           const listDetails = nameValue.listReasonReports;
           const findData = listDetails.find((x) => x._id === codeId);
-          debugger;
+
           let resultData = [];
           if (findData) {
             for (let index = 0; index < findData.details.length; index++) {
@@ -247,7 +245,7 @@ export default {
           const codeId = nameValue.valueReason.code;
           const listDetails = nameValue.listReasonReports;
           const findData = listDetails.find((x) => x._id === codeId);
-          debugger;
+
           let resultData = [];
           if (findData) {
             for (let index = 0; index < findData.details.length; index++) {
@@ -270,9 +268,8 @@ export default {
     },
 
     async onClickSendReport() {
-      debugger;
       const nameValue = this.$store.state.homeModule;
-      debugger;
+
       const objectSave = {
         userId: this.$route.params.userId,
         reasonId: nameValue.valueReason.code,
@@ -299,7 +296,6 @@ export default {
     },
 
     onChangeComment() {
-      debugger;
       if (this.nameComment.length !== 0) {
         this.isActives = true;
       } else {
@@ -309,7 +305,6 @@ export default {
   },
 
   mounted() {
-    debugger;
     this.listDataChoses = this.$store.state.homeModule.listReasons;
   },
 };

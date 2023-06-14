@@ -3,7 +3,6 @@ function getAccessToken(userId) {
 }
 
 function getProviderId(providerId) {
-  debugger;
   return localStorage.getItem(providerId);
 }
 export default {

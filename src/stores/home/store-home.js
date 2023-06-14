@@ -101,7 +101,6 @@ const mutations = {
   },
 
   setPostLikeUser(state, value) {
-    debugger;
     state.isLike = { ...state.isLike, ...value };
   },
 
@@ -204,9 +203,7 @@ const actions = {
   async postLikeUserId({ commit }, data) {
     await http_request
       .post(`home/v1/likes/${data.userId}`, data.objectCustomer)
-      .then((response) => {
-        debugger;
-      })
+      .then((response) => {})
       .catch((error) => {
         console.log(error);
       });
@@ -242,11 +239,9 @@ const actions = {
         headers: { Authorization: `Bearer ${localStorage.getItem("tokenId")}` },
       })
       .then((response) => {
-        debugger;
         commit("setPostLikeUser", response.data.data);
       })
       .catch((error) => {
-        debugger;
         commit("setPostLikeUser", {
           isMatched: false,
           likeRemaining: 0,

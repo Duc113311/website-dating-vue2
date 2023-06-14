@@ -53,7 +53,6 @@ export default {
     },
 
     onShowQuestion(val) {
-      debugger;
       this.isShowFormQuestion = val;
     },
 
@@ -63,7 +62,6 @@ export default {
     async onActionApplyQuestion(val) {
       await signOut(auth)
         .then(() => {
-          debugger;
           // Sign-out successful.
           localStorage.removeItem("oAuth2Id");
           localStorage.removeItem("tokenId");
@@ -77,7 +75,6 @@ export default {
      * Show dialog khi thoát
      */
     onBackComponent() {
-      debugger;
       this.isShowFormQuestion = true;
     },
   },

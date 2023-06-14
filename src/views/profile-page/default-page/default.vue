@@ -140,7 +140,6 @@ export default {
 
   computed: {
     isArabic() {
-      debugger;
       return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
     },
     colorBt() {
@@ -151,11 +150,9 @@ export default {
       return this.$store.state.userModule.completeUser;
     },
     nameUser() {
-      debugger;
       return this.$store.state.userModule.user_profile.fullname;
     },
     avatarUser() {
-      debugger;
       return this.$store.state.userModule.user_profile.profiles.avatars[0];
     },
 
@@ -200,7 +197,6 @@ export default {
   created() {},
 
   async mounted() {
-    debugger;
     let completeAvatar = 3;
     let completeAbout = 0;
     let completeInterest = 0;
@@ -296,7 +292,6 @@ export default {
       }
     }
 
-    debugger;
     totalComplete =
       totalComplete +
       ((completeAvatar +
@@ -313,7 +308,6 @@ export default {
         100) /
         100;
     await this.setCompleteUser(totalComplete);
-    debugger;
 
     var i = 1;
     var interval = setInterval(() => {

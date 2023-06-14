@@ -180,14 +180,12 @@ const mutations = {
   },
 
   setHideConfirm(state, value) {
-    debugger;
     state.isHideConfirm = value;
   },
 
   setLanguageTranslate(state, value) {
-    debugger;
     state.languageTranslate = value;
-    debugger;
+
     const findData = state.languageParam.find((x) => x.code === value);
     if (findData) {
       state.languageTranslateValue = findData.value;
@@ -195,7 +193,6 @@ const mutations = {
   },
 
   setListInterestFilter(state, data) {
-    debugger;
     state.listInterestFilter = data;
   },
   /**
@@ -324,7 +321,6 @@ const actions = {
    * @param {*} param0
    */
   async getListLifeStyleCommons({ commit }) {
-    debugger;
     await http_mongo
       .get(`api/v1/statics/commons`, {
         headers: {
@@ -332,7 +328,6 @@ const actions = {
         },
       })
       .then((response) => {
-        debugger;
         commit("setListLifeStyleSingle", response.data.data);
       })
       .catch((error) => {
@@ -387,7 +382,6 @@ const actions = {
         },
       })
       .then((response) => {
-        debugger;
         commit("setVerifyImageRegister", response.data.data);
       })
       .catch((error) => {

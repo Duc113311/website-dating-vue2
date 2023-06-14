@@ -38,7 +38,6 @@ export default {
       return true;
     },
     isArabic() {
-      debugger;
       return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
     },
   },

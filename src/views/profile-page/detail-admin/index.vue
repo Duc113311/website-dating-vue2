@@ -276,13 +276,12 @@ export default {
       return this.$store.state.commonModule.statusLayout;
     },
     bingInformationUser() {
-      debugger;
       return this.$store.state.userModule.user_profile;
     },
     aboutValue() {
       const lengthAbout =
         this.$store.state.userModule.user_profile.profiles.about;
-      debugger;
+
       if (lengthAbout) {
         if (lengthAbout.length !== 0) {
           return true;
@@ -292,7 +291,6 @@ export default {
     },
 
     isArabic() {
-      debugger;
       return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
     },
     bindingSexuals() {
@@ -332,7 +330,6 @@ export default {
     },
 
     listEducationParams() {
-      debugger;
       return this.$store.state.commonModule.listInformationBasic.educations;
     },
   },

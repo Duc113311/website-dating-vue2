@@ -35,7 +35,6 @@ export default {
 
   methods: {
     onSelectInterest(val) {
-      debugger;
       const listInterest =
         this.$store.state.commonModule.listLifeStyleSingle.interests;
       const findData = this.listChecked.find((x) => x.code === val);
@@ -73,16 +72,13 @@ export default {
 
         this.listChecked.splice(indexData, 1);
         this.listInterestCode.splice(indexData, 1);
-
-        debugger;
       }
     },
   },
 
   mounted() {
-    debugger;
     const interestsData = this.$store.state.commonModule.listInterestFilter;
-    debugger;
+
     if (interestsData.length !== 0) {
       for (let index = 0; index < interestsData.length; index++) {
         const element = interestsData[index];

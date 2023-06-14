@@ -123,7 +123,7 @@ export default {
     ...mapActions(["registerUserByAuthId"]),
     async onShowAvoid(value) {
       const userProfile = this.$store.state.userModule.user_profile;
-      debugger;
+
       const userParam = {
         oAuth2Id: userProfile.oAuth2Id,
         fullname: userProfile.fullname,
@@ -194,7 +194,7 @@ export default {
         .then((data) => {
           if (data.results.length > 0) {
             this.address = data.results[0].formatted_address;
-            debugger;
+
             this.setAddressLocation(this.address);
           } else {
             this.address = "No address found";

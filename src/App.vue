@@ -84,7 +84,6 @@ export default {
     }
     const oAuth2Id = localStorage.getItem("oAuth2Id");
     // Nếu tồn tại oAuth2Id in localStorage
-    debugger;
     if (oAuth2Id) {
       await this.loginAppByAuthId({
         oAuth2Id: oAuth2Id,
@@ -111,7 +110,6 @@ export default {
 
   mounted() {
     const themeValue = localStorage.getItem("theme");
-    debugger;
     if (themeValue) {
       if (themeValue === "dark") {
         document.documentElement.setAttribute("theme", "dark");

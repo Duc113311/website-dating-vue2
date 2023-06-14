@@ -28,7 +28,6 @@ export default {
   props: ["actionDecide"],
   computed: {
     listLikeYouActions() {
-      debugger;
       return this.$store.state.likeTopicModule.listLikeYouAction;
     },
   },
@@ -41,7 +40,7 @@ export default {
     },
     onInputFile(val) {
       console.log("vao", val);
-      debugger;
+
       this.setPutListUser(this.listLikes[0]);
     },
 

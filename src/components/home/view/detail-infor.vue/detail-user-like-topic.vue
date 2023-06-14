@@ -377,7 +377,6 @@ export default {
 
   computed: {
     isArabic() {
-      debugger;
       return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
     },
     kilometer() {
@@ -389,7 +388,7 @@ export default {
     aboutValue() {
       const lengthAbout =
         this.$store.state.likeTopicModule.informationUserLike.profiles.about;
-      debugger;
+
       if (lengthAbout) {
         if (lengthAbout.length !== 0) {
           return true;
@@ -440,7 +439,6 @@ export default {
       return data;
     },
     userParam() {
-      debugger;
       return this.$store.state.likeTopicModule.informationUserLike;
     },
   },

@@ -203,8 +203,6 @@ export default {
       "setPreferences",
     ]),
     onChoseZodiac(val) {
-      debugger;
-
       const documentZodiacs = document.getElementsByClassName("zodiac");
       for (let index = 0; index < documentZodiacs.length; index++) {
         const element = documentZodiacs[index];
@@ -258,7 +256,6 @@ export default {
     },
 
     onChoseFavoritePets(val) {
-      debugger;
       const documentZodiacs = document.getElementsByClassName("pets");
       for (let index = 0; index < documentZodiacs.length; index++) {
         const element = documentZodiacs[index];

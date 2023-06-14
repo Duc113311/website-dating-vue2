@@ -42,7 +42,6 @@ export default {
     async onLogout() {
       await signOut(auth)
         .then(() => {
-          debugger;
           // Sign-out successful.
           localStorage.removeItem("oAuth2Id");
           localStorage.removeItem("tokenId");

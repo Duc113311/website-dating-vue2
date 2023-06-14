@@ -158,10 +158,8 @@ export default {
       this.isShowFormQuestion = val;
     },
     async onActionApplyQuestion(val) {
-      debugger;
       await signOut(auth)
         .then(() => {
-          debugger;
           this.isShowFormQuestion = false;
 
           // Sign-out successful.
@@ -173,7 +171,6 @@ export default {
       this.$router.replace({ name: "login-page" }).catch(() => {});
     },
     onBackComponent() {
-      debugger;
       if (this.isScream === 0) {
         this.isShowFormQuestion = true;
       } else {
@@ -181,7 +178,6 @@ export default {
       }
     },
     onShowSkips(val) {
-      debugger;
       this.isShowSkipParam = val;
     },
 

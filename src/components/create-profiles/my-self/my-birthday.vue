@@ -46,7 +46,7 @@ export default {
     onChangeInput() {
       if (this.birthday !== "") {
         const birthdayValue = this.validateDateOfBirth(this.birthday);
-        debugger;
+
         if (birthdayValue) {
           this.textError = "";
           this.setBirthday(this.birthday);
@@ -59,7 +59,6 @@ export default {
     },
 
     validateDateOfBirth(dateString) {
-      debugger;
       // Kiểm tra định dạng ngày tháng năm (YYYY-MM-DD)
       var regex = /^\d{4}-\d{2}-\d{2}$/;
       if (!regex.test(dateString)) {

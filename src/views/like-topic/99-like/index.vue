@@ -20,7 +20,6 @@ export default {
   },
   computed: {
     listLikeTopicParam() {
-      debugger;
       return this.$store.state.likeTopicModule.listLikeForYous;
     },
   },

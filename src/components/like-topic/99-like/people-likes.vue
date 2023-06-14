@@ -112,7 +112,6 @@ export default {
 
   computed: {
     listLikeForYouAction() {
-      debugger;
       return this.$store.state.likeTopicModule.listLikeForYous;
     },
 

@@ -161,16 +161,12 @@ export default {
       return this.$store.state.commonModule.statusLayout;
     },
     valueShowInputMes() {
-      debugger;
       return this.$store.state.commonModule.isShowInputMes;
     },
     valueHideConfirm() {
-      debugger;
-
       return this.$store.state.commonModule.isHideConfirm;
     },
     urlImage() {
-      debugger;
       return this.$store.state.homeModule.userMatchData?.profiles?.avatars[0]
         ? this.$store.state.homeModule.userMatchData?.profiles?.avatars[0]
         : this.avatarDefault;
@@ -195,16 +191,12 @@ export default {
     },
     onClickNextImage() {},
     onClickSendIcon(value) {
-      debugger;
       this.txtValueMes = document
         .getElementById("ic_" + value)
         .innerHTML.split(" ")
         .join("");
-      debugger;
     },
     onClickSendMessage() {
-      debugger;
-
       this.isHideConfirm = true;
       this.setHideConfirm(true);
       this.isShowConfirm = true;
@@ -217,7 +209,6 @@ export default {
     },
 
     onHideMatch() {
-      debugger;
       this.setHideConfirm(false);
 
       this.$emit("onHideLikeYou", false);

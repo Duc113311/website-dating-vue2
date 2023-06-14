@@ -54,7 +54,6 @@ export default {
   methods: {
     ...mapMutations(["setThemeLayout"]),
     onChangeTheme() {
-      debugger;
       const layoutValue = this.$store.state.commonModule.statusLayout;
       if (!layoutValue) {
         document.documentElement.setAttribute("theme", "dark");

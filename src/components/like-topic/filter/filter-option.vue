@@ -190,7 +190,7 @@ export default {
   computed: {
     listInterestValue() {
       let result = [];
-      debugger;
+
       const interestsData = this.$store.state.commonModule.listInterestFilter;
 
       for (let index = 0; index < interestsData.length; index++) {
@@ -234,7 +234,6 @@ export default {
       "setListUserLikeFilter",
     ]),
     onActionFilter(val) {
-      debugger;
       if (this.issShowFormInterest) {
         this.setListInterestFilter(this.$refs["f-interest"].listInterestCode);
 
@@ -243,7 +242,7 @@ export default {
         }, 100);
       } else {
         this.loading = true;
-        debugger;
+
         const objectFilter = {
           valueMaximum: this.valueMaximum,
           valueAge: this.valueAge,
@@ -300,12 +299,10 @@ export default {
     },
 
     onClickShowInterest() {
-      debugger;
       this.issShowFormInterest = true;
     },
 
     onClickChose(val) {
-      debugger;
       if (val === true) {
         this.setShowProfileCreate({
           isShowProfile: true,

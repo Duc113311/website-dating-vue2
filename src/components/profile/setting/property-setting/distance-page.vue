@@ -48,7 +48,6 @@ export default {
 
   computed: {
     kiloValue() {
-      debugger;
       return this.$store.state.userModule.user_profile.settings
         .distancePreference.unit;
     },

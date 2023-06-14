@@ -54,7 +54,6 @@ export default {
 
   mounted() {
     this.txtFirstName = this.$store.state.userModule.user_profile?.fullname;
-    debugger;
     this.$emit("onShowName", { showCheckbox: false });
     this.$emit("onShowSkips", false);
     console.log(this.txtFirstName);

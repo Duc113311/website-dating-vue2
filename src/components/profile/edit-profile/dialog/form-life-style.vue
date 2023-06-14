@@ -442,7 +442,6 @@ export default {
     },
 
     onChangeSaveLife() {
-      debugger;
       if (this.petValue !== null) {
         this.setPets(this.petValue);
       }
@@ -469,7 +468,6 @@ export default {
   },
   beforeDestroy() {},
   mounted() {
-    debugger;
     this.$refs[this.valueScroll].scrollIntoView({ behavior: "smooth" });
 
     const profileBasic = this.$store.state.userModule.user_profile.profiles;

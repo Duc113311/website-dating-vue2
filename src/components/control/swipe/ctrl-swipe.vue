@@ -114,12 +114,10 @@ export default {
   props: ["listUser", "actionDecide"],
   computed: {
     listUserData() {
-      debugger;
       return this.listUser;
     },
 
     isArabic() {
-      debugger;
       return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
     },
   },
@@ -135,7 +133,6 @@ export default {
       return dataAge;
     },
     swipe(val) {
-      debugger;
       this.opacity = 1;
       nextTick(() => {
         if (val == "nope") {
@@ -170,7 +167,6 @@ export default {
       });
     },
     emitAndNext(index) {
-      debugger;
       // this.$refs["index"][index].style.display = "none";
       // if(this.isIndexNew===)
       // setTimeout(() => (this.isVisible = false), 200);
@@ -233,7 +229,6 @@ export default {
   },
 
   mounted() {
-    debugger;
     this.$nextTick(() => {
       const grid = this.$el.querySelector(".animation-grid");
       // Sử dụng wrapGrid

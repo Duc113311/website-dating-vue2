@@ -344,7 +344,6 @@ export default {
     },
 
     isArabic() {
-      debugger;
       return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
     },
   },
@@ -614,78 +613,117 @@ export default {
     },
     nextImageLeft(value, data) {
       console.log(data);
-      debugger;
+
       if (this.isDragging) {
         this.isPointerNext = true;
-
+        debugger;
         if (this.$store.state.userModule.imageActives !== 0) {
           this.setIndexImageActiveLeft();
           const indexActive = this.$store.state.userModule.imageActives;
 
           if (indexActive === 0) {
-            if (data.about.length !== 0) {
-              this.scrods = this.scrods - 1;
-            } else {
-              const basic = this.bingBasicInformation(data);
-              if (basic.length !== 0) {
-                this.scrods = this.scrods + 0;
-              }
-            }
+            this.scrods = 0;
           }
           if (indexActive === 1) {
-            const basic = this.bingBasicInformation(data);
-            if (basic.length !== 0) {
-              if (this.scrods === 3) {
-                this.scrods = this.scrods - 2;
-              } else {
-                this.scrods = this.scrods - 1;
+            if (indexActive !== this.scrods) {
+              if (data.about.length !== 0) {
+                if (this.scrods > indexActive) {
+                  this.scrods = this.scrods + 0;
+                } else {
+                  this.scrods = this.scrods - 1;
+                }
+              } else if (this.bingBasicInformation(data).length !== 0) {
+                if (this.scrods > indexActive) {
+                  this.scrods = this.scrods + 0;
+                } else {
+                  this.scrods = this.scrods + 0;
+                }
+              } else if (this.bingLifeStyleStatic(data).length !== 0) {
+                this.scrods = this.scrods + 1;
+              } else if (
+                data.jobTitle.length !== 0 ||
+                data.school.length !== 0
+              ) {
+                if (this.scrods > indexActive) {
+                  this.scrods = this.scrods + 0;
+                } else {
+                  this.scrods = this.scrods + 2;
+                }
+              } else if (this.bingInterests(data).length !== 0) {
+                if (this.scrods > indexActive) {
+                  this.scrods = this.scrods + 0;
+                } else {
+                  this.scrods = this.scrods + 3;
+                }
               }
             } else {
-              const styleStatic = this.bingLifeStyleStatic(data);
-              if (styleStatic.length !== 0) {
-                this.scrods = this.scrods - 1;
-              }
+              this.scrods = this.scrods + 0;
             }
           }
           if (indexActive === 2) {
-            const styleStatic = this.bingLifeStyleStatic(data);
-            if (styleStatic.length !== 0) {
-              this.scrods = this.scrods - 1;
-            } else {
-              const styleStatic = this.bingLifeStyleStatic(data);
-              if (styleStatic.length !== 0) {
+            if (indexActive !== this.scrods) {
+              if (this.bingBasicInformation(data).length !== 0) {
+                this.scrods = this.scrods - 1;
+              } else if (this.bingLifeStyleStatic(data).length !== 0) {
                 this.scrods = this.scrods + 0;
+              } else if (
+                data.jobTitle.length !== 0 ||
+                data.school.length !== 0
+              ) {
+                if (this.scrods > indexActive) {
+                  this.scrods = this.scrods + 0;
+                } else {
+                  this.scrods = this.scrods + 1;
+                }
+              } else if (this.bingInterests(data).length !== 0) {
+                if (this.scrods > indexActive) {
+                  this.scrods = this.scrods + 0;
+                } else {
+                  this.scrods = this.scrods + 2;
+                }
               }
+            } else {
+              this.scrods = this.scrods + 0;
             }
           }
           if (indexActive === 3) {
-            const styleStatic = this.bingLifeStyleStatic(data);
-            if (styleStatic.length !== 0) {
-              if (this.scrods === 5) {
-                this.scrods = this.scrods - 2;
-              } else {
+            if (indexActive !== this.scrods) {
+              if (this.bingLifeStyleStatic(data).length !== 0) {
                 this.scrods = this.scrods - 1;
+              } else if (
+                data.jobTitle.length !== 0 ||
+                data.school.length !== 0
+              ) {
+                if (this.scrods > indexActive) {
+                  this.scrods = this.scrods + 0;
+                } else {
+                  this.scrods = this.scrods + 1;
+                }
+              } else if (this.bingInterests(data).length !== 0) {
+                if (this.scrods > indexActive) {
+                  this.scrods = this.scrods + 0;
+                } else {
+                  this.scrods = this.scrods + 2;
+                }
               }
             } else {
-              if (data.jobTitle.length !== 0 || data.school.length !== 0) {
-                this.scrods = this.scrods + 0;
-              }
+              this.scrods = this.scrods + 0;
             }
           }
           if (indexActive === 4) {
-            if (data.jobTitle.length !== 0 || data.school.length !== 0) {
-              this.scrods = this.scrods - 1;
-            } else {
-              const styleStatic = this.bingInterests(data);
-              if (styleStatic.length !== 0) {
+            if (indexActive !== this.scrods) {
+              if (data.jobTitle.length !== 0 || data.school.length !== 0) {
+                this.scrods = this.scrods - 1;
+              } else if (this.bingInterests(data).length !== 0) {
                 this.scrods = this.scrods + 0;
               }
+            } else {
+              this.scrods = this.scrods + 0;
             }
           }
           if (indexActive === 5) {
-            const styleStatic = this.bingInterests(data);
-            if (styleStatic.length !== 0) {
-              this.scrods = this.scrods - 1;
+            if (this.bingInterests(data).length !== 0) {
+              this.scrods = this.scrods + 0;
             }
           }
 
@@ -713,57 +751,54 @@ export default {
     },
 
     nextImageRight(value, data) {
-      debugger;
       if (this.isDragging) {
         this.isPointerNext = true;
-
+        debugger;
         this.setIndexImageActiveRight();
         let indexActive = this.$store.state.userModule.imageActives;
-        debugger;
 
         if (indexActive !== data.avatars.length) {
-          if (indexActive === 1) {
+          if (indexActive === 1 && this.scrods < 5) {
             if (data.about.length !== 0) {
               this.scrods = this.scrods + 1;
-            } else {
-              const basic = this.bingBasicInformation(data);
-              if (basic.length !== 0) {
-                this.scrods = this.scrods + 2;
-              }
+            } else if (this.bingBasicInformation(data).length !== 0) {
+              this.scrods = this.scrods + 2;
+            } else if (this.bingLifeStyleStatic(data).length !== 0) {
+              this.scrods = this.scrods + 3;
+            } else if (data.jobTitle.length !== 0 || data.school.length !== 0) {
+              this.scrods = this.scrods + 4;
+            } else if (this.bingInterests(data).length !== 0) {
+              this.scrods = this.scrods + 5;
             }
           }
-          if (indexActive === 2) {
-            const basic = this.bingBasicInformation(data);
-            if (basic.length !== 0) {
+          if (indexActive === 2 && this.scrods < 5) {
+            if (this.bingBasicInformation(data).length !== 0) {
               this.scrods = this.scrods + 1;
-            } else {
-              const styleStatic = this.bingLifeStyleStatic(data);
-              if (styleStatic.length !== 0) {
-                this.scrods = this.scrods + 2;
-              }
+            } else if (this.bingLifeStyleStatic(data).length !== 0) {
+              this.scrods = this.scrods + 2;
+            } else if (data.jobTitle.length !== 0 || data.school.length !== 0) {
+              this.scrods = this.scrods + 3;
+            } else if (this.bingInterests(data).length !== 0) {
+              this.scrods = this.scrods + 4;
             }
           }
-          if (indexActive === 3) {
-            const styleStatic = this.bingLifeStyleStatic(data);
-            if (styleStatic.length !== 0) {
+          if (indexActive === 3 && this.scrods < 5) {
+            if (this.bingLifeStyleStatic(data).length !== 0) {
               this.scrods = this.scrods + 1;
-            } else {
-              if (data.jobTitle.length !== 0 || data.school.length !== 0) {
-                this.scrods = this.scrods + 2;
-              }
+            } else if (data.jobTitle.length !== 0 || data.school.length !== 0) {
+              this.scrods = this.scrods + 2;
+            } else if (this.bingInterests(data).length !== 0) {
+              this.scrods = this.scrods + 3;
             }
           }
-          if (indexActive === 4) {
+          if (indexActive === 4 && this.scrods < 5) {
             if (data.jobTitle.length !== 0 || data.school.length !== 0) {
               this.scrods = this.scrods + 1;
-            } else {
-              const styleStatic = this.bingInterests(data);
-              if (styleStatic.length !== 0) {
-                this.scrods = this.scrods + 2;
-              }
+            } else if (this.bingInterests(data).length !== 0) {
+              this.scrods = this.scrods + 2;
             }
           }
-          if (indexActive === 5) {
+          if (indexActive === 5 && this.scrods < 5) {
             const styleStatic = this.bingInterests(data);
             if (styleStatic.length !== 0) {
               if (this.scrods !== 5) {
@@ -835,7 +870,6 @@ export default {
       this.$emit("onShowDetailUser", true);
     },
     async onSubmit(value) {
-      debugger;
       this.setUrlNameAvatarUser("");
       this.isActiveImag = true;
 
@@ -912,7 +946,7 @@ export default {
       if (value.type.toString() === "like") {
         console.log("like");
         this.scrods = 0;
-        debugger;
+
         if (this.history.length === 0) {
           this.history.push(value.item);
         } else {
@@ -954,7 +988,6 @@ export default {
       }
     },
     async decide(choice) {
-      debugger;
       console.log(choice);
       if (choice === "rewind") {
         if (this.history.length) {
@@ -985,7 +1018,6 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      debugger;
       const isNopeReportValue = this.$store.state.homeModule.isNopeReport;
       if (isNopeReportValue) {
         this.decide("nope");
@@ -994,7 +1026,7 @@ export default {
         }, 1000);
       }
     });
-    debugger;
+
     if (this.$store.state.userModule.urlImage !== "") {
       const indexActive = this.$store.state.userModule.imageActives;
       this.idImage = this.$store.state.userModule.urlImage;
@@ -1002,7 +1034,7 @@ export default {
       document
         .getElementById(`avatar_` + parseInt(indexActive))
         .classList.add("active-image");
-      debugger;
+
       const informationUser =
         this.$store.state.userModule.userProfileDetail.profiles;
       if (indexActive === 1) {

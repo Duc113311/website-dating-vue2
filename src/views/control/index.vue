@@ -155,7 +155,6 @@ export default {
     },
     onMouseDow($event, index) {
       console.log(index);
-      debugger;
 
       this.selectedIdx = index;
       this.truc_x = $event.clientX;

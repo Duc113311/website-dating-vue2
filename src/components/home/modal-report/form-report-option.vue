@@ -53,7 +53,6 @@ export default {
 
   computed: {
     listReasons() {
-      debugger;
       return this.listNameReport;
     },
   },
@@ -64,7 +63,6 @@ export default {
       this.$emit("onHideReport", false);
     },
     onClickChose(status, indexValue) {
-      debugger;
       const checkActive = document.getElementsByClassName("check-active");
       const notCheckActive =
         document.getElementsByClassName("not-check-active");
@@ -75,7 +73,7 @@ export default {
           notCheckActive["not-check" + indexValue].classList.add("not-check");
           checkActive["check" + indexValue].classList.remove("not-check");
           notCheckActive["not-check" + indexValue].classList.remove("checkeds");
-          debugger;
+
           if (this.screamForm === 1) {
             this.setReasonReport(element);
             this.$emit("onStatusActive", true);
@@ -98,11 +96,10 @@ export default {
   },
 
   mounted() {
-    debugger;
     const checkActive = document.getElementsByClassName("check-active");
     const notCheckActive = document.getElementsByClassName("not-check-active");
     const nameValue = this.$store.state.homeModule;
-    debugger;
+
     if (this.screamForm === 1) {
       if (Object.keys(nameValue.valueReason).length !== 0) {
         checkActive["check" + nameValue.valueReason.code].classList.add(

@@ -107,7 +107,6 @@ export default {
       return ["Dancing", "Singing", "Ballet", "BBQ"];
     },
     listDataInterests() {
-      debugger;
       return this.$store.state.commonModule.listLifeStyleSingle.interests;
     },
   },
@@ -116,7 +115,6 @@ export default {
     ...mapActions(["getListDataInterests"]),
 
     onRemoveItem(val) {
-      debugger;
       console.log(val);
       this.listChecked = this.listChecked.filter(function (el) {
         return el.code != val;
@@ -135,7 +133,6 @@ export default {
     },
 
     onSelectInterest(val) {
-      debugger;
       const listInterest =
         this.$store.state.commonModule.listLifeStyleSingle.interests;
       if (this.listChecked.length < 5) {
@@ -180,26 +177,24 @@ export default {
     },
   },
 
-  async created() {
-    debugger;
-  },
+  async created() {},
 
   mounted() {
     // this.links = this.loadAll();
-    debugger;
+
     const interestsData =
       this.$store.state.userModule.user_profile.profiles.interests;
 
     const listInterest =
       this.$store.state.commonModule.listLifeStyleSingle.interests;
-    debugger;
+
     for (let index = 0; index < interestsData.length; index++) {
       const element = interestsData[index];
       document
         .getElementById("not-check_" + element)
         .classList.add("bg-active");
       const findValue = listInterest.find((x) => x.code === element);
-      debugger;
+
       if (findValue) {
         const objectChecked = {
           code: element,

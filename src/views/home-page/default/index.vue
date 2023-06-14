@@ -128,8 +128,6 @@ export default {
   },
 
   async created() {
-    debugger;
-
     const listCards = this.$store.state.mongoModule.listDataCard;
     if (listCards.length === 0) {
       this.loading = true;
@@ -209,9 +207,7 @@ export default {
 
   beforeMount() {},
 
-  mounted() {
-    debugger;
-  },
+  mounted() {},
 };
 </script>
 

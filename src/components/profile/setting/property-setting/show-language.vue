@@ -49,19 +49,16 @@ export default {
 
   computed: {
     bingLanguage() {
-      debugger;
       return this.$store.state.commonModule.languageTranslateValue;
     },
   },
 
   methods: {
     onShowChoseLanguage() {
-      debugger;
       this.isShowLanguage = true;
     },
 
     onClickSaveLanguage(val) {
-      debugger;
       this.isShowLanguage = val;
     },
   },

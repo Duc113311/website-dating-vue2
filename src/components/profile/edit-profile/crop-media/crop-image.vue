@@ -91,7 +91,6 @@ export default {
               this.$store.state.commonModule.statusImageVerify;
 
             if (statusImageVerify) {
-              debugger;
               this.setImageCrop(url);
             }
           })

@@ -50,7 +50,6 @@ export default {
     },
 
     listGenderFilter() {
-      debugger;
       return this.$store.state.commonModule.listLifeStyleSingle.genderFilters;
     },
   },

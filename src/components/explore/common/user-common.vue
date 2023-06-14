@@ -99,7 +99,6 @@ export default {
 
   computed: {
     isArabic() {
-      debugger;
       return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
     },
     colorBinding() {
@@ -169,7 +168,6 @@ export default {
 
     listCardGroups: {
       get() {
-        debugger;
         return this.$store.state.homeModule.listCardGroups
           ? this.$store.state.homeModule.listCardGroups
           : this.users;
@@ -220,7 +218,6 @@ export default {
   },
 
   async created() {
-    debugger;
     const topicId = this.$route.params.topicId;
     await this.getListCardGroupExplores(topicId);
   },

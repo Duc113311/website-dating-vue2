@@ -10,7 +10,6 @@ export const http_mongo = axios.create({
 });
 
 export function updateAcceptLanguage() {
-  debugger;
   const language = localStorage.getItem("language") || "en"; // Lấy giá trị ngôn ngữ từ localStorage
   http_mongo.defaults.headers["Accept-Language"] = language; // Cập nhật giá trị trong header
 }

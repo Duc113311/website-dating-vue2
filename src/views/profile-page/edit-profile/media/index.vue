@@ -74,7 +74,6 @@ export default {
 
   computed: {
     isArabic() {
-      debugger;
       return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
     },
   },
@@ -88,7 +87,7 @@ export default {
      */
     async onClickSaveImageCrop() {
       this.loading = true;
-      debugger;
+
       await this.$refs.cropImages.getCropData();
       await setTimeout(() => {
         this.loading = false;

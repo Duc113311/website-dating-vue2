@@ -107,7 +107,6 @@ export default {
       this.isShowWelcome = val;
     },
     onShowQuestion(val) {
-      debugger;
       this.isShowFormQuestion = val;
     },
     onCloseWelcome(val) {
@@ -121,7 +120,6 @@ export default {
     async onActionApplyQuestion(val) {
       await signOut(auth)
         .then(() => {
-          debugger;
           this.isShowFormQuestion = false;
 
           this.isShowWelcome = false;

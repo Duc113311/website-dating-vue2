@@ -73,13 +73,11 @@ export default {
 
   computed: {
     isArabic() {
-      debugger;
       return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
     },
 
     listCardGroups: {
       get() {
-        debugger;
         return this.$store.state.homeModule.listCardGroups
           ? this.$store.state.homeModule.listCardGroups
           : this.users;

@@ -43,7 +43,6 @@ export default {
 
   computed: {
     kiloValue() {
-      debugger;
       return this.$store.state.userModule.user_profile.settings
         .distancePreference.unit;
     },
@@ -74,7 +73,7 @@ export default {
     ...mapMutations(["setDistanceUnit"]),
     onChangeDistanceLocation(val) {
       console.log(val);
-      debugger;
+
       this.setDistanceUnit(val);
       for (let index = 0; index < this.listDistance.length; index++) {
         const element = this.listDistance[index];

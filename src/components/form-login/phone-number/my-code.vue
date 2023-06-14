@@ -60,7 +60,6 @@ export default {
 
   computed: {
     renderPhoneNumber() {
-      debugger;
       return this.txtPhoneNumber;
     },
 
@@ -71,9 +70,9 @@ export default {
 
   methods: {
     // backCode(event, index) {
-    //   debugger;
+    //
     //   if (event.keyCode === 8) {
-    //     debugger;
+    //
     //     if (index > 0) {
     //       const keyBack = index;
     //       const refKey = this.$refs[`input${keyBack}`][0];
@@ -81,7 +80,7 @@ export default {
     //       refKey.focus();
     //     }
     //   } else {
-    //     debugger;
+    //
     //     if (this.numberData.length < 6) {
     //       if (event.target.value.length === 1) {
     //         const keyBack2 = index + 2;
@@ -93,7 +92,6 @@ export default {
     // },
 
     isNumberKey(event) {
-      debugger;
       var charCode = event.which ? event.which : event.keyCode;
       if (charCode > 31 && (charCode < 48 || charCode > 57)) {
         return false;
@@ -104,7 +102,6 @@ export default {
      * Render gửi lại mã OTP
      */
     onPhoneNumber() {
-      debugger;
       for (let index = 0; index < this.digits.length; index++) {
         const element = this.digits[index];
 
@@ -119,14 +116,12 @@ export default {
     },
 
     moveToNext(event, refName) {
-      debugger;
       if (event.target.value.length === 1) {
         this.$refs[refName].focus();
       }
     },
 
     onNextOn(key, index) {
-      debugger;
       const indexData = document.getElementById(key);
       let valueData = indexData.value;
       if (valueData !== "") {
@@ -149,7 +144,6 @@ export default {
             if (filterData === -1) {
               this.valueCode = this.numberData.toString().split(",").join("");
               if (this.valueCode !== "") {
-                debugger;
                 this.$emit("validateRequireCode", {
                   statusActive: true,
                   codeOTP: this.valueCode,
@@ -182,7 +176,6 @@ export default {
   created() {},
 
   mounted() {
-    debugger;
     this.$refs.input1[0].focus();
   },
 };

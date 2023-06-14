@@ -132,7 +132,6 @@ export default {
     const documentParam = document.getElementsByClassName(
       "padding-input-option"
     );
-    debugger;
     const genderList =
       this.$store.state.commonModule.listLifeStyleRegister?.genders;
     if (this.genders) {

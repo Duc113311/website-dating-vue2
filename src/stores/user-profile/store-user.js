@@ -208,7 +208,6 @@ const actions = {
         headers: { Authorization: `Bearer ${localStorage.getItem("tokenId")}` },
       })
       .then(async (response) => {
-        debugger;
         commit("setDetailProfileAuth_Mongo", response.data.data);
       })
       .catch((error) => {
@@ -385,7 +384,6 @@ const actions = {
 
 const mutations = {
   setIndexImageActiveRight(state, data) {
-    debugger;
     state.imageActives = state.imageActives + 1;
   },
   setIndexImageActiveLeft(state, data) {
@@ -399,7 +397,6 @@ const mutations = {
     state.urlImage = value;
   },
   setImageCrop(state, value) {
-    debugger;
     const indexImage = state.avatarChecked.length;
     const objectImage = {
       id: indexImage,
@@ -418,7 +415,6 @@ const mutations = {
   },
 
   setCompleteUser(state, data) {
-    debugger;
     state.completeUser = data;
   },
 
@@ -437,7 +433,7 @@ const mutations = {
       (state.lifeStyleSingle.interests = []),
       (state.lifeStyleSingle.schools = []),
       (this.state.commonModule.listInterestFilter = data.profiles.interests);
-    debugger;
+
     for (let index = 0; index < data.profiles.avatars.length; index++) {
       const element = data.profiles.avatars[index];
 
@@ -462,7 +458,7 @@ const mutations = {
 
     for (let index = 0; index < data.profiles.languages.length; index++) {
       const element = data.profiles.languages[index];
-      debugger;
+
       const findLanguages =
         this.state.commonModule.listLifeStyleSingle.languages.find(
           (x) => x.code === element
@@ -660,7 +656,6 @@ const mutations = {
    * @param {*} gender
    */
   setGender(state, gender) {
-    debugger;
     state.user_profile.profiles.gender = gender;
   },
 
@@ -697,7 +692,7 @@ const mutations = {
 
   setDistanceUnit(state, value) {
     state.user_profile.settings.distancePreference.unit = value;
-    debugger;
+
     localStorage.setItem("unit", value);
   },
 
@@ -796,7 +791,7 @@ const mutations = {
   setValueLanguage(state, data) {
     const languages = state.user_profile.settings.global.languages;
     const findData = languages.find((x) => x === data.language.code);
-    debugger;
+
     if (findData) {
       if (!data.action) {
         languages.splice(data.language.code, 1);
@@ -849,7 +844,6 @@ const mutations = {
    * @param {*} photos
    */
   setPhotos(state, photos) {
-    debugger;
     const idUrl = photos.id;
     const index = state.avatarChecked.findIndex((x) => x.id === idUrl);
     if (index !== -1) {
@@ -1017,7 +1011,6 @@ const mutations = {
   },
 
   setSkipProfiles(state, data) {
-    debugger;
     if (data === 3) {
       state.user_profile.profiles.orientationSexuals = [];
     }

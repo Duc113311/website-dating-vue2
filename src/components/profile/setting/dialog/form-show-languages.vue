@@ -55,7 +55,6 @@ export default {
     },
 
     async onChoseLanguages(val) {
-      debugger;
       this.$i18n.locale = val;
       await this.setLanguageTranslate(val);
       localStorage.setItem("language", val);

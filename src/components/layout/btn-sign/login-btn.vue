@@ -84,7 +84,6 @@ export default {
           // The signed-in user info.
           const userID = result.user.uid;
           await this.setOAuth2Id(userID);
-          debugger;
           await this.loginAppByAuthId({
             oAuth2Id: userID,
           });

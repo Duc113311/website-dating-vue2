@@ -64,12 +64,10 @@ export default {
     },
 
     onActionCancel(val) {
-      debugger;
       this.$emit("onHidePopupPackage", false);
     },
 
     onActionApply(val) {
-      debugger;
       this.$emit("onActionApplyQuestion", val);
     },
   },

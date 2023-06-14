@@ -80,7 +80,7 @@ export default {
           // Số điện thoại của bạn không đúng định dạng!
         } else {
           this.txtCodeError = "";
-          debugger;
+
           this.$emit("validateRequirePhone", {
             statusActive: true,
             valueIntlTel: this.valueIntlTel,
@@ -119,8 +119,6 @@ export default {
   },
 
   mounted() {
-    debugger;
-
     var input = document.querySelector("#phone");
     this.valueIntlTel = intlTelInput(input, {
       separateDialCode: true,
@@ -130,7 +128,6 @@ export default {
         "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
       formatOnDisplay: true,
     });
-    debugger;
 
     input.focus();
   },

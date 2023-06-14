@@ -89,7 +89,6 @@ const actions = {
     await http_mongo
       .post(`api/v1/login`, data)
       .then((response) => {
-        debugger;
         commit("setProfileUserLogin_Mongo", response.data.data);
       })
       .catch((error) => {

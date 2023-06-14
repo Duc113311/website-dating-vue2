@@ -391,7 +391,6 @@ export default {
       return false;
     },
     isArabic() {
-      debugger;
       return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
     },
     kilometer() {
@@ -406,7 +405,7 @@ export default {
     aboutValue() {
       const lengthAbout =
         this.$store.state.userModule.userProfileDetail.profiles.about;
-      debugger;
+
       if (lengthAbout) {
         if (lengthAbout.length !== 0) {
           return true;
@@ -456,7 +455,6 @@ export default {
       return data;
     },
     userParam() {
-      debugger;
       return this.$store.state.userModule.userProfileDetail;
     },
   },
@@ -483,12 +481,10 @@ export default {
     },
 
     bingGenderLanguage(val) {
-      debugger;
-
       const genderCode = val;
       const genderList =
         this.$store.state.commonModule.listLifeStyleSingle.genders;
-      debugger;
+
       if (genderCode) {
         const findData = genderList.find((x) => x.code === genderCode);
         if (findData) {
@@ -691,7 +687,6 @@ export default {
     },
 
     bindingDistance(val) {
-      debugger;
       if (localStorage.unit === "mi") {
         if (val === undefined) {
           return 1;
@@ -716,7 +711,6 @@ export default {
     nextImageLeft() {
       const valueImg = this.userParam.profiles.avatars;
 
-      debugger;
       if (this.$store.state.userModule.imageActives !== 0) {
         this.setIndexImageActiveLeft();
         let indexActive = this.$store.state.userModule.imageActives;
@@ -778,12 +772,11 @@ export default {
   },
 
   mounted() {
-    debugger;
     const indexActive = this.$store.state.userModule.imageActives;
 
     const avatarUrl = this.userParam.profiles?.avatars;
     const findUrl = avatarUrl[indexActive];
-    debugger;
+
     this.idImage = findUrl;
     this.isActiveImag = false;
     document

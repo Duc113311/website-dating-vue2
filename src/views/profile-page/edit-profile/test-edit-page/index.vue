@@ -52,7 +52,6 @@ export default {
 
   computed: {
     isArabic() {
-      debugger;
       return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
     },
   },
@@ -63,7 +62,7 @@ export default {
     ...mapActions(["updateProfileUser"]),
     async onBackEditProfile() {
       this.loading = true;
-      debugger;
+
       let completeAvatar = 3;
       let completeAbout = 0;
       let completeInterest = 0;

@@ -53,7 +53,6 @@ export default {
 
   methods: {
     onChangeShowTopPicks() {
-      debugger;
       this.$emit("onChangeComponent", true);
     },
   },

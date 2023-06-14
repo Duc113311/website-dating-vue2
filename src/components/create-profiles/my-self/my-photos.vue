@@ -155,7 +155,6 @@ export default {
     },
     async toggleUpload(event, data) {
       const image = event.target.files[0];
-      debugger;
 
       const fileType = image.type;
 
@@ -260,7 +259,6 @@ export default {
     },
   },
   mounted() {
-    debugger;
     if (this.$route.query.scream !== "edit-profile") {
       const image = this.$store.state.userModule.avatarChecked;
       this.$emit("onShowSkips", false);

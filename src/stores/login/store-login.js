@@ -66,7 +66,6 @@ const mutations = {
   },
 
   setDeleteAccountUser(state, data) {
-    debugger;
     state.deleteAccount = data;
   },
 };

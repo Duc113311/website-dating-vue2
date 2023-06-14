@@ -11,17 +11,14 @@ const getters = {};
 
 const mutations = {
   setListDataLikedForYou(state, data) {
-    debugger;
     state.listLikeForYous = data.list_data;
   },
 
   setListDataLikeYouAction(state, data) {
-    debugger;
     state.listLikeYouAction = data.list_data;
   },
 
   setPutListUser(state, data) {
-    debugger;
     state.listLikeYouAction.push(data);
   },
 
@@ -30,7 +27,6 @@ const mutations = {
   },
 
   setPutListUserAction(state, data) {
-    debugger;
     const lengthLike = data.lengthListOld;
     const indexData = data.index;
 
@@ -42,7 +38,6 @@ const mutations = {
   },
 
   setListUserLikeFilter(state, data) {
-    debugger;
     let userFilter = [];
     const ageMin = data.valueAge[0];
     const ageMax = data.valueAge[1];

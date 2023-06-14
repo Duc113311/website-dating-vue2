@@ -109,7 +109,6 @@ export default {
     },
 
     async onRenderCodeOTP() {
-      debugger;
       this.txtErrorCode = false;
       this.isStatusRequire = false;
       document.getElementById("1").focus();
@@ -134,7 +133,7 @@ export default {
      */
     async onChangeContinue(value) {
       console.log(value);
-      debugger;
+
       this.isLoadings = true;
       this.isStatusRequire = true;
       this.isHide = true;
@@ -144,7 +143,7 @@ export default {
         const result = true;
         // const textCode = this.renderCountryCode();
         // console.log("Mã vung", textCode);
-        debugger;
+
         const phoneNumber = this.valuePhoneNumber.getNumber();
 
         this.txtPhoneNumber = phoneNumber;
@@ -173,7 +172,6 @@ export default {
           this.screenNumber = this.screenNumber + 1;
         }, 2000);
       } else if (this.screenNumber === 1) {
-        debugger;
         if (this.sentCodeId !== "") {
           // this.$emit("onShowEmailUser", true);
 
@@ -214,7 +212,6 @@ export default {
           }
         })
         .catch((error) => {
-          debugger;
           console.log(error);
           this.txtErrorCode = true;
           setTimeout(() => {
@@ -225,7 +222,7 @@ export default {
 
     renderCountryCode() {
       var input = document.querySelector("#phone");
-      debugger;
+
       this.valCodeQR = intlTelInput(input, {
         separateDialCode: true, // Hiển thị mã điện thoại quốc gia riêng rẽ
         initialCountry: "vn",
@@ -250,7 +247,7 @@ export default {
     //     });
     //   },
     // });
-    // debugger;
+    //
     // input.focus();
   },
 };

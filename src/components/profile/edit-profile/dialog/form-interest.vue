@@ -138,7 +138,6 @@ export default {
      * @param {*} val
      */
     onRemoveItem(val) {
-      debugger;
       console.log(val);
       this.listChecked = this.listChecked.filter(function (el) {
         return el.code != val;
@@ -154,7 +153,6 @@ export default {
      * Cancel interest
      */
     onChangeCancel() {
-      debugger;
       this.valueSearch = "";
       this.listChecked = this.listCheckDelete;
       for (let index = 0; index < this.listChecked.length; index++) {
@@ -183,13 +181,12 @@ export default {
       const listInterest =
         this.$store.state.commonModule.listLifeStyleSingle.interests;
 
-      debugger;
       if (this.listChecked.length < 5) {
         document
           .getElementById("interest" + val)
           .classList.add("border-active");
         const findValue = listInterest.find((x) => x.code === val);
-        debugger;
+
         if (findValue) {
           const objectChecked = {
             code: val,
@@ -213,7 +210,6 @@ export default {
      */
     onChangeFilterText() {
       let dataList = [];
-      debugger;
 
       if (this.valueSearch !== "") {
         if (this.listInterest.length <= this.listInterestOld.length) {
@@ -273,7 +269,6 @@ export default {
      * Nút xóa ô tìm kiếm
      */
     onClickRemoveInterest() {
-      debugger;
       this.valueSearch = "";
       this.listInterest =
         this.$store.state.commonModule.listLifeStyleSingle.interests;
@@ -299,13 +294,11 @@ export default {
     },
   },
 
-  async created() {
-    debugger;
-  },
+  async created() {},
 
   mounted() {
     // this.links = this.loadAll();
-    debugger;
+
     const interestsData =
       this.$store.state.userModule.user_profile.profiles.interests;
     const listInterest =

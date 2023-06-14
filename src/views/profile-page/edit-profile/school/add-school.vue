@@ -81,7 +81,6 @@ export default {
   watch: {
     selectedItem(value) {
       if (value) {
-        debugger;
         // Fetch item name based on selectedItem value
         this.selectedItemName = this.suggestions.find(
           (item) => item.value === value
@@ -90,7 +89,6 @@ export default {
           this.selectedItemName = this.selectedItemName.value;
         }
         console.log("Test", this.selectedItemName);
-        debugger;
       } else {
         this.selectedItemName = "";
       }
@@ -110,7 +108,7 @@ export default {
     },
 
     // querySearchAsync(queryString, cb) {
-    //   debugger;
+    //
     //   console.log(queryString);
     //   var searchPattern = queryString
     //     .toLowerCase()
