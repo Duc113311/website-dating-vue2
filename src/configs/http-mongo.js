@@ -1,6 +1,6 @@
 import axios from "axios";
 export const http_mongo = axios.create({
-  baseURL: `http://159.223.53.162/`,
+  baseURL: `http://13.212.182.83/`,
   headers: {
     "Content-Type": "application/json",
     "Content-Transfer-Encoding": "bachaxPPsb9SCaz7TVJsda7cCD5sshsoft",
