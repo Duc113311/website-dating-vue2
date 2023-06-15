@@ -52,7 +52,9 @@
             <div class="flex bh-margin-title">
               <div class="">
                 <span class="title-user">{{ this.userParam.fullname }},</span>
-                <span class="text-age"
+                <span
+                  class="text-age"
+                  v-if="this.userParam.profiles.showAge === true"
                   >&nbsp;{{ bindingAge(this.userParam.dob) }}</span
                 >
               </div>
@@ -92,7 +94,11 @@
             >
               <img src="@/assets/icon/ic_city_dark.svg" alt="" srcset="" />
               <div class="ml-3 padding-describe-option">
-                {{ this.userParam.profiles.address }}
+                {{
+                  $t(`live_at_{nameAddress}`, {
+                    nameAddress: this.userParam.profiles.address,
+                  })
+                }}
               </div>
             </div>
 
@@ -466,6 +472,7 @@ export default {
       "setIndexImageActiveLeft",
       "setIndexImageActiveRight",
       "setUrlImage",
+      "setLogActionEditProfile",
     ]),
     ...mapActions(["getListReasonReportUser"]),
     onActionDecide(val) {
@@ -771,6 +778,10 @@ export default {
     await this.getListReasonReportUser();
   },
 
+  beforeDestroy() {
+    debugger;
+  },
+
   mounted() {
     const indexActive = this.$store.state.userModule.imageActives;
 
@@ -782,6 +793,7 @@ export default {
     document
       .getElementById(`avatar_` + parseInt(indexActive))
       .classList.add("active-image");
+    debugger;
   },
 };
 </script>

@@ -993,6 +993,7 @@ export default {
 
             if (!isLikeValue.isMatched) {
               this.setDataUserMatch(value.item);
+              this.setIndexImageActiveDefault(0);
               this.$emit("onShowFormLikeYou", true);
             }
           } else {

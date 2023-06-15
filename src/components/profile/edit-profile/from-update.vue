@@ -66,10 +66,7 @@
     </div>
     <!-- Dating purposes -->
     <div class="w-full h-full absolute top-0 left-0 z-30" v-if="isShowPurposes">
-      <FormPurposes
-        @onHidePurposes="onHidePurposes"
-        @onSavePurposes="onSavePurposes"
-      ></FormPurposes>
+      <FormPurposes @onHidePurposes="onHidePurposes"></FormPurposes>
     </div>
     <!-- Language -->
     <div class="w-full h-full absolute top-0 left-0 z-30" v-if="isShowLanguage">

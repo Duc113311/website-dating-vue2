@@ -246,6 +246,7 @@ export default {
     },
 
     removeUpload(val) {
+      debugger;
       const img = document.getElementById(val);
       const avatar = document.getElementById("avatar" + val);
       const close = document.getElementById("close" + val);

@@ -22,7 +22,7 @@
               <el-autocomplete
                 v-model="selectedItem"
                 :fetch-suggestions="querySearchAsync"
-                placeholder="Add school"
+                :placeholder="$t(`add_school`)"
                 :value="selectedItemName"
                 class="w-full"
                 :suggestions="suggestions"

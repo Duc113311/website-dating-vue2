@@ -66,7 +66,7 @@
   "it_is_easy_-_share_your_device's_contact_with_heartLink_when_using_this_feature_to_pick_who_you_want_to_avoid": "Jest to łatwe - udostępnij kontakt swojego urządzenia z HeartLink podczas korzystania z tej funkcji, aby wybrać kogo chcesz uniknąć",
   "we'll_store_your_blocked_contact_to_stop_you_from_seeing_each_other_if_your_contact_has_an_account_with_the_same_infor_you_provide._you_can_stop_sharing_with_us_in_your_settings.": "Przechowujemy Twój zablokowany kontakt, aby powstrzymać Cię przed widzeniem się, jeśli Twój kontakt ma konto z tym samym podawanym, co. Możesz przestać udostępniać z nami w swoich ustawieniach.",
   "learn_more_here,_including_how_heartLink_process_your_contacts": "Dowiedz się więcej tutaj, w tym sposób przetwarzania kontaktów",
-  "share_{nameUser}_profile": "Udostępnij {NameUser} Profil",
+  "share_{nameUser}_profile": "Udostępnij {nameUser} Profil",
   "see_what_a_friend_thinks": "Zobacz, co myśli przyjaciel",
   "report_{nameUser}": "Raport {nameUser}",
   "away": "z dala",

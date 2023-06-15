@@ -66,9 +66,9 @@
   "it_is_easy_-_share_your_device's_contact_with_heartLink_when_using_this_feature_to_pick_who_you_want_to_avoid": "Thật dễ dàng - Chia sẻ liên hệ của thiết bị với Heartlink khi sử dụng tính năng này để chọn người bạn muốn tránh",
   "we'll_store_your_blocked_contact_to_stop_you_from_seeing_each_other_if_your_contact_has_an_account_with_the_same_infor_you_provide._you_can_stop_sharing_with_us_in_your_settings.": "Chúng tôi sẽ lưu trữ liên hệ bị chặn của bạn để ngăn bạn nhìn thấy nhau nếu liên hệ của bạn có tài khoản có cùng một thông tin bạn cung cấp. Bạn có thể ngừng chia sẻ với chúng tôi trong cài đặt của bạn.",
   "learn_more_here,_including_how_heartLink_process_your_contacts": "Tìm hiểu thêm ở đây, bao gồm cả cách thức xử lý trái tim của các liên hệ của bạn",
-  "share_{nameUser}_profile": "Chia sẻ {nameuser} Hồ sơ",
+  "share_{nameUser}_profile": "Chia sẻ {nameUser} Hồ sơ",
   "see_what_a_friend_thinks": "Xem những gì một người bạn nghĩ",
-  "report_{nameUser}": "Báo cáo {nameuser}",
+  "report_{nameUser}": "Báo cáo {nameUser}",
   "away": "xa",
   "my_anthem": "QUỐC CA CỦA TÔI",
   "what_is_the_reason_for_your_report?": "Lý do cho báo cáo của bạn là gì?",
@@ -122,7 +122,7 @@
   "go_back_and_try_again": "Quay lại và thử lại",
   "turn_off_ads": "Tắt quảng cáo",
   "have_fun_without_interruptions": "Vui chơi mà không bị gián đoạn",
-  "settings": "Cài đặt",
+  "settings": "CÀI ĐẶT",
   "edit_profile": "Chỉnh sửa hồ sơ",
   "safety": "SỰ AN TOÀN",
   "complete": "hoàn thành",
@@ -256,6 +256,7 @@
   "coffee_date": "Ngày cà phê",
   "find_someone_to_get_coffee_with": "Tìm ai đó để lấy cà phê với",
   "looking_for_love": "Tìm kiếm tình yêu",
+  "find_someone_that_also_looking_for_love_as_you": "Tìm một người cũng đang tìm kiếm tình yêu như bạn",
   "blind_date": "Hẹn hò giấu mặt",
   "open_hour_6pm_-_12pm_(local_time)": "Giờ mở 6 giờ tối - 12 giờ tối (giờ địa phương)",
   "share_idea": "Chia sẻ ý tưởng",
@@ -318,5 +319,6 @@
   "search_language": "Ngôn ngữ tìm kiếm",
   "please_provide_more_details_about_what_you_are_reporting": "Vui lòng cung cấp thêm chi tiết về những gì bạn đang báo cáo",
   "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "Nếu bạn thoát, bạn sẽ phải đăng ký lại tài khoản của mình và xóa tất cả thông tin.",
-  "invalid_date_of_birth": "Ngày sinh không hợp lệ"
+  "invalid_date_of_birth": "Ngày sinh không hợp lệ",
+  "save": "Lưu"
 }

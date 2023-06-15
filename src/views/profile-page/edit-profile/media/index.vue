@@ -33,14 +33,14 @@
           <div class="w-1/4">
             <BhBack @onBackComponent="onBackComponent"></BhBack>
           </div>
-          <div class="text-center w-3/4 title-detail-explore">
-            {{ $t("photo") }}
+          <div class="text-center text-red-400 font-semibold w-3/4 text-age">
+            {{ bingToUpperString($t("photo")) }}
           </div>
           <div
-            class="w-1/4 text-right title-click cursor-pointer"
+            class="w-1/4 text-red-400 text-right font-semibold title-item cursor-pointer"
             @click="onClickSaveImageCrop"
           >
-            {{ $t("done") }}
+            {{ $t("save") }}
           </div>
         </div>
       </div>
@@ -55,6 +55,8 @@
 import CropImage from "../../../../components/profile/edit-profile/crop-media/crop-image";
 import ChoseImage from "../../../../components/profile/edit-profile/crop-media/chose-image";
 import BhBack from "../../../../components/bh-element-ui/button/bh-back";
+import functionValidate from "../../../../middleware/validate.js";
+
 export default {
   components: {
     CropImage,
@@ -79,6 +81,10 @@ export default {
   },
 
   methods: {
+    bingToUpperString(val) {
+      const stringName = functionValidate.toUpperCaseString(val);
+      return stringName;
+    },
     onBackComponent() {
       this.isShowCrop = true;
     },
@@ -112,11 +118,13 @@ export default {
         this.$refs.fileInput.value = "";
         return;
       }
-
+      debugger;
       this.selectedFile.push(URL.createObjectURL(file));
       this.selectedFile.push(file.name);
       this.isShowCrop = false;
-      this.$refs.fileInput.value = "";
+      if (this.$refs.fileInput) {
+        this.$refs.fileInput.value = "";
+      }
     },
 
     onBackMedia() {

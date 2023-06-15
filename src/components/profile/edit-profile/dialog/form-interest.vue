@@ -101,6 +101,8 @@
 <script>
 import functionValidate from "../../../../middleware/validate.js";
 import { mapActions, mapMutations } from "vuex";
+import Fuse from "fuse.js";
+
 export default {
   name: "form-interests",
   components: {},
@@ -118,6 +120,7 @@ export default {
         this.$store.state.commonModule.listLifeStyleSingle.interests,
       listInterestOld:
         this.$store.state.commonModule.listLifeStyleSingle.interests,
+      searchResults: [],
     };
   },
 
@@ -205,21 +208,65 @@ export default {
       }
     },
 
+    searchInterest(keyword) {
+      var listInterestNew = [];
+      debugger;
+      // Chuyển đổi từ khóa và giá trị trong ListInterest thành chữ thường
+      var lowerCaseKeyword = keyword.toLowerCase();
+
+      this.listInterestOld.forEach(function (interest) {
+        var lowerCaseValue = interest.value.toLowerCase();
+
+        // Tách từng từ trong giá trị để kiểm tra từng từ với từ khóa
+        var words = lowerCaseValue.split(" ");
+
+        // Kiểm tra xem từ khóa có khớp với bất kỳ từ nào trong giá trị không
+        var isMatch = words.some(function (word) {
+          return word.startsWith(lowerCaseKeyword);
+        });
+
+        if (isMatch) {
+          listInterestNew.push(interest);
+        }
+      });
+
+      return listInterestNew;
+    },
+
+    performSearch() {
+      var options = {
+        keys: ["value"],
+        includeScore: true,
+        threshold: 0.4, // Điều chỉnh ngưỡng tìm kiếm gần đúng tại đây
+      };
+      debugger;
+      var fuse = new Fuse(this.listInterestOld, options);
+      var result = fuse.search(this.valueSearch);
+
+      this.searchResults = result.map(function (item) {
+        return item.item;
+      });
+
+      return this.searchResults;
+    },
     /**
      * Nhập text filter
      */
     onChangeFilterText() {
       let dataList = [];
-
+      debugger;
       if (this.valueSearch !== "") {
         if (this.listInterest.length <= this.listInterestOld.length) {
           dataList = this.listInterestOld;
 
-          const filteredNames = dataList.filter((item) => {
-            return item.value
-              .toLowerCase()
-              .includes(this.valueSearch.toLowerCase());
-          });
+          // const filteredNames = dataList.filter((item) => {
+          //   return item.value
+          //     .toLowerCase()
+          //     .includes(this.valueSearch.toLowerCase());
+          // });
+          debugger;
+          const filteredNames = this.performSearch();
+          debugger;
           this.listInterest = filteredNames;
 
           this.$nextTick(() => {

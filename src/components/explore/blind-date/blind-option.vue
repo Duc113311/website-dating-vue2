@@ -5,7 +5,9 @@
         <div class="">
           <BhBack @onBackComponent="onBackBlindDate()"></BhBack>
         </div>
-        <div class="text-center w-full flex justify-center">Blind Date</div>
+        <div class="text-center title-item w-full flex justify-center">
+          {{ $t("blind_date") }}
+        </div>
       </div>
 
       <div class="content-bg flex justify-center items-center">

@@ -52,6 +52,38 @@ export default {
   data() {
     return {
       nameDefault: this.$t("empty"),
+      listPurposes: [
+        {
+          code: "item_1",
+          value: "Beloved",
+          url: require("@/assets/icon_dialog/relationship_intent_cupid@1x.png"),
+        },
+        {
+          code: "item_2",
+          value: "You are dating for a long time",
+          url: require("@/assets/icon_dialog/relationship_intent_heart_eyes@2x.png"),
+        },
+        {
+          code: "item_3",
+          value: "Anything possible",
+          url: require("@/assets/icon_dialog/relationship_intent_clinking_glasses@1x.png"),
+        },
+        {
+          code: "item_4",
+          value: "Unbound relation",
+          url: require("@/assets/icon_dialog/relationship_intent_tada@2x.png"),
+        },
+        {
+          code: "item_5",
+          value: "New friends",
+          url: require("@/assets/icon_dialog/relationship_intent_wave@3x.png"),
+        },
+        {
+          code: "item_6",
+          value: "I'm not sure either",
+          url: require("@/assets/icon_dialog/relationship_intent_thinking_face@2x.png"),
+        },
+      ],
     };
   },
 
@@ -62,7 +94,14 @@ export default {
     purposesParam() {
       const datingPurposesData =
         this.$store.state.userModule.lifeStyleSingle.datingPurpose;
+      debugger;
+      const findData = this.listPurposes.find(
+        (x) => x.code === datingPurposesData.code
+      );
 
+      if (findData) {
+        datingPurposesData.url = findData.url;
+      }
       return datingPurposesData;
     },
 

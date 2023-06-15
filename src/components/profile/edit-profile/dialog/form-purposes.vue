@@ -27,7 +27,7 @@
 
             <div class="w-full grid gap-3 bg-dating">
               <button
-                v-for="(item, index) in listPurposes"
+                v-for="(item, index) in listDatingPurposes"
                 :key="index"
                 class="item-dating"
                 :id="item.code"
@@ -96,7 +96,15 @@ export default {
     listDatingPurposes() {
       const newData =
         this.$store.state.commonModule.listLifeStyleSingle.datingPurposes;
+      debugger;
+      for (let index = 0; index < newData.length; index++) {
+        const element = newData[index];
 
+        const findData = this.listPurposes.find((x) => x.code === element.code);
+        if (findData !== -1) {
+          element.url = findData.url;
+        }
+      }
       return newData;
     },
   },

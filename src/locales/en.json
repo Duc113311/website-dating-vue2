@@ -255,6 +255,7 @@
   "find_someone_that_wants_to_be_friends": "Find someone that wants to be friends",
   "coffee_date": "Coffee Date",
   "find_someone_to_get_coffee_with": "Find someone to get coffee with",
+  "find_someone_that_also_looking_for_love_as_you": "Find someone that also looking for love as you",
   "looking_for_love": "Looking for love",
   "blind_date": "Blind Date",
   "open_hour_6pm_-_12pm_(local_time)": "Open hour 6pm - 12pm (Local time)",
@@ -318,5 +319,6 @@
   "search_language": "Search Language",
   "please_provide_more_details_about_what_you_are_reporting": "Please provide more details about what you are reporting",
   "if_you_exit_you_will_have_to_re-register_your_account_and_delete_all_information.": "If you exit you will have to re-register your account and delete all information.",
-  "invalid_date_of_birth": "Invalid date of birth"
+  "invalid_date_of_birth": "Invalid date of birth",
+  "save": "Save"
 }

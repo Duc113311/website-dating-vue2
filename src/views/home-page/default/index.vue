@@ -207,7 +207,9 @@ export default {
 
   beforeMount() {},
 
-  mounted() {},
+  mounted() {
+    debugger;
+  },
 };
 </script>
 

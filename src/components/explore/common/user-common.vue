@@ -103,25 +103,25 @@ export default {
     },
     colorBinding() {
       const name = this.$route.params.screamName;
-
+      debugger;
       switch (name) {
         case "letBeFriend":
           return {
-            title: "Let's be friend",
+            title: this.$t("let's_be_friend"),
             bgColor: "linear-gradient(#74d880, #d64a57)",
             color: "#C6B69F",
             url: "http://localhost:6060/img/bg_let_be_friend.c2e165c1.png",
           };
         case "coffeeDate":
           return {
-            title: "Looking for love",
+            title: this.$t("coffee_date"),
             bgColor: "linear-gradient(#FF6762, #FF9466)",
             color: "#C6B69F",
             url: "http://localhost:6060/img/bg_coffe_date.7ae3e2ed.png",
           };
         case "lookingLove":
           return {
-            title: "Coffee Date",
+            title: this.$t("looking_for_love"),
             bgColor: "linear-gradient(#5E2F73, #F39A7A)",
             color: "#E6A3A5",
             url: "http://localhost:6060/img/bg_looking_for_love.0d344d24.png",

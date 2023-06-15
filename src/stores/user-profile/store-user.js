@@ -397,6 +397,7 @@ const mutations = {
     state.urlImage = value;
   },
   setImageCrop(state, value) {
+    debugger;
     const indexImage = state.avatarChecked.length;
     const objectImage = {
       id: indexImage,
@@ -441,7 +442,13 @@ const mutations = {
         id: index,
         url: element,
       };
-      state.avatarChecked.push(indexBody);
+      debugger;
+      const findData = state.avatarChecked.find((x) => x.url === element);
+      debugger;
+      if (findData === undefined) {
+        state.avatarChecked.push(indexBody);
+      }
+      debugger;
     }
 
     for (let index = 0; index < data.profiles.interests.length; index++) {
@@ -844,6 +851,7 @@ const mutations = {
    * @param {*} photos
    */
   setPhotos(state, photos) {
+    debugger;
     const idUrl = photos.id;
     const index = state.avatarChecked.findIndex((x) => x.id === idUrl);
     if (index !== -1) {
@@ -886,6 +894,7 @@ const mutations = {
   },
 
   setDatingPurposes(state, data) {
+    debugger;
     state.lifeStyleSingle.datingPurpose = data;
     state.user_profile.profiles.datingPurpose = data.code;
   },

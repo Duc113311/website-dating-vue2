@@ -161,6 +161,7 @@ const state = {
 
   isShowInputMes: true,
   isHideConfirm: false,
+  actionEditProfile: false,
 };
 
 const getters = {
@@ -177,6 +178,11 @@ const mutations = {
 
   setShowInputMes(state, value) {
     state.isShowInputMes = value;
+  },
+
+  setLogActionEditProfile(state, value) {
+    debugger;
+    state.actionEditProfile = value;
   },
 
   setHideConfirm(state, value) {

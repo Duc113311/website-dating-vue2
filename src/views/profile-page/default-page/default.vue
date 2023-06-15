@@ -186,7 +186,7 @@ export default {
 
     // Show Edit
     onEditProfile() {
-      this.$router.push({ path: "/test-edit" });
+      this.$router.push({ path: "/test-edit" }).catch(() => {});
     },
 
     onClickShowDetail() {

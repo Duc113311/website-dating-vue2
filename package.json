@@ -17,6 +17,7 @@
     "element-ui": "^2.15.12",
     "emoji-mart-vue": "^2.6.6",
     "firebase": "^9.9.4",
+    "fuse.js": "^6.6.2",
     "google-translate-api": "^2.3.0",
     "intl-tel-input": "^17.0.19",
     "jquery": "^3.6.3",
