@@ -353,9 +353,20 @@ const actions = {
       });
   },
 
+  // async getListCardGroupExplores({ commit }, data) {
+  //   await http_mongo
+  //     .get(`api/v1/cards/recommends?pageSize=30`)
+  //     .then((response) => {
+  //       commit("setListCardGroupExplores", response.data.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // },
+
   async getListCardGroupExplores({ commit }, data) {
     await http_mongo
-      .get(`api/v1/cards/recommends?pageSize=30`)
+      .get(`/api/v1/cards/group/${data}`)
       .then((response) => {
         commit("setListCardGroupExplores", response.data.data);
       })

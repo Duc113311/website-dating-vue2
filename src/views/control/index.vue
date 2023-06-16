@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <div>Control</div>
     <div>
@@ -94,4 +94,15 @@ export default {
   },
 };
 </script>
-<style lang="css"></style>
+<style lang="css"></style> -->
+<template>
+  <div>dd</div>
+</template>
+
+<script>
+export default {
+  name: "control-page",
+};
+</script>
+
+<style></style>
