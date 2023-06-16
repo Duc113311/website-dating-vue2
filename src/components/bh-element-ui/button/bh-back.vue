@@ -35,7 +35,6 @@ export default {
       return this.isShowSkip;
     },
     isArabic() {
-      debugger;
       return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
     },
     colorBt() {
