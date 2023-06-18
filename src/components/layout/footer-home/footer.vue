@@ -3,19 +3,19 @@
     v-bind:class="{ 'reverse-layout': isArabic }"
     class="w-full bottom-0 right-0 border-top footer-body flex justify-center bg-color-default content-center text-center cursor-pointer"
   >
-    <div @click="onClickHome()">
+    <div @click="onClickHome()" class="active-ic active-shadow">
       <i class="fa-solid fa-heart icon-color"></i>
     </div>
-    <div @click="onClickExplore()">
+    <div @click="onClickExplore()" class="active-ic">
       <i class="fa-solid fa-magnifying-glass icon-color"></i>
     </div>
-    <div @click="onClickLikeTopic()">
+    <div @click="onClickLikeTopic()" class="active-ic">
       <i class="fa-solid fa-hand-holding-heart icon-color"></i>
     </div>
-    <div @click="onClickMessage()">
+    <div @click="onClickMessage()" class="active-ic">
       <i class="fa-solid fa-message icon-color"></i>
     </div>
-    <div @click="onClickProfile()">
+    <div @click="onClickProfile()" class="active-ic">
       <i class="fa-solid fa-user icon-color"></i>
     </div>
   </div>
@@ -31,7 +31,9 @@ export default {
   },
 
   data() {
-    return {};
+    return {
+      isActive: false,
+    };
   },
 
   computed: {
@@ -162,7 +164,10 @@ export default {
       if (this.$store.state.commonModule.actionEditProfile) {
         this.onSaveEditProfile();
       }
-
+      this.isActive = true;
+      // setTimeout(() => {
+      //   this.isActive = false;
+      // }, 1000);
       this.$router.push({ path: "/home" }).catch(() => {});
     },
 
@@ -253,5 +258,37 @@ export default {
 }
 .icon-active {
   color: #fd5d65;
+}
+
+.active-ic {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.active-shadow:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 4em;
+  left: 26px;
+  top: 21px;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+  transition: all 0.5s;
+  box-shadow: 0 0 8px 15px red;
+}
+
+.active-shadow:active:after {
+  box-shadow: 0 0 0 0 red;
+  position: absolute;
+  border-radius: 4em;
+  left: 26px;
+  top: 21px;
+  opacity: 1;
+  transition: 0s;
 }
 </style>
