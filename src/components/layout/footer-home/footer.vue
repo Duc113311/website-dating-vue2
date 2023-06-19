@@ -6,16 +6,16 @@
     <div @click="onClickHome()" class="active-ic active-shadow">
       <i class="fa-solid fa-heart icon-color"></i>
     </div>
-    <div @click="onClickExplore()" class="active-ic">
+    <div @click="onClickExplore()" class="active-ic active-shadow1">
       <i class="fa-solid fa-magnifying-glass icon-color"></i>
     </div>
-    <div @click="onClickLikeTopic()" class="active-ic">
+    <div @click="onClickLikeTopic()" class="active-ic active-shadow2">
       <i class="fa-solid fa-hand-holding-heart icon-color"></i>
     </div>
-    <div @click="onClickMessage()" class="active-ic">
+    <div @click="onClickMessage()" class="active-ic active-shadow3">
       <i class="fa-solid fa-message icon-color"></i>
     </div>
-    <div @click="onClickProfile()" class="active-ic">
+    <div @click="onClickProfile()" class="active-ic active-shadow4">
       <i class="fa-solid fa-user icon-color"></i>
     </div>
   </div>
@@ -164,10 +164,6 @@ export default {
       if (this.$store.state.commonModule.actionEditProfile) {
         this.onSaveEditProfile();
       }
-      this.isActive = true;
-      // setTimeout(() => {
-      //   this.isActive = false;
-      // }, 1000);
       this.$router.push({ path: "/home" }).catch(() => {});
     },
 
@@ -287,6 +283,102 @@ export default {
   position: absolute;
   border-radius: 4em;
   left: 26px;
+  top: 21px;
+  opacity: 1;
+  transition: 0s;
+}
+
+.active-shadow1:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 4em;
+  left: 126px;
+  top: 21px;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+  transition: all 0.5s;
+  box-shadow: 0 0 8px 15px red;
+}
+
+.active-shadow1:active:after {
+  box-shadow: 0 0 0 0 red;
+  position: absolute;
+  border-radius: 4em;
+  left: 126px;
+  top: 21px;
+  opacity: 1;
+  transition: 0s;
+}
+
+.active-shadow2:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 4em;
+  left: 225px;
+  top: 21px;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+  transition: all 0.5s;
+  box-shadow: 0 0 8px 15px red;
+}
+
+.active-shadow2:active:after {
+  box-shadow: 0 0 0 0 red;
+  position: absolute;
+  border-radius: 4em;
+  left: 225px;
+  top: 21px;
+  opacity: 1;
+  transition: 0s;
+}
+
+.active-shadow3:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 4em;
+  left: 325px;
+  top: 21px;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+  transition: all 0.5s;
+  box-shadow: 0 0 8px 15px red;
+}
+
+.active-shadow3:active:after {
+  box-shadow: 0 0 0 0 red;
+  position: absolute;
+  border-radius: 4em;
+  left: 325px;
+  top: 21px;
+  opacity: 1;
+  transition: 0s;
+}
+
+.active-shadow4:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 4em;
+  left: 425px;
+  top: 21px;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+  transition: all 0.5s;
+  box-shadow: 0 0 8px 15px red;
+}
+
+.active-shadow4:active:after {
+  box-shadow: 0 0 0 0 red;
+  position: absolute;
+  border-radius: 4em;
+  left: 425px;
   top: 21px;
   opacity: 1;
   transition: 0s;
