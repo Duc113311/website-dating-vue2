@@ -36,7 +36,12 @@
           </div>
           <div class="flex justify-center text-2xl title-default mt-3">
             {{ nameUser }}, {{ ageUser }}
-            <img src="@/assets/icon/ic_verified_enable.svg" width="30" alt="" />
+            <img
+              src="@/assets/icon/ic_verified_enable.svg"
+              width="30"
+              class="cursor-pointer"
+              @click="onClickVerified"
+            />
           </div>
         </div>
       </div>
@@ -102,7 +107,7 @@
         </el-tooltip>
       </div>
     </div>
-
+    <DialogVerified v-show="isShowFormVerified"></DialogVerified>
     <div class="w-full">
       <Footer></Footer>
     </div>
@@ -110,6 +115,7 @@
 </template>
 
 <script>
+import DialogVerified from "../../../components/verified/dialog-verified";
 import Footer from "../../../components/layout/footer-home/footer";
 import functionValidate from "../../../middleware/validate.js";
 
@@ -119,6 +125,7 @@ import { mapActions, mapMutations } from "vuex";
 
 export default {
   components: {
+    DialogVerified,
     Footer,
     SliderGold,
   },
@@ -133,6 +140,8 @@ export default {
         { color: "#f56c6c", percentage: 80 },
         { color: "#f56c6c", percentage: 100 },
       ],
+
+      isShowFormVerified: true,
       // percentage: 80,
       percentageIncrease: 0,
     };
@@ -191,6 +200,10 @@ export default {
 
     onClickShowDetail() {
       this.$router.push({ path: "/admin" });
+    },
+
+    onClickVerified() {
+      debugger;
     },
   },
 
