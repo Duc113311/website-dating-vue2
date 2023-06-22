@@ -35,11 +35,7 @@
               :paginationActiveColor="isColorActive"
               :paginationColor="isColor"
             >
-              <slide
-                data-index="0"
-                data-name="MySlideName"
-                @slideclick="handleSlideClick"
-              >
+              <slide data-index="0" data-name="MySlideName">
                 <div class="mt-3 h-60">
                   <div class="w-full padding-describe">
                     <p>
@@ -106,6 +102,8 @@ export default {
   data() {
     return {
       screamName: 2,
+      isColor: "#7E7E7E",
+      isColorActive: "rgb(223 204 204)",
     };
   },
 
