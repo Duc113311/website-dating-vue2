@@ -35,7 +35,7 @@
               :paginationActiveColor="isColorActive"
               :paginationColor="isColor"
             >
-              <slide data-index="0" data-name="MySlideName">
+              <slide data-index="1" data-name="MySlideName">
                 <div class="mt-3 h-60">
                   <div class="w-full padding-describe">
                     <p>
@@ -51,7 +51,7 @@
                 </div>
               </slide>
 
-              <slide>
+              <slide data-index="0">
                 <div class="mt-3 h-60">
                   <div class="w-full padding-describe">
                     <p>
@@ -72,14 +72,16 @@
           >
             <div class="w-full grid gap-3">
               <div
+                @click="onClickContinue"
                 class="button-active cursor-pointer rounded-xl p-3 text-center justify-center flex"
               >
                 Tiếp tục
               </div>
               <div
+                @click="onClickCancel"
                 class="cursor-pointer button-default rounded-xl p-3 text-center justify-center flex"
               >
-                Có lẽ để sau đi
+                Có lẽ đi sau
               </div>
             </div>
           </div>
@@ -102,13 +104,24 @@ export default {
   data() {
     return {
       screamName: 2,
+      screamDetail: 0,
       isColor: "#7E7E7E",
       isColorActive: "rgb(223 204 204)",
     };
   },
 
   computed: {},
-  methods: {},
+  methods: {
+    onClickContinue() {
+      debugger;
+      this.screamName = this.screamName + 1;
+    },
+
+    onClickCancel() {
+      debugger;
+      this.$emit("onChangeCancel", false);
+    },
+  },
 };
 </script>
 

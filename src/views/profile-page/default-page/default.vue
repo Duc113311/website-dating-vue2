@@ -107,7 +107,10 @@
         </el-tooltip>
       </div>
     </div>
-    <DialogVerified v-show="isShowFormVerified"></DialogVerified>
+    <DialogVerified
+      @onChangeCancel="onChangeCancel"
+      v-show="isShowFormVerified"
+    ></DialogVerified>
     <div class="w-full">
       <Footer></Footer>
     </div>
@@ -141,7 +144,7 @@ export default {
         { color: "#f56c6c", percentage: 100 },
       ],
 
-      isShowFormVerified: true,
+      isShowFormVerified: false,
       // percentage: 80,
       percentageIncrease: 0,
     };
@@ -204,6 +207,11 @@ export default {
 
     onClickVerified() {
       debugger;
+      this.isShowFormVerified = true;
+    },
+
+    onChangeCancel(val) {
+      this.isShowFormVerified = val;
     },
   },
 
