@@ -53,34 +53,6 @@
                 </button>
               </div>
             </div>
-
-            <!-- Trình độ học vấn -->
-            <div class="w-full">
-              <div class="w-full flex items-center">
-                <div
-                  class="name-option-dialog flex items-center"
-                  ref="scroll_3"
-                >
-                  <img
-                    class="mr-2"
-                    src="@/assets/icon/ic_tinder/education@1x.png"
-                    width="30"
-                  />
-                  {{ $t("your_education_level?") }}
-                </div>
-              </div>
-              <div class="bor-bottom">
-                <button
-                  v-for="(item, index) in listEducationParams"
-                  :key="index"
-                  :id="`education_` + item.code"
-                  class="style-option-click border-default education"
-                  @click="onChoseEducation(item)"
-                >
-                  {{ item.value }}
-                </button>
-              </div>
-            </div>
             <!-- Phong cách  -->
             <div class="w-full">
               <div class="w-full flex items-center">
@@ -108,6 +80,34 @@
                 </button>
               </div>
             </div>
+            <!-- Trình độ học vấn -->
+            <div class="w-full">
+              <div class="w-full flex items-center">
+                <div
+                  class="name-option-dialog flex items-center"
+                  ref="scroll_3"
+                >
+                  <img
+                    class="mr-2"
+                    src="@/assets/icon/ic_tinder/education@1x.png"
+                    width="30"
+                  />
+                  {{ $t("your_education_level?") }}
+                </div>
+              </div>
+              <div class="bor-bottom">
+                <button
+                  v-for="(item, index) in listEducationParams"
+                  :key="index"
+                  :id="`education_` + item.code"
+                  class="style-option-click border-default education"
+                  @click="onChoseEducation(item)"
+                >
+                  {{ item.value }}
+                </button>
+              </div>
+            </div>
+
             <!-- Trạng thái hôn nhân -->
             <div class="w-full">
               <div class="w-full flex items-center">
@@ -529,9 +529,5 @@ export default {
 .bg-active {
   border: 1.4px solid #f65a62 !important;
   color: #f65a62;
-}
-
-.name-option-dialog img {
-  filter: invert(90%) sepia(20%) saturate(200%) hue-rotate(80deg);
 }
 </style>

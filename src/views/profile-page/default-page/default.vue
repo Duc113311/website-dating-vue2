@@ -147,6 +147,7 @@ export default {
       isShowFormVerified: false,
       // percentage: 80,
       percentageIncrease: 0,
+      isShowErrorCamera: false,
     };
   },
 

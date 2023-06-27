@@ -1,3 +1,5 @@
+import { deviceType } from "../enum/type/deviceType";
+
 const functionValidate = {
   validateEmail(email) {
     var re = /\S+@\S+\.\S+/;
@@ -84,6 +86,27 @@ const functionValidate = {
     const capitalizedStr = string.charAt(0).toUpperCase() + string.slice(1);
 
     return capitalizedStr;
+  },
+
+  /**
+   * Kiểm tra xem đang sử dụng trên thiết bị nào?
+   * @returns
+   */
+  checkDeviceType() {
+    var userAgent = navigator.userAgent.toLowerCase();
+    debugger;
+    if (userAgent.indexOf("windows") >= 0 && userAgent.indexOf("mobile") < 0) {
+      return deviceType.devicePC;
+    } else if (
+      userAgent.indexOf("mac") >= 0 ||
+      userAgent.indexOf("ipad") >= 0 ||
+      (userAgent.indexOf("windows") >= 0 && userAgent.indexOf("phone") < 0) ||
+      (userAgent.indexOf("linux") >= 0 && userAgent.indexOf("android") < 0)
+    ) {
+      return deviceType.deviceLaptop;
+    } else {
+      return "Unknown";
+    }
   },
 };
 

@@ -527,7 +527,4 @@ export default {
   border: 1.5px solid #f65a62 !important;
   color: #f65a62;
 }
-.name-option-dialog img {
-  filter: invert(90%) sepia(20%) saturate(200%) hue-rotate(80deg);
-}
 </style>

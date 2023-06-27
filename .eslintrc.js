@@ -20,7 +20,7 @@ module.exports = {
       {
         endOfLine: "auto",
       },
-      // { useTabs: true },
+      { useTabs: true },
       // {
       //   "usePrettierrc": false
       // }
