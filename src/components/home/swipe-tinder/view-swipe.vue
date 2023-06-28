@@ -981,8 +981,9 @@ export default {
         if (isLikeValue.isFreeRuntime) {
           // quẹt thoải mái
           // match thành công hiện form match
-          if (isLikeValue.isMatched) {
+          if (!isLikeValue.isMatched) {
             this.setDataUserMatch(value.item);
+            this.setIndexImageActiveDefault(0);
             this.$emit("onShowFormLikeYou", true);
           }
           this.imageActive = 0;

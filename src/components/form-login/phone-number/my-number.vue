@@ -72,13 +72,11 @@ export default {
      */
     onValidatePhoneNumber(val) {
       var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
-      if (val !== "") {
-        if (vnf_regex.test(val) == false) {
-          this.txtCodeError = this.$t("please_enter_a_valid_phone_number");
-          this.$emit("validateRequirePhone", { statusActive: false });
+      var usf_regex = /^(\+?1)?[2-9]\d{2}[2-9](?!11)\d{6}$/;
+      var auf_regex = /^(\+?61|0)[7-9]\d{8}$/;
 
-          // Số điện thoại của bạn không đúng định dạng!
-        } else {
+      if (val !== "") {
+        if (vnf_regex.test(val)) {
           this.txtCodeError = "";
 
           this.$emit("validateRequirePhone", {
@@ -86,6 +84,27 @@ export default {
             valueIntlTel: this.valueIntlTel,
             valuePhoneNumber: this.valuePhoneNumber,
           });
+        } else if (usf_regex.test(val)) {
+          this.txtCodeError = "";
+
+          this.$emit("validateRequirePhone", {
+            statusActive: true,
+            valueIntlTel: this.valueIntlTel,
+            valuePhoneNumber: this.valuePhoneNumber,
+          });
+        } else if (auf_regex.test(val)) {
+          this.txtCodeError = "";
+
+          this.$emit("validateRequirePhone", {
+            statusActive: true,
+            valueIntlTel: this.valueIntlTel,
+            valuePhoneNumber: this.valuePhoneNumber,
+          });
+        } else {
+          this.txtCodeError = this.$t("please_enter_a_valid_phone_number");
+          this.$emit("validateRequirePhone", { statusActive: false });
+
+          // Số điện thoại của bạn không đúng định dạng!
         }
       } else {
         this.txtCodeError = this.$t("you_are_not_enter_the_phone_number");
@@ -162,6 +181,10 @@ export default {
 }
 
 .iti--separate-dial-code .iti__selected-flag {
-  background-color: #eef1f8 !important;
+  background-color: #495063 !important;
+}
+
+.iti__arrow {
+  border-top: 4px solid #ffffff !important;
 }
 </style>

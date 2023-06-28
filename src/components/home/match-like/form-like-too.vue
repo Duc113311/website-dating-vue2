@@ -71,14 +71,14 @@
           <div
             class="style-icon cursor-pointer"
             id="ic_01"
-            @click="onClickSendIcon"
+            @click="onClickSendIcon('ic_01')"
           >
             😉
           </div>
           <div
             class="style-icon cursor-pointer"
             id="ic_02"
-            @click="onClickSendIcon"
+            @click="onClickSendIcon('ic_02')"
           >
             👋
           </div>
@@ -88,7 +88,11 @@
           >
             <img src="@/assets/icon/ic_home_tab.svg" alt="" srcset="" />
           </div>
-          <div class="style-icon cursor-pointer" @click="onClickSendIcon">
+          <div
+            id="ic_04"
+            class="style-icon cursor-pointer"
+            @click="onClickSendIcon('ic_04')"
+          >
             😍
           </div>
         </div>
@@ -191,10 +195,13 @@ export default {
     },
     onClickNextImage() {},
     onClickSendIcon(value) {
+      debugger;
       this.txtValueMes = document
-        .getElementById("ic_" + value)
+        .getElementById(value)
         .innerHTML.split(" ")
         .join("");
+      debugger;
+      console.log(value);
     },
     onClickSendMessage() {
       this.isHideConfirm = true;
