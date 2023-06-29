@@ -112,7 +112,7 @@ export default {
       this.txtErrorCode = false;
       this.isStatusRequire = false;
       document.getElementById("1").focus();
-      const phoneNumber = this.valCodeQR.getNumber();
+      const phoneNumber = this.valuePhoneNumber.getNumber();
       const appVerifier = window.recaptchaVerifier;
       await this.setuprecaptcha();
       await signInWithPhoneNumber(auth, phoneNumber, appVerifier)
@@ -226,6 +226,7 @@ export default {
       this.valCodeQR = intlTelInput(input, {
         separateDialCode: true, // Hiển thị mã điện thoại quốc gia riêng rẽ
         initialCountry: "vn",
+        preferredCountries: ["us", "gb", "de"],
         utilsScript:
           "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js", // Đường dẫn đến tệp utils.js
       });

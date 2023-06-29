@@ -135,7 +135,7 @@
           class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
           v-if="aboutValue"
         >
-          <div class="title title-description describe-text pl-2">
+          <div class="title title-description describe-text">
             {{ stringName($t("about_me")) }}
           </div>
           <div class="text-description">
@@ -163,7 +163,7 @@
           class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
           v-if="bingBasicInformation(userParam.profiles).length !== 0"
         >
-          <div class="title pl-2 title-description describe-text">
+          <div class="title title-description describe-text">
             {{ stringName($t("basic_information")) }}
           </div>
 
@@ -186,7 +186,7 @@
           class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
           v-if="bingLifeStyleStatic(userParam.profiles).length !== 0"
         >
-          <div class="title pl-2 title-description describe-text">
+          <div class="title title-description describe-text">
             {{ $t("style_of_life") }}
           </div>
 
@@ -208,7 +208,7 @@
           class="w-full bg-border-bottom padding-text-user pl-2 pr-2"
           v-if="userParam.profiles.interests.length !== 0"
         >
-          <div class="title pl-2 title-description describe-text">
+          <div class="title title-description describe-text">
             {{ $t("interests") }}
           </div>
 

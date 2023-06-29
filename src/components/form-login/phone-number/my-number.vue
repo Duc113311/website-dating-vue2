@@ -52,13 +52,13 @@ export default {
   },
 
   computed: {
-    isDarkTheme() {
+    backgroundColor() {
       const theme = localStorage.getItem("user-theme");
 
       if (theme === "light-theme") {
-        return false;
+        return "#EDF0F7";
       } else {
-        return true;
+        return "#495063";
       }
     },
   },
@@ -71,7 +71,7 @@ export default {
      * @param {*} val
      */
     onValidatePhoneNumber(val) {
-      var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+      var vnf_regex = /^((\+84|0)[3|5|7|8|9])+([0-9]{8})$/g;
       var usf_regex = /^(\+?1)?[2-9]\d{2}[2-9](?!11)\d{6}$/;
       var auf_regex = /^(\+?61|0)[7-9]\d{8}$/;
 
@@ -181,10 +181,14 @@ export default {
 }
 
 .iti--separate-dial-code .iti__selected-flag {
-  background-color: #495063 !important;
+  background-color: unset !important;
+}
+
+.iti__arrow--up {
+  border-bottom: 4px solid #000000 !important;
 }
 
 .iti__arrow {
-  border-top: 4px solid #ffffff !important;
+  border-top: 4px solid #000000 !important;
 }
 </style>

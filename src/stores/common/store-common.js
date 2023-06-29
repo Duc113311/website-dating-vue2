@@ -20,7 +20,7 @@ const state = {
   listInformationBasic: {}, // Lấy danh sách các thông tin cơ bản
   listLifeStyleStatic: {}, // Lấy danh sách phong cách sống
 
-  themeLayout: "light",
+  themeLayout: "dark",
   statusLayout: false,
 
   listInterestFilter: [],
