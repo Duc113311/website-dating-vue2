@@ -4,13 +4,13 @@
       <!-- Back -->
 
       <div
-        class="flex w-full items-center header-edit border-bottom p-4"
+        class="flex w-full items-center header-edit border-bottom p-4 justify-between"
         v-bind:class="{ 'reverse-layout': isArabic }"
       >
-        <div class="w-1/12">
+        <div class="">
           <BhBack @onBackComponent="onBackEditProfile"></BhBack>
         </div>
-        <div class="w-5/6">
+        <div class="">
           <div
             class="flex header-page justify-center content-center items-center text-red-400 title-logo"
           >
@@ -20,7 +20,7 @@
           </div>
         </div>
         <div
-          class="w-1/12 text-left title-item font-semibold text-red-400 cursor-pointer"
+          class="text-left title-item font-semibold text-red-400 cursor-pointer"
           @click="onSaveEditProfile"
         >
           {{ this.$t("save") }}

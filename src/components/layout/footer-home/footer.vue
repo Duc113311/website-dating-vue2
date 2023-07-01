@@ -3,19 +3,19 @@
     v-bind:class="{ 'reverse-layout': isArabic }"
     class="w-full bottom-0 right-0 border-top footer-body flex justify-center bg-color-default content-center text-center cursor-pointer"
   >
-    <div @click="onClickHome()" class="active-ic active-shadow">
+    <div @click="onClickHome()" class="active-ic">
       <button><i class="fa-solid fa-heart icon-color"></i></button>
     </div>
-    <div @click="onClickExplore()" class="active-ic active-shadow1">
+    <div @click="onClickExplore()" class="active-ic">
       <button><i class="fa-solid fa-magnifying-glass icon-color"></i></button>
     </div>
-    <div @click="onClickLikeTopic()" class="active-ic active-shadow2">
+    <div @click="onClickLikeTopic()" class="active-ic">
       <button><i class="fa-solid fa-hand-holding-heart icon-color"></i></button>
     </div>
-    <div @click="onClickMessage()" class="active-ic active-shadow3">
+    <div @click="onClickMessage()" class="active-ic">
       <button><i class="fa-solid fa-message icon-color"></i></button>
     </div>
-    <div @click="onClickProfile()" class="active-ic active-shadow4">
+    <div @click="onClickProfile()" class="active-ic">
       <button><i class="fa-solid fa-user icon-color"></i></button>
     </div>
   </div>

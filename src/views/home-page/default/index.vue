@@ -128,11 +128,11 @@ export default {
   },
 
   async created() {
-    const listCards = this.$store.state.mongoModule.listDataCard;
-    if (listCards.length === 0) {
-      this.loading = true;
-      await this.getListCardForUser(30);
-    }
+    // const listCards = this.$store.state.mongoModule.listDataCard;
+    // if (listCards.length === 0) {
+    this.loading = true;
+    await this.getListCardForUser(30);
+    // }
     await this.getListLifeStyleCommons();
     await this.getListInformationBasic();
     await this.getListLifeStyleStatic();

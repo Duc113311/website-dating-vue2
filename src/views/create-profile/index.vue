@@ -151,6 +151,7 @@ export default {
       "setActionShowMe",
       "setShowStatusGender",
       "setShowStatusSexual",
+      "setFirstName",
     ]),
 
     ...mapActions(["getListLifeStyleForRegister"]),
@@ -160,6 +161,8 @@ export default {
     async onActionApplyQuestion(val) {
       await signOut(auth)
         .then(() => {
+          const firstName = "";
+          this.setFirstName(firstName);
           this.isShowFormQuestion = false;
 
           // Sign-out successful.
