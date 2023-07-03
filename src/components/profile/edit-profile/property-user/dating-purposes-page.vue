@@ -5,17 +5,17 @@
       <div v-if="completePurposes">+4%</div>
     </div>
 
-    <div class="w-full bg-life flex bg-default justify-between items-center">
+    <div
+      class="w-full bg-life flex bg-default justify-between items-center cursor-pointer"
+      @click="onShowPurposes()"
+    >
       <div class="w-6/12 bh-item-title flex items-center">
         <div class="flex items-center">
           <img src="@/assets/icon/ic_tinder/ic_purpose.png" width="25" />
           <span class="mr-2 ml-2">{{ $t("i'm_looking_for") }}</span>
         </div>
       </div>
-      <div
-        class="flex w-6/12 justify-end items-center"
-        @click="onShowPurposes()"
-      >
+      <div class="flex w-6/12 justify-end items-center">
         <div
           class="bh-describe w-full whitespace-nowrap mr-3 ml-3 overflow-hidden"
         >

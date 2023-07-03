@@ -10,7 +10,7 @@
         <div class="">
           <BhBack @onBackComponent="onBackEditProfile"></BhBack>
         </div>
-        <div class="">
+        <div class="ml-7">
           <div
             class="flex header-page justify-center content-center items-center text-red-400 title-logo"
           >
@@ -20,7 +20,7 @@
           </div>
         </div>
         <div
-          class="text-left title-item font-semibold text-red-400 cursor-pointer"
+          class="text-left mr-1 title-item font-semibold text-red-400 cursor-pointer"
           @click="onSaveEditProfile"
         >
           {{ this.$t("save") }}
@@ -69,6 +69,7 @@ export default {
     async onBackEditProfile() {
       this.loading = true;
 
+      debugger;
       let completeAvatar = 3;
       let completeAbout = 0;
       let completeInterest = 0;

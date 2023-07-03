@@ -23,8 +23,8 @@
               </el-progress>
               <div class="flex justify-center relative complete-image">
                 <div
-                  :style="`background-image:url(${avatarUser})`"
                   class="image-avatar"
+                  id="image-avatar"
                   @click="onClickShowDetail()"
                 ></div>
 
@@ -126,6 +126,7 @@ import functionValidate from "../../../middleware/validate.js";
 import SliderGold from "@/components/packages/common/slider-gold.vue";
 import { mapActions, mapMutations } from "vuex";
 
+// :style="`background-image:url(${avatarUser})`"
 export default {
   components: {
     DialogVerified,
@@ -166,6 +167,7 @@ export default {
       return this.$store.state.userModule.user_profile.fullname;
     },
     avatarUser() {
+      debugger;
       return this.$store.state.userModule.user_profile.profiles.avatars[0];
     },
 
@@ -349,6 +351,10 @@ export default {
       i++;
     }, 20);
 
+    const url = this.$store.state.userModule.user_profile.profiles.avatars[0];
+    const img = document.getElementById("image-avatar");
+    let bg = "url('" + url + "')";
+    img.style.backgroundImage = bg;
     await this.getListLifeStyleCommons();
     await this.getListInformationBasic();
     await this.getListLifeStyleStatic();

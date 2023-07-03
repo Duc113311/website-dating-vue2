@@ -108,3 +108,10 @@
   -ms-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
+
+.h-form-title {
+  height: 6%;
+}
+.h-form-body {
+  height: calc(100% - 6%);
+}

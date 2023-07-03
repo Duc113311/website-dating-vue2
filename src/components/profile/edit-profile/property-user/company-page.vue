@@ -38,7 +38,8 @@ export default {
      * Bắt sự kiện khi đã nhập xong
      */
     onChangeCompany() {
-      this.setCompany(this.nameCompany);
+      var substring = this.nameCompany.substring(0, 100);
+      this.setCompany(substring);
     },
   },
 };

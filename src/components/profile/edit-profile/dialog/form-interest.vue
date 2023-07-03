@@ -5,7 +5,9 @@
       <div
         class="rounded-lg bg-dialog-default title-default items-center w-full height-scroll w-form-common overflow-scroll relative p-5 cursor-pointer"
       >
-        <div class="w-full justify-between flex items-center h-title-close">
+        <div
+          class="w-full justify-between flex items-center h-title-close h-form-title"
+        >
           <div @click="onChangeCancel()">
             <i class="fa-solid fa-xmark size-icon-default"></i>
           </div>
@@ -14,7 +16,9 @@
           </div>
         </div>
 
-        <div class="w-full flex justify-center items-center h-form-data">
+        <div
+          class="w-full flex justify-center items-center h-form-data h-form-body overflow-hidden"
+        >
           <div class="w-full items-center h-full">
             <div class="flex w-full justify-between items-center h-12 mb-2">
               <div class="padding-title">
@@ -78,7 +82,7 @@
             <!-- Danh sách sở thich -->
 
             <div
-              class="w-full h-full list-interest-form mt-5 height-scroll overflow-scroll"
+              class="w-full list-interest-form mt-5 height-scroll overflow-scroll"
             >
               <span v-for="(item, index) in this.listInterest" :key="index">
                 <button
@@ -141,6 +145,7 @@ export default {
      * @param {*} val
      */
     onRemoveItem(val) {
+      debugger;
       console.log(val);
       this.listChecked = this.listChecked.filter(function (el) {
         return el.code != val;
@@ -183,27 +188,33 @@ export default {
     onSelectInterest(val) {
       const listInterest =
         this.$store.state.commonModule.listLifeStyleSingle.interests;
+      debugger;
 
-      if (this.listChecked.length < 5) {
-        document
-          .getElementById("interest" + val)
-          .classList.add("border-active");
-        const findValue = listInterest.find((x) => x.code === val);
+      const findIndex = this.listChecked.find((x) => x.code === val);
+      if (findIndex) {
+        this.onRemoveItem(val);
+      } else {
+        if (this.listChecked.length < 5) {
+          document
+            .getElementById("interest" + val)
+            .classList.add("border-active");
+          const findValue = listInterest.find((x) => x.code === val);
 
-        if (findValue) {
-          const objectChecked = {
-            code: val,
-            value: findValue.value,
-          };
+          if (findValue) {
+            const objectChecked = {
+              code: val,
+              value: findValue.value,
+            };
 
-          const findData = this.listChecked.find((x) => x.code === val);
-          if (!findData) {
-            this.listInterestCode.push(val);
+            const findData = this.listChecked.find((x) => x.code === val);
+            if (!findData) {
+              this.listInterestCode.push(val);
 
-            this.listChecked.push(objectChecked);
+              this.listChecked.push(objectChecked);
+            }
+            document.getElementsByClassName("type-language")[0].style.color =
+              "#f65a62";
           }
-          document.getElementsByClassName("type-language")[0].style.color =
-            "#f65a62";
         }
       }
     },

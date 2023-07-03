@@ -7,7 +7,9 @@
       <div
         class="rounded-lg items-center w-form-life relative p-5 cursor-pointer"
       >
-        <div class="w-full justify-between flex items-center h-title-close">
+        <div
+          class="w-full justify-between flex items-center h-title-close h-form-title"
+        >
           <div @click="onChangeCancel()">
             <i class="fa-solid fa-xmark size-icon-default"></i>
           </div>
@@ -16,7 +18,9 @@
           </div>
         </div>
 
-        <div class="w-full flex justify-center items-center h-form-data">
+        <div
+          class="w-full flex justify-center items-center h-form-data h-form-body"
+        >
           <div class="w-full items-center h-full">
             <div class="flex w-full justify-between items-center h-12 mb-2">
               <div class="padding-title">Interest</div>

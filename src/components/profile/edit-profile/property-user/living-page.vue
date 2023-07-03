@@ -34,7 +34,8 @@ export default {
      *
      */
     onChangeLiving() {
-      this.setAddress(this.nameLiving);
+      var substring = this.nameLiving.substring(0, 100);
+      this.setAddress(substring);
     },
   },
 };

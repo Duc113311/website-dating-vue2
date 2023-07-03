@@ -38,7 +38,8 @@ export default {
      * Bắt sự kiện khi đã nhập xong
      */
     onChangeJobTitle() {
-      this.setJobTitle(this.nameJobTitle);
+      var substring = this.nameJobTitle.substring(0, 100);
+      this.setJobTitle(substring);
     },
   },
 };

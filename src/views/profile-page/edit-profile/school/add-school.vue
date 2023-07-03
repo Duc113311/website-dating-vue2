@@ -2,20 +2,24 @@
   <div class="w-full h-full relative title-default">
     <div class="w-full h-full">
       <!-- Header -->
-      <div class="w-full header-detail flex justify-center items-center">
+      <div
+        class="w-full header-detail flex justify-center items-center border-bottom"
+      >
         <div class="w-full flex justify-center items-center pl-2 pr-2">
           <div class="">
             <BhBack @onBackComponent="onBackSettingPhone()"></BhBack>
           </div>
-          <div class="ml-20 w-3/4 text-xl">
-            {{ bingString($t("update_information_school")) }}
+          <div class="ml-20 w-3/4 text-xl text-red-400">
+            <span class="text-age font-semibold">{{
+              bingString($t("update_information_school"))
+            }}</span>
           </div>
         </div>
       </div>
 
       <!-- Body -->
       <div class="body-detail height-scroll overflow-scroll w-full pl-5 pr-5">
-        <div class="w-full">
+        <div class="w-full mt-6">
           <div class="bh-item-title title-item">{{ $t("school_name") }}</div>
           <div class="w-full h-search mt-2">
             <div class="w-full">

@@ -27,14 +27,14 @@
         <div class="bg-image-detail h-detail-admin relative">
           <div class="avatar w-full h-full relative">
             <div
-              v-show="isActiveImag"
+              v-if="isActiveImag"
               class="avatar-detail z-8"
               :style="{
-                'background-image': `url(${bingInformationUser.profiles.avatars[0]})`,
+                'background-image': `url(${urlImage})`,
               }"
             />
             <div
-              v-show="!isActiveImag"
+              v-if="!isActiveImag"
               class="avatar-detail z-8"
               :style="{
                 'background-image': `url(${imageData}
@@ -275,7 +275,12 @@ export default {
     colorBt() {
       return this.$store.state.commonModule.statusLayout;
     },
+
+    urlImage() {
+      return this.$store.state.userModule.user_profile.profiles.avatars[0];
+    },
     bingInformationUser() {
+      debugger;
       return this.$store.state.userModule.user_profile;
     },
     aboutValue() {
@@ -598,6 +603,10 @@ export default {
         return parseInt(dataDistance.toFixed(0));
       }
     },
+  },
+
+  mounted() {
+    debugger;
   },
 };
 </script>

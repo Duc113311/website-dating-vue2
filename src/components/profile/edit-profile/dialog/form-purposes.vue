@@ -89,6 +89,7 @@ export default {
         },
       ],
       valuePurposes: {},
+      purposesValue: {},
     };
   },
 
@@ -116,6 +117,7 @@ export default {
     },
 
     onChangeSaveInterest() {
+      debugger;
       if (Object.keys(this.valuePurposes).length !== 0) {
         this.setDatingPurposes(this.valuePurposes);
       }
@@ -127,15 +129,21 @@ export default {
       console.log(val);
       const listDocument = document.getElementsByClassName("item-dating");
 
+      debugger;
+
       for (let index = 0; index < listDocument.length; index++) {
         const element = listDocument[index];
         console.log(element);
         if (val.code === element.id) {
-          this.valuePurposes = val;
-
-          element.classList.add("border-active");
-          document.getElementsByClassName("type-Purposes")[0].style.color =
-            "#f65a62";
+          if (val.code !== this.purposesValue) {
+            this.valuePurposes = val;
+            this.purposesValue = val.code;
+            element.classList.add("border-active");
+            document.getElementsByClassName("type-Purposes")[0].style.color =
+              "#f65a62";
+          } else {
+            element.classList.remove("border-active");
+          }
         } else {
           element.classList.remove("border-active");
         }
@@ -146,8 +154,11 @@ export default {
   mounted() {
     const newData =
       this.$store.state.userModule.user_profile.profiles.datingPurpose;
-    document.getElementById(newData).classList.add("border-active");
-    if (newData) {
+    debugger;
+    if (newData !== "") {
+      this.purposesValue = newData;
+      document.getElementById(newData).classList.add("border-active");
+
       document.getElementsByClassName("type-Purposes")[0].style.color =
         "#f65a62";
     }
