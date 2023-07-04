@@ -807,10 +807,6 @@ export default {
   background-color: #242a38;
 }
 
-.header-edit {
-  height: 8%;
-}
-
 .form-edit {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;

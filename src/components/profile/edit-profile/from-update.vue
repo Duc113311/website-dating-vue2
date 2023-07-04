@@ -7,7 +7,7 @@
     <!-- mô tả -->
 
     <div
-      class="flex justify-center text-center w-full mt-4 mb-4 description-no-padding"
+      class="flex justify-center text-center w-full mt-2 mb-2 description-no-padding"
     >
       {{
         $t(

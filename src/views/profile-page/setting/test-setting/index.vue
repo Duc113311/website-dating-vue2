@@ -1,38 +1,42 @@
 <template>
-  <div class="w-full h-full relative p-5" v-loading="loading">
+  <div class="w-full h-full relative" v-loading="loading">
     <div
       class="w-full h-full title-default"
       v-bind:class="{ 'reverse-layout': isArabic }"
     >
       <!-- Back -->
-      <div class="w-full header-edit flex justify-center items-center">
+      <div
+        class="w-full header-edit flex justify-center items-center p-4 border-bottom"
+      >
         <div class="w-full flex items-center">
           <div class="">
             <BhBack @onBackComponent="onBackEditProfile"></BhBack>
             <!-- <BhBack @onBackComponent="onBackEditProfile"></BhBack> -->
           </div>
-          <div class="w-full text-xl text-center">{{ $t("settings") }}</div>
+          <div class="w-full text-xl text-center text-red-400 font-semibold">
+            {{ $t("settings") }}
+          </div>
         </div>
       </div>
 
-      <div class="form-edit overflow-scroll w-full">
+      <div class="form-edit overflow-scroll w-full p-4">
         <FromSetting></FromSetting>
         <!--  -->
       </div>
 
-      <Footer></Footer>
+      <!-- <Footer></Footer> -->
     </div>
   </div>
 </template>
 
 <script>
-import Footer from "../../../../components/layout/footer-home/footer";
+// import Footer from "../../../../components/layout/footer-home/footer";
 import BhBack from "../../../../components/bh-element-ui/button/bh-back";
 import FromSetting from "../../../../components/profile/setting/from-setting";
 import { mapActions } from "vuex";
 export default {
   components: {
-    Footer,
+    // Footer,
     BhBack,
     FromSetting,
   },
@@ -73,13 +77,13 @@ export default {
 }
 
 .header-edit {
-  height: 8%;
+  height: 10%;
 }
 .form-edit {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
   overflow-y: scroll; /* Add the ability to scroll */
-  height: 84%;
+  height: calc(100% - 10%);
 }
 
 .form-edit::-webkit-scrollbar {

@@ -11,6 +11,7 @@
       <div>
         <el-slider
           v-model="valueDistance"
+          :min="2"
           @change="onChangeDistance()"
         ></el-slider>
       </div>

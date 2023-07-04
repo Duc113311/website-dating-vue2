@@ -55,6 +55,7 @@
               <div>
                 <div class="flex items-center">
                   <div
+                    v-truncate="20"
                     :title="scope.data.fullname"
                     class="text-ellipsis whitespace-nowrap font-title overflow-hidden"
                   >
@@ -309,7 +310,22 @@ export default {
   },
 
   props: ["isLoadData", "listUserFilter"],
+  directives: {
+    truncate: {
+      inserted: function (el, binding) {
+        debugger;
+        const text = el.innerText;
+        const maxLength = binding.value;
 
+        if (text.length > maxLength) {
+          el.style.overflow = "hidden";
+          el.style.textOverflow = "ellipsis";
+          el.style.whiteSpace = "nowrap";
+          el.style.width = "200px";
+        }
+      },
+    },
+  },
   computed: {
     urlImageLength() {
       return this.$store.state.userModule.urlImage;
@@ -981,7 +997,7 @@ export default {
         if (isLikeValue.isFreeRuntime) {
           // quẹt thoải mái
           // match thành công hiện form match
-          if (!isLikeValue.isMatched) {
+          if (isLikeValue.isMatched) {
             this.setDataUserMatch(value.item);
             this.setIndexImageActiveDefault(0);
             this.$emit("onShowFormLikeYou", true);
@@ -992,7 +1008,7 @@ export default {
           if (isLikeValue.likeRemaining > 0) {
             //  Được quẹt
 
-            if (!isLikeValue.isMatched) {
+            if (isLikeValue.isMatched) {
               this.setDataUserMatch(value.item);
               this.setIndexImageActiveDefault(0);
               this.$emit("onShowFormLikeYou", true);

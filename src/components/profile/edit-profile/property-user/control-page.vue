@@ -4,7 +4,12 @@
       <div class="w-full flex bh-title p-3 items-center">
         <div>{{ $t("control_profile").toUpperCase() }}</div>
         <div class="ml-3 mr-3">
-          <div class="style-package-update">{{ $t("sliver_package") }}</div>
+          <div
+            class="style-package-update cursor-pointer"
+            @click="onClickShowPackages('silver')"
+          >
+            {{ $t("sliver_package") }}
+          </div>
         </div>
       </div>
       <div class="w-full flex items-center bg-default style-bg-common">
@@ -37,17 +42,27 @@
         </div>
       </div>
     </div>
+    <PopupGold
+      v-if="isShowPackage"
+      :nameGoldPackage="nameGoldPackage"
+      @onClickHidePackage="onHidePackage"
+    ></PopupGold>
   </div>
 </template>
 
 <script>
+import PopupGold from "../../../packages/default/popup-gold";
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
+  components: { PopupGold },
   name: "control-page",
 
   data() {
-    return {};
+    return {
+      nameGoldPackage: "",
+      isShowPackage: false,
+    };
   },
 
   computed: {
@@ -98,6 +113,15 @@ export default {
       } else {
         this.setShowAge(true);
       }
+    },
+
+    onClickShowPackages(val) {
+      this.isShowPackage = true;
+      this.nameGoldPackage = val;
+    },
+
+    onHidePackage(val) {
+      this.isShowPackage = val;
     },
   },
 };

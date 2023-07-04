@@ -44,7 +44,8 @@ export default {
     ...mapMutations(["setFirstName"]),
     onChangeFirstName() {
       if (this.txtFirstName !== "") {
-        this.setFirstName(this.txtFirstName);
+        var substring = this.txtFirstName.substring(0, 50);
+        this.setFirstName(substring);
         this.$emit("onStatusActive", true);
       } else {
         this.$emit("onStatusActive", false);

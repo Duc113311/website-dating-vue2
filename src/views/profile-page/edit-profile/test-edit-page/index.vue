@@ -10,7 +10,7 @@
         <div class="">
           <BhBack @onBackComponent="onBackEditProfile"></BhBack>
         </div>
-        <div class="ml-7">
+        <div class="ml-">
           <div
             class="flex header-page justify-center content-center items-center text-red-400 title-logo"
           >
@@ -27,16 +27,15 @@
         </div>
       </div>
       <div
-        class="form-edit overflow-scroll w-full p-3"
+        class="form-edit overflow-scroll w-full p-4"
         v-bind:class="{ 'reverse-layout': isArabic }"
       >
         <from-update></from-update>
       </div>
 
-      <div class="w-full">
+      <!-- <div class="w-full">
         <Footer></Footer>
-        <!-- <Footer></Footer> -->
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -44,11 +43,11 @@
 <script>
 import fromUpdate from "@/components/profile/edit-profile/from-update.vue";
 import BhBack from "@/components/bh-element-ui/button/bh-back.vue";
-import Footer from "@/components/layout/footer-home/footer.vue";
+// import Footer from "@/components/layout/footer-home/footer.vue";
 import functionValidate from "../../../../middleware/validate.js";
 import { mapActions, mapMutations } from "vuex";
 export default {
-  components: { fromUpdate, BhBack, Footer },
+  components: { fromUpdate, BhBack },
   name: "test-edit-page",
   data() {
     return {
@@ -331,7 +330,7 @@ export default {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
   overflow-y: scroll; /* Add the ability to scroll */
-  height: 80%;
+  height: calc(100% - 10%);
 }
 
 .form-edit::-webkit-scrollbar {

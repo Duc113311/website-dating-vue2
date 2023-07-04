@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full gold-package overflow-scroll mt-3">
+  <div class="w-full gold-package overflow-scroll">
     <div class="border-package">
       <carousel
         :per-page="1"

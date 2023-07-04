@@ -35,13 +35,18 @@
             </div>
           </div>
           <div class="flex justify-center text-2xl title-default mt-3">
-            {{ nameUser }}, {{ ageUser }}
-            <img
-              src="@/assets/icon/ic_verified_enable.svg"
-              width="30"
-              class="cursor-pointer"
-              @click="onClickVerified"
-            />
+            <div class="flex justify-center items-center">
+              <div v-truncate="20" class="" :title="nameUser">
+                {{ nameUser }}
+              </div>
+              , {{ ageUser }}
+              <img
+                src="@/assets/icon/ic_verified_enable.svg"
+                width="30"
+                class="cursor-pointer"
+                @click="onClickVerified"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -151,7 +156,22 @@ export default {
       isShowErrorCamera: false,
     };
   },
+  directives: {
+    truncate: {
+      inserted: function (el, binding) {
+        debugger;
+        const text = el.innerText;
+        const maxLength = binding.value;
 
+        if (text.length > maxLength) {
+          el.style.overflow = "hidden";
+          el.style.textOverflow = "ellipsis";
+          el.style.whiteSpace = "nowrap";
+          el.style.width = "200px";
+        }
+      },
+    },
+  },
   computed: {
     isArabic() {
       return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập

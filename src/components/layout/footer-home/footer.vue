@@ -227,7 +227,8 @@ export default {
       this.$route.name === "edit-profile" ||
       this.$route.name === "test-edit-page" ||
       this.$route.name === "test-setting-page" ||
-      this.$route.name === "detail-admin"
+      this.$route.name === "detail-admin" ||
+      this.$route.name === "sexual-page"
     ) {
       document
         .getElementsByClassName("fa-user")[0]

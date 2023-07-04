@@ -242,7 +242,7 @@
   "interests": "Lợi ích",
   "my_gender": "Giới tính của tôi",
   "my_orientation": "định hướng của tôi",
-  "version_x.y.z": "Phiên bản X.Y.Z",
+  "version_{environment}_{number}": "Phiên bản {environment}_{number}",
   "km": "km",
   "mi": "mi",
   "live_at_{nameAddress}": "Sống tại {nameaddress}",

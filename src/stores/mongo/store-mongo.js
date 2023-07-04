@@ -137,11 +137,11 @@ const actions = {
    */
   async updateProfileUser({ commit }, data) {
     await http_mongo
-      .post(
-        `api/v1/profile`,
-
-        data
-      )
+      .post(`api/v1/profile`, data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("tokenId")}`,
+        },
+      })
       .then((response) => {
         commit("setUpdateProfile_Mongo", response);
       })
@@ -152,15 +152,11 @@ const actions = {
 
   async updateSettingUser({ commit }, data) {
     await http_mongo
-      .post(
-        `api/v1/setting`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("tokenId")}`,
-          },
+      .post(`api/v1/setting`, data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("tokenId")}`,
         },
-        data
-      )
+      })
       .then((response) => {
         commit("setUpdateProfile_Mongo", response);
       })

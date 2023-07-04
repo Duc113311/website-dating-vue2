@@ -12,7 +12,14 @@
     <div class="w-full flex justify-center items-center form-set-item mt-10">
       <div>
         <img src="@/assets/icon/ic_icon_app.svg" style="width: 100%" />
-        <div class="bh-describe">{{ $t("version_x.y.z") }}</div>
+        <div class="bh-describe">
+          {{
+            $t(`version_{environment}_{number}`, {
+              environment: this.environment,
+              number: this.numberVersion,
+            })
+          }}
+        </div>
       </div>
     </div>
 
@@ -34,7 +41,10 @@ export default {
   name: "log-out-page",
 
   data() {
-    return {};
+    return {
+      environment: "test",
+      numberVersion: "01",
+    };
   },
 
   methods: {

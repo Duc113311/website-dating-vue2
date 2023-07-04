@@ -242,7 +242,7 @@
   "interests": "Interests",
   "my_gender": "my gender",
   "my_orientation": "my orientation",
-  "version_x.y.z": "Version x.y.z",
+  "version_{environment}_{number}": "Version {environment}_{number}",
   "km": "km",
   "mi": "mi",
   "live_at_{nameAddress}": "Live at {nameAddress}",

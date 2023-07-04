@@ -1,8 +1,10 @@
 <template>
-  <div class="w-full h-full relative p-5 title-default">
+  <div class="w-full h-full relative title-default">
     <div class="w-full h-full">
       <!-- Header -->
-      <div class="w-full header-detail-sexual flex justify-center items-center">
+      <div
+        class="w-full header-detail-sexual flex justify-center items-center p-5 border-bottom"
+      >
         <div class="w-full flex justify-center items-center">
           <div class="w-1/4">
             <BhBack @onBackComponent="onBackSettingPhone()"></BhBack>
@@ -14,7 +16,7 @@
       </div>
 
       <!-- Body -->
-      <div class="body-detail height-scroll overflow-scroll w-full">
+      <div class="body-detail height-scroll overflow-scroll w-full p-5">
         <div
           class="flex items-center w-full justify-between p-3 bg-default form-set-input"
         >
@@ -220,6 +222,6 @@ export default {
   display: block;
 }
 .header-detail-sexual {
-  height: 8%;
+  height: 10%;
 }
 </style>

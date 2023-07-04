@@ -13,6 +13,7 @@
           v-model="valueAge"
           :enable-cross="false"
           :max="50"
+          :min="18"
           @change="onChangeAgeRange()"
           :process-style="{ backgroundColor: '#fd5d65 ' }"
           :tooltip-style="{

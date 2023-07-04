@@ -50,7 +50,7 @@ const state = {
       },
       genderFilter: "",
       agePreference: {
-        min: 15,
+        min: 20,
         max: 30,
         onlyShowInThis: false,
       },

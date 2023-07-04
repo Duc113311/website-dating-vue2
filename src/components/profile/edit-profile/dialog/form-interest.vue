@@ -33,14 +33,14 @@
             <div class="w-full mb-2">
               <div class="w-full" v-if="listChecked.length !== 0">
                 <span
-                  class="mr-2 mb-2"
+                  class="mr-3"
                   v-for="(item, index) in listChecked"
                   :key="index"
                 >
                   <button
                     @click="onRemoveItem(item.code)"
                     :id="item.code"
-                    class="border-interest-checked pr-3 p-2 mb-2"
+                    class="border-interest-checked bh-pd mb-3"
                     size="large"
                   >
                     {{ item.value }}
@@ -88,7 +88,7 @@
                 <button
                   @click="onSelectInterest(item.code)"
                   :id="`interest` + item.code"
-                  class="option-interests border-default mr-3 mb-3 p-3"
+                  class="option-interests border-default mr-3 mb-3 bh-pd"
                   size="large"
                 >
                   {{ item.value }}

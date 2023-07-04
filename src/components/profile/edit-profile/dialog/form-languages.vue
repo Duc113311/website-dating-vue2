@@ -5,7 +5,7 @@
       <div
         class="rounded-lg bg-dialog-default title-default items-center w-full height-scroll w-form-common overflow-scroll relative p-5 cursor-pointer"
       >
-        <div class="w-full justify-between flex items-center">
+        <div class="w-full justify-between flex items-center h-form-title">
           <div @click="onChangeCancel()">
             <i class="fa-solid fa-xmark size-icon-default"></i>
           </div>
@@ -17,7 +17,7 @@
         </div>
 
         <div
-          class="w-full flex justify-center items-center h-form-data overflow-hidden"
+          class="w-full flex justify-center items-center h-form-data overflow-hidden h-form-body"
         >
           <div class="w-full items-center h-full">
             <div class="flex w-full justify-between items-center mb-2">

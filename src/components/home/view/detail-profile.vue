@@ -50,8 +50,14 @@
         <div class="w-full bg-border-bottom padding-text-user">
           <div class="w-full pl-2 pr-2">
             <div class="flex bh-margin-title">
-              <div class="">
-                <span class="title-user">{{ this.userParam.fullname }},</span>
+              <div class="flex items-center">
+                <div
+                  class="title-user"
+                  v-truncate="30"
+                  :title="this.userParam.fullname"
+                >
+                  {{ this.userParam.fullname }},
+                </div>
                 <span
                   class="text-age"
                   v-if="this.userParam.profiles.showAge === true"
@@ -464,7 +470,22 @@ export default {
       return this.$store.state.userModule.userProfileDetail;
     },
   },
+  directives: {
+    truncate: {
+      inserted: function (el, binding) {
+        debugger;
+        const text = el.innerText;
+        const maxLength = binding.value;
 
+        if (text.length > maxLength) {
+          el.style.overflow = "hidden";
+          el.style.textOverflow = "ellipsis";
+          el.style.whiteSpace = "nowrap";
+          el.style.width = "300px";
+        }
+      },
+    },
+  },
   methods: {
     ...mapMutations([
       "setUrlNameAvatarUser",

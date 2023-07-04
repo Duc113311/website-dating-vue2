@@ -38,7 +38,13 @@
               >
                 <div class="image absolute bottom-0 w-full p-3 z-10 text-white">
                   <div class="flex items-center">
-                    <span class="describe-user">{{ user.fullname }}</span>
+                    <div
+                      class="describe-user"
+                      :title="user.fullname"
+                      v-truncate="20"
+                    >
+                      {{ user.fullname }}
+                    </div>
                     <span class="title-input-item"
                       >, {{ bindingAge(user.dob) }}</span
                     >
@@ -110,7 +116,22 @@ export default {
       index_info: null,
     };
   },
+  directives: {
+    truncate: {
+      inserted: function (el, binding) {
+        debugger;
+        const text = el.innerText;
+        const maxLength = binding.value;
 
+        if (text.length > maxLength) {
+          el.style.overflow = "hidden";
+          el.style.textOverflow = "ellipsis";
+          el.style.whiteSpace = "nowrap";
+          el.style.width = "150px";
+        }
+      },
+    },
+  },
   props: ["listUser", "actionDecide"],
   computed: {
     listUserData() {
