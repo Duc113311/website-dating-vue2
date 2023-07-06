@@ -23,7 +23,10 @@
         <!-- <NotificationPage></NotificationPage> -->
         <DarkThemePage></DarkThemePage>
         <!-- <PrivacyPage></PrivacyPage> -->
-        <LogOutPage></LogOutPage>
+        <LogOutPage
+          @onQuestionLogout="onQuestionLogout"
+          @onQuestionDelete="onQuestionDelete"
+        ></LogOutPage>
         <!-- Show language -->
       </div>
       <!--  -->
@@ -104,6 +107,15 @@ export default {
     ...mapMutations(["setShowTopPicks"]),
     onChangeQAEvent(val) {
       console.log(val);
+    },
+
+    onQuestionLogout(val) {
+      debugger;
+      this.$emit("onDialogLogout", val);
+    },
+
+    onQuestionDelete(val) {
+      this.$emit("onDialogDelete", val);
     },
 
     onChangeShowTopPicks(val) {

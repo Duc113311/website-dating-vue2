@@ -11,9 +11,11 @@
           </div>
         </div>
         <div class="p-5 text-center">
-          <div class="w-full padding-title">{{ valueTitleQuestion }}</div>
+          <div class="w-full title-dialog-question">
+            {{ valueTitleQuestion }}
+          </div>
 
-          <div class="w-full padding-describe">
+          <div class="w-full describe-dialog-question pt-2 pb-2">
             <p>
               {{ describeQuestion }}
             </p>
@@ -48,7 +50,12 @@ export default {
     return {};
   },
 
-  props: ["titleQuestion", "describeQuestion"],
+  props: [
+    "titleQuestion",
+    "describeQuestion",
+    "nameActionApply",
+    "nameActionCancel",
+  ],
   computed: {
     valueTitleQuestion() {
       return this.titleQuestion;

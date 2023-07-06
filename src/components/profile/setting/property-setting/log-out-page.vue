@@ -36,7 +36,6 @@
 
 <script>
 import { mapActions } from "vuex";
-import { auth, signOut } from "../../../../configs/firebase";
 export default {
   name: "log-out-page",
 
@@ -50,19 +49,12 @@ export default {
   methods: {
     ...mapActions(["deleteAccountUser"]),
     async onLogout() {
-      await signOut(auth)
-        .then(() => {
-          // Sign-out successful.
-          localStorage.removeItem("oAuth2Id");
-          localStorage.removeItem("tokenId");
-          this.$router.push({ path: "/" });
-        })
-        .catch((error) => {
-          // An error happened.
-        });
+      debugger;
+      this.$emit("onQuestionLogout", true);
     },
 
     async onDeleteAccount() {
+      this.$emit("onQuestionDelete", true);
       await this.deleteAccountUser();
       localStorage.removeItem("oAuth2Id");
       localStorage.removeItem("tokenId");

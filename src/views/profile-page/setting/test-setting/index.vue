@@ -20,22 +20,46 @@
       </div>
 
       <div class="form-edit overflow-scroll w-full p-4">
-        <FromSetting></FromSetting>
+        <FromSetting
+          @onDialogLogout="onQuestionLogout"
+          @onDialogDelete="onQuestionDelete"
+        ></FromSetting>
         <!--  -->
       </div>
 
+      <!-- Form question -->
+      <BhQuestion
+        @onHidePopupPackage="onHidePopupLogout"
+        @onActionApplyQuestion="onActionApplyLogout"
+        :titleQuestion="titleLogout"
+        :describeQuestion="describeLogout"
+        v-show="isShowDialogLogout"
+      ></BhQuestion>
+
+      <BhQuestion
+        @onHidePopupPackage="onHidePopupDelete"
+        @onActionApplyQuestion="onActionApplyDelete"
+        :titleQuestion="titleDelete"
+        :describeQuestion="describeDelete"
+        v-show="isShowDialogDelete"
+      >
+      </BhQuestion>
       <!-- <Footer></Footer> -->
     </div>
   </div>
 </template>
 
 <script>
+import { auth, signOut } from "../../../../configs/firebase";
+
+import BhQuestion from "../../../../components/bh-element-ui/notification/bh-question";
 // import Footer from "../../../../components/layout/footer-home/footer";
 import BhBack from "../../../../components/bh-element-ui/button/bh-back";
 import FromSetting from "../../../../components/profile/setting/from-setting";
-import { mapActions } from "vuex";
+import { mapActions, mapMutations } from "vuex";
 export default {
   components: {
+    BhQuestion,
     // Footer,
     BhBack,
     FromSetting,
@@ -45,6 +69,15 @@ export default {
   data() {
     return {
       loading: false,
+      isShowDialogLogout: false,
+      isShowDialogDelete: false,
+      titleLogout: "Bạn chắc chắn muốn đăng xuất?",
+      describeLogout:
+        "Những người dùng tương thích sẽ tiếp tục thấy bạn ở địa điểm được xác định sau cùng.",
+
+      titleDelete: "Ẩn tài khoản của tôi",
+      describeDelete:
+        "Nếu bạn muốn giữ tài khoản nhưng không hiển thị cho người khác, bạn có thể chọn ẩn tài khoản. Bạn có thể tắt tính năng này trong mục cài đặt.",
     };
   },
 
@@ -55,7 +88,8 @@ export default {
   },
 
   methods: {
-    ...mapActions(["updateSettingUser"]),
+    ...mapMutations(["setFirstName"]),
+    ...mapActions(["updateSettingUser", "deleteAccountUser"]),
     async onBackEditProfile() {
       this.loading = true;
 
@@ -66,6 +100,48 @@ export default {
         this.loading = false;
         this.$router.go(-1);
       }, 2000);
+    },
+
+    onHidePopupLogout(val) {},
+
+    onActionApplyLogout(val) {},
+
+    onHidePopupDelete(val) {},
+
+    async onActionApplyDelete(val) {
+      await this.deleteAccountUser();
+      localStorage.removeItem("oAuth2Id");
+      localStorage.removeItem("tokenId");
+      this.$router.push({ path: "/" });
+    },
+
+    onQuestionLogout(val) {
+      this.isShowDialogLogout = val;
+    },
+
+    onQuestionDelete(val) {
+      this.isShowDialogDelete = val;
+    },
+
+    onHidePopupPackage(val) {
+      this.isShowDialogLogout = val;
+    },
+
+    async onActionApplyQuestion(val) {
+      debugger;
+      await signOut(auth)
+        .then(() => {
+          const firstName = "";
+          this.setFirstName(firstName);
+          this.isShowDialogLogout = false;
+
+          // Sign-out successful.
+          localStorage.removeItem("oAuth2Id");
+        })
+        .catch((error) => {
+          // An error happened.
+        });
+      this.$router.replace({ name: "login-page" }).catch(() => {});
     },
   },
 };
