@@ -75,7 +75,7 @@ export default {
       describeLogout:
         "Những người dùng tương thích sẽ tiếp tục thấy bạn ở địa điểm được xác định sau cùng.",
 
-      titleDelete: "Ẩn tài khoản của tôi",
+      titleDelete: "Xóa tài khoản của tôi",
       describeDelete:
         "Nếu bạn muốn giữ tài khoản nhưng không hiển thị cho người khác, bạn có thể chọn ẩn tài khoản. Bạn có thể tắt tính năng này trong mục cài đặt.",
     };
@@ -102,11 +102,15 @@ export default {
       }, 2000);
     },
 
-    onHidePopupLogout(val) {},
+    onHidePopupLogout() {
+      this.isShowDialogLogout = false;
+    },
 
     onActionApplyLogout(val) {},
 
-    onHidePopupDelete(val) {},
+    onHidePopupDelete() {
+      this.isShowDialogDelete = false;
+    },
 
     async onActionApplyDelete(val) {
       await this.deleteAccountUser();

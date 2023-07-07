@@ -55,10 +55,10 @@ export default {
 
     async onDeleteAccount() {
       this.$emit("onQuestionDelete", true);
-      await this.deleteAccountUser();
-      localStorage.removeItem("oAuth2Id");
-      localStorage.removeItem("tokenId");
-      this.$router.push({ path: "/" });
+      // await this.deleteAccountUser();
+      // localStorage.removeItem("oAuth2Id");
+      // localStorage.removeItem("tokenId");
+      // this.$router.push({ path: "/" });
     },
   },
 };
