@@ -4,6 +4,7 @@
       class="tracking-wide layout-web w-full h-full absolute flex justify-center items-center"
     >
       <div
+        v-if="screamValue === 1"
         class="layout-detail overflow-hidden relative"
         :class="`theme-${themeValue}`"
       >
@@ -20,21 +21,34 @@
 
         <router-view />
       </div>
+
+      <ScreenSizePage v-if="screamValue === 0"></ScreenSizePage>
+
+      <div v-if="screamValue === 2">
+        <ScreenSize></ScreenSize>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import ScreenSizePage from "./components/layout/screen-laptop/screen-size-page";
+import ScreenSize from "./components/layout/error-screen/screen-size";
 import LoadApp from "./components/layout/loading/load-app";
 import { mapActions, mapMutations } from "vuex";
+import { smallScreen } from "../src/enum/type/deviceType.js";
 export default {
   components: {
+    ScreenSizePage,
+    ScreenSize,
     LoadApp,
   },
   name: "app-view",
 
   data() {
     return {
+      screamValue: 0,
+
       isShowIconApp: true, // icon Loading
 
       icUrlApp: require("@/assets/icon/ic_icon_app.svg"),
@@ -61,8 +75,28 @@ export default {
         localStorage.setItem("longitude", position.coords.longitude);
       }
     },
-  },
 
+    handleResize() {
+      debugger;
+      if (
+        768 <= parseInt(window.innerWidth) &&
+        parseInt(window.innerWidth) <= 2560 &&
+        parseInt(window.innerHeight) >= 600
+      ) {
+        this.screamValue = smallScreen.screenLaptop;
+      } else if (
+        parseInt(window.innerWidth) <= 900 &&
+        parseInt(window.innerHeight) >= 600
+      ) {
+        this.screamValue = smallScreen.screenPhone;
+      } else {
+        this.screamValue = smallScreen.screenDefault;
+      }
+    },
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.handleResize);
+  },
   async created() {
     const language = localStorage.getItem("language");
     if (language) {
@@ -109,6 +143,7 @@ export default {
   },
 
   mounted() {
+    window.addEventListener("resize", this.handleResize);
     const themeValue = localStorage.getItem("theme");
     if (themeValue) {
       if (themeValue === "dark") {

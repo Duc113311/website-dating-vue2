@@ -4,4 +4,10 @@ const deviceType = {
   devicePhone: 2, // Điện thoại
 };
 
-export { deviceType };
+const smallScreen = {
+  screenLaptop: 0, // Laptop, PC
+  screenPhone: 1, // Điện thoại
+  screenDefault: 2, // Màn defaults
+};
+
+export { deviceType, smallScreen };
