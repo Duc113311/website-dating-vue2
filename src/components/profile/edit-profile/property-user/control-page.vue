@@ -126,19 +126,4 @@ export default {
   },
 };
 </script>
-<style lang="css">
-.style-package-update {
-  background: linear-gradient(
-    321deg,
-    rgba(68, 114, 103, 1) 23%,
-    rgba(177, 238, 225, 1) 50%,
-    rgba(68, 114, 103, 1) 76%
-  );
-  padding: 5px;
-  width: 138px;
-  display: flex;
-  justify-content: center;
-  border-radius: 4px;
-  color: #ffffff;
-}
-</style>
+<style lang="css"></style>

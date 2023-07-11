@@ -14,8 +14,7 @@
         <img src="@/assets/icon/ic_icon_app.svg" style="width: 100%" />
         <div class="bh-describe">
           {{
-            $t(`version_{environment}_{number}`, {
-              environment: this.environment,
+            $t(`version_{number}`, {
               number: this.numberVersion,
             })
           }}
@@ -42,7 +41,7 @@ export default {
   data() {
     return {
       environment: "test",
-      numberVersion: "01",
+      numberVersion: "1.10.0",
     };
   },
 

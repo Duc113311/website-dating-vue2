@@ -18,7 +18,7 @@
               class="w-full pt-2 pb-2 border-bottom"
               @click="onChoseLanguages(item)"
             >
-              <div class="text-base">Tiếng {{ item.value }}</div>
+              <div class="text-base">{{ item.value }}</div>
             </div>
           </div>
         </div>

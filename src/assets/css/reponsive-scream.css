@@ -41,6 +41,7 @@
 
 @media only screen and (min-width: 600px) {
   .layout-web {
+    background-color: #cbdde7;
   }
   .layout-detail {
     width: 100%;
@@ -81,6 +82,7 @@
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .layout-web {
+    background-color: #cbdde7;
   }
   /* w-h: layout */
   .layout-detail {
@@ -148,6 +150,7 @@
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .layout-web {
+    background-color: #cbdde7;
   }
 
   /* w-h: layout */
@@ -217,6 +220,7 @@
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .layout-web {
+    background-color: #cbdde7;
   }
   /* w-h: layout */
   .layout-detail {

@@ -792,6 +792,7 @@ const mutations = {
   },
 
   setAddressLocation(state, data) {
+    debugger;
     state.user_profile.profiles.address = data;
   },
 

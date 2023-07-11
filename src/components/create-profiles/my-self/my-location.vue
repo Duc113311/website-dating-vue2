@@ -194,8 +194,8 @@ export default {
         .then((data) => {
           if (data.results.length > 0) {
             this.address = data.results[0].formatted_address;
-
-            this.setAddressLocation(this.address);
+            debugger;
+            this.setAddressLocation(this.address ? this.address : "");
           } else {
             this.address = "No address found";
           }

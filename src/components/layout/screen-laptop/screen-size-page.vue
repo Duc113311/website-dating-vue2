@@ -1,11 +1,11 @@
 <template>
   <div class="w-full h-full">
-    <div class="w-full h-full flex items-center">
+    <div class="w-full h-full flex items-center title-default">
       <!-- nav -->
-      <div class="h-full w-navbar bg-slate-100">
+      <div class="h-full w-navbar">
         <NavbarPage></NavbarPage>
       </div>
-      <div class="h-full w-body bg-orange-400"></div>
+      <div class="h-full w-body"></div>
       <!-- body -->
     </div>
   </div>
@@ -34,6 +34,7 @@ export default {
   flex-shrink: 0;
   flex-grow: 0;
   max-width: 375px;
+  background-color: #ffffff;
 }
 
 .w-body {

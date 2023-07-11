@@ -154,10 +154,11 @@ export default {
       this.isShowErrorVerify = value;
     },
     async toggleUpload(event, data) {
+      debugger;
       const image = event.target.files[0];
 
       const fileType = image.type;
-
+      debugger;
       if (!fileType.startsWith("image/")) {
         this.$notify.error({
           title: "Error Image",
@@ -198,7 +199,7 @@ export default {
 
             const statusImageVerify =
               this.$store.state.commonModule.statusImageVerify;
-
+            const close = document.getElementById("close" + idUrl);
             if (statusImageVerify) {
               const dataImage = {
                 id: idUrl,
@@ -208,8 +209,6 @@ export default {
               this.setPhotos(dataImage);
               // Or inserted into an <img> element
               const img = document.getElementById(idUrl);
-
-              const close = document.getElementById("close" + idUrl);
 
               let bg = "url('" + url + "')";
 
@@ -223,7 +222,8 @@ export default {
               setTimeout(() => {
                 loading.style.display = "none";
               }, 1000);
-              this.isShowErrorVerify = true;
+              avatar.style.display = "none";
+              // this.isShowErrorVerify = true;
               this.$notify.error({
                 title: "Error Image",
                 message: "Your photo is not suitable",

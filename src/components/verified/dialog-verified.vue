@@ -17,18 +17,19 @@
               </div>
             </div>
             <div class="mt-3" v-if="screamName === 1">
-              <div class="padding-describe-or">Hãy xác minh</div>
+              <div class="padding-describe-or">{{ $t("please_verify") }}</div>
               <div class="w-full padding-describe mt-5">
                 <p>
-                  Hãy giúp chúng tôi bảo vệ cộng đồng Tinder bằng cách chứng
-                  minh bạn sử dụng ảnh chính chủ. Bạn chỉ cần quay một video
-                  selfie. Nếu video selfie của bạn khớp với ảnh trong hồ sơ, bạn
-                  sẽ được xác minh!
+                  {{
+                    $t(
+                      "help_us_protect_the_tinder_community_by_proving_you're_using_an_original_photo._you_just_need_to_record_a_selfie_video._if_your_selfie_video_matches_your_profile_photo,_you'll_be_verified!"
+                    )
+                  }}
                 </p>
               </div>
             </div>
             <div v-if="screamName === 2">
-              <div class="padding-describe-or">Cách thức hoạt động</div>
+              <div class="padding-describe-or">{{ $t("how_it_works") }}</div>
               <div class="mt-5">
                 <carousel
                   :per-page="1"
@@ -41,13 +42,11 @@
                     <div class="mt-3 h-60">
                       <div class="w-full padding-describe">
                         <p>
-                          Công nghệ nhận diện khuôn mặt của chúng tôi so sánh
-                          khuôn mặt bạn trong video selfie với ảnh trong hồ sơ
-                          của bạn. Chúng tôi sẽ giữ hai ảnh chụp màn hình từ
-                          video selfie của bạn trong thời gian tài khoản của bạn
-                          còn tồn tại để kiểm tra và quản lý tính năng Xác Minh
-                          Ảnh của mình. Chúng tôi cũng sẽ giữ kết quả của quy
-                          trình (ví dụ như đã Xác Minh Ảnh hay chưa).
+                          {{
+                            $t(
+                              "our_face_recognition_technology_compares_your_face_in_selfie_videos_with_photos_in_your_profile._we'll_keep_two_screenshots_from_your_selfie_video_for_as_long_as_your_account_is_live_to_test_and_manage_your_photo_verification_feature._we_will_also_keep_the_results_of_the_process_(e.g._photo_verified_or_not)."
+                            )
+                          }}
                         </p>
                       </div>
                     </div>
@@ -57,13 +56,15 @@
                     <div class="mt-3 h-60">
                       <div class="w-full padding-describe">
                         <p>
-                          Chúng tôi sẽ giữ thông tin nhận diện khuôn mặt cơ bản
-                          của bạn hay còn gọi là &quot;khuôn mẫu&quot; sau khi
-                          hoàn thành quy trình Xác Minh Ảnh (thường hoàn thành
-                          trong vòng 24 giờ). Chúng tôi không lưu giữ video
-                          selfie của bạn.
+                          {{
+                            $t(
+                              "our_face_recognition_technology_compares_your_face_in_selfie_videos_with_photos_in_your_profile._we'll_keep_two_screenshots_from_your_selfie_video_for_as_long_as_your_account_is_live_to_test_and_manage_your_photo_verification_feature._we_will_also_keep_the_results_of_the_process_(e.g._photo_verified_or_not)."
+                            )
+                          }}
                         </p>
-                        <a href="#">Tìm hiểu thêm về cơ chế hoạt động</a>
+                        <a href="#">{{
+                          $t("Tìm hiểu thêm về cách nó hoạt động")
+                        }}</a>
                       </div>
                     </div>
                   </slide>
@@ -71,30 +72,38 @@
               </div>
             </div>
             <div class="mt-3" v-if="screamName === 3">
-              <div class="padding-describe-or">Trước khi bạn tiếp tục...</div>
+              <div class="padding-describe-or">
+                {{ $t("before_you_continue...") }}
+              </div>
               <div class="w-full padding-describe mt-5">
                 <div>
                   <div class="w-full flex items-center">
                     <img src="../../assets/icon/ic_checked.svg" alt="" />
-                    <div class="ml-2 font-bold">Chuẩn bị không gian</div>
+                    <div class="ml-2 font-bold">
+                      {{ $t("prepare_the_space") }}
+                    </div>
                   </div>
                   <div class="pl-10 pr-10">
                     <ul class="text-left">
-                      <li>Chọn nơi có đủ ánh sáng</li>
-                      <li>Tăng độ sáng màn hình</li>
-                      <li>Tránh bị lóa và ngược sáng</li>
+                      <li>{{ $t("choose_a_place_with_enough_light") }}</li>
+                      <li>{{ $t("increase_screen_brightness") }}</li>
+                      <li>{{ $t("avoid_glare_and_backlit") }}</li>
                     </ul>
                   </div>
                 </div>
                 <div>
                   <div class="w-full flex items-center">
                     <img src="../../assets//icon/ic_checked.svg" alt="" />
-                    <div class="ml-2 font-bold">Chuẩn bị tư thế</div>
+                    <div class="ml-2 font-bold">
+                      {{ $t("prepare_the_pose") }}
+                    </div>
                   </div>
                   <div class="pl-10 pr-10">
                     <ul class="text-left">
-                      <li>Nhìn trực diện vào máy ảnh</li>
-                      <li>Bỏ mũ, kính râm và các vật che mặt</li>
+                      <li>{{ $t("looking_directly_at_the_camera") }}</li>
+                      <li>
+                        {{ $t("remove_hats,_sunglasses,_and_face_coverings") }}
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -112,10 +121,10 @@
               </div>
             </div>
             <div class="mt-3" v-loading="isShowLoading">
-              <div class="padding-describe-or">Ối!</div>
+              <div class="padding-describe-or">{{ $t("oh!") }}</div>
               <div class="w-full padding-describe mt-5">
                 <p>
-                  Chúng tôi không thể ghi hình video của bạn. Vui lòng thử lại.
+                  {{ $t("we_cannot_record_your_video._please_try_again.") }}
                 </p>
               </div>
             </div>
@@ -130,20 +139,20 @@
                 @click="onClickContinue"
                 class="button-active cursor-pointer rounded-xl p-3 text-center justify-center flex"
               >
-                Tiếp tục
+                {{ $t("continue") }}
               </div>
               <div
                 v-if="!isShowErrorVideo"
                 @click="onClickRetry"
                 class="button-active cursor-pointer rounded-xl p-3 text-center justify-center flex"
               >
-                Thử lại
+                {{ $t("continue") }}
               </div>
               <div
                 @click="onClickCancel"
                 class="cursor-pointer button-default rounded-xl p-3 text-center justify-center flex"
               >
-                Có lẽ đi sau
+                {{ $t("maybe_later") }}
               </div>
             </div>
           </div>
