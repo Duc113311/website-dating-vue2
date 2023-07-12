@@ -7,13 +7,18 @@
       class="cursor-pointer"
       v-bind:class="{ 'chevron-left': isArabic }"
     >
-      <img
-        src="@/assets/icon/ic_back_dark.svg"
-        width="24"
-        alt=""
-        v-if="colorBt"
-      />
-      <img src="@/assets/icon/ic_back_light.svg" width="24" alt="" v-else />
+      <div v-if="routerExplore">
+        <img src="@/assets/icon/ic_back_dark.svg" width="24" alt="" />
+      </div>
+      <div v-else>
+        <img
+          src="@/assets/icon/ic_back_dark.svg"
+          width="24"
+          alt=""
+          v-if="colorBt"
+        />
+        <img src="@/assets/icon/ic_back_light.svg" width="24" alt="" v-else />
+      </div>
     </div>
     <div class="font-skip" v-show="isShowSkipParam" @click="onClickSkip()">
       {{ $t("skip") }}
@@ -40,6 +45,17 @@ export default {
     colorBt() {
       return this.$store.state.commonModule.statusLayout;
     },
+
+    routerExplore() {
+      const nameRouter = this.$route.name;
+      if (
+        nameRouter === "photo-explore-page" ||
+        nameRouter === "users-explore-page"
+      ) {
+        return true;
+      }
+      return false;
+    },
   },
 
   methods: {
@@ -53,6 +69,10 @@ export default {
     onClickSkip() {
       this.$emit("onClickSkip", true);
     },
+  },
+
+  mounted() {
+    debugger;
   },
 };
 </script>

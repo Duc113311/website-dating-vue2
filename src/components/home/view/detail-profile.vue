@@ -231,7 +231,7 @@
 
         <!-- My Anthem -->
         <div class="w-full padding-text-user bg-border-bottom pl-2 pr-2">
-          <div class="title title-description describe-text pl-2">
+          <div class="title title-description describe-text">
             {{ stringName($t("my_anthem")) }}
           </div>
 

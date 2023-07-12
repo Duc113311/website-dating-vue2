@@ -32,13 +32,17 @@
 
       <div class="w-full flex mt-10" v-if="this.screamReason === 3">
         <div class="w-full">
-          <div class="w-full">Add a comment</div>
+          <div class="w-full">{{ $t("add_a_comment") }}</div>
           <div class="w-full mt-2">
             <el-input
               type="textarea"
               :rows="2"
               class="h-10"
-              placeholder="Vui lòng cung cấp thêm chi tiết về những gì bạn đang báo cáo"
+              :placeholder="
+                this.$t(
+                  `please_provide_more_details_about_what_you_are_reporting`
+                )
+              "
               v-model="nameComment"
               @input="onChangeComment"
             >
@@ -50,7 +54,7 @@
 
     <div class="w-full absolute bottom-0 left-0 p-10 text-center">
       <div class="describe-report mb-2">
-        We won't let Puddink know that you reported them
+        {{ this.$t("we_won't_let_puddink_know_that_you_reported_them") }}
       </div>
       <div>
         <bh-continue

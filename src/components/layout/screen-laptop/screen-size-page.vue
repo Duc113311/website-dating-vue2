@@ -5,16 +5,22 @@
       <div class="h-full w-navbar">
         <NavbarPage></NavbarPage>
       </div>
-      <div class="h-full w-body"></div>
+      <div class="h-full w-body">
+        <BodyPage></BodyPage>
+      </div>
       <!-- body -->
     </div>
   </div>
 </template>
 
 <script>
+import BodyPage from "./body-default/body-page";
 import NavbarPage from "./navbar/navbar-page";
 export default {
-  components: { NavbarPage },
+  components: {
+    BodyPage,
+    NavbarPage,
+  },
   name: "screen-size-page",
 
   data() {
@@ -38,5 +44,7 @@ export default {
 }
 
 .w-body {
+  min-width: calc(100% - 325px);
+  max-width: fit-content;
 }
 </style>

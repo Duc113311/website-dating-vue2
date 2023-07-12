@@ -7,6 +7,7 @@
       <el-input
         class="your-name digit-box padding-input bg-default"
         ref="input_focus"
+        maxlength="50"
         v-model="txtFirstName"
         :placeholder="$t('your_name')"
         @input="onChangeFirstName"
@@ -43,6 +44,7 @@ export default {
   methods: {
     ...mapMutations(["setFirstName"]),
     onChangeFirstName() {
+      debugger;
       if (this.txtFirstName !== "") {
         var substring = this.txtFirstName.substring(0, 50);
         this.setFirstName(substring);

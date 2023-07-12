@@ -12,6 +12,7 @@
         v-model="txtEmail"
         :placeholder="$t(`enter_email`)"
         ref="input_focus"
+        maxlength="50"
         @input="onChangeInput"
       />
     </div>

@@ -68,10 +68,12 @@
                   >{{
                     $t("don't_be_too_quick_to_give_out_personal_information.")
                   }}
-                  <span class="underline">{{
-                    $t("date_safety_guidelines")
-                  }}</span></span
-                >
+                  <el-tooltip content="Coming soon" placement="top">
+                    <span class="underline">{{
+                      $t("date_safety_guidelines")
+                    }}</span>
+                  </el-tooltip>
+                </span>
               </div>
             </div>
             <div class="flex mt-3 w-full">

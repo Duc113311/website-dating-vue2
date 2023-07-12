@@ -203,10 +203,6 @@ export default {
     },
   },
 
-  beforeUpdate() {},
-
-  beforeMount() {},
-
   mounted() {
     debugger;
   },

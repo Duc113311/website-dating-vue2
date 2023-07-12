@@ -202,7 +202,7 @@ export default {
             oAuth2Id: userID,
           });
           const tokenIdParam = this.$store.state.mongoModule.tokenId;
-
+          debugger;
           // Tồn tại account
           if (tokenIdParam) {
             this.$router.push({ path: "/home" });

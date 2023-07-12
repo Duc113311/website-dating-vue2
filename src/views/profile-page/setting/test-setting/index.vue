@@ -56,6 +56,7 @@ import BhQuestion from "../../../../components/bh-element-ui/notification/bh-que
 // import Footer from "../../../../components/layout/footer-home/footer";
 import BhBack from "../../../../components/bh-element-ui/button/bh-back";
 import FromSetting from "../../../../components/profile/setting/from-setting";
+import functionValidate from "@/middleware/validate";
 import { mapActions, mapMutations } from "vuex";
 export default {
   components: {
@@ -71,13 +72,17 @@ export default {
       loading: false,
       isShowDialogLogout: false,
       isShowDialogDelete: false,
-      titleLogout: "Bạn chắc chắn muốn đăng xuất?",
-      describeLogout:
-        "Những người dùng tương thích sẽ tiếp tục thấy bạn ở địa điểm được xác định sau cùng.",
+      titleLogout: this.toUpperCaseString(
+        this.$t("are_you_sure_you_want_to_sign_out?")
+      ),
+      describeLogout: this.$t(
+        "compatible_users_will_continue_to_see_you_in_the_last_identified_location."
+      ),
 
-      titleDelete: "Xóa tài khoản của tôi",
-      describeDelete:
-        "Nếu bạn muốn giữ tài khoản nhưng không hiển thị cho người khác, bạn có thể chọn ẩn tài khoản. Bạn có thể tắt tính năng này trong mục cài đặt.",
+      titleDelete: this.$t("delete_my_account"),
+      describeDelete: this.$t(
+        "if_you_want_to_keep_the_account_but_not_visible_to_others,_you_can_choose_to_hide_the_account._you_can_disable_this_feature_in_the_settings."
+      ),
     };
   },
 
@@ -102,21 +107,31 @@ export default {
       }, 2000);
     },
 
+    toUpperCaseString(value) {
+      return functionValidate.toUpperCaseString(value);
+    },
+
     onHidePopupLogout() {
       this.isShowDialogLogout = false;
     },
-
-    onActionApplyLogout(val) {},
 
     onHidePopupDelete() {
       this.isShowDialogDelete = false;
     },
 
     async onActionApplyDelete(val) {
+      this.isShowDialogDelete = false;
+      this.loading = true;
+      const firstName = "";
+      this.setFirstName(firstName);
       await this.deleteAccountUser();
       localStorage.removeItem("oAuth2Id");
       localStorage.removeItem("tokenId");
-      this.$router.push({ path: "/" });
+      setTimeout(() => {
+        this.loading = false;
+
+        this.$router.push({ path: "/" });
+      }, 1000);
     },
 
     onQuestionLogout(val) {
@@ -131,21 +146,27 @@ export default {
       this.isShowDialogLogout = val;
     },
 
-    async onActionApplyQuestion(val) {
+    async onActionApplyLogout(val) {
       debugger;
+      this.isShowDialogLogout = false;
+      this.loading = true;
       await signOut(auth)
         .then(() => {
           const firstName = "";
           this.setFirstName(firstName);
-          this.isShowDialogLogout = false;
 
           // Sign-out successful.
           localStorage.removeItem("oAuth2Id");
+          localStorage.removeItem("tokenId");
         })
         .catch((error) => {
+          console.log("error", error);
           // An error happened.
         });
-      this.$router.replace({ name: "login-page" }).catch(() => {});
+      setTimeout(() => {
+        this.loading = false;
+        this.$router.replace({ name: "login-page" }).catch(() => {});
+      }, 1000);
     },
   },
 };

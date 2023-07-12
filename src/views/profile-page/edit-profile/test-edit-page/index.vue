@@ -10,7 +10,7 @@
         <div class="">
           <BhBack @onBackComponent="onBackEditProfile"></BhBack>
         </div>
-        <div class="ml-">
+        <div class="">
           <div
             class="flex header-page justify-center content-center items-center text-red-400 title-logo"
           >

@@ -210,31 +210,31 @@
       v-bind:class="{ 'pointer-event': isPointer }"
     >
       <div class="btns">
-        <div class="bh-odd justify-center flex items-center">
+        <button class="bh-odd justify-center flex items-center cursor-pointer">
           <img src="@/assets/icon/bt_back.svg" @click="decide('rewind')" />
-        </div>
-        <div class="bh-even justify-center flex items-center">
+        </button>
+        <button class="bh-even justify-center flex items-center cursor-pointer">
           <img
             src="@/assets/icon/bt_nope.svg"
             @click="decide('nope')"
             v-bind:class="{ 'transform-hover': isHoverNope }"
           />
-        </div>
-        <div class="bh-odd justify-center flex items-center">
+        </button>
+        <button class="bh-odd justify-center flex items-center cursor-pointer">
           <img
             src="@/assets/icon/bt_super_like.svg"
             @click="decide('super')"
             v-bind:class="{ 'transform-hover': isHoverSuper }"
           />
-        </div>
-        <div class="bh-even justify-center flex items-center">
+        </button>
+        <button class="bh-even justify-center flex items-center cursor-pointer">
           <img
             src="@/assets/icon/bt_like.svg"
             @click="decide('like')"
             v-bind:class="{ 'transform-hover': isHoverLike }"
           />
-        </div>
-        <div class="bh-odd justify-center flex items-center">
+        </button>
+        <button class="bh-odd justify-center flex items-center cursor-pointer">
           <div
             v-if="isProgress === true"
             class="circular-progress"
@@ -246,7 +246,7 @@
             <MoveBoost></MoveBoost>
           </div>
           <img src="@/assets/icon/bt_boost.svg" @click="decide('help')" />
-        </div>
+        </button>
       </div>
     </div>
   </div>
@@ -1327,7 +1327,7 @@ export default {
 }
 
 .btns {
-  position: absolute;
+  position: relative;
   left: 0;
   right: 0;
   bottom: 0;

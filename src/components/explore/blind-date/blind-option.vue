@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-full bg-filter">
     <div class="w-full h-full p-5">
-      <div class="header-bg w-full flex items-center p-4">
+      <div class="header-bg w-full flex items-center">
         <div class="">
           <BhBack @onBackComponent="onBackBlindDate()"></BhBack>
         </div>

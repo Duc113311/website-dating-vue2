@@ -13,7 +13,7 @@
           <div
             class="flex header-page justify-center content-center items-center text-red-400 title-logo"
           >
-            <span class="text-2xl font-semibold mr-1">{{
+            <span class="text-age font-semibold mr-1">{{
               $t("create_new")
             }}</span>
           </div>

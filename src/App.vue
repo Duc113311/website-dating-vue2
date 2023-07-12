@@ -22,10 +22,10 @@
         <router-view />
       </div>
 
-      <!-- <ScreenSizePage
+      <ScreenSizePage
         :class="`theme-${themeValue}`"
         v-if="screamValue === 0"
-      ></ScreenSizePage> -->
+      ></ScreenSizePage>
 
       <div v-if="screamValue === 2">
         <ScreenSize></ScreenSize>
@@ -35,14 +35,14 @@
 </template>
 
 <script>
-// import ScreenSizePage from "./components/layout/screen-laptop/screen-size-page";
+import ScreenSizePage from "./components/layout/screen-laptop/screen-size-page";
 import ScreenSize from "./components/layout/error-screen/screen-size";
 import LoadApp from "./components/layout/loading/load-app";
 import { mapActions, mapMutations } from "vuex";
 import { smallScreen } from "../src/enum/type/deviceType.js";
 export default {
   components: {
-    // ScreenSizePage,
+    ScreenSizePage,
     ScreenSize,
     LoadApp,
   },
@@ -50,7 +50,7 @@ export default {
 
   data() {
     return {
-      screamValue: 1,
+      screamValue: 0,
 
       isShowIconApp: true, // icon Loading
 
@@ -86,7 +86,7 @@ export default {
         parseInt(window.innerWidth) <= 2560 &&
         parseInt(window.innerHeight) >= 600
       ) {
-        this.screamValue = smallScreen.screenPhone;
+        this.screamValue = smallScreen.screenLaptop;
       } else if (
         parseInt(window.innerWidth) <= 900 &&
         parseInt(window.innerHeight) >= 600
@@ -110,7 +110,7 @@ export default {
       this.$i18n.locale = languageDefault;
       await this.setLanguageTranslate(languageDefault);
     }
-
+    debugger;
     // Set time out show loading
     setTimeout(() => {
       this.isShowIconApp = false;

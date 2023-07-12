@@ -29,9 +29,12 @@
       <span>
         {{ $t("the_verified_phone_number_can_be_used_to_log_in.") }}
       </span>
-      <a href="#" class="decoration-solid underline">{{
-        $t("learn_what_happens_when_your_number_changes.")
-      }}</a>
+      <br />
+      <el-tooltip content="Coming soon" placement="top">
+        <a href="#" class="decoration-solid underline">{{
+          $t("learn_what_happens_when_your_number_changes.")
+        }}</a>
+      </el-tooltip>
     </div>
   </div>
 </template>

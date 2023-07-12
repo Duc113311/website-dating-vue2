@@ -17,7 +17,7 @@
                 alt=""
                 srcset=""
               />
-              <div>Photo verified</div>
+              <div>{{ $t("photo_verified") }}</div>
             </div>
           </div>
         </div>

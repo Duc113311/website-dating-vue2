@@ -43,16 +43,11 @@ export default {
   },
 
   mounted() {
-    const value = this.$store.state.homeModule.listExplores;
-    if (value.length !== 0) {
-      this.loading = false;
-    } else {
-      this.loading = true;
-    }
+    this.loading = true;
 
     setTimeout(() => {
       this.loading = false;
-    }, 1000);
+    }, 1300);
   },
 };
 </script>

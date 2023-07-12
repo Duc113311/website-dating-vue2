@@ -66,7 +66,7 @@ export default {
         case "lookingLove":
           return {
             title: this.$t("looking_for_love"),
-            describe: "Find someone that also looking for love as you",
+            describe: this.$t("find_someone_that_also_looking_for_love_as_you"),
             url: require("@/assets/image-dating/bg_looking_for_love.png"),
           };
         case "traveling":

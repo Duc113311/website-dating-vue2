@@ -5,7 +5,7 @@
       class="w-full absolute bottom-0 bg-color-default left-0 form-report title-default"
     >
       <div class="w-header-checked flex items-center">
-        <div class="pl-5 font-describe">Please choose a reason</div>
+        <div class="pl-5 font-describe">{{ $t("please_choose_a_reason") }}</div>
       </div>
       <div class="w-full overflow-scroll height-scroll pl-5 pr-5 pb-5">
         <div class="grid select-sexual mt-6 gap-4">

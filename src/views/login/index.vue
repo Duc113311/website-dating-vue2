@@ -21,7 +21,7 @@
                 </div>
                 <div class="block text-center justify-center mt-3 text-white">
                   <div class="padding-title">{{ $t("warm_welcome") }}</div>
-                  <div class="padding-text-option">
+                  <div class="pl-2 pr-2 padding-text-option">
                     {{ $t("we_hope_you_have_a_sweet_time_here") }}
                   </div>
                 </div>

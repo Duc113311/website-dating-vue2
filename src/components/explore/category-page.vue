@@ -15,7 +15,7 @@
       {{ $t("let's_find_people_same_with_your_vibe...") }}
     </div>
 
-    <div class="w-full option-find">
+    <div class="w-full option-find flex justify-center items-center">
       <div class="w-full grid gap-4 grid-explore mb-2">
         <div
           v-for="(item, index) in listCategoryExplore"
@@ -46,6 +46,8 @@
 </template>
 
 <script>
+import { fa } from "google-translate-api/languages";
+
 export default {
   name: "category-page",
 
