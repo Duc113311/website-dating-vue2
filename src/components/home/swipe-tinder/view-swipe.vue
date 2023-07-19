@@ -2,8 +2,8 @@
   <div
     class="w-full h-full relative"
     v-bind:class="{ 'reverse-layout': isArabic }"
-    @mousedown="onMouseDow"
-    @mouseup="onMouseUp"
+    @mousedown.stop="onMouseDow"
+    @mouseup.stop="onMouseUp"
   >
     <Tinder
       v-if="!isLoadData"
@@ -997,7 +997,7 @@ export default {
         if (isLikeValue.isFreeRuntime) {
           // quẹt thoải mái
           // match thành công hiện form match
-          if (isLikeValue.isMatched) {
+          if (!isLikeValue.isMatched) {
             this.setDataUserMatch(value.item);
             this.setIndexImageActiveDefault(0);
             this.$emit("onShowFormLikeYou", true);
@@ -1008,7 +1008,7 @@ export default {
           if (isLikeValue.likeRemaining > 0) {
             //  Được quẹt
 
-            if (isLikeValue.isMatched) {
+            if (!isLikeValue.isMatched) {
               this.setDataUserMatch(value.item);
               this.setIndexImageActiveDefault(0);
               this.$emit("onShowFormLikeYou", true);

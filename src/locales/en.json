@@ -293,7 +293,7 @@
   "like": "LIKE",
   "nope": "NOPE",
   "supper_like": "SUPPER LIKE",
-  "add_living": "Add Living",
+  "add_living": "Add living",
   "create_new": "Create New",
   "99+_like": "99+ like",
   "for_you": "For you",
@@ -324,7 +324,7 @@
   "delete_my_account": "Delete my account",
   "if_you_want_to_keep_the_account_but_not_visible_to_others,_you_can_choose_to_hide_the_account._you_can_disable_this_feature_in_the_settings.": "If you want to keep the account but not visible to others, you can choose to hide the account. You can disable this feature in the settings.",
   "please_verify": "Please verify",
-  "help_us_protect_the_tinder_community_by_proving_you're_using_an_original_photo._you_just_need_to_record_a_selfie_video._if_your_selfie_video_matches_your_profile_photo,_you'll_be_verified!": "Help us protect the Tinder community by proving you're using an original photo. You just need to record a selfie video. If your selfie video matches your profile photo, you'll be verified!",
+  "help_us_protect_the_tinder_community_by_proving_you're_using_an_original_photo._you_just_need_to_record_a_selfie_video._if_your_selfie_video_matches_your_profile_photo,_you'll_be_verified!": "Help us protect the Dating community by proving you're using an original photo. You just need to record a selfie video. If your selfie video matches your profile photo, you'll be verified!",
   "maybe_later": "Maybe later",
   "how_it_works": "How it works",
   "our_face_recognition_technology_compares_your_face_in_selfie_videos_with_photos_in_your_profile._we'll_keep_two_screenshots_from_your_selfie_video_for_as_long_as_your_account_is_live_to_test_and_manage_your_photo_verification_feature._we_will_also_keep_the_results_of_the_process_(e.g._photo_verified_or_not).": "Our face recognition technology compares your face in selfie videos with photos in your profile. We'll keep two screenshots from your selfie video for as long as your account is live to test and manage your Photo Verification feature. We will also keep the results of the process (e.g. Photo Verified or not).",
@@ -343,5 +343,6 @@
   "we_cannot_record_your_video._please_try_again.": "We cannot record your video. Please try again.",
   "increase_screen_brightness": "Increase screen brightness",
   "photo_verified": "Photo verified",
-  "please_choose_a_reason": "Please choose a reason"
+  "please_choose_a_reason": "Please choose a reason",
+  "add_interests": "Add interests"
 }

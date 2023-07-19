@@ -7,6 +7,7 @@
         :autoplay="true"
         :paginationActiveColor="isColorActive"
         :paginationColor="isColor"
+        class="height-carousel"
       >
         <slide
           data-index="0"
@@ -32,9 +33,7 @@
               </div>
             </div>
           </div>
-        </slide>
-        <slide
-          ><div
+          <div
             class="w-full flex justify-center text-center mb-2 dash-packages"
           >
             <div
@@ -49,81 +48,8 @@
                 {{ $t("level_up_everyone_action_you_take_on_heartLink") }}
               </div>
             </div>
-          </div></slide
-        >
-
-        <slide>
-          <div
-            class="w-full flex justify-center text-center mb-2 dash-packages"
-          >
-            <div
-              class="item-package silver-bg"
-              @click="onClickShowPackages('silver')"
-            >
-              <div class="flex justify-center">
-                <img src="@/assets/icon/package/ic_silver_package.svg" alt="" />
-              </div>
-              <div class="mt-2 text-xl">{{ $t("silver_package") }}</div>
-              <div class="mt-2 text-sm">
-                {{ $t("level_up_everyone_action_you_take_on_heartLink") }}
-              </div>
-            </div>
-          </div></slide
-        >
-        <slide>
-          <div
-            class="w-full flex justify-center text-center mb-2 dash-packages"
-          >
-            <div
-              class="item-package supper-like-bg"
-              @click="onClickShowPackages('supperLike')"
-            >
-              <div class="flex justify-center">
-                <img src="@/assets/icon/package/ic_super_like.svg" alt="" />
-              </div>
-              <div class="mt-2 text-xl">{{ $t("get_supper_like") }}</div>
-              <div class="mt-2 text-sm">
-                {{ $t("level_up_everyone_action_you_take_on_heartLink") }}
-              </div>
-            </div>
-          </div></slide
-        >
-        <slide
-          ><div
-            class="w-full flex justify-center text-center mb-2 dash-packages"
-          >
-            <div
-              class="item-package boost-bg"
-              @click="onClickShowPackages('boost')"
-            >
-              <div class="flex justify-center">
-                <img src="@/assets/icon/package/ic_boost.svg" alt="" />
-              </div>
-              <div class="mt-2 text-xl">{{ $t("get_boost_profile") }}</div>
-              <div class="mt-2 text-sm">
-                {{ $t("level_up_everyone_action_you_take_on_heartLink") }}
-              </div>
-            </div>
-          </div></slide
-        >
-        <slide
-          ><div
-            class="w-full flex justify-center text-center mb-2 dash-packages"
-          >
-            <div
-              class="item-package read-receipts-bg"
-              @click="onClickShowPackages('readReceipt')"
-            >
-              <div class="flex justify-center">
-                <img src="@/assets/icon/package/ic_read_receipts.svg" alt="" />
-              </div>
-              <div class="mt-2 text-xl">{{ $t("get_read_receipts") }}</div>
-              <div class="mt-2 text-sm">
-                {{ $t("level_up_everyone_action_you_take_on_heartLink") }}
-              </div>
-            </div>
-          </div></slide
-        >
+          </div>
+        </slide>
       </carousel>
     </div>
 

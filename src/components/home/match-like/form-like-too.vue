@@ -171,6 +171,7 @@ export default {
       return this.$store.state.commonModule.isHideConfirm;
     },
     urlImage() {
+      debugger;
       return this.$store.state.homeModule.userMatchData?.profiles?.avatars[0]
         ? this.$store.state.homeModule.userMatchData?.profiles?.avatars[0]
         : this.avatarDefault;

@@ -812,10 +812,12 @@ export default {
 
     this.idImage = findUrl;
     this.isActiveImag = false;
-    document
-      .getElementById(`avatar_` + parseInt(indexActive))
-      .classList.add("active-image");
-    debugger;
+    if (avatarUrl.length > 1) {
+      document
+        .getElementById(`avatar_` + parseInt(indexActive))
+        .classList.add("active-image");
+      debugger;
+    }
   },
 };
 </script>

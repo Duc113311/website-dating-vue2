@@ -3,7 +3,7 @@
     <div class="v-modal-bg cursor-pointer"></div>
     <div class="w-full absolute top-64 left-0 flex justify-center items-center">
       <div
-        class="bg-button-clear relative rounded-lg w-96 title-default bg-color-default"
+        class="bg-button-clear relative rounded-lg w-96 title-default bg-color-dialog"
       >
         <div class="p-5 text-center">
           <div v-if="isShowErrorVideo">
