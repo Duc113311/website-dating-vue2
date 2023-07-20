@@ -21,6 +21,7 @@
             borderColor: 'black',
           }"
           dotSize="21"
+          :height="3"
         >
           <template v-slot:dot> <div class="custom-dot"></div> </template
         ></vue-slider>
@@ -103,7 +104,7 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="css">
 .custom-dot {
   cursor: pointer;
   width: 22px;
@@ -115,5 +116,9 @@ export default {
 }
 .custom-dot:hover {
   transform: scale(1.2);
+}
+
+.vue-slider-rail {
+  background-color: #ccd1e2;
 }
 </style>

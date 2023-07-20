@@ -44,6 +44,7 @@ export default {
   components: {
     ScreenSize,
     LoadApp,
+    // ScreenSizePage,
   },
   name: "app-view",
 

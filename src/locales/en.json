@@ -67,8 +67,8 @@
   "we'll_store_your_blocked_contact_to_stop_you_from_seeing_each_other_if_your_contact_has_an_account_with_the_same_infor_you_provide._you_can_stop_sharing_with_us_in_your_settings.": "We'll store your blocked contact to stop you from seeing each other if your contact has an account with the same infor you provide. You can stop sharing with us in your settings.",
   "learn_more_here,_including_how_heartLink_process_your_contacts": "Learn more here, including how HeartLink process your contacts",
   "share_{nameUser}_profile": "Share {nameUser} profile",
-  "see_what_a_friend_thinks": "See what a friend thinks",
   "report_{nameUser}": "Report {nameUser}",
+  "see_what_a_friend_thinks": "See what a friend thinks",
   "away": "away",
   "my_anthem": "MY ANTHEM",
   "what_is_the_reason_for_your_report?": "What is the reason for your report?",
@@ -344,5 +344,9 @@
   "increase_screen_brightness": "Increase screen brightness",
   "photo_verified": "Photo verified",
   "please_choose_a_reason": "Please choose a reason",
-  "add_interests": "Add interests"
+  "add_interests": "Add interests",
+
+  "share": "Share",
+  "profile": "profile",
+  "report": "Report"
 }

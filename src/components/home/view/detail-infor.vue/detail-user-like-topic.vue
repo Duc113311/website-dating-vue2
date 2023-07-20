@@ -51,11 +51,16 @@
         <div class="w-full bg-border-bottom padding-text-user">
           <div class="w-full pl-2 pr-2">
             <div class="flex bh-margin-title">
-              <div class="">
-                <span class="title-user">{{ this.userParam.fullname }}</span>
-                <span class="describe-user"
-                  >, {{ bindingAge(this.userParam.dob) }}</span
+              <div class="flex items-center">
+                <div
+                  class="title-user"
+                  :class="[isNameLength ? `w-ellipsis` : `not-w-ellipsis`]"
                 >
+                  {{ this.userParam.fullname }}
+                </div>
+                <div class="describe-user pt-2">
+                  , {{ bindingAge(this.userParam.dob) }}
+                </div>
               </div>
             </div>
             <div
@@ -242,11 +247,14 @@
         >
           <div class="flex justify-center items-center cursor-pointer">
             <div class="title-click-ic ml-2">
-              {{
-                $t(`share_{nameUser}_profile`, {
-                  nameUser: this.userParam.fullname,
-                })
-              }}
+              <div class="flex justify-center items-center">
+                <div>{{ $t("share") }}</div>
+                &nbsp;
+                <div class="w-ellipse" :title="this.userParam.fullname">
+                  {{ this.userParam.fullname }}
+                </div>
+                <div>{{ $t("profile") }}</div>
+              </div>
             </div>
           </div>
           <div class="flex justify-center title-description describe-text">
@@ -274,7 +282,13 @@
             srcset=""
           />
           <div class="title-click-ic ml-2">
-            {{ $t(`report_{nameUser}`, { nameUser: this.userParam.fullname }) }}
+            <div class="flex justify-center items-center">
+              <div>{{ $t("report") }}</div>
+              &nbsp;
+              <div class="w-ellipse" :title="this.userParam.fullname">
+                {{ this.userParam.fullname }}
+              </div>
+            </div>
           </div>
         </div>
         <div class="h-2/4"></div>
@@ -378,6 +392,14 @@ export default {
   computed: {
     isArabic() {
       return this.$i18n.locale === "ar"; // Điều chỉnh 'ar' cho ngôn ngữ Ả Rập
+    },
+
+    isNameLength() {
+      debugger;
+      const nameLength =
+        this.$store.state.likeTopicModule.informationUserLike.fullname;
+
+      return nameLength.length > 20 ? true : false;
     },
     kilometer() {
       return localStorage.getItem("unit") ? localStorage.getItem("unit") : "km";
@@ -794,5 +816,12 @@ export default {
 
 .w-super {
   width: 4.5rem;
+}
+
+.w-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 340px;
 }
 </style>

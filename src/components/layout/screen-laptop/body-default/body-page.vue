@@ -2,42 +2,22 @@
   <div class="bg-slate-300 w-full h-full">
     <div class="flex w-full h-full justify-center items-center">
       <div class="w-swipe">
-        <vue-swing class="swipe-container">
-          <div
-            v-for="card in cards"
-            :key="card.id"
-            class="card"
-            @throwoutleft="onThrowOutLeft(card)"
-            @throwoutright="onThrowOutRight(card)"
-            s
-            @throwouttop="onThrowOutTop(card)"
-            @throwout="onThrowOut(card)"
-          >
-            <img :src="card.image" alt="Card Image" class="card-image" />
-            <div class="card-content">
-              <h3>{{ card.name }}</h3>
-              <p>{{ card.description }}</p>
-            </div>
-          </div>
-        </vue-swing>
+        <NewSwipe ref="myViewSwipe" :listUserFilter="listDataUser"></NewSwipe>
         <!-- <ViewSwipe ref="myViewSwipe" :listUserFilter="listDataUser"></ViewSwipe> -->
-      </div>
-    </div>
-
-    <div class="rim-0">
-      <div class="rim-1">
-        <button>View</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import NewSwipe from "../../../home/swipe-tinder/new-swipe";
 import { mapActions } from "vuex";
-import VueSwing from "vue-swing";
+// import VueSwing from "vue-swing";
 // import ViewSwipe from "../../../home/swipe-tinder/view-swipe";
 export default {
-  components: { VueSwing },
+  components: {
+    NewSwipe,
+  },
   name: "body-page",
 
   data() {

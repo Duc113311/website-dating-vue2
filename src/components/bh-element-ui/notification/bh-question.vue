@@ -3,7 +3,7 @@
     <div class="v-modal-bg cursor-pointer" @click="onHidePopupPackage()"></div>
     <div class="w-full absolute top-64 left-0 flex justify-center items-center">
       <div
-        class="bg-button-clear relative rounded-lg w-96 title-default bg-color-dialog"
+        class="bg-button-clear relative rounded-lg w-96 color-button-default bg-color-dialog"
       >
         <div class="absolute image-close">
           <div class="w-8" @click="onHidePopupPackage()">

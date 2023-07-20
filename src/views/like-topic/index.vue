@@ -70,9 +70,9 @@ export default {
       this.isActiveLike = val;
 
       if (this.isActiveLike) {
-        this.$router.push({ path: "/like-topic" });
+        this.$router.push({ path: "/like-topic" }).catch({});
       } else {
-        this.$router.push({ path: "/for-you" });
+        this.$router.push({ path: "/for-you" }).catch({});
       }
     },
   },

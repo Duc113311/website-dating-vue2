@@ -261,7 +261,7 @@ import functionValidate from "../../../middleware/validate.js";
 import { mapActions, mapMutations } from "vuex";
 
 export default {
-  name: "view-swipe",
+  name: "new-swipe",
   components: {
     MoveBoost,
     // MoveSupperLike,

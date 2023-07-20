@@ -255,11 +255,18 @@
         >
           <div class="flex justify-center items-center cursor-pointer">
             <div class="title-click-ic ml-2">
-              {{
-                $t(`share_{nameUser}_profile`, {
-                  nameUser: this.userParam.fullname,
-                })
-              }}
+              <div class="flex justify-center items-center">
+                <div>{{ $t("share") }}</div>
+                &nbsp;
+                <div
+                  :class="[isNameLength ? `w-ellipsis` : `not-w-ellipsis`]"
+                  :title="this.userParam.fullname"
+                >
+                  {{ this.userParam.fullname }}
+                </div>
+                &nbsp;
+                <div>{{ $t("profile") }}</div>
+              </div>
             </div>
           </div>
           <div class="flex justify-center title-description describe-text">
@@ -275,8 +282,6 @@
             v-if="colorBt"
             src="@/assets/icon/ic_report_dark.svg"
             width="25"
-            alt=""
-            srcset=""
           />
 
           <img
@@ -287,7 +292,16 @@
             srcset=""
           />
           <div class="title-click-ic ml-2">
-            {{ $t(`report_{nameUser}`, { nameUser: this.userParam.fullname }) }}
+            <div class="flex justify-center items-center">
+              <div>{{ $t("report") }}</div>
+              &nbsp;
+              <div
+                :class="[isNameLength ? `w-ellipsis` : `not-w-ellipsis`]"
+                :title="this.userParam.fullname"
+              >
+                {{ this.userParam.fullname }}
+              </div>
+            </div>
           </div>
         </div>
         <div class="h-2/4"></div>
@@ -396,6 +410,12 @@ export default {
   },
 
   computed: {
+    isNameLength() {
+      const nameLength =
+        this.$store.state.userModule.userProfileDetail.fullname;
+
+      return nameLength.length > 20 ? true : false;
+    },
     isShowLeft() {
       if (this.$i18n.locale === "ar") {
         return true;
@@ -885,5 +905,12 @@ export default {
 .img_ic {
   filter: brightness(0) saturate(100%) invert(80%) sepia(10%) saturate(10%)
     hue-rotate(136deg) brightness(91%) contrast(100%);
+}
+
+.w-ellipse {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 200px;
 }
 </style>

@@ -67,13 +67,17 @@
         <!-- Information -->
         <div class="w-full pl-4 pr-4 bg-border-bottom padding-text-user">
           <div class="flex bh-margin-title">
-            <div>
-              <span class="title-user">{{
-                this.bingInformationUser.fullname
-              }}</span>
-              <span class="describe-user"
-                >, {{ bindingAge(this.bingInformationUser.dob) }}</span
+            <div class="flex items-center">
+              <div
+                class="title-user"
+                :class="[isNameLength ? `w-ellipsis` : `not-w-ellipsis`]"
+                :title="this.bingInformationUser.fullname"
               >
+                {{ this.bingInformationUser.fullname }}
+              </div>
+              <div class="describe-user pt-2">
+                , {{ bindingAge(this.bingInformationUser.dob) }}
+              </div>
             </div>
           </div>
           <div
@@ -248,7 +252,6 @@ export default {
   data() {
     return {
       isActiveImag: true,
-
       avatars: [
         "https://firebasestorage.googleapis.com/v0/b/heartlink-dating-project.appspot.com/o/dating%2F03191146-4-anh-gai-xinh-toc-dai.jpeg?alt=media&token=39e512f0-66d4-4fdc-ba6e-23901a9dde7a",
         "https://firebasestorage.googleapis.com/v0/b/heartlink-dating-project.appspot.com/o/dating%2F20210627-vo-thuy-hang-6-835x1254.jpg?alt=media&token=9317e20d-2d81-4970-b6b5-d3872a7b4175",
@@ -290,6 +293,12 @@ export default {
   computed: {
     colorBt() {
       return this.$store.state.commonModule.statusLayout;
+    },
+
+    isNameLength() {
+      const nameLength = this.$store.state.userModule.user_profile.fullname;
+
+      return nameLength.length > 20 ? true : false;
     },
 
     urlImage() {
@@ -708,5 +717,12 @@ export default {
 
 .h-detail-admin {
   height: 70%;
+}
+
+.w-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 340px;
 }
 </style>
