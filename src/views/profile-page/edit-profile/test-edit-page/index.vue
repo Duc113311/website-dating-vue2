@@ -363,7 +363,6 @@ export default {
   border-radius: 10px !important;
   padding: 15px !important;
   font-size: 15px !important;
-  height: 50px !important;
 }
 
 .style-bg-common {

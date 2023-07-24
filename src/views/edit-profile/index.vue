@@ -827,9 +827,7 @@ export default {
 .el-input__inner {
   border: 1px solid #495063 !important;
   border-radius: 10px !important;
-  padding: 13px !important;
   font-size: 15px !important;
-  height: 50px !important;
 }
 
 .style-bg-common {

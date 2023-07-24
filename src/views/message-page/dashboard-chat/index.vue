@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full h-full relative p-2">
+  <div class="w-full h-full relative">
     <div class="w-full h-full z-10">
-      <Header></Header>
+      <Header :isShowSafety="isShowSafety"></Header>
 
       <div class="w-full body-page-home relative">
         <FriendMatch></FriendMatch>
@@ -25,7 +25,9 @@ export default {
   name: "dashboard-chat",
 
   data() {
-    return {};
+    return {
+      isShowSafety: true,
+    };
   },
 
   methods: {},

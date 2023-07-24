@@ -22,8 +22,8 @@ module.exports = {
       },
       { useTabs: true },
       // {
-      //   "usePrettierrc": false
-      // }
+      //   usePrettierrc: false,
+      // },
     ],
   },
   globals: {

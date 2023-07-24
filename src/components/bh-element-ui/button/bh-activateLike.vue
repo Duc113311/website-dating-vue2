@@ -19,7 +19,7 @@ export default {
   width: 10px;
   height: 10px;
   border: 1px solid #54eb01;
-  margin-right: 10px;
+  margin-right: 0px;
   border-radius: 10px;
   background-color: #54eb01;
 }
