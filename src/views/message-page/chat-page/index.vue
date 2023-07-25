@@ -1,5 +1,8 @@
 <template>
-  <div></div>
+  <div class="w-full h-full">
+    <!-- Chat -->
+    Hello
+  </div>
 </template>
 
 <script>

@@ -361,7 +361,6 @@ export default {
 
 .el-input__inner {
   border-radius: 10px !important;
-  padding: 15px !important;
   font-size: 15px !important;
 }
 

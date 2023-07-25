@@ -40,6 +40,7 @@
                   @input="onChangeFilterText"
                   v-model="valueSearch"
                   :placeholder="placeholderLanguage"
+                  :prefix-icon="prefixIcon"
                   name=""
                   id=""
                 >
@@ -88,7 +89,7 @@ export default {
       listChecked: [],
       valueSearch: "",
       listData: [],
-
+      prefixIcon: "el-icon-search",
       placeholderLanguage: this.$t("search_language"),
       listLanguages:
         this.$store.state.commonModule.listLifeStyleSingle.languages,

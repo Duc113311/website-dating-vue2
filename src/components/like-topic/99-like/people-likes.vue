@@ -24,7 +24,7 @@
         </div>
       </div>
 
-      <div class="flex items-center scroll-container" ref="scrollContainer">
+      <div class="flex items-center scroll-container" v-scroll-x>
         <span v-for="(item, index) in listInterestValue" :key="index">
           <button
             :id="index"
@@ -64,7 +64,7 @@
 
 <script>
 import CtrlSwipe from "../../control/swipe/ctrl-swipe";
-import { VueHammer } from "vue2-hammer";
+// import { VueHammer } from "vue2-hammer";
 
 import FilterOption from "../filter/filter-option";
 // import BhActivateLike from "../../bh-element-ui/button/bh-activateLike";
@@ -79,7 +79,16 @@ export default {
   },
   name: "people-likes",
   directives: {
-    Hammer: VueHammer.directive,
+    inserted: function (el) {
+      el.addEventListener("mousewheel", function (e) {
+        // Chỉ xử lý lăn chuột ngang (horizontal)
+        if (e.deltaY === 0) return;
+        // Ngăn chặn mặc định cuộn trang
+        e.preventDefault();
+        // Cuộn phần tử chứa danh sách ngang theo hướng lăn chuột
+        el.scrollLeft += e.deltaY;
+      });
+    },
   },
   data() {
     return {

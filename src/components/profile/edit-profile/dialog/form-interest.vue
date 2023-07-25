@@ -64,6 +64,7 @@
                 <el-input
                   @input="onChangeFilterText"
                   v-model="valueSearch"
+                  :prefix-icon="prefixIcon"
                   :placeholder="placeholderInterest"
                   name=""
                   id=""
@@ -125,6 +126,7 @@ export default {
       listInterestOld:
         this.$store.state.commonModule.listLifeStyleSingle.interests,
       searchResults: [],
+      prefixIcon: "el-icon-search",
     };
   },
 
