@@ -1,5 +1,11 @@
 <template>
-  <div class="w-full h-full"></div>
+  <div class="w-full h-full">
+    <!-- header -->
+    <div></div>
+    <!-- Body -->
+
+    <!-- Footer -->
+  </div>
 </template>
 
 <script>

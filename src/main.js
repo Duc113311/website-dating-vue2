@@ -12,7 +12,7 @@ import Vue2TouchEvents from "vue2-touch-events";
 import VueCropper from "vue-cropperjs";
 import i18n from "./middleware/i18n.js";
 import "./enum/enumIndex";
-
+import "./assets/scss/colors.scss";
 import VueI18n from "vue-i18n";
 /* import specific icons */
 

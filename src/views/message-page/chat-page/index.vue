@@ -31,8 +31,11 @@
         </div>
       </div>
 
-      <HaveMessage></HaveMessage>
+      <!-- Body -->
+      <!-- <HaveMessage></HaveMessage> -->
+      <NoMessage></NoMessage>
 
+      <!-- Footer -->
       <div class="footer-chat pt-2">
         <div class="w-full flex justify-center items-center">
           <div class="camera-page w-1/6 flex justify-center items-center">
@@ -87,7 +90,8 @@
 </template>
 
 <script>
-import HaveMessage from "../../../components/message/form/have-message";
+import NoMessage from "../../../components/message/form/no-message";
+// import HaveMessage from "../../../components/message/form/have-message";
 import BhBack from "../../../components/bh-element-ui/button/bh-back";
 // import BhBack from "../../components/bh-element-ui/button/bh-back";
 import { Picker } from "emoji-mart-vue";
@@ -98,7 +102,8 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 export default {
   name: "chat-page",
   components: {
-    HaveMessage,
+    NoMessage,
+    // HaveMessage,
     BhBack,
     // BhBack,
     Picker,
