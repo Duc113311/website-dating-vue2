@@ -11,7 +11,7 @@
         width="35"
         class="cursor-pointer"
         src="../../../assets//icon//ic_safety.svg"
-        @click="onClickSafety"
+        @click="onClickSafety()"
       />
     </div>
   </div>
@@ -37,7 +37,10 @@ export default {
   },
 
   methods: {
-    onClickSafety() {},
+    onClickSafety() {
+      debugger;
+      this.$emit("onChangeSafety", true);
+    },
   },
 };
 </script>

@@ -32,8 +32,8 @@
       </div>
 
       <!-- Body -->
-      <!-- <HaveMessage></HaveMessage> -->
-      <NoMessage></NoMessage>
+      <HaveMessage></HaveMessage>
+      <!-- <NoMessage></NoMessage> -->
 
       <!-- Footer -->
       <div class="footer-chat pt-2">
@@ -48,18 +48,19 @@
                 id="file-image"
                 multiple
                 ref="fileInput"
-                class="hidden"
-                @change="previewImages($event)"
+                class="hidden pr-5"
+                @change="previewImagezs($event)"
               />
             </div>
           </div>
           <div class="w-5/6 flex justify-center items-center relative">
             <div class="w-full">
-              <input
-                type="textarea"
-                class="textarea-input w-full"
-                placeholder="Say something nice"
+              <el-input
+                class="your-name digit-box padding-input bg-default"
+                ref="input_focus"
+                maxlength="50"
                 v-model="valueMessage"
+                :placeholder="$t('your_name')"
               />
             </div>
             <div v-if="previewVisible" class="preview-modal">
@@ -90,8 +91,8 @@
 </template>
 
 <script>
-import NoMessage from "../../../components/message/form/no-message";
-// import HaveMessage from "../../../components/message/form/have-message";
+// import NoMessage from "../../../components/message/form/no-message";
+import HaveMessage from "../../../components/message/form/have-message";
 import BhBack from "../../../components/bh-element-ui/button/bh-back";
 // import BhBack from "../../components/bh-element-ui/button/bh-back";
 import { Picker } from "emoji-mart-vue";
@@ -102,8 +103,8 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 export default {
   name: "chat-page",
   components: {
-    NoMessage,
-    // HaveMessage,
+    // NoMessage,
+    HaveMessage,
     BhBack,
     // BhBack,
     Picker,
@@ -196,13 +197,13 @@ export default {
     onSendMessage() {
       const userId1 = "use03";
       const userId2 = "use04";
-
-      const images = this.urlImageUpdated;
-      setData(refData(database, "messages/" + `${userId1}_${userId2}`), {
-        username: "sadsas",
-        content: this.valueMessage,
-        profile_picture: images,
-      });
+      debugger;
+      // const images = this.urlImageUpdated;
+      // setData(refData(database, "messages/" + `${userId1}_${userId2}`), {
+      //   username: "sadsas",
+      //   content: this.valueMessage,
+      //   profile_picture: images,
+      // });
     },
   },
   mounted() {},

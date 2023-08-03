@@ -1,8 +1,12 @@
 <template>
-  <div class="w-full h-full">
-    <div class="items-center text-center w-full">
-      <div>You matched with Trinh</div>
-      <div>3 dáy ago</div>
+  <div class="w-full h-body-mes flex justify-center items-center">
+    <div class="items-center text-center w-full grid gap-2">
+      <div class="flex justify-center">
+        You matched with&nbsp;
+        <div class="font-bold">Trinh</div>
+      </div>
+
+      <div class="title-color">3 day ago</div>
 
       <div class="flex w-full items-centers justify-center">
         <div
@@ -10,7 +14,11 @@
           :style="`background-image:url(${urlName})`"
         ></div>
       </div>
-      <div>Know when Trinh has read your message</div>
+      <div class="flex justify-center">
+        Know when&nbsp;
+        <div class="font-bold">Trinh</div>
+        &nbsp;has read your message
+      </div>
 
       <div :style="{ '--orange-color-1': orangeColor }">
         <BhCommons :nameButton="nameButton"></BhCommons>
@@ -40,11 +48,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.h-body-mes {
+  height: 82%;
+}
 .image-user {
   background-position: center;
   background-size: cover;
   border-radius: 53px;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
 }
 </style>

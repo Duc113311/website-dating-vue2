@@ -575,11 +575,16 @@ export default {
     },
 
     bingInterests(val) {
+      // List danh interests ban đầu
       const interestDefaults =
         this.$store.state.commonModule.listLifeStyleSingle;
+      // VALUE INTERESTS của user ["it_1","it_3",...]
       const interests = val.interests;
+      // Mảng rỗng để chứa giá trị mới interests
       const resultData = [];
+
       for (let index = 0; index < interests.length; index++) {
+        // Lấy ra phần tử đầu tiên trg list interest của user
         const element = interests[index];
 
         const findData = interestDefaults.interests.find(

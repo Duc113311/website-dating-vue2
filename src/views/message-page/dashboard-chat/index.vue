@@ -1,7 +1,10 @@
 <template>
   <div class="w-full h-full relative">
     <div class="w-full h-full z-10">
-      <Header :isShowSafety="isShowSafety"></Header>
+      <Header
+        :isShowSafety="isShowSafety"
+        @onChangeSafety="onChangeSafety"
+      ></Header>
 
       <div class="w-full body-page-home relative">
         <FriendMatch></FriendMatch>
@@ -9,15 +12,22 @@
 
       <Footer></Footer>
     </div>
+
+    <BhPopover
+      v-show="isShowFormSafety"
+      @onChangeHidePopover="onChangeHidePopover"
+    ></BhPopover>
   </div>
 </template>
 
 <script>
+import BhPopover from "../../../components/bh-element-ui/others/bh-popover";
 import FriendMatch from "../../../components/message/friend-match";
 import Footer from "../../../components/layout/footer-home/footer";
 import Header from "../../../components/layout/header-home/header";
 export default {
   components: {
+    BhPopover,
     FriendMatch,
     Footer,
     Header,
@@ -27,10 +37,20 @@ export default {
   data() {
     return {
       isShowSafety: true,
+      isShowFormSafety: false,
     };
   },
 
-  methods: {},
+  methods: {
+    onChangeSafety(value) {
+      debugger;
+      this.isShowFormSafety = value;
+    },
+
+    onChangeHidePopover(value) {
+      this.isShowFormSafety = value;
+    },
+  },
 };
 </script>
 
