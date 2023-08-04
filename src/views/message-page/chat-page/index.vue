@@ -56,9 +56,9 @@
           <div class="w-5/6 flex justify-center items-center relative">
             <div class="w-full">
               <el-input
-                class="your-name digit-box padding-input bg-default"
+                class="your-name digit-box padding-input bg-default pr-8"
                 ref="input_focus"
-                maxlength="50"
+                maxlength="300"
                 v-model="valueMessage"
                 :placeholder="$t('your_name')"
               />

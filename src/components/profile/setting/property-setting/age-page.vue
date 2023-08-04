@@ -12,7 +12,7 @@
         <vue-slider
           v-model="valueAge"
           :enable-cross="false"
-          :max="50"
+          :max="70"
           :min="18"
           @change="onChangeAgeRange()"
           :process-style="{ backgroundColor: '#fd5d65 ' }"

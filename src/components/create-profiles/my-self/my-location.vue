@@ -207,7 +207,7 @@ export default {
   async mounted() {
     const latitude = localStorage.latitude;
     const longitude = localStorage.longitude;
-
+    debugger;
     if (document.getElementsByClassName("angle-up")[0]) {
       document.getElementsByClassName("angle-up")[0].style.display = "none";
     }
