@@ -38,11 +38,13 @@ const mutations = {
   },
 
   setListUserLikeFilter(state, data) {
+    debugger;
     let userFilter = [];
     const ageMin = data.valueAge[0];
     const ageMax = data.valueAge[1];
     const photo = data.valuePhoto;
     const interests = data.valueInterests;
+    debugger;
     // Filter age
     for (let index = 0; index < state.listLikeForYous.length; index++) {
       const element = state.listLikeForYous[index];
@@ -50,7 +52,7 @@ const mutations = {
       const ageUser = functionValidate.calculatAge(element.dob);
 
       if (ageUser >= ageMin && ageMin <= ageMax) {
-        state.userFilter.push(element);
+        userFilter.push(element);
       }
 
       const commonInterest = interests.filter((value) =>
@@ -58,7 +60,7 @@ const mutations = {
       );
 
       if (commonInterest.length !== 0) {
-        state.userFilter.push(element);
+        userFilter.push(element);
       }
     }
 
@@ -67,7 +69,7 @@ const mutations = {
       (x) => x.profiles.avatars.length <= photo
     );
     if (dataPhoto) {
-      state.userFilter.push(dataPhoto);
+      userFilter.push(dataPhoto);
     }
     // Interest
   },
