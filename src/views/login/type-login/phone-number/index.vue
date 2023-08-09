@@ -185,6 +185,11 @@ export default {
       }
     },
 
+    setTokenId() {
+      const tokenIdParam = this.$store.state.mongoModule.tokenId;
+      return tokenIdParam;
+    },
+
     /**
      * Xác thực mã codeId & OTP
      * @param {*} sentCodeId
@@ -194,14 +199,15 @@ export default {
       signInWithCredential(auth, credential)
         .then(async (result) => {
           const userID = result.user.uid;
-
+          debugger;
           // Xét giá trị cho OAuth
           await this.setOAuth2Id(userID);
 
           await this.loginAppByAuthId({
             oAuth2Id: userID,
           });
-          const tokenIdParam = this.$store.state.mongoModule.tokenId;
+
+          const tokenIdParam = await this.setTokenId();
           debugger;
           // Tồn tại account
           if (tokenIdParam) {

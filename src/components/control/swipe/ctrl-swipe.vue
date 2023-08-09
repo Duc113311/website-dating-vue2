@@ -144,6 +144,7 @@ export default {
   },
   watch: {
     actionDecide(val) {
+      debugger;
       this.swipe(val);
     },
   },
@@ -242,6 +243,7 @@ export default {
 
     onClickShowDetail(user, index) {
       if (this.isMouseDown) {
+        debugger;
         this.index_info = index;
         this.setDetailUserLikeTopic(user);
         this.$emit("onShowDetailUserLikeTopic", true);

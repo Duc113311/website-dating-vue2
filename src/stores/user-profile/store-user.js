@@ -630,6 +630,18 @@ const mutations = {
     state.user_profile.fullname = firstName;
   },
 
+  setInformationDefault(state, value) {
+    state.avatarChecked = [];
+    state.user_profile.fullname = value;
+    state.user_profile.profiles.interests = [];
+    state.user_profile.profiles.gender = value;
+    state.user_profile.profiles.avatars = [];
+    state.user_profile.profiles.orientationSexuals = [];
+    state.user_profile.settings.genderFilter = value;
+    (state.user_profile.profiles.showGender = false),
+      (state.user_profile.profiles.showSexual = false);
+  },
+
   /**
    * Xét giá trị email
    * @param {*} state

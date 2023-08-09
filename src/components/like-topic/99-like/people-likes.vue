@@ -41,13 +41,19 @@
       <CtrlSwipe
         @onInputFile="onInputFile"
         :listUser="listLikeForYouAction"
+        :actionDecide="actionDecide"
+        @onShowDetailUserLikeTopic="onShowDetailUserLikeTopic"
       ></CtrlSwipe>
-
-      <!-- <div class="absolute w-full bottom-0 left-0 z-10">
-        <BhSeeLike></BhSeeLike>
-      </div> -->
     </div>
-
+    <div
+      v-if="isShowDetail"
+      class="w-full user-like h-full absolute top-0 left-0 z-50"
+    >
+      <DetailUserLikeTopic
+        @onActionDecide="onActionDecide"
+        @onHideProfile="onHideProfile"
+      ></DetailUserLikeTopic>
+    </div>
     <div class="w-full h-full absolute top-0 left-0 z-30" v-if="isShowFilter">
       <FilterOption @onHidePopupFilter="onHidePopupFilter"></FilterOption>
     </div>
@@ -56,18 +62,16 @@
 
 <script>
 import CtrlSwipe from "../../control/swipe/ctrl-swipe";
-// import { VueHammer } from "vue2-hammer";
-
 import FilterOption from "../filter/filter-option";
-// import BhActivateLike from "../../bh-element-ui/button/bh-activateLike";
-// import BhSeeLike from "../../bh-element-ui/button/bh-seeLike";
 import functionValidate from "../../../middleware/validate.js";
 import { mapMutations } from "vuex";
+import DetailUserLikeTopic from "@/components/home/view/detail-explore/detail-user-like-topic.vue";
 
 export default {
   components: {
     CtrlSwipe,
     FilterOption,
+    DetailUserLikeTopic,
   },
   name: "people-likes",
   directives: {
@@ -92,9 +96,10 @@ export default {
       currentCard: 1,
       isShowMy: true,
       isNotShowMy: true,
-
+      actionDecide: "",
       listDataInterests: [],
 
+      isShowDetail: false,
       listChossed: [
         {
           id: 0,
@@ -137,6 +142,21 @@ export default {
 
   methods: {
     ...mapMutations(["setPutListUserAction"]),
+
+    onShowDetailUserLikeTopic(val) {
+      this.isShowDetail = val;
+    },
+
+    onActionDecide(val) {
+      debugger;
+      this.actionDecide = val;
+      this.isShowDetail = false;
+    },
+
+    onHideProfile(val) {
+      debugger;
+      this.isShowDetail = val;
+    },
     onInputFile(val) {
       const listOld = this.$store.state.likeTopicModule.listLikeForYous;
       const lengthListOld = listOld.length;
@@ -312,7 +332,7 @@ export default {
 
 .container {
   overflow: auto; /* cho phép trượt khi các thẻ div vượt quá kích thước của div cha */
-  height: calc(100% - 68px);
+  height: calc(100% - 80px);
 }
 .container::-webkit-scrollbar {
   display: none;

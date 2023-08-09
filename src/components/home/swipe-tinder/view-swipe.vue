@@ -117,7 +117,11 @@
                     </span>
                   </div>
                 </div>
-                <div v-if="scrods === 1">
+                <div
+                  v-if="scrods === 1"
+                  :title="scope.data.profiles.about"
+                  class="w-ellipsis-about"
+                >
                   {{ scope.data.profiles.about }}
                 </div>
                 <div v-if="scrods === 2">

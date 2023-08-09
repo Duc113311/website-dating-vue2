@@ -413,7 +413,7 @@ export default {
     isNameLength() {
       const nameLength =
         this.$store.state.userModule.userProfileDetail.fullname;
-
+      debugger;
       return nameLength.length > 20 ? true : false;
     },
     isShowLeft() {

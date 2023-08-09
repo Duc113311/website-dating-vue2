@@ -250,9 +250,13 @@
               <div class="flex justify-center items-center">
                 <div>{{ $t("share") }}</div>
                 &nbsp;
-                <div class="w-ellipse" :title="this.userParam.fullname">
+                <div
+                  :class="[isNameLength ? `w-ellipsis` : `not-w-ellipsis`]"
+                  :title="this.userParam.fullname"
+                >
                   {{ this.userParam.fullname }}
                 </div>
+                &nbsp;
                 <div>{{ $t("profile") }}</div>
               </div>
             </div>
@@ -285,7 +289,10 @@
             <div class="flex justify-center items-center">
               <div>{{ $t("report") }}</div>
               &nbsp;
-              <div class="w-ellipse" :title="this.userParam.fullname">
+              <div
+                :class="[isNameLength ? `w-ellipsis` : `not-w-ellipsis`]"
+                :title="this.userParam.fullname"
+              >
                 {{ this.userParam.fullname }}
               </div>
             </div>
@@ -321,7 +328,7 @@
 import { mapMutations, mapActions } from "vuex";
 import functionValidate from "../../../../middleware/validate.js";
 export default {
-  name: "detail-profile",
+  name: "detail-user-like-topic",
 
   data() {
     return {

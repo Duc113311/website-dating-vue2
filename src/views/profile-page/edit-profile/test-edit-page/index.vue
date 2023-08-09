@@ -14,9 +14,7 @@
           <div
             class="flex header-page justify-center content-center items-center text-red-400 title-logo"
           >
-            <span class="text-age font-semibold">{{
-              formatString($t("edit_profile"))
-            }}</span>
+            <span class="text-age font-semibold">{{ $t("edit_profile") }}</span>
           </div>
         </div>
         <div

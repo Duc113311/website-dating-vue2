@@ -93,7 +93,7 @@ export default {
   },
 
   methods: {
-    ...mapMutations(["setFirstName"]),
+    ...mapMutations(["setInformationDefault"]),
     ...mapActions(["updateSettingUser", "deleteAccountUser"]),
     async onBackEditProfile() {
       this.loading = true;
@@ -122,8 +122,9 @@ export default {
     async onActionApplyDelete(val) {
       this.isShowDialogDelete = false;
       this.loading = true;
-      const firstName = "";
-      this.setFirstName(firstName);
+      debugger;
+      const userDefault = "";
+      this.setInformationDefault(userDefault);
       await this.deleteAccountUser();
       localStorage.removeItem("oAuth2Id");
       localStorage.removeItem("tokenId");
@@ -153,7 +154,7 @@ export default {
       await signOut(auth)
         .then(() => {
           const firstName = "";
-          this.setFirstName(firstName);
+          this.setInformationDefault(firstName);
 
           // Sign-out successful.
           localStorage.removeItem("oAuth2Id");

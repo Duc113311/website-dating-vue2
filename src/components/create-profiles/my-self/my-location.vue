@@ -197,7 +197,8 @@ export default {
             debugger;
             this.setAddressLocation(this.address ? this.address : "");
           } else {
-            this.address = "No address found";
+            this.address = "";
+            this.setAddressLocation(this.address);
           }
         })
         .catch((error) => console.log(error));

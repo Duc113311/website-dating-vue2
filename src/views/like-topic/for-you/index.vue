@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import DetailUserLikeTopic from "@/components/home/view/detail-infor.vue/detail-user-like-topic.vue";
+import DetailUserLikeTopic from "@/components/home/view/detail-explore/detail-user-like-topic.vue";
 import LikeForYou from "../../../components/like-topic/for-you/like-for-you";
 export default {
   components: { LikeForYou, DetailUserLikeTopic },

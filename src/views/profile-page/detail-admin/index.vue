@@ -75,7 +75,10 @@
               >
                 {{ this.bingInformationUser.fullname }}
               </div>
-              <div class="describe-user pt-2">
+              <div
+                class="describe-user pt-2"
+                v-if="this.bingInformationUser.profiles.showAge === true"
+              >
                 , {{ bindingAge(this.bingInformationUser.dob) }}
               </div>
             </div>
@@ -717,12 +720,5 @@ export default {
 
 .h-detail-admin {
   height: 70%;
-}
-
-.w-ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 340px;
 }
 </style>

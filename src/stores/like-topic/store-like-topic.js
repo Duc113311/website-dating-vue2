@@ -4,7 +4,7 @@ import functionValidate from "../../middleware/validate.js";
 const state = {
   listLikeForYous: [],
   listLikeYouAction: [],
-  informationUserLike: [],
+  informationUserLike: {},
 };
 
 const getters = {};
@@ -23,6 +23,7 @@ const mutations = {
   },
 
   setDetailUserLikeTopic(state, data) {
+    debugger;
     state.informationUserLike = data;
   },
 

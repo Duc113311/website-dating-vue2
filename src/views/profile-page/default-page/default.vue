@@ -41,6 +41,7 @@
               </div>
               , {{ ageUser }}
               <img
+                v-if="this.verified === true"
                 src="@/assets/icon/ic_verified_enable.svg"
                 width="30"
                 class="cursor-pointer"
@@ -73,7 +74,9 @@
               alt=""
             />
           </div>
-          <div class="mt-2 text-base describe-text">{{ $t("settings") }}</div>
+          <div class="mt-2 text-base describe-text">
+            {{ $t("settings").toUpperCase() }}
+          </div>
         </div>
         <div class="item-setting mt-24">
           <div
@@ -185,6 +188,9 @@ export default {
     },
     nameUser() {
       return this.$store.state.userModule.user_profile.fullname;
+    },
+    verified() {
+      return this.$store.state.userModule.user_profile.verifyStatus;
     },
     avatarUser() {
       debugger;

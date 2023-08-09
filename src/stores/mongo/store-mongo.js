@@ -34,10 +34,15 @@ const mutations = {
    * @param {*} data
    */
   setProfileUserLogin_Mongo(state, data) {
-    state.tokenId = data?.token;
-    localStorage.setItem("tokenId", state.tokenId);
-    localStorage.setItem("oAuth2Id", data.user.oAuth2Id);
-    localStorage.setItem("unit", data.user.settings.distancePreference.unit);
+    debugger;
+    if (data !== "") {
+      state.tokenId = data?.token;
+      localStorage.setItem("tokenId", state.tokenId);
+      localStorage.setItem("oAuth2Id", data.user.oAuth2Id);
+      localStorage.setItem("unit", data.user.settings.distancePreference.unit);
+    } else {
+      state.tokenId = data;
+    }
   },
 
   /**
@@ -92,6 +97,9 @@ const actions = {
         commit("setProfileUserLogin_Mongo", response.data.data);
       })
       .catch((error) => {
+        debugger;
+        const tokenId = "";
+        commit("setProfileUserLogin_Mongo", tokenId);
         console.log(error);
       });
   },
