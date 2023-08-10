@@ -110,6 +110,7 @@ export default {
 
     async onRenderCodeOTP() {
       this.txtErrorCode = false;
+      debugger;
       this.isStatusRequire = false;
       document.getElementById("1").focus();
       const phoneNumber = this.valuePhoneNumber.getNumber();
@@ -143,7 +144,7 @@ export default {
         const result = true;
         // const textCode = this.renderCountryCode();
         // console.log("Mã vung", textCode);
-
+        debugger;
         const phoneNumber = this.valuePhoneNumber.getNumber();
 
         this.txtPhoneNumber = phoneNumber;

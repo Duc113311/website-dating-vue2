@@ -77,6 +77,80 @@ const state = {
     numberNotiSeenMsg: 0,
   },
 
+  user_profile_default: {
+    oAuth2Id: "",
+    fullname: "",
+    username: "",
+    email: "",
+    phone: "",
+    dob: "",
+    profiles: {
+      avatars: [],
+      gender: "",
+      about: "",
+      datingPurpose: "",
+      languages: [],
+      zodiac: "",
+      education: "",
+      school: "",
+      company: "",
+      familyFlan: "",
+      covidVaccine: "",
+      personality: "",
+      communicationType: "",
+      loveStyle: "",
+      pet: "",
+      drinking: "",
+      smoking: "",
+      workout: "",
+      dietaryPreference: "",
+      socialMedia: "",
+      sleepingHabit: "",
+      favoriteSongs: [],
+      jobTitle: "",
+      showGender: false,
+      orientationSexuals: [],
+      showSexual: false,
+      interests: [],
+      address: "",
+      showAge: false,
+      showDistance: false,
+    },
+    settings: {
+      distancePreference: {
+        range: 10,
+        unit: "km",
+        onlyShowInThis: false,
+      },
+      genderFilter: "",
+      agePreference: {
+        min: 20,
+        max: 30,
+        onlyShowInThis: false,
+      },
+      showSameOrientationSexual: false,
+      showOnlineStatus: false,
+      showActiveStatus: false,
+      autoPlayVideo: "always",
+      notiSeenMsg: false,
+      showMePersonLikeMe: false,
+      global: {
+        isEnabled: false,
+        languages: [],
+      },
+      incognitoMode: false,
+      toppicksDiscoverable: true,
+    },
+    verifyStatus: false,
+    onlineNow: false,
+    activeStatus: "",
+    location: {},
+    coins: 0,
+    numberBooster: 0,
+    numberSuperLike: 0,
+    numberNotiSeenMsg: 0,
+  },
+
   isCheckBox: false,
   listSexuals: [],
   listInterests: [],
@@ -133,7 +207,34 @@ const state = {
     sleepingHabit: "",
   },
 
+  basicInformation_default: {
+    zodiac: "",
+    familyFlan: "",
+    education: "",
+    personality: "",
+    covidVaccine: "",
+    communicationType: "",
+    loveStyle: "",
+  },
+
+  styleOfLife_default: {
+    pet: "",
+    drinking: "",
+    smoking: "",
+    workout: "",
+    dietaryPreference: "",
+    socialMedia: "",
+    sleepingHabit: "",
+  },
+
   lifeStyleSingle: {
+    datingPurpose: {},
+    languages: [],
+    interests: [],
+    schools: [],
+  },
+
+  lifeStyleSingle_default: {
     datingPurpose: {},
     languages: [],
     interests: [],
@@ -632,14 +733,24 @@ const mutations = {
 
   setInformationDefault(state, value) {
     state.avatarChecked = [];
-    state.user_profile.fullname = value;
-    state.user_profile.profiles.interests = [];
-    state.user_profile.profiles.gender = value;
-    state.user_profile.profiles.avatars = [];
-    state.user_profile.profiles.orientationSexuals = [];
-    state.user_profile.settings.genderFilter = value;
-    (state.user_profile.profiles.showGender = false),
-      (state.user_profile.profiles.showSexual = false);
+    debugger;
+    state.basicInformation = JSON.parse(
+      JSON.stringify(state.basicInformation_default)
+    );
+    state.lifeStyleSingle = JSON.parse(
+      JSON.stringify(state.lifeStyleSingle_default)
+    );
+    state.styleOfLife = JSON.parse(JSON.stringify(state.styleOfLife_default));
+
+    state.user_profile = JSON.parse(JSON.stringify(state.user_profile_default));
+    // state.user_profile.fullname = value;
+    // state.user_profile.profiles.interests = [];
+    // state.user_profile.profiles.gender = value;
+    // state.user_profile.profiles.avatars = [];
+    // state.user_profile.profiles.orientationSexuals = [];
+    // state.user_profile.settings.genderFilter = value;
+    // (state.user_profile.profiles.showGender = false),
+    //   (state.user_profile.profiles.showSexual = false);
   },
 
   /**

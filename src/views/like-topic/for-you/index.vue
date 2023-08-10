@@ -11,6 +11,7 @@
     >
       <DetailUserLikeTopic
         @onActionDecide="onActionDecide"
+        @onHideProfile="onHideProfile"
       ></DetailUserLikeTopic>
     </div>
   </div>
@@ -38,6 +39,10 @@ export default {
     onActionDecide(val) {
       this.actionDecide = val;
       this.isShowDetailUserLike = false;
+    },
+
+    onHideProfile(val) {
+      this.isShowDetailUserLike = val;
     },
   },
 
