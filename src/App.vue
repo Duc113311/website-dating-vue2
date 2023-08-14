@@ -5,7 +5,7 @@
     >
       <div
         v-if="screamValue === 1"
-        class="layout-detail overflow-hidden relative"
+        class="layout-detail relative"
         :class="`theme-${themeValue}`"
       >
         <div

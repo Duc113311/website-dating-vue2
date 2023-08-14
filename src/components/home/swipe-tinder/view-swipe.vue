@@ -11,26 +11,28 @@
       ref="tinder"
       key-name="_id"
       :queue.sync="listDataUser"
-      :offset-y="10"
       @submit="onSubmit"
       :class="{ animate2: animate2, animate1: animate1 }"
     >
+      <!--:offset-y="10"  -->
       <template slot-scope="scope">
         <div
-          v-show="isActiveImag"
           class="pic z-8"
+          :id="scope.data._id"
           :style="{
-            'background-image': `url(${scope.data.profiles.avatars[0]})`,
+            'background-image': `url(${
+              scope.data.profiles.avatars[`${nextImage}`]
+            })`,
           }"
         />
-        <div
+        <!-- <div
           v-show="!isActiveImag"
           class="pic z-8"
           :style="{
             'background-image': `url(${idImage}
             )`,
           }"
-        />
+        /> -->
         <div
           class="flex w-full justify-center absolute top-0 content-center p-0.5 border-solid mt-3"
           v-if="scope.data.profiles.avatars.length > 1"
@@ -39,11 +41,7 @@
             v-for="(data, index) in scope.data.profiles.avatars"
             :key="data"
             :id="`avatar_${index}`"
-            :class="
-              index === 0 && urlImageLength === ''
-                ? 'active-image'
-                : 'no-active'
-            "
+            :class="index === 0 ? 'active-image' : 'no-active'"
             class="bt-img imageAvatar p-0.5 rounded-lg mr-0.5 no-active"
             @click="onClickNextImage(data)"
           ></button>
@@ -183,9 +181,7 @@
         <div class="w-full flex absolute top-0 opacity-0 h-4/6 nextBg">
           <div
             class="w-2/4 bg-slate-500"
-            @click="
-              nextImageLeft(scope.data.profiles.avatars, scope.data.profiles)
-            "
+            @click="nextImageLeft(scope.data.profiles.avatars, scope)"
           ></div>
           <div
             class="w-2/4 bg-orange-200"
@@ -274,7 +270,7 @@ export default {
   },
   data() {
     return {
-      isDragging: false, // Biến cờ để kiểm tra xem phần tử có đang được kéo hay không
+      isDragging: true, // Biến cờ để kiểm tra xem phần tử có đang được kéo hay không
       isClickAllowed: true, // Biến cờ để kiểm tra xem sự kiện click có được phép hay không
       queue: [],
       isShowFormMatch: false,
@@ -308,8 +304,10 @@ export default {
 
       animate2: false,
       animate1: false,
-
+      idActive: "",
       scrods: 0,
+
+      nextImage: 0,
     };
   },
 
@@ -317,7 +315,6 @@ export default {
   directives: {
     truncate: {
       inserted: function (el, binding) {
-        debugger;
         const text = el.innerText;
         const maxLength = binding.value;
 
@@ -398,7 +395,6 @@ export default {
       }
       this.isPointer = true;
       this.isPointerNext = false;
-
       this.isClickAllowed = false;
     },
     onMouseUp() {
@@ -407,14 +403,21 @@ export default {
       this.isHoverNope = false;
       this.isHoverSuper = false;
       this.isPointer = false;
-      this.isPointerNext = true;
+      if (this.isPointerNext) {
+        this.isDragging = false;
+      } else {
+        this.isDragging = true;
+      }
 
-      this.isDragging = true;
       this.isClickAllowed = true;
     },
 
     moveElement(event) {
+      // this.setUrlImage("");
+      console.log(event);
       if (this.isPointer) {
+        // this.isActiveImag = true;
+        this.isPointerNext = true;
         if (event.clientX > this.truc_x + 50) {
           this.isHoverLike = true;
           this.isHoverNope = false;
@@ -637,48 +640,52 @@ export default {
       this.isShowDetail = value;
     },
     nextImageLeft(value, data) {
-      console.log(data);
-
+      console.log(data.data.profiles);
+      debugger;
+      this.idActive = data.data._id;
       if (this.isDragging) {
         this.isPointerNext = true;
         debugger;
         if (this.$store.state.userModule.imageActives !== 0) {
           this.setIndexImageActiveLeft();
           const indexActive = this.$store.state.userModule.imageActives;
-
           if (indexActive === 0) {
             this.scrods = 0;
           }
           if (indexActive === 1) {
             if (indexActive !== this.scrods) {
-              if (data.about.length !== 0) {
+              if (data.data.profiles.about.length !== 0) {
                 if (this.scrods === 5) {
                   this.scrods = 1;
                 } else {
                   this.scrods = this.scrods - 1;
                 }
-              } else if (this.bingBasicInformation(data).length !== 0) {
+              } else if (
+                this.bingBasicInformation(data.data.profiles).length !== 0
+              ) {
                 if (this.scrods === 5) {
                   this.scrods = 2;
                 } else {
                   this.scrods = this.scrods - 1;
                 }
-              } else if (this.bingLifeStyleStatic(data).length !== 0) {
+              } else if (
+                this.bingLifeStyleStatic(data.data.profiles).length !== 0
+              ) {
                 if (this.scrods === 5) {
                   this.scrods = 3;
                 } else {
                   this.scrods = this.scrods - 1;
                 }
               } else if (
-                data.jobTitle.length !== 0 ||
-                data.school.length !== 0
+                data.data.profiles.jobTitle.length !== 0 ||
+                data.data.profiles.school.length !== 0
               ) {
                 if (this.scrods === 5) {
                   this.scrods = 4;
                 } else {
                   this.scrods = this.scrods - 1;
                 }
-              } else if (this.bingInterests(data).length !== 0) {
+              } else if (this.bingInterests(data.data.profiles).length !== 0) {
                 if (this.scrods === 5) {
                   this.scrods = 5;
                 } else {
@@ -691,28 +698,30 @@ export default {
           }
           if (indexActive === 2) {
             if (indexActive !== this.scrods) {
-              if (this.bingBasicInformation(data).length !== 0) {
+              if (this.bingBasicInformation(data.data.profiles).length !== 0) {
                 if (this.scrods === 5) {
                   this.scrods = 2;
                 } else {
                   this.scrods = this.scrods - 1;
                 }
-              } else if (this.bingLifeStyleStatic(data).length !== 0) {
+              } else if (
+                this.bingLifeStyleStatic(data.data.profiles).length !== 0
+              ) {
                 if (this.scrods === 5) {
                   this.scrods = 3;
                 } else {
                   this.scrods = this.scrods - 1;
                 }
               } else if (
-                data.jobTitle.length !== 0 ||
-                data.school.length !== 0
+                data.data.profiles.jobTitle.length !== 0 ||
+                data.data.profiles.school.length !== 0
               ) {
                 if (this.scrods === 5) {
                   this.scrods = 4;
                 } else {
                   this.scrods = this.scrods - 1;
                 }
-              } else if (this.bingInterests(data).length !== 0) {
+              } else if (this.bingInterests(data.data.profiles).length !== 0) {
                 if (this.scrods === 5) {
                   this.scrods = 5;
                 } else {
@@ -725,22 +734,22 @@ export default {
           }
           if (indexActive === 3) {
             if (indexActive !== this.scrods) {
-              if (this.bingLifeStyleStatic(data).length !== 0) {
+              if (this.bingLifeStyleStatic(data.data.profiles).length !== 0) {
                 if (this.scrods === 5) {
                   this.scrods = 3;
                 } else {
                   this.scrods = this.scrods - 1;
                 }
               } else if (
-                data.jobTitle.length !== 0 ||
-                data.school.length !== 0
+                data.data.profiles.jobTitle.length !== 0 ||
+                data.data.profiles.school.length !== 0
               ) {
                 if (this.scrods === 5) {
                   this.scrods = 4;
                 } else {
                   this.scrods = this.scrods - 1;
                 }
-              } else if (this.bingInterests(data).length !== 0) {
+              } else if (this.bingInterests(data.data.profiles).length !== 0) {
                 if (this.scrods === 5) {
                   this.scrods = 5;
                 } else {
@@ -753,13 +762,16 @@ export default {
           }
           if (indexActive === 4) {
             if (indexActive !== this.scrods) {
-              if (data.jobTitle.length !== 0 || data.school.length !== 0) {
+              if (
+                data.data.profiles.jobTitle.length !== 0 ||
+                data.data.profiles.school.length !== 0
+              ) {
                 if (this.scrods === 5) {
                   this.scrods = 4;
                 } else {
                   this.scrods = this.scrods - 1;
                 }
-              } else if (this.bingInterests(data).length !== 0) {
+              } else if (this.bingInterests(data.data.profiles).length !== 0) {
                 this.scrods = this.scrods + 0;
               }
             } else {
@@ -767,7 +779,7 @@ export default {
             }
           }
           if (indexActive === 5) {
-            if (this.bingInterests(data).length !== 0) {
+            if (this.bingInterests(data.data.profiles).length !== 0) {
               this.scrods = this.scrods + 0;
             }
           }
@@ -777,11 +789,13 @@ export default {
               .getElementById(`avatar_` + parseInt(indexActive + 1))
               .classList.remove("active-image");
             this.idImage = value[indexActive];
+            debugger;
             this.setUrlImage(this.idImage);
 
             document
               .getElementById(`avatar_` + parseInt(indexActive))
               .classList.add("active-image");
+            this.nextImage = indexActive;
           }
 
           this.isActiveImag = false;
@@ -796,12 +810,14 @@ export default {
     },
 
     nextImageRight(value, data) {
+      debugger;
+      // this.nextImage = parseInt(this.nextImage) + 1;
       if (this.isDragging) {
         this.isPointerNext = true;
         debugger;
         this.setIndexImageActiveRight();
         let indexActive = this.$store.state.userModule.imageActives;
-
+        this.nextImage = indexActive;
         if (indexActive !== data.avatars.length) {
           if (indexActive === 1 && this.scrods < 5) {
             if (data.about.length !== 0) {
@@ -857,11 +873,13 @@ export default {
               .getElementById(`avatar_` + parseInt(indexActive - 1))
               .classList.remove("active-image");
             this.idImage = value[indexActive];
+            debugger;
             this.setUrlImage(this.idImage);
 
             document
               .getElementById(`avatar_` + parseInt(indexActive))
               .classList.add("active-image");
+            this.nextImage = indexActive;
           }
           this.isActiveImag = false;
         } else {
@@ -1035,6 +1053,7 @@ export default {
       }
     },
     async decide(choice) {
+      debugger;
       console.log(choice);
       if (choice === "rewind") {
         if (this.history.length) {
@@ -1074,6 +1093,7 @@ export default {
       }
     });
 
+    debugger;
     if (this.$store.state.userModule.urlImage !== "") {
       const indexActive = this.$store.state.userModule.imageActives;
       this.idImage = this.$store.state.userModule.urlImage;
@@ -1220,7 +1240,6 @@ export default {
   height: 100%;
   display: flex;
   justify-content: center;
-  overflow: hidden;
 }
 .icon-tinder {
   font-size: 50px;

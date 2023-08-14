@@ -1211,7 +1211,6 @@ export default {
   height: 100%;
   display: flex;
   justify-content: center;
-  overflow: hidden;
 }
 .icon-tinder {
   font-size: 50px;

@@ -229,7 +229,6 @@ export default {
   height: 100%;
   display: flex;
   justify-content: center;
-  overflow: hidden;
 }
 
 .home-page {

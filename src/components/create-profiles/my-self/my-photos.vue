@@ -36,6 +36,17 @@
                   width="43"
                 />
               </div>
+              <div class="img-edit z-20" v-bind:id="'edit' + fileList.id">
+                <input
+                  type="file"
+                  @change="toggleUpload($event, fileList)"
+                  accept="image/*"
+                />
+                <img
+                  src="../../../assets/icon/bt_edit_profile.svg"
+                  width="50"
+                />
+              </div>
             </div>
             <div
               class="img-avatar overflow-hidden top-0 left-0"
@@ -143,6 +154,17 @@ export default {
     isTitle() {
       return this.isShowTitle ? this.isShowTitle : false;
     },
+
+    isShowEdit() {
+      if (this.$route.name !== "create-profile") {
+        const imgLength = this.$store.state.userModule.avatarChecked;
+
+        if (imgLength.length === 1) {
+          return true;
+        }
+      }
+      return false;
+    },
   },
 
   props: ["isShowTitle"],
@@ -186,6 +208,7 @@ export default {
           console.log(snapshot);
         });
 
+        debugger;
         // img.setAttribute("src", url);
 
         const formData = new FormData();
@@ -207,14 +230,18 @@ export default {
               };
 
               this.setPhotos(dataImage);
+              debugger;
               // Or inserted into an <img> element
               const img = document.getElementById(idUrl);
 
               let bg = "url('" + url + "')";
 
               img.style.backgroundImage = bg;
-
-              close.style.display = "block";
+              if (this.$store.state.userModule.avatarChecked.length <= 1) {
+                close.style.display = "none";
+              } else {
+                close.style.display = "block";
+              }
               setTimeout(() => {
                 loading.style.display = "none";
               }, 1000);
@@ -248,17 +275,26 @@ export default {
     removeUpload(val) {
       debugger;
       const imagedLength = this.$store.state.userModule.avatarChecked;
-      if (imagedLength.length > 1) {
-        const img = document.getElementById(val);
-        const avatar = document.getElementById("avatar" + val);
-        const close = document.getElementById("close" + val);
-        const dataImage = {
-          id: val,
-        };
-        this.setPhotos(dataImage);
-        img.style.backgroundImage = "";
-        avatar.style.display = "none";
-        close.style.display = "none";
+      const img = document.getElementById(val);
+      const avatar = document.getElementById("avatar" + val);
+      const close = document.getElementById("close" + val);
+
+      const dataImage = {
+        id: val,
+      };
+      this.setPhotos(dataImage);
+      img.style.backgroundImage = "";
+      avatar.style.display = "none";
+      close.style.display = "none";
+      debugger;
+      if (this.$route.name !== "create-profile") {
+        if (imagedLength.length === 1) {
+          const indexImg = imagedLength[0].id;
+          const edit = document.getElementById("edit" + indexImg);
+          const close = document.getElementById("close" + indexImg);
+          edit.style.display = "block";
+          close.style.display = "none";
+        }
       }
     },
   },
@@ -433,5 +469,13 @@ input[type="file"] {
 
 .el-loading-spinner .circular {
   height: 100% !important;
+}
+
+.img-edit {
+  position: absolute;
+  bottom: -9px;
+  overflow: hidden;
+  right: -14px;
+  display: none;
 }
 </style>
