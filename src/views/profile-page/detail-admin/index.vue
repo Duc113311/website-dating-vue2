@@ -11,7 +11,7 @@
           >
             <img
               src="@/assets/icon/ic_icon_app.svg"
-              class="size-hight mr-3"
+              class="size-hight mr-3 ml-3"
               alt=""
             />
             <span class="text-2xl font-semibold">HeartLink</span>

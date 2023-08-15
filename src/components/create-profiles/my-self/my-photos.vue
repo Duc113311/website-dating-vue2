@@ -227,6 +227,7 @@ export default {
               const dataImage = {
                 id: idUrl,
                 url: url,
+                type: this.$route.name,
               };
 
               this.setPhotos(dataImage);
@@ -242,6 +243,19 @@ export default {
               } else {
                 close.style.display = "block";
               }
+
+              if (this.$store.state.userModule.avatarChecked.length === 2) {
+                const edit = document.getElementById(
+                  "edit" + this.$store.state.userModule.avatarChecked[0].id
+                );
+                const closes = document.getElementById(
+                  "close" + this.$store.state.userModule.avatarChecked[0].id
+                );
+                edit.style.display = "none";
+                closes.style.display = "block";
+              }
+
+              debugger;
               setTimeout(() => {
                 loading.style.display = "none";
               }, 1000);
@@ -316,6 +330,15 @@ export default {
         img.style.backgroundImage = bg;
         avatar.style.display = "block";
         close.style.display = "block";
+        if (this.$route.name !== "create-profile") {
+          if (image.length === 1) {
+            const indexImg = image[0].id;
+            const edit = document.getElementById("edit" + indexImg);
+            const close = document.getElementById("close" + indexImg);
+            edit.style.display = "block";
+            close.style.display = "none";
+          }
+        }
       }
 
       if (image.length < 2) {

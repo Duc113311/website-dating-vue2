@@ -978,9 +978,18 @@ const mutations = {
     const index = state.avatarChecked.findIndex((x) => x.id === idUrl);
     debugger;
     if (index !== -1) {
-      // only splice array when item is found
-      state.avatarChecked.splice(index, 1); // 2nd parameter means remove one item only
-      state.user_profile.profiles.avatars.splice(index, 1);
+      if (state.avatarChecked.length === 1) {
+        if (photos.type === "create-profile") {
+          // only splice array when item is found
+          state.avatarChecked.splice(index, 1); // 2nd parameter means remove one item only
+          state.user_profile.profiles.avatars.splice(index, 1);
+        } else {
+          state.avatarChecked[idUrl].url = photos.url;
+        }
+      } else {
+        state.avatarChecked.splice(index, 1); // 2nd parameter means remove one item only
+        state.user_profile.profiles.avatars.splice(index, 1);
+      }
     } else {
       state.avatarChecked.push(photos);
       state.user_profile.profiles.avatars.push(photos.url);

@@ -80,6 +80,7 @@
 </template>
 
 <script>
+import Fuse from "fuse.js";
 import { mapMutations } from "vuex";
 export default {
   name: "form-languages",
@@ -95,6 +96,7 @@ export default {
         this.$store.state.commonModule.listLifeStyleSingle.languages,
       listLanguagesOld:
         this.$store.state.commonModule.listLifeStyleSingle.languages,
+      searchResults: [],
     };
   },
 
@@ -169,8 +171,26 @@ export default {
       }
     },
 
+    performSearch() {
+      var options = {
+        keys: ["value"],
+        includeScore: true,
+        threshold: 0.4, // Điều chỉnh ngưỡng tìm kiếm gần đúng tại đây
+      };
+      debugger;
+      var fuse = new Fuse(this.listLanguagesOld, options);
+      var result = fuse.search(this.valueSearch);
+
+      this.searchResults = result.map(function (item) {
+        return item.item;
+      });
+
+      return this.searchResults;
+    },
+
     onChangeFilterText() {
       let dataList = [];
+      debugger;
       if (this.valueSearch !== "") {
         if (
           this.listLanguages.length <=
@@ -183,7 +203,13 @@ export default {
                 .toLowerCase()
                 .indexOf(this.valueSearch.toLowerCase()) !== -1
           );
-          this.listLanguages = result;
+
+          let filteredLanguages = dataList.filter((language) => {
+            let pattern = new RegExp(this.valueSearch, "i"); // 'i' để không phân biệt chữ hoa thường
+            return pattern.test(language.value);
+          });
+          this.listLanguages = this.performSearch();
+          // this.listLanguages = filteredLanguages;
 
           this.$nextTick(() => {
             for (let index = 0; index < this.listLanguages.length; index++) {
