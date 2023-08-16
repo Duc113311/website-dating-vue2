@@ -239,7 +239,11 @@ export default {
 
               img.style.backgroundImage = bg;
               if (this.$store.state.userModule.avatarChecked.length <= 1) {
-                close.style.display = "none";
+                if (this.$route.name !== "create-profile") {
+                  close.style.display = "block";
+                } else {
+                  close.style.display = "none";
+                }
               } else {
                 close.style.display = "block";
               }
