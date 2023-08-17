@@ -7,18 +7,11 @@
       <div class="bg-image-detail h-4/6 pl-2 pr-2">
         <div class="avatar w-full h-full relative border-image">
           <div
-            v-if="isActiveImag"
             class="avatar-url z-8"
             :style="{
-              'background-image': `url(${this.userParam?.profiles?.avatars[0]})`,
-            }"
-          />
-          <div
-            v-if="!isActiveImag"
-            class="pic z-8"
-            :style="{
-              'background-image': `url(${idImage}
-            )`,
+              'background-image': `url(${
+                this.userParam?.profiles?.avatars[`${nextImage}`]
+              })`,
             }"
           />
           <div
@@ -406,6 +399,8 @@ export default {
       icDietaryPreference: require("@/assets/icon-profile/appetite@1x.png"),
       icSocialMedia: require("@/assets/icon-profile/social_media@1x.png"),
       icSleepingHabit: require("@/assets/icon-profile/sleeping_habits@1x.png"),
+
+      nextImage: 0,
     };
   },
 
@@ -769,7 +764,7 @@ export default {
             .classList.remove("active-image");
           this.idImage = valueImg[indexActive];
           this.setUrlImage(this.idImage);
-
+          this.nextImage = indexActive;
           document
             .getElementById(`avatar_` + parseInt(indexActive))
             .classList.add("active-image");
@@ -791,6 +786,7 @@ export default {
         this.idImage = valueImg[indexActive];
         console.log(this.idImage);
         this.setUrlImage(this.idImage);
+        this.nextImage = indexActive;
         document
           .getElementById(`avatar_` + parseInt(indexActive))
           .classList.add("active-image");
